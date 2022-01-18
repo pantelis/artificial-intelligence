@@ -1,10 +1,7 @@
 ---
 title: Syllabus
-weight: 10
 ---
 # Syllabus
-
-The course schedule below highlights our journey to understand the multiple subsystems and how they can be connected together to create compelling but, currently, domain specific forms of intelligence. 
 
 ## Books
 
@@ -15,8 +12,6 @@ The course schedule below highlights our journey to understand the multiple subs
 (c) DL - Deep Learning: https://www.deeplearningbook.org/  (free). NOTE: See also the very good https://d2l.ai/ but the chapter references below are from the Ian Goodfellow's book that I am familiar with. 
 
 ## Schedule
-
-The schedule is based on [Academic Calendar Spring 2021](https://www.nyu.edu/registrar/calendars/university-academic-calendar.html): 
 
 ### Part I:  Perception and Machine Learning
 
