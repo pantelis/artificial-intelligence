@@ -1,0 +1,835 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Syllabus &#8212; Introduction to Artificial Intelligence</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/syllabus/index.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Artificial Intelligence</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to AI
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/ai-intro/course-introduction/_index.html">
+   Course Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/ai-intro/data-science-360/_index.html">
+   Data Science 360
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/ai-intro/pipelines/_index.html">
+   ML Pipelines
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/uber-ml-arch-case-study/_index.html">
+   A Case Study of an ML Architecture - Uber
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/ai-intro/agents/_index.html">
+   Agent-Environment Interface
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The Learning Problem
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/regression/linear-regression/_index.html">
+   Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/optimization/maximum-likelihood/_index.html">
+   Maximum Likelihood (ML) Estimation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/entropy/_index.html">
+   Entropy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/optimization/sgd/_index.html">
+   Stochastic Gradient Descent
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/classification/classification-intro/_index.html">
+   Introduction to Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/classification/logistic-regression/_index.html">
+   Logistic Regression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Deep Neural Networks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/classification/perceptron/_index.html">
+   The Neuron (Perceptron)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/dnn/dnn-intro/_index.html">
+   Deep Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/dnn/backprop-intro/_index.html">
+   Introduction to Backpropagation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/dnn/backprop-dnn/_index.html">
+   Backpropagation in Deep Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/optimization/regularization/_index.html">
+   Regularization in Deep Neural Networks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Convolutional Neural Networks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/cnn/cnn-intro/_index.html">
+   Introduction to Convolutional Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/cnn/cnn-layers/_index.html">
+   CNN Architectures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/cnn/cnn-example-architectures/_index.html">
+   CNN Example Architectures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/cnn/cnn-explainers/_index.html">
+   CNN Explainers
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Scene Understanding
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/scene-understanding/scene-understanding-intro/_index.html">
+   Introduction to Scene Understanding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/scene-understanding/feature-extraction-resnet/_index.html">
+   Feature Extraction via Residual Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/scene-understanding/object-detection/_index.html">
+   Object Detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/scene-understanding/object-detection/detection-segmentation-workshop/_index.html">
+   Object Detection and Semantic Segmentation Workshop
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/scene-understanding/rcnn/_index.html">
+   Region-CNN (RCNN) Object Detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/scene-understanding/faster-rcnn/_index.html">
+   Faster RCNN Object Detection
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Probabilistic Reasoning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/pgm/pgm-intro/_index.html">
+   Introduction to Probabilistic Reasoning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/pgm/bayesian-inference/_index.html">
+   Bayesian Inference
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/pgm/bayesian-coin/_index.html">
+   Bayesian Coin Flipping
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/pgm/recursive-state-estimation/_index.html">
+   Recursive State Estimation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/pgm/bayesian-filter-workshop/_index.html">
+   Bayesian Filter Workshop
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/pgm/hmm-localization/_index.html">
+   Localization and Tracking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/pgm/kalman-workshop/_index.html">
+   Kalman Filter Workshop
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Logical Reasoning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/logical-reasoning/automated-reasoning/_index.html">
+   Automated Reasoning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/logical-reasoning/propositional-logic/_index.html">
+   World Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/logical-reasoning/logical-agents/_index.html">
+   Logical Agents
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Planning without Interactions
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/planning/_index.html">
+   Planning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/autonomous-cars/_index.html">
+   Autonomous Agents
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/autonomous-cars/imitation-learning/_index.html">
+   Imitation Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/planning/classical-planning/_index.html">
+   Classical Planning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/planning/search/_index.html">
+   Planning with Search
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/planning/search/forward-search/_index.html">
+   Forward Search Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/planning/search/a-star/_index.html">
+   The A* Algorithm
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Markov Decision Processes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/_index.html">
+   Markov Decision Processes
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dynamic Programming Planning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/bellman-expectation-backup/_index.html">
+   Bellman Expectation Backup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/bellman-optimality-backup/_index.html">
+   Bellman Optimality Backup
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dynamic Programming Algorithms
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/mdp-dp-algorithms/_index.html">
+   Solving the MDP - DP Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/mdp-dp-algorithms/policy-evaluation/_index.html">
+   Policy Evaluation (Prediction)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/mdp-dp-algorithms/policy-improvement/_index.html">
+   Policy Improvement (Control)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/mdp-dp-algorithms/policy-iteration/_index.html">
+   Dynamic Programming Algorithms - Policy Iteration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/mdp-dp-algorithms/value-iteration/_index.html">
+   Dynamic Programming Algorithms - Value Iteration
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  MDP Planning Lab
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/mdp-lab/recycling-robot/_index.html">
+   Finding the optimal policy of a recycling robot.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/mdp-lab/grid-world/_index.html">
+   Grid-world policy iteration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/mdp-lab/yield-management-capacity-control/_index.html">
+   Optimal Capacity Control
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reinforcement Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/reinforcement-learning/_index.html">
+   Reinforcement Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/reinforcement-learning/generalized-policy-iteration/_index.html">
+   Generalized Policy Iteration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/reinforcement-learning/prediction/_index.html">
+   Model-free Prediction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/reinforcement-learning/control/_index.html">
+   Model-free Control
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/reinforcement-learning/control/sarsa/_index.html">
+   The SARSA Algorithm
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/reinforcement-learning/reinforce/_index.html">
+   The REINFORCE Algorithm
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Sequences and RNNs
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/rnn/introduction/_index.html">
+   Introduction to Recurrent Neural Networks (RNN)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/rnn/simple-rnn/_index.html">
+   Simple RNN
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/rnn/simple-rnn-workshop/_index.html">
+   Simple RNN Workshop
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/rnn/lstm/_index.html">
+   The Long Short-Term Memory (LSTM) Cell Architecture
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Natural Language Processing
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/nlp/nlp-intro/_index.html">
+   Introduction to NLP
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/nlp/word2vec/_index.html">
+   Word2Vec Embeddings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/nlp/rnn-language-models/_index.html">
+   RNN Language Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/nlp/nmt/_index.html">
+   Neural Machine Translation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/nlp/nmt-metrics/_index.html">
+   NMT Metrics - BLEU
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/nlp/attention/_index.html">
+   Attention in NMT
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/nlp/transformers/_index.html">
+   Transformers Workshop
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Math Background
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/ml-math/probability/_index.html">
+   Probability Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/linear-algebra/vectors/_index.html">
+   Vectors
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/linear-algebra/matrices/_index.html">
+   Matrices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/ml-math/calculus/_index.html">
+   Calculus
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/python/_index.html">
+   Learn Python
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://pantelis.github.io/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Fsyllabus/index.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#books">
+   Books
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#schedule">
+   Schedule
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-i-perception-and-machine-learning">
+     Part I:  Perception and Machine Learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-ii-reasoning-and-planning">
+     Part II: Reasoning and Planning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-iii-reinforcement-learning">
+     Part III: Reinforcement Learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-iv-natural-language-processing-and-representations">
+     Part IV: Natural Language Processing and Representations
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Syllabus</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#books">
+   Books
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#schedule">
+   Schedule
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-i-perception-and-machine-learning">
+     Part I:  Perception and Machine Learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-ii-reasoning-and-planning">
+     Part II: Reasoning and Planning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-iii-reinforcement-learning">
+     Part III: Reinforcement Learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-iv-natural-language-processing-and-representations">
+     Part IV: Natural Language Processing and Representations
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="syllabus">
+<h1>Syllabus<a class="headerlink" href="#syllabus" title="Permalink to this headline">¶</a></h1>
+<p>The course schedule below highlights our journey to understand the multiple subsystems and how they can be connected together to create compelling but, currently, domain specific forms of intelligence.</p>
+<div class="section" id="books">
+<h2>Books<a class="headerlink" href="#books" title="Permalink to this headline">¶</a></h2>
+<p>(a) AIMA - <a class="reference external" href="https://www.amazon.com/Artificial-Intelligence-A-Modern-Approach/dp/0134610997">Artificial Intelligence: A Modern Approach, by Stuart Russell, 4th edition, 2021</a> and also <a class="reference external" href="http://aima.cs.berkeley.edu/">here.</a></p>
+<p>(b) GERON: “<a class="reference external" href="https://www.amazon.com/Hands-Machine-Learning-Scikit-Learn-TensorFlow-dp-1492032646/dp/1492032646/ref=dp_ob_title_bk">Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow”, 2nd Edition</a>, by Geron, 2019. This is very useful if you aim in using TF2 but irrespectively of the framework essential for those new to Python to complete your projects.</p>
+<p>(c) DL - Deep Learning: <a class="reference external" href="https://www.deeplearningbook.org/">https://www.deeplearningbook.org/</a>  (free). NOTE: See also the very good <a class="reference external" href="https://d2l.ai/">https://d2l.ai/</a> but the chapter references below are from the Ian Goodfellow’s book that I am familiar with.</p>
+</div>
+<div class="section" id="schedule">
+<h2>Schedule<a class="headerlink" href="#schedule" title="Permalink to this headline">¶</a></h2>
+<p>The schedule is based on <a class="reference external" href="https://www.nyu.edu/registrar/calendars/university-academic-calendar.html">Academic Calendar Spring 2021</a>:</p>
+<div class="section" id="part-i-perception-and-machine-learning">
+<h3>Part I:  Perception and Machine Learning<a class="headerlink" href="#part-i-perception-and-machine-learning" title="Permalink to this headline">¶</a></h3>
+<p><strong>Lecture 1:</strong> We start with an introduction to AI and present a systems approach towards it. We develop a map that will guide us through the rest of the course as we deep dive into each component embedded into <em>AI agents</em>. Reading: AIMA Chapters 1 &amp; 2.</p>
+<p><strong>Lecture 2:</strong>  The perception subsystem is the first stage of many AI systems including our brain. Its function is to process and fuse multimodal sensory inputs. Perception is implemented via a number of reflexive agents that map directly perceived state to an primitive action such as regressing on the frame coordinates of an object in the scene. We present <em>the supervised learning problem</em> both for classification and regression, starting with classical ML algorithms. Reading: AIMA Chapter 19.</p>
+<p><strong>Lecture 3:</strong>  We expand into <em>Deep neural networks</em>. DNNs are developed bottom up from the Perceptron algorithm. MLPs learn via optimization approaches such as Stochastic Gradient Descent.  We deep-dive into back-propagation - a fundamental algorithm that efficiently trains DNNs. Reading: AIMA Chapter 21 and DL Chapter 6</p>
+<p><strong>Lecture 4:</strong> We dive into the most dominant DNN architecture today -  <em>Convolutional Neural Networks (CNNs)</em>. Reading: DL Chapter 9 &amp; 10 and AIMA Chapter 25 (in part).</p>
+<p><strong>Lecture 5:</strong> When agents move in the environment they need to abilities such as <em>scene understanding</em>.  We will go through few key perception building blocks such as Object Detection, Semantic and Instance Segmentation. Some of these building blocks (autoencoders) are instructive examples of representations learning that will be shown to be an essential tool in the construction of environment state representations. Reading: AIMA Chapter 25 (in part).</p>
+</div>
+<div class="section" id="part-ii-reasoning-and-planning">
+<h3>Part II: Reasoning and Planning<a class="headerlink" href="#part-ii-reasoning-and-planning" title="Permalink to this headline">¶</a></h3>
+<p><strong>Lecture 6:</strong>  In this lecture we introduce probabilistic models that process the outputs of perception (measurement / sensor model) and the state transitions and understand how the agent will track / update its belief state over time. This is a achieved with probabilistic recursive state estimation algorithms and dynamic bayesian networks. Reading: AIMA Chapters 12, 13 &amp; 14.</p>
+<p><strong>Lecture 7:</strong> After the last lecture, the agent has a clear view of the environment state such as what and where the objects that surround it are, its able to track them as they potentially move. It needs to plan the best sequence of actions to reach its goal state and the approach we take here is that of <em>problem solving</em>. In fact planning and problem solving are inherently connected as concepts. If the goal state is feasible then the problem to solve  becomes that of  <em>search</em>. For instructive purposes we start from simple environmental conditions that are fully observed, known and deterministic. This is where the A* algorithm comes in. We then relax some of the assumptions and treat environments that are deterministic but the agent takes stochastic actions or when both the environment and agent actions are stochastic. We also investigate what happens when we do not just care about reaching our goal state, but when we, in addition, need to do so with optimality. Optimal planning under uncertainty is perhaps the cornerstone application today in robotics and other fields. Readings: Reading: AIMA Chapters 3 &amp; 4 (problem solving), AIMA Chapters 7 (Logical agents)</p>
+</div>
+<div class="section" id="part-iii-reinforcement-learning">
+<h3>Part III: Reinforcement Learning<a class="headerlink" href="#part-iii-reinforcement-learning" title="Permalink to this headline">¶</a></h3>
+<p><strong>Lecture 8:</strong> We now make a considerable extension to our assumptions: the utility of the agent now depends on a sequence of decisions and, further, the stochastic environment offers a feedback signal to the agent called <em>reward</em>. We review how the agent’s policy, the sequence of actions, can be calculated when it fully observes its current state (MDP) and also when it can only partially do so (POMDP). We conclude with the basic taxonomy of the algorithmic space for RL problems.   Readings: AIMA Chapter 16 &amp; 17.</p>
+<p><strong>Lecture 9:</strong>  The algorithms that learn optimal policies in such settings are known as Reinforcement Learning (RL). In this lecture we establish the connection between MDP and RL, by introducing the Bellman expectation backup and Bellman optimality equations. We then use these equations to derive the policy iteration algorithm that is behind the policy-based REINFORCE algorithm that is empowered by approximating the policy function using the Deep Neural Networks that we met in the perception subsystem. AIMA Chapter 22.</p>
+</div>
+<div class="section" id="part-iv-natural-language-processing-and-representations">
+<h3>Part IV: Natural Language Processing and Representations<a class="headerlink" href="#part-iv-natural-language-processing-and-representations" title="Permalink to this headline">¶</a></h3>
+<p><strong>Lecture 10:</strong>  NLP is the pinnacle of applied AI in every day life - we are all using natural language as the prime means of communicate between us and increasingly between us and robots. In this lecture we pose the NLP problem, understand its components and their mechanics. AIMA Chapter 23.</p>
+<p><strong>Lecture 11:</strong>   We then talk extensively about <em>language modeling</em> and start with an approach based on the [RNN / LTSM architecture. The later is used far beyond language modeling and expands into every application that involves sequences. We introduce the concept of <em>attention</em> and go through the Transformer framework - perhaps the most successful architecture in NLP today. AIMA Chapter 24 and DL Chapter 10.</p>
+<p><strong>Lecture 12:</strong>  We will go through architectures that can help <em>explain</em> decision making as well as reveal decision <em>bias</em>. Both of these tools cant solve the ethical challenges we face today. How can AI help us address <em>misinformation</em> when itself is used to spread it ? AIMA Chapter 27.</p>
+<p><strong>Lecture 13:</strong>: Review - last lecture before the final.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./syllabus"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Pantelis Monogioudis, Ph.D<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
