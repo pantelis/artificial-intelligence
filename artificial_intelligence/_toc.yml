@@ -15,6 +15,7 @@ parts:
     - file: aiml-common/lectures/ai-intro/pipelines/_index.md
     - file: aiml-common/lectures/uber-ml-arch-case-study/_index.md
     - file: aiml-common/lectures/ai-intro/agents/_index.md
+    - file: aiml-common/lectures/ai-intro/systems-approach/_index.md
 
   - caption: The Learning Problem
     chapters:
@@ -135,8 +136,6 @@ parts:
     - file: aiml-common/lectures/nlp/nmt-metrics/_index.md       
     - file: aiml-common/lectures/nlp/attention/_index.md       
     - file: aiml-common/lectures/nlp/transformers/_index.md         
-  
-     
   
   - caption: Math Background
     chapters: 
