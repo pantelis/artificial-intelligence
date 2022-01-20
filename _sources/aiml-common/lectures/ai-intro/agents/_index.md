@@ -57,3 +57,18 @@ For each environment and each architecture there is a number of solutions that m
 
 ![agents-environment-taxonomy](images/agents-environment-taxonomy.png) -->
 
+## Examples of AI agents 
+
+```{eval-rst}
+.. youtube:: N5vEca47tMw
+```
+_Industrial automation_
+
+```{eval-rst}
+.. youtube:: dE3-dPqFnI8
+```
+_Real Carla self-steering experiment_
+
+
+
+
