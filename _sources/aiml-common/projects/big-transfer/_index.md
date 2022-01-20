@@ -1,7 +1,7 @@
 ---
 title: Big Transfer
 ---
-
+(project:big-transfer)=
 # Big Transfer 
 
 In this project you will look at a general representation learning method called [Big Transfer](https://arxiv.org/pdf/1912.11370.pdf) that was found that is particularly good in specialized small label downstream tasks. 
@@ -10,8 +10,9 @@ In this project you will look at a general representation learning method called
 networks for vision. We revisit the paradigm of pre-training on large supervised datasets and fine-tuning the model on a target task. We scale
 up pre-training, and propose a simple recipe where by combining a few carefully selected components, and transferring using a simple heuristic, we achieve strong performance on over 20 datasets.
 
-[![Big Transfer](https://img.youtube.com/vi/k1GOF2jmX7c/0.jpg)](https://www.youtube.com/watch?v=k1GOF2jmX7c)
-_Click and watch the video above explaining the paper_
+```{eval-rst}
+.. youtube:: k1GOF2jmX7c
+```
 
 ## Tasks
 
@@ -23,7 +24,7 @@ _Click and watch the video above explaining the paper_
 
 ## Notes:
 
-1. You are free to select your computing  environment but a default choice is Google Colab using your NYU account. We have confirmed that the notebooks in the repo are running successfully in Colab. 
+1. You are free to select your computing  environment but a default choice is Google Colab. We have confirmed that the notebooks in the repo are running successfully in Colab. 
 
 
 
