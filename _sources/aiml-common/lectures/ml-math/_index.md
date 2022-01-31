@@ -1,6 +1,9 @@
 ---
 title: Math for ML
-weight: 200
 ---
 
-This is a collection of background resources that each data / computer scientist must be aware of and review. Not all of these resources are needed to understand the class - we will go through the key points during the lectures.  
+# Math for ML 
+
+We will go through the key points during the lectures but overall you will benefit from reading the intersecting chapters of [Mathematics for Machine Learning book](https://mml-book.github.io/book/mml-book.pdf). Start with Probability.
+
+![](images/math-4-ml.png)
