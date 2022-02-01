@@ -20,7 +20,7 @@ Course Dates: Jan 18/28 - May 19/24 2022
 
 NYU: CS-GY-6613-Section I: Fri 5pm-7.30pm Rogers Hall, Rm 215 Loc: Brooklyn Campus
 
-NJIT: CS370-002: Tue & Thu 4pm EST,  Cullimore Hall LECT 3
+NJIT: CS370-002: Tue & Thu 4pm EST,  Loc: Guttenberg Info Tech Center 1400
 
 **Communication:** 
 
@@ -39,7 +39,7 @@ Office hours will be coordinated via Slack as well - the process is simple: dire
 
 NJIT: Hadi Ghahremannezhad
 
-NYU: Akshat Kaushik + one additional TA pending
+NYU: Akshat Kaushik and Vaibhav Singh.
 
 ## Grading
 
