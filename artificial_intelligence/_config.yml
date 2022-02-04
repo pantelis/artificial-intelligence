@@ -8,7 +8,11 @@ logo: logo.png
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: 'off'
+  execute_notebooks: 'cache'
+  exclude_patterns:
+    - 'handson-ml2'
+
+only_build_toc_files: true
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -22,17 +26,17 @@ bibtex_bibfiles:
 # Information about where the book exists on the web
 repository:
   url: https://github.com/pantelis/artificial-intelligence  # Online location of your book
-  path_to_book: docs  # Optional path to your book, relative to the repository root
+  path_to_book: artificial_intelligence  # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
   home_page_in_navbar: true
-  use_edit_page_button: true
+  use_edit_page_button: false
   use_issues_button: true
   use_repository_button: true
-  use_download_button: false
+  use_download_button: true
   baseurl: https://pantelis.github.io/artificial-intelligence
 
 launch_buttons:
@@ -43,12 +47,25 @@ sphinx:
   recursive_update: true
   config:
     html_theme_options:
-      use_download_button: false
-      repository_url: https://pantelis.github.io/artificial-intelligence
+      use_download_button: true
+      repository_url: https://github.com/pantelis/artificial-intelligence
       use_issues_button: true
-      use_repository_button: false
+      use_repository_button: true
       use_edit_page_button: false
   extra_extensions:
     - sphinxcontrib.youtube
     - sphinx_inline_tabs 
-    
+parse:
+  myst_enable_extensions:
+    # don't forget to list any other extensions you want enabled,
+    # including those that are enabled by default!
+    - amsmath
+    - deflist
+    - colon_fence
+    - dollarmath
+    - html_admonition
+    - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    - substitution

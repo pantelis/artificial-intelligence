@@ -154,3 +154,4 @@ cython_debug/
 # jupyterbook buuld directory
 _build/
 
+.ipynb_checkpoints/

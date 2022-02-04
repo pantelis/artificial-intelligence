@@ -15,15 +15,21 @@ parts:
     - file: aiml-common/lectures/ai-intro/systems-approach/_index.md
     - file: aiml-common/lectures/ai-intro/agents/_index.md
     - file: aiml-common/lectures/ai-intro/pipelines/_index.md
-    - file: aiml-common/lectures/uber-ml-arch-case-study/_index.md
+      title: Pipelines
+      sections: 
+      - file: aiml-common/lectures/uber-ml-arch-case-study/_index.md
+      - file: handson-ml2/02_end_to_end_machine_learning_project.ipynb
     
-
   - caption: The Learning Problem
     chapters:
     - file: aiml-common/lectures/learning-problem/_index.md
     - file: aiml-common/lectures/regression/linear-regression/_index.md    
     - file: aiml-common/lectures/regression/linear-regression/regression-notebooks/_index.md
     - file: aiml-common/lectures/optimization/maximum-likelihood/_index.md
+    - file: aiml-common/lectures/pgm/bayesian-inference/_index.md
+      title: Bayesian Inference
+      sections:   
+      - file: aiml-common/lectures/pgm/bayesian-coin/_index.md
     - file: aiml-common/lectures/entropy/_index.md
     - file: aiml-common/lectures/optimization/sgd/_index.md
     - file: aiml-common/lectures/classification/classification-intro/_index.md
@@ -62,8 +68,6 @@ parts:
   - caption: Probabilistic Reasoning
     chapters:    
     - file: aiml-common/lectures/pgm/pgm-intro/_index.md
-    - file: aiml-common/lectures/pgm/bayesian-inference/_index.md
-    - file: aiml-common/lectures/pgm/bayesian-coin/_index.md
     - file: aiml-common/lectures/pgm/recursive-state-estimation/_index.md
     - file: aiml-common/lectures/pgm/bayesian-filter-workshop/_index.md
     - file: aiml-common/lectures/pgm/hmm-localization/_index.md   
