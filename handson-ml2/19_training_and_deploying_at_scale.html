@@ -1,0 +1,2411 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Setup &#8212; Introduction to Artificial Intelligence</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/handson-ml2/19_training_and_deploying_at_scale.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Artificial Intelligence</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/_index.html">
+   Syllabus
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to AI
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/ai-intro/course-introduction/_index.html">
+   Course Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/ai-intro/data-science-360/_index.html">
+   Data Science 360
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/ai-intro/systems-approach/_index.html">
+   The four approaches towards AI
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/ai-intro/agents/_index.html">
+   Agent-Environment Interface
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/ai-intro/pipelines/_index.html">
+   ML Pipelines
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/uber-ml-arch-case-study/_index.html">
+   A Case Study of an ML Architecture - Uber
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The Learning Problem
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/learning-problem/_index.html">
+   The Learning Problem
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/regression/linear-regression/_index.html">
+   Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/optimization/maximum-likelihood/_index.html">
+   Maximum Likelihood (ML) Estimation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/entropy/_index.html">
+   Entropy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/optimization/sgd/_index.html">
+   Stochastic Gradient Descent
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/classification/classification-intro/_index.html">
+   Introduction to Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/classification/logistic-regression/_index.html">
+   Logistic Regression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Deep Neural Networks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/classification/perceptron/_index.html">
+   The Neuron (Perceptron)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/dnn/dnn-intro/_index.html">
+   Deep Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/dnn/backprop-intro/_index.html">
+   Introduction to Backpropagation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/dnn/backprop-dnn/_index.html">
+   Backpropagation in Deep Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/optimization/regularization/_index.html">
+   Regularization in Deep Neural Networks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Convolutional Neural Networks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/cnn/cnn-intro/_index.html">
+   Introduction to Convolutional Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/cnn/cnn-layers/_index.html">
+   CNN Architectures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/cnn/cnn-example-architectures/_index.html">
+   CNN Example Architectures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/cnn/cnn-explainers/_index.html">
+   CNN Explainers
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Scene Understanding
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/scene-understanding/scene-understanding-intro/_index.html">
+   Introduction to Scene Understanding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/scene-understanding/feature-extraction-resnet/_index.html">
+   Feature Extraction via Residual Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/scene-understanding/object-detection/_index.html">
+   Object Detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/scene-understanding/object-detection/detection-segmentation-workshop/_index.html">
+   Object Detection and Semantic Segmentation Workshop
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/scene-understanding/rcnn/_index.html">
+   Region-CNN (RCNN) Object Detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/scene-understanding/faster-rcnn/_index.html">
+   Faster RCNN Object Detection
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Probabilistic Reasoning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/pgm/pgm-intro/_index.html">
+   Introduction to Probabilistic Reasoning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/pgm/bayesian-inference/_index.html">
+   Bayesian Inference
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/pgm/bayesian-coin/_index.html">
+   Bayesian Coin Flipping
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/pgm/recursive-state-estimation/_index.html">
+   Recursive State Estimation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/pgm/bayesian-filter-workshop/_index.html">
+   Bayesian Filter Workshop
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/pgm/hmm-localization/_index.html">
+   Localization and Tracking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/pgm/kalman-workshop/_index.html">
+   Kalman Filter Workshop
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Logical Reasoning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/logical-reasoning/automated-reasoning/_index.html">
+   Automated Reasoning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/logical-reasoning/propositional-logic/_index.html">
+   World Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/logical-reasoning/logical-agents/_index.html">
+   Logical Agents
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Planning without Interactions
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/planning/_index.html">
+   Planning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/autonomous-cars/_index.html">
+   Autonomous Agents
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/autonomous-cars/imitation-learning/_index.html">
+   Imitation Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/planning/classical-planning/_index.html">
+   Classical Planning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/planning/search/_index.html">
+   Planning with Search
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/planning/search/forward-search/_index.html">
+   Forward Search Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/planning/search/a-star/_index.html">
+   The A* Algorithm
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Markov Decision Processes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/_index.html">
+   Markov Decision Processes
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dynamic Programming Planning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/bellman-expectation-backup/_index.html">
+   Bellman Expectation Backup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/bellman-optimality-backup/_index.html">
+   Bellman Optimality Backup
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dynamic Programming Algorithms
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/mdp-dp-algorithms/_index.html">
+   Solving the MDP - DP Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/mdp-dp-algorithms/policy-evaluation/_index.html">
+   Policy Evaluation (Prediction)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/mdp-dp-algorithms/policy-improvement/_index.html">
+   Policy Improvement (Control)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/mdp-dp-algorithms/policy-iteration/_index.html">
+   Dynamic Programming Algorithms - Policy Iteration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/mdp-dp-algorithms/value-iteration/_index.html">
+   Dynamic Programming Algorithms - Value Iteration
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  MDP Planning Lab
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/mdp-lab/recycling-robot/_index.html">
+   Finding the optimal policy of a recycling robot.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/mdp-lab/grid-world/_index.html">
+   Grid-world policy iteration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/mdp/mdp-lab/yield-management-capacity-control/_index.html">
+   Optimal Capacity Control
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reinforcement Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/reinforcement-learning/_index.html">
+   Reinforcement Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/reinforcement-learning/generalized-policy-iteration/_index.html">
+   Generalized Policy Iteration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/reinforcement-learning/prediction/_index.html">
+   Model-free Prediction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/reinforcement-learning/control/_index.html">
+   Model-free Control
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/reinforcement-learning/control/sarsa/_index.html">
+   The SARSA Algorithm
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/reinforcement-learning/reinforce/_index.html">
+   The REINFORCE Algorithm
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Sequences and RNNs
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/rnn/introduction/_index.html">
+   Introduction to Recurrent Neural Networks (RNN)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/rnn/simple-rnn/_index.html">
+   Simple RNN
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/rnn/simple-rnn-workshop/_index.html">
+   Simple RNN Workshop
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/rnn/lstm/_index.html">
+   The Long Short-Term Memory (LSTM) Cell Architecture
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Natural Language Processing
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/nlp/nlp-intro/_index.html">
+   Introduction to NLP
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/nlp/word2vec/_index.html">
+   Word2Vec Embeddings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/nlp/rnn-language-models/_index.html">
+   RNN Language Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/nlp/nmt/_index.html">
+   Neural Machine Translation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/nlp/nmt-metrics/_index.html">
+   NMT Metrics - BLEU
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/nlp/attention/_index.html">
+   Attention in NMT
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/nlp/transformers/_index.html">
+   Transformers Workshop
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Math Background
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../aiml-common/lectures/ml-math/_index.html">
+   Math for ML
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../aiml-common/lectures/ml-math/probability/_index.html">
+     Probability Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../aiml-common/lectures/linear-algebra/_index.html">
+     Linear Algebra for Machine Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../aiml-common/lectures/ml-math/calculus/_index.html">
+     Calculus
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/lectures/python/_index.html">
+   Learn Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments &amp; Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aiml-common/assignments/probability-assignment-2.html">
+   Probability Assigmment
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://pantelis.github.io/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Fhandson-ml2/19_training_and_deploying_at_scale.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deploying-tensorflow-models-to-tensorflow-serving-tfs">
+   Deploying TensorFlow models to TensorFlow Serving (TFS)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#save-load-a-savedmodel">
+     Save/Load a
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       SavedModel
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tensorflow-serving">
+     TensorFlow Serving
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#using-the-grpc-api">
+       Using the gRPC API
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deploying-a-new-model-version">
+     Deploying a new model version
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deploy-the-model-to-google-cloud-ai-platform">
+   Deploy the model to Google Cloud AI Platform
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-gpus">
+   Using GPUs
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#distributed-training">
+   Distributed Training
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-across-multiple-servers">
+     Training across multiple servers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-solutions">
+   Exercise Solutions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#to-8">
+     1. to 8.
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     9.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   10.
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   11.
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Setup</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deploying-tensorflow-models-to-tensorflow-serving-tfs">
+   Deploying TensorFlow models to TensorFlow Serving (TFS)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#save-load-a-savedmodel">
+     Save/Load a
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       SavedModel
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tensorflow-serving">
+     TensorFlow Serving
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#using-the-grpc-api">
+       Using the gRPC API
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deploying-a-new-model-version">
+     Deploying a new model version
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deploy-the-model-to-google-cloud-ai-platform">
+   Deploy the model to Google Cloud AI Platform
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-gpus">
+   Using GPUs
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#distributed-training">
+   Distributed Training
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-across-multiple-servers">
+     Training across multiple servers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-solutions">
+   Exercise Solutions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#to-8">
+     1. to 8.
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     9.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   10.
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   11.
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <p><strong>Chapter 19 – Training and Deploying TensorFlow Models at Scale</strong></p>
+<p><em>This notebook contains all the sample code in chapter 19.</em></p>
+<table align="left">
+  <td>
+    <a href="https://colab.research.google.com/github/ageron/handson-ml2/blob/master/19_training_and_deploying_at_scale.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+  </td>
+  <td>
+    <a target="_blank" href="https://kaggle.com/kernels/welcome?src=https://github.com/ageron/handson-ml2/blob/master/19_training_and_deploying_at_scale.ipynb"><img src="https://kaggle.com/static/images/open-in-kaggle.svg" /></a>
+  </td>
+</table><div class="tex2jax_ignore mathjax_ignore section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<p>First, let’s import a few common modules, ensure MatplotLib plots figures inline and prepare a function to save the figures. We also check that Python 3.5 or later is installed (although Python 2.x may work, it is deprecated so we strongly recommend you use Python 3 instead), as well as Scikit-Learn ≥0.20 and TensorFlow ≥2.0.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python ≥3.5 is required</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="k">assert</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Is this notebook running on Colab or Kaggle?</span>
+<span class="n">IS_COLAB</span> <span class="o">=</span> <span class="s2">&quot;google.colab&quot;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span>
+<span class="n">IS_KAGGLE</span> <span class="o">=</span> <span class="s2">&quot;kaggle_secrets&quot;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span>
+
+<span class="k">if</span> <span class="n">IS_COLAB</span> <span class="ow">or</span> <span class="n">IS_KAGGLE</span><span class="p">:</span>
+    <span class="o">!</span><span class="nb">echo</span> <span class="s2">&quot;deb http://storage.googleapis.com/tensorflow-serving-apt stable tensorflow-model-server tensorflow-model-server-universal&quot;</span> &gt; /etc/apt/sources.list.d/tensorflow-serving.list
+    <span class="o">!</span>curl https://storage.googleapis.com/tensorflow-serving-apt/tensorflow-serving.release.pub.gpg <span class="p">|</span> apt-key add -
+    <span class="o">!</span>apt update <span class="o">&amp;&amp;</span> apt-get install -y tensorflow-model-server
+    <span class="o">%</span><span class="k">pip</span> install -q -U tensorflow-serving-api
+
+<span class="c1"># Scikit-Learn ≥0.20 is required</span>
+<span class="kn">import</span> <span class="nn">sklearn</span>
+<span class="k">assert</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">__version__</span> <span class="o">&gt;=</span> <span class="s2">&quot;0.20&quot;</span>
+
+<span class="c1"># TensorFlow ≥2.0 is required</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="k">assert</span> <span class="n">tf</span><span class="o">.</span><span class="n">__version__</span> <span class="o">&gt;=</span> <span class="s2">&quot;2.0&quot;</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">list_physical_devices</span><span class="p">(</span><span class="s1">&#39;GPU&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No GPU was detected. CNNs can be very slow without a GPU.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">IS_COLAB</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Go to Runtime &gt; Change runtime and select a GPU hardware accelerator.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">IS_KAGGLE</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Go to Settings &gt; Accelerator and select GPU.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Common imports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># to make this notebook&#39;s output stable across runs</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># To plot pretty figures</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Where to save the figures</span>
+<span class="n">PROJECT_ROOT_DIR</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
+<span class="n">CHAPTER_ID</span> <span class="o">=</span> <span class="s2">&quot;deploy&quot;</span>
+<span class="n">IMAGES_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PROJECT_ROOT_DIR</span><span class="p">,</span> <span class="s2">&quot;images&quot;</span><span class="p">,</span> <span class="n">CHAPTER_ID</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">IMAGES_PATH</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">save_fig</span><span class="p">(</span><span class="n">fig_id</span><span class="p">,</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fig_extension</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">IMAGES_PATH</span><span class="p">,</span> <span class="n">fig_id</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">fig_extension</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saving figure&quot;</span><span class="p">,</span> <span class="n">fig_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">tight_layout</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">fig_extension</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">resolution</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="deploying-tensorflow-models-to-tensorflow-serving-tfs">
+<h1>Deploying TensorFlow models to TensorFlow Serving (TFS)<a class="headerlink" href="#deploying-tensorflow-models-to-tensorflow-serving-tfs" title="Permalink to this headline">¶</a></h1>
+<p>We will use the REST API or the gRPC API.</p>
+<div class="section" id="save-load-a-savedmodel">
+<h2>Save/Load a <code class="docutils literal notranslate"><span class="pre">SavedModel</span></code><a class="headerlink" href="#save-load-a-savedmodel" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">X_train_full</span><span class="p">,</span> <span class="n">y_train_full</span><span class="p">),</span> <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="n">X_train_full</span> <span class="o">=</span> <span class="n">X_train_full</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.</span>
+<span class="n">X_valid</span><span class="p">,</span> <span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train_full</span><span class="p">[:</span><span class="mi">5000</span><span class="p">],</span> <span class="n">X_train_full</span><span class="p">[</span><span class="mi">5000</span><span class="p">:]</span>
+<span class="n">y_valid</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train_full</span><span class="p">[:</span><span class="mi">5000</span><span class="p">],</span> <span class="n">y_train_full</span><span class="p">[</span><span class="mi">5000</span><span class="p">:]</span>
+<span class="n">X_new</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">)</span>
+<span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;sparse_categorical_crossentropy&quot;</span><span class="p">,</span>
+              <span class="n">optimizer</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">),</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+1719/1719 [==============================] - 2s 1ms/step - loss: 1.1140 - accuracy: 0.7066 - val_loss: 0.3715 - val_accuracy: 0.9024
+Epoch 2/10
+1719/1719 [==============================] - 1s 713us/step - loss: 0.3695 - accuracy: 0.8981 - val_loss: 0.2990 - val_accuracy: 0.9144
+Epoch 3/10
+1719/1719 [==============================] - 1s 718us/step - loss: 0.3154 - accuracy: 0.9100 - val_loss: 0.2651 - val_accuracy: 0.9272
+Epoch 4/10
+1719/1719 [==============================] - 1s 706us/step - loss: 0.2765 - accuracy: 0.9223 - val_loss: 0.2436 - val_accuracy: 0.9334
+Epoch 5/10
+1719/1719 [==============================] - 1s 711us/step - loss: 0.2556 - accuracy: 0.9276 - val_loss: 0.2257 - val_accuracy: 0.9364
+Epoch 6/10
+1719/1719 [==============================] - 1s 715us/step - loss: 0.2367 - accuracy: 0.9321 - val_loss: 0.2121 - val_accuracy: 0.9396
+Epoch 7/10
+1719/1719 [==============================] - 1s 729us/step - loss: 0.2198 - accuracy: 0.9390 - val_loss: 0.1970 - val_accuracy: 0.9454
+Epoch 8/10
+1719/1719 [==============================] - 1s 716us/step - loss: 0.2057 - accuracy: 0.9425 - val_loss: 0.1880 - val_accuracy: 0.9476
+Epoch 9/10
+1719/1719 [==============================] - 1s 704us/step - loss: 0.1940 - accuracy: 0.9459 - val_loss: 0.1777 - val_accuracy: 0.9524
+Epoch 10/10
+1719/1719 [==============================] - 1s 711us/step - loss: 0.1798 - accuracy: 0.9482 - val_loss: 0.1684 - val_accuracy: 0.9546
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7fe3b8718590&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 1.  , 0.  , 0.  ],
+       [0.  , 0.  , 0.99, 0.01, 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ],
+       [0.  , 0.97, 0.01, 0.  , 0.  , 0.  , 0.  , 0.01, 0.  , 0.  ]],
+      dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_version</span> <span class="o">=</span> <span class="s2">&quot;0001&quot;</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;my_mnist_model&quot;</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">model_version</span><span class="p">)</span>
+<span class="n">model_path</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;my_mnist_model/0001&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>rm -rf <span class="o">{</span>model_name<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">model_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Assets written to: my_mnist_model/0001/assets
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">model_name</span><span class="p">):</span>
+    <span class="n">indent</span> <span class="o">=</span> <span class="s1">&#39;    &#39;</span> <span class="o">*</span> <span class="n">root</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">/&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indent</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">root</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indent</span> <span class="o">+</span> <span class="s1">&#39;    &#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>my_mnist_model/
+    0001/
+        saved_model.pb
+        variables/
+            variables.data-00000-of-00001
+            variables.index
+        assets/
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>saved_model_cli show --dir <span class="o">{</span>model_path<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The given SavedModel contains the following tag-sets:
+&#39;serve&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>saved_model_cli show --dir <span class="o">{</span>model_path<span class="o">}</span> --tag_set serve
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The given SavedModel MetaGraphDef contains SignatureDefs with the following keys:
+SignatureDef key: &quot;__saved_model_init_op&quot;
+SignatureDef key: &quot;serving_default&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!saved_model_cli show --dir {model_path} --tag_set serve \
+                      --signature_def serving_default
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The given SavedModel SignatureDef contains the following input(s):
+  inputs[&#39;flatten_input&#39;] tensor_info:
+      dtype: DT_FLOAT
+      shape: (-1, 28, 28, 1)
+      name: serving_default_flatten_input:0
+The given SavedModel SignatureDef contains the following output(s):
+  outputs[&#39;dense_1&#39;] tensor_info:
+      dtype: DT_FLOAT
+      shape: (-1, 10)
+      name: StatefulPartitionedCall:0
+Method name is: tensorflow/serving/predict
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>saved_model_cli show --dir <span class="o">{</span>model_path<span class="o">}</span> --all
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MetaGraphDef with tag-set: &#39;serve&#39; contains the following SignatureDefs:
+
+signature_def[&#39;__saved_model_init_op&#39;]:
+  The given SavedModel SignatureDef contains the following input(s):
+  The given SavedModel SignatureDef contains the following output(s):
+    outputs[&#39;__saved_model_init_op&#39;] tensor_info:
+        dtype: DT_INVALID
+        shape: unknown_rank
+        name: NoOp
+  Method name is: 
+
+signature_def[&#39;serving_default&#39;]:
+  The given SavedModel SignatureDef contains the following input(s):
+    inputs[&#39;flatten_input&#39;] tensor_info:
+        dtype: DT_FLOAT
+        shape: (-1, 28, 28, 1)
+        name: serving_default_flatten_input:0
+  The given SavedModel SignatureDef contains the following output(s):
+    outputs[&#39;dense_1&#39;] tensor_info:
+        dtype: DT_FLOAT
+        shape: (-1, 10)
+        name: StatefulPartitionedCall:0
+  Method name is: tensorflow/serving/predict
+
+Defined Functions:
+  Function Name: &#39;__call__&#39;
+    Option #1
+      Callable with:
+        Argument #1
+          flatten_input: TensorSpec(shape=(None, 28, 28, 1), dtype=tf.float32, name=&#39;flatten_input&#39;)
+        Argument #2
+          DType: bool
+          Value: True
+        Argument #3
+&lt;&lt;45 more lines&gt;&gt;
+          DType: bool
+          Value: False
+        Argument #3
+          DType: NoneType
+          Value: None
+    Option #2
+      Callable with:
+        Argument #1
+          inputs: TensorSpec(shape=(None, 28, 28, 1), dtype=tf.float32, name=&#39;inputs&#39;)
+        Argument #2
+          DType: bool
+          Value: True
+        Argument #3
+          DType: NoneType
+          Value: None
+    Option #3
+      Callable with:
+        Argument #1
+          flatten_input: TensorSpec(shape=(None, 28, 28, 1), dtype=tf.float32, name=&#39;flatten_input&#39;)
+        Argument #2
+          DType: bool
+          Value: True
+        Argument #3
+          DType: NoneType
+          Value: None
+    Option #4
+      Callable with:
+        Argument #1
+          flatten_input: TensorSpec(shape=(None, 28, 28, 1), dtype=tf.float32, name=&#39;flatten_input&#39;)
+        Argument #2
+          DType: bool
+          Value: False
+        Argument #3
+          DType: NoneType
+          Value: None
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s write the new instances to a <code class="docutils literal notranslate"><span class="pre">npy</span></code> file so we can pass them easily to our model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;my_mnist_tests.npy&quot;</span><span class="p">,</span> <span class="n">X_new</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_name</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">input_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">input_name</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;flatten_input&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>And now let’s use <code class="docutils literal notranslate"><span class="pre">saved_model_cli</span></code> to make predictions for the instances we just saved:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!saved_model_cli run --dir {model_path} --tag_set serve \
+                     --signature_def serving_default    \
+                     --inputs {input_name}=my_mnist_tests.npy
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2021-02-18 22:15:30.294109: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-02-18 22:15:30.294306: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:From /Users/ageron/miniconda3/envs/tf2/lib/python3.7/site-packages/tensorflow/python/tools/saved_model_cli.py:445: load (from tensorflow.python.saved_model.loader_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This function will only be available through the v1 compatibility library as tf.compat.v1.saved_model.loader.load or tf.compat.v1.saved_model.load. There will be a new function for importing SavedModels in Tensorflow 2.0.
+INFO:tensorflow:Restoring parameters from my_mnist_model/0001/variables/variables
+2021-02-18 22:15:30.323498: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:196] None of the MLIR optimization passes are enabled (registered 0 passes)
+Result for output key dense_1:
+[[1.1347984e-04 1.5187356e-07 9.7032893e-04 2.7640699e-03 3.7826971e-06
+  7.6876910e-05 3.9140293e-08 9.9559116e-01 5.3502394e-05 4.2665208e-04]
+ [8.2443521e-04 3.5493889e-05 9.8826385e-01 7.0466995e-03 1.2957400e-07
+  2.3389691e-04 2.5639210e-03 9.5886099e-10 1.0314899e-03 8.7952529e-08]
+ [4.4693781e-05 9.7028232e-01 9.0526715e-03 2.2641101e-03 4.8766597e-04
+  2.8800720e-03 2.2714981e-03 8.3753867e-03 4.0439744e-03 2.9759688e-04]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">([[</span><span class="mf">1.1347984e-04</span><span class="p">,</span> <span class="mf">1.5187356e-07</span><span class="p">,</span> <span class="mf">9.7032893e-04</span><span class="p">,</span> <span class="mf">2.7640699e-03</span><span class="p">,</span> <span class="mf">3.7826971e-06</span><span class="p">,</span>
+           <span class="mf">7.6876910e-05</span><span class="p">,</span> <span class="mf">3.9140293e-08</span><span class="p">,</span> <span class="mf">9.9559116e-01</span><span class="p">,</span> <span class="mf">5.3502394e-05</span><span class="p">,</span> <span class="mf">4.2665208e-04</span><span class="p">],</span>
+          <span class="p">[</span><span class="mf">8.2443521e-04</span><span class="p">,</span> <span class="mf">3.5493889e-05</span><span class="p">,</span> <span class="mf">9.8826385e-01</span><span class="p">,</span> <span class="mf">7.0466995e-03</span><span class="p">,</span> <span class="mf">1.2957400e-07</span><span class="p">,</span>
+           <span class="mf">2.3389691e-04</span><span class="p">,</span> <span class="mf">2.5639210e-03</span><span class="p">,</span> <span class="mf">9.5886099e-10</span><span class="p">,</span> <span class="mf">1.0314899e-03</span><span class="p">,</span> <span class="mf">8.7952529e-08</span><span class="p">],</span>
+          <span class="p">[</span><span class="mf">4.4693781e-05</span><span class="p">,</span> <span class="mf">9.7028232e-01</span><span class="p">,</span> <span class="mf">9.0526715e-03</span><span class="p">,</span> <span class="mf">2.2641101e-03</span><span class="p">,</span> <span class="mf">4.8766597e-04</span><span class="p">,</span>
+           <span class="mf">2.8800720e-03</span><span class="p">,</span> <span class="mf">2.2714981e-03</span><span class="p">,</span> <span class="mf">8.3753867e-03</span><span class="p">,</span> <span class="mf">4.0439744e-03</span><span class="p">,</span> <span class="mf">2.9759688e-04</span><span class="p">]],</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 1.  , 0.  , 0.  ],
+       [0.  , 0.  , 0.99, 0.01, 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ],
+       [0.  , 0.97, 0.01, 0.  , 0.  , 0.  , 0.  , 0.01, 0.  , 0.  ]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="tensorflow-serving">
+<h2>TensorFlow Serving<a class="headerlink" href="#tensorflow-serving" title="Permalink to this headline">¶</a></h2>
+<p>Install <a class="reference external" href="https://docs.docker.com/install/">Docker</a> if you don’t have it already. Then run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker pull tensorflow/serving
+
+<span class="nb">export</span> <span class="nv">ML_PATH</span><span class="o">=</span><span class="nv">$HOME</span>/ml <span class="c1"># or wherever this project is</span>
+docker run -it --rm -p <span class="m">8500</span>:8500 -p <span class="m">8501</span>:8501 <span class="se">\</span>
+   -v <span class="s2">&quot;</span><span class="nv">$ML_PATH</span><span class="s2">/my_mnist_model:/models/my_mnist_model&quot;</span> <span class="se">\</span>
+   -e <span class="nv">MODEL_NAME</span><span class="o">=</span>my_mnist_model <span class="se">\</span>
+   tensorflow/serving
+</pre></div>
+</div>
+<p>Once you are finished using it, press Ctrl-C to shut down the server.</p>
+<p>Alternatively, if <code class="docutils literal notranslate"><span class="pre">tensorflow_model_server</span></code> is installed (e.g., if you are running this notebook in Colab), then the following 3 cells will start the server:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;MODEL_DIR&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">model_path</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span> --bg
+nohup tensorflow_model_server \
+     --rest_api_port=8501 \
+     --model_name=my_mnist_model \
+     --model_base_path=&quot;${MODEL_DIR}&quot; &gt;server.log 2&gt;&amp;1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>tail server.log
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2021-02-16 22:33:09.323538: I external/org_tensorflow/tensorflow/cc/saved_model/reader.cc:93] Reading SavedModel debug info (if present) from: /models/my_mnist_model/0001
+2021-02-16 22:33:09.323642: I external/org_tensorflow/tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-02-16 22:33:09.360572: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:206] Restoring SavedModel bundle.
+2021-02-16 22:33:09.361764: I external/org_tensorflow/tensorflow/core/platform/profile_utils/cpu_utils.cc:112] CPU Frequency: 2200000000 Hz
+2021-02-16 22:33:09.387713: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:190] Running initialization op on SavedModel bundle at path: /models/my_mnist_model/0001
+2021-02-16 22:33:09.392739: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:277] SavedModel load for tags { serve }; Status: success: OK. Took 71106 microseconds.
+2021-02-16 22:33:09.393390: I tensorflow_serving/servables/tensorflow/saved_model_warmup_util.cc:59] No warmup data file found at /models/my_mnist_model/0001/assets.extra/tf_serving_warmup_requests
+2021-02-16 22:33:09.393847: I tensorflow_serving/core/loader_harness.cc:87] Successfully loaded servable version {name: my_mnist_model version: 1}
+2021-02-16 22:33:09.398470: I tensorflow_serving/model_servers/server.cc:371] Running gRPC ModelServer at 0.0.0.0:8500 ...
+[warn] getaddrinfo: address family for nodename not supported
+2021-02-16 22:33:09.405622: I tensorflow_serving/model_servers/server.cc:391] Exporting HTTP/REST API at:localhost:8501 ...
+[evhttp_server.cc : 238] NET_LOG: Entering the event loop ...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">input_data_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+    <span class="s2">&quot;signature_name&quot;</span><span class="p">:</span> <span class="s2">&quot;serving_default&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;instances&quot;</span><span class="p">:</span> <span class="n">X_new</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">repr</span><span class="p">(</span><span class="n">input_data_json</span><span class="p">)[:</span><span class="mi">1500</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;...&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;\&#39;{&quot;signature_name&quot;: &quot;serving_default&quot;, &quot;instances&quot;: [[[[0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0]], [[0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0]], [[0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0]], [[0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0]], [[0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0]], [[0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0]], [[0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0]], [[0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.32941177487373...&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s use TensorFlow Serving’s REST API to make predictions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">SERVER_URL</span> <span class="o">=</span> <span class="s1">&#39;http://localhost:8501/v1/models/my_mnist_model:predict&#39;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">SERVER_URL</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">input_data_json</span><span class="p">)</span>
+<span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span> <span class="c1"># raise an exception in case of error</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;predictions&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_proba</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;predictions&quot;</span><span class="p">])</span>
+<span class="n">y_proba</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 1.  , 0.  , 0.  ],
+       [0.  , 0.  , 0.99, 0.01, 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ],
+       [0.  , 0.97, 0.01, 0.  , 0.  , 0.  , 0.  , 0.01, 0.  , 0.  ]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="using-the-grpc-api">
+<h3>Using the gRPC API<a class="headerlink" href="#using-the-grpc-api" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow_serving.apis.predict_pb2</span> <span class="kn">import</span> <span class="n">PredictRequest</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="n">PredictRequest</span><span class="p">()</span>
+<span class="n">request</span><span class="o">.</span><span class="n">model_spec</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">model_name</span>
+<span class="n">request</span><span class="o">.</span><span class="n">model_spec</span><span class="o">.</span><span class="n">signature_name</span> <span class="o">=</span> <span class="s2">&quot;serving_default&quot;</span>
+<span class="n">input_name</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">input_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">request</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="n">input_name</span><span class="p">]</span><span class="o">.</span><span class="n">CopyFrom</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">make_tensor_proto</span><span class="p">(</span><span class="n">X_new</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">grpc</span>
+<span class="kn">from</span> <span class="nn">tensorflow_serving.apis</span> <span class="kn">import</span> <span class="n">prediction_service_pb2_grpc</span>
+
+<span class="n">channel</span> <span class="o">=</span> <span class="n">grpc</span><span class="o">.</span><span class="n">insecure_channel</span><span class="p">(</span><span class="s1">&#39;localhost:8500&#39;</span><span class="p">)</span>
+<span class="n">predict_service</span> <span class="o">=</span> <span class="n">prediction_service_pb2_grpc</span><span class="o">.</span><span class="n">PredictionServiceStub</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">predict_service</span><span class="o">.</span><span class="n">Predict</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>outputs {
+  key: &quot;dense_1&quot;
+  value {
+    dtype: DT_FLOAT
+    tensor_shape {
+      dim {
+        size: 3
+      }
+      dim {
+        size: 10
+      }
+    }
+    float_val: 0.00011425172124290839
+    float_val: 1.513665068841874e-07
+    float_val: 0.0009818424005061388
+    float_val: 0.0027773496694862843
+    float_val: 3.758880893656169e-06
+    float_val: 7.6266449468676e-05
+    float_val: 3.9139514740327286e-08
+    float_val: 0.995561957359314
+    float_val: 5.344580131350085e-05
+    float_val: 0.00043088122038170695
+    float_val: 0.0008194865076802671
+    float_val: 3.5498320357874036e-05
+    float_val: 0.9882420897483826
+    float_val: 0.00705744931474328
+    float_val: 1.2937064752804872e-07
+    float_val: 0.00023402832448482513
+    float_val: 0.0025743397418409586
+    float_val: 9.668431610876382e-10
+    float_val: 0.0010369382798671722
+    float_val: 8.833576004008137e-08
+    float_val: 4.441547571332194e-05
+    float_val: 0.970328688621521
+    float_val: 0.009044423699378967
+    float_val: 0.0022599005606025457
+    float_val: 0.00048672096454538405
+    float_val: 0.002873610006645322
+    float_val: 0.002268279204145074
+    float_val: 0.008354829624295235
+    float_val: 0.004041312728077173
+    float_val: 0.0002978229313157499
+  }
+}
+model_spec {
+  name: &quot;my_mnist_model&quot;
+  version {
+    value: 1
+  }
+  signature_name: &quot;serving_default&quot;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Convert the response to a tensor:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_name</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">output_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">outputs_proto</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">output_name</span><span class="p">]</span>
+<span class="n">y_proba</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">make_ndarray</span><span class="p">(</span><span class="n">outputs_proto</span><span class="p">)</span>
+<span class="n">y_proba</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 1.  , 0.  , 0.  ],
+       [0.  , 0.  , 0.99, 0.01, 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ],
+       [0.  , 0.97, 0.01, 0.  , 0.  , 0.  , 0.  , 0.01, 0.  , 0.  ]],
+      dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or to a NumPy array if your client does not include the TensorFlow library:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_name</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">output_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">outputs_proto</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">output_name</span><span class="p">]</span>
+<span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="n">dim</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">outputs_proto</span><span class="o">.</span><span class="n">tensor_shape</span><span class="o">.</span><span class="n">dim</span><span class="p">]</span>
+<span class="n">y_proba</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">outputs_proto</span><span class="o">.</span><span class="n">float_val</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">y_proba</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 1.  , 0.  , 0.  ],
+       [0.  , 0.  , 0.99, 0.01, 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ],
+       [0.  , 0.97, 0.01, 0.  , 0.  , 0.  , 0.  , 0.01, 0.  , 0.  ]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="deploying-a-new-model-version">
+<h2>Deploying a new model version<a class="headerlink" href="#deploying-a-new-model-version" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">)</span>
+<span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;sparse_categorical_crossentropy&quot;</span><span class="p">,</span>
+              <span class="n">optimizer</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">),</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+1719/1719 [==============================] - 1s 748us/step - loss: 1.1567 - accuracy: 0.6691 - val_loss: 0.3418 - val_accuracy: 0.9042
+Epoch 2/10
+1719/1719 [==============================] - 1s 697us/step - loss: 0.3376 - accuracy: 0.9032 - val_loss: 0.2674 - val_accuracy: 0.9242
+Epoch 3/10
+1719/1719 [==============================] - 1s 676us/step - loss: 0.2779 - accuracy: 0.9187 - val_loss: 0.2227 - val_accuracy: 0.9368
+Epoch 4/10
+1719/1719 [==============================] - 1s 669us/step - loss: 0.2362 - accuracy: 0.9318 - val_loss: 0.2032 - val_accuracy: 0.9432
+Epoch 5/10
+1719/1719 [==============================] - 1s 670us/step - loss: 0.2109 - accuracy: 0.9389 - val_loss: 0.1833 - val_accuracy: 0.9482
+Epoch 6/10
+1719/1719 [==============================] - 1s 675us/step - loss: 0.1951 - accuracy: 0.9430 - val_loss: 0.1740 - val_accuracy: 0.9498
+Epoch 7/10
+1719/1719 [==============================] - 1s 667us/step - loss: 0.1799 - accuracy: 0.9474 - val_loss: 0.1605 - val_accuracy: 0.9540
+Epoch 8/10
+1719/1719 [==============================] - 1s 673us/step - loss: 0.1654 - accuracy: 0.9519 - val_loss: 0.1543 - val_accuracy: 0.9558
+Epoch 9/10
+1719/1719 [==============================] - 1s 671us/step - loss: 0.1570 - accuracy: 0.9554 - val_loss: 0.1460 - val_accuracy: 0.9572
+Epoch 10/10
+1719/1719 [==============================] - 1s 672us/step - loss: 0.1420 - accuracy: 0.9583 - val_loss: 0.1359 - val_accuracy: 0.9616
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_version</span> <span class="o">=</span> <span class="s2">&quot;0002&quot;</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;my_mnist_model&quot;</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">model_version</span><span class="p">)</span>
+<span class="n">model_path</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;my_mnist_model/0002&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">model_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Assets written to: my_mnist_model/0002/assets
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">model_name</span><span class="p">):</span>
+    <span class="n">indent</span> <span class="o">=</span> <span class="s1">&#39;    &#39;</span> <span class="o">*</span> <span class="n">root</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">/&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indent</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">root</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indent</span> <span class="o">+</span> <span class="s1">&#39;    &#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>my_mnist_model/
+    0001/
+        saved_model.pb
+        variables/
+            variables.data-00000-of-00001
+            variables.index
+        assets/
+    0002/
+        saved_model.pb
+        variables/
+            variables.data-00000-of-00001
+            variables.index
+        assets/
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Warning</strong>: You may need to wait a minute before the new model is loaded by TensorFlow Serving.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">SERVER_URL</span> <span class="o">=</span> <span class="s1">&#39;http://localhost:8501/v1/models/my_mnist_model:predict&#39;</span>
+            
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">SERVER_URL</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">input_data_json</span><span class="p">)</span>
+<span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;predictions&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_proba</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;predictions&quot;</span><span class="p">])</span>
+<span class="n">y_proba</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 1.  , 0.  , 0.  ],
+       [0.  , 0.  , 0.99, 0.01, 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ],
+       [0.  , 0.99, 0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="deploy-the-model-to-google-cloud-ai-platform">
+<h1>Deploy the model to Google Cloud AI Platform<a class="headerlink" href="#deploy-the-model-to-google-cloud-ai-platform" title="Permalink to this headline">¶</a></h1>
+<p>Follow the instructions in the book to deploy the model to Google Cloud AI Platform, download the service account’s private key and save it to the <code class="docutils literal notranslate"><span class="pre">my_service_account_private_key.json</span></code> in the project directory. Also, update the <code class="docutils literal notranslate"><span class="pre">project_id</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">project_id</span> <span class="o">=</span> <span class="s2">&quot;onyx-smoke-242003&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">googleapiclient.discovery</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;GOOGLE_APPLICATION_CREDENTIALS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;my_service_account_private_key.json&quot;</span>
+<span class="n">model_id</span> <span class="o">=</span> <span class="s2">&quot;my_mnist_model&quot;</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="s2">&quot;projects/</span><span class="si">{}</span><span class="s2">/models/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">project_id</span><span class="p">,</span> <span class="n">model_id</span><span class="p">)</span>
+<span class="n">model_path</span> <span class="o">+=</span> <span class="s2">&quot;/versions/v0001/&quot;</span> <span class="c1"># if you want to run a specific version</span>
+<span class="n">ml_resource</span> <span class="o">=</span> <span class="n">googleapiclient</span><span class="o">.</span><span class="n">discovery</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s2">&quot;ml&quot;</span><span class="p">,</span> <span class="s2">&quot;v1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">projects</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">input_data_json</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;signature_name&quot;</span><span class="p">:</span> <span class="s2">&quot;serving_default&quot;</span><span class="p">,</span>
+                       <span class="s2">&quot;instances&quot;</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">tolist</span><span class="p">()}</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="n">ml_resource</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">model_path</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="n">input_data_json</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+    <span class="k">if</span> <span class="s2">&quot;error&quot;</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">pred</span><span class="p">[</span><span class="n">output_name</span><span class="p">]</span> <span class="k">for</span> <span class="n">pred</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;predictions&quot;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y_probas</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Y_probas</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 1.  , 0.  , 0.  ],
+       [0.  , 0.  , 0.99, 0.01, 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ],
+       [0.  , 0.99, 0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="using-gpus">
+<h1>Using GPUs<a class="headerlink" href="#using-gpus" title="Permalink to this headline">¶</a></h1>
+<p><strong>Note</strong>: <code class="docutils literal notranslate"><span class="pre">tf.test.is_gpu_available()</span></code> is deprecated. Instead, please use <code class="docutils literal notranslate"><span class="pre">tf.config.list_physical_devices('GPU')</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#tf.test.is_gpu_available() # deprecated</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">list_physical_devices</span><span class="p">(</span><span class="s1">&#39;GPU&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[PhysicalDevice(name=&#39;/physical_device:GPU:0&#39;, device_type=&#39;GPU&#39;),
+ PhysicalDevice(name=&#39;/physical_device:GPU:1&#39;, device_type=&#39;GPU&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">gpu_device_name</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/device:GPU:0&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">is_built_with_cuda</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.python.client.device_lib</span> <span class="kn">import</span> <span class="n">list_local_devices</span>
+
+<span class="n">devices</span> <span class="o">=</span> <span class="n">list_local_devices</span><span class="p">()</span>
+<span class="n">devices</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[name: &quot;/device:CPU:0&quot;
+ device_type: &quot;CPU&quot;
+ memory_limit: 268435456
+ locality {
+ }
+ incarnation: 7325002731160755624,
+ name: &quot;/device:GPU:0&quot;
+ device_type: &quot;GPU&quot;
+ memory_limit: 11139884032
+ locality {
+   bus_id: 1
+   links {
+     link {
+       device_id: 1
+       type: &quot;StreamExecutor&quot;
+       strength: 1
+     }
+   }
+ }
+ incarnation: 7150956550266107441
+ physical_device_desc: &quot;device: 0, name: Tesla K80, pci bus id: 0000:00:04.0, compute capability: 3.7&quot;,
+ name: &quot;/device:GPU:1&quot;
+ device_type: &quot;GPU&quot;
+ memory_limit: 11139884032
+ locality {
+   bus_id: 1
+   links {
+     link {
+       type: &quot;StreamExecutor&quot;
+       strength: 1
+     }
+   }
+ }
+ incarnation: 15909479382059415698
+ physical_device_desc: &quot;device: 1, name: Tesla K80, pci bus id: 0000:00:05.0, compute capability: 3.7&quot;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="distributed-training">
+<h1>Distributed Training<a class="headerlink" href="#distributed-training" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_model</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+        <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+                            <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;same&quot;</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+        <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+        <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+                            <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;same&quot;</span><span class="p">),</span> 
+        <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+                            <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;same&quot;</span><span class="p">),</span>
+        <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+        <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+        <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+        <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span>
+        <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">),</span>
+    <span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;sparse_categorical_crossentropy&quot;</span><span class="p">,</span>
+              <span class="n">optimizer</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">),</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+          <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">),</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+550/550 [==============================] - 11s 18ms/step - loss: 1.8163 - accuracy: 0.3979 - val_loss: 0.3446 - val_accuracy: 0.9010
+Epoch 2/10
+550/550 [==============================] - 9s 17ms/step - loss: 0.4949 - accuracy: 0.8482 - val_loss: 0.1962 - val_accuracy: 0.9458
+Epoch 3/10
+550/550 [==============================] - 10s 17ms/step - loss: 0.3345 - accuracy: 0.9012 - val_loss: 0.1343 - val_accuracy: 0.9622
+Epoch 4/10
+550/550 [==============================] - 10s 17ms/step - loss: 0.2537 - accuracy: 0.9267 - val_loss: 0.1049 - val_accuracy: 0.9718
+Epoch 5/10
+550/550 [==============================] - 10s 17ms/step - loss: 0.2099 - accuracy: 0.9394 - val_loss: 0.0875 - val_accuracy: 0.9752
+Epoch 6/10
+550/550 [==============================] - 10s 17ms/step - loss: 0.1901 - accuracy: 0.9439 - val_loss: 0.0797 - val_accuracy: 0.9772
+Epoch 7/10
+550/550 [==============================] - 10s 18ms/step - loss: 0.1672 - accuracy: 0.9506 - val_loss: 0.0745 - val_accuracy: 0.9780
+Epoch 8/10
+550/550 [==============================] - 10s 18ms/step - loss: 0.1537 - accuracy: 0.9554 - val_loss: 0.0700 - val_accuracy: 0.9804
+Epoch 9/10
+550/550 [==============================] - 10s 18ms/step - loss: 0.1384 - accuracy: 0.9592 - val_loss: 0.0641 - val_accuracy: 0.9818
+Epoch 10/10
+550/550 [==============================] - 10s 18ms/step - loss: 0.1358 - accuracy: 0.9602 - val_loss: 0.0611 - val_accuracy: 0.9818
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7f014831c110&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">distribution</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">distribute</span><span class="o">.</span><span class="n">MirroredStrategy</span><span class="p">()</span>
+
+<span class="c1"># Change the default all-reduce algorithm:</span>
+<span class="c1">#distribution = tf.distribute.MirroredStrategy(</span>
+<span class="c1">#    cross_device_ops=tf.distribute.HierarchicalCopyAllReduce())</span>
+
+<span class="c1"># Specify the list of GPUs to use:</span>
+<span class="c1">#distribution = tf.distribute.MirroredStrategy(devices=[&quot;/gpu:0&quot;, &quot;/gpu:1&quot;])</span>
+
+<span class="c1"># Use the central storage strategy instead:</span>
+<span class="c1">#distribution = tf.distribute.experimental.CentralStorageStrategy()</span>
+
+<span class="c1">#if IS_COLAB and &quot;COLAB_TPU_ADDR&quot; in os.environ:</span>
+<span class="c1">#  tpu_address = &quot;grpc://&quot; + os.environ[&quot;COLAB_TPU_ADDR&quot;]</span>
+<span class="c1">#else:</span>
+<span class="c1">#  tpu_address = &quot;&quot;</span>
+<span class="c1">#resolver = tf.distribute.cluster_resolver.TPUClusterResolver(tpu_address)</span>
+<span class="c1">#tf.config.experimental_connect_to_cluster(resolver)</span>
+<span class="c1">#tf.tpu.experimental.initialize_tpu_system(resolver)</span>
+<span class="c1">#distribution = tf.distribute.experimental.TPUStrategy(resolver)</span>
+
+<span class="k">with</span> <span class="n">distribution</span><span class="o">.</span><span class="n">scope</span><span class="p">():</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">()</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;sparse_categorical_crossentropy&quot;</span><span class="p">,</span>
+                  <span class="n">optimizer</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">),</span>
+                  <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Using MirroredStrategy with devices (&#39;/job:localhost/replica:0/task:0/device:GPU:0&#39;, &#39;/job:localhost/replica:0/task:0/device:GPU:1&#39;)
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to (&#39;/job:localhost/replica:0/task:0/device:CPU:0&#39;,).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to (&#39;/job:localhost/replica:0/task:0/device:CPU:0&#39;,).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to (&#39;/job:localhost/replica:0/task:0/device:CPU:0&#39;,).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to (&#39;/job:localhost/replica:0/task:0/device:CPU:0&#39;,).
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># must be divisible by the number of workers</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+          <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">),</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+INFO:tensorflow:batch_all_reduce: 10 all-reduces with algorithm = nccl, num_packs = 1
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to (&#39;/job:localhost/replica:0/task:0/device:CPU:0&#39;,).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to (&#39;/job:localhost/replica:0/task:0/device:CPU:0&#39;,).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to (&#39;/job:localhost/replica:0/task:0/device:CPU:0&#39;,).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to (&#39;/job:localhost/replica:0/task:0/device:CPU:0&#39;,).
+INFO:tensorflow:batch_all_reduce: 10 all-reduces with algorithm = nccl, num_packs = 1
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to (&#39;/job:localhost/replica:0/task:0/device:CPU:0&#39;,).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to (&#39;/job:localhost/replica:0/task:0/device:CPU:0&#39;,).
+550/550 [==============================] - 14s 16ms/step - loss: 1.8193 - accuracy: 0.3957 - val_loss: 0.3366 - val_accuracy: 0.9102
+Epoch 2/10
+550/550 [==============================] - 7s 13ms/step - loss: 0.4886 - accuracy: 0.8497 - val_loss: 0.1865 - val_accuracy: 0.9478
+Epoch 3/10
+550/550 [==============================] - 7s 13ms/step - loss: 0.3305 - accuracy: 0.9008 - val_loss: 0.1344 - val_accuracy: 0.9616
+Epoch 4/10
+550/550 [==============================] - 7s 13ms/step - loss: 0.2472 - accuracy: 0.9282 - val_loss: 0.1115 - val_accuracy: 0.9696
+Epoch 5/10
+550/550 [==============================] - 7s 13ms/step - loss: 0.2020 - accuracy: 0.9425 - val_loss: 0.0873 - val_accuracy: 0.9748
+Epoch 6/10
+550/550 [==============================] - 7s 13ms/step - loss: 0.1865 - accuracy: 0.9458 - val_loss: 0.0783 - val_accuracy: 0.9764
+Epoch 7/10
+550/550 [==============================] - 8s 14ms/step - loss: 0.1633 - accuracy: 0.9512 - val_loss: 0.0771 - val_accuracy: 0.9776
+Epoch 8/10
+550/550 [==============================] - 8s 14ms/step - loss: 0.1422 - accuracy: 0.9570 - val_loss: 0.0705 - val_accuracy: 0.9786
+Epoch 9/10
+550/550 [==============================] - 7s 13ms/step - loss: 0.1408 - accuracy: 0.9603 - val_loss: 0.0627 - val_accuracy: 0.9830
+Epoch 10/10
+550/550 [==============================] - 7s 13ms/step - loss: 0.1293 - accuracy: 0.9618 - val_loss: 0.0605 - val_accuracy: 0.9836
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7f259bf1a6d0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2.53707055e-10, 7.94509292e-10, 1.02021443e-06, 3.37102080e-08,
+        4.90816797e-11, 4.37713789e-11, 2.43314297e-14, 9.99996424e-01,
+        1.50591750e-09, 2.50736753e-06],
+       [1.11715025e-07, 8.56921833e-05, 9.99914169e-01, 6.31697228e-09,
+        3.99949344e-11, 4.47976906e-10, 8.46022008e-09, 3.03771834e-08,
+        2.91782563e-08, 1.95555502e-10],
+       [4.68117065e-07, 9.99787748e-01, 1.01387537e-04, 2.87393277e-06,
+        5.29725839e-05, 1.55926125e-06, 2.07211669e-05, 1.76809226e-05,
+        9.37155255e-06, 5.19965897e-06]], dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Custom training loop:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">K</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">backend</span>
+
+<span class="n">distribution</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">distribute</span><span class="o">.</span><span class="n">MirroredStrategy</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="n">distribution</span><span class="o">.</span><span class="n">scope</span><span class="p">():</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">()</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="n">distribution</span><span class="o">.</span><span class="n">scope</span><span class="p">():</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span><span class="o">.</span><span class="n">repeat</span><span class="p">()</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+    <span class="n">input_iterator</span> <span class="o">=</span> <span class="n">distribution</span><span class="o">.</span><span class="n">make_dataset_iterator</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+    
+<span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
+<span class="k">def</span> <span class="nf">train_step</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">step_fn</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">inputs</span>
+        <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+            <span class="n">Y_proba</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">sparse_categorical_crossentropy</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Y_proba</span><span class="p">))</span> <span class="o">/</span> <span class="n">batch_size</span>
+
+        <span class="n">grads</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">)</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">apply_gradients</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">loss</span>
+
+    <span class="n">per_replica_losses</span> <span class="o">=</span> <span class="n">distribution</span><span class="o">.</span><span class="n">experimental_run</span><span class="p">(</span><span class="n">step_fn</span><span class="p">,</span> <span class="n">input_iterator</span><span class="p">)</span>
+    <span class="n">mean_loss</span> <span class="o">=</span> <span class="n">distribution</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">distribute</span><span class="o">.</span><span class="n">ReduceOp</span><span class="o">.</span><span class="n">SUM</span><span class="p">,</span>
+                                    <span class="n">per_replica_losses</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mean_loss</span>
+
+<span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">with</span> <span class="n">distribution</span><span class="o">.</span><span class="n">scope</span><span class="p">():</span>
+    <span class="n">input_iterator</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Epoch </span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_epochs</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span> <span class="o">//</span> <span class="n">batch_size</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">Loss: </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">train_step</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Using MirroredStrategy with devices (&#39;/job:localhost/replica:0/task:0/device:GPU:0&#39;, &#39;/job:localhost/replica:0/task:0/device:GPU:1&#39;)
+WARNING:tensorflow:From &lt;ipython-input-9-acb7c62c8738&gt;:36: DistributedIteratorV1.initialize (from tensorflow.python.distribute.input_lib) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use the iterator&#39;s `initializer` property instead.
+Epoch 1/10
+INFO:tensorflow:batch_all_reduce: 10 all-reduces with algorithm = nccl, num_packs = 1
+INFO:tensorflow:batch_all_reduce: 10 all-reduces with algorithm = nccl, num_packs = 1
+Loss: 0.380
+Epoch 2/10
+Loss: 0.302
+Epoch 3/10
+Loss: 0.285
+Epoch 4/10
+Loss: 0.294
+Epoch 5/10
+Loss: 0.304
+Epoch 6/10
+Loss: 0.310
+Epoch 7/10
+Loss: 0.310
+Epoch 8/10
+Loss: 0.306
+Epoch 9/10
+Loss: 0.303
+Epoch 10/10
+Loss: 0.298
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="training-across-multiple-servers">
+<h2>Training across multiple servers<a class="headerlink" href="#training-across-multiple-servers" title="Permalink to this headline">¶</a></h2>
+<p>A TensorFlow cluster is a group of TensorFlow processes running in parallel, usually on different machines, and talking to each other to complete some work, for example training or executing a neural network. Each TF process in the cluster is called a “task” (or a “TF server”). It has an IP address, a port, and a type (also called its role or its job). The type can be <code class="docutils literal notranslate"><span class="pre">&quot;worker&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;chief&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;ps&quot;</span></code> (parameter server) or <code class="docutils literal notranslate"><span class="pre">&quot;evaluator&quot;</span></code>:</p>
+<ul class="simple">
+<li><p>Each <strong>worker</strong> performs computations, usually on a machine with one or more GPUs.</p></li>
+<li><p>The <strong>chief</strong> performs computations as well, but it also handles extra work such as writing TensorBoard logs or saving checkpoints. There is a single chief in a cluster, typically the first worker (i.e., worker #0).</p></li>
+<li><p>A <strong>parameter server</strong> (ps) only keeps track of variable values, it is usually on a CPU-only machine.</p></li>
+<li><p>The <strong>evaluator</strong> obviously takes care of evaluation. There is usually a single evaluator in a cluster.</p></li>
+</ul>
+<p>The set of tasks that share the same type is often called a “job”. For example, the “worker” job is the set of all workers.</p>
+<p>To start a TensorFlow cluster, you must first define it. This means specifying all the tasks (IP address, TCP port, and type). For example, the following cluster specification defines a cluster with 3 tasks (2 workers and 1 parameter server). It’s a dictionary with one key per job, and the values are lists of task addresses:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cluster_spec</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;worker&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;machine-a.example.com:2222&quot;</span><span class="p">,</span>  <span class="c1"># /job:worker/task:0</span>
+        <span class="s2">&quot;machine-b.example.com:2222&quot;</span>   <span class="c1"># /job:worker/task:1</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;ps&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;machine-c.example.com:2222&quot;</span><span class="p">]</span> <span class="c1"># /job:ps/task:0</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Every task in the cluster may communicate with every other task in the server, so make sure to configure your firewall to authorize all communications between these machines on these ports (it’s usually simpler if you use the same port on every machine).</p>
+<p>When a task is started, it needs to be told which one it is: its type and index (the task index is also called the task id). A common way to specify everything at once (both the cluster spec and the current task’s type and id) is to set the <code class="docutils literal notranslate"><span class="pre">TF_CONFIG</span></code> environment variable before starting the program. It must be a JSON-encoded dictionary containing a cluster specification (under the <code class="docutils literal notranslate"><span class="pre">&quot;cluster&quot;</span></code> key), and the type and index of the task to start (under the <code class="docutils literal notranslate"><span class="pre">&quot;task&quot;</span></code> key). For example, the following <code class="docutils literal notranslate"><span class="pre">TF_CONFIG</span></code> environment variable defines the same cluster as above, with 2 workers and 1 parameter server, and specifies that the task to start is worker #1:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TF_CONFIG&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+    <span class="s2">&quot;cluster&quot;</span><span class="p">:</span> <span class="n">cluster_spec</span><span class="p">,</span>
+    <span class="s2">&quot;task&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;worker&quot;</span><span class="p">,</span> <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="p">})</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TF_CONFIG&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;{&quot;cluster&quot;: {&quot;worker&quot;: [&quot;machine-a.example.com:2222&quot;, &quot;machine-b.example.com:2222&quot;], &quot;ps&quot;: [&quot;machine-c.example.com:2222&quot;]}, &quot;task&quot;: {&quot;type&quot;: &quot;worker&quot;, &quot;index&quot;: 1}}&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Some platforms (e.g., Google Cloud ML Engine) automatically set this environment variable for you.</p>
+<p>TensorFlow’s <code class="docutils literal notranslate"><span class="pre">TFConfigClusterResolver</span></code> class reads the cluster configuration from this environment variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+
+<span class="n">resolver</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">distribute</span><span class="o">.</span><span class="n">cluster_resolver</span><span class="o">.</span><span class="n">TFConfigClusterResolver</span><span class="p">()</span>
+<span class="n">resolver</span><span class="o">.</span><span class="n">cluster_spec</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ClusterSpec({&#39;ps&#39;: [&#39;machine-c.example.com:2222&#39;], &#39;worker&#39;: [&#39;machine-a.example.com:2222&#39;, &#39;machine-b.example.com:2222&#39;]})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">resolver</span><span class="o">.</span><span class="n">task_type</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;worker&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">resolver</span><span class="o">.</span><span class="n">task_id</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s run a simpler cluster with just two worker tasks, both running on the local machine. We will use the <code class="docutils literal notranslate"><span class="pre">MultiWorkerMirroredStrategy</span></code> to train a model across these two tasks.</p>
+<p>The first step is to write the training code. As this code will be used to run both workers, each in its own process, we write this code to a separate Python file, <code class="docutils literal notranslate"><span class="pre">my_mnist_multiworker_task.py</span></code>. The code is relatively straightforward, but there are a couple important things to note:</p>
+<ul class="simple">
+<li><p>We create the <code class="docutils literal notranslate"><span class="pre">MultiWorkerMirroredStrategy</span></code> before doing anything else with TensorFlow.</p></li>
+<li><p>Only one of the workers will take care of logging to TensorBoard and saving checkpoints. As mentioned earlier, this worker is called the <em>chief</em>, and by convention it is usually worker #0.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%writefile</span> my_mnist_multiworker_task.py
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># At the beginning of the program</span>
+<span class="n">distribution</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">distribute</span><span class="o">.</span><span class="n">MultiWorkerMirroredStrategy</span><span class="p">()</span>
+
+<span class="n">resolver</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">distribute</span><span class="o">.</span><span class="n">cluster_resolver</span><span class="o">.</span><span class="n">TFConfigClusterResolver</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting task </span><span class="si">{}{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">resolver</span><span class="o">.</span><span class="n">task_type</span><span class="p">,</span> <span class="n">resolver</span><span class="o">.</span><span class="n">task_id</span><span class="p">))</span>
+
+<span class="c1"># Only worker #0 will write checkpoints and log to TensorBoard</span>
+<span class="k">if</span> <span class="n">resolver</span><span class="o">.</span><span class="n">task_id</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">root_logdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">,</span> <span class="s2">&quot;my_mnist_multiworker_logs&quot;</span><span class="p">)</span>
+    <span class="n">run_id</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;run_%Y_%m_</span><span class="si">%d</span><span class="s2">-%H_%M_%S&quot;</span><span class="p">)</span>
+    <span class="n">run_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_logdir</span><span class="p">,</span> <span class="n">run_id</span><span class="p">)</span>
+    <span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">run_dir</span><span class="p">),</span>
+        <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span><span class="s2">&quot;my_mnist_multiworker_model.h5&quot;</span><span class="p">,</span>
+                                        <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">callbacks</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Load and prepare the MNIST dataset</span>
+<span class="p">(</span><span class="n">X_train_full</span><span class="p">,</span> <span class="n">y_train_full</span><span class="p">),</span> <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="n">X_train_full</span> <span class="o">=</span> <span class="n">X_train_full</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">/</span> <span class="mf">255.</span>
+<span class="n">X_valid</span><span class="p">,</span> <span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train_full</span><span class="p">[:</span><span class="mi">5000</span><span class="p">],</span> <span class="n">X_train_full</span><span class="p">[</span><span class="mi">5000</span><span class="p">:]</span>
+<span class="n">y_valid</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train_full</span><span class="p">[:</span><span class="mi">5000</span><span class="p">],</span> <span class="n">y_train_full</span><span class="p">[</span><span class="mi">5000</span><span class="p">:]</span>
+
+<span class="k">with</span> <span class="n">distribution</span><span class="o">.</span><span class="n">scope</span><span class="p">():</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+        <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+                            <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;same&quot;</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+        <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+        <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+                            <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;same&quot;</span><span class="p">),</span> 
+        <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+                            <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;same&quot;</span><span class="p">),</span>
+        <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+        <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+        <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+        <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span>
+        <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">),</span>
+    <span class="p">])</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;sparse_categorical_crossentropy&quot;</span><span class="p">,</span>
+                  <span class="n">optimizer</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">),</span>
+                  <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">),</span>
+          <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Overwriting my_mnist_multiworker_task.py
+</pre></div>
+</div>
+</div>
+</div>
+<p>In a real world application, there would typically be a single worker per machine, but in this example we’re running both workers on the same machine, so they will both try to use all the available GPU RAM (if this machine has a GPU), and this will likely lead to an Out-Of-Memory (OOM) error. To avoid this, we could use the <code class="docutils literal notranslate"><span class="pre">CUDA_VISIBLE_DEVICES</span></code> environment variable to assign a different GPU to each worker. Alternatively, we can simply disable GPU support, like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CUDA_VISIBLE_DEVICES&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;-1&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We are now ready to start both workers, each in its own process, using Python’s <code class="docutils literal notranslate"><span class="pre">subprocess</span></code> module. Before we start each process, we need to set the <code class="docutils literal notranslate"><span class="pre">TF_CONFIG</span></code> environment variable appropriately, changing only the task index:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="n">cluster_spec</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;worker&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;127.0.0.1:9901&quot;</span><span class="p">,</span> <span class="s2">&quot;127.0.0.1:9902&quot;</span><span class="p">]}</span>
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">worker_address</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cluster_spec</span><span class="p">[</span><span class="s2">&quot;worker&quot;</span><span class="p">]):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TF_CONFIG&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+        <span class="s2">&quot;cluster&quot;</span><span class="p">:</span> <span class="n">cluster_spec</span><span class="p">,</span>
+        <span class="s2">&quot;task&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;worker&quot;</span><span class="p">,</span> <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="n">index</span><span class="p">}</span>
+    <span class="p">})</span>
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="s2">&quot;python my_mnist_multiworker_task.py&quot;</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>That’s it! Our TensorFlow cluster is now running, but we can’t see it in this notebook because it’s running in separate processes (but if you are running this notebook in Jupyter, you can see the worker logs in Jupyter’s server logs).</p>
+<p>Since the chief (worker #0) is writing to TensorBoard, we use TensorBoard to view the training progress. Run the following cell, then click on the settings button (i.e., the gear icon) in the TensorBoard interface and check the “Reload data” box to make TensorBoard automatically refresh every 30s. Once the first epoch of training is finished (which may take a few minutes), and once TensorBoard refreshes, the SCALARS tab will appear. Click on this tab to view the progress of the model’s training and validation accuracy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> tensorboard
+<span class="o">%</span><span class="k">tensorboard</span> --logdir=./my_mnist_multiworker_logs --port=6006
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The tensorboard extension is already loaded. To reload it, use:
+  %reload_ext tensorboard
+</pre></div>
+</div>
+<div class="output text_html">
+<iframe id="tensorboard-frame-5a57ac3228038e20" width="100%" height="800" frameborder="0">
+</iframe>
+<script>
+  (function() {
+    const frame = document.getElementById("tensorboard-frame-5a57ac3228038e20");
+    const url = new URL("/", window.location);
+    const port = 6006;
+    if (port) {
+      url.port = port;
+    }
+    frame.src = url;
+  })();
+</script>
+</div></div>
+</div>
+<p>That’s it! Once training is over, the best checkpoint of the model will be available in the <code class="docutils literal notranslate"><span class="pre">my_mnist_multiworker_model.h5</span></code> file. You can load it using <code class="docutils literal notranslate"><span class="pre">keras.models.load_model()</span></code> and use it for predictions, as usual:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;my_mnist_multiworker_model.h5&quot;</span><span class="p">)</span>
+<span class="n">Y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Y_pred</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([7, 2, 1])
+</pre></div>
+</div>
+</div>
+</div>
+<p>And that’s all for today! Hope you found this useful. 😊</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="exercise-solutions">
+<h1>Exercise Solutions<a class="headerlink" href="#exercise-solutions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="to-8">
+<h2>1. to 8.<a class="headerlink" href="#to-8" title="Permalink to this headline">¶</a></h2>
+<p>See Appendix A.</p>
+</div>
+<div class="section" id="id1">
+<h2>9.<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><em>Exercise: Train a model (any model you like) and deploy it to TF Serving or Google Cloud AI Platform. Write the client code to query it using the REST API or the gRPC API. Update the model and deploy the new version. Your client code will now query the new version. Roll back to the first version.</em></p>
+<p>Please follow the steps in the <a href="#Deploying-TensorFlow-models-to-TensorFlow-Serving-(TFS)">Deploying TensorFlow models to TensorFlow Serving</a> section above.</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id2">
+<h1>10.<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
+<p><em>Exercise: Train any model across multiple GPUs on the same machine using the <code class="docutils literal notranslate"><span class="pre">MirroredStrategy</span></code> (if you do not have access to GPUs, you can use Colaboratory with a GPU Runtime and create two virtual GPUs). Train the model again using the <code class="docutils literal notranslate"><span class="pre">CentralStorageStrategy</span> </code>and compare the training time.</em></p>
+<p>Please follow the steps in the <a class="reference external" href="#Distributed-Training">Distributed Training</a> section above.</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id3">
+<h1>11.<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
+<p><em>Exercise: Train a small model on Google Cloud AI Platform, using black box hyperparameter tuning.</em></p>
+<p>Please follow the instructions on pages 716-717 of the book. You can also read <a class="reference external" href="https://cloud.google.com/ai-platform/training/docs/hyperparameter-tuning-overview">this documentation page</a> and go through the example in this nice <a class="reference external" href="https://towardsdatascience.com/how-to-do-bayesian-hyper-parameter-tuning-on-a-blackbox-model-882009552c6d">blog post</a> by Lak Lakshmanan.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./handson-ml2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Pantelis Monogioudis, Ph.D<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
