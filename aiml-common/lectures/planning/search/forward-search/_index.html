@@ -132,15 +132,27 @@
    Agent-Environment Interface
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../../ai-intro/pipelines/_index.html">
-   ML Pipelines
+   Pipelines
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../uber-ml-arch-case-study/_index.html">
-   A Case Study of an ML Architecture - Uber
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../uber-ml-arch-case-study/_index.html">
+     A Case Study of an ML Architecture - Uber
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../handson-ml2/02_end_to_end_machine_learning_project.html">
+     Setup
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -163,6 +175,23 @@
   <a class="reference internal" href="../../../optimization/maximum-likelihood/_index.html">
    Maximum Likelihood (ML) Estimation
   </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../pgm/bayesian-inference/_index.html">
+   Bayesian Inference
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../pgm/bayesian-coin/_index.html">
+     Bayesian Coin Flipping
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../../entropy/_index.html">
@@ -290,16 +319,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../../../pgm/pgm-intro/_index.html">
    Introduction to Probabilistic Reasoning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../pgm/bayesian-inference/_index.html">
-   Bayesian Inference
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../pgm/bayesian-coin/_index.html">
-   Bayesian Coin Flipping
   </a>
  </li>
  <li class="toctree-l1">
@@ -586,8 +605,8 @@
   <a class="reference internal" href="../../../ml-math/_index.html">
    Math for ML
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -666,15 +685,35 @@
             </button>
             
             
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../../../_sources/aiml-common/lectures/planning/search/forward-search/_index.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
             <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
-        
+        <a class="repository-button"
+            href="https://github.com/pantelis/artificial-intelligence"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://pantelis.github.io/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/planning/search/forward-search/_index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/planning/search/forward-search/_index.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -716,7 +755,7 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dijkstra-s-algorithm">
+    <a class="reference internal nav-link" href="#dijkstras-algorithm">
      Dijkstra’s Algorithm
     </a>
    </li>
@@ -758,7 +797,7 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dijkstra-s-algorithm">
+    <a class="reference internal nav-link" href="#dijkstras-algorithm">
      Dijkstra’s Algorithm
     </a>
    </li>
@@ -852,8 +891,8 @@ shows a path of length 3. On the right the DFS search tree is shown assuming alp
 <p><img alt="breadth-first-2" src="../../../../../_images/breadth-first-2.png" />
 <em>Queue contents during BFS and the BFS search tree assuming alphabetical order. Can you explain the BFS search tree? Is the BFS search tree a shortest-path tree?</em></p>
 </div>
-<div class="section" id="dijkstra-s-algorithm">
-<h3>Dijkstra’s Algorithm<a class="headerlink" href="#dijkstra-s-algorithm" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="dijkstras-algorithm">
+<h3>Dijkstra’s Algorithm<a class="headerlink" href="#dijkstras-algorithm" title="Permalink to this headline">¶</a></h3>
 <p>Breadth-first search finds shortest paths in any graph whose edges have unit length. Can we adapt it to a more general graph G = (V, E) whose edge lengths <span class="math notranslate nohighlight">\(l(e)\)</span> are positive integers? These lengths effectively represent the cost of traversing the edge. fHere is a simple trick for converting G into something BFS can handle: break G’s long edges into unit-length pieces, by introducing “dummy” nodes as shown next.</p>
 <p><img alt="dijkstras-graph" src="../../../../../_images/dijkstras-graph.png" />
 <em>To construct the new graph <span class="math notranslate nohighlight">\(G'\)</span> for any edge <span class="math notranslate nohighlight">\(e = (s, s^\prime)\)</span> of <span class="math notranslate nohighlight">\(E\)</span>, replace it by <span class="math notranslate nohighlight">\(l(e)\)</span> edges of length 1, by adding <span class="math notranslate nohighlight">\(l(e) − 1\)</span>

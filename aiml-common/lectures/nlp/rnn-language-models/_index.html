@@ -132,15 +132,27 @@
    Agent-Environment Interface
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../ai-intro/pipelines/_index.html">
-   ML Pipelines
+   Pipelines
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../uber-ml-arch-case-study/_index.html">
-   A Case Study of an ML Architecture - Uber
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../uber-ml-arch-case-study/_index.html">
+     A Case Study of an ML Architecture - Uber
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../handson-ml2/02_end_to_end_machine_learning_project.html">
+     Setup
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -163,6 +175,23 @@
   <a class="reference internal" href="../../optimization/maximum-likelihood/_index.html">
    Maximum Likelihood (ML) Estimation
   </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../pgm/bayesian-inference/_index.html">
+   Bayesian Inference
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../pgm/bayesian-coin/_index.html">
+     Bayesian Coin Flipping
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../entropy/_index.html">
@@ -290,16 +319,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../../pgm/pgm-intro/_index.html">
    Introduction to Probabilistic Reasoning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../pgm/bayesian-inference/_index.html">
-   Bayesian Inference
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../pgm/bayesian-coin/_index.html">
-   Bayesian Coin Flipping
   </a>
  </li>
  <li class="toctree-l1">
@@ -586,8 +605,8 @@
   <a class="reference internal" href="../../ml-math/_index.html">
    Math for ML
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -666,15 +685,35 @@
             </button>
             
             
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../../_sources/aiml-common/lectures/nlp/rnn-language-models/_index.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
             <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
-        
+        <a class="repository-button"
+            href="https://github.com/pantelis/artificial-intelligence"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://pantelis.github.io/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/nlp/rnn-language-models/_index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/nlp/rnn-language-models/_index.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -793,7 +832,7 @@ $<span class="math notranslate nohighlight">\(J_t(\theta) = CE(\hat  \mathbf y_t
 <em>RNN Language Model Training Loss. For each input word (at step t<span class="math notranslate nohighlight">\(t\)</span>), the RNN predicts the next word and is penalized with a loss <span class="math notranslate nohighlight">\(J_t(\theta)\)</span>. The total loss is the average across the corpus.</em></p>
 <p>In practice <strong>we don’t compute the total loss over the whole corpus but we train over a finite span</strong> and compute gradients over that span iterating on a stochastic gradient decent optimization algorithm.</p>
 <p><strong>Example</strong>:</p>
-<p>Character-level language models have achieved <a class="reference external" href="https://github.com/flairNLP/flair">state of the art NLP results by Facebook Research</a>.  As a simple example, lets assume the very small vocabulary {‘h’,’e’,’l’,’o’} and tokens are single letters represented in the input with a one-hot encoded vector.</p>
+<p>Character-level language models have achieved <a class="reference external" href="https://github.com/flairNLP/flair">state of the art NLP results by Facebook Research</a>.  As a simple example, lets assume the very small vocabulary {‘h’,‘e’,‘l’,‘o’} and tokens are single letters represented in the input with a one-hot encoded vector.</p>
 <p><img alt="rnn-language-model" src="../../../../_images/rnn-language-model.png" />
 <em>RNN language model example - training <a class="reference external" href="https://www.youtube.com/watch?v=6niqTuYFZLQ&amp;t=521s">ref</a>. Note that in practice instead of one-hot encoded word vectors we will have word embeddings.</em></p>
 <p>Let feed into the RNN the sequence “hello”. The letters will come in one at a time, each letter going through the forward pass that produces at the output the <span class="math notranslate nohighlight">\(\mathbf y_t\)</span> that indicates which letter is expected to arrive next.  You can see, since we are just started training,  that this network is not predicting correctly - this will improve over time as the model is trained with more sequence permutations form our limited vocabulary.</p>

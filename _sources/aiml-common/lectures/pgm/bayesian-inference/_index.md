@@ -16,7 +16,7 @@ The Bayesian theorem is the cornerstone of probabilistic modeling and ultimately
 
 $$ p(\mathbf{w} | \mathtt{data}, \mathcal{H}) =  \frac{P(  \mathtt{data} | \mathbf{w}, \mathcal{H}) P(\mathbf{w} | \mathcal{H}) }{ P(  \mathtt{data} | \mathcal{H})} $$
 
-The Bayesian framework allows the introduction of priors $p(\theta | \mathcal{H})$ from a wide variety of sources: experts, other data, past posteriors, etc. It allows us to calculate the posterior distribution from the likelihood function and this prior subject to a normalizing constant. 
+The Bayesian framework allows the introduction of priors $p(\mathbf w | \mathcal{H})$ from a wide variety of sources: experts, other data, past posteriors, etc. It allows us to calculate the posterior distribution from the likelihood function and this prior subject to a normalizing constant. 
 
 **We will call _belief_ the internal to the agent posterior probability estimate of a random variable as calculated via the Bayes rule.**
 

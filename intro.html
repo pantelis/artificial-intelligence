@@ -129,15 +129,27 @@
    Agent-Environment Interface
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="aiml-common/lectures/ai-intro/pipelines/_index.html">
-   ML Pipelines
+   Pipelines
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="aiml-common/lectures/uber-ml-arch-case-study/_index.html">
-   A Case Study of an ML Architecture - Uber
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="aiml-common/lectures/uber-ml-arch-case-study/_index.html">
+     A Case Study of an ML Architecture - Uber
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="handson-ml2/02_end_to_end_machine_learning_project.html">
+     Setup
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -160,6 +172,23 @@
   <a class="reference internal" href="aiml-common/lectures/optimization/maximum-likelihood/_index.html">
    Maximum Likelihood (ML) Estimation
   </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="aiml-common/lectures/pgm/bayesian-inference/_index.html">
+   Bayesian Inference
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="aiml-common/lectures/pgm/bayesian-coin/_index.html">
+     Bayesian Coin Flipping
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="aiml-common/lectures/entropy/_index.html">
@@ -287,16 +316,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="aiml-common/lectures/pgm/pgm-intro/_index.html">
    Introduction to Probabilistic Reasoning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="aiml-common/lectures/pgm/bayesian-inference/_index.html">
-   Bayesian Inference
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="aiml-common/lectures/pgm/bayesian-coin/_index.html">
-   Bayesian Coin Flipping
   </a>
  </li>
  <li class="toctree-l1">
@@ -583,8 +602,8 @@
   <a class="reference internal" href="aiml-common/lectures/ml-math/_index.html">
    Math for ML
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -663,15 +682,35 @@
             </button>
             
             
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/intro.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
             <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
-        
+        <a class="repository-button"
+            href="https://github.com/pantelis/artificial-intelligence"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://pantelis.github.io/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -698,28 +737,13 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instructor-pantelis-monogioudis-ph-d">
+   Instructor: Pantelis Monogioudis, Ph.D
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-this-course-is-all-about">
    What this course is all about
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#logistics">
-   Logistics
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#instructor">
-   Instructor
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#teaching-assistants">
-   Teaching Assistants
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#grading">
-   Grading
   </a>
  </li>
 </ul>
@@ -743,28 +767,13 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instructor-pantelis-monogioudis-ph-d">
+   Instructor: Pantelis Monogioudis, Ph.D
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-this-course-is-all-about">
    What this course is all about
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#logistics">
-   Logistics
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#instructor">
-   Instructor
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#teaching-assistants">
-   Teaching Assistants
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#grading">
-   Grading
   </a>
  </li>
 </ul>
@@ -778,40 +787,75 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-artificial-intelligence">
 <h1>Introduction to Artificial Intelligence<a class="headerlink" href="#introduction-to-artificial-intelligence" title="Permalink to this headline">¶</a></h1>
-<p><img alt="national-library-greece" src="_images/national-library-greece1.jpg" />
+<p><img alt="national-library-greece" src="_images/national-library-greece.jpg" />
 <em>AI and knowledge representation are closely related (pict: Historic National Library of Greece.)</em></p>
+<div class="section" id="instructor-pantelis-monogioudis-ph-d">
+<h2>Instructor: <a class="reference external" href="https://www.linkedin.com/in/pantelis/">Pantelis Monogioudis, Ph.D</a><a class="headerlink" href="#instructor-pantelis-monogioudis-ph-d" title="Permalink to this headline">¶</a></h2>
+</div>
 <div class="section" id="what-this-course-is-all-about">
 <h2>What this course is all about<a class="headerlink" href="#what-this-course-is-all-about" title="Permalink to this headline">¶</a></h2>
 <p>Artificial Intelligence (AI) is an important topic in computer science and offers many diversified applications. It addresses one of the ultimate puzzles humans are trying to solve: How is it possible for a slow, tiny brain, whether biological or electronic, to perceive, understand, predict and manipulate a world far larger and more complicated than itself? And how do people create a machine (or computer) with those properties? To that end, AI researchers try to understand how seeing, learning, remembering and reasoning can, or should, be done. This course introduces students to the many AI concepts and techniques.</p>
+<div class="sphinx-bs container pb-4 full-width text-center docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-6 px-2 py-2 docutils">
+<div class="card w-100 docutils">
+<div class="card-header docutils">
+<p class="card-text"><strong>Logistics</strong> ✍</p>
 </div>
-<div class="section" id="logistics">
-<h2>Logistics<a class="headerlink" href="#logistics" title="Permalink to this headline">¶</a></h2>
-<p><strong>Time/location:</strong></p>
-<p>Course Dates: Jan 18/28 - May 19/24 2022</p>
-<p>NYU: CS-GY-6613-Section I: Fri 5pm-7.30pm Rogers Hall, Rm 215 Loc: Brooklyn Campus</p>
-<p>NJIT: CS370-002: Tue &amp; Thu 4pm EST,  Loc: Guttenberg Info Tech Center 1400</p>
-<p><strong>Communication:</strong></p>
-<p>We use Slack for all communications: announcements and questions related to lectures and projects. Slack info has already been sent to you via Canvas (NJIT) / Brightspace (NYU). Please install Slack in your smartphones as well.</p>
-<p><strong>Office Hours</strong></p>
-<p>Office hours will be coordinated via Slack as well - the process is simple: direct message and make arrangements for a 30min slot. After we agree on the slot, please send a <strong>GMeet calendar</strong> invitation to me. If you can please include in your invitation the questions / issues you face so that we can have a productive meeting.</p>
+<div class="card-body docutils">
+<p class="card-text">Course Dates: Jan 18/28 - May 19/24 2022</p>
+<p class="card-text">NYU: CS-GY-6613-Section I: Fri 5pm-7.30pm Rogers Hall, Rm 215 Loc: Brooklyn Campus</p>
+<p class="card-text">NJIT: CS370-002: Tue &amp; Thu 4pm EST,  Loc: Guttenberg Info Tech Center 1400</p>
 </div>
-<div class="section" id="instructor">
-<h2>Instructor<a class="headerlink" href="#instructor" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://www.linkedin.com/in/pantelis/">Pantelis Monogioudis, Ph.D</a></p>
 </div>
-<div class="section" id="teaching-assistants">
-<h2>Teaching Assistants<a class="headerlink" href="#teaching-assistants" title="Permalink to this headline">¶</a></h2>
-<p>NJIT: Hadi Ghahremannezhad</p>
-<p>NYU: Akshat Kaushik and Vaibhav Singh.</p>
 </div>
-<div class="section" id="grading">
-<h2>Grading<a class="headerlink" href="#grading" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>Midterm (20%)</p></li>
-<li><p>Final (30%)</p></li>
-<li><p>Project (20%)</p></li>
-<li><p>Assignments (30%)</p></li>
-</ol>
+<div class="d-flex col-lg-6 px-2 py-2 docutils">
+<div class="card w-100 docutils">
+<div class="card-header docutils">
+<p class="card-text"><strong>Communication</strong> 🚀</p>
+</div>
+<div class="card-body docutils">
+<p class="card-text">We use Slack for all communications: announcements and questions related to lectures and projects. Slack info has already been sent to you via Canvas (NJIT) / Brightspace (NYU). Please install Slack in your smartphones as well.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 px-2 py-2 docutils">
+<div class="card w-100 docutils">
+<div class="card-header docutils">
+<p class="card-text"><strong>Office Hours</strong></p>
+</div>
+<div class="card-body docutils">
+<p class="card-text">NJIT / NYU: Professor Office hours will be coordinated via Slack  - the process is simple: direct message and make arrangements for a 30min slot. After we agree on the slot, please send a <strong>GMeet calendar</strong> invitation to me. If you can please include in your invitation the questions / issues you face so that we can have a productive meeting.</p>
+<p class="card-text">NYU TAs: We  have published TA hours in slack.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 px-2 py-2 docutils">
+<div class="card w-100 docutils">
+<div class="card-header docutils">
+<p class="card-text"><strong>Staff (TAs)</strong></p>
+</div>
+<div class="card-body docutils">
+<p class="card-text">NJIT: Hadi Ghahremannezhad</p>
+<p class="card-text">NYU: Akshat Kaushik and Vaibhav Singh.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 px-2 py-2 docutils">
+<div class="card w-100 docutils">
+<div class="card-header docutils">
+<p class="card-text"><strong>Grading</strong> 🎁</p>
+</div>
+<div class="card-body docutils">
+<p class="card-text">Midterm (20%)
+Final (30%)
+Project (20%)
+Assignments (30%)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="toctree-wrapper compound">
 </div>

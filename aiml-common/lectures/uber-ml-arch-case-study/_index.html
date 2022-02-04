@@ -56,7 +56,7 @@
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/uber-ml-arch-case-study/_index.html" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="The Learning Problem" href="../learning-problem/_index.html" />
+    <link rel="next" title="Setup" href="../../../handson-ml2/02_end_to_end_machine_learning_project.html" />
     <link rel="prev" title="ML Pipelines" href="../ai-intro/pipelines/_index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -132,15 +132,27 @@
    Agent-Environment Interface
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../ai-intro/pipelines/_index.html">
-   ML Pipelines
+   Pipelines
   </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   A Case Study of an ML Architecture - Uber
-  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     A Case Study of an ML Architecture - Uber
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../handson-ml2/02_end_to_end_machine_learning_project.html">
+     Setup
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -163,6 +175,23 @@
   <a class="reference internal" href="../optimization/maximum-likelihood/_index.html">
    Maximum Likelihood (ML) Estimation
   </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../pgm/bayesian-inference/_index.html">
+   Bayesian Inference
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pgm/bayesian-coin/_index.html">
+     Bayesian Coin Flipping
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../entropy/_index.html">
@@ -290,16 +319,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../pgm/pgm-intro/_index.html">
    Introduction to Probabilistic Reasoning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../pgm/bayesian-inference/_index.html">
-   Bayesian Inference
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../pgm/bayesian-coin/_index.html">
-   Bayesian Coin Flipping
   </a>
  </li>
  <li class="toctree-l1">
@@ -586,8 +605,8 @@
   <a class="reference internal" href="../ml-math/_index.html">
    Math for ML
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -666,15 +685,35 @@
             </button>
             
             
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/aiml-common/lectures/uber-ml-arch-case-study/_index.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
             <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
-        
+        <a class="repository-button"
+            href="https://github.com/pantelis/artificial-intelligence"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://pantelis.github.io/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/uber-ml-arch-case-study/_index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/uber-ml-arch-case-study/_index.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -831,7 +870,7 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://kafka.apache.org/">Kafka</a></p></td>
 <td><p>DP Messaging</p></td>
-<td><p><img alt="kafka-apis" src="../../../_images/kafka-apis.png" />  Kafka is a distributed streaming platform. It can (a) Publish and subscribe to streams of records, similar to a message queue or enterprise messaging system. (b) Store streams of records in a fault-tolerant durable way. (c) Process streams of records as they occur.</p></td>
+<td><p><img alt="kafka-apis" src="../../../_images/kafka-apis.png" />  Kafka is a distributed streaming platform. It can (a) Publish and subscribe to streams of records, similar to a message queue or enterprise messaging system. (b) Store streams of records in a fault-tolerant durable way. © Process streams of records as they occur.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="http://samza.apache.org/learn/documentation/0.7.0/introduction/architecture.html">Samza</a></p></td>
 <td><p>DP Stream Processing</p></td>
@@ -879,6 +918,7 @@
 <h2>What to watch in data processing<a class="headerlink" href="#what-to-watch-in-data-processing" title="Permalink to this headline">¶</a></h2>
 <p>Due to the plethora of platforms and runtimes to support stream and batch processing, it is difficult for data scientists to consolidate the various APIs and focus on the intelligence of a data driven application.  <a class="reference external" href="https://beam.apache.org/">Apache Beam</a> was born out of this necessity and is enjoying widespread adoption (other than the vendor behind Spark). It offers the unified programming model that multiple runtimes support for both batch and real time streaming data intensive applications. For particularly illuminating use case of the complexities that raise in real applications, see <a class="reference external" href="https://beam.apache.org/get-started/mobile-gaming-example/">this tutorial</a>. For a use case that combines deep neural network regression in Tensorflow and data pipeline preprocessing in Beam see <a class="reference external" href="https://cloud.google.com/dataflow/docs/samples/molecules-walkthrough">this molecular analysis example</a>.</p>
 <p>Closing, we cant stress enough the importance of understanding the coupling between methods in data science (e.g regression methods for ETD calculation) and the data pipeline architecture that needs to be in place for the method to be able to provide good returns. Many cloud providers such as AWS, have published significant number of reference architectures for a variety of use cases and have on-site architects in NYC to help you understand how to best implement (arguably in their cloud) the data intensive application you need to build.</p>
+<p>|  <a class="reference external" href="https://github.com/pantelis/handson-ml2/blob/master/02_end_to_end_machine_learning_project.ipynb">Zillow</a>   | Notebook that shows end to end what a data mining pipeline does - here we predict house prices.  | –&gt;</p>
 </div>
 </div>
 
@@ -914,10 +954,10 @@
             <p class="prev-next-title">ML Pipelines</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../learning-problem/_index.html" title="next page">
+    <a class='right-next' id="next-link" href="../../../handson-ml2/02_end_to_end_machine_learning_project.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The Learning Problem</p>
+        <p class="prev-next-title">Setup</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

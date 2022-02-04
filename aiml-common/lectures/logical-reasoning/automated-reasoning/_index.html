@@ -130,15 +130,27 @@
    Agent-Environment Interface
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../ai-intro/pipelines/_index.html">
-   ML Pipelines
+   Pipelines
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../uber-ml-arch-case-study/_index.html">
-   A Case Study of an ML Architecture - Uber
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../uber-ml-arch-case-study/_index.html">
+     A Case Study of an ML Architecture - Uber
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../handson-ml2/02_end_to_end_machine_learning_project.html">
+     Setup
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -161,6 +173,23 @@
   <a class="reference internal" href="../../optimization/maximum-likelihood/_index.html">
    Maximum Likelihood (ML) Estimation
   </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../pgm/bayesian-inference/_index.html">
+   Bayesian Inference
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../pgm/bayesian-coin/_index.html">
+     Bayesian Coin Flipping
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../entropy/_index.html">
@@ -288,16 +317,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../../pgm/pgm-intro/_index.html">
    Introduction to Probabilistic Reasoning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../pgm/bayesian-inference/_index.html">
-   Bayesian Inference
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../pgm/bayesian-coin/_index.html">
-   Bayesian Coin Flipping
   </a>
  </li>
  <li class="toctree-l1">
@@ -584,8 +603,8 @@
   <a class="reference internal" href="../../ml-math/_index.html">
    Math for ML
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -664,15 +683,35 @@
             </button>
             
             
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../../_sources/aiml-common/lectures/logical-reasoning/automated-reasoning/_index.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
             <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
-        
+        <a class="repository-button"
+            href="https://github.com/pantelis/artificial-intelligence"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://pantelis.github.io/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/logical-reasoning/automated-reasoning/_index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/logical-reasoning/automated-reasoning/_index.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -742,7 +781,7 @@
 <p>We have seen in an earlier chapter where we introduced a <em>dynamical system</em> governing the state evolution of the environment that a state is composed of variables and such <em>factored representations</em> are key in allowing <em>reasoning</em> at the <em>belief</em> space that are efficiently computed using recursive state estimators. We called this subsystem <em>probabilistic reasoning</em> subsystem and we positioned it immediately after the reflexive perception for a good reason. It is processing a very high ‘bandwidth’ state information that is noisy and needs to be filtered by - you guessed it - Bayesian filters to make it very useful for the subsequent upstream services of the AI system.</p>
 <p>In this chapter we will see another powerful representation, <em>internal</em> to the agent, that can help agents to <em>reason</em> by expressing assertions about the world. These assertions are called <em>sentences</em> and are expressed in a <em>knowledge representation language</em> that is used to build a  <strong>Knowledge Base (KB)</strong> - a concept central to AI. The KB starts with prior knowledge about the domain and problem at hand and incrementally is updated with the output of the probabilistic reasoning subsystem.</p>
 <p>Lets see a concrete example as described in the figure below,</p>
-<p><img alt="abandoned-backpack" src="../../../../_images/abandoned-backpack1.jpg" />
+<p><img alt="abandoned-backpack" src="../../../../_images/abandoned-backpack.jpg" />
 <em>Imagine that the agent is a security robot at an airport and is moving around that environment. The problem it tries to solve is to identify an abandoned backpack / luggage.</em></p>
 <p>Despite the simplicity of the problem statement this is a very challenging problem to solve. To begin with the robot must be creating static maps of the environment to be able to navigate it. Closer to the core task, we will need to preprogram the agent with all sorts of deep learning models to be able to even recognize backpacks or other luggage items via its perception system. The agent must be able to distinguish a situation  where the backpack that was left behind by its carrier (a person) to a companion traveler (another person) to e.g. visit the restroom from the situation where the backpack was left behind maliciously. Unique object IDs must be assigned (symbolic segmentation) to persons and a very accurate scene graph must also be generated by its probabilistic reasoning system. It does not stop there as relational information must be generated to associate objects (e.g. carriers and pieces of luggage) and such information must be stored in the KB but perhaps more importantly the agent must be able to <strong>reason</strong> using the stored information in the KB.</p>
 <div class="section" id="securing-the-cloud-automated-reasoning">
