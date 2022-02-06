@@ -636,8 +636,18 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../../resources/environment/_index.html">
+   Your Programming Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../python/_index.html">
    Learn Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../runbook.html">
+   Executable Content Runbook
   </a>
  </li>
 </ul>
@@ -782,8 +792,8 @@
 <h1>Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Permalink to this headline">¶</a></h1>
 <p><img alt="unified-view-rl" src="../../../_images/unified-view-rl.png" />
 <em>Different Approaches to solve known and unknown MDPs</em></p>
-<p>We started looking at different agent behavior architectures starting from the [planning agents]() where the <em>model</em> of the environment is known and with <em>no interaction</em> with it the agent improves its policy, using this model as well as problem solving and logical reasoning skills.</p>
-<p>We then looked at agents that can plan by interacting with the environment still knowing the model - this was covered in the [MDP]() chapter.  We have seen that DP uses <em>full width</em> backups.  For example, in the tree representation of the value iteration algorithm shown below:</p>
+<p>We started looking at different agent behavior architectures starting from the planning agents where the <em>model</em> of the environment is known and with <em>no interaction</em> with it the agent improves its policy, using this model as well as problem solving and logical reasoning skills.</p>
+<p>We then looked at agents that can plan by interacting with the environment still knowing the model - this was covered in the MDP chapter.  We have seen that DP uses <em>full width</em> backups.  For example, in the tree representation of the value iteration algorithm shown below:</p>
 <p><img alt="dp-value-iteration-tree" src="../../../_images/dp-value-iteration-tree.png" />
 <em>Backup tree with the DP value iteration algorithm</em></p>
 <p>every successor state and action is considered and evaluated using the known transition (environment dynamics) and reward functions. This can be dealt with for moderate size problems but even a single backup cant be feasible when we have very large state spaces. So we definitely need to develop approaches that allow agents to</p>
@@ -794,11 +804,11 @@
 <p>In this chapter we outline <em>prediction</em> and <em>control</em> methods that are basic building blocks behind both cases.</p>
 <p>We develop agents that can act in an <em>initially unknown</em> environment and learn via their <em>interactions</em> with it, gradually improving their policy. In the reinforcement learning problem setting, agents <em>do not know</em> essential elements of the MDP <span class="math notranslate nohighlight">\(\mathcal M = &lt;\mathcal S, \mathcal P, \mathcal R, \mathcal A, \gamma&gt;\)</span> that were assumed as given in fully observed MDP. This includes the transition function, <span class="math notranslate nohighlight">\(P^a_{ss^\prime}\)</span> and the reward function <span class="math notranslate nohighlight">\(\mathcal R_s^a\)</span> that are essential as we have seen previously to estimate the value function and optimize the policy.</p>
 <p>The only way an agent can get information about these missing functions is through its experiences (states, actions, and rewards) in the environment—that is, the sequences of tuples (<span class="math notranslate nohighlight">\(S_t, A_t, R_{t+1}\)</span>).</p>
-<p>Provided that it can <em>learn</em> such functions, RL can be posed as an MDP and many concepts we have already covered in the [MDP]() chapter still apply.</p>
+<p>Provided that it can <em>learn</em> such functions, RL can be posed as an MDP and many concepts we have already covered in the MDP chapter still apply.</p>
 <p>To scale to large problems however, we also need to develop approaches that can learn such functions <em>efficiently</em> both in terms of computation and space (memory). We will use DNNs to provide, in the form of approximations, the needed efficiency boost.</p>
 <p><img alt="drl-concept" src="../../../_images/drl-concept.png" />
 <em>Deep RL (DRL) principle - we will cover it in the SARSA section.</em></p>
-<p>Suffice to say that exploring DRL algorithms is a very long journey as shown below - we will cover only two key algorithms, REINFORCE and SARSA that can be used as design patterns for the others. These algorithms were not invented in vacuum though. The reader must appreciate that these algorithms are instantiations of the so called model-free prediction and model-free control approaches to solving either unknown MDP problems or known MDP problems that are too large to apply the methods outlined in the [MDP]() chapter.</p>
+<p>Suffice to say that exploring DRL algorithms is a very long journey as shown below - we will cover only two key algorithms, REINFORCE and SARSA that can be used as design patterns for the others. These algorithms were not invented in vacuum though. The reader must appreciate that these algorithms are instantiations of the so called model-free prediction and model-free control approaches to solving either unknown MDP problems or known MDP problems that are too large to apply the methods outlined in the MDP chapter.</p>
 <p><img alt="drl-algorithm-evolution" src="../../../_images/drl-algorithm-evolution.png" />
 <em>DRL algorithms - taxonomy and evolution</em></p>
 <div class="section" id="references">
@@ -806,7 +816,6 @@
 <ol class="simple">
 <li><p><a class="reference external" href="https://spinningup.openai.com/en/latest/">Spinning Up in Deep RL</a>. This is a must read for all computer scientists that are getting started in the DRL practice.</p></li>
 <li><p><a class="reference external" href="https://www.amazon.com/Deep-Reinforcement-Learning-Python-Hands/dp/0135172381">Foundations of Deep RL</a>. Similar to the Open AI’s spinning up, this is a practice oriented book.</p></li>
-<li><p>See  [MDP]() chapter.</p></li>
 </ol>
 </div>
 </div>
@@ -859,7 +868,7 @@
     
       By Pantelis Monogioudis, Ph.D<br/>
     
-        &copy; Copyright 2021.<br/>
+        &copy; Copyright 2022.<br/>
   </p>
 </footer>
 </main>

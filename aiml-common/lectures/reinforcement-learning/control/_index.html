@@ -636,8 +636,18 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../../../resources/environment/_index.html">
+   Your Programming Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../python/_index.html">
    Learn Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../runbook.html">
+   Executable Content Runbook
   </a>
  </li>
 </ul>
@@ -789,10 +799,10 @@
 <p>In this section we outline methods that can result in optimal policies when the MDP is <em>unknown</em> and we need to <em>learn</em> its underlying functions / models - also known as the  <em>model free</em> control problem. Learning in this chapter, follows the <em>on-policy</em> approach where the agent learns these models “on the job”, so to speak.</p>
 <div class="section" id="epsilon-greedy-monte-carlo-control">
 <h2><span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy Monte-Carlo Control<a class="headerlink" href="#epsilon-greedy-monte-carlo-control" title="Permalink to this headline">¶</a></h2>
-<p>In the [model-free prediction]() section we have seen that it is in fact possible to get to estimate the state value function without any MDP model dependencies. However, when we try to do do greedy policy improvement</p>
+<p>In the model-free prediction section we have seen that it is in fact possible to get to estimate the state value function without any MDP model dependencies. However, when we try to do do greedy policy improvement</p>
 <div class="math notranslate nohighlight">
 \[\pi^\prime(s) = \argmax_{a \in \mathcal A} (\mathcal R_s^a + \mathcal P_{ss^\prime}^a V(s^\prime))\]</div>
-<p>we do have dependencies on knowing the dynamics of the MDP. So the obvious question is - have we done [all this discussion]() in vain? It turns out that we did not. All it takes is to <strong>apply prediction to the state-action value function <span class="math notranslate nohighlight">\(Q(s,a)\)</span></strong> and then apply the greedy policy improvement step</p>
+<p>we do have dependencies on knowing the dynamics of the MDP. So the obvious question is - have we done all this discussion in vain? It turns out that we did not. All it takes is to <strong>apply prediction to the state-action value function <span class="math notranslate nohighlight">\(Q(s,a)\)</span></strong> and then apply the greedy policy improvement step</p>
 <div class="math notranslate nohighlight">
 \[\pi^\prime = \argmax_{a \in \mathcal A} Q(s,a)\]</div>
 <p>This is shown next:</p>
@@ -854,7 +864,7 @@
     
       By Pantelis Monogioudis, Ph.D<br/>
     
-        &copy; Copyright 2021.<br/>
+        &copy; Copyright 2022.<br/>
   </p>
 </footer>
 </main>

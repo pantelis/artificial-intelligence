@@ -634,8 +634,18 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../../../resources/environment/_index.html">
+   Your Programming Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../python/_index.html">
    Learn Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../runbook.html">
+   Executable Content Runbook
   </a>
  </li>
 </ul>
@@ -788,7 +798,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="planning-with-search">
 <h1>Planning with Search<a class="headerlink" href="#planning-with-search" title="Permalink to this headline">¶</a></h1>
-<p>In [logical agents]() we have seen that symbolic representations enriched with propositional logic in the Knowledge Base allow us to reason and come up with a sequence of actions that the agent needs to execute to reach the goal. This section provides the background that <em>connects</em> the domain-independent planner that solves the planning problem to <em>search</em>. To do so, it is instructive to look initially to problems that are simpler in terms of state and action representation. We effectively zoom out from the  <em>factored</em> representation of the environment’s state and treat it as <em>atomic</em> i.e. not broken down into its individual variables.</p>
+<p>In the logical agents section we have seen that symbolic representations enriched with propositional logic in the Knowledge Base allow us to reason and come up with a sequence of actions that the agent needs to execute to reach the goal. This section provides the background that <em>connects</em> the domain-independent planner that solves the planning problem to <em>search</em>. To do so, it is instructive to look initially to problems that are simpler in terms of state and action representation. We effectively zoom out from the  <em>factored</em> representation of the environment’s state and treat it as <em>atomic</em> i.e. not broken down into its individual variables.</p>
 <p>Atomic state representations of an environment are adequate for a a variety of global planning tasks:  one striking use case is path planning There, the scene or environment takes the form of a global map and the goal is to move the embodied agent from a starting state to a goal state. If we assume that the global map takes the form of a grid with a suitable resolution, each grid tile (or cell) represents a different atomic state than any other cell. Similar considerations can be made for other forms of the map e.g. a graph form.</p>
 <p>Given such state representation, we will use <em>search</em> to find the action sequence that the agent must produce to reach a goal state. Note that in most cases, we are dealing with <em>informed</em> rather than <em>blind</em> search, where we are also given task-specific knowledge (that we use to develop suitable heuristics) to find the solution as we will see shortly.</p>
 <div class="section" id="maps">
@@ -857,7 +867,7 @@
     
       By Pantelis Monogioudis, Ph.D<br/>
     
-        &copy; Copyright 2021.<br/>
+        &copy; Copyright 2022.<br/>
   </p>
 </footer>
 </main>

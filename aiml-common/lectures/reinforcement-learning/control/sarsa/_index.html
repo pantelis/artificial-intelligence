@@ -636,8 +636,18 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../../../../resources/environment/_index.html">
+   Your Programming Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../../python/_index.html">
    Learn Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../runbook.html">
+   Executable Content Runbook
   </a>
  </li>
 </ul>
@@ -786,15 +796,15 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="the-sarsa-algorithm">
 <h1>The SARSA Algorithm<a class="headerlink" href="#the-sarsa-algorithm" title="Permalink to this headline">¶</a></h1>
-<p>As we discussed in the [model-free control]() section, SARSA implements a <span class="math notranslate nohighlight">\(Q(s,a)\)</span> value-based GPI. SARSA is one of the best known RL algorithms and is very practical as compared to pure policy-based algorithms. It tends to be more sample efficient - a general trait of many value-based algorithms despite the algorithmic hybridization that is usually applicable today. Its name is attributed to the fact that we need to know the State-Action-Reward-State-Action before performing an update. The tree for SARSA is shown below:</p>
+<p>As we discussed in the model-free control section, SARSA implements a <span class="math notranslate nohighlight">\(Q(s,a)\)</span> value-based GPI. SARSA is one of the best known RL algorithms and is very practical as compared to pure policy-based algorithms. It tends to be more sample efficient - a general trait of many value-based algorithms despite the algorithmic hybridization that is usually applicable today. Its name is attributed to the fact that we need to know the State-Action-Reward-State-Action before performing an update. The tree for SARSA is shown below:</p>
 <p><img alt="sarsa-update-tree" src="../../../../../_images/sarsa-update-tree.png" />
 <em>SARSA action-value backup update tree. The name SARSA is written as you read from the top to the bottom of the tree :)</em></p>
 <p>There are two concepts that we need to grasp:</p>
 <ol class="simple">
-<li><p>The first is a technique for learning the Q-function via TD-learning that we have seen in [prediction]().</p></li>
+<li><p>The first is a technique for learning the Q-function via TD-learning that we have seen in the prediction section.</p></li>
 <li><p>The second is a method for evolving the policy using the learned Q-function.</p></li>
 </ol>
-<p>Using the tree and following the value estimate of [<em>temporal difference (TD) learning</em>](), we can write the value update equation as:</p>
+<p>Using the tree and following the value estimate of <em>temporal difference (TD) learning</em>, we can write the value update equation as:</p>
 <div class="math notranslate nohighlight">
 \[Q(S,A) = Q(S,A) + \alpha (R + \gamma Q(S^\prime, A^\prime)-Q(S,A))\]</div>
 <p>Effectively the equation above updates the Q function by <span class="math notranslate nohighlight">\(\alpha\)</span> times the direction of the TD-error. What SARSA does is basically the policy iteration diagram we have seen in the control above but with a twist. Instead of trying to evaluate the policy all the way using the DP, or over an episode using MC,  SARSA does policy improvement <strong>over each time step</strong> significantly increasing the iteration rate - this is figuratively shown below:</p>
@@ -1113,7 +1123,7 @@
     
       By Pantelis Monogioudis, Ph.D<br/>
     
-        &copy; Copyright 2021.<br/>
+        &copy; Copyright 2022.<br/>
   </p>
 </footer>
 </main>

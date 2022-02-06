@@ -636,8 +636,18 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../../../resources/environment/_index.html">
+   Your Programming Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../python/_index.html">
    Learn Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../runbook.html">
+   Executable Content Runbook
   </a>
  </li>
 </ul>
@@ -842,7 +852,7 @@ are directed from the inputs to the output of the neuron.  Feedforward neural ne
 <div><p>NOTE: For offline learning, the second step may be repeated until the iteration error <span class="math notranslate nohighlight">\(\frac{1}{s} \sum_{j=1}^s |y_j - \hat{y}_j(t)| \)</span> is less than a user-specified error threshold <span class="math notranslate nohighlight">\(\gamma \)</span>, or a predetermined number of iterations have been completed, where ‘‘s’’ is the size of the training set.</p>
 </div></blockquote>
 <p>The perceptron is a linear classifier, therefore it will never get to the state with all the input vectors classified correctly if the training set D is not linearly separable, i.e. if the positive examples cannot be separated from the negative examples by a hyperplane. In this case, no “approximate” solution will be gradually approached under the standard learning algorithm, but instead learning will fail completely. Even in the case of linearly separable datasets, the algorithm may exhibit significant variance while it is executing as previously correctly classified examples may “fall” into the wrong decision region by an update that considers a currently misclassified example.</p>
-<p>Further, the perceptron solution will depend on the initial choices of the parameters as well as the order of the training dataset presented. [Support Vector Machines]() avoid such pitfalls which can motivate the question why we insisted on learning the perceptron algorithm: <strong>both architecturally and the functionally the linear combination of features followed by a non-linearity is the fundamental building block of far more complicated neural networks.</strong></p>
+<p>Further, the perceptron solution will depend on the initial choices of the parameters as well as the order of the training dataset presented. Support Vector Machines avoid such pitfalls which can motivate the question why we insisted on learning the perceptron algorithm: <strong>both architecturally and the functionally the linear combination of features followed by a non-linearity is the fundamental building block of far more complicated neural networks.</strong></p>
 </div>
 </div>
 
@@ -894,7 +904,7 @@ are directed from the inputs to the output of the neuron.  Feedforward neural ne
     
       By Pantelis Monogioudis, Ph.D<br/>
     
-        &copy; Copyright 2021.<br/>
+        &copy; Copyright 2022.<br/>
   </p>
 </footer>
 </main>

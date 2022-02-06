@@ -4,7 +4,7 @@ title: Model-free Prediction
 
 # Model-free Prediction
 
-In this chapter we find optimal policy solutions when the MDP is _unknown_ and we need to _learn_ its underlying value functions - also known as the  _model free_ prediction problem.  The main idea here is to learn value functions via sampling. These methods are in fact also applicable when the MDP is known but its models are simply too large to use the approaches outlined in the  [MDP chapter]({{<ref "../../mdp">}}). The two sampling approaches we will cover here are 
+In this chapter we find optimal policy solutions when the MDP is _unknown_ and we need to _learn_ its underlying value functions - also known as the  _model free_ prediction problem.  The main idea here is to learn value functions via sampling. These methods are in fact also applicable when the MDP is known but its models are simply too large to use the approaches outlined in the MDP section. The two sampling approaches we will cover here are 
 
 1. (incremental) Monte-Carlo (MC) and 
 2. Temporal Difference (TD). 
@@ -22,7 +22,7 @@ We call estimation methods of this kind _Monte Carlo_ methods because they invol
 ![mc-value-iteration-tree](images/mc-value-iteration-tree.png)
 _Backup tree with value iteration based on the MC approach. MC samples a complete trajectory to the terminating node T shown with red._
 
-There is some rationale of doing so, if we recall that the state-value function that was defined in the introductory [MDP section]({{<ref "../../mdp/mdp-intro">}}) i.e. the _expected_ return.
+There is some rationale of doing so, if we recall that the state-value function that was defined in the introductory MDP section i.e. the _expected_ return.
 
 $$v_\pi(s) = \mathop{\mathbb{E}_\pi}(G_t | S_t=s)$$
 

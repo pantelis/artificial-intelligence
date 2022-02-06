@@ -636,8 +636,18 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../../../resources/environment/_index.html">
+   Your Programming Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../python/_index.html">
    Learn Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../runbook.html">
+   Executable Content Runbook
   </a>
  </li>
 </ul>
@@ -834,7 +844,7 @@
 <em>In the skip-gram we predict the <strong>context given the center word</strong>.We need to calculate the probability <span class="math notranslate nohighlight">\(p(w_{t+j} | w_t)\)</span>.</em></p>
 <p>We go through each position <span class="math notranslate nohighlight">\(t\)</span> in each sentence and for the center word at that location <span class="math notranslate nohighlight">\(w_t\)</span> we predict the outside words <span class="math notranslate nohighlight">\(w_{t+j}\)</span> where <span class="math notranslate nohighlight">\(j\)</span> is over a window of size <span class="math notranslate nohighlight">\(C = |\\{ j: -m \le j \le m \\}|-1\)</span> around <span class="math notranslate nohighlight">\(w_t\)</span>.</p>
 <p><strong>For example, the meaning of <code class="docutils literal notranslate"><span class="pre">banking</span></code> is predicting the context (the words around it) in which <code class="docutils literal notranslate"><span class="pre">banking</span></code> occurs across our corpus.</strong></p>
-<p>The term <em>prediction</em> points to [regression]() section and the maximum likelihood principle.  We start from the familiar cross entropy loss and architect a neural estimator that will minimize the distance between <span class="math notranslate nohighlight">\(\hat p_{data}\)</span> and <span class="math notranslate nohighlight">\(p_{model}\)</span>.  The negative log likelihood was shown to be:</p>
+<p>The term <em>prediction</em> points to the regression section and the maximum likelihood principle.  We start from the familiar cross entropy loss and architect a neural estimator that will minimize the distance between <span class="math notranslate nohighlight">\(\hat p_{data}\)</span> and <span class="math notranslate nohighlight">\(p_{model}\)</span>.  The negative log likelihood was shown to be:</p>
 <div class="math notranslate nohighlight">
 \[J(\theta) = -\frac{1}{V} \log L(\theta) = -\frac{1}{V} \sum_{t=1}^V \sum_{-m\le j \le m, j \neq 0} \log p(w_{t+j} | w_t; \theta)\]</div>
 <p>where <span class="math notranslate nohighlight">\(|V|\)</span> is the size of the vocabulary (words).<span class="math notranslate nohighlight">\(|V|\)</span> could be very large, e.g. 1 billion words. The ML principle, powered by a corresponding algorithm, will result in a model that for each word at the input (center) will predict the context words around it.  The model parameters <span class="math notranslate nohighlight">\(\theta\)</span> will be determined at the end of the training process that uses a training dataset easily generated from our corpus assuming we fix the context window <span class="math notranslate nohighlight">\(m\)</span>. Lets see an example:</p>
@@ -924,7 +934,7 @@
     
       By Pantelis Monogioudis, Ph.D<br/>
     
-        &copy; Copyright 2021.<br/>
+        &copy; Copyright 2022.<br/>
   </p>
 </footer>
 </main>

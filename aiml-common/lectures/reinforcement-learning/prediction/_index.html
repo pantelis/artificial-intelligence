@@ -636,8 +636,18 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../../../resources/environment/_index.html">
+   Your Programming Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../python/_index.html">
    Learn Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../runbook.html">
+   Executable Content Runbook
   </a>
  </li>
 </ul>
@@ -812,7 +822,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="model-free-prediction">
 <h1>Model-free Prediction<a class="headerlink" href="#model-free-prediction" title="Permalink to this headline">¶</a></h1>
-<p>In this chapter we find optimal policy solutions when the MDP is <em>unknown</em> and we need to <em>learn</em> its underlying value functions - also known as the  <em>model free</em> prediction problem.  The main idea here is to learn value functions via sampling. These methods are in fact also applicable when the MDP is known but its models are simply too large to use the approaches outlined in the  [MDP chapter](). The two sampling approaches we will cover here are</p>
+<p>In this chapter we find optimal policy solutions when the MDP is <em>unknown</em> and we need to <em>learn</em> its underlying value functions - also known as the  <em>model free</em> prediction problem.  The main idea here is to learn value functions via sampling. These methods are in fact also applicable when the MDP is known but its models are simply too large to use the approaches outlined in the MDP section. The two sampling approaches we will cover here are</p>
 <ol class="simple">
 <li><p>(incremental) Monte-Carlo (MC) and</p></li>
 <li><p>Temporal Difference (TD).</p></li>
@@ -825,7 +835,7 @@
 <p>We call estimation methods of this kind <em>Monte Carlo</em> methods because they involve averaging over many random samples of returns. In MC prediction more specifically, for every state at time <span class="math notranslate nohighlight">\(t\)</span> we sample one complete trajectory (episode) as shown below.</p>
 <p><img alt="mc-value-iteration-tree" src="../../../../_images/mc-value-iteration-tree.png" />
 <em>Backup tree with value iteration based on the MC approach. MC samples a complete trajectory to the terminating node T shown with red.</em></p>
-<p>There is some rationale of doing so, if we recall that the state-value function that was defined in the introductory [MDP section]() i.e. the <em>expected</em> return.</p>
+<p>There is some rationale of doing so, if we recall that the state-value function that was defined in the introductory MDP section i.e. the <em>expected</em> return.</p>
 <div class="math notranslate nohighlight">
 \[v_\pi(s) = \mathop{\mathbb{E}_\pi}(G_t | S_t=s)\]</div>
 <p>can be approximated by using the <em>sample mean</em> return over a <em>sample</em> episode / trajectory:</p>
@@ -951,7 +961,7 @@
     
       By Pantelis Monogioudis, Ph.D<br/>
     
-        &copy; Copyright 2021.<br/>
+        &copy; Copyright 2022.<br/>
   </p>
 </footer>
 </main>

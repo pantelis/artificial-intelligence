@@ -4,17 +4,17 @@ title: The SARSA Algorithm
 
 # The SARSA Algorithm 
 
-As we discussed in the [model-free control]({{<relref "../../control">}}) section, SARSA implements a $Q(s,a)$ value-based GPI. SARSA is one of the best known RL algorithms and is very practical as compared to pure policy-based algorithms. It tends to be more sample efficient - a general trait of many value-based algorithms despite the algorithmic hybridization that is usually applicable today. Its name is attributed to the fact that we need to know the State-Action-Reward-State-Action before performing an update. The tree for SARSA is shown below:
+As we discussed in the model-free control section, SARSA implements a $Q(s,a)$ value-based GPI. SARSA is one of the best known RL algorithms and is very practical as compared to pure policy-based algorithms. It tends to be more sample efficient - a general trait of many value-based algorithms despite the algorithmic hybridization that is usually applicable today. Its name is attributed to the fact that we need to know the State-Action-Reward-State-Action before performing an update. The tree for SARSA is shown below:
 
 ![sarsa-update-tree](images/sarsa-update-tree.png)
 *SARSA action-value backup update tree. The name SARSA is written as you read from the top to the bottom of the tree :)*
 
 There are two concepts that we need to grasp:
 
-1. The first is a technique for learning the Q-function via TD-learning that we have seen in [prediction]({{<ref "../../prediction">}}). 
+1. The first is a technique for learning the Q-function via TD-learning that we have seen in the prediction section. 
 2. The second is a method for evolving the policy using the learned Q-function. 
 
-Using the tree and following the value estimate of [_temporal difference (TD) learning_]({{<ref "../../prediction">}}), we can write the value update equation as:
+Using the tree and following the value estimate of _temporal difference (TD) learning_, we can write the value update equation as:
 
 $$Q(S,A) = Q(S,A) + \alpha (R + \gamma Q(S^\prime, A^\prime)-Q(S,A))$$
 

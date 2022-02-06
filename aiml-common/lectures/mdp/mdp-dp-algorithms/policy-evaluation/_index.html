@@ -636,8 +636,18 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../../../../resources/environment/_index.html">
+   Your Programming Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../../python/_index.html">
    Learn Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../runbook.html">
+   Executable Content Runbook
   </a>
  </li>
 </ul>
@@ -755,7 +765,7 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="policy-evaluation-prediction">
 <h1>Policy Evaluation (Prediction)<a class="headerlink" href="#policy-evaluation-prediction" title="Permalink to this headline">¶</a></h1>
 <p>The policy <span class="math notranslate nohighlight">\(\pi\)</span> is evaluated when we have produced the state-value function <span class="math notranslate nohighlight">\(v_\pi(s)\)</span> for all states. In other words when we know the expected discounted returns that each state can offer us. To do so we apply the Bellman expectation backup equations repeatedly in an iterative fashion.</p>
-<p>We start at <span class="math notranslate nohighlight">\(k=0\)</span> by initializing all state-value function (a vactor) to <span class="math notranslate nohighlight">\(v_0(s)=0\)</span>. In each iteration <span class="math notranslate nohighlight">\(k+1\)</span> we start with the state value function of the previous iteration <span class="math notranslate nohighlight">\(v_k(s)\)</span> and apply the Bellman expectation backup as prescribed by the one step lookahead tree below that is decorated relative to what [we have seen]() with the iteration information. This is called the synchronous backup formulation as we are updating all the elements of the value function vector at the same time.</p>
+<p>We start at <span class="math notranslate nohighlight">\(k=0\)</span> by initializing all state-value function (a vactor) to <span class="math notranslate nohighlight">\(v_0(s)=0\)</span>. In each iteration <span class="math notranslate nohighlight">\(k+1\)</span> we start with the state value function of the previous iteration <span class="math notranslate nohighlight">\(v_k(s)\)</span> and apply the Bellman expectation backup as prescribed by the one step lookahead tree below that is decorated relative to what we have seen in the Bellman expectation backup with the iteration information. This is called the synchronous backup formulation as we are updating all the elements of the value function vector at the same time.</p>
 <p><img alt="policy-evaluation-tree" src="../../../../../_images/policy-evaluation-tree.png" />
 <em>Tree representation of the state-value function with one step look ahead across iterations.</em></p>
 <p>The Bellman expectation backup is given by,</p>
@@ -891,7 +901,7 @@
     
       By Pantelis Monogioudis, Ph.D<br/>
     
-        &copy; Copyright 2021.<br/>
+        &copy; Copyright 2022.<br/>
   </p>
 </footer>
 </main>

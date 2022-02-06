@@ -636,8 +636,18 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../../../../resources/environment/_index.html">
+   Your Programming Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../../python/_index.html">
    Learn Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../runbook.html">
+   Executable Content Runbook
   </a>
  </li>
 </ul>
@@ -780,7 +790,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="dynamic-programming-algorithms-value-iteration">
 <h1>Dynamic Programming Algorithms - Value Iteration<a class="headerlink" href="#dynamic-programming-algorithms-value-iteration" title="Permalink to this headline">¶</a></h1>
-<p>We already have seen that in the Gridworld example in the [policy iteration section]() , we may not <em>need</em> to reach the optimal state value function <span class="math notranslate nohighlight">\(v_*(s)\)</span> to obtain an optimal policy to result. The value function for the <span class="math notranslate nohighlight">\(k=3\)</span> iteration results the same policy as the policy from a far more accurate value function (large k).</p>
+<p>We already have seen that in the Gridworld example in the policy iteration section , we may not <em>need</em> to reach the optimal state value function <span class="math notranslate nohighlight">\(v_*(s)\)</span> to obtain an optimal policy to result. The value function for the <span class="math notranslate nohighlight">\(k=3\)</span> iteration results the same policy as the policy from a far more accurate value function (large k).</p>
 <p>We can therefore stop early and taking the argument to the limit, do the policy improvement step in <em>each</em> iteration.  In this section we will look at an algorithm called value iteration that does that.</p>
 <p><img alt="value-iteration-summary" src="../../../../../_images/value-iteration-summary.png" />
 <em>Summary of Value Iteration</em></p>
@@ -803,7 +813,7 @@
 <p>The value iteration can be written in a vector form as,</p>
 <div class="math notranslate nohighlight">
 \[\mathbf v_{k+1} = \max_a \left( \mathcal R^a + \gamma \mathcal P^a \mathbf v_k \right) \]</div>
-<p>Notice that we are not building an explicit policy at every iteration and also, importantly, the intermediate value functions may <em>not</em> correspond to a feasible policy. Before going into a more elaborate example, we can go back to the same simple world we have looked at in the [policy iteration]() section and focus only on the state-value calculation using the formula above.</p>
+<p>Notice that we are not building an explicit policy at every iteration and also, importantly, the intermediate value functions may <em>not</em> correspond to a feasible policy. Before going into a more elaborate example, we can go back to the same simple world we have looked at in the policy iteration section and focus only on the state-value calculation using the formula above.</p>
 <p><img alt="gridworld-value-iteration" src="../../../../../_images/gridworld-value-iteration-value-only.png" />
 <em>State values for an MDP with random policy (0.25 prob of taking any of the four available actions), <span class="math notranslate nohighlight">\(\gamma=1\)</span>, that rewards the agent with -1 at each transition except towards the goal states that are in the top left and bottom right corners</em></p>
 <div class="section" id="value-iteration-example">
@@ -920,7 +930,7 @@
     
       By Pantelis Monogioudis, Ph.D<br/>
     
-        &copy; Copyright 2021.<br/>
+        &copy; Copyright 2022.<br/>
   </p>
 </footer>
 </main>

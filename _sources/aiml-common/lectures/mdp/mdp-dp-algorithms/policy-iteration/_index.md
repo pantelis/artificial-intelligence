@@ -6,9 +6,9 @@ title: Dynamic Programming Algorithms - Policy Iteration
 
 In this section we develop dynamic programming algorithms for the so called _planning_ problem (which is RL without learning) where we are dealing with a _perfectly known MDP_. 
 
-In the [Bellman expectation backup]({{<ref "../../bellman-expectation-backup">}}) section we have derived the equations which allowed us to efficiently compute the value function. 
+In the Bellman expectation backup section we have derived the equations which allowed us to efficiently compute the value function. 
 
-We have seen also that the  [Bellman optimality backup]({{<ref "../../bellman-optimality-backup">}})  that are non linear and need to be solved using iterative approaches - their solution will result in the optimal value function $v_*$ and the optimal policy $\pi_*$. 
+We have seen also that the Bellman optimality backup  that are non linear and need to be solved using iterative approaches - their solution will result in the optimal value function $v_*$ and the optimal policy $\pi_*$. 
 
 In policy iteration, given the policy $\pi$, we oscillate between two distinct steps as shown below:
 

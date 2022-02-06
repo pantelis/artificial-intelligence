@@ -6,7 +6,7 @@ weight: 85
 
 # Recursive State Estimation
 
-In [Inference in Graphical Models section]({{<ref "../bayesian-inference">}}) we have seen how sequential data belonging to just two evidential variables (captured via $p(x,y)$) can be treated by probabilistic models to infer (reason) about values of the posterior. Now we will expand on two fronts:
+In the Bayesian Inference section we have seen how sequential data belonging to just two evidential variables (captured via $p(x,y)$) can be treated by probabilistic models to infer (reason) about values of the posterior. Now we will expand on two fronts:
 
 * Introduce the concept of _state_ $s$ that encapsulates multiple random variables and consider _dynamical systems_ with non-trivial non-linear dynamics (state transition models) common in robotics and many other fields.
 

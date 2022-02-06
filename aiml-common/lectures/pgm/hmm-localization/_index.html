@@ -636,8 +636,18 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../../../resources/environment/_index.html">
+   Your Programming Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../python/_index.html">
    Learn Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../runbook.html">
+   Executable Content Runbook
   </a>
  </li>
 </ul>
@@ -790,7 +800,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="localization-and-tracking">
 <h1>Localization and Tracking<a class="headerlink" href="#localization-and-tracking" title="Permalink to this headline">¶</a></h1>
-<p>In the [recursive state estimation]() section we have seen the formulation of the Bayes filter and its application in a simple problem of trying to maintain a latent  (internal to the agent) <em>belief</em>  about the state of the environment <span class="math notranslate nohighlight">\(s\)</span> given measurements <span class="math notranslate nohighlight">\(z\)</span> and agent actions <span class="math notranslate nohighlight">\(a\)</span>. Here we are closing the loop: we started with the perception system giving us poses of objects it detects, effectively localizing the objects at the <em>pixel</em> coordinate system (within the image). Now we need to use the Bayes filter to localize the object globally as well as to be able to <em>track it</em>, since it can also move across space, so that we can recognize it over time as the same unique object and be able to assign a symbol to it.</p>
+<p>In the recursive state estimation section we have seen the formulation of the Bayes filter and its application in a simple problem of trying to maintain a latent  (internal to the agent) <em>belief</em>  about the state of the environment <span class="math notranslate nohighlight">\(s\)</span> given measurements <span class="math notranslate nohighlight">\(z\)</span> and agent actions <span class="math notranslate nohighlight">\(a\)</span>. Here we are closing the loop: we started with the perception system giving us poses of objects it detects, effectively localizing the objects at the <em>pixel</em> coordinate system (within the image). Now we need to use the Bayes filter to localize the object globally as well as to be able to <em>track it</em>, since it can also move across space, so that we can recognize it over time as the same unique object and be able to assign a symbol to it.</p>
 <p>In order to localize the object globally we need to localize the agent globally and so we will focus here on a situation where the initial pose of the agent is unknown as it is initially placed somewhere in its environment, but it lacks knowledge of where it is. When we have the global pose of the sensor, for example a camera, we can use straightforward techniques for the global localization of objects e.g. <a class="reference external" href="http://www.computervisionmodels.com/">calibrated stereo reconstruction or triangulation, section 14.6</a>.</p>
 <p>Even without global localization we can <em>track</em> an object as it moves within the viewpoint of the agent for the sole purpose to predict its subsequent location within the image and assign a local instance identity to it. For example as an agent moves in the space surrounding the object, its perception subsystem makes a memoryless detection decision but its probabilistic reasoning subsystem should stitch such decisions together to reason as to the object’s identity over time: is it the same object that was seen a frame ago? By knowing the pose of the agents sensors (a camera) we should be able to make such inferences.</p>
 <div class="section" id="localization">
@@ -891,7 +901,7 @@ into the robot’s belief.</p>
     
       By Pantelis Monogioudis, Ph.D<br/>
     
-        &copy; Copyright 2021.<br/>
+        &copy; Copyright 2022.<br/>
   </p>
 </footer>
 </main>

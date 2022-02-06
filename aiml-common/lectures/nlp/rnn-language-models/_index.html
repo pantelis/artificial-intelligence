@@ -636,8 +636,18 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../../../resources/environment/_index.html">
+   Your Programming Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../python/_index.html">
    Learn Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../runbook.html">
+   Executable Content Runbook
   </a>
  </li>
 </ul>
@@ -814,7 +824,7 @@
 <div class="section" id="lstm-language-models">
 <h2>LSTM Language Models<a class="headerlink" href="#lstm-language-models" title="Permalink to this headline">¶</a></h2>
 <p>When we focus on making predictions based on a fixed window of context (i.e. the <span class="math notranslate nohighlight">\(n\)</span> previous words), in some cases, the window may not be sufficient to capture the context. For instance, consider a case where an article discusses the history of Spain and France and somewhere later in the text, it reads “The two countries went on a battle”; clearly the information presented in this sentence alone is not sufficient to identify the name of the two countries.</p>
-<p>Out of the many neural architectures and to provide the required long memory (up to a point that is) we will use the [LSTM]() architectures as shown next.</p>
+<p>Out of the many neural architectures and to provide the required long memory (up to a point that is) we will use the LSTM architectures as shown next.</p>
 <p><img alt="rnn-language-model" src="../../../../_images/rnn-language-model-words.png" />
 <em>RNN Language Model. Note the different notation and certain replacements must be made: <span class="math notranslate nohighlight">\(W_h → W\)</span>, <span class="math notranslate nohighlight">\(W_e \rightarrow U\)</span>, <span class="math notranslate nohighlight">\(U → V\)</span></em></p>
 <p>To train an LSTM language model</p>
@@ -890,7 +900,7 @@ $<span class="math notranslate nohighlight">\(J_t(\theta) = CE(\hat  \mathbf y_t
     
       By Pantelis Monogioudis, Ph.D<br/>
     
-        &copy; Copyright 2021.<br/>
+        &copy; Copyright 2022.<br/>
   </p>
 </footer>
 </main>

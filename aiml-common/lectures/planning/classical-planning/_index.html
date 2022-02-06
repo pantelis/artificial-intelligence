@@ -636,8 +636,18 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../../../resources/environment/_index.html">
+   Your Programming Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../python/_index.html">
    Learn Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../runbook.html">
+   Executable Content Runbook
   </a>
  </li>
 </ul>
@@ -782,7 +792,7 @@
 <h1>Classical Planning<a class="headerlink" href="#classical-planning" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="planning-domain-definition-language-pddl">
 <h2>Planning Domain Definition Language (PDDL)<a class="headerlink" href="#planning-domain-definition-language-pddl" title="Permalink to this headline">¶</a></h2>
-<p>In [propositional logic-based planning]() we have seen the combinatorial explosion problem that results from the need to include in the reasoning / inference step all possible states and actions combinations over time. To avoid such explosion, with obvious benefits to the planning efficiency, we introduce a language called Planning Domain Definition Language (PDDL) that allows for compressive expressiveness at the action space via <em>action schemas</em> as we will see shortly. PDDL is positioned at the input of the <em>domain independent</em> planner as shown in the figure below.</p>
+<p>In propositional logic-based planning we have seen the combinatorial explosion problem that results from the need to include in the reasoning / inference step all possible states and actions combinations over time. To avoid such explosion, with obvious benefits to the planning efficiency, we introduce a language called Planning Domain Definition Language (PDDL) that allows for compressive expressiveness at the action space via <em>action schemas</em> as we will see shortly. PDDL is positioned at the input of the <em>domain independent</em> planner as shown in the figure below.</p>
 <p><img alt="automated-planning" src="../../../../_images/automated-planning.png" />
 <em>Planning System: A domain-independent solver or planner takes two inputs: 1) the domain
 model written in a planning language and 2) a problem definition that describes the initial state <span class="math notranslate nohighlight">\(i\)</span> and the desired
@@ -934,7 +944,7 @@ special ontable predicate
 </pre></div>
 </div>
 <p>You need to experiment with <a class="reference external" href="http://editor.planning.domains/">this planning tool</a> to make sure you understand <em>what</em> PDDL does and be familiar with the <a class="reference external" href="https://www.youtube.com/watch?v=XW0z8Oik6G8&amp;feature=youtu.be">workflow</a> of generating a plan.  The blocks word problem is a classic problem employed in the International Planning Competition (IPC) 2000. For non-trivial examples where PDDL is used in e.g. robotics see <a class="reference external" href="https://kcl-planning.github.io/ROSPlan/">ROSPlan</a>.</p>
-<p>Now we need to look how the planners solve the PDDL expressed problems. As it turns out many use the [Forward (state-space) Search algorithms]() where despite the factored representation assumed here, we can treat states and actions as atomic and use forward search algorithms with heuristics such as A*.</p>
+<p>Now we need to look how the planners solve the PDDL expressed problems. As it turns out many use the Forward (state-space) Search algorithms where despite the factored representation assumed here, we can treat states and actions as atomic and use forward search algorithms with heuristics such as A*.</p>
 </div>
 </div>
 
@@ -986,7 +996,7 @@ special ontable predicate
     
       By Pantelis Monogioudis, Ph.D<br/>
     
-        &copy; Copyright 2021.<br/>
+        &copy; Copyright 2022.<br/>
   </p>
 </footer>
 </main>

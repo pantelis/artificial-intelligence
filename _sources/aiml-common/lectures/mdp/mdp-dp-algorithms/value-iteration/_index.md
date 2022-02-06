@@ -4,7 +4,7 @@ title: Dynamic Programming Algorithms - Value Iteration
 
 # Dynamic Programming Algorithms - Value Iteration
 
-We already have seen that in the Gridworld example in the [policy iteration section]({{<ref "../policy-iteration">}}) , we may not _need_ to reach the optimal state value function $v_*(s)$ to obtain an optimal policy to result. The value function for the $k=3$ iteration results the same policy as the policy from a far more accurate value function (large k). 
+We already have seen that in the Gridworld example in the policy iteration section , we may not _need_ to reach the optimal state value function $v_*(s)$ to obtain an optimal policy to result. The value function for the $k=3$ iteration results the same policy as the policy from a far more accurate value function (large k). 
 
 We can therefore stop early and taking the argument to the limit, do the policy improvement step in _each_ iteration.  In this section we will look at an algorithm called value iteration that does that.  
 
@@ -37,7 +37,7 @@ The value iteration can be written in a vector form as,
 
 $$\mathbf v_{k+1} = \max_a \left( \mathcal R^a + \gamma \mathcal P^a \mathbf v_k \right) $$
 
-Notice that we are not building an explicit policy at every iteration and also, importantly, the intermediate value functions may _not_ correspond to a feasible policy. Before going into a more elaborate example, we can go back to the same simple world we have looked at in the [policy iteration]({{<relref "../policy-iteration">}}) section and focus only on the state-value calculation using the formula above. 
+Notice that we are not building an explicit policy at every iteration and also, importantly, the intermediate value functions may _not_ correspond to a feasible policy. Before going into a more elaborate example, we can go back to the same simple world we have looked at in the policy iteration section and focus only on the state-value calculation using the formula above. 
 
 ![gridworld-value-iteration](images/gridworld-value-iteration-value-only.png)
 *State values for an MDP with random policy (0.25 prob of taking any of the four available actions), $\gamma=1$, that rewards the agent with -1 at each transition except towards the goal states that are in the top left and bottom right corners*

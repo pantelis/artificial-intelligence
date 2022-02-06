@@ -29,7 +29,7 @@ For example, a pixel $p_i$ corresponds to a vertex $v_i$ and it has 8 neighborin
 
 $$w((v_i, v_j )) = |I(p_i) − I(p_j )|$$
 
-Before we compute the weights we use the 2D Gaussian kernel / filter we met in the [introductory section to CNNs]({{<ref "../../cnn/cnn-intro">}}) - the end result being a smoothing of the image that helps with noise reduction. For color images we run the algorithm for each of the three channels. 
+Before we compute the weights we use the 2D Gaussian kernel / filter we met in the [introductory section to CNNs  - the end result being a smoothing of the image that helps with noise reduction. For color images we run the algorithm for each of the three channels. 
 
 There is one runtime parameter for the algorithm, which is the value of $k$ that is used to compute the threshold function $\tau$ . Recall we use the function $τ(C) =k/|C|$ where $|C|$ is the number of elements in C. Thus k effectively sets a scale of observation, in that a larger k causes a preference for larger components. 
 
@@ -69,9 +69,9 @@ The above selective search strategy is diversified (1) by using a variety of col
 
 ## CNN Features  and SVM Classification
 
-Each of these proposals can be fed into a CNN (e.g. [ResNet]({{<ref "../feature-extraction-resnet/">}})). Since regions are of various rectangular shapes, we warp the regions to a fixed size (CNNs can process fixed input tensors) of 227 x 227 pixels and the CNN produces a 4096-dim feature vector from each of the regions. Note that this representation of each region by 4096 elements is considered quite compact and more importantly the features are _shared_ across classes.  
+Each of these proposals can be fed into a CNN (e.g. ResNet. Since regions are of various rectangular shapes, we warp the regions to a fixed size (CNNs can process fixed input tensors) of 227 x 227 pixels and the CNN produces a 4096-dim feature vector from each of the regions. Note that this representation of each region by 4096 elements is considered quite compact and more importantly the features are _shared_ across classes.  
 
-Using these features we use a binary [SVM classifier]({{<ref "../../classification/svm">}}) that produces a positive or negative on whether this feature contains the class of interest or not. We train a separate binary SVM classifier per class (binary classification). 
+Using these features we use a binary SVM classifier that produces a positive or negative on whether this feature contains the class of interest or not. We train a separate binary SVM classifier per class (binary classification). 
 
 The sharing of features allows us to practically aggregate into a matrix all features of all regions (2000 x 4096) we well as aggregate the SVM weights into another matrix (4096 x K), where K is the number of classes we have trained for, and do this combined operation via a matrix-matrix product. 
 

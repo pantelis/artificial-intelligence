@@ -6,7 +6,7 @@ title: Classical Planning
 
 ## Planning Domain Definition Language (PDDL)
 
-In [propositional logic-based planning]({{<ref "../../logical-reasoning/propositional-logic">}}) we have seen the combinatorial explosion problem that results from the need to include in the reasoning / inference step all possible states and actions combinations over time. To avoid such explosion, with obvious benefits to the planning efficiency, we introduce a language called Planning Domain Definition Language (PDDL) that allows for compressive expressiveness at the action space via _action schemas_ as we will see shortly. PDDL is positioned at the input of the _domain independent_ planner as shown in the figure below.
+In propositional logic-based planning we have seen the combinatorial explosion problem that results from the need to include in the reasoning / inference step all possible states and actions combinations over time. To avoid such explosion, with obvious benefits to the planning efficiency, we introduce a language called Planning Domain Definition Language (PDDL) that allows for compressive expressiveness at the action space via _action schemas_ as we will see shortly. PDDL is positioned at the input of the _domain independent_ planner as shown in the figure below.
 
 ![automated-planning](images/automated-planning.png)
 *Planning System: A domain-independent solver or planner takes two inputs: 1) the domain
@@ -146,4 +146,4 @@ The objects, the initial state and the goal specifications are defined in the **
 
 You need to experiment with [this planning tool](http://editor.planning.domains/) to make sure you understand _what_ PDDL does and be familiar with the [workflow](https://www.youtube.com/watch?v=XW0z8Oik6G8&feature=youtu.be) of generating a plan.  The blocks word problem is a classic problem employed in the International Planning Competition (IPC) 2000. For non-trivial examples where PDDL is used in e.g. robotics see [ROSPlan](https://kcl-planning.github.io/ROSPlan/). 
 
-Now we need to look how the planners solve the PDDL expressed problems. As it turns out many use the [Forward (state-space) Search algorithms]({{<ref "../search">}}) where despite the factored representation assumed here, we can treat states and actions as atomic and use forward search algorithms with heuristics such as A*. 
+Now we need to look how the planners solve the PDDL expressed problems. As it turns out many use the Forward (state-space) Search algorithms where despite the factored representation assumed here, we can treat states and actions as atomic and use forward search algorithms with heuristics such as A*. 
