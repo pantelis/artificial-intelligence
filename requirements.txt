@@ -12,3 +12,4 @@ d2l
 dash
 pandas
 jupyter-dash
+wheel
