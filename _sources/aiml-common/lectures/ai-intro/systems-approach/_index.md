@@ -31,7 +31,7 @@ What capabilities we need to have to pass a turing test.
 5. Computer Vision 
 6. Robotics
 
-The last two capabilities are not needed for the verbal oriented Turing test but they are needed for what is called the *total* Turing test. According to this test, the player and the interrogator can communicate physically. For example, there is a hatch where the interrogator can pass objects to the player through. Obviously the player must have perception abilities to understand what object it is (5) and possibly a body that can manipulate the object (6). Embodied AI research is one of the hotter areas of AI today as we will see in the [Agents](./400-agents) section. 
+The last two capabilities are not needed for the verbal oriented Turing test but they are needed for what is called the *total* Turing test. According to this test, the player and the interrogator can communicate physically. For example, there is a hatch where the interrogator can pass objects to the player through. Obviously the player must have perception abilities to understand what object it is (5) and possibly a body that can manipulate the object (6). Embodied AI research is one of the hotter areas of AI today as we will see in the AI Agents section. 
 
 ## The Cognitive Model approach 
 
@@ -53,7 +53,7 @@ These theories of cognitive processes are tested via various cognitive [_archite
 
 The translation from Greek of the word _syllogism_ is to support logic. 
 
-This approach emphasizes how we think the right way and encodes the pattern of logical arguments that can reach correct conclusions from a set of propositions (_premises_). Problem solving where the problem statement is expressed in a logic notation, matured in the 60s. As we have seen in [the course introduction](./100-course-introduction) such rule-based systems are still with us and for small and deterministic state spaces can provide a very compact and elegant way to inference. 
+This approach emphasizes how we think the right way and encodes the pattern of logical arguments that can reach correct conclusions from a set of propositions (_premises_). Problem solving where the problem statement is expressed in a logic notation, matured in the 60s. As we have seen in the course introduction section such rule-based systems are still with us and for small and deterministic state spaces can provide a very compact and elegant way to inference. 
 
 Logic-based reasoning is coming back to fashion. One of the most promising areas is [their application](https://www.ijcai.org/Proceedings/2017/0733.pdf) to _interpretability_ (also known as _explainability_ ) of deep learning based methods for e.g. classification in medical diagnosis. Probabilistic Logic Networks (PLN) are extensions of this approach to address problems with uncertainty. 
 
