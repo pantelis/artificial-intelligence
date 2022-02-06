@@ -8,8 +8,6 @@ git+https://github.com/pantelis-classes/PRML.git#egg=prml
 plotly
 ipywidgets
 kaleido
-d2l
 dash
 pandas
 jupyter-dash
-wheel
