@@ -3,15 +3,25 @@
 
 title: Introduction to Artificial Intelligence
 author: Pantelis Monogioudis, Ph.D
+copyright                   : "2022"  # Copyright year to be placed in the footer
 logo: logo.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: 'cache'
-  exclude_patterns:
-    - 'handson-ml2'
-
+  execute_notebooks: cache
+  exclude_patterns: 
+    - artificial_intelligence/handson-ml2/01_the_machine_learning_landscape.ipynb
+    - artificial_intelligence/handson-ml2/02_end_to_end_machine_learning_project.ipynb
+    - artificial_intelligence/handson-ml2/03_classification.ipynb
+    - artificial_intelligence/handson-ml2/04_training_linear_models.ipynb
+    - artificial_intelligence/handson-ml2/05_support_vector_machines.ipynb
+    - artificial_intelligence/handson-ml2/06_decision_trees.ipynb
+    - artificial_intelligence/handson-ml2/07_ensemble_learning_and_random_forests.ipynb
+    - artificial_intelligence/handson-ml2/08_dimensionality_reduction.ipynb
+    - artificial_intelligence/handson-ml2/18_reinforcement_learning.ipynb
+    - artificial_intelligence/handson-ml2/*
+    
 only_build_toc_files: true
 
 # Define the name of the latex output file for PDF builds
@@ -21,13 +31,13 @@ latex:
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
-  - references.bib
+  - ai.bib
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/pantelis/artificial-intelligence  # Online location of your book
-  path_to_book: artificial_intelligence  # Optional path to your book, relative to the repository root
-  branch: main  # Which branch of the repository should be used when creating links (optional)
+  url: https://github.com/pantelis/aiml-common # artificial-intelligence  # Online location of your book
+  path_to_book: ''#lectures #artificial_intelligence/aiml-common  # Optional path to your book, relative to the repository root
+  branch: master  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
@@ -42,9 +52,8 @@ html:
 launch_buttons:
   colab_url: "https://colab.research.google.com"
 
-
 sphinx:
-  recursive_update: true
+  recursive_update: false
   config:
     html_theme_options:
       use_download_button: true
@@ -55,6 +64,7 @@ sphinx:
   extra_extensions:
     - sphinxcontrib.youtube
     - sphinx_inline_tabs 
+
 parse:
   myst_enable_extensions:
     # don't forget to list any other extensions you want enabled,
