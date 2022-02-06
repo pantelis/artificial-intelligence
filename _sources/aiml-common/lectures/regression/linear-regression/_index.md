@@ -227,8 +227,6 @@ Apart from the composition of the generalization error for various model capacit
 
 +++
 
-## Notebooks
+## Libraries
 
-https://github.com/ctgk/PRML
-
-|  [GDP](https://github.com/pantelis/handson-ml2/blob/master/01_the_machine_learning_landscape.ipynb)    |  Notebook that regresses GDP per capita on life satisfaction is very easy to follow and it really cant get simpler than that.    |
+This notebook makes extensive use of the [Pattern Recognition for Machine Learning python package](https://github.com/ctgk/PRML). 
