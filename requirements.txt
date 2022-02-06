@@ -1,3 +1,4 @@
+seaborn
 jupyter-book
 matplotlib
 numpy

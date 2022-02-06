@@ -11,16 +11,17 @@ logo: logo.png
 execute:
   execute_notebooks: auto
   exclude_patterns: 
-    - artificial_intelligence/handson-ml2/01_the_machine_learning_landscape.ipynb
-    - artificial_intelligence/handson-ml2/02_end_to_end_machine_learning_project.ipynb
-    - artificial_intelligence/handson-ml2/03_classification.ipynb
-    - artificial_intelligence/handson-ml2/04_training_linear_models.ipynb
-    - artificial_intelligence/handson-ml2/05_support_vector_machines.ipynb
-    - artificial_intelligence/handson-ml2/06_decision_trees.ipynb
-    - artificial_intelligence/handson-ml2/07_ensemble_learning_and_random_forests.ipynb
-    - artificial_intelligence/handson-ml2/08_dimensionality_reduction.ipynb
-    - artificial_intelligence/handson-ml2/18_reinforcement_learning.ipynb
+    # - artificial_intelligence/handson-ml2/01_the_machine_learning_landscape.ipynb
+    # - artificial_intelligence/handson-ml2/02_end_to_end_machine_learning_project.ipynb
+    # - artificial_intelligence/handson-ml2/03_classification.ipynb
+    # - artificial_intelligence/handson-ml2/04_training_linear_models.ipynb
+    # - artificial_intelligence/handson-ml2/05_support_vector_machines.ipynb
+    # - artificial_intelligence/handson-ml2/06_decision_trees.ipynb
+    # - artificial_intelligence/handson-ml2/07_ensemble_learning_and_random_forests.ipynb
+    # - artificial_intelligence/handson-ml2/08_dimensionality_reduction.ipynb
+    # - artificial_intelligence/handson-ml2/18_reinforcement_learning.ipynb
     - artificial_intelligence/handson-ml2/*
+    - artificial_intelligence/handson-ml2/.*
     
 only_build_toc_files: true
 
