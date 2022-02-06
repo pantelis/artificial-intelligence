@@ -24,14 +24,13 @@ parts:
     chapters:
     - file: aiml-common/lectures/learning-problem/_index.md
     - file: aiml-common/lectures/regression/linear-regression/_index.md    
-    - file: aiml-common/lectures/regression/linear-regression/regression-notebooks/_index.md
+    - file: aiml-common/lectures/optimization/sgd/_index.md
+    - file: aiml-common/lectures/entropy/_index.md
     - file: aiml-common/lectures/optimization/maximum-likelihood/_index.md
     - file: aiml-common/lectures/pgm/bayesian-inference/_index.md
       title: Bayesian Inference
       sections:   
       - file: aiml-common/lectures/pgm/bayesian-coin/_index.md
-    - file: aiml-common/lectures/entropy/_index.md
-    - file: aiml-common/lectures/optimization/sgd/_index.md
     - file: aiml-common/lectures/classification/classification-intro/_index.md
     - file: aiml-common/lectures/classification/logistic-regression/_index.md
         
@@ -159,4 +158,4 @@ parts:
 
   - caption:  Assignments & Projects
     chapters:
-    - file: aiml-common/assignments/probability-assignment-2.ipynb
+    - file: aiml-common/assignments/probability-assignment-2/probability-assignment-2.ipynb

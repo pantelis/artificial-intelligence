@@ -9,7 +9,7 @@ logo: logo.png
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: cache
+  execute_notebooks: auto
   exclude_patterns: 
     - artificial_intelligence/handson-ml2/01_the_machine_learning_landscape.ipynb
     - artificial_intelligence/handson-ml2/02_end_to_end_machine_learning_project.ipynb
