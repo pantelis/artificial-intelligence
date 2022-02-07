@@ -1,10 +1,11 @@
-seaborn
 jupyter-book
-matplotlib
-numpy
-ghp-import
 sphinxcontrib-youtube
 sphinx_inline_tabs
+ghp-import
+
+seaborn
+matplotlib
+numpy
 git+https://github.com/pantelis-classes/PRML.git#egg=prml
 plotly
 ipywidgets
