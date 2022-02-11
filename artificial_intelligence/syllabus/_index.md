@@ -11,7 +11,7 @@ title: Syllabus
 
 (c) DL - Deep Learning: https://www.deeplearningbook.org/  (free). NOTE: See also the very good https://d2l.ai/ but the chapter references below are from the Ian Goodfellow's book that I am familiar with. 
 
-## Schedule
+## Planned Schedule
 
 ### Part I:  Perception and Machine Learning
 
@@ -46,3 +46,4 @@ title: Syllabus
 **Lecture 12:**  We will go through architectures that can help _explain_ decision making as well as reveal decision _bias_. Both of these tools cant solve the ethical challenges we face today. How can AI help us address _misinformation_ when itself is used to spread it ? AIMA Chapter 27. 
     
 **Lecture 13:**: Review - last lecture before the final. 
+

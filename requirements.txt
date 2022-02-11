@@ -12,4 +12,6 @@ ipywidgets
 kaleido
 dash
 pandas
+jupyter
+jupyterlab
 jupyter-dash
