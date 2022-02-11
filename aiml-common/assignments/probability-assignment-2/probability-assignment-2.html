@@ -38,10 +38,13 @@
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
@@ -896,6 +899,7 @@
 <h2>Problem 3a (20 points)<a class="headerlink" href="#problem-3a-20-points" title="Permalink to this headline">¶</a></h2>
 <p>It follows that those with a larger height will be generally heavier than those with a smaller height. This is just a broad generalization and does not always apply. <a class="reference external" href="https://www.kaggle.com/mustafaali96/weight-height/version/1">Here</a> is a link to a data set that contains anonymous entries on peoples’ gender, height and weight. Download this dataset ( It is pretty small don’t worry ). You might need to make a Kaggle account. Kaggle is an online community of data scientists and has a large collection of open source datasets for many different purposes.</p>
 <p>Familiarize yourself with the package pandas, as you can use it to easily unpack the csv into manipulatable datatypes. If you are using <a class="reference external" href="https://colab.research.google.com/">colab</a>, which you most likely are, ensure that you have logged in with the university Google account.</p>
+<p>Using the data find two values for covariance between height and weight. There should be one value for male and female.</p>
 <p>(Hint: Make sure to store all intermediate values like averages and counts as they might be useful for the extra credit)</p>
 </div>
 <div class="section" id="problem-3b-10-points">

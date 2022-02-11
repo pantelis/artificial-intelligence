@@ -115,10 +115,10 @@ Now our job has become to choose two things: the weight vector $\mathbf{w^*}$ *a
 +++
 
 <!-- :::{figure-md} markdown-fig -->
-<img src="./images/Figure1.4a.png" alt="M=0" class="bg-primary mb-1" width="300px">
-<img src="./images/Figure1.4b.png" alt="M=1" class="bg-primary mb-1" width="300px">
-<img src="./images/Figure1.4c.png" alt="M=3" class="bg-primary mb-1" width="300px">
-<img src="./images/Figure1.4d.png" alt="M=9" class="bg-primary mb-1" width="300px">
+<img src="images/Figure1.4a.png" alt="M=0" class="bg-primary mb-1" width="300px">
+<img src="images/Figure1.4b.png" alt="M=1" class="bg-primary mb-1" width="300px">
+<img src="images/Figure1.4c.png" alt="M=3" class="bg-primary mb-1" width="300px">
+<img src="images/Figure1.4d.png" alt="M=9" class="bg-primary mb-1" width="300px">
 
 _Various final hypotheses._
 <!-- ::: -->
