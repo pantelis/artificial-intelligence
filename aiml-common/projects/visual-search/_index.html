@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Programming Environment &#8212; Introduction to Artificial Intelligence</title>
+    <title>Reverse Visual Search &#8212; Introduction to Artificial Intelligence</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet">
   <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,11 +53,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/resources/environment/_index.html" />
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/projects/visual-search/_index.html" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Learn Python" href="../../lectures/python/_index.html" />
-    <link rel="prev" title="Calculus" href="../../lectures/ml-math/calculus/_index.html" />
+    <link rel="prev" title="Maximum Likelihood Parameter Estimation" href="../../assignments/mle/mle_exponential_linear_regression.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -634,9 +633,9 @@ const thebe_selector_output = ".output, .cell_output"
   Resources
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../resources/environment/_index.html">
    Your Programming Environment
   </a>
  </li>
@@ -656,7 +655,7 @@ const thebe_selector_output = ".output, .cell_output"
   Assignments &amp; Projects
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../assignments/probability/probability-assignment-2/probability-assignment-2.html">
    Probability Assigmment
@@ -667,8 +666,8 @@ const thebe_selector_output = ".output, .cell_output"
    Maximum Likelihood Parameter Estimation
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../projects/visual-search/_index.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Reverse Visual Search
   </a>
  </li>
@@ -713,7 +712,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/aiml-common/resources/environment/_index.md"><button type="button"
+        <a class="dropdown-buttons" href="../../../_sources/aiml-common/projects/visual-search/_index.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -733,7 +732,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/resources/environment/_index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/projects/visual-search/_index.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -760,59 +759,38 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computational-environments">
-   Computational Environments
+  <a class="reference internal nav-link" href="#lfw-dataset-0-points">
+   LFW Dataset (0 points)
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#google-colaboratory-option-1">
-     Google Colaboratory (Option 1)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#kaggle-option-2">
-     Kaggle (Option 2)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#on-your-own-machine-or-aws-ec2-option-3">
-     On your own machine or AWS EC2 (Option 3)
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#setup-your-virtual-environment-with-standard-python-recommended-for-aws-ec2">
-       Setup your virtual environment with standard Python (recommended for AWS EC2)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#setup-your-virtual-environment-with-anaconda-python">
-       Setup your virtual environment with Anaconda Python
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#git-github">
-   Git / Github
+  <a class="reference internal nav-link" href="#reverse-image-search-baseline-30-points">
+   Reverse Image Search - Baseline (30 points)
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-work-with-a-github-repository-in-colab">
-     How to work with a github repository in Colab
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#external-tools-and-databases">
-   External Tools and Databases
+  <a class="reference internal nav-link" href="#reverse-image-search-improvement-30-points">
+   Reverse Image Search Improvement (30 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#documentation-40-points">
+   Documentation (40 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extra-credit-reverse-video-search-20-points">
+   Extra Credit: Reverse Video Search (20 points)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#elastic-search-environment-setup">
-     Elastic Search Environment Setup
+    <a class="reference internal nav-link" href="#videos-youtube-faces">
+     Videos - YouTube Faces
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#similarity-search">
+     Similarity Search
     </a>
    </li>
   </ul>
@@ -827,7 +805,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Your Programming Environment</h1>
+                <h1>Reverse Visual Search</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -838,59 +816,38 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computational-environments">
-   Computational Environments
+  <a class="reference internal nav-link" href="#lfw-dataset-0-points">
+   LFW Dataset (0 points)
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#google-colaboratory-option-1">
-     Google Colaboratory (Option 1)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#kaggle-option-2">
-     Kaggle (Option 2)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#on-your-own-machine-or-aws-ec2-option-3">
-     On your own machine or AWS EC2 (Option 3)
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#setup-your-virtual-environment-with-standard-python-recommended-for-aws-ec2">
-       Setup your virtual environment with standard Python (recommended for AWS EC2)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#setup-your-virtual-environment-with-anaconda-python">
-       Setup your virtual environment with Anaconda Python
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#git-github">
-   Git / Github
+  <a class="reference internal nav-link" href="#reverse-image-search-baseline-30-points">
+   Reverse Image Search - Baseline (30 points)
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-work-with-a-github-repository-in-colab">
-     How to work with a github repository in Colab
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#external-tools-and-databases">
-   External Tools and Databases
+  <a class="reference internal nav-link" href="#reverse-image-search-improvement-30-points">
+   Reverse Image Search Improvement (30 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#documentation-40-points">
+   Documentation (40 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extra-credit-reverse-video-search-20-points">
+   Extra Credit: Reverse Video Search (20 points)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#elastic-search-environment-setup">
-     Elastic Search Environment Setup
+    <a class="reference internal nav-link" href="#videos-youtube-faces">
+     Videos - YouTube Faces
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#similarity-search">
+     Similarity Search
     </a>
    </li>
   </ul>
@@ -904,105 +861,41 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="your-programming-environment">
-<h1>Your Programming Environment<a class="headerlink" href="#your-programming-environment" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="computational-environments">
-<h2>Computational Environments<a class="headerlink" href="#computational-environments" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="google-colaboratory-option-1">
-<h3>Google Colaboratory (Option 1)<a class="headerlink" href="#google-colaboratory-option-1" title="Permalink to this headline">¶</a></h3>
-<p>This course will be using Jupyter notebooks and we will be using the <strong>free</strong> CPU/GPU resources provided by <a class="reference external" href="https://colab.research.google.com">Google Colab</a>. The good news is that you have an account in Google Colab as most of you have your university gmail account. Please note if you login to colab with your university account you get to use the almost unlimited Gdrive storage facility. You will need Google Colab for all your projects so that you can demonstrate that your results can be replicated.  In addition Colab has many <a class="reference external" href="https://colab.research.google.com/notebooks/basic_features_overview.ipynb">features</a> that come handy.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="reverse-visual-search">
+<h1>Reverse Visual Search<a class="headerlink" href="#reverse-visual-search" title="Permalink to this headline">¶</a></h1>
+<p>In many domains we are interested in finding artifacts that are similar to a query artifact. In this project you are going to implement a system that can find artifacts when the queries are visual.  The type of queries you will test your system on are images of faces (30 points) and videos of people. You will also document your approach clearly showing advantages over the baseline.</p>
+<p>In the following we use the term person of interest (PoI) to indicate the person that we reverse search on images and videos. The PoI may be present together with others in the datasets but the system should be able to retrieve the images / videos that the PoI.  See bonus points for partial occlusion.</p>
+<div class="section" id="lfw-dataset-0-points">
+<h2>LFW Dataset (0 points)<a class="headerlink" href="#lfw-dataset-0-points" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://vis-www.cs.umass.edu/lfw/">This</a> dataset will be used for images.</p>
 </div>
-<div class="section" id="kaggle-option-2">
-<h3>Kaggle (Option 2)<a class="headerlink" href="#kaggle-option-2" title="Permalink to this headline">¶</a></h3>
-<p>You can use Kaggle as an alternative to Colab for all your projects. You guessed it right - all the projects in this course are in fact Kaggle competitions.  You can login with your gmail account. You can install by following the directions <a class="reference external" href="https://github.com/Kaggle/kaggle-api">here</a> the Kaggle command line interface (CLI).  Not only you will get to compete (your ranking relative to others does not matter per se), but as you improve your knowledge over time you can revisit these competitions and see how your score improves.  There is one catch though - Colab offers more GPU time and it comes with a 2nd tier of service for a few dollars per month. This can be handy for the heavier projects.</p>
+<div class="section" id="reverse-image-search-baseline-30-points">
+<h2>Reverse Image Search - Baseline (30 points)<a class="headerlink" href="#reverse-image-search-baseline-30-points" title="Permalink to this headline">¶</a></h2>
+<p>You will use <a class="reference external" href="https://aws.amazon.com/blogs/machine-learning/building-a-visual-search-application-with-amazon-sagemaker-and-amazon-es/">this</a> reverse image search system as an example system that you will replicate its functionality using libraries. Please do not use the AWS managed  services detailed in this system as you will exhaust your AWS credits. At the end of this task you have documented the components of a reverse image search system and have implemented a baseline system for faces that will be used to obtain a <strong>baseline performance for LFW</strong>.</p>
 </div>
-<div class="section" id="on-your-own-machine-or-aws-ec2-option-3">
-<h3>On your own machine or AWS EC2 (Option 3)<a class="headerlink" href="#on-your-own-machine-or-aws-ec2-option-3" title="Permalink to this headline">¶</a></h3>
-<p>Please note that the <a class="reference external" href="https://docs.aws.amazon.com/dlami/latest/devguide/ubuntu18-04.html">AWS Deep Learning AMIs</a> may not require installation or they may require update to the required version of TF/Pytorch.  Choose this option if you have money to spend but most if not all projects in this class will be able to be run in Google colab.</p>
-<p>You need to create an isolated Python environment dedicated to this course. This is recommended as it makes it possible to have a different environment for each project, with potentially different libraries and library versions</p>
-<div class="section" id="setup-your-virtual-environment-with-standard-python-recommended-for-aws-ec2">
-<h4>Setup your virtual environment with standard Python (recommended for AWS EC2)<a class="headerlink" href="#setup-your-virtual-environment-with-standard-python-recommended-for-aws-ec2" title="Permalink to this headline">¶</a></h4>
-<p>To install virtualenv</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">-</span><span class="n">U</span> <span class="n">virtualenv</span>
-</pre></div>
-</div>
-<p>In the root of your project install the virtual environment.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">my_project</span>
-<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">virtualenv</span> <span class="n">my_env</span>
-<span class="n">source</span> <span class="n">my_env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span> <span class="c1"># on Linux or macOS</span>
-<span class="o">.</span>\<span class="n">my_env</span>\<span class="n">Scripts</span>\<span class="n">activate</span>  <span class="c1"># on Windows</span>
-</pre></div>
-</div>
-<p>You can now install the packages/modules you need:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">jupyter</span> <span class="n">matplotlib</span> <span class="n">numpy</span> <span class="n">pandas</span> <span class="n">scipy</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span>
-</pre></div>
-</div>
-<p>If you created a virtualenv, you need to register it to Jupyter and give it a name:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">ipykernel</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">--</span><span class="n">name</span><span class="o">=</span><span class="n">python3</span>
-</pre></div>
-</div>
-<p>You are now able to use a jupyter or jupyterlab interface in your own laptop.</p>
-</div>
-<div class="section" id="setup-your-virtual-environment-with-anaconda-python">
-<h4>Setup your virtual environment with Anaconda Python<a class="headerlink" href="#setup-your-virtual-environment-with-anaconda-python" title="Permalink to this headline">¶</a></h4>
-<p>When using Anaconda:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ conda create -n p38 python=3.8 anaconda
-$ conda activate py38
-</pre></div>
-</div>
-<p>This creates a fresh Python 3.8 environment called <code class="docutils literal notranslate"><span class="pre">py38</span></code> (you can change the name if you want to), and it activates it. This environment contains all the scientific libraries that come with Anaconda. This includes all the libraries we will need (NumPy, Matplotlib, Pandas, Jupyter and a few others), except for TensorFlow, so let’s install it:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ conda install -n py38 -c conda-forge tensorflow
-$ conda install -n py38 -c conda-forge tensorflow-gpu (if you have a computer with an NVIDIA GPU which is a must have).
-</pre></div>
-</div>
-<p>This installs the latest version of TensorFlow available for Anaconda (which is usually <em>not</em> the latest TensorFlow version) in the <code class="docutils literal notranslate"><span class="pre">py37</span></code> environment (fetching it from the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> repository).</p>
-<p>pip install jupyter_contrib_nbextensions # with standard pip
-conda install -n py38 -c conda-forge jupyter_contrib_nbextensions # with anaconda</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-If you want to use the Jupyter extensions (optional, they are mainly useful to have nice tables of contents), you first need to install them:
-
-    $ jupyter contrib nbextension install --user
-
-Then you can activate an extension, such as the Table of Contents (2) extension:
-
-    $ jupyter nbextension enable toc2/main
-
-Okay! You can now start Jupyter, simply type:
-
-    $ jupyter notebook
-
-This should open up your browser, and you should see Jupyter&#39;s tree view, with the contents of the current directory. If your browser does not open automatically, visit [localhost:8888](http://localhost:8888/tree). Click on `index.ipynb` to get started!
-
-Note: you can also visit [http://localhost:8888/nbextensions](http://localhost:8888/nbextensions) to activate and configure Jupyter extensions.
-
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="git-github">
-<h2>Git / Github<a class="headerlink" href="#git-github" title="Permalink to this headline">¶</a></h2>
-<p>Git is the defacto standard when it comes to code version control. Learning basic git commands takes less than half an hour. However, to install git and understand the principle behind git, please go over Chapters 1 and 2 of the <a class="reference external" href="https://git-scm.com/book/en/v2">ProGit book</a>.</p>
-<p>As we have discussed in the class you need to be able to publish your work in Github so you need to create a Github account. Then you will use the git client for your operating system to interact with github and iterate on your projects.  You may be using Kaggle or Colab hosted notebooks but the underlying technology that powers such web-frontends when it comes to committing the code and seeing version numbers in your screen is git.</p>
-<p>In addition, almost no data science project starts in vacuum - there is almost always software that will be checked out of Github that you will need to modify.</p>
-<div class="section" id="how-to-work-with-a-github-repository-in-colab">
-<h3>How to work with a github repository in Colab<a class="headerlink" href="#how-to-work-with-a-github-repository-in-colab" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="reverse-image-search-improvement-30-points">
+<h2>Reverse Image Search Improvement (30 points)<a class="headerlink" href="#reverse-image-search-improvement-30-points" title="Permalink to this headline">¶</a></h2>
+<p>In this step you will need to:</p>
 <ol class="simple">
-<li><p>Fork the desired repository if this is not yours. For example go to <a class="reference external" href="https://github.com/ageron/handson-ml2">https://github.com/ageron/handson-ml2</a> and press the Fork button.</p></li>
-<li><p>After forking you should see the repository appearing in your account.</p></li>
-<li><p>Click the green button <code class="docutils literal notranslate"><span class="pre">Clone</span> <span class="pre">or</span> <span class="pre">dowload</span></code>, click Use HTTPS and copy the field with the location of the repo your forked.</p></li>
-<li><p>Go to <a class="reference external" href="https://colab.research.google.com/">https://colab.research.google.com/</a> and login with your NJIT gmail account</p></li>
-<li><p>In the window that pops up select Github. Accept the requested additional permission request for your NJIT gmail account. After Github and Colab connects you will be able to see the forked repo from your drop down menu of Repository. You will also see all the notebooks that start with a number e.g 01_the_machine_learning_landscape.ipynb. The number indicates the chapter number.</p></li>
-<li><p>Select to open the 01-*.ipynb notebook by clicking on it. You should see the notebook in your own colab account. Any change will be persisted in your github.</p></li>
-<li><p>Run the first cell. If you havent used Notebooks before, people with little programming experience will fall in love with them especially at this stage where you dont need to type new code. For a tutorial on how to use the notebooks in colab or in general open and run the notebook <a class="reference external" href="https://colab.research.google.com/notebooks/intro.ipynb">Welcome to Colaboratory</a>.</p></li>
+<li><p>Work inside a Deep Learning AMI Virtual Machine to deploy ES <a class="reference external" href="https://github.com/alexklibisz/elastiknn">elasticknn</a> <a class="reference external" href="https://www.semi.technology/developers/weaviate/current/index.html">Weaviate</a> or <a class="reference external" href="https://milvus.io/">Milvus</a>. See for example <a class="reference external" href="https://colab.research.google.com/github/tensorflow/io/blob/master/docs/tutorials/elasticsearch.ipynb#scrollTo=Tce3stUlHN0L">here</a> how ES can be used with python.</p></li>
+<li><p>You will need to beat the baseline performance you obtained earlier. To improve over the baseline you may want to look at networks such as FaceNet and others quoted <a class="reference external" href="https://hackernoon.com/6-best-open-source-projects-for-real-time-face-recognition-vr1w34x5">here</a> as well as try various similarity search algorithms.</p></li>
 </ol>
 </div>
+<div class="section" id="documentation-40-points">
+<h2>Documentation (40 points)<a class="headerlink" href="#documentation-40-points" title="Permalink to this headline">¶</a></h2>
+<p>Remember to document everything - setup instructions written in such a way so that someone else can replicate your experiments, methods and methodologies, how each method works eg. if you use FaceNet you need to explain Siamese Networks, experiments you made, explain the similarity search method you used etc.</p>
 </div>
-<div class="section" id="external-tools-and-databases">
-<h2>External Tools and Databases<a class="headerlink" href="#external-tools-and-databases" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="elastic-search-environment-setup">
-<h3>Elastic Search Environment Setup<a class="headerlink" href="#elastic-search-environment-setup" title="Permalink to this headline">¶</a></h3>
-<p>For projects work you may need to install ES. Please note you are responsible for setting up the environment. For example to set up ES in Win10 you may follow <a class="reference external" href="https://www.youtube.com/watch?v=hzaG2Uq60uw">this</a> guide but bear in mind that we cannot support any IT issues you may encounter in your laptop. You may decide to set up a development environment in AWS cloud 9 that is linux based for a small fee or taking advantage the free tier for <em>new</em> AWS accounts (which is not free if you need EC2 instances outside of what the free tier provides).</p>
+<div class="section" id="extra-credit-reverse-video-search-20-points">
+<h2>Extra Credit: Reverse Video Search (20 points)<a class="headerlink" href="#extra-credit-reverse-video-search-20-points" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="videos-youtube-faces">
+<h3>Videos - YouTube Faces<a class="headerlink" href="#videos-youtube-faces" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.cs.tau.ac.il/~wolf/ytfaces/">This</a> dataset will be used for videos. We will post an alternative link to a Gdrive download folder in the class slack. Please do not publish this link anywhere as we need to respect the dataset authors’ restrictions. For the description of each file please consult the dataset website.</p>
+</div>
+<div class="section" id="similarity-search">
+<h3>Similarity Search<a class="headerlink" href="#similarity-search" title="Permalink to this headline">¶</a></h3>
+<p>Here you will demonstrate that the system is able to produce the videos involving a person of interest from a query video that obviously contains the person of interest. The query video can be one of the videos in the database.</p>
+<p>Note that you may want to work with  <a class="reference external" href="https://www.kaggle.com/selfishgene/youtube-faces-with-facial-keypoints">a cleaner version</a> of the dataset that uses an alignment library as demonstrated below:</p>
+<p>Clearly explain your ideas on how best to obtain the embeddings for the query / database videos. Perhaps a straightforward way is to average the per frame embeddings but you can think of other methods. Your notebook must be able to return the videos of the person of interest that exists in the database (other than the query video). Ideas that can address problems with partial occlusions are also welcomed.</p>
 </div>
 </div>
 </div>
@@ -1020,7 +913,7 @@ Note: you can also visit [http://localhost:8888/nbextensions](http://localhost:8
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./aiml-common/resources/environment"
+            path: "./aiml-common/projects/visual-search"
         },
         predefinedOutput: true
     }
@@ -1032,19 +925,12 @@ Note: you can also visit [http://localhost:8888/nbextensions](http://localhost:8
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../../lectures/ml-math/calculus/_index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../../assignments/mle/mle_exponential_linear_regression.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Calculus</p>
+            <p class="prev-next-title">Maximum Likelihood Parameter Estimation</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="../../lectures/python/_index.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Learn Python</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             
