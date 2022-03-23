@@ -1,5 +1,5 @@
 ---
-title: Course Project
+title: Course Project Guidelines
 ---
 
 # Course Project Guidelines

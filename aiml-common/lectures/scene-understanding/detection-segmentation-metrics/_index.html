@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Agent-Environment Interface &#8212; Introduction to Artificial Intelligence</title>
+    <title>Object Detection and Semantic Segmentation Metrics &#8212; Introduction to Artificial Intelligence</title>
     
   <link href="../../../../_static/css/theme.css" rel="stylesheet">
   <link href="../../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,11 +53,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/ai-intro/agents/_index.html" />
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/scene-understanding/detection-segmentation-metrics/_index.html" />
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="ML Pipelines" href="../pipelines/_index.html" />
-    <link rel="prev" title="The four approaches towards AI" href="../systems-approach/_index.html" />
+    <link rel="next" title="Region-CNN (RCNN) Object Detection" href="../rcnn/_index.html" />
+    <link rel="prev" title="Object Detection" href="../object-detection/_index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -111,29 +113,29 @@ const thebe_selector_output = ".output, .cell_output"
   Introduction to AI
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../course-introduction/_index.html">
+  <a class="reference internal" href="../../ai-intro/course-introduction/_index.html">
    Course Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../data-science-360/_index.html">
+  <a class="reference internal" href="../../ai-intro/data-science-360/_index.html">
    Data Science 360
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../systems-approach/_index.html">
+  <a class="reference internal" href="../../ai-intro/systems-approach/_index.html">
    The four approaches towards AI
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ai-intro/agents/_index.html">
    Agent-Environment Interface
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../pipelines/_index.html">
+  <a class="reference internal" href="../../ai-intro/pipelines/_index.html">
    Pipelines
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -278,39 +280,39 @@ const thebe_selector_output = ".output, .cell_output"
   Scene Understanding
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../scene-understanding/scene-understanding-intro/_index.html">
+  <a class="reference internal" href="../scene-understanding-intro/_index.html">
    Introduction to Scene Understanding
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../scene-understanding/feature-extraction-resnet/_index.html">
+  <a class="reference internal" href="../feature-extraction-resnet/_index.html">
    Feature Extraction via Residual Networks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../scene-understanding/object-detection/_index.html">
+  <a class="reference internal" href="../object-detection/_index.html">
    Object Detection
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../scene-understanding/detection-segmentation-metrics/_index.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Object Detection and Semantic Segmentation Metrics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../scene-understanding/rcnn/_index.html">
+  <a class="reference internal" href="../rcnn/_index.html">
    Region-CNN (RCNN) Object Detection
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../scene-understanding/faster-rcnn/_index.html">
+  <a class="reference internal" href="../faster-rcnn/_index.html">
    Faster RCNN Object Detection
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../scene-understanding/object-detection/detection-segmentation-workshop/_index.html">
+  <a class="reference internal" href="../object-detection/detection-segmentation-workshop/_index.html">
    Object Detection and Semantic Segmentation Workshop
   </a>
  </li>
@@ -723,7 +725,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../../_sources/aiml-common/lectures/ai-intro/agents/_index.md"><button type="button"
+        <a class="dropdown-buttons" href="../../../../_sources/aiml-common/lectures/scene-understanding/detection-segmentation-metrics/_index.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -743,7 +745,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/ai-intro/agents/_index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/scene-understanding/detection-segmentation-metrics/_index.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -769,36 +771,24 @@ const thebe_selector_output = ".output, .cell_output"
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Agent-Environment Interface
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-the-average-precision-ap-metric">
+   What is the Average Precision (AP) metric
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#architectures">
-   Architectures
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rational-agent-architecture">
-     Rational Agent Architecture
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#learning-agent-architecture">
-     Learning Agent Architecture
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-architecture-of-serf-driving-cars">
-   The  architecture of serf-driving cars
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-practical-example">
+   A practical example
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#examples-of-ai-agents">
-   Examples of AI agents
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mean-ap-map">
+   Mean AP (mAP)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ar">
+   AR
   </a>
  </li>
 </ul>
@@ -811,7 +801,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Agent-Environment Interface</h1>
+                <h1>Object Detection and Semantic Segmentation Metrics</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -821,36 +811,24 @@ const thebe_selector_output = ".output, .cell_output"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Agent-Environment Interface
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-the-average-precision-ap-metric">
+   What is the Average Precision (AP) metric
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#architectures">
-   Architectures
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rational-agent-architecture">
-     Rational Agent Architecture
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#learning-agent-architecture">
-     Learning Agent Architecture
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-architecture-of-serf-driving-cars">
-   The  architecture of serf-driving cars
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-practical-example">
+   A practical example
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#examples-of-ai-agents">
-   Examples of AI agents
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mean-ap-map">
+   Mean AP (mAP)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ar">
+   AR
   </a>
  </li>
 </ul>
@@ -862,66 +840,60 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="section" id="agent-environment-interface">
-<h1>Agent-Environment Interface<a class="headerlink" href="#agent-environment-interface" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><p>An agent is a computer system that is situated in some environment, and that is capable of autonomous action in this environment in order to meet its design objectives.</p>
-</div></blockquote>
-<p>In general sensor data are converted via the agent function (that is implemented via a <em>program</em>) into actions as shown below.</p>
-<p><img alt="agent-environment" src="../../../../_images/agent-environment.png" />
-<em>General Agent-Environment Interface</em></p>
-<p>The two most important agent architectures that we will deal with in this course are the utility and learning-based agents architectures. To start with we recognize that most of the problems we will face as agent designers are for agents operating in environments that are:</p>
-<ul class="simple">
-<li><p><strong>Partially Observed (PO).</strong> This means that we cant see all the variables that constitute the state and we need to maintain an internal <em>belief</em> of the state variables that we cant perceive.</p></li>
-<li><p><strong>Stochastic.</strong> This means that the environment state is affected by random events and can not be determined by the previous state and the actions of the agent (which in this case we are talking about <strong>deterministic</strong> environments). Such probabilistic characterization of the environment state is the norm in many settings such as as robotics, self-driving cars etc.</p></li>
-<li><p><strong>Sequential</strong> As compared to <strong>episodic</strong>, in sequential environments actions now can have long term effects into the future.</p></li>
-<li><p><strong>Dynamic</strong> In this setting, the environment state  changes all the time, even while the agent is taking the action based on the sequence of percepts up to this point in time. In most settings the environments we deal will not be <strong>static</strong>.</p></li>
-<li><p><strong>Continuous</strong> When the variables that constitute the environment state are defined in continuous domains. Time is usually considered a special variable and we may have environments where the time variable is <strong>discrete</strong> while other variables are continuous.</p></li>
-<li><p><strong>Known</strong> This refers to the knowledge of the agent rather than the environment. In most instances we are dealing with environments where there is a set of known rules that govern the state transition. In driving for example, we know what steering does.</p></li>
-</ul>
-</div>
-<div class="section" id="architectures">
-<h1>Architectures<a class="headerlink" href="#architectures" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="rational-agent-architecture">
-<h2>Rational Agent Architecture<a class="headerlink" href="#rational-agent-architecture" title="Permalink to this headline">¶</a></h2>
-<p><img alt="utility-based-agent" src="../../../../_images/utility-based-agent.png" /></p>
-<p>In the rational agent architecture we meet three key concepts:</p>
-<ol class="simple">
-<li><p>The need for the agent to keep internally the environment state (in probabilistic terms a <em>belief</em>). This is needed due to the the partially observed environment the agent is interfacing with.</p></li>
-<li><p>The presence of a <em>world model</em> that helps the agent to update its belief.</p></li>
-<li><p>The presence of a utility function that the agent can use to produce the value (happiness) when its action transitions the environment to a new state. Obvious the agent will try to optimize its actions in what we earlier described stochastic environments and therefore it will try to maximize the value (hapiness) on average (strictly in <em>expectation</em>) where the average is taken across the distribution of all possible states across time.</p></li>
-</ol>
-</div>
-<div class="section" id="learning-agent-architecture">
-<h2>Learning Agent Architecture<a class="headerlink" href="#learning-agent-architecture" title="Permalink to this headline">¶</a></h2>
-<p><img alt="learning-agent" src="../../../../_images/learning-agent.png" /></p>
-<p>The learning agent architecture builds on top of the rational agent (the performance element in the figure below), additional functions that:</p>
-<ol class="simple">
-<li><p>Embeds a <em>learner</em> that learns the various models needed by the rational agent as well as allowing the rational agent to operate on unknown environments. In this respect it learns the world model,  some elements of the utility function itself or the desirability of each actions it takes. To enable learning, the rational agent sends training data to the learner.</p></li>
-<li><p>Introduces a <em>critic</em> that transmits a positive or negative reward to the learner based on its own view of how the agent is doing. The learner can modify these models to make the rational agent perform better in the future.</p></li>
-<li><p>Introduces the <em>problem generator</em> that can change the problem statement of the rational agent. Obviously the expected utility objective will not change but the utility function itself may in fact change to lead the agent to perform more exploration (increase its risk) in its environment.</p></li>
-</ol>
-<p>We will see in Deep Reinforcement Learning that this architecture is able to accommodate such end to end learning approach. In that setting the critic is part of the environment - see <a class="reference external" href="https://blogs.unity3d.com/2018/06/26/solving-sparse-reward-tasks-with-curiosity/">Solving sparse-reward tasks with Curiosity</a> for an example where the critic is inside the agent generating intrinsic rewards.</p>
-</div>
-</div>
-<div class="section" id="the-architecture-of-serf-driving-cars">
-<h1>The  architecture of serf-driving cars<a class="headerlink" href="#the-architecture-of-serf-driving-cars" title="Permalink to this headline">¶</a></h1>
-<p>To avoid wondering around the various disconnected use cases, we need to pick a domain that we can use as an application theme. Given the importance of the <strong>mission critical</strong> industries in the economy of every country, in this course we have selected <strong>robotics / self-driving cars</strong>. This domain requires the design of advanced agents that perceive the environment using noisy sensors, make decisions under uncertainty, actuate a host of electronics to execute decisions, communicate with humans in natural language or be able to sense driver psychological state and many more.</p>
-<p><img alt="carla-system" src="../../../../_images/carla-system.png" /></p>
-<!-- ## Solution space
-
-For each environment and each architecture there is a number of solutions that may be appropriate. The following figure presents the environment type to algorithm mapping that we will cover in this book. 
-
-![agents-environment-taxonomy](images/agents-environment-taxonomy.png) -->
-</div>
-<div class="section" id="examples-of-ai-agents">
-<h1>Examples of AI agents<a class="headerlink" href="#examples-of-ai-agents" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="object-detection-and-semantic-segmentation-metrics">
+<h1>Object Detection and Semantic Segmentation Metrics<a class="headerlink" href="#object-detection-and-semantic-segmentation-metrics" title="Permalink to this headline">¶</a></h1>
+<p>NOTE: The following example is based on  <a class="reference external" href="https://www.mdpi.com/2079-9292/10/3/279">here</a> and <a class="reference external" href="https://github.com/rafaelpadilla/review_object_detection_metrics">its corresponding implementation</a></p>
+<p>In this section we provide some intuition as to why we need additional metrics for detection and segmentation of objects.  As shown below such metrics are routinely used to compare various networks and approaches and manifest the progress that was made in the field over the last few years.</p>
+<p><img alt="object-detection-performance" src="../../../../_images/object-detection-performance.png" />
+<em>Detection performance</em></p>
+<p>The above figure is dated but its indicative of the relative effort required to improve performance in MS COCO which is one of the most challenging datasets. See [here] for the latest leaderboard.  You can expand each entry and you can then click on the corresponding method that is behind the result. There are also per class benchmarks if your detection problem involves only a subset of the classes of MS COCO.</p>
+<div class="section" id="what-is-the-average-precision-ap-metric">
+<h2>What is the Average Precision (AP) metric<a class="headerlink" href="#what-is-the-average-precision-ap-metric" title="Permalink to this headline">¶</a></h2>
+<p>The average precision is introduced in the next two videos. It is also calculated using a small detection example in a subsequent section.</p>
 <div class="video_wrapper" style="">
-<iframe allowfullscreen="true" src="https://www.youtube.com/embed/N5vEca47tMw" style="border: 0; height: 345px; width: 560px">
-</iframe></div><p><em>Industrial automation</em></p>
-<div class="video_wrapper" style="">
-<iframe allowfullscreen="true" src="https://www.youtube.com/embed/dE3-dPqFnI8" style="border: 0; height: 345px; width: 560px">
-</iframe></div><p><em>Real Carla self-steering experiment</em></p>
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/FUg6c7Ks07o" style="border: 0; height: 345px; width: 560px">
+</iframe></div><div class="video_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/0RLOJHt74Zs" style="border: 0; height: 345px; width: 560px">
+</iframe></div><p>The AP is the approximation of the Area Under the Curve (AUC). This approximation involves interpolation that eliminates the noisy Precision vs Recall curve - effectively converting this curve to a monotonic curve. This is shown next.</p>
+</div>
+<div class="section" id="a-practical-example">
+<h2>A practical example<a class="headerlink" href="#a-practical-example" title="Permalink to this headline">¶</a></h2>
+<p>Considering the set of 12 images in the figure below:</p>
+<p><img alt="" src="../../../../_images/toy_example_mosaic.png" /></p>
+<p>Each image, except (a), (g), and (j), has at least one target object of the class <em>cat</em>, whose locations are limited by the green rectangles.
+There is a total of 12 target objects limited by the green boxes. Images (b), (e), and (f) have two ground-truth samples of the target class.
+An object detector predicted 12 objects represented by the red rectangles (labeled with letters <em>A</em> to <em>L</em>) and their associated confidence levels are represented in percentages. Images (a), (g), and (j) are expected to have no detection. Conversely, images (b), (e), and (f) have two ground-truth bounding boxes.</p>
+<p>To evaluate the precision and recall of the 12 detections it is necessary to establish an IOU threshold <em>t</em>, which will classify each detection as TP or FP.
+In this example, let us first consider as TP the detections with <em>IOU &gt; 50%</em>, that is <em>t=0.5</em>. We start by sorting the entries in descenting order of the confidence threshold.</p>
+<p><img alt="" src="../../../../_images/table_1_toyexample.png" /></p>
+<p>As stated before, AP is a metric to evaluate precision and recall in different confidence values. Thus, it is necessary to count the amount of TP and FP classifications given different confidence levels.</p>
+<p>By choosing a more restrictive IOU threshold, different precision x recall values can be obtained. The following table computes the precision and recall values with a more strict IOU threshold of <em>t = 0.75</em>. By that, it is noticeable the occurrence of more FP detections, reducing the recall.</p>
+<p><img alt="" src="../../../../_images/table_2_toyexample.png" /></p>
+<p>Graphical representations of the precision x values presented in both cases <em>t= 0.5</em> and <em>t=0.75</em> are shown below:</p>
+<p><img alt="" src="../../../../_images/precision_recall_curve_toyexample.png" /></p>
+<p>By comparing both curves, one may note that for this example:</p>
+<ol class="simple">
+<li><p>With a less restrictive IOU threshold (<em>t=0.5</em>), higher recall values can be obtained with the highest precision. In other words, the detector can retrieve about <em>66.5%</em> of the total ground truths without any miss detection.</p></li>
+<li><p>Using <em>t=0.75</em>, the detector is more sensitive with different confidence values. This is explained by the amount of ups and downs of the curve.</p></li>
+<li><p>Regardless the IOU threshold applied, this detector can never retrieve <em>100%</em> of the ground truths (recall = 1). This is due to the fact that the algorithm did not predict any bounding box for one of the ground truths in image (e).</p></li>
+</ol>
+<p>Different methods can be applied to measure the AUC of the precision x recall curve. With the so-called <em>N-point interpolation</em> we calculate the interpolated AP values using <span class="math notranslate nohighlight">\(N\)</span> recall reference points - for example for <span class="math notranslate nohighlight">\(N=11\)</span>:</p>
+<p>$<span class="math notranslate nohighlight">\([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]\)</span>$,</p>
+<p>In the <em>All-point interpolation</em> approach, all recall points are considered. These interpolation approaches result in different plots as shown below:</p>
+<p><img alt="" src="../../../../_images/interpolations_toyexample.png" />“</p>
+<p>When an IOU threshold <em>t=0.5</em> was applied (plots of the first row in image above), the 11-point interpolation method obtained <em>AP=88.64%</em> while the all-point interpolation method improved the results a little, reaching <em>AP=89.58%</em>. Similarly, for an IOU threshold of <em>t=0.75%</em> (plots of the second row in image above), the 11-point interpolation method obtained <em>AP=49.24%</em> and the all-point interpolation <em>AP=50.97%</em>.</p>
+<p>In both cases, the all-point interpolation approach considers larger areas above the curve into the summation and consequently obtains higher results.
+When a lower IOU threshold was considered, the AP was reduced drastically in both interpolation approaches.</p>
+<p>Please note that MS COCO AP results are reported with interpolation over <span class="math notranslate nohighlight">\(N=101\)</span> points.</p>
+</div>
+<div class="section" id="mean-ap-map">
+<h2>Mean AP (mAP)<a class="headerlink" href="#mean-ap-map" title="Permalink to this headline">¶</a></h2>
+<p>In classification problems with multiple classes the mean AP is simply the sample mean of <span class="math notranslate nohighlight">\(AP(c), c \in \{1, \dots, C\}\)</span> across the C classes.</p>
+</div>
+<div class="section" id="ar">
+<h2>AR<a class="headerlink" href="#ar" title="Permalink to this headline">¶</a></h2>
+<p>There is corresponding Average Recall (AR) metric as well and the linked reference in the beginning of this section cover the</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -937,7 +909,7 @@ For each environment and each architecture there is a number of solutions that m
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./aiml-common/lectures/ai-intro/agents"
+            path: "./aiml-common/lectures/scene-understanding/detection-segmentation-metrics"
         },
         predefinedOutput: true
     }
@@ -949,17 +921,17 @@ For each environment and each architecture there is a number of solutions that m
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../systems-approach/_index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../object-detection/_index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">The four approaches towards AI</p>
+            <p class="prev-next-title">Object Detection</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../pipelines/_index.html" title="next page">
+    <a class='right-next' id="next-link" href="../rcnn/_index.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">ML Pipelines</p>
+        <p class="prev-next-title">Region-CNN (RCNN) Object Detection</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
