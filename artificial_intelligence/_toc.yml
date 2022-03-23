@@ -59,10 +59,10 @@ parts:
     - file: aiml-common/lectures/scene-understanding/scene-understanding-intro/_index.md
     - file: aiml-common/lectures/scene-understanding/feature-extraction-resnet/_index.md
     - file: aiml-common/lectures/scene-understanding/object-detection/_index.md
-    - file: aiml-common/lectures/scene-understanding/object-detection/detection-segmentation-workshop/_index.md
-    - file: aiml-common/lectures/scene-understanding/object-detection/detection-segmentation-metrics/_index.md  
+    - file: aiml-common/lectures/scene-understanding/detection-segmentation-metrics/_index.md  
     - file: aiml-common/lectures/scene-understanding/rcnn/_index.md    
-    - file: aiml-common/lectures/scene-understanding/faster-rcnn/_index.md      
+    - file: aiml-common/lectures/scene-understanding/faster-rcnn/_index.md
+    - file: aiml-common/lectures/scene-understanding/object-detection/detection-segmentation-workshop/_index.md
    
   - caption: Probabilistic Reasoning
     chapters:    
