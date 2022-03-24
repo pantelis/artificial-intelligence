@@ -15,3 +15,4 @@ pandas
 jupyter
 jupyterlab
 jupyter-dash
+tensorflow
