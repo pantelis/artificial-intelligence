@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Programming Environment &#8212; Introduction to Artificial Intelligence</title>
+    <title>Omniverse Container Terminal Oracle Networks &#8212; Introduction to Artificial Intelligence</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet">
   <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,11 +53,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/resources/environment/_index.html" />
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/projects/container-terminal-automation/container-terminal-automation.html" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Learn Python" href="../../lectures/python/_index.html" />
-    <link rel="prev" title="Calculus" href="../../lectures/ml-math/calculus/_index.html" />
+    <link rel="prev" title="Course Project Guidelines" href="../_index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -644,9 +643,9 @@ const thebe_selector_output = ".output, .cell_output"
   Resources
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../resources/environment/_index.html">
    Your Programming Environment
   </a>
  </li>
@@ -666,7 +665,7 @@ const thebe_selector_output = ".output, .cell_output"
   Assignments &amp; Projects
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../assignments/probability/probability-assignment-2/probability-assignment-2.html">
    Probability Assigmment
@@ -678,17 +677,17 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../projects/visual-search/_index.html">
+  <a class="reference internal" href="../visual-search/_index.html">
    Reverse Visual Search
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../projects/_index.html">
+  <a class="reference internal" href="../_index.html">
    Course Project Guidelines
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../projects/container-terminal-automation/container-terminal-automation.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Omniverse Container Terminal Oracle Networks
   </a>
  </li>
@@ -733,7 +732,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/aiml-common/resources/environment/_index.md"><button type="button"
+        <a class="dropdown-buttons" href="../../../_sources/aiml-common/projects/container-terminal-automation/container-terminal-automation.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -753,7 +752,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/resources/environment/_index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/projects/container-terminal-automation/container-terminal-automation.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -780,62 +779,44 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computational-environments">
-   Computational Environments
+  <a class="reference internal nav-link" href="#step-1-setup">
+   Step 1: Setup
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#google-colaboratory-option-1">
-     Google Colaboratory (Option 1)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#kaggle-option-2">
-     Kaggle (Option 2)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#on-your-own-machine-or-aws-ec2-option-3">
-     On your own machine or AWS EC2 (Option 3)
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#setup-your-virtual-environment-with-standard-python-recommended-for-aws-ec2">
-       Setup your virtual environment with standard Python (recommended for AWS EC2)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#setup-your-virtual-environment-with-anaconda-python">
-       Setup your virtual environment with Anaconda Python
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#git-github">
-   Git / Github
+  <a class="reference internal nav-link" href="#step-2-virtual-world-scene">
+   Step 2: Virtual World (Scene)
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-work-with-a-github-repository-in-colab">
-     How to work with a github repository in Colab
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#external-tools-and-databases">
-   External Tools and Databases
+  <a class="reference internal nav-link" href="#step-3-connect-a-real-camera-to-isaac">
+   Step 3: Connect a real camera To Isaac
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#elastic-search-environment-setup">
-     Elastic Search Environment Setup
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-3-alternative-virtual-camera">
+   Step 3 alternative: Virtual camera
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-4-learn-to-detect-the-objects">
+   Step 4: Learn to detect the objects
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-5-digital-twin-update">
+   Step 5: Digital Twin Update
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-5-alternative-digital-twin-update">
+   Step 5 alternative: Digital Twin Update
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-6-smart-contract">
+   Step 6: Smart Contract
+  </a>
  </li>
 </ul>
 
@@ -847,7 +828,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Your Programming Environment</h1>
+                <h1>Omniverse Container Terminal Oracle Networks</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -858,62 +839,44 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computational-environments">
-   Computational Environments
+  <a class="reference internal nav-link" href="#step-1-setup">
+   Step 1: Setup
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#google-colaboratory-option-1">
-     Google Colaboratory (Option 1)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#kaggle-option-2">
-     Kaggle (Option 2)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#on-your-own-machine-or-aws-ec2-option-3">
-     On your own machine or AWS EC2 (Option 3)
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#setup-your-virtual-environment-with-standard-python-recommended-for-aws-ec2">
-       Setup your virtual environment with standard Python (recommended for AWS EC2)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#setup-your-virtual-environment-with-anaconda-python">
-       Setup your virtual environment with Anaconda Python
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#git-github">
-   Git / Github
+  <a class="reference internal nav-link" href="#step-2-virtual-world-scene">
+   Step 2: Virtual World (Scene)
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-work-with-a-github-repository-in-colab">
-     How to work with a github repository in Colab
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#external-tools-and-databases">
-   External Tools and Databases
+  <a class="reference internal nav-link" href="#step-3-connect-a-real-camera-to-isaac">
+   Step 3: Connect a real camera To Isaac
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#elastic-search-environment-setup">
-     Elastic Search Environment Setup
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-3-alternative-virtual-camera">
+   Step 3 alternative: Virtual camera
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-4-learn-to-detect-the-objects">
+   Step 4: Learn to detect the objects
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-5-digital-twin-update">
+   Step 5: Digital Twin Update
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-5-alternative-digital-twin-update">
+   Step 5 alternative: Digital Twin Update
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-6-smart-contract">
+   Step 6: Smart Contract
+  </a>
  </li>
 </ul>
 
@@ -924,106 +887,48 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="your-programming-environment">
-<h1>Your Programming Environment<a class="headerlink" href="#your-programming-environment" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="computational-environments">
-<h2>Computational Environments<a class="headerlink" href="#computational-environments" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="google-colaboratory-option-1">
-<h3>Google Colaboratory (Option 1)<a class="headerlink" href="#google-colaboratory-option-1" title="Permalink to this headline">¶</a></h3>
-<p>This course will be using Jupyter notebooks and we will be using the <strong>free</strong> CPU/GPU resources provided by <a class="reference external" href="https://colab.research.google.com">Google Colab</a>. The good news is that you have an account in Google Colab as most of you have your university gmail account. Please note if you login to colab with your university account you get to use the almost unlimited Gdrive storage facility. You will need Google Colab for all your projects so that you can demonstrate that your results can be replicated.  In addition Colab has many <a class="reference external" href="https://colab.research.google.com/notebooks/basic_features_overview.ipynb">features</a> that come handy.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="omniverse-container-terminal-oracle-networks">
+<h1>Omniverse Container Terminal Oracle Networks<a class="headerlink" href="#omniverse-container-terminal-oracle-networks" title="Permalink to this headline">¶</a></h1>
+<p><img alt="" src="../../../_images/port.png" /></p>
+<p>In the last few years the industry of global logistics has been elevated to a <em>mission critical</em> status.  One of the main areas that urgently requires improvement, especially in the US, is <a class="reference external" href="https://www.elementai.com/news/2019/ai-and-the-future-of-port-automation">Container Terminal Automation</a>.</p>
+<div class="video_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/HkauiGYT6YY" style="border: 0; height: 345px; width: 560px">
+</iframe></div><p>In addition, the area of insuring supply chains, is posed for a shakeup as blockchain powered smart contracts are <a class="reference external" href="https://blog.chain.link/blockchain-insurance/">disrupting the supply chain</a></p>
+<p>In this project you will have the opportunity to study the world modeling ability of integrating perception and AI modeling of a smart port that is offering data feeds to oracle networks.</p>
+<div class="video_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/HiuvsLNCg-Y" style="border: 0; height: 345px; width: 560px">
+</iframe></div><p>This project is a PoC that offers the following features to the problem of automating the state update of digital twins from sensing and prognosticating smart contract off-network data.</p>
+<div class="section" id="step-1-setup">
+<h2>Step 1: Setup<a class="headerlink" href="#step-1-setup" title="Permalink to this headline">¶</a></h2>
+<p>The environment that will be used for modeling of a smart port is Omniverse. Each student must use an RTX card and an Ubuntu OS (duel boot VM or any GPU passthrough is OK).  Consult <a class="reference external" href="https://github.com/pantelis-classes/omniverse-ai">this repo</a> for the setup.</p>
 </div>
-<div class="section" id="kaggle-option-2">
-<h3>Kaggle (Option 2)<a class="headerlink" href="#kaggle-option-2" title="Permalink to this headline">¶</a></h3>
-<p>You can use Kaggle as an alternative to Colab for all your projects. You guessed it right - all the projects in this course are in fact Kaggle competitions.  You can login with your gmail account. You can install by following the directions <a class="reference external" href="https://github.com/Kaggle/kaggle-api">here</a> the Kaggle command line interface (CLI).  Not only you will get to compete (your ranking relative to others does not matter per se), but as you improve your knowledge over time you can revisit these competitions and see how your score improves.  There is one catch though - Colab offers more GPU time and it comes with a 2nd tier of service for a few dollars per month. This can be handy for the heavier projects.</p>
+<div class="section" id="step-2-virtual-world-scene">
+<h2>Step 2: Virtual World (Scene)<a class="headerlink" href="#step-2-virtual-world-scene" title="Permalink to this headline">¶</a></h2>
+<p>Create a simple world that consists of a flat docking area and several objects of interest eg 3D models of containers. It is OK to use simpler 3D objects such as <a class="reference external" href="https://medium.com/&#64;ringlayer/cardboard-box-detection-using-retinanet-keras-5d4f331d9d15">shipping boxes</a>.</p>
 </div>
-<div class="section" id="on-your-own-machine-or-aws-ec2-option-3">
-<h3>On your own machine or AWS EC2 (Option 3)<a class="headerlink" href="#on-your-own-machine-or-aws-ec2-option-3" title="Permalink to this headline">¶</a></h3>
-<p>Please note that the <a class="reference external" href="https://docs.aws.amazon.com/dlami/latest/devguide/ubuntu18-04.html">AWS Deep Learning AMIs</a> may not require installation or they may require update to the required version of TF/Pytorch.  Choose this option if you have money to spend but most if not all projects in this class will be able to be run in Google colab.</p>
-<p>You need to create an isolated Python environment dedicated to this course. This is recommended as it makes it possible to have a different environment for each project, with potentially different libraries and library versions</p>
-<div class="section" id="setup-your-virtual-environment-with-standard-python-recommended-for-aws-ec2">
-<h4>Setup your virtual environment with standard Python (recommended for AWS EC2)<a class="headerlink" href="#setup-your-virtual-environment-with-standard-python-recommended-for-aws-ec2" title="Permalink to this headline">¶</a></h4>
-<p>To install virtualenv</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">-</span><span class="n">U</span> <span class="n">virtualenv</span>
-</pre></div>
+<div class="section" id="step-3-connect-a-real-camera-to-isaac">
+<h2>Step 3: Connect a real camera To Isaac<a class="headerlink" href="#step-3-connect-a-real-camera-to-isaac" title="Permalink to this headline">¶</a></h2>
+<p>You can connect natively or via the ROS2 Bridge.  Any document camera or webcam or IP camera will be sufficient for this task. At the end of this task the video frames are captured by IsaaC.</p>
 </div>
-<p>In the root of your project install the virtual environment.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">my_project</span>
-<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">virtualenv</span> <span class="n">my_env</span>
-<span class="n">source</span> <span class="n">my_env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span> <span class="c1"># on Linux or macOS</span>
-<span class="o">.</span>\<span class="n">my_env</span>\<span class="n">Scripts</span>\<span class="n">activate</span>  <span class="c1"># on Windows</span>
-</pre></div>
+<div class="section" id="step-3-alternative-virtual-camera">
+<h2>Step 3 alternative: Virtual camera<a class="headerlink" href="#step-3-alternative-virtual-camera" title="Permalink to this headline">¶</a></h2>
+<p>You can create a virtual camera that will oversee the 3D scene with the objects you created in step 2.</p>
 </div>
-<p>You can now install the packages/modules you need:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">jupyter</span> <span class="n">matplotlib</span> <span class="n">numpy</span> <span class="n">pandas</span> <span class="n">scipy</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span>
-</pre></div>
+<div class="section" id="step-4-learn-to-detect-the-objects">
+<h2>Step 4: Learn to detect the objects<a class="headerlink" href="#step-4-learn-to-detect-the-objects" title="Permalink to this headline">¶</a></h2>
+<p>In the case of 3D models of shipping containers this is largely a replication of <a class="reference external" href="https://github.com/pantelis-classes/omniverse-ai">learning in simulated worlds</a>. In the case of boxes you need to train a network that will detect them - the dataset is already available.</p>
 </div>
-<p>If you created a virtualenv, you need to register it to Jupyter and give it a name:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">ipykernel</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">--</span><span class="n">name</span><span class="o">=</span><span class="n">python3</span>
-</pre></div>
+<div class="section" id="step-5-digital-twin-update">
+<h2>Step 5: Digital Twin Update<a class="headerlink" href="#step-5-digital-twin-update" title="Permalink to this headline">¶</a></h2>
+<p>In this step you need to show how a real world physical movement of a real object can update the digital twin of the object in IsaaC. You are free to use markers to detect the relative location of the physical object.</p>
 </div>
-<p>You are now able to use a jupyter or jupyterlab interface in your own laptop.</p>
+<div class="section" id="step-5-alternative-digital-twin-update">
+<h2>Step 5 alternative: Digital Twin Update<a class="headerlink" href="#step-5-alternative-digital-twin-update" title="Permalink to this headline">¶</a></h2>
+<p>In this step you write a Python script that can change the location or the number of objects you have in the scene.</p>
 </div>
-<div class="section" id="setup-your-virtual-environment-with-anaconda-python">
-<h4>Setup your virtual environment with Anaconda Python<a class="headerlink" href="#setup-your-virtual-environment-with-anaconda-python" title="Permalink to this headline">¶</a></h4>
-<p>When using Anaconda:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ conda create -n p38 python=3.8 anaconda
-$ conda activate py38
-</pre></div>
-</div>
-<p>This creates a fresh Python 3.8 environment called <code class="docutils literal notranslate"><span class="pre">py38</span></code> (you can change the name if you want to), and it activates it. This environment contains all the scientific libraries that come with Anaconda. This includes all the libraries we will need (NumPy, Matplotlib, Pandas, Jupyter and a few others), except for TensorFlow, so let’s install it:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ conda install -n py38 -c conda-forge tensorflow
-$ conda install -n py38 -c conda-forge tensorflow-gpu (if you have a computer with an NVIDIA GPU which is a must have).
-</pre></div>
-</div>
-<p>This installs the latest version of TensorFlow available for Anaconda (which is usually <em>not</em> the latest TensorFlow version) in the <code class="docutils literal notranslate"><span class="pre">py37</span></code> environment (fetching it from the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> repository).</p>
-<p>pip install jupyter_contrib_nbextensions # with standard pip
-conda install -n py38 -c conda-forge jupyter_contrib_nbextensions # with anaconda</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-If you want to use the Jupyter extensions (optional, they are mainly useful to have nice tables of contents), you first need to install them:
-
-    $ jupyter contrib nbextension install --user
-
-Then you can activate an extension, such as the Table of Contents (2) extension:
-
-    $ jupyter nbextension enable toc2/main
-
-Okay! You can now start Jupyter, simply type:
-
-    $ jupyter notebook
-
-This should open up your browser, and you should see Jupyter&#39;s tree view, with the contents of the current directory. If your browser does not open automatically, visit [localhost:8888](http://localhost:8888/tree). Click on `index.ipynb` to get started!
-
-Note: you can also visit [http://localhost:8888/nbextensions](http://localhost:8888/nbextensions) to activate and configure Jupyter extensions.
-
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="git-github">
-<h2>Git / Github<a class="headerlink" href="#git-github" title="Permalink to this headline">¶</a></h2>
-<p>Git is the defacto standard when it comes to code version control. Learning basic git commands takes less than half an hour. However, to install git and understand the principle behind git, please go over Chapters 1 and 2 of the <a class="reference external" href="https://git-scm.com/book/en/v2">ProGit book</a>.</p>
-<p>As we have discussed in the class you need to be able to publish your work in Github so you need to create a Github account. Then you will use the git client for your operating system to interact with github and iterate on your projects.  You may be using Kaggle or Colab hosted notebooks but the underlying technology that powers such web-frontends when it comes to committing the code and seeing version numbers in your screen is git.</p>
-<p>In addition, almost no data science project starts in vacuum - there is almost always software that will be checked out of Github that you will need to modify.</p>
-<div class="section" id="how-to-work-with-a-github-repository-in-colab">
-<h3>How to work with a github repository in Colab<a class="headerlink" href="#how-to-work-with-a-github-repository-in-colab" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>Fork the desired repository if this is not yours. For example go to <a class="reference external" href="https://github.com/ageron/handson-ml2">https://github.com/ageron/handson-ml2</a> and press the Fork button.</p></li>
-<li><p>After forking you should see the repository appearing in your account.</p></li>
-<li><p>Click the green button <code class="docutils literal notranslate"><span class="pre">Clone</span> <span class="pre">or</span> <span class="pre">dowload</span></code>, click Use HTTPS and copy the field with the location of the repo your forked.</p></li>
-<li><p>Go to <a class="reference external" href="https://colab.research.google.com/">https://colab.research.google.com/</a> and login with your NJIT gmail account</p></li>
-<li><p>In the window that pops up select Github. Accept the requested additional permission request for your NJIT gmail account. After Github and Colab connects you will be able to see the forked repo from your drop down menu of Repository. You will also see all the notebooks that start with a number e.g 01_the_machine_learning_landscape.ipynb. The number indicates the chapter number.</p></li>
-<li><p>Select to open the 01-*.ipynb notebook by clicking on it. You should see the notebook in your own colab account. Any change will be persisted in your github.</p></li>
-<li><p>Run the first cell. If you havent used Notebooks before, people with little programming experience will fall in love with them especially at this stage where you dont need to type new code. For a tutorial on how to use the notebooks in colab or in general open and run the notebook <a class="reference external" href="https://colab.research.google.com/notebooks/intro.ipynb">Welcome to Colaboratory</a>.</p></li>
-</ol>
-</div>
-</div>
-<div class="section" id="external-tools-and-databases">
-<h2>External Tools and Databases<a class="headerlink" href="#external-tools-and-databases" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="elastic-search-environment-setup">
-<h3>Elastic Search Environment Setup<a class="headerlink" href="#elastic-search-environment-setup" title="Permalink to this headline">¶</a></h3>
-<p>For projects work you may need to install ES. Please note you are responsible for setting up the environment. For example to set up ES in Win10 you may follow <a class="reference external" href="https://www.youtube.com/watch?v=hzaG2Uq60uw">this</a> guide but bear in mind that we cannot support any IT issues you may encounter in your laptop. You may decide to set up a development environment in AWS cloud 9 that is linux based for a small fee or taking advantage the free tier for <em>new</em> AWS accounts (which is not free if you need EC2 instances outside of what the free tier provides).</p>
-</div>
+<div class="section" id="step-6-smart-contract">
+<h2>Step 6: Smart Contract<a class="headerlink" href="#step-6-smart-contract" title="Permalink to this headline">¶</a></h2>
+<p>You use the Chainlink APIs to author a smart contract that will consume the stream representing the state of the scene and initiate a payment the moment the IsaaC scene reaches a desired state. The desired state is either a movement of the virtual object or the presence of N objects in the scene.</p>
 </div>
 </div>
 
@@ -1040,7 +945,7 @@ Note: you can also visit [http://localhost:8888/nbextensions](http://localhost:8
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./aiml-common/resources/environment"
+            path: "./aiml-common/projects/container-terminal-automation"
         },
         predefinedOutput: true
     }
@@ -1052,19 +957,12 @@ Note: you can also visit [http://localhost:8888/nbextensions](http://localhost:8
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../../lectures/ml-math/calculus/_index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../_index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Calculus</p>
+            <p class="prev-next-title">Course Project Guidelines</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="../../lectures/python/_index.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Learn Python</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             

@@ -14,7 +14,7 @@ In the scene understanding chapter we started putting together the perception pi
 Staying in this trajectory, we introduce the topic of reasoning via a probabilistic lens. We argue that enhancing the environment state as determined by the perception subsystem, includes another subsystem that we will call _probabilistic reasoning_ subsystem that allow us to:
 
 * infer the hidden state of the environment _and_ 
-* learn the state that the agents internally maintains via appropriate to the task _representations_. 
+* learn the state that the agents internally maintain via task-specific  _representations_. 
   
 In a subsequent chapter we will enhance the model to include past _actions_ rather than just past percepts. Let us now start with the rule that is the cornerstone of probabilistic modeling and reasoning - the Bayes rule. 
 
