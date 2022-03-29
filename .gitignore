@@ -290,7 +290,7 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-
 _build/
 
+artificial_intelligence/aiml-common/lectures/transfer-learning/data/
 .ipynb_checkpoints
