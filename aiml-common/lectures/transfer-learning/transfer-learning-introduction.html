@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Math for ML &#8212; Introduction to Artificial Intelligence</title>
+    <title>Introduction to Transfer Learning &#8212; Introduction to Artificial Intelligence</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet">
   <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,11 +53,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/ml-math/_index.html" />
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/transfer-learning/transfer-learning-introduction.html" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Probability Basics" href="probability/_index.html" />
-    <link rel="prev" title="Transformers Workshop" href="../nlp/transformers/_index.html" />
+    <link rel="next" title="Transfer Learning for Computer Vision Tutorial" href="transfer_learning_tutorial.html" />
+    <link rel="prev" title="CNN Explainers" href="../cnn/cnn-explainers/_index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -251,7 +253,7 @@ const thebe_selector_output = ".output, .cell_output"
   Convolutional Neural Networks
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../cnn/cnn-intro/_index.html">
    Introduction to Convolutional Neural Networks
@@ -277,13 +279,13 @@ const thebe_selector_output = ".output, .cell_output"
    CNN Explainers
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../transfer-learning/transfer-learning-introduction.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Introduction to Transfer Learning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../transfer-learning/transfer_learning_tutorial.html">
+  <a class="reference internal" href="transfer_learning_tutorial.html">
    Transfer Learning for Computer Vision Tutorial
   </a>
  </li>
@@ -620,19 +622,19 @@ const thebe_selector_output = ".output, .cell_output"
   Math Background
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ml-math/_index.html">
    Math for ML
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="probability/_index.html">
+    <a class="reference internal" href="../ml-math/probability/_index.html">
      Probability Basics
     </a>
    </li>
@@ -642,7 +644,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="calculus/_index.html">
+    <a class="reference internal" href="../ml-math/calculus/_index.html">
      Calculus
     </a>
    </li>
@@ -743,7 +745,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/aiml-common/lectures/ml-math/_index.md"><button type="button"
+        <a class="dropdown-buttons" href="../../../_sources/aiml-common/lectures/transfer-learning/transfer-learning-introduction.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -763,7 +765,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/ml-math/_index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/transfer-learning/transfer-learning-introduction.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -784,6 +786,19 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fine-tuning">
+   Fine-tuning
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -791,22 +806,59 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Math for ML</h1>
+                <h1>Introduction to Transfer Learning</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fine-tuning">
+   Fine-tuning
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="math-for-ml">
-<h1>Math for ML<a class="headerlink" href="#math-for-ml" title="Permalink to this headline">¶</a></h1>
-<p>We will go through the key points during the lectures but overall you will benefit from reading the intersecting chapters of <a class="reference external" href="https://mml-book.github.io/book/mml-book.pdf">Mathematics for Machine Learning book</a>. Start with Probability.</p>
-<p><img alt="" src="../../../_images/math-4-ml.png" /></p>
-<div class="toctree-wrapper compound">
+  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-transfer-learning">
+<h1>Introduction to Transfer Learning<a class="headerlink" href="#introduction-to-transfer-learning" title="Permalink to this headline">¶</a></h1>
+<p>Transfer Learning is a foundational approach to learning.</p>
+<p>In this section we borrow heavily from <a class="reference external" href="https://ruder.io/transfer-learning/">this</a> article and connect the transfer learng to multitask learning and to continual learning. We will use the binary classification as the main task of interest.</p>
+<p>Transfer learning involves the concepts of a domain and a task. A domain  <span class="math notranslate nohighlight">\(\mathcal D\)</span>  consists of a feature space <span class="math notranslate nohighlight">\(\mathcal X\)</span> and a marginal probability distribution <span class="math notranslate nohighlight">\(p(\mathbf x)\)</span> where</p>
+<div class="math notranslate nohighlight">
+\[\mathbf x = [x_1, x_2, ..., x_n]^T \in \mathcal X\]</div>
+<p>Given a domain, <span class="math notranslate nohighlight">\(\mathcal D = \{\mathcal X, p(\mathbf x) \}\)</span> and task <span class="math notranslate nohighlight">\(\mathcal T\)</span> consists of a label space <span class="math notranslate nohighlight">\(\mathcal Y\)</span> and a conditional probability distribution <span class="math notranslate nohighlight">\(p(\mathbf y| \mathbf x)\)</span> that is typically learned from the training data <span class="math notranslate nohighlight">\((\mathbf x_i, \mathbf y_i)\)</span>.</p>
+<p>Given a source domain <span class="math notranslate nohighlight">\(\mathcal D_S = \{\mathcal X_S, p(\mathbf x_S) \}\)</span>, a corresponding source task <span class="math notranslate nohighlight">\(\mathcal T_S\)</span> and a target domain <span class="math notranslate nohighlight">\(\mathcal D_T = \{\mathcal X_T, p(\mathbf x_T) \}\)</span> with a corresponding target task <span class="math notranslate nohighlight">\(\mathcal T_T\)</span>, the objective of transfer learning is to learn the target  conditional probability distribution <span class="math notranslate nohighlight">\(p(\mathbf y_T| \mathbf x_T)\)</span> from the information gained from <span class="math notranslate nohighlight">\(\mathcal D_S\)</span> and <span class="math notranslate nohighlight">\(\mathcal T_S\)</span>.</p>
+<p>We assume that a far smaller number of labeled examples of the target domain exist as compared to the labelled examples of the source domain.</p>
+<p>There are three main possibilities in our binary classification problem.</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathcal X_S \neq \mathcal X_T\)</span>. For example the domain of images of nature and the domain of images of houses. The domain of documents in English and in French. The domain of numbers in Arabic and the domain of numbers in Latin.</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(\mathbf x_S) \neq p(\mathbf x_T)\)</span>. Both distributions are generated by the same domain but the marginals are different and therefore this case is known as <em>domain adaptation</em>. For example the domain of English documents with marginals obtained from documents of different topics. Another example is shown <a class="reference external" href="https://arxiv.org/pdf/1901.06958.pdf">here</a> where the marginals are different because different people have different physiologies in their hands and EMG signals are sensed for a person sometimes quite differently than others. Finally the classic domain adaptation example: spoken English with the marginals referring to different accents.</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(\mathbf y_S| \mathbf x_S) \neq p(\mathbf y_T| \mathbf x_T)\)</span>  This is the most common scenario where we use the task we learned in the source domain to improve our learning of the target domain.</p></li>
+</ol>
+<p>Take for example the case of a pretrained network on MS COCO dataset that includes cars amongst 79 other classes. We now want to train a network to classify sports-cars. These tasks are very similar, even partly overlapping, so you should try to reuse parts of the first network.</p>
+<p><img alt="" src="../../../_images/transfer-learning-1.png" /></p>
+<p>More generally, transfer learning will work best when the inputs have similar low-level features.</p>
+<p><img alt="" src="../../../_images/dnn-face-features.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please note that the diagram above is used for illustration purposes only. DNNs as shown above do not work very well with transfer learning. In your mind replace the DNN with CNN.</p>
+</div>
+<p>Because these low-level features are captured in the lower layers of the network as shown below, we reuse the base of the network. Similarly, the upper hidden layers of the original model are less likely to be as useful as the lower layers, since the high-level features that are most useful for the new task may differ significantly from the ones that were most useful for the original task. You want to find the right number of layers to reuse.</p>
+<p>The output layer of the original model should usually be replaced because it is most likely not useful at all for the new task, and it generally does not even have the right number of outputs.</p>
+<div class="section" id="fine-tuning">
+<h2>Fine-tuning<a class="headerlink" href="#fine-tuning" title="Permalink to this headline">¶</a></h2>
+<p>A complementary approach is fine-tuning where we allow a upper subset of the base network to train while continue to keep frozen the weights of the bottom of the base.  See <a class="reference external" href="https://colab.research.google.com/github/pytorch/tutorials/blob/gh-pages/_downloads/torchvision_finetuning_instance_segmentation.ipynb">this</a> for an example for a fine-tuning approach for the problem of instance segmentation.</p>
 </div>
 </div>
 
@@ -823,7 +875,7 @@ const thebe_selector_output = ".output, .cell_output"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./aiml-common/lectures/ml-math"
+            path: "./aiml-common/lectures/transfer-learning"
         },
         predefinedOutput: true
     }
@@ -835,17 +887,17 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../nlp/transformers/_index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../cnn/cnn-explainers/_index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Transformers Workshop</p>
+            <p class="prev-next-title">CNN Explainers</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="probability/_index.html" title="next page">
+    <a class='right-next' id="next-link" href="transfer_learning_tutorial.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Probability Basics</p>
+        <p class="prev-next-title">Transfer Learning for Computer Vision Tutorial</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
