@@ -69,8 +69,6 @@ Obviously this is a trivial example to show in detail the calculations that are 
 ![sarsa-gridworld](images/sarsa-gridworld.png)
 *SARSA Gridworld*
 
-{{<details "Python SARSA Gridworld Envrironment">}}
-
 ```python
 # code is from https://github.com/rlcode/reinforcement-learning/tree/master/1-grid-world
 
@@ -217,10 +215,7 @@ class Env(tk.Tk):
         time.sleep(0.03)
         self.update()
 ```
-{{</details>}}
 
-
-{{<details "Python SARSA code for agent">}}
 
 ```python
 import numpy as np
@@ -302,4 +297,3 @@ if __name__ == "__main__":
             if done:
                 break
 ```
-{{</details>}}

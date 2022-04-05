@@ -5,61 +5,59 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Feature Extraction via Residual Networks &#8212; Introduction to Artificial Intelligence</title>
+    <title>Multiple Object Tracking &#8212; Introduction to Artificial Intelligence</title>
     
-  <link href="../../../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
-    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     
       
 
     
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/doctools.js"></script>
-    <script src="../../../../_static/clipboard.min.js"></script>
-    <script src="../../../../_static/copybutton.js"></script>
-    <script src="../../../../_static/tabs.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/tabs.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/scene-understanding/feature-extraction-resnet/_index.html" />
-    <link rel="index" title="Index" href="../../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Object Detection" href="../object-detection/_index.html" />
-    <link rel="prev" title="Introduction to Scene Understanding" href="../scene-understanding-intro/_index.html" />
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/assignments/object-tracking/_index.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Reverse Visual Search" href="../../projects/visual-search/_index.html" />
+    <link rel="prev" title="Maximum Likelihood Parameter Estimation" href="../mle/mle_exponential_linear_regression.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -79,19 +77,19 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../../../index.html">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
       
       
-      <img src="../../../../_static/logo.png" class="logo" alt="logo">
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Introduction to Artificial Intelligence</h1>
       
     </a>
-</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -103,7 +101,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../../syllabus/_index.html">
+  <a class="reference internal" href="../../../syllabus/_index.html">
    Syllabus
   </a>
  </li>
@@ -115,27 +113,27 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../ai-intro/course-introduction/_index.html">
+  <a class="reference internal" href="../../lectures/ai-intro/course-introduction/_index.html">
    Course Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../ai-intro/data-science-360/_index.html">
+  <a class="reference internal" href="../../lectures/ai-intro/data-science-360/_index.html">
    Data Science 360
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../ai-intro/systems-approach/_index.html">
+  <a class="reference internal" href="../../lectures/ai-intro/systems-approach/_index.html">
    The four approaches towards AI
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../ai-intro/agents/_index.html">
+  <a class="reference internal" href="../../lectures/ai-intro/agents/_index.html">
    Agent-Environment Interface
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../ai-intro/pipelines/_index.html">
+  <a class="reference internal" href="../../lectures/ai-intro/pipelines/_index.html">
    Pipelines
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -145,12 +143,12 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../uber-ml-arch-case-study/_index.html">
+    <a class="reference internal" href="../../lectures/uber-ml-arch-case-study/_index.html">
      A Case Study of an ML Architecture - Uber
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../../../handson-ml2/02_end_to_end_machine_learning_project.html">
+    <a class="reference internal" href="../../../handson-ml2/02_end_to_end_machine_learning_project.html">
      Setup
     </a>
    </li>
@@ -164,32 +162,32 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../learning-problem/_index.html">
+  <a class="reference internal" href="../../lectures/learning-problem/_index.html">
    The Learning Problem
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../regression/linear-regression/_index.html">
+  <a class="reference internal" href="../../lectures/regression/linear-regression/_index.html">
    Linear Regression
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../optimization/sgd/_index.html">
+  <a class="reference internal" href="../../lectures/optimization/sgd/_index.html">
    Stochastic Gradient Descent
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../entropy/_index.html">
+  <a class="reference internal" href="../../lectures/entropy/_index.html">
    Entropy
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../optimization/maximum-likelihood/_index.html">
+  <a class="reference internal" href="../../lectures/optimization/maximum-likelihood/_index.html">
    Maximum Likelihood (ML) Estimation
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../pgm/bayesian-inference/_index.html">
+  <a class="reference internal" href="../../lectures/pgm/bayesian-inference/_index.html">
    Bayesian Inference
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -199,19 +197,19 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../pgm/bayesian-coin/_index.html">
+    <a class="reference internal" href="../../lectures/pgm/bayesian-coin/_index.html">
      Bayesian Coin Flipping
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../classification/classification-intro/_index.html">
+  <a class="reference internal" href="../../lectures/classification/classification-intro/_index.html">
    Introduction to Classification
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../classification/logistic-regression/_index.html">
+  <a class="reference internal" href="../../lectures/classification/logistic-regression/_index.html">
    Logistic Regression
   </a>
  </li>
@@ -223,27 +221,27 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../classification/perceptron/_index.html">
+  <a class="reference internal" href="../../lectures/classification/perceptron/_index.html">
    The Neuron (Perceptron)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../dnn/dnn-intro/_index.html">
+  <a class="reference internal" href="../../lectures/dnn/dnn-intro/_index.html">
    Deep Neural Networks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../dnn/backprop-intro/_index.html">
+  <a class="reference internal" href="../../lectures/dnn/backprop-intro/_index.html">
    Introduction to Backpropagation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../dnn/backprop-dnn/_index.html">
+  <a class="reference internal" href="../../lectures/dnn/backprop-dnn/_index.html">
    Backpropagation in Deep Neural Networks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../optimization/regularization/_index.html">
+  <a class="reference internal" href="../../lectures/optimization/regularization/_index.html">
    Regularization in Deep Neural Networks
   </a>
  </li>
@@ -255,37 +253,37 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../cnn/cnn-intro/_index.html">
+  <a class="reference internal" href="../../lectures/cnn/cnn-intro/_index.html">
    Introduction to Convolutional Neural Networks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../cnn/cnn-layers/_index.html">
+  <a class="reference internal" href="../../lectures/cnn/cnn-layers/_index.html">
    CNN Architectures
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../cnn/cnn-example-architectures/_index.html">
+  <a class="reference internal" href="../../lectures/cnn/cnn-example-architectures/_index.html">
    CNN Example Architectures
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">
+  <a class="reference internal" href="../../lectures/cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">
    Using convnets with small datasets
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../cnn/cnn-explainers/_index.html">
+  <a class="reference internal" href="../../lectures/cnn/cnn-explainers/_index.html">
    CNN Explainers
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../transfer-learning/transfer-learning-introduction.html">
+  <a class="reference internal" href="../../lectures/transfer-learning/transfer-learning-introduction.html">
    Introduction to Transfer Learning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../transfer-learning/transfer_learning_tutorial.html">
+  <a class="reference internal" href="../../lectures/transfer-learning/transfer_learning_tutorial.html">
    Transfer Learning for Computer Vision Tutorial
   </a>
  </li>
@@ -295,39 +293,39 @@ const thebe_selector_output = ".output, .cell_output"
   Scene Understanding
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../scene-understanding-intro/_index.html">
+  <a class="reference internal" href="../../lectures/scene-understanding/scene-understanding-intro/_index.html">
    Introduction to Scene Understanding
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lectures/scene-understanding/feature-extraction-resnet/_index.html">
    Feature Extraction via Residual Networks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../object-detection/_index.html">
+  <a class="reference internal" href="../../lectures/scene-understanding/object-detection/_index.html">
    Object Detection
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../detection-segmentation-metrics/_index.html">
+  <a class="reference internal" href="../../lectures/scene-understanding/detection-segmentation-metrics/_index.html">
    Object Detection and Semantic Segmentation Metrics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../rcnn/_index.html">
+  <a class="reference internal" href="../../lectures/scene-understanding/rcnn/_index.html">
    Region-CNN (RCNN) Object Detection
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../faster-rcnn/_index.html">
+  <a class="reference internal" href="../../lectures/scene-understanding/faster-rcnn/_index.html">
    Faster RCNN Object Detection
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../object-detection/detection-segmentation-workshop/_index.html">
+  <a class="reference internal" href="../../lectures/scene-understanding/object-detection/detection-segmentation-workshop/_index.html">
    Object Detection and Semantic Segmentation Workshop
   </a>
  </li>
@@ -339,27 +337,27 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../pgm/pgm-intro/_index.html">
+  <a class="reference internal" href="../../lectures/pgm/pgm-intro/_index.html">
    Introduction to Probabilistic Reasoning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../pgm/recursive-state-estimation/_index.html">
+  <a class="reference internal" href="../../lectures/pgm/recursive-state-estimation/_index.html">
    Recursive State Estimation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../pgm/bayesian-filter-workshop/_index.html">
+  <a class="reference internal" href="../../lectures/pgm/bayesian-filter-workshop/_index.html">
    Bayesian Filter Workshop
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../pgm/hmm-localization/_index.html">
+  <a class="reference internal" href="../../lectures/pgm/hmm-localization/_index.html">
    Localization and Tracking
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../pgm/kalman-workshop/_index.html">
+  <a class="reference internal" href="../../lectures/pgm/kalman-workshop/_index.html">
    Kalman Filter Workshop
   </a>
  </li>
@@ -371,17 +369,17 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../logical-reasoning/automated-reasoning/_index.html">
+  <a class="reference internal" href="../../lectures/logical-reasoning/automated-reasoning/_index.html">
    Automated Reasoning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../logical-reasoning/propositional-logic/_index.html">
+  <a class="reference internal" href="../../lectures/logical-reasoning/propositional-logic/_index.html">
    World Models
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../logical-reasoning/logical-agents/_index.html">
+  <a class="reference internal" href="../../lectures/logical-reasoning/logical-agents/_index.html">
    Logical Agents
   </a>
  </li>
@@ -393,37 +391,37 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../planning/_index.html">
+  <a class="reference internal" href="../../lectures/planning/_index.html">
    Planning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../autonomous-cars/_index.html">
+  <a class="reference internal" href="../../lectures/autonomous-cars/_index.html">
    Autonomous Agents
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../autonomous-cars/imitation-learning/_index.html">
+  <a class="reference internal" href="../../lectures/autonomous-cars/imitation-learning/_index.html">
    Imitation Learning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../planning/classical-planning/_index.html">
+  <a class="reference internal" href="../../lectures/planning/classical-planning/_index.html">
    Classical Planning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../planning/search/_index.html">
+  <a class="reference internal" href="../../lectures/planning/search/_index.html">
    Planning with Search
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../planning/search/forward-search/_index.html">
+  <a class="reference internal" href="../../lectures/planning/search/forward-search/_index.html">
    Forward Search Algorithms
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../planning/search/a-star/_index.html">
+  <a class="reference internal" href="../../lectures/planning/search/a-star/_index.html">
    The A* Algorithm
   </a>
  </li>
@@ -435,7 +433,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp/_index.html">
+  <a class="reference internal" href="../../lectures/mdp/_index.html">
    Markov Decision Processes
   </a>
  </li>
@@ -447,12 +445,12 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp/bellman-expectation-backup/_index.html">
+  <a class="reference internal" href="../../lectures/mdp/bellman-expectation-backup/_index.html">
    Bellman Expectation Backup
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp/bellman-optimality-backup/_index.html">
+  <a class="reference internal" href="../../lectures/mdp/bellman-optimality-backup/_index.html">
    Bellman Optimality Backup
   </a>
  </li>
@@ -464,27 +462,27 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp/mdp-dp-algorithms/_index.html">
+  <a class="reference internal" href="../../lectures/mdp/mdp-dp-algorithms/_index.html">
    Solving the MDP - DP Algorithms
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp/mdp-dp-algorithms/policy-evaluation/_index.html">
+  <a class="reference internal" href="../../lectures/mdp/mdp-dp-algorithms/policy-evaluation/_index.html">
    Policy Evaluation (Prediction)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp/mdp-dp-algorithms/policy-improvement/_index.html">
+  <a class="reference internal" href="../../lectures/mdp/mdp-dp-algorithms/policy-improvement/_index.html">
    Policy Improvement (Control)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp/mdp-dp-algorithms/policy-iteration/_index.html">
+  <a class="reference internal" href="../../lectures/mdp/mdp-dp-algorithms/policy-iteration/_index.html">
    Dynamic Programming Algorithms - Policy Iteration
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp/mdp-dp-algorithms/value-iteration/_index.html">
+  <a class="reference internal" href="../../lectures/mdp/mdp-dp-algorithms/value-iteration/_index.html">
    Dynamic Programming Algorithms - Value Iteration
   </a>
  </li>
@@ -496,17 +494,17 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp/mdp-lab/recycling-robot/_index.html">
+  <a class="reference internal" href="../../lectures/mdp/mdp-lab/recycling-robot/_index.html">
    Finding the optimal policy of a recycling robot.
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp/mdp-lab/grid-world/_index.html">
+  <a class="reference internal" href="../../lectures/mdp/mdp-lab/grid-world/_index.html">
    Grid-world policy iteration
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp/mdp-lab/yield-management-capacity-control/_index.html">
+  <a class="reference internal" href="../../lectures/mdp/mdp-lab/yield-management-capacity-control/_index.html">
    Optimal Capacity Control
   </a>
  </li>
@@ -518,32 +516,32 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/_index.html">
+  <a class="reference internal" href="../../lectures/reinforcement-learning/_index.html">
    Reinforcement Learning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/generalized-policy-iteration/_index.html">
+  <a class="reference internal" href="../../lectures/reinforcement-learning/generalized-policy-iteration/_index.html">
    Generalized Policy Iteration
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/prediction/_index.html">
+  <a class="reference internal" href="../../lectures/reinforcement-learning/prediction/_index.html">
    Model-free Prediction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/control/_index.html">
+  <a class="reference internal" href="../../lectures/reinforcement-learning/control/_index.html">
    Model-free Control
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/control/sarsa/_index.html">
+  <a class="reference internal" href="../../lectures/reinforcement-learning/control/sarsa/_index.html">
    The SARSA Algorithm
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/reinforce/_index.html">
+  <a class="reference internal" href="../../lectures/reinforcement-learning/reinforce/_index.html">
    The REINFORCE Algorithm
   </a>
  </li>
@@ -555,22 +553,22 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../rnn/introduction/_index.html">
+  <a class="reference internal" href="../../lectures/rnn/introduction/_index.html">
    Introduction to Recurrent Neural Networks (RNN)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../rnn/simple-rnn/_index.html">
+  <a class="reference internal" href="../../lectures/rnn/simple-rnn/_index.html">
    Simple RNN
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../rnn/simple-rnn-workshop/_index.html">
+  <a class="reference internal" href="../../lectures/rnn/simple-rnn-workshop/_index.html">
    Simple RNN Workshop
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../rnn/lstm/_index.html">
+  <a class="reference internal" href="../../lectures/rnn/lstm/_index.html">
    The Long Short-Term Memory (LSTM) Cell Architecture
   </a>
  </li>
@@ -582,37 +580,37 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../nlp/nlp-intro/_index.html">
+  <a class="reference internal" href="../../lectures/nlp/nlp-intro/_index.html">
    Introduction to NLP
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../nlp/word2vec/_index.html">
+  <a class="reference internal" href="../../lectures/nlp/word2vec/_index.html">
    Word2Vec Embeddings
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../nlp/rnn-language-models/_index.html">
+  <a class="reference internal" href="../../lectures/nlp/rnn-language-models/_index.html">
    RNN Language Models
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../nlp/nmt/_index.html">
+  <a class="reference internal" href="../../lectures/nlp/nmt/_index.html">
    Neural Machine Translation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../nlp/nmt-metrics/_index.html">
+  <a class="reference internal" href="../../lectures/nlp/nmt-metrics/_index.html">
    NMT Metrics - BLEU
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../nlp/attention/_index.html">
+  <a class="reference internal" href="../../lectures/nlp/attention/_index.html">
    Attention in NMT
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../nlp/transformers/_index.html">
+  <a class="reference internal" href="../../lectures/nlp/transformers/_index.html">
    Transformers Workshop
   </a>
  </li>
@@ -624,7 +622,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../ml-math/_index.html">
+  <a class="reference internal" href="../../lectures/ml-math/_index.html">
    Math for ML
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -634,17 +632,17 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../ml-math/probability/_index.html">
+    <a class="reference internal" href="../../lectures/ml-math/probability/_index.html">
      Probability Basics
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../linear-algebra/_index.html">
+    <a class="reference internal" href="../../lectures/linear-algebra/_index.html">
      Linear Algebra for Machine Learning
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../ml-math/calculus/_index.html">
+    <a class="reference internal" href="../../lectures/ml-math/calculus/_index.html">
      Calculus
     </a>
    </li>
@@ -658,17 +656,17 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../resources/environment/_index.html">
+  <a class="reference internal" href="../../resources/environment/_index.html">
    Your Programming Environment
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../python/_index.html">
+  <a class="reference internal" href="../../lectures/python/_index.html">
    Learn Python
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../runbook.html">
+  <a class="reference internal" href="../../lectures/runbook.html">
    Executable Content Runbook
   </a>
  </li>
@@ -678,34 +676,34 @@ const thebe_selector_output = ".output, .cell_output"
   Assignments &amp; Projects
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../assignments/probability/probability-assignment-2/probability-assignment-2.html">
+  <a class="reference internal" href="../probability/probability-assignment-2/probability-assignment-2.html">
    Probability Assigmment
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../assignments/mle/mle_exponential_linear_regression.html">
+  <a class="reference internal" href="../mle/mle_exponential_linear_regression.html">
    Maximum Likelihood Parameter Estimation
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../assignments/object-tracking/_index.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Multiple Object Tracking
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../projects/visual-search/_index.html">
+  <a class="reference internal" href="../../projects/visual-search/_index.html">
    Reverse Visual Search
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../projects/_index.html">
+  <a class="reference internal" href="../../projects/_index.html">
    Course Project Guidelines
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../projects/container-terminal-automation/container-terminal-automation.html">
+  <a class="reference internal" href="../../projects/container-terminal-automation/container-terminal-automation.html">
    Omniverse Container Terminal Oracle Network
   </a>
  </li>
@@ -750,7 +748,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../../_sources/aiml-common/lectures/scene-understanding/feature-extraction-resnet/_index.md"><button type="button"
+        <a class="dropdown-buttons" href="../../../_sources/aiml-common/assignments/object-tracking/_index.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -770,7 +768,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/scene-understanding/feature-extraction-resnet/_index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/assignments/object-tracking/_index.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -797,13 +795,18 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-resnet-architecture">
-   The ResNet Architecture
+  <a class="reference internal nav-link" href="#task-1-understand-the-problem-and-setup-environment-20-points">
+   Task 1: Understand the problem and setup environment (20 points)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resnets-and-batch-normalization">
-   ResNets and Batch Normalization
+  <a class="reference internal nav-link" href="#task-2-object-detector-40-points">
+   Task 2: Object Detector (40 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-3-tracker-40-points">
+   Task 3: Tracker (40 points)
   </a>
  </li>
 </ul>
@@ -816,7 +819,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Feature Extraction via Residual Networks</h1>
+                <h1>Multiple Object Tracking</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -827,13 +830,18 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-resnet-architecture">
-   The ResNet Architecture
+  <a class="reference internal nav-link" href="#task-1-understand-the-problem-and-setup-environment-20-points">
+   Task 1: Understand the problem and setup environment (20 points)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resnets-and-batch-normalization">
-   ResNets and Batch Normalization
+  <a class="reference internal nav-link" href="#task-2-object-detector-40-points">
+   Task 2: Object Detector (40 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-3-tracker-40-points">
+   Task 3: Tracker (40 points)
   </a>
  </li>
 </ul>
@@ -845,34 +853,30 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="feature-extraction-via-residual-networks">
-<h1>Feature Extraction via Residual Networks<a class="headerlink" href="#feature-extraction-via-residual-networks" title="Permalink to this headline">¶</a></h1>
-<p>In the figure below we plot the evolution of depth in CNN architectures. Notice the big jump due to the introduction of the ResNet architecture.</p>
-<p><img alt="evolution-of-depth" src="../../../../_images/evolution-of-depth.png" />
-<em>Evolution of depth in CNN architectures. (Circa 2018)</em></p>
-<p>The aim of this section is to provide an alternative view as to why ResNets seem to be able to accommodate much deeper architecture while performing even better that existing architectures for the same depth (e.g. ResNet-18).</p>
-<div class="section" id="the-resnet-architecture">
-<h2>The ResNet Architecture<a class="headerlink" href="#the-resnet-architecture" title="Permalink to this headline">¶</a></h2>
-<p><img alt="resnet-vgg" src="../../../../_images/resnet-vgg.png" />
-<em>34 layers deep ResNet architecture (3rd column) vs earlier architectures</em></p>
-<p>ResNets or residual networks, introduced the concept of the residual. This can be understood looking at a small residual network of three stages. The striking difference between ResNets and earlier architectures are the <strong>skip connections</strong>. Shortcut connections are those skipping one or more layers. The shortcut connections simply perform identity mapping, and their outputs are added to the outputs of the stacked layers. Identity shortcut connections add neither extra parameter nor computational complexity. The entire network can still be trained end-to-end by SGD with backpropagation, and can be easily implemented using common libraries without modifying the solvers.</p>
-<p><img alt="resnet3-unroll" src="../../../../_images/resnet3-unroll.png" /></p>
-<p>Hinton showed that dropping out individual neurons during training leads to a network that is equivalent to averaging over an ensemble of exponentially many networks. Entire layers can be removed from plain residual networks without impacting performance, indicating that they do not strongly depend on each other.</p>
-<p>Each layer consists of a residual module <span class="math notranslate nohighlight">\(f_i\)</span> and a skip connection bypassing <span class="math notranslate nohighlight">\(f_i\)</span>. Since layers in residual networks can comprise multiple convolutional layers, we refer to them as residual blocks. With <span class="math notranslate nohighlight">\(y_{i-1}\)</span> as is input, the output of the i-th block is recursively defined as</p>
-<p><span class="math notranslate nohighlight">\(y_i = f_i(y_{i−1}) + y_{i−1}\)</span></p>
-<p>where <span class="math notranslate nohighlight">\(f_i(x)\)</span> is some sequence of convolutions, batch normalization, and Rectified Linear Units
-(ReLU) as nonlinearities. In the figure above we have three blocks. Each <span class="math notranslate nohighlight">\(f_i(x)\)</span> is defined by</p>
-<p><span class="math notranslate nohighlight">\(f_i(x) = W_i^{(1)} * \sigma(B (W_i^{(2)} * \sigma(B(x))))\)</span></p>
-<p>where <span class="math notranslate nohighlight">\(W_i^{(1)}\)</span> and <span class="math notranslate nohighlight">\(W_i^{(2)}\)</span> are weight matrices, · denotes convolution, <span class="math notranslate nohighlight">\(B(x)\)</span> is batch normalization and
-<span class="math notranslate nohighlight">\(\sigma(x) ≡ max(x, 0)\)</span>. Other formulations are typically composed of the same operations, but may differ
-in their order.</p>
-<p>During the lecture we will go through <a class="reference external" href="https://arxiv.org/pdf/1605.06431.pdf">this</a> paper analysis of the unrolled network to understand the behavior of ResNets that are inherently scalable networks.</p>
-<p>ResNets introduced below - are commonly used as feature extractors for object detection. They are not the only ones but these networks are the obvious / typical choice today and they can also be used in real time video streaming applications achieving significant throughput e.g. 20 frames per second.</p>
-<iframe width="560" height="315" src="http://kaiminghe.com/icml16tutorial/icml2016_tutorial_deep_residual_networks_kaiminghe.pdf"></iframe>
+  <div class="tex2jax_ignore mathjax_ignore section" id="multiple-object-tracking">
+<h1>Multiple Object Tracking<a class="headerlink" href="#multiple-object-tracking" title="Permalink to this headline">¶</a></h1>
+<p>Multi-Object Tracking (MOT) is a core visual ability that humans poses to perform kinetic tasks and coordinate other tasks. The AI community has recognized the importance of MOT via a series of <a class="reference external" href="https://motchallenge.net">competitions</a>.</p>
+<p>The ability to reason even in the absence of perception input task was highlighted in Lecture 1 using a document camera and a canopy type of occlusion where an object moves below it. In this assignment, the object class is <code class="docutils literal notranslate"><span class="pre">ball</span></code> and the ability to reason over time will be demonstrated using <a class="reference external" href="https://en.wikipedia.org/wiki/Kalman_filter">Kalman Filters</a>. There will be two cases of occlusion: occlusion by a different object and occlusion by the same object (typical case of the later is on tracking people in crowds).</p>
+<div class="section" id="task-1-understand-the-problem-and-setup-environment-20-points">
+<h2>Task 1: Understand the problem and setup environment (20 points)<a class="headerlink" href="#task-1-understand-the-problem-and-setup-environment-20-points" title="Permalink to this headline">¶</a></h2>
+<p>The problem is best described using this explanatory video below of the raw source files of this assignment:</p>
+<ol class="simple">
+<li><p><a class="reference external" href="https://github.com/sseshadr/auvsi-cv-all/blob/master/objectTracking/examples/ball.mp4">Single object tracking</a></p></li>
+<li><p><a class="reference external" href="https://github.com/sseshadr/auvsi-cv-all/blob/master/objectTracking/examples/multiObject.avi">Multi-object tracking</a></p></li>
+</ol>
+<p>The associated to the video github is <a class="reference external" href="https://github.com/sseshadr/auvsi-cv-all">here</a>.</p>
 </div>
-<div class="section" id="resnets-and-batch-normalization">
-<h2>ResNets and Batch Normalization<a class="headerlink" href="#resnets-and-batch-normalization" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://colab.research.google.com/github/davidcpage/cifar10-fast/blob/master/batch_norm_post.ipynb">This notebook</a> is very instructive of what now is considered a canonical new ResNet block that includes batch normalization.</p>
+<div class="section" id="task-2-object-detector-40-points">
+<h2>Task 2: Object Detector (40 points)<a class="headerlink" href="#task-2-object-detector-40-points" title="Permalink to this headline">¶</a></h2>
+<p>In this task you will use a CNN-based object detector to bound box all <code class="docutils literal notranslate"><span class="pre">ball</span></code> instances in each frame. Report the AP metric across all frames of the input video(s) averaged over 10 IoU thresholds of [0.50:0.05:0.95]. Because the educational value is  not object detection, you are allowed to use an object detector of your choice trained to distinguish the <code class="docutils literal notranslate"><span class="pre">ball</span></code> class. You are free to use a pretrained model (eg on MS COCO that contains the class <code class="docutils literal notranslate"><span class="pre">sports</span> <span class="pre">ball</span></code> or train a model yourself.  Ensure that you explain thoroughly the code.</p>
+</div>
+<div class="section" id="task-3-tracker-40-points">
+<h2>Task 3: Tracker (40 points)<a class="headerlink" href="#task-3-tracker-40-points" title="Permalink to this headline">¶</a></h2>
+<p>The detector outputs can be used to obtain the centroid(s) of the <code class="docutils literal notranslate"><span class="pre">ball</span></code> instances across time. You can assign a suitable starting state in the 1st frame of the video and obtain the predicted trajectory of the object during both visible and occluded frames. You need to superpose your predicted position of the object in each frame and the raw frame and store a sequence of all frames (generate a video).  Ensure that you explain thoroughly the code.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can use OpenCV (<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">cv2</span></code>) for only the satellite parts of this assignment - Use numpy, or better, jax to code the Kalman filter. You need to submit the assignment either as a notebook URL or a Github URL.</p>
+</div>
 </div>
 </div>
 
@@ -889,7 +893,7 @@ in their order.</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./aiml-common/lectures/scene-understanding/feature-extraction-resnet"
+            path: "./aiml-common/assignments/object-tracking"
         },
         predefinedOutput: true
     }
@@ -901,17 +905,17 @@ in their order.</p>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../scene-understanding-intro/_index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../mle/mle_exponential_linear_regression.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction to Scene Understanding</p>
+            <p class="prev-next-title">Maximum Likelihood Parameter Estimation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../object-detection/_index.html" title="next page">
+    <a class='right-next' id="next-link" href="../../projects/visual-search/_index.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Object Detection</p>
+        <p class="prev-next-title">Reverse Visual Search</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -933,7 +937,7 @@ in their order.</p>
       </div>
     </div>
   
-  <script src="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
   </body>
 </html>

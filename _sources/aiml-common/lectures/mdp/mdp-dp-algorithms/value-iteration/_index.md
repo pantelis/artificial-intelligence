@@ -109,8 +109,8 @@ print(optPolicy)
 # [1, 1, 1, 0, 0, 3, 3, 0, 3, 3, 2]
 ```
 
-{{</details>}}
 
-```{admonition}
+
+```{note}
 In summary, we have seen algorithms  iteration solve known MDPs. In the next section we remove the known MDP assumption and deal with the first Reinforcement Learning (RL) algorithm. 
-{{<hint>}}
+```{note}

@@ -688,6 +688,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../../assignments/object-tracking/_index.html">
+   Multiple Object Tracking
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../projects/visual-search/_index.html">
    Reverse Visual Search
   </a>
@@ -795,8 +800,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualize-a-few-images">
+   Visualize a few images
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#training-the-model">
    Training the model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-the-model-predictions">
+   Visualizing the model predictions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -805,8 +820,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-and-evaluate">
+   Train and evaluate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#convnet-as-fixed-feature-extractor">
    ConvNet as fixed feature extractor
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Train and evaluate
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -840,8 +865,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualize-a-few-images">
+   Visualize a few images
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#training-the-model">
    Training the model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-the-model-predictions">
+   Visualizing the model predictions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -850,8 +885,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-and-evaluate">
+   Train and evaluate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#convnet-as-fixed-feature-extractor">
    ConvNet as fixed feature extractor
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Train and evaluate
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -992,9 +1037,10 @@ and extract it to the current directory.</p>
 </div>
 </div>
 </div>
-<p>Visualize a few images
-^^^^^^^^^^^^^^^^^^^^^^
-Let’s visualize a few training images so as to understand the data
+</div>
+<div class="section" id="visualize-a-few-images">
+<h2>Visualize a few images<a class="headerlink" href="#visualize-a-few-images" title="Permalink to this headline">¶</a></h2>
+<p>Let’s visualize a few training images so as to understand the data
 augmentations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1104,8 +1150,9 @@ illustrate:</p>
 </div>
 </div>
 </div>
-<p>Visualizing the model predictions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</p>
+</div>
+<div class="section" id="visualizing-the-model-predictions">
+<h2>Visualizing the model predictions<a class="headerlink" href="#visualizing-the-model-predictions" title="Permalink to this headline">¶</a></h2>
 <p>Generic function to display predictions for a few images</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1163,8 +1210,9 @@ illustrate:</p>
 </div>
 </div>
 </div>
-<p>Train and evaluate
-^^^^^^^^^^^^^^^^^^</p>
+</div>
+<div class="section" id="train-and-evaluate">
+<h2>Train and evaluate<a class="headerlink" href="#train-and-evaluate" title="Permalink to this headline">¶</a></h2>
 <p>It should take around 15-25 min on CPU. On GPU though, it takes less than a
 minute.</p>
 <div class="cell docutils container">
@@ -1214,8 +1262,9 @@ gradients are not computed in <code class="docutils literal notranslate"><span c
 </div>
 </div>
 </div>
-<p>Train and evaluate
-^^^^^^^^^^^^^^^^^^</p>
+</div>
+<div class="section" id="id1">
+<h2>Train and evaluate<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>On CPU this will take about half the time compared to previous scenario.
 This is expected as gradients don’t need to be computed for most of the
 network. However, forward does need to be computed.</p>

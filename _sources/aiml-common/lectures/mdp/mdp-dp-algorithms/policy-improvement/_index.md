@@ -10,7 +10,7 @@ $$\pi^\prime = \mathtt{greedy}(v_\pi)$$
 
 It can be shown that this heuristic results into a policy that is better than the one the prediction step started ($\pi^\prime \ge \pi$) and this extends into multiple iterations. We can therefore converge into an optimal policy - the interested reader can follow [this](https://www.youtube.com/watch?v=Nd1-UUMVfz4&list=PLqYmG7hTraZDM-OYHWgPebj2MfCFzFObQ&index=3) lecture for a justification. 
 
-{{< details "Policy Iteration Python Code" "..." >}}
+
 
 ```python
 import numpy as np
@@ -102,4 +102,3 @@ print("Reshaped Grid Value Function:")
 print(v.reshape(env.shape))
 print("")
 ```
-{{</details>}}

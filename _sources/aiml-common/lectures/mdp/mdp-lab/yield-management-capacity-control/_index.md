@@ -79,7 +79,7 @@ $$E\{\min(x,D)\} = \sum_{j=0}^\infty \min(x,j)  Pr(D=j) $$
 $$ =  0  Pr(D=0) + 1  Pr(D=1) + \dots + x  Pr(D=x) + x  Pr(D=x+1) + \dots $$
 $$ Pr(D \ge 1) + Pr(D \ge 2) + \dots + Pr(D \ge x) =  \sum_{j=1}^x Pr(D \ge j) $$
 
-{{</details>}}
+
 
 The dynamic program formulation would involve relating $V_d(C)$ to $V_f(x)$. If we rewrite $V_d(C)$ from the result of the previous section,
 
@@ -125,7 +125,7 @@ The term is $\Delta V_f(y)- p_d$ will start positive and then become negative i.
 
 Note that the marginal value $V_f(x)$ itself reduces with remaining capacity $x$. The marginal value depends on how much the tail of the type-$d$ demand exceeds the available capacity. 
 
-{{</details>}}
+
 
 
 #### Calculating the Optimal Protection Limit and Maximum Revenue
@@ -213,7 +213,7 @@ Resource{stage}.deltaV= deltaV;
 indeces = find(deltaV > inpstruct.price(stage+1));
 Resource{stage}.Protection_Level = max(indeces);
 ```
-{{</details>}}
+
 
 A number of calls equal to the number of stages are made. In each call, the corresponding results are stored for usage at the next stage. 
 

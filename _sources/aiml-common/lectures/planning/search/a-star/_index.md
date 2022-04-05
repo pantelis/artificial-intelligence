@@ -29,7 +29,7 @@ Using the interactive demo page below, repeating the same example wall-world, we
 
 A stand-alone A* planner in python is shown next. Its instructive to go through the code to understand how it works. 
 
-{{< details "A* Planner" "..." >}}
+
 
 ```python
 import math
@@ -297,7 +297,7 @@ if __name__ == '__main__':
     main()
 
 ```
-{{< /details >}}
+
 
 Executing the code above results in the animation:
 

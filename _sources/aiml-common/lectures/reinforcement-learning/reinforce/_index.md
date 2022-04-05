@@ -80,7 +80,6 @@ It is now instructive to see an stand-alone example in python for the so called 
 
 ![cartpole](images/cartpole.png)
 
-{{<details "REINFORCE Python Code" >}}
 ```python
  1  from torch.distributions import Categorical
  2  import gym
@@ -163,7 +162,7 @@ It is now instructive to see an stand-alone example in python for the so called 
 79  if __name__ == '__main__':
 80      main()
 ```
-{{</details>}}
+
 
 The REINFORCE algorithm presented here can generally be applied to continuous and discreet problems but it has been shown to possess high variance and sample-inefficiency. Several improvements have been proposed and the interested reader can refer to section 2.5.1 of the suggested book. 
 

@@ -21,7 +21,7 @@ $$\mathbf{v}^{k+1} = \mathbf{\mathcal R}^\pi + \gamma \mathbf{\mathcal P}^\pi \m
 
 The [following source code](https://becomesentient.com/mdp-dynamic-programming/) is instructive and standalone. It executes the policy evaluation for the Gridworld environment from the many that are part of the Gym RL python library. 
  
-{{< details "Policy Evaluation Python Code" "..." >}}
+
 
 ```python
 # this code is from https://becomesentient.com/mdp-dynamic-programming/
@@ -99,4 +99,4 @@ np.testing.assert_array_almost_equal(v, expected_v, decimal=2)
 print(v)
 print(expected_v)
 ```
-{{</details>}}
+

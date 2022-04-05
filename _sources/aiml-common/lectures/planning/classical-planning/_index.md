@@ -42,7 +42,7 @@ up only one block at a time
 
 In PDDL these rules are expressed as: 
 
-{{< details "PDDL Domain Spec. for Blocks-World" "..." >}}
+
 
 ```pddl
 
@@ -119,7 +119,7 @@ special ontable predicate
 
 )
 ```
-{{< /details >}}
+
 
 The objects, the initial state and the goal specifications are defined in the **problem** file ($\mathtt{problem.pddl}$) as shown next.
 
@@ -128,7 +128,7 @@ The objects, the initial state and the goal specifications are defined in the **
 | **Initial State** | Each state is represented as conjunction of ground boolean variables. For example,  $$\mathtt{On(Box_1, Table_2) \land On(Box_2, Table_2)}$$  is a state expression. $\mathtt{Box_1}$ is distinct than $\mathtt{Box_2}$. All fluents that are not specified are assumed to be FALSE. |
 | **Goal**          | All things we want to be TRUE. The goal is like a precondition - a conjunction of literals that may contain variables.                                                                                                                                                               |
 
-{{< details "PDDL Problem Spec. for Blocks-World" "..." >}}
+
 
 ```pddl
 
@@ -142,7 +142,7 @@ The objects, the initial state and the goal specifications are defined in the **
             (ON F E) (ON E G) (ON G C)))
 )
 ```
-{{< /details >}}
+
 
 You need to experiment with [this planning tool](http://editor.planning.domains/) to make sure you understand _what_ PDDL does and be familiar with the [workflow](https://www.youtube.com/watch?v=XW0z8Oik6G8&feature=youtu.be) of generating a plan.  The blocks word problem is a classic problem employed in the International Planning Competition (IPC) 2000. For non-trivial examples where PDDL is used in e.g. robotics see [ROSPlan](https://kcl-planning.github.io/ROSPlan/). 
 

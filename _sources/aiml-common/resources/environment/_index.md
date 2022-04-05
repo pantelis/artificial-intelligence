@@ -62,7 +62,7 @@ This creates a fresh Python 3.8 environment called `py38` (you can change the na
 
 This installs the latest version of TensorFlow available for Anaconda (which is usually *not* the latest TensorFlow version) in the `py37` environment (fetching it from the `conda-forge` repository). 
 
-```{admonition}
+```{note}
 Next, you can optionally install Jupyter extensions. These are useful to have nice tables of contents in the notebooks, but they are not required.
 
 ```

@@ -45,22 +45,22 @@ $$ \mu_k = \frac{1}{k} \sum_{j=1}^k x_j = \frac{1}{k} \left( x_k + \sum_{j=1}^{k
 $$ = \frac{1}{k} \left(x_k + (k-1) \mu_{k-1}) \right) =  \mu_{k-1} + \frac{1}{k} ( x_k - \mu_{k-1} )$$
 
 Using the incremental sample mean, we can approximate the value function after each episode if for each state $s$ with return $G_t$,
-{{<hint danger>}}
+
 
 $$ N(s) = N(s) +1 $$
 $$ V(s) = V(s) + \alpha \left( G_t - V(s) \right)$$
 
 where $\alpha = \frac{1}{N(s)}$ can be interpreted as a _forgetting factor_. 
-```
+
 
 $\alpha$ can also be any number $< 1$ to get into a more flexible sample mean - the _running mean_ that will increase the robustness of this approach in non-stationary environments.
 
 
-```{admonition} An important fact about Monte Carlo methods is that the estimates for each state are independent.  The estimate for one state does not build upon the estimate of any other state, as is the case in DP. In other words, **Monte Carlo methods do not bootstrap**. In particular, note that the computational expense of estimating the value ofa single state is independent of the number of states.  This can make Monte Carlo methods particularly attractive when one requires the value of only one or a subset of states. 
+```{note} An important fact about Monte Carlo methods is that the estimates for each state are independent.  The estimate for one state does not build upon the estimate of any other state, as is the case in DP. In other words, **Monte Carlo methods do not bootstrap**. In particular, note that the computational expense of estimating the value ofa single state is independent of the number of states.  This can make Monte Carlo methods particularly attractive when one requires the value of only one or a subset of states. 
 ```
 
 
-{{<hint warning>}}
+```{warning}
 The policy evaluation problem for action values is to estimate $q_π(s,a)$, the expected return when starting in states, taking action $a$, and thereafter following policy $π$.  The Monte Carlo methods for this are essentially the same as just presented for state values. 
 ```
 ## Temporal Difference (TD) Prediction 
@@ -84,11 +84,10 @@ As you can notice in the figure above the solid arrows in the MC case, adjust th
 
 Mathematically, instead of using the _true_ return, $G_t$, something that it is possible in the MC as we are trully experiencing the world along a trajectory, TD uses a (biased) _estimated_ return called the _TD target_: $ R_{t+1} + \gamma V(S_{t+1})$ approximating the value function as:
 
-{{<hint danger>}}
+
 
 $$ V(S_t) = V(S_t) + \alpha \left( R_{t+1} + \gamma V(S_{t+1}) - V(S_t) \right)$$
 
-```
 
 The difference below is called the _TD approximation error_,
 
@@ -113,11 +112,10 @@ $$G_t^{(n)} = (1-\lambda) \sum_{n=1}^\infty \lambda^{n-1} G_t^{(n)}$$
 
 the TD(n) learning equation becomes
 
-{{<hint danger>}}
+
 
 $$ V(S_t) = V(S_t) + \alpha \left( G^\lambda_t - V(S_t) \right) $$
 
-```
 
 When $\lambda=0$ we get TD(0) learning, while when $\lambda=1$ we get learning that is roughly equivalent to MC. Certainly it is convenient to learn one guess from the next, without waiting for an actual outcome, but can we still guarantee convergence to the correct answer?  Happily, the answer is yes as shown in the figure above.  For any fixed policy $π$, TD(0) has been proved to converge to $v_π$, in the mean for a constant step-size parameter if it is sufficiently small. However in terms of data efficiency there is no clear winner at this point.  It is instructive to see the difference between MC and TD approaches in the following example. 
 
