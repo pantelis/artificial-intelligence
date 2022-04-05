@@ -12,7 +12,7 @@ The problem is best described using this explanatory video below of the raw sour
 2. [Multi-object tracking](https://github.com/sseshadr/auvsi-cv-all/blob/master/objectTracking/examples/multiObject.avi)
 
 ```{eval-rst}
-.. youtube 0jAC9sMQQuM
+.. youtube:: 0jAC9sMQQuM
 ```
 
 The associated to the video github is [here](https://github.com/sseshadr/auvsi-cv-all). 
