@@ -3,8 +3,10 @@
 
 title: Introduction to Artificial Intelligence
 author: Pantelis Monogioudis, Ph.D
-copyright                   : "2022"  # Copyright year to be placed in the footer
+copyright: "2022"  # Copyright year to be placed in the footer
 logo: logo.png
+
+only_build_toc_files: true
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -13,9 +15,8 @@ execute:
   exclude_patterns: 
     - artificial_intelligence/handson-ml2/*
     - artificial_intelligence/handson-ml2/.*
+    - data_mining/aiml-common/lectures/transfer-learning/quantized_transfer_learning.ipynb
     
-only_build_toc_files: true
-
 # Define the name of the latex output file for PDF builds
 latex:
   latex_documents:
