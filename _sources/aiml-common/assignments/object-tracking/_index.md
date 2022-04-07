@@ -19,7 +19,7 @@ The associated to the video github is [here](https://github.com/sseshadr/auvsi-c
 
 ## Task 2: Object Detector (40 points)
 
-In this task you will use a CNN-based object detector to bound box all `ball` instances in each frame. Report the AP metric across all frames of the input video(s) averaged over 10 IoU thresholds of [0.50:0.05:0.95]. Because the educational value is  not object detection, you are allowed to use an object detector of your choice trained to distinguish the `ball` class. You are free to use a pretrained model (eg on MS COCO that contains the class `sports ball` or train a model yourself.  Ensure that you explain thoroughly the code. 
+In this task you will use a CNN-based object detector to bound box all `ball` instances in each frame. Because the educational value is  not object detection, you are allowed to use an object detector of your choice trained to distinguish the `ball` class. You are free to use a pre-trained model (eg on MS COCO that contains the class `sports ball` or train a model yourself.  Ensure that you explain thoroughly the code. 
 
 
 ## Task 3: Tracker (40 points)
