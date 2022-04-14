@@ -128,6 +128,7 @@ parts:
     chapters:    
     - file: aiml-common/lectures/rnn/introduction/_index.md 
     - file: aiml-common/lectures/rnn/simple-rnn/_index.md 
+    - file: handson-ml2/15_processing_sequences_using_rnns_and_cnns.ipynb   
     - file: aiml-common/lectures/rnn/simple-rnn-workshop/_index.md 
     - file: aiml-common/lectures/rnn/lstm/_index.md   
     - file: aiml-common/lectures/rnn/lstm/lstm-workshop/_index.md   
