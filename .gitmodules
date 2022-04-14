@@ -1,6 +1,3 @@
 [submodule "artificial_intelligence/aiml-common"]
 	path = artificial_intelligence/aiml-common
 	url = https://github.com/pantelis/aiml-common.git
-[submodule "artificial_intelligence/handson-ml2"]
-	path = artificial_intelligence/handson-ml2
-	url = https://github.com/ageron/handson-ml2.git

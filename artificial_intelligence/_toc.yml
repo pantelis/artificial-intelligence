@@ -18,7 +18,7 @@ parts:
       title: Pipelines
       sections: 
       - file: aiml-common/lectures/uber-ml-arch-case-study/_index.md
-      - file: handson-ml2/02_end_to_end_machine_learning_project.ipynb
+      - file: aiml-common/lectures/ai-intro/pipelines/02_end_to_end_machine_learning_project.ipynb
     
   - caption: The Learning Problem
     chapters:
@@ -128,8 +128,7 @@ parts:
     chapters:    
     - file: aiml-common/lectures/rnn/introduction/_index.md 
     - file: aiml-common/lectures/rnn/simple-rnn/_index.md 
-    - file: handson-ml2/15_processing_sequences_using_rnns_and_cnns.ipynb   
-    - file: aiml-common/lectures/rnn/simple-rnn-workshop/_index.md 
+    - file: aiml-common/lectures/rnn/15_processing_sequences_using_rnns_and_cnns.ipynb   
     - file: aiml-common/lectures/rnn/lstm/_index.md   
     - file: aiml-common/lectures/rnn/lstm/lstm-workshop/_index.md   
 
