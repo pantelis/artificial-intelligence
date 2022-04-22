@@ -94,7 +94,7 @@ parts:
   - caption: Markov Decision Processes
     chapters:          
     - file: aiml-common/lectures/mdp/_index.md      
-    - file: aiml-common/lectures/mdp-intro/_index.md      
+    - file: aiml-common/lectures/mdp/mdp-intro/_index.md      
     
   - caption:  Dynamic Programming Planning
     chapters:
