@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MDP Example: agent in a maze &#8212; Introduction to Artificial Intelligence</title>
+    <title>Gridworld calculations &#8212; Introduction to Artificial Intelligence</title>
     
   <link href="../../../../../_static/css/theme.css" rel="stylesheet">
   <link href="../../../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -58,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/mdp/mdp-lab/fomdp-example/_index.html" />
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="POMDP Example" href="../pomdp-example/_index.html" />
+    <link rel="next" title="Finding the optimal policy of a recycling robot." href="../recycling-robot/_index.html" />
     <link rel="prev" title="Dynamic Programming Algorithms - Value Iteration" href="../../mdp-dp-algorithms/value-iteration/_index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -495,12 +495,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   MDP Example: agent in a maze
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../pomdp-example/_index.html">
-   POMDP Example
+   Gridworld calculations
   </a>
  </li>
  <li class="toctree-l1">
@@ -510,7 +505,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../grid-world/_index.html">
-   Grid-world policy iteration
+   Grid-world policy iteration with Python
   </a>
  </li>
  <li class="toctree-l1">
@@ -804,173 +799,93 @@ const thebe_selector_output = ".output, .cell_output"
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   MDP Example: agent in a maze
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#maze-with-no-uncertainty">
+   MAZE with no uncertainty
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#problem-statement">
-     Problem Statement
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maze-with-no-uncertainty-optimal-policy">
+     MAZE with no uncertainty: Optimal Policy
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#maze-with-no-uncertainty">
-     MAZE with no uncertainty
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#maze-with-no-uncertainty-optimal-policy">
-       MAZE with no uncertainty: Optimal Policy
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#markov-decision-process-mdp">
-     Markov Decision Process (MDP)
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mdp-transition-model">
-     MDP Transition Model
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#utility-for-mdp">
-     Utility for MDP
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#policy-for-mdp">
-     Policy for MDP
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#optimal-policy-for-mdp">
-     Optimal Policy for MDP
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#value-iteration">
-     Value Iteration
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Value Iteration
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#value-iteration-t-0">
-       Value Iteration (t=0)
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#value-iteration-t-1">
-       Value Iteration (t=1)
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#value-iteration-t-2">
-       Value Iteration (t=2)
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#value-iteration-convergence">
-       Value Iteration - Convergence
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#policy-iteration">
-     Policy Iteration
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#policy-iteration-for-grid-world">
-       Policy Iteration for Grid World
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#policy-iteration-step-1">
-       Policy Iteration (Step 1)
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#policy-iteration-step-2">
-       Policy Iteration (step 2)
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-4-4-reinforcement-learning-rl">
-   PART 4/4: Reinforcement Learning (RL)
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#markov-decision-process-mdp">
+   Markov Decision Process (MDP)
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#introduction">
-     Introduction
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mdp-transition-model">
+   MDP Transition Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#utility-for-mdp">
+   Utility for MDP
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#policy-for-mdp">
+   Policy for MDP
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimal-policy-for-mdp">
+   Optimal Policy for MDP
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#value-iteration">
+   Value Iteration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Value Iteration
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#value-iteration-t-0">
+     Value Iteration (t=0)
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#learning">
-     Learning
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#value-iteration-t-1">
+     Value Iteration (t=1)
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#utility-value-action-value-action-utility-q-functions">
-     Utility, Value, Action-Value, Action-Utility, Q functions
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#value-iteration-t-2">
+     Value Iteration (t=2)
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reinforcement-learning">
-     Reinforcement Learning
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#value-iteration-convergence">
+     Value Iteration - Convergence
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reinforcement-learning-as-mdp">
-     Reinforcement Learning as MDP
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#policy-iteration">
+   Policy Iteration
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#policy-iteration-for-grid-world">
+     Policy Iteration for Grid World
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deep-rl">
-     Deep RL
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#policy-iteration-step-1">
+     Policy Iteration (Step 1)
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deep-rl-value-based-methods">
-     Deep RL -
-     <strong>
-      Value Based Methods
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deep-rl-model-based-methods">
-     Deep RL -
-     <strong>
-      Model Based Methods
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#taxonomy-of-rl-algorithms">
-     Taxonomy of RL algorithms
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#off-policy-versus-on-policy">
-     Off policy versus on policy
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deep-learning">
-     Deep Learning
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#policy-iteration-step-2">
+     Policy Iteration (step 2)
     </a>
    </li>
   </ul>
@@ -985,7 +900,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>MDP Example: agent in a maze</h1>
+                <h1>Gridworld calculations</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -995,173 +910,93 @@ const thebe_selector_output = ".output, .cell_output"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   MDP Example: agent in a maze
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#maze-with-no-uncertainty">
+   MAZE with no uncertainty
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#problem-statement">
-     Problem Statement
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maze-with-no-uncertainty-optimal-policy">
+     MAZE with no uncertainty: Optimal Policy
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#maze-with-no-uncertainty">
-     MAZE with no uncertainty
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#maze-with-no-uncertainty-optimal-policy">
-       MAZE with no uncertainty: Optimal Policy
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#markov-decision-process-mdp">
-     Markov Decision Process (MDP)
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mdp-transition-model">
-     MDP Transition Model
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#utility-for-mdp">
-     Utility for MDP
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#policy-for-mdp">
-     Policy for MDP
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#optimal-policy-for-mdp">
-     Optimal Policy for MDP
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#value-iteration">
-     Value Iteration
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Value Iteration
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#value-iteration-t-0">
-       Value Iteration (t=0)
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#value-iteration-t-1">
-       Value Iteration (t=1)
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#value-iteration-t-2">
-       Value Iteration (t=2)
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#value-iteration-convergence">
-       Value Iteration - Convergence
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#policy-iteration">
-     Policy Iteration
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#policy-iteration-for-grid-world">
-       Policy Iteration for Grid World
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#policy-iteration-step-1">
-       Policy Iteration (Step 1)
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#policy-iteration-step-2">
-       Policy Iteration (step 2)
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-4-4-reinforcement-learning-rl">
-   PART 4/4: Reinforcement Learning (RL)
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#markov-decision-process-mdp">
+   Markov Decision Process (MDP)
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#introduction">
-     Introduction
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mdp-transition-model">
+   MDP Transition Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#utility-for-mdp">
+   Utility for MDP
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#policy-for-mdp">
+   Policy for MDP
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimal-policy-for-mdp">
+   Optimal Policy for MDP
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#value-iteration">
+   Value Iteration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Value Iteration
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#value-iteration-t-0">
+     Value Iteration (t=0)
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#learning">
-     Learning
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#value-iteration-t-1">
+     Value Iteration (t=1)
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#utility-value-action-value-action-utility-q-functions">
-     Utility, Value, Action-Value, Action-Utility, Q functions
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#value-iteration-t-2">
+     Value Iteration (t=2)
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reinforcement-learning">
-     Reinforcement Learning
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#value-iteration-convergence">
+     Value Iteration - Convergence
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reinforcement-learning-as-mdp">
-     Reinforcement Learning as MDP
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#policy-iteration">
+   Policy Iteration
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#policy-iteration-for-grid-world">
+     Policy Iteration for Grid World
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deep-rl">
-     Deep RL
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#policy-iteration-step-1">
+     Policy Iteration (Step 1)
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deep-rl-value-based-methods">
-     Deep RL -
-     <strong>
-      Value Based Methods
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deep-rl-model-based-methods">
-     Deep RL -
-     <strong>
-      Model Based Methods
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#taxonomy-of-rl-algorithms">
-     Taxonomy of RL algorithms
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#off-policy-versus-on-policy">
-     Off policy versus on policy
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deep-learning">
-     Deep Learning
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#policy-iteration-step-2">
+     Policy Iteration (step 2)
     </a>
    </li>
   </ul>
@@ -1175,10 +1010,8 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="mdp-example-agent-in-a-maze">
-<h1>MDP Example: agent in a maze<a class="headerlink" href="#mdp-example-agent-in-a-maze" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="problem-statement">
-<h2>Problem Statement<a class="headerlink" href="#problem-statement" title="Permalink to this headline">¶</a></h2>
+  <div class="tex2jax_ignore mathjax_ignore section" id="gridworld-calculations">
+<h1>Gridworld calculations<a class="headerlink" href="#gridworld-calculations" title="Permalink to this headline">¶</a></h1>
 <p><img alt="(A) 4x3 Maze " src="../../../../../_images/grid-world-1.png" /><!-- .element width="400px" --></p>
 <ul class="simple">
 <li><p>Robot is at the “START”</p></li>
@@ -1206,7 +1039,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Question: Find sequence of actions from current state to goal (green oval) that maximizes utility?</p></li>
 </ul>
 <!-- .element: class="fragment" -->
-</div>
 <div class="section" id="maze-with-no-uncertainty">
 <h2>MAZE with no uncertainty<a class="headerlink" href="#maze-with-no-uncertainty" title="Permalink to this headline">¶</a></h2>
 <p><img alt="Sequence of action for each starting state that maximizes utility" src="../../../../../_images/grid-fixed-plan.png" /> <!-- .element width="800px" --></p>
@@ -1474,201 +1306,6 @@ $<span class="math notranslate nohighlight">\(\pi(s) \leftarrow \arg\max_a \sum_
 </div>
 </div>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="part-4-4-reinforcement-learning-rl">
-<h1>PART 4/4: Reinforcement Learning (RL)<a class="headerlink" href="#part-4-4-reinforcement-learning-rl" title="Permalink to this headline">¶</a></h1>
-<p>NOTE: Reinforcement Learning and Deep RL (DRL) are covered in Lecture 9.</p>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Reinforcement learning is concerned with solving sequential decision problems.</p></li>
-<li><p>Many real world problems fall into this category e.g. playing video games, driving, robotic control etc.</p></li>
-<li><p><strong><em>Reinforcement learning might be considered to encompass all of AI: an agent is placed in an environment and must learn to behave therein</em></strong></p></li>
-<li><p>The goal of reinforcement learning is to use observed rewards to learn the optimal (or close to optimal) policy for the environment.</p></li>
-<li><p>So far we have been looking at solving sequential decision making problems but we have assumed a complete model of the environment  and the reward function</p></li>
-<li><p>Can we <strong>learn</strong> directly from experiences in the world?</p>
-<ul>
-<li><p>Must receive feedback for good/bad experiences</p></li>
-<li><p>Called rewards or <strong>reinforcement</strong></p></li>
-<li><p>One assumption that we make is that the reward input is known i.e. we know that a particular sensory input corresponds to reward</p></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="learning">
-<h2>Learning<a class="headerlink" href="#learning" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>An agent is learning if it improves its performance on future tasks after making observations about the world.</p></li>
-<li><p>What is learned:</p>
-<ul>
-<li><p>mapping from state to action</p></li>
-<li><p>utility information indicating desirability of states</p></li>
-<li><p>action-value information about the desirability of actions</p></li>
-<li><p>goals that describe states whose achievement maximize agent’s utility</p></li>
-</ul>
-</li>
-<li><p>Feeback types used that determine three types of learning</p>
-<ul>
-<li><p>observes <em>patterns</em> in input without explicit feedback - unsupervised learning</p></li>
-<li><p><em>reinforcements</em> i.e. rewards or punishments - reinforcement learning</p></li>
-<li><p>observes example input-output pairs and learns the mapping functions - supervised learning</p></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="utility-value-action-value-action-utility-q-functions">
-<h2>Utility, Value, Action-Value, Action-Utility, Q functions<a class="headerlink" href="#utility-value-action-value-action-utility-q-functions" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><strong>Utility function</strong>: <span class="math notranslate nohighlight">\(U^{\pi}(s)\)</span> provide expected utility or return or reward of a state by executing a given policy <span class="math notranslate nohighlight">\(\pi\)</span></p></li>
-<li><p><strong>Value function</strong>: <span class="math notranslate nohighlight">\(V^{\pi}=U^{\pi}(s)\)</span></p></li>
-<li><p><strong>Action-utility function</strong>: <span class="math notranslate nohighlight">\(U^{\pi}(s,a)\)</span> gives the expected utility by taking an action <span class="math notranslate nohighlight">\(a\)</span> while in state <span class="math notranslate nohighlight">\(s\)</span></p></li>
-<li><p><strong>Action-value function</strong>: <span class="math notranslate nohighlight">\(V^{\pi}(s,a)=U^{\pi}(s,a)\)</span></p></li>
-<li><p><strong>Q-function</strong>: <span class="math notranslate nohighlight">\(Q^{\pi}(s,a)=V^{\pi}(s,a)=U^{\pi}(s,a)\)</span></p></li>
-<li><p>You get the value function by taking the expection of the action-value function over the set of actions i.e. <span class="math notranslate nohighlight">\(V^{\pi}(s) = \underset{a}{E}[Q(s,a)]\)</span></p></li>
-</ul>
-</div>
-<div class="section" id="reinforcement-learning">
-<h2>Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Reinforcement learning is learning what to do i.e. how to map situations to actions so as to maximize a numerical reward signal. The learner must discover which actions yield the most reward by trying them.</p></li>
-<li><p>These two characteristics: <strong>trial-and-error</strong> search and <strong>delayed reward</strong> are the two most important distinguishing features of reinforcement learning.</p></li>
-<li><p>There is a feedback control loop where agent and environment exchange signals while the agent tries to maximize the rewards or objective.</p></li>
-<li><p>Signal exchanged at any time <span class="math notranslate nohighlight">\(t\)</span> is <span class="math notranslate nohighlight">\((s_t,a_t,r_t)\)</span>  which correspond to the state, action and reward at time <span class="math notranslate nohighlight">\(t\)</span>. This tuple is called an <em>experience</em>.</p></li>
-</ul>
-<p><img alt="" src="../../../../../_images/agent-env-interface1.png" /><!-- .element width="450px" --></p>
-</div>
-<div class="section" id="reinforcement-learning-as-mdp">
-<h2>Reinforcement Learning as MDP<a class="headerlink" href="#reinforcement-learning-as-mdp" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Reinforcement learning can be formulated as an MDP with the following parameters:</p>
-<ul>
-<li><p>transition function ( <span class="math notranslate nohighlight">\( P(s_{t+1} | s_t,a_t) \)</span> ) captures how the enviroment transitions from one state to the next and is formulated as MDP</p></li>
-<li><p>reward function  ( <span class="math notranslate nohighlight">\( R(s_t,a_t,a_{t+1}) \)</span> )</p></li>
-<li><p>set of actions <span class="math notranslate nohighlight">\( A \)</span></p></li>
-<li><p>set of states <span class="math notranslate nohighlight">\( S \)</span></p></li>
-</ul>
-</li>
-<li><p>One important assumption in the above formulation is that the agent does not have access to the transition or reward function</p></li>
-<li><p>Functions to be learning in RL</p>
-<ul>
-<li><p>policy <span class="math notranslate nohighlight">\(\pi\)</span></p></li>
-<li><p>value function <span class="math notranslate nohighlight">\(V^{\pi}\)</span>  or action value function <span class="math notranslate nohighlight">\(Q^{\pi}(s,a)\)</span></p></li>
-<li><p>environment model <span class="math notranslate nohighlight">\(P(s^{'} | s,a)\)</span></p></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="deep-rl">
-<h2>Deep RL<a class="headerlink" href="#deep-rl" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>use neural networks as function approximators to learn the functions</p></li>
-<li><p><strong>Policy-based methods</strong></p>
-<ul>
-<li><p>learn policy <span class="math notranslate nohighlight">\(\pi\)</span> to maximize objective</p></li>
-<li><p>PROS</p>
-<ul>
-<li><p>general class of optimization methods</p></li>
-<li><p>any type of actions: discrete, continous or a mix</p></li>
-<li><p>guaranteeed to converge(locally) for e.g. via Poilcy Gradient Algorithm</p></li>
-</ul>
-</li>
-<li><p>CONS</p>
-<ul>
-<li><p>high variance</p></li>
-<li><p>sample inefficient</p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="deep-rl-value-based-methods">
-<h2>Deep RL - <strong>Value Based Methods</strong><a class="headerlink" href="#deep-rl-value-based-methods" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>agent learns either <span class="math notranslate nohighlight">\(V^{\pi}(s)\)</span> or <span class="math notranslate nohighlight">\(Q^{\pi}\)</span></p></li>
-<li><p>uses the learnt function(s) to generate the policy for e.g. greedy policy</p></li>
-<li><p>generally <span class="math notranslate nohighlight">\(Q^{\pi}(s,a)\)</span> is preferred as agent can select the action when in a given state to maximize the objective</p></li>
-<li><p>PROS:</p>
-<ul>
-<li><p>more sample efficient than policy based algorithms</p></li>
-</ul>
-</li>
-<li><p>CONS</p>
-<ul>
-<li><p>no guarantee of convergence to optimal policy</p></li>
-<li><p>most methods are for discrete action spaces though recently QT-OPT has been proposed which can handle continuous spaces</p></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="deep-rl-model-based-methods">
-<h2>Deep RL - <strong>Model Based Methods</strong><a class="headerlink" href="#deep-rl-model-based-methods" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>agent learns a model of the environment dynamics</p></li>
-<li><p>using this model, agent can imagine or predict what will happen if a set of actions are taken for few time steps without actually changing the environment</p></li>
-<li><p>Based on these predictions, agent can figure out the best actions</p></li>
-<li><p>PROS:</p>
-<ul>
-<li><p>gives agent foresight</p></li>
-<li><p>tend to require fewer samples</p></li>
-</ul>
-</li>
-<li><p>CONS:</p>
-<ul>
-<li><p>learning the model can be difficult as typically real world environments can have a large state and action space</p></li>
-<li><p>predictions depend on the accuracy of the model</p></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="taxonomy-of-rl-algorithms">
-<h2>Taxonomy of RL algorithms<a class="headerlink" href="#taxonomy-of-rl-algorithms" title="Permalink to this headline">¶</a></h2>
-<p><img alt="Overview of RL algorithms" src="../../../../../_images/rl-taxonomy.png" /><!-- .element width="800px" --></p>
-</div>
-<div class="section" id="off-policy-versus-on-policy">
-<h2>Off policy versus on policy<a class="headerlink" href="#off-policy-versus-on-policy" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>On policy</p>
-<ul>
-<li><p>e.g. SARSA</p></li>
-<li><p>agent learns on the policy i.e. training data generated from the current poicy is used</p></li>
-<li><p>in other words agent is learning the value of the policy that is being followed</p></li>
-<li><p>after the agent is trained, data is discarded and the iterated policy is used.</p></li>
-<li><p>sample inefficent due to the discarding of data but memory efficient</p></li>
-</ul>
-</li>
-<li><p>Off policy</p>
-<ul>
-<li><p>e.g. Q-learning</p></li>
-<li><p>any data collected can be used for training</p></li>
-<li><p>the value of a policy that is different from the one being followed is being learnt</p></li>
-<li><p>more memory may be required to store data</p></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="deep-learning">
-<h2>Deep Learning<a class="headerlink" href="#deep-learning" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Neural networks learn functions <span class="math notranslate nohighlight">\(f_{\theta}(x)\)</span> which map input <span class="math notranslate nohighlight">\(x\)</span> to output <span class="math notranslate nohighlight">\(y\)</span>. The weights of the neural network are represented by <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
-<ul>
-<li><p>if <span class="math notranslate nohighlight">\(y=f(x)\)</span> then learnt <span class="math notranslate nohighlight">\(f_{\theta}(x)\)</span> is the estimate for <span class="math notranslate nohighlight">\(f(x)\)</span></p></li>
-<li><p>Loss function <span class="math notranslate nohighlight">\(L(f_{\theta}(x),y)\)</span> captures the difference between the target <span class="math notranslate nohighlight">\(y\)</span> and the predicted network output <span class="math notranslate nohighlight">\(f_{\theta}(x)\)</span>. This loss function needs to be minimized.</p></li>
-<li><p>generally we have training data samples which are independent and identically distributed (iid)</p></li>
-</ul>
-</li>
-<li><p>Changing the weights will corresponding to different mapping functions.</p></li>
-<li><p>Increasing number of nodes in a layer or layers allows learning of more complex functions</p></li>
-<li><p>In reinforcement learning:</p>
-<ul>
-<li><p>neither <span class="math notranslate nohighlight">\(x\)</span> or <span class="math notranslate nohighlight">\(y\)</span> are known in advance</p></li>
-<li><p>instead these values are obtained through agent interactions with environment - where it observes states and rewards</p></li>
-<li><p>reward functions are the main source of feedback and the rewards are quite sparse</p></li>
-<li><p>since current state and actions that an agent takes affect the future states, the iid assumption between samples for neural network training no longer holds and this affects the rate of convergence.</p></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1702,10 +1339,10 @@ $<span class="math notranslate nohighlight">\(\pi(s) \leftarrow \arg\max_a \sum_
             <p class="prev-next-title">Dynamic Programming Algorithms - Value Iteration</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../pomdp-example/_index.html" title="next page">
+    <a class='right-next' id="next-link" href="../recycling-robot/_index.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">POMDP Example</p>
+        <p class="prev-next-title">Finding the optimal policy of a recycling robot.</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

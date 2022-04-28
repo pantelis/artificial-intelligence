@@ -1,8 +1,4 @@
----
-title: Grid-world policy iteration
----
-
-# Grid-world policy iteration
+# Grid-world policy iteration with Python
 
 A more graphical way to understand how policy iteration functions (and other algorithms as well)  is through [this repo](https://github.com/rlcode/reinforcement-learning/) - see `1-grid-world/1-policy-iteration` that depicts a more elaborate gridworld. 
 
