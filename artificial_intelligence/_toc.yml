@@ -109,7 +109,6 @@ parts:
   - caption:  MDP Lab
     chapters:  
     - file: aiml-common/lectures/mdp/mdp-lab/fomdp-example/_index.md 
-    - file: aiml-common/lectures/mdp/mdp-lab/pomdp-example/_index.md        
     - file: aiml-common/lectures/mdp/mdp-lab/recycling-robot/_index.md      
     - file: aiml-common/lectures/mdp/mdp-lab/grid-world/_index.md      
     - file: aiml-common/lectures/mdp/mdp-lab/yield-management-capacity-control/_index.md      
