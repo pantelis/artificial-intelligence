@@ -433,7 +433,7 @@ const thebe_selector_output = ".output, .cell_output"
   Markov Decision Processes
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../_index.html">
    Markov Decision Processes
@@ -444,13 +444,6 @@ const thebe_selector_output = ".output, .cell_output"
    Introduction to MDP
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Dynamic Programming Planning
- </span>
-</p>
-<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Bellman Expectation Backup
@@ -496,10 +489,20 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  MDP Planning Lab
+  MDP Lab
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mdp-lab/fomdp-example/_index.html">
+   MDP Example: agent in a maze
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mdp-lab/pomdp-example/_index.html">
+   POMDP Example
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../mdp-lab/recycling-robot/_index.html">
    Finding the optimal policy of a recycling robot.
@@ -886,29 +889,29 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Substituting the  <span class="math notranslate nohighlight">\(v_\pi(s^\prime)\)</span> is represented by the following tree that considers the action-value function over a look ahead step.</p>
 <p><img alt="action-state-action-value-tree" src="../../../../_images/action-state-action-value-tree.png" />
 <em>Tree that represents the action-value function after a one-step look ahead.</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p><strong>Bellman State-Action Value Expectation Equation</strong></p>
 <div class="math notranslate nohighlight">
 \[q_\pi(s,a) = \mathcal R_s^a + \gamma \sum_{s^\prime \in \mathcal S} \mathcal{P}^a_{ss^\prime} \sum_{a^\prime \in \mathcal A} \pi(a^\prime|s^\prime) q_\pi(s^\prime,a^\prime)\]</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-Now that we have a computable $q_\pi(s,a)$ value function we can go back and substitute it into the equation of the state-value function. Again we can representing this substitution by the tree structure below.
-
-![state-action-state-value-tree](images/state-action-state-value-tree.png)
-*Tree that represents the state-value function after a one-step look ahead.*
-
-With the substitution we can write the state-value function as,
-
-{{&lt;hint danger&gt;}}
-**Bellman State Value Expectation Equation**
-
-$$v_\pi(s) = \sum_{a \in \mathcal A(s)} \pi(a|s) \left( \mathcal R_s^a + \gamma \sum_{s^\prime \in \mathcal S} \mathcal{P}^a_{ss^\prime} v_\pi(s^\prime) \right)$$
-$$ v_\pi =  \mathcal R^\pi + \gamma \mathcal{P}^\pi v_\pi$$
-</pre></div>
 </div>
-<p>The compact form (2nd line of the equation) defined:</p>
+<p>Now that we have a computable <span class="math notranslate nohighlight">\(q_\pi(s,a)\)</span> value function we can go back and substitute it into the equation of the state-value function. Again we can representing this substitution by the tree structure below.</p>
+<p><img alt="state-action-state-value-tree" src="../../../../_images/state-action-state-value-tree.png" />
+<em>Tree that represents the state-value function after a one-step look ahead.</em></p>
+<p>With the substitution we can write the state-value function as,</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Bellman State Value Expectation Equation</strong></p>
+<div class="math notranslate nohighlight">
+\[v_\pi(s) = \sum_{a \in \mathcal A(s)} \pi(a|s) \left( \mathcal R_s^a + \gamma \sum_{s^\prime \in \mathcal S} \mathcal{P}^a_{ss^\prime} v_\pi(s^\prime) \right)\]</div>
+<div class="math notranslate nohighlight">
+\[ v_\pi =  \mathcal R^\pi + \gamma \mathcal{P}^\pi v_\pi\]</div>
+<p>In the compact form (2nd line of the equation) we denote:</p>
 <div class="math notranslate nohighlight">
 \[  \mathcal R_s^\pi = \sum_{a \in \mathcal A(s)} \pi(a|s)   \mathcal R_s^a \]</div>
 <div class="math notranslate nohighlight">
 \[  \mathcal P_{ss'}^\pi = \sum_{a \in \mathcal A(s)} \pi(a|s)   \mathcal P_{ss'}^a \]</div>
+</div>
 <p>As we will see in a separate chapter, this equation is going to be used to iteratively calculate the converged value function of each state given an MDP and a policy.  The equation is referred to as the <em>Bellman expectation backup</em> - it took its name from the previously shown tree like structure where we use state value functions from the leaf modes <span class="math notranslate nohighlight">\(s^\prime\)</span> to the root node.</p>
 </div>
 </div>

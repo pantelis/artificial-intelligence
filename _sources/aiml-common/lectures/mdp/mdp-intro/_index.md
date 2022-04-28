@@ -1,12 +1,6 @@
----
-title: Introduction to MDP
-weight: 102
-draft: false
----
-
 # Introduction to MDP
 
-## The elements of the Agent - Environment Interface 
+## The elements of the Agent - Environment interface 
 
 We start by reviewing the agent-environment interface with this evolved notation and provide additional definitions that will help in grasping the concepts behind DRL. We treat MDP analytically effectively deriving the four Bellman equations.
 
@@ -14,7 +8,6 @@ We start by reviewing the agent-environment interface with this evolved notation
 *Agent-Environment Interface*
 
 ```{note}
-
 The following table summarizes the notation and contains useful definitions that we will use to describe required concepts later.  With capital letters we denote the random variables involved and with small letters their specific realizations (values) - for example $S_t$ is the random state variable and $s_t$ is the actual state at time $t$. 
 
 |        **Symbol**        | **Description**                                                                                              |
@@ -28,11 +21,12 @@ The following table summarizes the notation and contains useful definitions that
 |          $\tau$          | _trajectory_ - the sequence of experiences over an episode                                                   |
 |          $G_t$           | _return_ - the total discounted rewards from time step $t$ - it will be qualified shortly.                   |
 |         $\gamma$         | the discount factor $\gamma \in [0,1]$ embedded into the return $G_t$                                        |
+
 ```
 
 In fully observed MDP problems, the agent *perceives fully* the environment state $S_t$  - you can assume that there is a bank of sensors but they are ideal. In other words the agent knows which state the environment is in, perfectly[^2].
 
-[^2]: Note that Markov processes are sometimes erroneously called _memoryless_ but in any MDP above we can incorporate memory aka dependence in more than one state over time by cleverly defining the state $S_t$ as a container of a number of states. For example, $S_t = \left[ S_t=s, S_{t-1} = s^\prime \right]$ can still define an Markov transition using $S$ states. The transition model $p(S_t | S_{t-1}) = p(s_t, s_{t-1} | s_{t-1}, s_{t-2}) = p(s_t|s_{t-1}, s_{t-2})$ is called the 2nd order Markov chain. 
+Note that Markov processes are sometimes erroneously called _memoryless_ but in any MDP above we can incorporate memory aka dependence in more than one state over time by cleverly defining the state $S_t$ as a container of a number of states. For example, $S_t = \left[ S_t=s, S_{t-1} = s^\prime \right]$ can still define an Markov transition using $S$ states. The transition model $p(S_t | S_{t-1}) = p(s_t, s_{t-1} | s_{t-1}, s_{t-2}) = p(s_t|s_{t-1}, s_{t-2})$ is called the 2nd order Markov chain. 
 
 ### MDP Loop
 
@@ -80,7 +74,7 @@ Can you determine the state transition tensor for the 4x3 Gridworld ?
 
 The action will also cause the environment to send the agent a signal called _instantaneous reward_ $R_{t+1}$ [^1]. The reward signal is effectively defining the goal of the agent and is the primary basis for altering a policy. The agent's sole objective is to maximize the cumulative reward in the long run. 
 
-[^1]: Please note that in the literature the reward is also denoted as $R_{t}$ - this is a convention issue rather than something fundamental. The justification of the index $t+1$ is that the environment will take one step to respond to what it receives from the agent. 
+Please note that in the literature the reward is also denoted as $R_{t}$ - this is a convention issue rather than something fundamental. The justification of the index $t+1$ is that the environment will take one step to respond to what it receives from the agent. 
 
 Another marginalization of the MDP dynamics allows us to get the  _reward function_ that tells us if we are in state $S_t=s$, what reward  $R_{t+1}$, in expectation, we get when taking an action $a$. It is given by,
 
@@ -110,7 +104,7 @@ $$\tau_1: S_0=s_{11}, S_1 = s_{12},  ... S_T=s_{43} \rightarrow G^{\tau_1}_0 = 5
 $$\tau_2: S_0=s_{11}, S_1=s_{21}, ... , S_T=s_{43} \rightarrow G^{\tau_2}_0 = 6.9$$
 $$ … $$
 
-[^3]: Note that the actual values are different - these are sample numbers to make the point that the return depends on the specific trajectory.
+Note that these are sample numbers to make the point that the return depends on the specific trajectory.
 
 The following is a useful recursion to remind that successive time steps are _related_ to each other:
 

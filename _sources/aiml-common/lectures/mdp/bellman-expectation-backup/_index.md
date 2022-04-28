@@ -63,7 +63,7 @@ Substituting the  $v_\pi(s^\prime)$ is represented by the following tree that co
 ![action-state-action-value-tree](images/action-state-action-value-tree.png)
 *Tree that represents the action-value function after a one-step look ahead.*
 
-{{<hint danger>}}
+```{note}
 **Bellman State-Action Value Expectation Equation**
 
 $$q_\pi(s,a) = \mathcal R_s^a + \gamma \sum_{s^\prime \in \mathcal S} \mathcal{P}^a_{ss^\prime} \sum_{a^\prime \in \mathcal A} \pi(a^\prime|s^\prime) q_\pi(s^\prime,a^\prime)$$
@@ -76,16 +76,17 @@ Now that we have a computable $q_\pi(s,a)$ value function we can go back and sub
 
 With the substitution we can write the state-value function as,
 
-{{<hint danger>}}
+```{note}
 **Bellman State Value Expectation Equation**
 
 $$v_\pi(s) = \sum_{a \in \mathcal A(s)} \pi(a|s) \left( \mathcal R_s^a + \gamma \sum_{s^\prime \in \mathcal S} \mathcal{P}^a_{ss^\prime} v_\pi(s^\prime) \right)$$
 $$ v_\pi =  \mathcal R^\pi + \gamma \mathcal{P}^\pi v_\pi$$
-```
 
-The compact form (2nd line of the equation) defined:
+
+In the compact form (2nd line of the equation) we denote:
 
 $$  \mathcal R_s^\pi = \sum_{a \in \mathcal A(s)} \pi(a|s)   \mathcal R_s^a $$
 $$  \mathcal P_{ss'}^\pi = \sum_{a \in \mathcal A(s)} \pi(a|s)   \mathcal P_{ss'}^a $$
+```
 
 As we will see in a separate chapter, this equation is going to be used to iteratively calculate the converged value function of each state given an MDP and a policy.  The equation is referred to as the _Bellman expectation backup_ - it took its name from the previously shown tree like structure where we use state value functions from the leaf modes $s^\prime$ to the root node. 
