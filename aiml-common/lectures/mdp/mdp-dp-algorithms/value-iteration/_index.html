@@ -889,10 +889,10 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="dynamic-programming-algorithms-value-iteration">
 <h1>Dynamic Programming Algorithms - Value Iteration<a class="headerlink" href="#dynamic-programming-algorithms-value-iteration" title="Permalink to this headline">¶</a></h1>
-<p>We already have seen that in the Gridworld example in the policy iteration section , we may not <em>need</em> to reach the optimal state value function <span class="math notranslate nohighlight">\(v_*(s)\)</span> to obtain an optimal policy to result. The value function for the <span class="math notranslate nohighlight">\(k=3\)</span> iteration results the same policy as the policy from a far more accurate value function (large k).</p>
+<p>We already have seen that in the Gridworld example in the policy iteration section , we may not <em>need</em> to reach the optimal state value function <span class="math notranslate nohighlight">\(v_*(s)\)</span> to obtain an optimal policy result. The value function for the <span class="math notranslate nohighlight">\(k=3\)</span> iteration results the same policy as the policy from a far more accurate value function (large k).</p>
 <p>We can therefore stop early and taking the argument to the limit, do the policy improvement step in <em>each</em> iteration.  In this section we will look at an algorithm called value iteration that does that.</p>
-<p><img alt="value-iteration-summary" src="../../../../../_images/value-iteration-summary.png" />
-<em>Summary of Value Iteration</em></p>
+<p><img alt="value-iteration-summary" src="../../../../../_images/value-iteration-summary.png" /></p>
+<p><em>Summary of Value Iteration</em></p>
 <p>The basic principle behind value-iteration is the principle that underlines dynamic programming and is called the <em>principle of optimality</em> as applied to policies. According to this principle an <em>optimal</em> policy can be divided into two components.</p>
 <ol class="simple">
 <li><p>An optimal first action <span class="math notranslate nohighlight">\(a_*\)</span>.</p></li>
@@ -903,8 +903,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="math notranslate nohighlight">
 \[v_*(s) = \max_a \left( \mathcal R_s^a + \gamma \sum_{s^\prime \in \mathcal S} \mathcal{P}^a_{ss^\prime} v_*(s^\prime) \right)\]</div>
 <p>As an example if I want to move optimally towards a location in the room, I can make a optimal first step and at that point I can follow the optimal policy, that I was magically given, towards the desired final location. That optimal first step, think about making it by walking backwards from the goal. We start at the end of the problem where we know the final rewards and work backwards to all the states that connect to it in our look-ahead tree.</p>
-<p><img alt="value-iteration-look-ahead-tree" src="../../../../../_images/value-iteration-look-ahead-tree.png" />
-<em>One step look-ahead tree representation of value iteration algorithm</em></p>
+<p><img alt="value-iteration-look-ahead-tree" src="../../../../../_images/value-iteration-look-ahead-tree.png" /></p>
+<p><em>One step look-ahead tree representation of value iteration algorithm</em></p>
 <p>The “start from the end” intuition behind the equation is usually applied with no consideration as to if we are at the end or not. We just do the backup inductive step for each state.  In value iteration for synchronous backups, we start at <span class="math notranslate nohighlight">\(k=0\)</span> from the value function <span class="math notranslate nohighlight">\(v_0(s)=0.0\)</span> and at each iteration <span class="math notranslate nohighlight">\(k+1\)</span> for all states <span class="math notranslate nohighlight">\(s \in \mathcal{S}\)</span> we update the <span class="math notranslate nohighlight">\(v_{k+1}(s)\)</span> from <span class="math notranslate nohighlight">\(v_k(s)\)</span>. As the iterations progress, the value function will converge to <span class="math notranslate nohighlight">\(v_*\)</span>.</p>
 <p>The equation of value iteration is taken straight out of the Bellman optimality equation, <strong>by turning the later into an update rule</strong>.</p>
 <div class="math notranslate nohighlight">
@@ -918,8 +918,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="value-iteration-example">
 <h2>Value iteration example<a class="headerlink" href="#value-iteration-example" title="Permalink to this headline">¶</a></h2>
 <p>In example world shown below (from <a class="reference external" href="http://i-systems.github.io/HSE545/iAI/AI/topics/05_MDP/11_MDP.html">here</a>)</p>
-<p><img alt="gridworld" src="../../../../../_images/gridworld.png" />
-<em>Gridworld to showcase the state-value calculation in Python code below. The states are numbered sequentially from top right.</em></p>
+<p><img alt="gridworld" src="../../../../../_images/gridworld.png" /></p>
+<p><em>Gridworld to showcase the state-value calculation in Python code below. The states are numbered sequentially from top right.</em></p>
 <p>we can calculate the state-value function its the vector form - the function in this world maps the state space to the 11th dim real vector space  <span class="math notranslate nohighlight">\(v(s): \mathcal S \rightarrow \mathbb R^{11}\)</span> aka the value function is a vector of size 11.</p>
 <div class="math notranslate nohighlight">
 \[\mathbf v_{k+1} = \max_a \left( \mathcal R^a + \gamma \mathcal P^a \mathbf v_k \right) \]</div>

@@ -4,11 +4,12 @@ title: Dynamic Programming Algorithms - Value Iteration
 
 # Dynamic Programming Algorithms - Value Iteration
 
-We already have seen that in the Gridworld example in the policy iteration section , we may not _need_ to reach the optimal state value function $v_*(s)$ to obtain an optimal policy to result. The value function for the $k=3$ iteration results the same policy as the policy from a far more accurate value function (large k). 
+We already have seen that in the Gridworld example in the policy iteration section , we may not _need_ to reach the optimal state value function $v_*(s)$ to obtain an optimal policy result. The value function for the $k=3$ iteration results the same policy as the policy from a far more accurate value function (large k). 
 
 We can therefore stop early and taking the argument to the limit, do the policy improvement step in _each_ iteration.  In this section we will look at an algorithm called value iteration that does that.  
 
 ![value-iteration-summary](images/value-iteration-summary.png)
+
 *Summary of Value Iteration*
 
 The basic principle behind value-iteration is the principle that underlines dynamic programming and is called the _principle of optimality_ as applied to policies. According to this principle an _optimal_ policy can be divided into two components.
@@ -25,6 +26,7 @@ $$v_*(s) = \max_a \left( \mathcal R_s^a + \gamma \sum_{s^\prime \in \mathcal S} 
 As an example if I want to move optimally towards a location in the room, I can make a optimal first step and at that point I can follow the optimal policy, that I was magically given, towards the desired final location. That optimal first step, think about making it by walking backwards from the goal. We start at the end of the problem where we know the final rewards and work backwards to all the states that connect to it in our look-ahead tree. 
 
 ![value-iteration-look-ahead-tree](images/value-iteration-look-ahead-tree.png)
+
 *One step look-ahead tree representation of value iteration algorithm*
 
 The "start from the end" intuition behind the equation is usually applied with no consideration as to if we are at the end or not. We just do the backup inductive step for each state.  In value iteration for synchronous backups, we start at $k=0$ from the value function $v_0(s)=0.0$ and at each iteration $k+1$ for all states $s \in \mathcal{S}$ we update the $v_{k+1}(s)$ from $v_k(s)$. As the iterations progress, the value function will converge to $v_*$.
@@ -47,6 +49,7 @@ Notice that we are not building an explicit policy at every iteration and also, 
 In example world shown below (from [here](http://i-systems.github.io/HSE545/iAI/AI/topics/05_MDP/11_MDP.html))
 
 ![gridworld](images/gridworld.png)
+
 *Gridworld to showcase the state-value calculation in Python code below. The states are numbered sequentially from top right.*
 
 we can calculate the state-value function its the vector form - the function in this world maps the state space to the 11th dim real vector space  $v(s): \mathcal S \rightarrow \mathbb R^{11}$ aka the value function is a vector of size 11.
