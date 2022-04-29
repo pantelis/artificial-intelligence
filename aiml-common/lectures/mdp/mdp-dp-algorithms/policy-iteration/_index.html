@@ -58,8 +58,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/mdp/mdp-dp-algorithms/policy-iteration/_index.html" />
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="Dynamic Programming Algorithms - Value Iteration" href="../value-iteration/_index.html" />
-    <link rel="prev" title="Policy Improvement (Control)" href="../policy-improvement/_index.html" />
+    <link rel="next" title="Policy Evaluation (Prediction)" href="../policy-evaluation/_index.html" />
+    <link rel="prev" title="Bellman Optimality Backup" href="../../bellman-optimality-backup/_index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -461,9 +461,9 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../_index.html">
-   Solving the MDP - DP Algorithms
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Dynamic Programming Algorithms - Policy Iteration
   </a>
  </li>
  <li class="toctree-l1">
@@ -474,11 +474,6 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../policy-improvement/_index.html">
    Policy Improvement (Control)
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Dynamic Programming Algorithms - Policy Iteration
   </a>
  </li>
  <li class="toctree-l1">
@@ -495,17 +490,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../mdp-lab/fomdp-example/_index.html">
-   Gridworld calculations
+   Finding optimal policies in Gridworld
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../mdp-lab/recycling-robot/_index.html">
    Finding the optimal policy of a recycling robot.
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp-lab/grid-world/_index.html">
-   Grid-world policy iteration with Python
   </a>
  </li>
  <li class="toctree-l1">
@@ -804,6 +794,11 @@ const thebe_selector_output = ".output, .cell_output"
    A policy iteration example
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#another-grid-world-policy-iteration-example">
+   Another Grid-world policy iteration example
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -827,6 +822,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#a-policy-iteration-example">
    A policy iteration example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#another-grid-world-policy-iteration-example">
+   Another Grid-world policy iteration example
   </a>
  </li>
 </ul>
@@ -869,6 +869,38 @@ const thebe_selector_output = ".output, .cell_output"
 <p><img alt="gridworld-policy-iterations" src="../../../../../_images/gridworld-policy-iterations.png" />
 <em>Convergence to optimal policy via separate prediction and policy improvement iterations</em></p>
 </div>
+<div class="section" id="another-grid-world-policy-iteration-example">
+<h2>Another Grid-world policy iteration example<a class="headerlink" href="#another-grid-world-policy-iteration-example" title="Permalink to this headline">¶</a></h2>
+<p>A more graphical way to understand how policy iteration functions (and other algorithms as well)  is through <a class="reference external" href="https://github.com/rlcode/reinforcement-learning/">this repo</a> - see <code class="docutils literal notranslate"><span class="pre">1-grid-world/1-policy-iteration</span></code> that depicts a more elaborate gridworld.</p>
+<ol class="simple">
+<li><p>Clone the repo and launch VS Code in its root dir.</p></li>
+<li><p>Install the dependencies in a new VS Code terminal.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>   python3 -m venv .venv
+   <span class="nb">source</span> .venv/bin/activate
+   pip3 install -r requirements.txt 
+</pre></div>
+</div>
+<p>In VS Code click the Python debug button, click <code class="docutils literal notranslate"><span class="pre">create</span> <span class="pre">a</span> <span class="pre">launch.json</span> <span class="pre">file</span></code> and make sure that the launch configuration matches the one below (you need this for all visualizations to happen)</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Use IntelliSense to learn about possible attributes.</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Hover to view descriptions of existing attributes.</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Python: Current File&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;program&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${file}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;console&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integratedTerminal&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;cwd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${fileDirname}&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -896,17 +928,17 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../policy-improvement/_index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../../bellman-optimality-backup/_index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Policy Improvement (Control)</p>
+            <p class="prev-next-title">Bellman Optimality Backup</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../value-iteration/_index.html" title="next page">
+    <a class='right-next' id="next-link" href="../policy-evaluation/_index.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Dynamic Programming Algorithms - Value Iteration</p>
+        <p class="prev-next-title">Policy Evaluation (Prediction)</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

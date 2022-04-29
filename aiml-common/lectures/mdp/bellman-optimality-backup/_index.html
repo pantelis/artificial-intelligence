@@ -58,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/mdp/bellman-optimality-backup/_index.html" />
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Solving the MDP - DP Algorithms" href="../mdp-dp-algorithms/_index.html" />
+    <link rel="next" title="Dynamic Programming Algorithms - Policy Iteration" href="../mdp-dp-algorithms/policy-iteration/_index.html" />
     <link rel="prev" title="Bellman Expectation Backup" href="../bellman-expectation-backup/_index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -462,8 +462,8 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../mdp-dp-algorithms/_index.html">
-   Solving the MDP - DP Algorithms
+  <a class="reference internal" href="../mdp-dp-algorithms/policy-iteration/_index.html">
+   Dynamic Programming Algorithms - Policy Iteration
   </a>
  </li>
  <li class="toctree-l1">
@@ -474,11 +474,6 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../mdp-dp-algorithms/policy-improvement/_index.html">
    Policy Improvement (Control)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../mdp-dp-algorithms/policy-iteration/_index.html">
-   Dynamic Programming Algorithms - Policy Iteration
   </a>
  </li>
  <li class="toctree-l1">
@@ -495,17 +490,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../mdp-lab/fomdp-example/_index.html">
-   Gridworld calculations
+   Finding optimal policies in Gridworld
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../mdp-lab/recycling-robot/_index.html">
    Finding the optimal policy of a recycling robot.
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../mdp-lab/grid-world/_index.html">
-   Grid-world policy iteration with Python
   </a>
  </li>
  <li class="toctree-l1">
@@ -868,20 +858,19 @@ const thebe_selector_output = ".output, .cell_output"
 <em>Tree that represents the optimal state-value function after a two-step look ahead.</em></p>
 <p><img alt="optimal-action-state-action-value-tree" src="../../../../_images/optimal-action-state-action-value-tree.png" />
 <em>Tree that represents the optimal action-value function after a two-step look ahead.</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p><strong>Bellman Optimality Backup</strong></p>
 <div class="math notranslate nohighlight">
 \[v_*(s) = \max_a \left( \mathcal R_s^a + \gamma \sum_{s^\prime \in \mathcal S} \mathcal{P}^a_{ss^\prime} v_*(s^\prime) \right)\]</div>
 <div class="math notranslate nohighlight">
 \[q_*(s,a) = \mathcal R_s^a + \gamma \sum_{s^\prime \in \mathcal S} \mathcal{P}^a_{ss^\prime} \max_{a^\prime} q_*(s^\prime,a^\prime)\]</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-These equations due to the $\max$ operator are non-linear and can be solved to obtain the MDP solution aka $q_*(s,a)$ iteratively via a number of methods: policy iteration, value iteration, Q-learning, SARSA. We will see some of these methods in detail in later chapters. The key advantage in the Bellman optimality equations is efficiency: 
-
-1. They _recursively decompose_ the problem into two sub-problems: the subproblem of the next step and the optimal value function in all subsequent steps of the trajectory.
-2. They cache the optimal value functions to the sub-problems and by doing so we can reuse them as needed.
-
-Since the Bellman equations allow us to decompose recursively the problem into sub-problems, they in fact implement a general and exact approach called _dynamic programming_ that results into an optimal policy. We examine the computational aspects of such approach in a separate section. 
-
-</pre></div>
+<p>These equations due to the <span class="math notranslate nohighlight">\(\max\)</span> operator are non-linear and can be solved to obtain the MDP solution aka <span class="math notranslate nohighlight">\(q_*(s,a)\)</span> iteratively via a number of methods: policy iteration, value iteration, Q-learning, SARSA. We will see some of these methods in detail in later chapters. The key advantage in the Bellman optimality equations is efficiency:</p>
+<ol class="simple">
+<li><p>They <em>recursively decompose</em> the problem into two sub-problems: the subproblem of the next step and the optimal value function in all subsequent steps of the trajectory.</p></li>
+<li><p>They cache the optimal value functions to the sub-problems and by doing so we can reuse them as needed.</p></li>
+</ol>
+<p>Since the Bellman equations allow us to decompose recursively the problem into sub-problems, they in fact implement a general and exact approach called <em>dynamic programming</em> that results into an optimal policy. We examine the computational aspects of such approach in a separate section.</p>
 </div>
 </div>
 </div>
@@ -918,10 +907,10 @@ Since the Bellman equations allow us to decompose recursively the problem into s
             <p class="prev-next-title">Bellman Expectation Backup</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../mdp-dp-algorithms/_index.html" title="next page">
+    <a class='right-next' id="next-link" href="../mdp-dp-algorithms/policy-iteration/_index.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Solving the MDP - DP Algorithms</p>
+        <p class="prev-next-title">Dynamic Programming Algorithms - Policy Iteration</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -1,8 +1,3 @@
----
-title: Lecture 8 - Markov Decision Processes 
-weight: 101
----
-
 # Markov Decision Processes
 
 We started looking at different agent behavior architectures starting from the planning agents where the _model_ of the environment is known and with _no interaction_ with it, the agent improves its policy, using this model as well as problem solving and logical reasoning skills. 
@@ -18,7 +13,8 @@ The problem as will see, will be described via a set of four equations called Be
 Computationally we will go through approaches that solve the MDP as efficiently as possible - namely, the value and policy iteration algorithms.
 
 ![solving-mpd](images/solving-mdp.png)
-*Solving MDP Problems*
+
+*[Solving MDP Problems](https://raw.githubusercontent.com/pantelis/aiml-common/25b7bb61d967ac418eeffb1f87ee771386da590a/lectures/mdp/images/solving-mdp.png)*
 
 ```{note}
 Apart from the notes here that are largely based on [David Silver's (Deep Mind) course material](https://www.davidsilver.uk/teaching/) and [video lectures](https://www.youtube.com/watch?v=2pWv7GOvuf0&list=PLqYmG7hTraZDM-OYHWgPebj2MfCFzFObQ), the curious mind will be find additional resources: 

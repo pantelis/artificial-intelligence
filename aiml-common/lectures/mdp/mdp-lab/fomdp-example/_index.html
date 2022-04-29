@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gridworld calculations &#8212; Introduction to Artificial Intelligence</title>
+    <title>Finding optimal policies in Gridworld &#8212; Introduction to Artificial Intelligence</title>
     
   <link href="../../../../../_static/css/theme.css" rel="stylesheet">
   <link href="../../../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -462,8 +462,8 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp-dp-algorithms/_index.html">
-   Solving the MDP - DP Algorithms
+  <a class="reference internal" href="../../mdp-dp-algorithms/policy-iteration/_index.html">
+   Dynamic Programming Algorithms - Policy Iteration
   </a>
  </li>
  <li class="toctree-l1">
@@ -474,11 +474,6 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../../mdp-dp-algorithms/policy-improvement/_index.html">
    Policy Improvement (Control)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp-dp-algorithms/policy-iteration/_index.html">
-   Dynamic Programming Algorithms - Policy Iteration
   </a>
  </li>
  <li class="toctree-l1">
@@ -495,17 +490,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Gridworld calculations
+   Finding optimal policies in Gridworld
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../recycling-robot/_index.html">
    Finding the optimal policy of a recycling robot.
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../grid-world/_index.html">
-   Grid-world policy iteration with Python
   </a>
  </li>
  <li class="toctree-l1">
@@ -800,23 +790,6 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#maze-with-no-uncertainty">
-   MAZE with no uncertainty
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#maze-with-no-uncertainty-optimal-policy">
-     MAZE with no uncertainty: Optimal Policy
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#markov-decision-process-mdp">
-   Markov Decision Process (MDP)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mdp-transition-model">
    MDP Transition Model
   </a>
@@ -900,7 +873,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Gridworld calculations</h1>
+                <h1>Finding optimal policies in Gridworld</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -910,23 +883,6 @@ const thebe_selector_output = ".output, .cell_output"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#maze-with-no-uncertainty">
-   MAZE with no uncertainty
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#maze-with-no-uncertainty-optimal-policy">
-     MAZE with no uncertainty: Optimal Policy
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#markov-decision-process-mdp">
-   Markov Decision Process (MDP)
-  </a>
- </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mdp-transition-model">
    MDP Transition Model
@@ -1010,74 +966,11 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="gridworld-calculations">
-<h1>Gridworld calculations<a class="headerlink" href="#gridworld-calculations" title="Permalink to this headline">¶</a></h1>
-<p><img alt="(A) 4x3 Maze " src="../../../../../_images/grid-world-1.png" /><!-- .element width="400px" --></p>
-<ul class="simple">
-<li><p>Robot is at the “START”</p></li>
-<li><p>Agent commands robot with <strong>actions</strong> : UP(<span class="math notranslate nohighlight">\(\uparrow\)</span>),DOWN(<span class="math notranslate nohighlight">\(\downarrow\)</span>),LEFT(<span class="math notranslate nohighlight">\(\leftarrow\)</span>),RIGHT(<span class="math notranslate nohighlight">\(\rightarrow\)</span>) and robot follows exactly</p></li>
-<li><p>Agent knows where it is i.e. environment is <em><strong>fully observable</strong></em></p></li>
-<li><p><strong>state</strong>: where Robot is for e.g. state <span class="math notranslate nohighlight">\(s_{42}\)</span> is if robot is in the square with red oval.</p></li>
-<li><p><strong>reward</strong> or punishment received when a state is reached</p></li>
-</ul>
-<p><img alt="(A) 4x3 Maze " src="../../../../../_images/grid-world-1.png" /><!-- .element width="400px" --></p>
-<ul class="simple">
-<li><p>Question: is there any uncertainty?</p>
-<ul>
-<li><p>No - since the actions executed are same as action commands issued and the environment is fully observable</p></li>
-</ul>
-</li>
-</ul>
-<!-- .element: class="fragment" -->
-<ul class="simple">
-<li><p>Utility of a sequence of states is given by</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[U(s_0,s_1,...,s_T)=R(s_0)+R(s_1)+...+R(s_T)\]</div>
-<!-- .element: class="fragment" -->
-<ul class="simple">
-<li><p>Question: Find sequence of actions from current state to goal (green oval) that maximizes utility?</p></li>
-</ul>
-<!-- .element: class="fragment" -->
-<div class="section" id="maze-with-no-uncertainty">
-<h2>MAZE with no uncertainty<a class="headerlink" href="#maze-with-no-uncertainty" title="Permalink to this headline">¶</a></h2>
-<p><img alt="Sequence of action for each starting state that maximizes utility" src="../../../../../_images/grid-fixed-plan.png" /> <!-- .element width="800px" --></p>
-<ul class="simple">
-<li><p>What we are looking for is a <strong>policy</strong> which recommends the action to be taken when in a given state</p></li>
-</ul>
-<p><img alt="(A) 4x3 Maze " src="../../../../../_images/grid-world-1.png" /><!-- .element width="400px" --></p>
-<ul class="simple">
-<li><p><strong>Policy</strong>: <span class="math notranslate nohighlight">\(\pi(s) = a\)</span> i.e. <span class="math notranslate nohighlight">\(\pi\)</span> function maps state <span class="math notranslate nohighlight">\(s\)</span> to action <span class="math notranslate nohighlight">\(a\)</span>.</p></li>
-</ul>
-<p><img alt="Different policies" src="../../../../../_images/policy.png" /></p>
-<ul class="simple">
-<li><p><strong>Utility</strong> <span class="math notranslate nohighlight">\(U(s)\)</span> of state <span class="math notranslate nohighlight">\(s\)</span> is the sum of discounted rewards of the sequence of states starting at <span class="math notranslate nohighlight">\(s\)</span> generated by using the policy <span class="math notranslate nohighlight">\(\pi\)</span> i.e.</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[U^{\pi}(s) =  R(s) + \gamma R(s_1) + \gamma^{2} R(s_2) + ...\]</div>
-<div class="section" id="maze-with-no-uncertainty-optimal-policy">
-<h3>MAZE with no uncertainty: Optimal Policy<a class="headerlink" href="#maze-with-no-uncertainty-optimal-policy" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p><strong>Optimal</strong> policy <span class="math notranslate nohighlight">\(\pi\)</span>  policy that yields the highest expected utility for the sequence of states generated by <span class="math notranslate nohighlight">\(\pi^*\)</span>.</p></li>
-</ul>
-<p><img alt="Optimal Policy for Maze" src="../../../../../_images/opitmal-policy-maze-1.png" /><!-- .element width="400px" --></p>
-<ul class="simple">
-<li><p>For the maze, the optimal policy tells us which action to take so that we are closer to the goal</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(\pi^*(s_{41})=\)</span> ???</p></li>
-<li><p><span class="math notranslate nohighlight">\(\pi^*(s_{32})=\)</span> ???</p></li>
-<li><p><span class="math notranslate nohighlight">\(\pi^*(s_{11})=\)</span> ???</p></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div class="section" id="markov-decision-process-mdp">
-<h2>Markov Decision Process (MDP)<a class="headerlink" href="#markov-decision-process-mdp" title="Permalink to this headline">¶</a></h2>
-<p><img alt="Transition model" src="../../../../../_images/transition.PNG" /><!-- .element width="200px" --></p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="finding-optimal-policies-in-gridworld">
+<h1>Finding optimal policies in Gridworld<a class="headerlink" href="#finding-optimal-policies-in-gridworld" title="Permalink to this headline">¶</a></h1>
 <p><img alt="Non-deterministic outcomes" src="../../../../../_images/maze-stoch.png" /><!-- .element width="700px" --></p>
 <ul class="simple">
-<li><p>Imagine that the maze environment is stochastic yet fully observable.</p></li>
+<li><p>The environment is stochastic yet fully observable.</p></li>
 <li><p>Due to uncertainty, an action causes transition from state to another state with some probability. There is no dependence on previous states.</p></li>
 <li><p>We now have a sequential decision problem for a fully observable, stochastic environment with Markovian transition model and additive rewards  consisting of:</p>
 <ul>
@@ -1088,7 +981,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-</div>
 <div class="section" id="mdp-transition-model">
 <h2>MDP Transition Model<a class="headerlink" href="#mdp-transition-model" title="Permalink to this headline">¶</a></h2>
 <p><img alt="Agent-Environment Interaction with Rewards" src="../../../../../_images/mdp.png" /></p>

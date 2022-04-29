@@ -24,9 +24,15 @@ The following table summarizes the notation and contains useful definitions that
 
 ```
 
-In fully observed MDP problems, the agent *perceives fully* the environment state $S_t$  - you can assume that there is a bank of sensors but they are ideal. In other words the agent knows which state the environment is in, perfectly[^2].
+In fully observed MDP problems, the agent *perceives fully* the environment state $S_t$  - you can assume that there is a bank of sensors but they are ideal. In other words the agent knows which state the environment is in, perfectly.
 
-Note that Markov processes are sometimes erroneously called _memoryless_ but in any MDP above we can incorporate memory aka dependence in more than one state over time by cleverly defining the state $S_t$ as a container of a number of states. For example, $S_t = \left[ S_t=s, S_{t-1} = s^\prime \right]$ can still define an Markov transition using $S$ states. The transition model $p(S_t | S_{t-1}) = p(s_t, s_{t-1} | s_{t-1}, s_{t-2}) = p(s_t|s_{t-1}, s_{t-2})$ is called the 2nd order Markov chain. 
+```{warning}
+Note that Markov processes are sometimes erroneously called _memoryless_ but in any MDP above we can incorporate memory aka dependence in more than one state over time by cleverly defining the state $S_t$ as a container of a number of states. For example, $S_t = \left[ S_t=s, S_{t-1} = s^\prime \right]$ can still define an Markov transition using $S$ states. The transition model 
+
+$$p(S_t | S_{t-1}) = p(s_t, s_{t-1} | s_{t-1}, s_{t-2}) = p(s_t|s_{t-1}, s_{t-2})$$ is called the 2nd-order Markov chain. 
+
+DeepMind's Q-learning algorithm playing pac-man converts the non-MDP problem to MDP by accumulating four frames instead of one. With a single frame the problem was not MDP since the state of all players could not be known - with a single frame the pacman could not know if the monster was moving towards it or nor for example. With a number of frames we get to know all the information needed to survive.    
+```
 
 ### MDP Loop
 
@@ -46,7 +52,7 @@ The four foundational ingredients of MDP are:
 
 These are obtained from the _dynamics_ of the _finite_ MDP process. 
 
-$$p(s', r | s , a) = \Pr\\{ S_t = s', R_t = r | S_{t-1}=s, A_{t-1}=a \\}$$
+$$p(s', r | s , a) = \Pr\{ S_{t+1} = s', R_{t+1} = r | S_{t}=s, A_{t}=a \}$$
 
 where $s^\prime$ simply translates in English to the successor state whatever the new state is.
 
@@ -72,7 +78,7 @@ Can you determine the state transition tensor for the 4x3 Gridworld ?
 
 ### Reward function and Returns
 
-The action will also cause the environment to send the agent a signal called _instantaneous reward_ $R_{t+1}$ [^1]. The reward signal is effectively defining the goal of the agent and is the primary basis for altering a policy. The agent's sole objective is to maximize the cumulative reward in the long run. 
+The action will also cause the environment to send the agent a signal called _instantaneous reward_ $R_{t+1}$. The reward signal is effectively defining the goal of the agent and is the primary basis for altering a policy. The agent's sole objective is to maximize the cumulative reward in the long run. 
 
 Please note that in the literature the reward is also denoted as $R_{t}$ - this is a convention issue rather than something fundamental. The justification of the index $t+1$ is that the environment will take one step to respond to what it receives from the agent. 
 

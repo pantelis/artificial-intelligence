@@ -17,7 +17,9 @@ $$ = \mathop{\mathbb{E}} \left[ R_{t+1} + \gamma (R_{t+2} + \gamma R_{t+3}+ ...)
 
 $$ = \mathop{\mathbb{E}} \left[ R_{t+1} + \gamma v(S_{t+1}=s^\prime) | S_t=s \right]$$
 
-NOTE: All above expectations are with respect to policy $\pi$.
+```{note}
+All above expectations are with respect to policy $\pi$. In addition there is [some missing details](https://stats.stackexchange.com/questions/243384/deriving-bellmans-equation-in-reinforcement-learning) in the above derivation. 
+```
 
 This is perhaps one of the _most important_ recursions in control theory - it is known as the **Bellman expectation equation** repeated below:
 

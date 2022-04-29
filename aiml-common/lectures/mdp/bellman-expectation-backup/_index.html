@@ -462,8 +462,8 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../mdp-dp-algorithms/_index.html">
-   Solving the MDP - DP Algorithms
+  <a class="reference internal" href="../mdp-dp-algorithms/policy-iteration/_index.html">
+   Dynamic Programming Algorithms - Policy Iteration
   </a>
  </li>
  <li class="toctree-l1">
@@ -474,11 +474,6 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../mdp-dp-algorithms/policy-improvement/_index.html">
    Policy Improvement (Control)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../mdp-dp-algorithms/policy-iteration/_index.html">
-   Dynamic Programming Algorithms - Policy Iteration
   </a>
  </li>
  <li class="toctree-l1">
@@ -495,17 +490,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../mdp-lab/fomdp-example/_index.html">
-   Gridworld calculations
+   Finding optimal policies in Gridworld
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../mdp-lab/recycling-robot/_index.html">
    Finding the optimal policy of a recycling robot.
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../mdp-lab/grid-world/_index.html">
-   Grid-world policy iteration with Python
   </a>
  </li>
  <li class="toctree-l1">
@@ -852,7 +842,10 @@ const thebe_selector_output = ".output, .cell_output"
 \[ = \mathop{\mathbb{E}} \left[ R_{t+1} + \gamma (R_{t+2} + \gamma R_{t+3}+ ...) | S_t=s \right]\]</div>
 <div class="math notranslate nohighlight">
 \[ = \mathop{\mathbb{E}} \left[ R_{t+1} + \gamma v(S_{t+1}=s^\prime) | S_t=s \right]\]</div>
-<p>NOTE: All above expectations are with respect to policy <span class="math notranslate nohighlight">\(\pi\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All above expectations are with respect to policy <span class="math notranslate nohighlight">\(\pi\)</span>. In addition there is <a class="reference external" href="https://stats.stackexchange.com/questions/243384/deriving-bellmans-equation-in-reinforcement-learning">some missing details</a> in the above derivation.</p>
+</div>
 <p>This is perhaps one of the <em>most important</em> recursions in control theory - it is known as the <strong>Bellman expectation equation</strong> repeated below:</p>
 <div class="math notranslate nohighlight">
 \[v_\pi(s) = \mathop{\mathbb{E}_\pi} \left[ R_{t+1} + \gamma ~ v_\pi(S_{t+1}=s^\prime) | S_t=s \right]\]</div>
