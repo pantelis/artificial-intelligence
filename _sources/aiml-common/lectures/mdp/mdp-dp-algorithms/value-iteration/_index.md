@@ -46,7 +46,7 @@ Notice that we are not building an explicit policy at every iteration and also, 
 
 ## Value iteration example
 
-In example world shown below (from [here](http://i-systems.github.io/HSE545/iAI/AI/topics/05_MDP/11_MDP.html))
+In example world shown below.
 
 ![gridworld](images/gridworld.png)
 
