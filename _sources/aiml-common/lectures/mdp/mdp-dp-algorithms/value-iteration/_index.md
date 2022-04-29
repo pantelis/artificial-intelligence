@@ -180,7 +180,7 @@ $$V_{t+1}(s_{32}) = -0.04 + 0.8 \times 0.76 + 0.1 \times -1 + 0.1 \times 0= 0.46
 and eventually all states have correct value estimates 
 * Notice that $s_{32}$ has a lower utility compared to $s_{23}$ due to the red oval state with negative reward next to $s_{32}$
 
-![Optimal Policy and Utilities for Maze](./images/policy-utilty.png)
+![Optimal Policy and Utilities for Maze](./images/policy-utility.png)
 
 ### Value Iteration - Convergence
 
