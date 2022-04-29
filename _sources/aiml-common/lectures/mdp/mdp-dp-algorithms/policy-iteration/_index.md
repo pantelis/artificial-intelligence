@@ -26,7 +26,7 @@ This is shown below and we defer discussion on convergence until we treat later 
 
 It can be shown that the policy iteration will converge to the optimal value function $v_*(s)$ and policy $\pi_*$. 
 
-## A policy iteration example
+## Gridworld policy iteration example
 
 The grid world example shown below is characterized by:
 
@@ -35,45 +35,52 @@ The grid world example shown below is characterized by:
 * One terminal state (shown twice as shaded squares)
 * Actions leading out of the grid leave state unchanged
 * Reward is −1 until the terminal state is reached
-* Agent follows uniform random policy $\pi(north|.) = \pi(south|.) = \pi(east|.) = \pi(west | .) = 0.25$
+* Agent follows a uniform random policy $\pi(north|.) = \pi(south|.) = \pi(east|.) = \pi(west | .) = 0.25$
+  
+![Grid world (source: Sutton)](./images/gridworld-sutton.PNG)
 
-The application of policy iteration to this problem results in:
+* The terminal states are shaded. The reward is $-1$ on all transitions until the terminal states are reached. The non-terminal states are $S_1,S_2,...,s_{14}$.
 
-![gridworld-policy-iterations](images/gridworld-policy-iterations.png)
-*Convergence to optimal policy via separate prediction and policy improvement iterations*
+* We begin with random values (or utilities) and random policy $\pi$
 
+![policy-iter-1](images/policy-iter-1.PNG)
+*Initial values and policy for policy iteration*
 
-## Another Grid-world policy iteration example
+### Policy Iteration (Step 1)
+
+* Find value function based on initial random policy: 
+
+$$U(s) = R(s) + \sum_{s^\prime} P(s^\prime| s,a)U(s^\prime)$$
+
+$$U(s_{1}) = -1 + \frac{1}{4}U(s_{1}) + \frac{1}{4}U(s_{2}) + \frac{1}{4}U(s_{5}) = -1$$ 
+$$\ldots$$
+$$ U(s_{9}) = -1 + \frac{1}{4}U(s_{8}) + \frac{1}{4}U(s_{5}) + \frac{1}{4}U(s_{13}) + \frac{1}{4}U(s_{10}) = -1$$
+$$ \ldots $$
+
+* The result is as shown below:
+
+![policy-iter-value](images/policy-iter-2.PNG)
+
+### Policy Iteration (step 2)
+
+* Next we compute the policy:
+
+$$ \pi(s_{4}) =   \underset{a}{max}[\frac{1}{4}U(s_{term})| \uparrow, 
+  \frac{1}{4}U(S_5)| \rightarrow, 
+  \frac{1}{4}U(S_4)| \leftarrow, 
+  \frac{1}{4}U(S_8), \downarrow] = \uparrow $$
+
+$$\pi(s_{6}) =  \underset{a}{max}[\frac{1}{4}U(S_2)| \uparrow, 
+\frac{1}{4}U(S_7)| \rightarrow, 
+ \frac{1}{4}U(S_5)| \leftarrow, 
+\frac{1}{4}U(s_{10}), \downarrow ] = \mathtt{random\ policy} $$
+
+* The result is shown below for $k=2$.  
+
+![policy-iter-value](images/policy-iter-3.PNG)
+
+## Another Gridworld policy iteration example
 
 A more graphical way to understand how policy iteration functions (and other algorithms as well)  is through [this repo](https://github.com/rlcode/reinforcement-learning/) - see `1-grid-world/1-policy-iteration` that depicts a more elaborate gridworld. 
 
-1. Clone the repo and launch VS Code in its root dir.  
-2. Install the dependencies in a new VS Code terminal.
-
-```bash
-   python3 -m venv .venv
-   source .venv/bin/activate
-   pip3 install -r requirements.txt 
-```
-
-In VS Code click the Python debug button, click `create a launch.json file` and make sure that the launch configuration matches the one below (you need this for all visualizations to happen) 
-
-```json
-{
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Python: Current File",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "cwd": "${fileDirname}"
-        }
-    ]
-}
-```
 

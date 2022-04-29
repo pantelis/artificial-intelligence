@@ -790,13 +790,25 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-policy-iteration-example">
-   A policy iteration example
+  <a class="reference internal nav-link" href="#gridworld-policy-iteration-example">
+   Gridworld policy iteration example
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#policy-iteration-step-1">
+     Policy Iteration (Step 1)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#policy-iteration-step-2">
+     Policy Iteration (step 2)
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#another-grid-world-policy-iteration-example">
-   Another Grid-world policy iteration example
+  <a class="reference internal nav-link" href="#another-gridworld-policy-iteration-example">
+   Another Gridworld policy iteration example
   </a>
  </li>
 </ul>
@@ -820,13 +832,25 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-policy-iteration-example">
-   A policy iteration example
+  <a class="reference internal nav-link" href="#gridworld-policy-iteration-example">
+   Gridworld policy iteration example
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#policy-iteration-step-1">
+     Policy Iteration (Step 1)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#policy-iteration-step-2">
+     Policy Iteration (step 2)
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#another-grid-world-policy-iteration-example">
-   Another Grid-world policy iteration example
+  <a class="reference internal nav-link" href="#another-gridworld-policy-iteration-example">
+   Another Gridworld policy iteration example
   </a>
  </li>
 </ul>
@@ -854,8 +878,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p><img alt="policy-iteration-convergence" src="../../../../../_images/policy-iteration-convergence.png" />
 <em>Policy and state value convergence to optimality in policy iteration. Up arrows are the evaluation steps while down arrows are the improvement steps. Although  the  real geometry is much more complicated than this, the diagram  suggests  what happens: Each  process  drives  the  value  function  or  policy toward one of the lines representing a solution to one of the two goals.  The goals interact because the two lines are not orthogonal.  Driving directly toward one goal causes some movement away from the other goal.  Inevitably,however, the joint process is brought closer to the overall goal of optimality.</em></p>
 <p>It can be shown that the policy iteration will converge to the optimal value function <span class="math notranslate nohighlight">\(v_*(s)\)</span> and policy <span class="math notranslate nohighlight">\(\pi_*\)</span>.</p>
-<div class="section" id="a-policy-iteration-example">
-<h2>A policy iteration example<a class="headerlink" href="#a-policy-iteration-example" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="gridworld-policy-iteration-example">
+<h2>Gridworld policy iteration example<a class="headerlink" href="#gridworld-policy-iteration-example" title="Permalink to this headline">¶</a></h2>
 <p>The grid world example shown below is characterized by:</p>
 <ul class="simple">
 <li><p>Not discounted episodic MDP (γ = 1)</p></li>
@@ -863,43 +887,59 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>One terminal state (shown twice as shaded squares)</p></li>
 <li><p>Actions leading out of the grid leave state unchanged</p></li>
 <li><p>Reward is −1 until the terminal state is reached</p></li>
-<li><p>Agent follows uniform random policy <span class="math notranslate nohighlight">\(\pi(north|.) = \pi(south|.) = \pi(east|.) = \pi(west | .) = 0.25\)</span></p></li>
+<li><p>Agent follows a uniform random policy <span class="math notranslate nohighlight">\(\pi(north|.) = \pi(south|.) = \pi(east|.) = \pi(west | .) = 0.25\)</span></p></li>
 </ul>
-<p>The application of policy iteration to this problem results in:</p>
-<p><img alt="gridworld-policy-iterations" src="../../../../../_images/gridworld-policy-iterations.png" />
-<em>Convergence to optimal policy via separate prediction and policy improvement iterations</em></p>
+<p><img alt="Grid world (source: Sutton)" src="../../../../../_images/gridworld-sutton.PNG" /></p>
+<ul class="simple">
+<li><p>The terminal states are shaded. The reward is <span class="math notranslate nohighlight">\(-1\)</span> on all transitions until the terminal states are reached. The non-terminal states are <span class="math notranslate nohighlight">\(S_1,S_2,...,s_{14}\)</span>.</p></li>
+<li><p>We begin with random values (or utilities) and random policy <span class="math notranslate nohighlight">\(\pi\)</span></p></li>
+</ul>
+<p><img alt="policy-iter-1" src="../../../../../_images/policy-iter-1.PNG" />
+<em>Initial values and policy for policy iteration</em></p>
+<div class="section" id="policy-iteration-step-1">
+<h3>Policy Iteration (Step 1)<a class="headerlink" href="#policy-iteration-step-1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Find value function based on initial random policy:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[U(s) = R(s) + \sum_{s^\prime} P(s^\prime| s,a)U(s^\prime)\]</div>
+<div class="math notranslate nohighlight">
+\[U(s_{1}) = -1 + \frac{1}{4}U(s_{1}) + \frac{1}{4}U(s_{2}) + \frac{1}{4}U(s_{5}) = -1\]</div>
+<div class="math notranslate nohighlight">
+\[\ldots\]</div>
+<div class="math notranslate nohighlight">
+\[ U(s_{9}) = -1 + \frac{1}{4}U(s_{8}) + \frac{1}{4}U(s_{5}) + \frac{1}{4}U(s_{13}) + \frac{1}{4}U(s_{10}) = -1\]</div>
+<div class="math notranslate nohighlight">
+\[ \ldots \]</div>
+<ul class="simple">
+<li><p>The result is as shown below:</p></li>
+</ul>
+<p><img alt="policy-iter-value" src="../../../../../_images/policy-iter-2.PNG" /></p>
 </div>
-<div class="section" id="another-grid-world-policy-iteration-example">
-<h2>Another Grid-world policy iteration example<a class="headerlink" href="#another-grid-world-policy-iteration-example" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="policy-iteration-step-2">
+<h3>Policy Iteration (step 2)<a class="headerlink" href="#policy-iteration-step-2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Next we compute the policy:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \pi(s_{4}) =   \underset{a}{max}[\frac{1}{4}U(s_{term})| \uparrow, 
+  \frac{1}{4}U(S_5)| \rightarrow, 
+  \frac{1}{4}U(S_4)| \leftarrow, 
+  \frac{1}{4}U(S_8), \downarrow] = \uparrow \]</div>
+<div class="math notranslate nohighlight">
+\[\pi(s_{6}) =  \underset{a}{max}[\frac{1}{4}U(S_2)| \uparrow, 
+\frac{1}{4}U(S_7)| \rightarrow, 
+ \frac{1}{4}U(S_5)| \leftarrow, 
+\frac{1}{4}U(s_{10}), \downarrow ] = \mathtt{random\ policy} \]</div>
+<ul class="simple">
+<li><p>The result is shown below for <span class="math notranslate nohighlight">\(k=2\)</span>.</p></li>
+</ul>
+<p><img alt="policy-iter-value" src="../../../../../_images/policy-iter-3.PNG" /></p>
+</div>
+</div>
+<div class="section" id="another-gridworld-policy-iteration-example">
+<h2>Another Gridworld policy iteration example<a class="headerlink" href="#another-gridworld-policy-iteration-example" title="Permalink to this headline">¶</a></h2>
 <p>A more graphical way to understand how policy iteration functions (and other algorithms as well)  is through <a class="reference external" href="https://github.com/rlcode/reinforcement-learning/">this repo</a> - see <code class="docutils literal notranslate"><span class="pre">1-grid-world/1-policy-iteration</span></code> that depicts a more elaborate gridworld.</p>
-<ol class="simple">
-<li><p>Clone the repo and launch VS Code in its root dir.</p></li>
-<li><p>Install the dependencies in a new VS Code terminal.</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>   python3 -m venv .venv
-   <span class="nb">source</span> .venv/bin/activate
-   pip3 install -r requirements.txt 
-</pre></div>
-</div>
-<p>In VS Code click the Python debug button, click <code class="docutils literal notranslate"><span class="pre">create</span> <span class="pre">a</span> <span class="pre">launch.json</span> <span class="pre">file</span></code> and make sure that the launch configuration matches the one below (you need this for all visualizations to happen)</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// Use IntelliSense to learn about possible attributes.</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// Hover to view descriptions of existing attributes.</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Python: Current File&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;program&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${file}&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;console&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integratedTerminal&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;cwd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${fileDirname}&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</pre></div>
-</div>
 </div>
 </div>
 

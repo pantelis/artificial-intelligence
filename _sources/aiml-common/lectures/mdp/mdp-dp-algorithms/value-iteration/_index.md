@@ -109,8 +109,90 @@ print(optPolicy)
 # [1, 1, 1, 0, 0, 3, 3, 0, 3, 3, 2]
 ```
 
+## Value Iteration in Gridworld Example
+
+* To solve the non-linear equations for $U^{*}(s)$ we use an iterative approach.
+* Steps:
+	* Initialize estimates for the utilities of states with arbitrary values: $U(s) \leftarrow 0 \forall s \epsilon S$
+	* Next use the iteration step below which is also called **Bellman Update**: 
+
+$$V_{t+1}(s) \leftarrow R(s) + \gamma \underset{a}{ \max} \left[ \sum_{s^{'}} P(s^{'}| s,a) U_t(s^{'}) \right] \forall s \epsilon S$$ 
+
+	This step is repeated and updated
+
+* Let us apply this to the maze example.  Assume that $\gamma = 1$
+
+![val-iter-initial](./images/val-iter-initial.png)
+
+*Initialize value estimates to $0$*
 
 
-```{note}
-In summary, we have seen algorithms  iteration solve known MDPs. In the next section we remove the known MDP assumption and deal with the first Reinforcement Learning (RL) algorithm. 
-```{note}
+## Value Iteration 
+
+* Next we want to apply **Bellman Update**: 
+  	$$V_{t+1}(s) \leftarrow R(s) + \gamma \max_{a} \left[\sum_{s^\prime} P(s^\prime | s,a)U_t(s^\prime) \right] \forall s \epsilon S$$
+* Since we are taking $\max$ we only need to consider states whose next states have a positive utility value.
+* For the remaining states, the utility is equal to the immediate reward in the first iteration.
+
+![States to consider for value iteration](./images/val-iter-step1-states.png)
+
+
+
+### Value Iteration (t=0)
+
+$$ V_{t+1}(s_{33})  =  R(s_{33}) + \gamma \max_a \left[\sum_{s^{'}} P(s^{'}| s_{33},a)U(s^{'}) \right] \forall s \in S $$
+
+$$ V_{t+1}(s_{33}) =  -0.04 + \max_a \left[ \sum_{s'}  P(s'| s_{33},\uparrow) U_t(s'), \sum_{s'}  P(s'| s_{33},\downarrow)U_t(s'), \sum_{s'}  P(s'| s_{33},\rightarrow) U_t(s'),  \sum_{s'}  P(s'| s_{33}, \leftarrow)U_t(s')  \right]$$
+
+$$V_{t+1}(s_{33})  =  -0.04 + \sum_{s^{'}}  P(s^{'}| s_{33},\rightarrow) U_t(s^\prime) $$
+
+$$V_{t+1}(s_{33}) = -0.04 + P(s_{43}|s_{33},\rightarrow)U(s_{43})+P(s_{33}|s_{33},\rightarrow)U(s_{33})+P(s_{32}|s_{33},\rightarrow)U_t(s_{32}) $$
+
+$$V_{t+1}(s_{33}) =   -0.04 + 0.8 \times 1 + 0.1 \times 0 + 0.1 \times 0 = 0.76 $$
+
+
+
+### Value Iteration (t=1)
+
+![val-iter-step2](./images/val-iter-step2-initial.png)
+
+*(A) Initial utility estimates for iteration 2. (B) States with next state positive utility*
+
+$$V_{t+1}(s_{33}) =   -0.04 + P(s_{43}|s_{33},\rightarrow)U_t(s_{43})+P(s_{33}|s_{33},\rightarrow)U_t(s_{33}) +P(s_{32}|s_{33},\rightarrow)U_t(s_{32}) $$
+
+$$V_{t+1}(s_{33}) = -0.04 + 0.8 \times 1 + 0.1 \times 0.76 + 0.1 \times 0 = 0.836$$
+
+$$V_{t+1}(s_{23}) =  -0.04 + P(s_{33}|s_{23},\rightarrow)U_t(s_{23})+P(s_{23}|s_{23},\rightarrow)U_t(s_{23}) = -0.04 + 0.8 \times 0.76 = 0.568$$
+
+$$V_{t+1}(s_{32}) =  -0.04 + P(s_{33}|s_{32},\uparrow)U_t(s_{33})+P(s_{42}|s_{32},\uparrow)U_t(s_{42}) +P(s_{32}|s_{32},\uparrow)U_t(s_{32})$$
+$$V_{t+1}(s_{32}) = -0.04 + 0.8 \times 0.76 + 0.1 \times -1 + 0.1 \times 0= 0.468$$
+
+
+
+### Value Iteration (t=2)
+
+
+![val-iter-step3](./images/val-iter-step3-initial.png)
+
+*(A)Initial utility estimates for iteration 3. (B) States with next state positive utility*
+
+* Information propagates outward from terminal states
+and eventually all states have correct value estimates 
+* Notice that $s_{32}$ has a lower utility compared to $s_{23}$ due to the red oval state with negative reward next to $s_{32}$
+
+![Optimal Policy and Utilities for Maze](./images/policy-utilty.png)
+
+### Value Iteration - Convergence
+
+* Rate of convergence depends on the maximum reward value and more importantly on the discount factor $\gamma$. 
+* The policy that we get from coarse estimates is close to the optimal policy long before $U$ has converged.
+* This means that after a reasonable number of iterations, we could use: 
+  $$\pi(s) = \argmax_a \left[ \sum_{s^{'}} P(s^{'}| s,a)V_{est}(s^{'}) \right]$$
+* Note that this is a form of **greedy** policy.
+  
+![value-iter-convergence](./images/value-iter-converge.PNG)
+
+*Convergence of utility for the maze problem (Norvig chap 17)*
+
+* For the maze problem, convergence is reached within 5 to 10  iterations
+

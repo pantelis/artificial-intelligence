@@ -845,23 +845,6 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#policy-iteration">
    Policy Iteration
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#policy-iteration-for-grid-world">
-     Policy Iteration for Grid World
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#policy-iteration-step-1">
-     Policy Iteration (Step 1)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#policy-iteration-step-2">
-     Policy Iteration (step 2)
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -939,23 +922,6 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#policy-iteration">
    Policy Iteration
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#policy-iteration-for-grid-world">
-     Policy Iteration for Grid World
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#policy-iteration-step-1">
-     Policy Iteration (Step 1)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#policy-iteration-step-2">
-     Policy Iteration (step 2)
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -1056,7 +1022,7 @@ $<span class="math notranslate nohighlight">\(U^*(s) = R(s) + \gamma \underset{a
 <ul class="simple">
 <li><p>Let us apply this to the maze example.  Assume that <span class="math notranslate nohighlight">\(\gamma = 1\)</span></p></li>
 </ul>
-<p><img alt="val-iter-initial" src="../../../../../_images/val-iter-initial.png" />
+<p><img alt="val-iter-initial" src="../../../../../_images/val-iter-initial1.png" />
 <em>Initialize value estimates to <span class="math notranslate nohighlight">\(0\)</span></em></p>
 </div>
 <div class="section" id="id1">
@@ -1067,7 +1033,7 @@ $<span class="math notranslate nohighlight">\(V_{t+1}(s) \leftarrow R(s) + \gamm
 <li><p>Since we are taking <span class="math notranslate nohighlight">\(\max\)</span> we only need to consider states whose next states have a positive utility value.</p></li>
 <li><p>For the remaining states, the utility is equal to the immediate reward in the first iteration.</p></li>
 </ul>
-<p><img alt="States to consider for value iteration" src="../../../../../_images/val-iter-step1-states.png" /></p>
+<p><img alt="States to consider for value iteration" src="../../../../../_images/val-iter-step1-states1.png" /></p>
 <div class="section" id="value-iteration-t-0">
 <h3>Value Iteration (t=0)<a class="headerlink" href="#value-iteration-t-0" title="Permalink to this headline">¶</a></h3>
 <div class="math notranslate nohighlight">
@@ -1083,7 +1049,7 @@ $<span class="math notranslate nohighlight">\(V_{t+1}(s) \leftarrow R(s) + \gamm
 </div>
 <div class="section" id="value-iteration-t-1">
 <h3>Value Iteration (t=1)<a class="headerlink" href="#value-iteration-t-1" title="Permalink to this headline">¶</a></h3>
-<p><img alt="val-iter-step2" src="../../../../../_images/val-iter-step2-initial.png" />
+<p><img alt="val-iter-step2" src="../../../../../_images/val-iter-step2-initial1.png" />
 <em>(A) Initial utility estimates for iteration 2. (B) States with next state positive utility</em></p>
 <div class="math notranslate nohighlight">
 \[V_{t+1}(s_{33}) =   -0.04 + P(s_{43}|s_{33},\rightarrow)U_t(s_{43})+P(s_{33}|s_{33},\rightarrow)U_t(s_{33}) +P(s_{32}|s_{33},\rightarrow)U_t(s_{32}) \]</div>
@@ -1098,7 +1064,7 @@ $<span class="math notranslate nohighlight">\(V_{t+1}(s) \leftarrow R(s) + \gamm
 </div>
 <div class="section" id="value-iteration-t-2">
 <h3>Value Iteration (t=2)<a class="headerlink" href="#value-iteration-t-2" title="Permalink to this headline">¶</a></h3>
-<p><img alt="val-iter-step3" src="../../../../../_images/val-iter-step3-initial.png" />
+<p><img alt="val-iter-step3" src="../../../../../_images/val-iter-step3-initial1.png" />
 <em>(A)Initial utility estimates for iteration 3. (B) States with next state positive utility</em></p>
 <ul class="simple">
 <li><p>Information propagates outward from terminal states
@@ -1116,7 +1082,7 @@ and eventually all states have correct value estimates</p></li>
 $<span class="math notranslate nohighlight">\(\pi(s) = \argmax_a \left[ \sum_{s^{'}} P(s^{'}| s,a)V_{est}(s^{'}) \right]\)</span>$</p></li>
 <li><p>Note that this is a form of <strong>greedy</strong> policy.</p></li>
 </ul>
-<p><img alt="value-iter-convergence" src="../../../../../_images/value-iter-converge.PNG" />
+<p><img alt="value-iter-convergence" src="../../../../../_images/value-iter-converge1.PNG" />
 <em>Convergence of utility for the maze problem (Norvig chap 17)</em></p>
 <ul class="simple">
 <li><p>For the maze problem, convergence is reached within 5 to 10  iterations</p></li>
@@ -1143,59 +1109,6 @@ $<span class="math notranslate nohighlight">\(\pi(s) \leftarrow \arg\max_a \sum_
 <li><p>Policy improves each step and converges to the optimal policy <span class="math notranslate nohighlight">\(\pi^{*}\)</span></p></li>
 </ul>
 <p><img alt="Policy iteration(source: sutton, chap 4)" src="../../../../../_images/policy-iter.PNG" /><!-- .element width="225px" --></p>
-<div class="section" id="policy-iteration-for-grid-world">
-<h3>Policy Iteration for Grid World<a class="headerlink" href="#policy-iteration-for-grid-world" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Let us consider another grid world example.</p></li>
-</ul>
-<p><img alt="Grid world (source: Sutton)" src="../../../../../_images/gridworld-sutton.PNG" /></p>
-<ul class="simple">
-<li><p>The terminal states are shaded. The reward is <span class="math notranslate nohighlight">\(-1\)</span> on all transitions until the terminal states are reached. The non-terminal states are <span class="math notranslate nohighlight">\(S_1,S_2,...,s_{14}\)</span>.</p></li>
-<li><p>We begin with random values (or utilities) and random policy <span class="math notranslate nohighlight">\(\pi\)</span></p></li>
-</ul>
-<p><img alt="policy-iter-1" src="../../../../../_images/policy-iter-1.PNG" />
-<em>Initial values and policy for policy iteration</em></p>
-</div>
-<div class="section" id="policy-iteration-step-1">
-<h3>Policy Iteration (Step 1)<a class="headerlink" href="#policy-iteration-step-1" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Find value function based on initial random policy:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[U(s) = R(s) + \sum_{s^\prime} P(s^\prime| s,a)U(s^\prime)\]</div>
-<div class="math notranslate nohighlight">
-\[U(s_{1}) = -1 + \frac{1}{4}U(s_{1}) + \frac{1}{4}U(s_{2}) + \frac{1}{4}U(s_{5}) = -1\]</div>
-<div class="math notranslate nohighlight">
-\[\ldots\]</div>
-<div class="math notranslate nohighlight">
-\[ U(s_{9}) = -1 + \frac{1}{4}U(s_{8}) + \frac{1}{4}U(s_{5}) + \frac{1}{4}U(s_{13}) + \frac{1}{4}U(s_{10}) = -1\]</div>
-<div class="math notranslate nohighlight">
-\[ \ldots \]</div>
-<ul class="simple">
-<li><p>The result is as shown below:</p></li>
-</ul>
-<p><img alt="policy-iter-value" src="../../../../../_images/policy-iter-2.PNG" /></p>
-</div>
-<div class="section" id="policy-iteration-step-2">
-<h3>Policy Iteration (step 2)<a class="headerlink" href="#policy-iteration-step-2" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Next we compute the policy:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[ \pi(s_{4}) =   \underset{a}{max}[\frac{1}{4}U(s_{term})| \uparrow, 
-  \frac{1}{4}U(S_5)| \rightarrow, 
-  \frac{1}{4}U(S_4)| \leftarrow, 
-  \frac{1}{4}U(S_8), \downarrow] = \uparrow \]</div>
-<div class="math notranslate nohighlight">
-\[\pi(s_{6}) =  \underset{a}{max}[\frac{1}{4}U(S_2)| \uparrow, 
-\frac{1}{4}U(S_7)| \rightarrow, 
- \frac{1}{4}U(S_5)| \leftarrow, 
-\frac{1}{4}U(s_{10}), \downarrow ] = \mathtt{random\ policy} \]</div>
-<ul class="simple">
-<li><p>The result is shown below for <span class="math notranslate nohighlight">\(k=2\)</span>.</p></li>
-</ul>
-<p><img alt="policy-iter-value" src="../../../../../_images/policy-iter-3.PNG" /></p>
-</div>
 </div>
 </div>
 
