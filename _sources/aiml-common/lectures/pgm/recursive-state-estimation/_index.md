@@ -91,7 +91,7 @@ No real agent has ideal sensing abilities so the sensor or measurement model is 
 | Description                                              | Probabilistic Model                           |
 | -------------------------------------------------------- | --------------------------------------------- |
 | if its open, agent can sense it as such with prob 60\%   | $p(z_t = sense-open \| s_t = open) = 0.6$     |
-| if its closed, agent can sense it as such with prob 40\% | $p(z_t = sense-closed \| s_t = open) = 0.4$   |
+| if its open, agent can sense it as closed with prob 40\% | $p(z_t = sense-closed \| s_t = open) = 0.4$   |
 | if its closed, agent senses it open with prob 20\%       | $p(z_t = sense-open \| s_t = closed) = 0.2$   |
 | if its closed, agent can sense it as such with prob 80\% | $p(z_t = sense-closed \| s_t = closed) = 0.8$ |
 

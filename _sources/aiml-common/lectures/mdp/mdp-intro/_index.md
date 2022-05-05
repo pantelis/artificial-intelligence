@@ -94,7 +94,7 @@ $$r(s,a, s') = \mathop{\mathbb{E}}[ R_{t+1} | S_t=s, A_t=a, S_t+1}=s'] = \sum_{r
 
 #### Returns 
 
-To capture the objective,  consider first the _return_ defined as a function of the reward sequence after time step $t$. In the simplest case this function is the total discounted reward,
+To capture the objective,  consider first the _return_ defined as a function of the reward sequence after time step $t$. Note that the return is also called _utility_ in some texts.  In the simplest case this function is the total discounted reward,
 
 $$G_t = R_{t+1} + \gamma R_{t+2} + ... = \sum_{k=0}^∞\gamma^k R_{t+1+k}$$
 
@@ -139,7 +139,7 @@ The value of a state is the total amount of reward an agent can expect to accumu
 
 ### State value
 
-The _state-value function_ $v_\pi(s)$ provides a notion of the long-term value of state $s$. It is equivalent to the _utility_ we have seen in the MDP section. It is defined as the _expected_ return starting at state $s$ and following policy $\pi(a|s)$, 
+The _state-value function_ $v_\pi(s)$ provides a notion of the long-term value of state $s$. It is equivalent to what other literature calls _expected utility_ . It is defined as the expected_ return starting at state $s$ and following policy $\pi(a|s)$, 
 
 $$v_\pi(s) = \mathop{\mathbb{E}_\pi}(G_t | S_t=s)$$
 
