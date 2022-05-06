@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Probability Basics &#8212; Introduction to Artificial Intelligence</title>
+    <title>Temporal Difference (TD) Prediction &#8212; Introduction to Artificial Intelligence</title>
     
   <link href="../../../../_static/css/theme.css" rel="stylesheet">
   <link href="../../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -55,11 +55,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/ml-math/probability/_index.html" />
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/reinforcement-learning/prediction/temporal-difference.html" />
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Linear Algebra for Machine Learning" href="../../linear-algebra/_index.html" />
-    <link rel="prev" title="Math for ML" href="../_index.html" />
+    <link rel="next" title="Model-free Control" href="../control/_index.html" />
+    <link rel="prev" title="Monte-Carlo Prediction" href="monte-carlo.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -504,39 +504,39 @@ const thebe_selector_output = ".output, .cell_output"
   Reinforcement Learning
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/_index.html">
+  <a class="reference internal" href="../_index.html">
    Reinforcement Learning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/prediction/monte-carlo.html">
+  <a class="reference internal" href="monte-carlo.html">
    Monte-Carlo Prediction
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/prediction/temporal-difference.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Temporal Difference (TD) Prediction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/control/_index.html">
+  <a class="reference internal" href="../control/_index.html">
    Model-free Control
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/generalized-policy-iteration/_index.html">
+  <a class="reference internal" href="../generalized-policy-iteration/_index.html">
    Generalized Policy Iteration
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/control/sarsa/_index.html">
+  <a class="reference internal" href="../control/sarsa/_index.html">
    The SARSA Algorithm
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/reinforce/_index.html">
+  <a class="reference internal" href="../reinforce/_index.html">
    The REINFORCE Algorithm
   </a>
  </li>
@@ -615,19 +615,19 @@ const thebe_selector_output = ".output, .cell_output"
   Math Background
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../_index.html">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../ml-math/_index.html">
    Math for ML
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ml-math/probability/_index.html">
      Probability Basics
     </a>
    </li>
@@ -637,7 +637,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../calculus/_index.html">
+    <a class="reference internal" href="../../ml-math/calculus/_index.html">
      Calculus
     </a>
    </li>
@@ -743,7 +743,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../../_sources/aiml-common/lectures/ml-math/probability/_index.md"><button type="button"
+        <a class="dropdown-buttons" href="../../../../_sources/aiml-common/lectures/reinforcement-learning/prediction/temporal-difference.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -763,7 +763,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/ml-math/probability/_index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/reinforcement-learning/prediction/temporal-difference.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -790,23 +790,12 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sum-rule-and-the-marginal-probability">
-   Sum rule and the Marginal Probability
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conditional-probability-and-the-product-or-chain-rule">
-   Conditional Probability and the Product or chain rule
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multi-variate-gaussian-distribution">
-   Multi-variate Gaussian distribution
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
+  <a class="reference internal nav-link" href="#the-td-lambda">
+   The TD(
+   <span class="math notranslate nohighlight">
+    \(\lambda\)
+   </span>
+   )
   </a>
  </li>
 </ul>
@@ -819,7 +808,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Probability Basics</h1>
+                <h1>Temporal Difference (TD) Prediction</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -830,23 +819,12 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sum-rule-and-the-marginal-probability">
-   Sum rule and the Marginal Probability
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conditional-probability-and-the-product-or-chain-rule">
-   Conditional Probability and the Product or chain rule
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multi-variate-gaussian-distribution">
-   Multi-variate Gaussian distribution
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
+  <a class="reference internal nav-link" href="#the-td-lambda">
+   The TD(
+   <span class="math notranslate nohighlight">
+    \(\lambda\)
+   </span>
+   )
   </a>
  </li>
 </ul>
@@ -858,71 +836,44 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="probability-basics">
-<h1>Probability Basics<a class="headerlink" href="#probability-basics" title="Permalink to this headline">¶</a></h1>
-<div class="video_wrapper" style="">
-<iframe allowfullscreen="true" src="https://www.youtube.com/embed/-lyzEEjNH9U" style="border: 0; height: 345px; width: 560px">
-</iframe></div><p><em>Probability Recitation for my classes. Recitation was delivered by my TA Rohit Deepak Phadke.</em></p>
-<ol class="simple">
-<li><p>The whole purpose of probabilistic modeling is to introduce uncertainty into our problem statement. There are three types of uncertainties:</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="temporal-difference-td-prediction">
+<h1>Temporal Difference (TD) Prediction<a class="headerlink" href="#temporal-difference-td-prediction" title="Permalink to this headline">¶</a></h1>
+<p>If one had to identify one idea as central and novel to reinforcement learning, it would undoubtedly be temporal-difference(TD) learning.  TD learning is a combination of Monte Carlo ideas and dynamic programming (DP) ideas.</p>
 <ul class="simple">
-<li><p>Inherent stochasticity - e.g. impact of wind in self-driving car control systems at moderate to high speed.</p></li>
-<li><p>Incomplete observability - e.g. sensor imperfections causing loss of sensing information</p></li>
-<li><p>Incomplete modeling - e.g. models and algorithms that are not implementable to an analog world and need to be discretized.</p></li>
+<li><p>Like Monte Carlo methods, TD methods can learn directly from raw experience without a model of the environment’s dynamics.</p></li>
+<li><p>Like  DP,  TD  methods  update  estimates  based  in  part  on  other  learned estimates, without waiting for a final outcome.</p></li>
 </ul>
-</li>
-<li><p>Probabilities can be used in two ways.</p>
-<ul class="simple">
-<li><p>Probabilities can describe frequencies of outcomes in random experiments</p></li>
-<li><p>Probabilities can also be used, more generally, to describe degrees of belief in propositions that do not involve random variables. This more general use of probability to quantify beliefs is known as the Bayesian viewpoint. It is also known as the subjective interpretation of probability, since the probabilities depend on assumptions.</p></li>
-</ul>
-</li>
-</ol>
-<p>The three important probabilities that we need to be concerned with in data mining are the joint, marginal and conditional probabilities. The pictures below present some examples that we will go through.</p>
-<p><img alt="discrete-prob" src="../../../../_images/discrete-prob.png" />
-<em>Discrete probability distribution function (pdf). On the right side is what is called a Hinton diagram where the area of the square represents the probability in a way that the sum equals to 1.0.</em></p>
-<p><img alt="monogram" src="../../../../_images/figure21.png" />
-<em>A more complicated discrete probability distribution over the letters of the English alphabet (letter 27 symbolizes space) as measured by reading the Linux FAQ document.</em></p>
-<p><img alt="continuous-prob" src="../../../../_images/continuous-prob.png" />
-<em>Continuous probability distribution density function (pdf) - the area under the curve equals  1.0</em></p>
-<p><img alt="joint-bigram" src="../../../../_images/figure2.2.png" />
-<em>Joint probability <span class="math notranslate nohighlight">\(P(x,y)\)</span> distribution over the 27x27 possible bigrams <span class="math notranslate nohighlight">\(xy\)</span> found in this document: <a class="reference external" href="https://www.tldp.org/FAQ/pdf/Linux-FAQ.pdf">https://www.tldp.org/FAQ/pdf/Linux-FAQ.pdf</a></em></p>
-<p><img alt="joint-prob" src="../../../../_images/joint-prob.png" />
-<em>(e) and (f) represent joint distributions of discrete and continuous random variables</em></p>
-<div class="section" id="sum-rule-and-the-marginal-probability">
-<h2>Sum rule and the Marginal Probability<a class="headerlink" href="#sum-rule-and-the-marginal-probability" title="Permalink to this headline">¶</a></h2>
-<p>Given the joint what is the marginal probability <span class="math notranslate nohighlight">\(P(x)\)</span> ?</p>
+<p>In TD, instead of getting an estimated value function at the end of multiple episodes, we can use the incremental mean approximation to update the value function after each step.</p>
+<p><img alt="td-value-iteration-tree" src="../../../../_images/td-value-iteration-tree.png" />
+<em>Backup tree for value iteration with the TD approach. TD samples a single step ahead as shown with red.</em></p>
+<p>Going back to the example of crossing the room optimally, we take one step towards the goal and the we  <em>bootstrap</em> the value function of the state we were in from an estimated return for the remaining trajectory. We repeat this as we go along effectively adjusting the value estimate of the starting state from the true returns we have experienced up to now, <em>gradually grounding</em> the whole estimate as we approach the goal.</p>
+<p><img alt="td-driving-to-work-example" src="../../../../_images/td-driving-to-work-example.png" />
+<em>Two value approximation methods: MC (left), TD (right) as converging in their predictions of the value of each of the states in the x-axis. The example is from a hypothetical commute from office back home. In MC you have to wait until the episode ended (reach the goal) to update the value function at each state of the trajectory. In contrast, TD updates the value function at each state based on the estimates of the total travel time. The goal state is “arrive home”, while the reward function is time.</em></p>
+<p>As you can notice in the figure above the solid arrows in the MC case, adjust the predicted value of each state to the <em>actual</em> return while in the TD case the value prediction happens every step in the way. We call TD for this reason an <em>online</em> learning scheme. Another characteristic of TD is that it does not depend on reaching the goal, it <em>continuously</em> learns. MC does depend on the goal and therefore is <em>episodic</em>. This is important in many mission critical applications eg self-driving cars where you dont wait to “crash” to apply corrections to your state value based on what you experienced.</p>
+<p>Mathematically, instead of using the <em>true</em> return, <span class="math notranslate nohighlight">\(G_t\)</span>, something that it is possible in the MC as we are trully experiencing the world along a trajectory, TD uses a (biased) <em>estimated</em> return called the <em>TD target</em>: <span class="math notranslate nohighlight">\( R_{t+1} + \gamma V(S_{t+1})\)</span> approximating the value function as:</p>
 <div class="math notranslate nohighlight">
-\[P(x)   = \sum_y P(x,y) = \sum_y P(x | y)P(y)\]</div>
-<p><img alt="marginal-prob" src="../../../../_images/marginal-prob.png" />
-<em>Extracting the marginal out of the joint</em></p>
-</div>
-<div class="section" id="conditional-probability-and-the-product-or-chain-rule">
-<h2>Conditional Probability and the Product or chain rule<a class="headerlink" href="#conditional-probability-and-the-product-or-chain-rule" title="Permalink to this headline">¶</a></h2>
-<p>This is obtained from the definition of conditional probability:</p>
+\[ V(S_t) = V(S_t) + \alpha \left( R_{t+1} + \gamma V(S_{t+1}) - V(S_t) \right)\]</div>
+<p>The difference below is called the <em>TD approximation error</em>,</p>
 <div class="math notranslate nohighlight">
-\[P(x,y) = P(x | y)P(y) = P(y | x)P(x)\]</div>
-<p><img alt="conditional-bigram" src="../../../../_images/conditional-bigrams.png" />
-<em>Conditional probability distribution over the 27x27 possible bigrams <span class="math notranslate nohighlight">\(xy\)</span> found in this document: <a class="reference external" href="https://www.tldp.org/FAQ/pdf/Linux-FAQ.pdf">https://www.tldp.org/FAQ/pdf/Linux-FAQ.pdf</a></em></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Are <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> in the example above independent ?</p>
-</div>
-</div>
-<div class="section" id="multi-variate-gaussian-distribution">
-<h2>Multi-variate Gaussian distribution<a class="headerlink" href="#multi-variate-gaussian-distribution" title="Permalink to this headline">¶</a></h2>
-<p>Perhaps the only distribution that is worth knowing and remembering its form is the multivariate Normal as it has widespread applicability in data science.</p>
+\[\delta_t = R_{t+1} + \gamma (V(S_{t+1}) - V(S_t))\]</div>
+<div class="section" id="the-td-lambda">
+<h2>The TD(<span class="math notranslate nohighlight">\(\lambda\)</span>)<a class="headerlink" href="#the-td-lambda" title="Permalink to this headline">¶</a></h2>
+<p>The TD approach of the previous section, can be extended to multiple steps. Instead of a single look ahead step we can take multiple successive look ahead steps (n), we will call this TD(n) for now, and at the end of the n-th step, we use the value function at that state to backup and get the value function at the state where we started. Effectively after n-steps our return will be:</p>
 <div class="math notranslate nohighlight">
-\[f_{\mathbf X}(x_1,\ldots,x_k) = \frac{\exp\left(-\frac 1 2 ({\mathbf x}-{\boldsymbol\mu})^\mathrm{T}{\boldsymbol\Sigma}^{-1}({\mathbf x}-{\boldsymbol\mu})\right)}{\sqrt{(2\pi)^n|\boldsymbol\Sigma|}}\]</div>
-<p>where where &lt;<span class="math notranslate nohighlight">\({\mathbf x}\)</span> is a real ‘n’-dimensional column vector and <span class="math notranslate nohighlight">\(|\boldsymbol\Sigma|\equiv \operatorname{det}\boldsymbol\Sigma\)</span> is the determinant of <span class="math notranslate nohighlight">\(\boldsymbol\Sigma\)</span>.</p>
-<p>You can <a class="reference external" href="http://hosting.astro.cornell.edu/~cordes/A6523/GeneratingCorrelatedRandomVariables.pdf">generate</a> correlated Gaussian distributions from white gaussian random variables as shown below.  This can be useful in multiple settings. Foe example you can synthesize training examples where there is correlation between features. You can also explain what happens in successive layers of a neural network when a correlated input is propagated through.</p>
-<p><img alt="correlated-gaussians" src="../../../../_images/correlated-gaussians.png" />
-<em>Correlated Gaussians</em></p>
-</div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p>For an overview of probability concepts see Ian Goodfellow’s book:</p>
-<iframe src="https://www.deeplearningbook.org/contents/prob.html" width="800" height="1200"></iframe>
+\[G_t^{(n)} = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ... + \gamma^{n-1}R_{t+n} + \gamma_n V(S_n)\]</div>
+<p>and the TD(n) learning equation becomes</p>
+<div class="math notranslate nohighlight">
+\[ V(S_t) = V(S_t) + \alpha \left( G^{(n)}_t - V(S_t) \right) \]</div>
+<p>We now define the so called <span class="math notranslate nohighlight">\(\lambda\)</span>-return that combines all n-step return <span class="math notranslate nohighlight">\(G_t^{(n)}\)</span> via the weighting function shown below as,</p>
+<div class="math notranslate nohighlight">
+\[G_t^{(n)} = (1-\lambda) \sum_{n=1}^\infty \lambda^{n-1} G_t^{(n)}\]</div>
+<p><img alt="lambda-weighting-function" src="../../../../_images/lambda-weighting-function.png" />
+<em><span class="math notranslate nohighlight">\(\lambda\)</span> weighting function for TD(<span class="math notranslate nohighlight">\(\lambda\)</span>)</em></p>
+<p>the TD(n) learning equation becomes</p>
+<div class="math notranslate nohighlight">
+\[ V(S_t) = V(S_t) + \alpha \left( G^\lambda_t - V(S_t) \right) \]</div>
+<p>When <span class="math notranslate nohighlight">\(\lambda=0\)</span> we get TD(0) learning, while when <span class="math notranslate nohighlight">\(\lambda=1\)</span> we get learning that is roughly equivalent to MC. Certainly it is convenient to learn one guess from the next, without waiting for an actual outcome, but can we still guarantee convergence to the correct answer?  Happily, the answer is yes as shown in the figure above.  For any fixed policy <span class="math notranslate nohighlight">\(π\)</span>, TD(0) has been proved to converge to <span class="math notranslate nohighlight">\(v_π\)</span>, in the mean for a constant step-size parameter if it is sufficiently small. However in terms of data efficiency there is no clear winner at this point.  It is instructive to see the difference between MC and TD approaches in the following example.</p>
+<p><img alt="td-learning-random-walk" src="../../../../_images/td-learning-random-walk.png" /></p>
 </div>
 </div>
 
@@ -939,7 +890,7 @@ const thebe_selector_output = ".output, .cell_output"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./aiml-common/lectures/ml-math/probability"
+            path: "./aiml-common/lectures/reinforcement-learning/prediction"
         },
         predefinedOutput: true
     }
@@ -951,17 +902,17 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../_index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="monte-carlo.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Math for ML</p>
+            <p class="prev-next-title">Monte-Carlo Prediction</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../../linear-algebra/_index.html" title="next page">
+    <a class='right-next' id="next-link" href="../control/_index.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Linear Algebra for Machine Learning</p>
+        <p class="prev-next-title">Model-free Control</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

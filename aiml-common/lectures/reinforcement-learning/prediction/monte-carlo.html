@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Model-free Prediction &#8212; Introduction to Artificial Intelligence</title>
+    <title>Monte-Carlo Prediction &#8212; Introduction to Artificial Intelligence</title>
     
   <link href="../../../../_static/css/theme.css" rel="stylesheet">
   <link href="../../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -55,11 +55,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/reinforcement-learning/prediction/_index.html" />
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/reinforcement-learning/prediction/monte-carlo.html" />
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Model-free Control" href="../control/_index.html" />
-    <link rel="prev" title="Generalized Policy Iteration" href="../generalized-policy-iteration/_index.html" />
+    <link rel="next" title="Temporal Difference (TD) Prediction" href="temporal-difference.html" />
+    <link rel="prev" title="Reinforcement Learning" href="../_index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -510,19 +510,24 @@ const thebe_selector_output = ".output, .cell_output"
    Reinforcement Learning
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../generalized-policy-iteration/_index.html">
-   Generalized Policy Iteration
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Model-free Prediction
+   Monte-Carlo Prediction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="temporal-difference.html">
+   Temporal Difference (TD) Prediction
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../control/_index.html">
    Model-free Control
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../generalized-policy-iteration/_index.html">
+   Generalized Policy Iteration
   </a>
  </li>
  <li class="toctree-l1">
@@ -738,7 +743,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../../_sources/aiml-common/lectures/reinforcement-learning/prediction/_index.md"><button type="button"
+        <a class="dropdown-buttons" href="../../../../_sources/aiml-common/lectures/reinforcement-learning/prediction/monte-carlo.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -758,7 +763,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/reinforcement-learning/prediction/_index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/reinforcement-learning/prediction/monte-carlo.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -789,22 +794,6 @@ const thebe_selector_output = ".output, .cell_output"
    Monte-Carlo (MC) State Value Prediction
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#temporal-difference-td-prediction">
-   Temporal Difference (TD) Prediction
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-td-lambda">
-     The TD(
-     <span class="math notranslate nohighlight">
-      \(\lambda\)
-     </span>
-     )
-    </a>
-   </li>
-  </ul>
- </li>
 </ul>
 
             </nav>
@@ -815,7 +804,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Model-free Prediction</h1>
+                <h1>Monte-Carlo Prediction</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -830,22 +819,6 @@ const thebe_selector_output = ".output, .cell_output"
    Monte-Carlo (MC) State Value Prediction
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#temporal-difference-td-prediction">
-   Temporal Difference (TD) Prediction
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-td-lambda">
-     The TD(
-     <span class="math notranslate nohighlight">
-      \(\lambda\)
-     </span>
-     )
-    </a>
-   </li>
-  </ul>
- </li>
 </ul>
 
                         </nav>
@@ -855,8 +828,8 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="model-free-prediction">
-<h1>Model-free Prediction<a class="headerlink" href="#model-free-prediction" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="monte-carlo-prediction">
+<h1>Monte-Carlo Prediction<a class="headerlink" href="#monte-carlo-prediction" title="Permalink to this headline">¶</a></h1>
 <p>In this chapter we find optimal policy solutions when the MDP is <em>unknown</em> and we need to <em>learn</em> its underlying value functions - also known as the  <em>model free</em> prediction problem.  The main idea here is to learn value functions via sampling. These methods are in fact also applicable when the MDP is known but its models are simply too large to use the approaches outlined in the MDP section. The two sampling approaches we will cover here are</p>
 <ol class="simple">
 <li><p>(incremental) Monte-Carlo (MC) and</p></li>
@@ -901,52 +874,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p><span class="math notranslate nohighlight">\(\alpha\)</span> can also be any number <span class="math notranslate nohighlight">\(&lt; 1\)</span> to get into a more flexible sample mean - the <em>running mean</em> that will increase the robustness of this approach in non-stationary environments.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>An important fact about Monte Carlo methods is that the estimates for each state are independent.  The estimate for one state does not build upon the estimate of any other state, as is the case in DP. In other words, <strong>Monte Carlo methods do not bootstrap</strong>. In particular, note that the computational expense of estimating the value ofa single state is independent of the number of states.  This can make Monte Carlo methods particularly attractive when one requires the value of only one or a subset of states.</p>
+<p>An important fact about Monte Carlo methods is that the estimates for each state are independent.  The estimate for one state does not build upon the estimate of any other state, as is the case in DP. In other words, <strong>Monte Carlo methods do not bootstrap</strong>. In particular, note that the computational expense of estimating the value of a single state is independent of the number of states.  This can make Monte Carlo methods particularly attractive when one requires the value of only one or a subset of states.</p>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
 <p>The policy evaluation problem for action values is to estimate <span class="math notranslate nohighlight">\(q_π(s,a)\)</span>, the expected return when starting in states, taking action <span class="math notranslate nohighlight">\(a\)</span>, and thereafter following policy <span class="math notranslate nohighlight">\(π\)</span>.  The Monte Carlo methods for this are essentially the same as just presented for state values.</p>
-</div>
-</div>
-<div class="section" id="temporal-difference-td-prediction">
-<h2>Temporal Difference (TD) Prediction<a class="headerlink" href="#temporal-difference-td-prediction" title="Permalink to this headline">¶</a></h2>
-<p>If one had to identify one idea as central and novel to reinforcement learning, it would undoubtedly be temporal-difference(TD) learning.  TD learning is a combination of Monte Carlo ideas and dynamic programming (DP) ideas.</p>
-<ul class="simple">
-<li><p>Like Monte Carlo methods, TD methods can learn directly from raw experience without a model of the environment’s dynamics.</p></li>
-<li><p>Like  DP,  TD  methods  update  estimates  based  in  part  on  other  learned estimates, without waiting for a final outcome.</p></li>
-</ul>
-<p>In TD, instead of getting an estimated value function at the end of multiple episodes, we can use the incremental mean approximation to update the value function after each step.</p>
-<p><img alt="td-value-iteration-tree" src="../../../../_images/td-value-iteration-tree.png" />
-<em>Backup tree for value iteration with the TD approach. TD samples a single step ahead as shown with red.</em></p>
-<p>Going back to the example of crossing the room optimally, we take one step towards the goal and the we  <em>bootstrap</em> the value function of the state we were in from an estimated return for the remaining trajectory. We repeat this as we go along effectively adjusting the value estimate of the starting state from the true returns we have experienced up to now, <em>gradually grounding</em> the whole estimate as we approach the goal.</p>
-<p><img alt="td-driving-to-work-example" src="../../../../_images/td-driving-to-work-example.png" />
-<em>Two value approximation methods: MC (left), TD (right) as converging in their predictions of the value of each of the states in the x-axis. The example is from a hypothetical commute from office back home. In MC you have to wait until the episode ended (reach the goal) to update the value function at each state of the trajectory. In contrast, TD updates the value function at each state based on the estimates of the total travel time. The goal state is “arrive home”, while the reward function is time.</em></p>
-<p>As you can notice in the figure above the solid arrows in the MC case, adjust the predicted value of each state to the <em>actual</em> return while in the TD case the value prediction happens every step in the way. We call TD for this reason an <em>online</em> learning scheme. Another characteristic of TD is that it does not depend on reaching the goal, it <em>continuously</em> learns. MC does depend on the goal and therefore is <em>episodic</em>. This is important in many mission critical applications eg self-driving cars where you dont wait to “crash” to apply corrections to your state value based on what you experienced.</p>
-<p>Mathematically, instead of using the <em>true</em> return, <span class="math notranslate nohighlight">\(G_t\)</span>, something that it is possible in the MC as we are trully experiencing the world along a trajectory, TD uses a (biased) <em>estimated</em> return called the <em>TD target</em>: <span class="math notranslate nohighlight">\( R_{t+1} + \gamma V(S_{t+1})\)</span> approximating the value function as:</p>
-<div class="math notranslate nohighlight">
-\[ V(S_t) = V(S_t) + \alpha \left( R_{t+1} + \gamma V(S_{t+1}) - V(S_t) \right)\]</div>
-<p>The difference below is called the <em>TD approximation error</em>,</p>
-<div class="math notranslate nohighlight">
-\[\delta_t = R_{t+1} + \gamma (V(S_{t+1}) - V(S_t))\]</div>
-<div class="section" id="the-td-lambda">
-<h3>The TD(<span class="math notranslate nohighlight">\(\lambda\)</span>)<a class="headerlink" href="#the-td-lambda" title="Permalink to this headline">¶</a></h3>
-<p>The TD approach of the previous section, can be extended to multiple steps. Instead of a single look ahead step we can take multiple successive look ahead steps (n), we will call this TD(n) for now, and at the end of the n-th step, we use the value function at that state to backup and get the value function at the state where we started. Effectively after n-steps our return will be:</p>
-<div class="math notranslate nohighlight">
-\[G_t^{(n)} = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ... + \gamma^{n-1}R_{t+n} + \gamma_n V(S_n)\]</div>
-<p>and the TD(n) learning equation becomes</p>
-<div class="math notranslate nohighlight">
-\[ V(S_t) = V(S_t) + \alpha \left( G^{(n)}_t - V(S_t) \right) \]</div>
-<p>We now define the so called <span class="math notranslate nohighlight">\(\lambda\)</span>-return that combines all n-step return <span class="math notranslate nohighlight">\(G_t^{(n)}\)</span> via the weighting function shown below as,</p>
-<div class="math notranslate nohighlight">
-\[G_t^{(n)} = (1-\lambda) \sum_{n=1}^\infty \lambda^{n-1} G_t^{(n)}\]</div>
-<p><img alt="lambda-weighting-function" src="../../../../_images/lambda-weighting-function.png" />
-<em><span class="math notranslate nohighlight">\(\lambda\)</span> weighting function for TD(<span class="math notranslate nohighlight">\(\lambda\)</span>)</em></p>
-<p>the TD(n) learning equation becomes</p>
-<div class="math notranslate nohighlight">
-\[ V(S_t) = V(S_t) + \alpha \left( G^\lambda_t - V(S_t) \right) \]</div>
-<p>When <span class="math notranslate nohighlight">\(\lambda=0\)</span> we get TD(0) learning, while when <span class="math notranslate nohighlight">\(\lambda=1\)</span> we get learning that is roughly equivalent to MC. Certainly it is convenient to learn one guess from the next, without waiting for an actual outcome, but can we still guarantee convergence to the correct answer?  Happily, the answer is yes as shown in the figure above.  For any fixed policy <span class="math notranslate nohighlight">\(π\)</span>, TD(0) has been proved to converge to <span class="math notranslate nohighlight">\(v_π\)</span>, in the mean for a constant step-size parameter if it is sufficiently small. However in terms of data efficiency there is no clear winner at this point.  It is instructive to see the difference between MC and TD approaches in the following example.</p>
-<p><img alt="td-learning-random-walk" src="../../../../_images/td-learning-random-walk.png" /></p>
-</div>
 </div>
 </div>
 
@@ -975,17 +905,17 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../generalized-policy-iteration/_index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../_index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Generalized Policy Iteration</p>
+            <p class="prev-next-title">Reinforcement Learning</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../control/_index.html" title="next page">
+    <a class='right-next' id="next-link" href="temporal-difference.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Model-free Control</p>
+        <p class="prev-next-title">Temporal Difference (TD) Prediction</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
