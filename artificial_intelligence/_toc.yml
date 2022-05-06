@@ -111,11 +111,12 @@ parts:
     - file: aiml-common/lectures/mdp/mdp-lab/yield-management-capacity-control/_index.md      
     
   - caption: Reinforcement Learning
-    chapters:          
-    - file: aiml-common/lectures/reinforcement-learning/_index.md      
-    - file: aiml-common/lectures/reinforcement-learning/generalized-policy-iteration/_index.md      
-    - file: aiml-common/lectures/reinforcement-learning/prediction/_index.md      
+    chapters:
+    - file: aiml-common/lectures/reinforcement-learning/_index.md        
+    - file: aiml-common/lectures/reinforcement-learning/prediction/monte-carlo.md      
+    - file: aiml-common/lectures/reinforcement-learning/prediction/temporal-difference.md      
     - file: aiml-common/lectures/reinforcement-learning/control/_index.md      
+    - file: aiml-common/lectures/reinforcement-learning/generalized-policy-iteration/_index.md      
     - file: aiml-common/lectures/reinforcement-learning/control/sarsa/_index.md      
     - file: aiml-common/lectures/reinforcement-learning/reinforce/_index.md      
 
