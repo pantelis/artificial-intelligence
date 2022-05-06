@@ -55,3 +55,11 @@ These equations due to the $\max$ operator are non-linear and can be solved to o
 
 Since the Bellman equations allow us to decompose recursively the problem into sub-problems, they in fact implement a general and exact approach called _dynamic programming_ that results into an optimal policy. We examine the computational aspects of such approach in a separate section. 
 ```
+
+## References
+
+The notes above are based on David Silver's tutorial videos linked earlier. The video below is also an excellent introduction to MDP problems and includes python code that solves a simple MDP problem. 
+
+```{eval-rst}
+.. youtube:: 9g32v7bK3Co
+```

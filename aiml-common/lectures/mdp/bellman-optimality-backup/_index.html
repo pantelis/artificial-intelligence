@@ -784,6 +784,19 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -796,6 +809,19 @@ const thebe_selector_output = ".output, .cell_output"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -844,6 +870,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ol>
 <p>Since the Bellman equations allow us to decompose recursively the problem into sub-problems, they in fact implement a general and exact approach called <em>dynamic programming</em> that results into an optimal policy. We examine the computational aspects of such approach in a separate section.</p>
 </div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>The notes above are based on David Silver’s tutorial videos linked earlier. The video below is also an excellent introduction to MDP problems and includes python code that solves a simple MDP problem.</p>
+<div class="video_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/9g32v7bK3Co" style="border: 0; height: 345px; width: 560px">
+</iframe></div></div>
 </div>
 
     <script type="text/x-thebe-config">
