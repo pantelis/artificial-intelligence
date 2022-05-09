@@ -11,16 +11,14 @@ only_build_toc_files: true
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: auto
+  execute_notebooks: false
   exclude_patterns: 
-    - artificial_intelligence/handson-ml2/*
-    - artificial_intelligence/handson-ml2/.*
     - data_mining/aiml-common/lectures/transfer-learning/quantized_transfer_learning.ipynb
     
 # Define the name of the latex output file for PDF builds
 latex:
   latex_documents:
-    targetname: ai-book.tex
+    targetname: ai-course.tex
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
@@ -56,7 +54,8 @@ sphinx:
       use_edit_page_button: false
   extra_extensions:
     - sphinxcontrib.youtube
-    - sphinx_inline_tabs 
+    - sphinx_inline_tabs
+    - sphinxcontrib.inkscapeconverter
 
 parse:
   myst_enable_extensions:

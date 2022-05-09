@@ -15,3 +15,4 @@ jupyter
 jupyterlab
 jupyter-dash
 tensorflow
+pyppeteer
