@@ -16,4 +16,4 @@ jupyterlab
 jupyter-dash
 tensorflow
 pyppeteer
-sphinxcontrib.inkscapeconverter
+sphinxcontrib-svg2pdfconverter
