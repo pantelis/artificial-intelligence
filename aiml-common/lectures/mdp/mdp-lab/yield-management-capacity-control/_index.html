@@ -917,14 +917,14 @@ const thebe_selector_output = ".output, .cell_output"
 \[S_f = \min (C_f,D_f)\]</div>
 <p>The expected revenue from the occupied resources will be</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\mathbb E \\{ p_d  S_d + p_f  S_f \\}\end{split}\]</div>
+\[\mathbb E \{ p_d  S_d + p_f  S_f \}\]</div>
 <p>where the expectation is taken over the random demands of the two types. If we maximize revenue over the protection level <span class="math notranslate nohighlight">\(y\)</span>, we obtain</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-V_d(C) = \max_{0 \le y \le C} \mathbb E \\{p_d  S_d + p_f  S_f \\}  = \end{split}\]</div>
+\[
+V_d(C) = \max_{0 \le y \le C} \mathbb E \{p_d  S_d + p_f  S_f \}  = \]</div>
 <div class="math notranslate nohighlight">
-\[\begin{split} = \max_{0 \le y \le C} \mathbb E \\{p_d  \min (C-y,D_d) + p_f \min \left( \max(y,C-D_d),D_f \right) \\} 
-\end{split}\]</div>
+\[ = \max_{0 \le y \le C} \mathbb E \{p_d  \min (C-y,D_d) + p_f \min \left( \max(y,C-D_d),D_f \right) \} 
+\]</div>
 <p>Intuitively, the ratio of the prices <span class="math notranslate nohighlight">\(r=\frac{p_d}{p_f}\)</span> can help us determine some trends in setting the reservation level <span class="math notranslate nohighlight">\(y\)</span>. For if the ratio is very small, i.e. <span class="math notranslate nohighlight">\(p_f &gt;&gt; p_d\)</span>, then we would be inclined to reserve most of the overall capacity <span class="math notranslate nohighlight">\(C\)</span> for type <span class="math notranslate nohighlight">\(f\)</span> i.e <span class="math notranslate nohighlight">\(C_f &gt;&gt; C_d\)</span>. If on the other hand the ratio is close to 1, then we would be inclined to reserve only a very small capacity for type <span class="math notranslate nohighlight">\(f\)</span> i.e. <span class="math notranslate nohighlight">\(C_f &lt;&lt; C_d\)</span>, since we can get almost the same revenue with type <span class="math notranslate nohighlight">\(d\)</span>.</p>
 <p>Let us assume now that we set a fixed price ratio <span class="math notranslate nohighlight">\(r\)</span> that is not close to these two extremes, and we then look at the remaining factors that can determine <span class="math notranslate nohighlight">\(y\)</span> for optimal revenue. From the expressions above that factor seems to be the shape of the tail of the demand function for type <span class="math notranslate nohighlight">\(f\)</span> i.e. <span class="math notranslate nohighlight">\(p(D_f &gt; y)\)</span>. This is because we can only have the revenue for the capacity we reserved, if the associated demand is there i.e. if <span class="math notranslate nohighlight">\(D_f &gt; y\)</span>. We can use Dynamic Programming (DP) to calculate the optimal reservation/protection limit.</p>
 </div>
@@ -934,8 +934,8 @@ V_d(C) = \max_{0 \le y \le C} \mathbb E \\{p_d  S_d + p_f  S_f \\}  = \end{split
 <p>The first period is defined as the point just before the type <span class="math notranslate nohighlight">\(d\)</span>  demand is observed i.e. when the available capacity is <span class="math notranslate nohighlight">\(C\)</span> and we define the value function <span class="math notranslate nohighlight">\(V_d(C)\)</span> that represents the optimal expected revenue starting with <span class="math notranslate nohighlight">\(C\)</span> units of capacity. Apparently an upper bound of this value function is <span class="math notranslate nohighlight">\(V_d(C) \le p_f C\)</span>, and this is obtained when we protect all the available capacity for type <span class="math notranslate nohighlight">\(f\)</span>.</p>
 <p>Similarly, the second variable is the value function <span class="math notranslate nohighlight">\(V_f(x)\)</span> that represents the optimal expected revenue starting with <span class="math notranslate nohighlight">\(x\)</span> units of capacity just before observing <span class="math notranslate nohighlight">\(D_f\)</span> or equivalently after we observe <span class="math notranslate nohighlight">\(D_d\)</span>.</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}V_f(x) = \mathbb{E} \\{p_f  \min(x,D_f)\\}  =  p_f  \sum_{j=1}^x p(D_f \ge j)\end{split}\]</div>
-<p>where we have expanded <span class="math notranslate nohighlight">\(\mathbb E \\{\min(x,D) \\}\)</span> using the rationale below.</p>
+\[V_f(x) = \mathbb{E} \{p_f  \min(x,D_f)\}  =  p_f  \sum_{j=1}^x p(D_f \ge j)\]</div>
+<p>where we have expanded <span class="math notranslate nohighlight">\(\mathbb E \{\min(x,D) \}\)</span> using the rationale below.</p>
 <p>Suppose that <span class="math notranslate nohighlight">\(D\)</span> an integer quantity with <span class="math notranslate nohighlight">\(D &gt; 0\)</span> and <span class="math notranslate nohighlight">\(x\)</span> is an integer, then,</p>
 <div class="math notranslate nohighlight">
 \[E\{\min(x,D)\} = \sum_{j=0}^\infty \min(x,j)  Pr(D=j) \]</div>
@@ -945,17 +945,17 @@ V_d(C) = \max_{0 \le y \le C} \mathbb E \\{p_d  S_d + p_f  S_f \\}  = \end{split
 \[ Pr(D \ge 1) + Pr(D \ge 2) + \dots + Pr(D \ge x) =  \sum_{j=1}^x Pr(D \ge j) \]</div>
 <p>The dynamic program formulation would involve relating <span class="math notranslate nohighlight">\(V_d(C)\)</span> to <span class="math notranslate nohighlight">\(V_f(x)\)</span>. If we rewrite <span class="math notranslate nohighlight">\(V_d(C)\)</span> from the result of the previous section,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} V_d(C)  =  \max_{0 \le y \le C}  \mathbb E \\{p_d \min (C-y,D_d)\\} +  \mathbb E \\{ V_f(C_f) \\}  = \end{split}\]</div>
+\[ V_d(C)  =  \max_{0 \le y \le C}  \mathbb E \{p_d \min (C-y,D_d)\} +  \mathbb E \{ V_f(C_f) \}  = \]</div>
 <div class="math notranslate nohighlight">
-\[\begin{split} =  \max_{0 \le y \le C}    \mathbb E \\{ p_d \min (C-y,D_d) \\} +  \mathbb E \\{ V_f(\max(y,C-D_d)) \\} = \max_{0 \le y \le C} W(y,C)\end{split}\]</div>
+\[ =  \max_{0 \le y \le C}    \mathbb E \{ p_d \min (C-y,D_d) \} +  \mathbb E \{ V_f(\max(y,C-D_d)) \} = \max_{0 \le y \le C} W(y,C)\]</div>
 <p>The revenue difference from one unit of protection level is given by,</p>
 <div class="math notranslate nohighlight">
 \[\Delta W(y,C) = W(y,C) - W(y-1,C) = [p_f p(D_f \ge y) - p_d] p(D_d \ge C-y)\]</div>
 <p>We can prove the last equality as follows</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} W(y,C) = \mathbb E \\{p_d \min (C-y,D_d) + V_f(\max(y,C-D_d)) \\} \end{split}\]</div>
+\[ W(y,C) = \mathbb E \{p_d \min (C-y,D_d) + V_f(\max(y,C-D_d)) \} \]</div>
 <div class="math notranslate nohighlight">
-\[\begin{split}W(y-1,C) = \mathbb E \\{p_d \min (C-y+1,D_d) + V_f(\max(y-1,C-D_d)) \\}\end{split}\]</div>
+\[W(y-1,C) = \mathbb E \{p_d \min (C-y+1,D_d) + V_f(\max(y-1,C-D_d)) \}\]</div>
 <p>We can study two cases:</p>
 <table class="colwidths-auto table">
 <thead>
@@ -968,55 +968,55 @@ V_d(C) = \max_{0 \le y \le C} \mathbb E \\{p_d  S_d + p_f  S_f \\}  = \end{split
 <td class="text-align:left"><p><span class="math notranslate nohighlight">\( \Delta W(y,C) = W(y,C) - W(y-1,C)\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p></p></td>
-<td class="text-align:left"><p><span class="math notranslate nohighlight">\( = \mathbb E \\{p_d D_d + V_f(C-D_d) \\} - \mathbb E \\{p_d D_d + V_f(C-D_d)\\} \)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\( = \mathbb E \{p_d D_d + V_f(C-D_d) \} - \mathbb E \{p_d D_d + V_f(C-D_d)\} \)</span></p></td>
 </tr>
 <tr class="row-even"><td><p></p></td>
-<td class="text-align:left"><p><span class="math notranslate nohighlight">\( = \mathbb E \\{0 p(D_d \le C-y) \\} =0 \)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\( = \mathbb E \{0 p(D_d \le C-y) \} =0 \)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(D_d &gt; C-y\)</span></p></td>
 <td class="text-align:left"><p><span class="math notranslate nohighlight">\( \Delta W(y,C) = W(y,C) - W(y-1,C)\)</span></p></td>
 </tr>
 <tr class="row-even"><td><p></p></td>
-<td class="text-align:left"><p><span class="math notranslate nohighlight">\(= \mathbb E \\{p_d (C-y) + V_f(y) \\} - \mathbb E \\{p_d (C-y+1) + V_f(y-1) \\}\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(= \mathbb E \{p_d (C-y) + V_f(y) \} - \mathbb E \{p_d (C-y+1) + V_f(y-1) \}\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p></p></td>
-<td class="text-align:left"><p><span class="math notranslate nohighlight">\(= \mathbb E \\{ V_f(y)-V_f(y-1)-p_d \\} p(D_d &gt; C-y)\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(= \mathbb E \{ V_f(y)-V_f(y-1)-p_d \} p(D_d &gt; C-y)\)</span></p></td>
 </tr>
 </tbody>
 </table>
 <p>Then in all cases, the difference,</p>
 <p><span class="math notranslate nohighlight">\(\Delta W(y,C) = W(y,C) - W(y-1,C)\)</span>
-<span class="math notranslate nohighlight">\(= \mathbb E \\{V_f(y)-V_f(y-1)-p_d \\} p(D_d &gt; C-y)\)</span>
-<span class="math notranslate nohighlight">\(= \mathbb E \\{\Delta V_f(y)-p_d \\} p(D_d &gt; C-y)\)</span></p>
+<span class="math notranslate nohighlight">\(= \mathbb E \{V_f(y)-V_f(y-1)-p_d \} p(D_d &gt; C-y)\)</span>
+<span class="math notranslate nohighlight">\(= \mathbb E \{\Delta V_f(y)-p_d \} p(D_d &gt; C-y)\)</span></p>
 <p>If we replace the marginal of the value function <span class="math notranslate nohighlight">\(V_f(y)\)</span>, with <span class="math notranslate nohighlight">\(\Delta V_f(y) = V_f(y)-V_f(y-1) = p_f  p(D_f \ge y)\)</span> we get the final result:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\Delta W(y,C) = W(y,C) - W(y-1,C) = \mathbb E \\{ p_f  p(D_f \ge y)-p_d \\} p(D_d &gt; C-y)\end{split}\]</div>
+\[\Delta W(y,C) = W(y,C) - W(y-1,C) = \mathbb E \{ p_f  p(D_f \ge y)-p_d \} p(D_d &gt; C-y)\]</div>
 <p>The term is <span class="math notranslate nohighlight">\(\Delta V_f(y)- p_d\)</span> will start positive and then become negative i.e. the marginal value will have at least a local maximum. This can be simply shown if one replaces <span class="math notranslate nohighlight">\(y\)</span> with <span class="math notranslate nohighlight">\(\infty\)</span> which causes the term <span class="math notranslate nohighlight">\(p_f  p(D_f \ge y)-p_d \rightarrow -p_d\)</span> and in the other extreme, if we replace <span class="math notranslate nohighlight">\(y\)</span> with <span class="math notranslate nohighlight">\(0\)</span> the term <span class="math notranslate nohighlight">\(p_f  p(D_f \ge y)-p_d \rightarrow p_f-p_d\)</span>.</p>
 <p>Note that the marginal value <span class="math notranslate nohighlight">\(V_f(x)\)</span> itself reduces with remaining capacity <span class="math notranslate nohighlight">\(x\)</span>. The marginal value depends on how much the tail of the type-<span class="math notranslate nohighlight">\(d\)</span> demand exceeds the available capacity.</p>
 <div class="section" id="calculating-the-optimal-protection-limit-and-maximum-revenue">
 <h4>Calculating the Optimal Protection Limit and Maximum Revenue<a class="headerlink" href="#calculating-the-optimal-protection-limit-and-maximum-revenue" title="Permalink to this headline">¶</a></h4>
 <p>The optimal <span class="math notranslate nohighlight">\(y\)</span>, denoted by <span class="math notranslate nohighlight">\(y^*\)</span> can now be found as,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}y^* = \max \\{ y \in N_+: p_f  p(D_f \ge y^*) \ge p_d \\} = \max \\{ y \in N: p(D_f \ge y^*) \ge \frac{p_d}{p_f} \\}\end{split}\]</div>
+\[y^* = \max \{ y \in N_+: p_f  p(D_f \ge y^*) \ge p_d \} = \max \{ y \in N: p(D_f \ge y^*) \ge \frac{p_d}{p_f} \}\]</div>
 <p>The optimal booking limit will then be</p>
 <div class="math notranslate nohighlight">
 \[b^* = (C-y^*)^+\]</div>
 <p>The maximum possible revenue starting with capacity <span class="math notranslate nohighlight">\(C\)</span> is given by,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}V_d(C) =  \begin{cases} W(y^*,C) &amp; \text{if } y^* \le C \\\\ W(C,C) &amp; \text{if } y^* &gt; C \end{cases}\end{split}\]</div>
+\[\begin{split}V_d(C) =  \begin{cases} W(y^*,C) &amp; \text{if } y^* \le C \\ W(C,C) &amp; \text{if } y^* &gt; C \end{cases}\end{split}\]</div>
 <p>Calculating <span class="math notranslate nohighlight">\(W(y^*,C)\)</span> can be done recursively. We know that,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}W(y,C)  =  W(y-1,C)  + \mathbb E \\{p_f  p(D_f \ge y)-p_d \\} p(D_d &gt; C-y)\end{split}\]</div>
+\[W(y,C)  =  W(y-1,C)  + \mathbb E \{p_f  p(D_f \ge y)-p_d \} p(D_d &gt; C-y)\]</div>
 <p>To start the iteration we need <span class="math notranslate nohighlight">\(W(0,C)\)</span> that can be written as,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}W(0,C) = p_d  \mathbb E \\{\min(C,D_d)\\} + \mathbb E \\{V_f(\max(0,C-D_d))\\}\end{split}\]</div>
+\[W(0,C) = p_d  \mathbb E \{\min(C,D_d)\} + \mathbb E \{V_f(\max(0,C-D_d))\}\]</div>
 <p>The first expectation can be written using partial expectations as,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\mathbb E \\{\min(C,D_d)\\} = \sum_{j=1}^C p(D_d \ge j)\end{split}\]</div>
+\[\mathbb E \{\min(C,D_d)\} = \sum_{j=1}^C p(D_d \ge j)\]</div>
 <p>The second expectation can be written as,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\mathbb E \\{V_f(\max(0,C-D_d))\\} = \sum_{j=0}^C V_f(C-j) p(D_d = j)\end{split}\]</div>
-<p>Then, starting from <span class="math notranslate nohighlight">\(W(0,C)\)</span> we can calculate <span class="math notranslate nohighlight">\(W(1,C)\)</span> and iterate until all <span class="math notranslate nohighlight">\(W(y^\*,C)\)</span> are calculated.</p>
+\[\mathbb E \{V_f(\max(0,C-D_d))\} = \sum_{j=0}^C V_f(C-j) p(D_d = j)\]</div>
+<p>Then, starting from <span class="math notranslate nohighlight">\(W(0,C)\)</span> we can calculate <span class="math notranslate nohighlight">\(W(1,C)\)</span> and iterate until all <span class="math notranslate nohighlight">\(W(y^*,C)\)</span> are calculated.</p>
 </div>
 </div>
 <div class="section" id="the-multiple-class-model">
@@ -1072,9 +1072,9 @@ V_d(C) = \max_{0 \le y \le C} \mathbb E \\{p_d  S_d + p_f  S_f \\}  = \end{split
 <p>A number of calls equal to the number of stages are made. In each call, the corresponding results are stored for usage at the next stage.</p>
 <p>For a problem with available initial capacity <span class="math notranslate nohighlight">\(C=100\)</span> and 2 demand classes shown below:</p>
 <p>| Class | Price | Demand Distribution | Optimal Protection Levels |
-| — | — | — | — | — |
-|1 | 1000 | Poisson(40) | 41 |
-|2 | 450 | Poisson(15) | 100 |</p>
+| —– | —– | ——————- | ————————- ||
+| 1     | 1000  | Poisson(40)         | 41                        |
+| 2     | 450   | Poisson(15)         | 100                       |</p>
 <p>The marginal value as a function of the remaining resources.</p>
 <p><img alt="marginal-value-multi-class" src="../../../../../_images/marginal-value-two-class.png" />
 <em>The marginal value as a function of the remaining resources</em></p>
@@ -1082,11 +1082,11 @@ V_d(C) = \max_{0 \le y \le C} \mathbb E \\{p_d  S_d + p_f  S_f \\}  = \end{split
 <p><img alt="optimal-protection-limits-multi-class" src="../../../../../_images/protection-limits-two-class.png" /></p>
 <p>A further example shows the straightforward application of the same DP solution for more classes. The table below outlines the results for an available initial capacity <span class="math notranslate nohighlight">\(C=50\)</span> and 4 demand classes.</p>
 <p>| Class | Price | Demand Distribution | Optimal Protection Levels |
-| — | — | — | — | — |
-|1 | 100 | Poisson(10) | 6 |
-|2 | 90 | Poisson(15) | 20 |
-|3 | 80 | Poisson(25) | 44 |
-|4 | 70 | Poisson(15) | 50 |</p>
+| —– | —– | ——————- | ————————- ||
+| 1     | 100   | Poisson(10)         | 6                         |
+| 2     | 90    | Poisson(15)         | 20                        |
+| 3     | 80    | Poisson(25)         | 44                        |
+| 4     | 70    | Poisson(15)         | 50                        |</p>
 <p><img alt="marginal-value-multi-class" src="../../../../../_images/marginal-value-multiclass.png" />
 <em>The marginal value as a function of the remaining resources for the three stages of the problem</em></p>
 <p>Its noteworthy to highlight the decreasing marginal value of capacity as the remaining capacity increases. This is intuitive as the more capacity we have remaining the less a unit of this capacity should be worth. Also, it is interesting to highlight the increasing value of marginal capacity with increasing stage. This is also intuitive as the earlier we are in stage i.e. the more time we have until we reach the final stage 1, the more a unit of capacity is worth if we allocate it at that stage.</p>

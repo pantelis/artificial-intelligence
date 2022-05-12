@@ -22,7 +22,7 @@ In this example all $l(e)=1$ and the heuristic is a penalty from how much a tran
 Using the interactive demo page below, repeating the same example wall-world, we can clearly see the substantial difference in search speed and the beamforming effect as soon as the wave (frontier) evaluates nodes where the heuristic (the Manhattan distance from the goal node) becomes dominant. Notice the difference with the UCS / Dijkstra's algorithm in the number of nodes that needed to be evaluated. 
 
 ![astar-demo](images/astar-demo.png)
-*$A^\*$ algorithm demo*
+*$A^*$ algorithm demo*
 
 
 ### A* Implementation

@@ -46,13 +46,13 @@ $$S_f = \min (C_f,D_f)$$
 
 The expected revenue from the occupied resources will be 
 
-$$\mathbb E \\{ p_d  S_d + p_f  S_f \\}$$ 
+$$\mathbb E \{ p_d  S_d + p_f  S_f \}$$ 
 
 where the expectation is taken over the random demands of the two types. If we maximize revenue over the protection level $y$, we obtain 
 
 $$
-V_d(C) = \max_{0 \le y \le C} \mathbb E \\{p_d  S_d + p_f  S_f \\}  = $$
-$$ = \max_{0 \le y \le C} \mathbb E \\{p_d  \min (C-y,D_d) + p_f \min \left( \max(y,C-D_d),D_f \right) \\} 
+V_d(C) = \max_{0 \le y \le C} \mathbb E \{p_d  S_d + p_f  S_f \}  = $$
+$$ = \max_{0 \le y \le C} \mathbb E \{p_d  \min (C-y,D_d) + p_f \min \left( \max(y,C-D_d),D_f \right) \} 
 $$
 
 Intuitively, the ratio of the prices $r=\frac{p_d}{p_f}$ can help us determine some trends in setting the reservation level $y$. For if the ratio is very small, i.e. $p_f >> p_d$, then we would be inclined to reserve most of the overall capacity $C$ for type $f$ i.e $C_f >> C_d$. If on the other hand the ratio is close to 1, then we would be inclined to reserve only a very small capacity for type $f$ i.e. $C_f << C_d$, since we can get almost the same revenue with type $d$. 
@@ -68,9 +68,9 @@ The first period is defined as the point just before the type $d$  demand is obs
 
 Similarly, the second variable is the value function $V_f(x)$ that represents the optimal expected revenue starting with $x$ units of capacity just before observing $D_f$ or equivalently after we observe $D_d$. 
 
-$$V_f(x) = \mathbb{E} \\{p_f  \min(x,D_f)\\}  =  p_f  \sum_{j=1}^x p(D_f \ge j)$$
+$$V_f(x) = \mathbb{E} \{p_f  \min(x,D_f)\}  =  p_f  \sum_{j=1}^x p(D_f \ge j)$$
 
-where we have expanded $\mathbb E \\{\min(x,D) \\}$ using the rationale below.
+where we have expanded $\mathbb E \{\min(x,D) \}$ using the rationale below.
 
 {{<details "$\mathbb E\{\min(x,D)\}$">}}
 Suppose that $D$ an integer quantity with $D > 0$ and $x$ is an integer, then,
@@ -83,9 +83,9 @@ $$ Pr(D \ge 1) + Pr(D \ge 2) + \dots + Pr(D \ge x) =  \sum_{j=1}^x Pr(D \ge j) $
 
 The dynamic program formulation would involve relating $V_d(C)$ to $V_f(x)$. If we rewrite $V_d(C)$ from the result of the previous section,
 
-$$ V_d(C)  =  \max_{0 \le y \le C}  \mathbb E \\{p_d \min (C-y,D_d)\\} +  \mathbb E \\{ V_f(C_f) \\}  = $$
+$$ V_d(C)  =  \max_{0 \le y \le C}  \mathbb E \{p_d \min (C-y,D_d)\} +  \mathbb E \{ V_f(C_f) \}  = $$
 
-$$ =  \max_{0 \le y \le C}    \mathbb E \\{ p_d \min (C-y,D_d) \\} +  \mathbb E \\{ V_f(\max(y,C-D_d)) \\} = \max_{0 \le y \le C} W(y,C)$$
+$$ =  \max_{0 \le y \le C}    \mathbb E \{ p_d \min (C-y,D_d) \} +  \mathbb E \{ V_f(\max(y,C-D_d)) \} = \max_{0 \le y \le C} W(y,C)$$
 
 The revenue difference from one unit of protection level is given by,
 
@@ -95,31 +95,31 @@ $$\Delta W(y,C) = W(y,C) - W(y-1,C) = [p_f p(D_f \ge y) - p_d] p(D_d \ge C-y)$$
 
 We can prove the last equality as follows
 
-$$ W(y,C) = \mathbb E \\{p_d \min (C-y,D_d) + V_f(\max(y,C-D_d)) \\} $$
+$$ W(y,C) = \mathbb E \{p_d \min (C-y,D_d) + V_f(\max(y,C-D_d)) \} $$
 
-$$W(y-1,C) = \mathbb E \\{p_d \min (C-y+1,D_d) + V_f(\max(y-1,C-D_d)) \\}$$
+$$W(y-1,C) = \mathbb E \{p_d \min (C-y+1,D_d) + V_f(\max(y-1,C-D_d)) \}$$
 
 We can study two cases: 
 
-| Case    | Description   |
-| --- | :-- |
-| $D_d \le C-y$ |  $ \Delta W(y,C) = W(y,C) - W(y-1,C)$ | 
-| | $ = \mathbb E \\{p_d D_d + V_f(C-D_d) \\} - \mathbb E \\{p_d D_d + V_f(C-D_d)\\} $ |
-| | $ = \mathbb E \\{0 p(D_d \le C-y) \\} =0 $ | 
-| $D_d > C-y$ | $ \Delta W(y,C) = W(y,C) - W(y-1,C)$ | 
-| | $= \mathbb E \\{p_d (C-y) + V_f(y) \\} - \mathbb E \\{p_d (C-y+1) + V_f(y-1) \\}$ |
-| | $= \mathbb E \\{ V_f(y)-V_f(y-1)-p_d \\} p(D_d > C-y)$ |
+| Case          | Description                                                                    |
+| ------------- | :----------------------------------------------------------------------------- |
+| $D_d \le C-y$ | $ \Delta W(y,C) = W(y,C) - W(y-1,C)$                                           |
+|               | $ = \mathbb E \{p_d D_d + V_f(C-D_d) \} - \mathbb E \{p_d D_d + V_f(C-D_d)\} $ |
+|               | $ = \mathbb E \{0 p(D_d \le C-y) \} =0 $                                       |
+| $D_d > C-y$   | $ \Delta W(y,C) = W(y,C) - W(y-1,C)$                                           |
+|               | $= \mathbb E \{p_d (C-y) + V_f(y) \} - \mathbb E \{p_d (C-y+1) + V_f(y-1) \}$  |
+|               | $= \mathbb E \{ V_f(y)-V_f(y-1)-p_d \} p(D_d > C-y)$                           |
 
 Then in all cases, the difference,
 
 
 $\Delta W(y,C) = W(y,C) - W(y-1,C)$
-$= \mathbb E \\{V_f(y)-V_f(y-1)-p_d \\} p(D_d > C-y)$
-$= \mathbb E \\{\Delta V_f(y)-p_d \\} p(D_d > C-y)$
+$= \mathbb E \{V_f(y)-V_f(y-1)-p_d \} p(D_d > C-y)$
+$= \mathbb E \{\Delta V_f(y)-p_d \} p(D_d > C-y)$
 
 If we replace the marginal of the value function $V_f(y)$, with $\Delta V_f(y) = V_f(y)-V_f(y-1) = p_f  p(D_f \ge y)$ we get the final result:
 
-$$\Delta W(y,C) = W(y,C) - W(y-1,C) = \mathbb E \\{ p_f  p(D_f \ge y)-p_d \\} p(D_d > C-y)$$
+$$\Delta W(y,C) = W(y,C) - W(y-1,C) = \mathbb E \{ p_f  p(D_f \ge y)-p_d \} p(D_d > C-y)$$
 
 The term is $\Delta V_f(y)- p_d$ will start positive and then become negative i.e. the marginal value will have at least a local maximum. This can be simply shown if one replaces $y$ with $\infty$ which causes the term $p_f  p(D_f \ge y)-p_d \rightarrow -p_d$ and in the other extreme, if we replace $y$ with $0$ the term $p_f  p(D_f \ge y)-p_d \rightarrow p_f-p_d$. 
 
@@ -132,7 +132,7 @@ Note that the marginal value $V_f(x)$ itself reduces with remaining capacity $x$
 
 The optimal $y$, denoted by $y^*$ can now be found as,
 
-$$y^* = \max \\{ y \in N_+: p_f  p(D_f \ge y^*) \ge p_d \\} = \max \\{ y \in N: p(D_f \ge y^*) \ge \frac{p_d}{p_f} \\}$$
+$$y^* = \max \{ y \in N_+: p_f  p(D_f \ge y^*) \ge p_d \} = \max \{ y \in N: p(D_f \ge y^*) \ge \frac{p_d}{p_f} \}$$
 
 The optimal booking limit will then be 
 
@@ -140,25 +140,25 @@ $$b^* = (C-y^*)^+$$
 
 The maximum possible revenue starting with capacity $C$ is given by,
 
-$$V_d(C) =  \begin{cases} W(y^*,C) & \text{if } y^* \le C \\\\ W(C,C) & \text{if } y^* > C \end{cases}$$
+$$V_d(C) =  \begin{cases} W(y^*,C) & \text{if } y^* \le C \\ W(C,C) & \text{if } y^* > C \end{cases}$$
 
 Calculating $W(y^*,C)$ can be done recursively. We know that, 
 
-$$W(y,C)  =  W(y-1,C)  + \mathbb E \\{p_f  p(D_f \ge y)-p_d \\} p(D_d > C-y)$$
+$$W(y,C)  =  W(y-1,C)  + \mathbb E \{p_f  p(D_f \ge y)-p_d \} p(D_d > C-y)$$
 
 To start the iteration we need $W(0,C)$ that can be written as,
 
-$$W(0,C) = p_d  \mathbb E \\{\min(C,D_d)\\} + \mathbb E \\{V_f(\max(0,C-D_d))\\}$$
+$$W(0,C) = p_d  \mathbb E \{\min(C,D_d)\} + \mathbb E \{V_f(\max(0,C-D_d))\}$$
 
 The first expectation can be written using partial expectations as,
 
-$$\mathbb E \\{\min(C,D_d)\\} = \sum_{j=1}^C p(D_d \ge j)$$
+$$\mathbb E \{\min(C,D_d)\} = \sum_{j=1}^C p(D_d \ge j)$$
 
 The second expectation can be written as,
 
-$$\mathbb E \\{V_f(\max(0,C-D_d))\\} = \sum_{j=0}^C V_f(C-j) p(D_d = j)$$
+$$\mathbb E \{V_f(\max(0,C-D_d))\} = \sum_{j=0}^C V_f(C-j) p(D_d = j)$$
 
-Then, starting from $W(0,C)$ we can calculate $W(1,C)$ and iterate until all $W(y^\*,C)$ are calculated. 
+Then, starting from $W(0,C)$ we can calculate $W(1,C)$ and iterate until all $W(y^*,C)$ are calculated. 
 
 ### The Multiple Class Model
 
@@ -219,10 +219,10 @@ A number of calls equal to the number of stages are made. In each call, the corr
 
 For a problem with available initial capacity $C=100$ and 2 demand classes shown below:
 
-| Class | Price | Demand Distribution | Optimal Protection Levels | 
-| --- | --- | --- | --- | --- | 
-|1 | 1000 | Poisson(40) | 41 |
-|2 | 450 | Poisson(15) | 100 |
+| Class | Price | Demand Distribution | Optimal Protection Levels |
+| ----- | ----- | ------------------- | ------------------------- ||
+| 1     | 1000  | Poisson(40)         | 41                        |
+| 2     | 450   | Poisson(15)         | 100                       |
 
 The marginal value as a function of the remaining resources.
 
@@ -235,12 +235,12 @@ The optimal protection limits are shown below.
 
 A further example shows the straightforward application of the same DP solution for more classes. The table below outlines the results for an available initial capacity $C=50$ and 4 demand classes. 
 
-| Class | Price | Demand Distribution | Optimal Protection Levels | 
-| --- | --- | --- | --- | --- | 
-|1 | 100 | Poisson(10) | 6 |
-|2 | 90 | Poisson(15) | 20 |
-|3 | 80 | Poisson(25) | 44 |
-|4 | 70 | Poisson(15) | 50 |
+| Class | Price | Demand Distribution | Optimal Protection Levels |
+| ----- | ----- | ------------------- | ------------------------- ||
+| 1     | 100   | Poisson(10)         | 6                         |
+| 2     | 90    | Poisson(15)         | 20                        |
+| 3     | 80    | Poisson(25)         | 44                        |
+| 4     | 70    | Poisson(15)         | 50                        |
 
 ![marginal-value-multi-class](images/marginal-value-multiclass.png)
 _The marginal value as a function of the remaining resources for the three stages of the problem_

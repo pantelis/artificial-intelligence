@@ -841,7 +841,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>In this example all <span class="math notranslate nohighlight">\(l(e)=1\)</span> and the heuristic is a penalty from how much a transition to another node (an action) takes us away from the end state (adopted from <a class="reference external" href="https://stanford-cs221.github.io/">CS221</a>).</p>
 <p>Using the interactive demo page below, repeating the same example wall-world, we can clearly see the substantial difference in search speed and the beamforming effect as soon as the wave (frontier) evaluates nodes where the heuristic (the Manhattan distance from the goal node) becomes dominant. Notice the difference with the UCS / Dijkstra’s algorithm in the number of nodes that needed to be evaluated.</p>
 <p><img alt="astar-demo" src="../../../../../_images/astar-demo.png" />
-<em><span class="math notranslate nohighlight">\(A^\*\)</span> algorithm demo</em></p>
+<em><span class="math notranslate nohighlight">\(A^*\)</span> algorithm demo</em></p>
 <div class="section" id="a-implementation">
 <h2>A* Implementation<a class="headerlink" href="#a-implementation" title="Permalink to this headline">¶</a></h2>
 <p>A stand-alone A* planner in python is shown next. Its instructive to go through the code to understand how it works.</p>

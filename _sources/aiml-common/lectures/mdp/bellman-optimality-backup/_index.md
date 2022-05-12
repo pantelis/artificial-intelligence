@@ -7,7 +7,7 @@ $$q_*(s,a) = \max_\pi q_\pi(s,a)$$
 
 The $v_*(s)$ is the best possible value (expected return) we can get starting from state $s$.   The $q_*(s,a)$ is the best value (expected return) starting at state $s$ and taking an action $a$. In other words we can now obtain the _optimal policy_ by maximizing over $q_*(s,a)$ - mathematically this can be expressed as,
 
-$$\pi_*(a|s) = \begin{cases}1 & \text{if }\ a = \argmax_{a \in \mathcal A} q_*(s,a), \\\\ 
+$$\pi_*(a|s) = \begin{cases}1 & \text{if }\ a = \argmax_{a \in \mathcal A} q_*(s,a), \\ 
 0 & \text{otherwise}\end{cases}$$
 
 So the problem now becomes how to calculate the optimal value functions. We return to the tree structures that helped us understand the interdependencies between the two and this time we look at the optimal equivalents. 

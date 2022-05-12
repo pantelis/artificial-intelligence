@@ -18,7 +18,7 @@ The algorithm contains another algorithm that segments the image into initial re
 
 ### Graph-based segmentation
 
-We perform segmentation in the image using an [efficient graph-based algorithm](http://cs.brown.edu/people/pfelzens/segment/) to obtain the set $R=\\{r_1, \dots, r_n \\}$ of initial regions. The segmentation algorithm starts by formulating the image as a graph. 
+We perform segmentation in the image using an [efficient graph-based algorithm](http://cs.brown.edu/people/pfelzens/segment/) to obtain the set $R=\{r_1, \dots, r_n \}$ of initial regions. The segmentation algorithm starts by formulating the image as a graph. 
 
 Let G = (V, E) be an undirected graph with vertices $v_i \in V$ , the set of elements to be segmented, and edges $(v_i, v_j) ∈ E$ corresponding to pairs of neighboring vertices. Each edge has a corresponding weight $w((v_i, v_j ))$, which is a non-negative measure of the _dissimilarity_ between neighboring elements $v_i$ and $v_j$. In the case of image segmentation, the elements in V are _pixels_ and the weight of an edge is some measure of the dissimilarity between the two pixels connected by that edge (e.g., the difference in intensity, color, motion, location or some other local attribute).
 

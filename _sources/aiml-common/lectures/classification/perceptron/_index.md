@@ -31,7 +31,7 @@ $$a = \sum_{i=0}^n w_i x_i  = \mathbf{w}^T \mathbf{x}$$
 
 Second, the output (also  called the **activity** of the neuron)  is produced by passing the activation through a non linear activation function $\hat{y} = g(a)$. The activation function of the perceptron is the step function - we will cover more of such functions in the treatment of neural networks.
 
-$$g(a) = \begin{cases}1 & \text{if }\ a \ge 0, \\\\ 
+$$g(a) = \begin{cases}1 & \text{if }\ a \ge 0, \\ 
 -1 & \text{otherwise}\end{cases}$$
 
 ## Perceptron Learning Algorithm
