@@ -21,23 +21,20 @@ Artificial Intelligence (AI) is an important topic in computer science and offer
 
 **Logistics** ✍
 ^^^
-Course Dates: Jan 18/28 - May 19/24 2022
+Course Dates: May 24  - Aug 2nd 19/24 2022
 
-NYU: CS-GY-6613-Section I: Fri 5pm-7.30pm Rogers Hall, Rm 215 Loc: Brooklyn Campus
-
-NJIT: CS370-002: Tue & Thu 4pm EST,  Loc: Guttenberg Info Tech Center 1400
+NJIT: CS670: Tue 5.30pm EST,  Loc: NJIT Campus
 
 ---
 **Communication** 🚀
 ^^^
-We use Slack for all communications: announcements and questions related to lectures and projects. Slack info has already been sent to you via Canvas (NJIT) / Brightspace (NYU). Please install Slack in your smartphones as well. 
+We use Slack for all communications: announcements and questions related to lectures and projects. Slack info has already been sent to you via Canvas (NJIT). Please install Slack in your smartphones as well. 
 
 ---
 **Office Hours** 
 ^^^
-NJIT / NYU: Professor Office hours will be coordinated via Slack  - the process is simple: direct message and make arrangements for a 30min slot. After we agree on the slot, please send a **GMeet calendar** invitation to me. If you can please include in your invitation the questions / issues you face so that we can have a productive meeting. 
+NJIT: Professor Office hours will be coordinated via Slack  - the process is simple: direct message and make arrangements for a 30min slot. After we agree on the slot, please send a **GMeet calendar** invitation to me. If you can please include in your invitation the questions / issues you face so that we can have a productive meeting. 
 
-NYU TAs: We  have published TA hours in slack. 
 
 ---
 **Staff (TAs)** 
@@ -45,7 +42,7 @@ NYU TAs: We  have published TA hours in slack.
 
 NJIT: Hadi Ghahremannezhad
 
-NYU: Akshat Kaushik and Vaibhav Singh.
+NYU: TBA for Fall 2022 
 
 ---
 **Grading** 🎁
