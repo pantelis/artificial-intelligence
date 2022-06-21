@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Introduction to MDP &#8212; Introduction to Artificial Intelligence</title>
     
-  <link href="../../../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
@@ -40,13 +38,14 @@
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script src="../../../../_static/tabs.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -67,7 +66,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -76,9 +89,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../../../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -682,93 +696,193 @@ const thebe_selector_output = ".output, .cell_output"
    Maximum Likelihood Parameter Estimation
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../assignments/object-tracking/_index.html">
+   Multiple Object Tracking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../projects/usv/_index.html">
+   Unmanned Surface Vehicle Navigation
+  </a>
+ </li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../../_sources/aiml-common/lectures/mdp/mdp-intro/_index.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/pantelis/artificial-intelligence"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/mdp/mdp-intro/_index.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/pantelis/artificial-intelligence"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/mdp/mdp-intro/_index.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../_sources/aiml-common/lectures/mdp/mdp-intro/_index.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-elements-of-the-agent-environment-interface">
    The elements of the Agent - Environment interface
@@ -822,12 +936,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Introduction to MDP</h1>
@@ -897,13 +1010,14 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-mdp">
-<h1>Introduction to MDP<a class="headerlink" href="#introduction-to-mdp" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="the-elements-of-the-agent-environment-interface">
-<h2>The elements of the Agent - Environment interface<a class="headerlink" href="#the-elements-of-the-agent-environment-interface" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-mdp">
+<h1>Introduction to MDP<a class="headerlink" href="#introduction-to-mdp" title="Permalink to this headline">#</a></h1>
+<section id="the-elements-of-the-agent-environment-interface">
+<h2>The elements of the Agent - Environment interface<a class="headerlink" href="#the-elements-of-the-agent-environment-interface" title="Permalink to this headline">#</a></h2>
 <p>We start by reviewing the agent-environment interface with this evolved notation and provide additional definitions that will help in grasping the concepts behind DRL. We treat MDP analytically effectively deriving the four Bellman equations.</p>
 <p><img alt="agent-env-interface" src="../../../../_images/agent-env-interface.png" />
 <em>Agent-Environment Interface</em></p>
@@ -954,8 +1068,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>$<span class="math notranslate nohighlight">\(p(S_t | S_{t-1}) = p(s_t, s_{t-1} | s_{t-1}, s_{t-2}) = p(s_t|s_{t-1}, s_{t-2})\)</span>$ is called the 2nd-order Markov chain.</p>
 <p>DeepMind’s Q-learning algorithm playing pac-man converts the non-MDP problem to MDP by accumulating four frames instead of one. With a single frame the problem was not MDP since the state of all players could not be known - with a single frame the pacman could not know if the monster was moving towards it or nor for example. With a number of frames we get to know all the information needed to survive.</p>
 </div>
-<div class="section" id="mdp-loop">
-<h3>MDP Loop<a class="headerlink" href="#mdp-loop" title="Permalink to this headline">¶</a></h3>
+<section id="mdp-loop">
+<h3>MDP Loop<a class="headerlink" href="#mdp-loop" title="Permalink to this headline">#</a></h3>
 <p>We define a Markov Decision Process as the 5-tuple <span class="math notranslate nohighlight">\(\mathcal M = &lt;\mathcal S, \mathcal P, \mathcal R, \mathcal A, \gamma&gt;\)</span> that produces a sequence of experiences <span class="math notranslate nohighlight">\((S_t, A_t, R_{t+1}), (S_{t+1}, A_{t+1}, R_{t+2}), ...\)</span>.  The MDP (event) loop is shown below:</p>
 <p><img alt="mdp-loop" src="../../../../_images/mdp-loop.png" />
 <em>This generic interface between the agent and the environment captures many problems outside of pure MDP including RL. The environment’s state in non-MDP problems can be experienced via sensor observations and the agent will build its own state estimate internally</em></p>
@@ -972,9 +1086,9 @@ const thebe_selector_output = ".output, .cell_output"
 \[p(s', r | s , a) = \Pr\{ S_{t+1} = s', R_{t+1} = r | S_{t}=s, A_{t}=a \}\]</div>
 <p>where <span class="math notranslate nohighlight">\(s^\prime\)</span> simply translates in English to the successor state whatever the new state is.</p>
 <p>The dynamics probability density function maps <span class="math notranslate nohighlight">\(\mathcal{S} \times \mathcal{R} \times \mathcal{S} \times \mathcal{A} \rightarrow [0,1]\)</span> and by marginalizing over the appropriate random variables we can get the following distributions.</p>
-</div>
-<div class="section" id="state-transition">
-<h3>State transition<a class="headerlink" href="#state-transition" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="state-transition">
+<h3>State transition<a class="headerlink" href="#state-transition" title="Permalink to this headline">#</a></h3>
 <p>The action that the agent takes change the environment state to some other state. This can be represented via the environment <em>state transition</em> probabilistic model that generically can be written as:</p>
 <div class="math notranslate nohighlight">
 \[ p(s'|s,a) = p[S_{t+1}=s^\prime | S_t=s, A_t=a ] = \sum_{r \in \mathcal{R}} p(s', r | s , a)\]</div>
@@ -987,9 +1101,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p><strong>Example</strong>:</p>
 <p>Can you determine the state transition tensor for the 4x3 Gridworld ?</p>
 </div>
-</div>
-<div class="section" id="reward-function-and-returns">
-<h3>Reward function and Returns<a class="headerlink" href="#reward-function-and-returns" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="reward-function-and-returns">
+<h3>Reward function and Returns<a class="headerlink" href="#reward-function-and-returns" title="Permalink to this headline">#</a></h3>
 <p>The action will also cause the environment to send the agent a signal called <em>instantaneous reward</em> <span class="math notranslate nohighlight">\(R_{t+1}\)</span>. The reward signal is effectively defining the goal of the agent and is the primary basis for altering a policy. The agent’s sole objective is to maximize the cumulative reward in the long run.</p>
 <p>Please note that in the literature the reward is also denoted as <span class="math notranslate nohighlight">\(R_{t}\)</span> - this is a convention issue rather than something fundamental. The justification of the index <span class="math notranslate nohighlight">\(t+1\)</span> is that the environment will take one step to respond to what it receives from the agent.</p>
 <p>Another marginalization of the MDP dynamics allows us to get the  <em>reward function</em> that tells us if we are in state <span class="math notranslate nohighlight">\(S_t=s\)</span>, what reward  <span class="math notranslate nohighlight">\(R_{t+1}\)</span>, in expectation, we get when taking an action <span class="math notranslate nohighlight">\(a\)</span>. It is given by,</p>
@@ -999,8 +1113,8 @@ const thebe_selector_output = ".output, .cell_output"
 <!-- We can also marginalize only with respect to rewards and get the tensor,
 
 $$r(s,a, s') = \mathop{\mathbb{E}}[ R_{t+1} | S_t=s, A_t=a, S_t+1}=s'] = \sum_{r \in \mathcal{R}} r \sum_{s \in \mathcal{S}} p(s', r | s , a)  $$  -->
-<div class="section" id="returns">
-<h4>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h4>
+<section id="returns">
+<h4>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">#</a></h4>
 <p>To capture the objective,  consider first the <em>return</em> defined as a function of the reward sequence after time step <span class="math notranslate nohighlight">\(t\)</span>. Note that the return is also called <em>utility</em> in some texts.  In the simplest case this function is the total discounted reward,</p>
 <div class="math notranslate nohighlight">
 \[G_t = R_{t+1} + \gamma R_{t+2} + ... = \sum_{k=0}^∞\gamma^k R_{t+1+k}\]</div>
@@ -1023,10 +1137,10 @@ $$r(s,a, s') = \mathop{\mathbb{E}}[ R_{t+1} | S_t=s, A_t=a, S_t+1}=s'] = \sum_{r
 \[ = R_{t+1} + \gamma (R_{t+2} + \gamma R_{t+3}+ \gamma^2 R_{t+4}) \]</div>
 <div class="math notranslate nohighlight">
 \[ = R_{t+1} + \gamma G_{t+1}\]</div>
-</div>
-</div>
-<div class="section" id="policy-function">
-<h3>Policy function<a class="headerlink" href="#policy-function" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="policy-function">
+<h3>Policy function<a class="headerlink" href="#policy-function" title="Permalink to this headline">#</a></h3>
 <p>The agent’s behavior is expressed via a <strong>policy function</strong> <span class="math notranslate nohighlight">\(\pi\)</span> - that tells the agent what <em>action</em> to take for every possible state. The policy is a function of the state and can be:</p>
 <ol class="simple">
 <li><p>Deterministic functions of the state the environment is in and by extension, the state that the agent is or believes (think about <em>posterior belief</em>) it is in.</p></li>
@@ -1039,13 +1153,13 @@ $$r(s,a, s') = \mathop{\mathbb{E}}[ R_{t+1} | S_t=s, A_t=a, S_t+1}=s'] = \sum_{r
 <div class="math notranslate nohighlight">
 \[a \sim p(A_t=a|S_t=s) = \pi(a|s)\]</div>
 <p>The policy is assumed to be stationary i.e. not change with time step <span class="math notranslate nohighlight">\(t\)</span> and it will depend only on the state <span class="math notranslate nohighlight">\(S_t\)</span> i.e. <span class="math notranslate nohighlight">\(A_t=a \sim \pi(.|S_t=s), \forall t &gt; 0\)</span>.</p>
-</div>
-</div>
-<div class="section" id="value-functions">
-<h2>Value Functions<a class="headerlink" href="#value-functions" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="value-functions">
+<h2>Value Functions<a class="headerlink" href="#value-functions" title="Permalink to this headline">#</a></h2>
 <p>The value of a state is the total amount of reward an agent can expect to accumulate over the future, starting from that state.   Whereas rewards determine the immediate,  intrinsic desirability of environmental states, values indicate the long-term desirability of states after taking into account the states that are likely to follow, and the rewards available in those states.</p>
-<div class="section" id="state-value">
-<h3>State value<a class="headerlink" href="#state-value" title="Permalink to this headline">¶</a></h3>
+<section id="state-value">
+<h3>State value<a class="headerlink" href="#state-value" title="Permalink to this headline">#</a></h3>
 <p>The <em>state-value function</em> <span class="math notranslate nohighlight">\(v_\pi(s)\)</span> provides a notion of the long-term value of state <span class="math notranslate nohighlight">\(s\)</span>. It is equivalent to what other literature calls <em>expected utility</em> . It is defined as the expected_ return starting at state <span class="math notranslate nohighlight">\(s\)</span> and following policy <span class="math notranslate nohighlight">\(\pi(a|s)\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[v_\pi(s) = \mathop{\mathbb{E}_\pi}(G_t | S_t=s)\]</div>
@@ -1053,16 +1167,16 @@ $$r(s,a, s') = \mathop{\mathbb{E}}[ R_{t+1} | S_t=s, A_t=a, S_t+1}=s'] = \sum_{r
 <div class="math notranslate nohighlight">
 \[v_\pi(s_{11}) = \frac{1}{2}(G^{\tau_1}_0 + G^{\tau_2}_0)\]</div>
 <p>One corner case is interesting - if we make <span class="math notranslate nohighlight">\(\gamma=0\)</span> then <span class="math notranslate nohighlight">\(v_\pi(s)\)</span>  becomes the average of instantaneous rewards we can get from that state.</p>
-</div>
-<div class="section" id="action-value">
-<h3>Action value<a class="headerlink" href="#action-value" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="action-value">
+<h3>Action value<a class="headerlink" href="#action-value" title="Permalink to this headline">#</a></h3>
 <p>We also define the <em>action-value function</em> <span class="math notranslate nohighlight">\(q_\pi(s,a)\)</span> as the expected return starting from the state <span class="math notranslate nohighlight">\(s\)</span>, taking action <span class="math notranslate nohighlight">\(a\)</span> and following policy <span class="math notranslate nohighlight">\(\pi(a|s)\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[q_\pi(s,a) = \mathop{\mathbb{E}_\pi} (G_t | S_t=s, A_t=a)\]</div>
 <p>This is an important quantity as it helps us decide the action we need to take while in state <span class="math notranslate nohighlight">\(s\)</span>.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1086,9 +1200,11 @@ $$r(s,a, s') = \mathop{\mathbb{E}}[ R_{t+1} | S_t=s, A_t=a, S_t+1}=s'] = \sum_{r
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../_index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1104,24 +1220,28 @@ $$r(s,a, s') = \mathop{\mathbb{E}}[ R_{t+1} | S_t=s, A_t=a, S_t+1}=s'] = \sum_{r
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Pantelis Monogioudis, Ph.D<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Pantelis Monogioudis, Ph.D<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

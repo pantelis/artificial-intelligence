@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Dynamic Programming Algorithms - Value Iteration &#8212; Introduction to Artificial Intelligence</title>
     
-  <link href="../../../../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/jquery.js"></script>
@@ -40,13 +38,14 @@
     <script src="../../../../../_static/doctools.js"></script>
     <script src="../../../../../_static/clipboard.min.js"></script>
     <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script src="../../../../../_static/tabs.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -67,7 +66,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -76,9 +89,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../../../../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -682,93 +696,193 @@ const thebe_selector_output = ".output, .cell_output"
    Maximum Likelihood Parameter Estimation
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../assignments/object-tracking/_index.html">
+   Multiple Object Tracking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../projects/usv/_index.html">
+   Unmanned Surface Vehicle Navigation
+  </a>
+ </li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../../../_sources/aiml-common/lectures/mdp/mdp-dp-algorithms/value-iteration/_index.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/pantelis/artificial-intelligence"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/mdp/mdp-dp-algorithms/value-iteration/_index.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/pantelis/artificial-intelligence"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/mdp/mdp-dp-algorithms/value-iteration/_index.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../../_sources/aiml-common/lectures/mdp/mdp-dp-algorithms/value-iteration/_index.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#value-iteration-example">
    Value iteration example
@@ -808,12 +922,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Dynamic Programming Algorithms - Value Iteration</h1>
@@ -869,11 +982,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="dynamic-programming-algorithms-value-iteration">
-<h1>Dynamic Programming Algorithms - Value Iteration<a class="headerlink" href="#dynamic-programming-algorithms-value-iteration" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="dynamic-programming-algorithms-value-iteration">
+<h1>Dynamic Programming Algorithms - Value Iteration<a class="headerlink" href="#dynamic-programming-algorithms-value-iteration" title="Permalink to this headline">#</a></h1>
 <p>We already have seen that in the Gridworld example in the policy iteration section , we may not <em>need</em> to reach the optimal state value function <span class="math notranslate nohighlight">\(v_*(s)\)</span> to obtain an optimal policy result. The value function for the <span class="math notranslate nohighlight">\(k=3\)</span> iteration results the same policy as the policy from a far more accurate value function (large k).</p>
 <p>We can therefore stop early and taking the argument to the limit, do the policy improvement step in <em>each</em> iteration.  In this section we will look at an algorithm called value iteration that does that.</p>
 <p><img alt="value-iteration-summary" src="../../../../../_images/value-iteration-summary.png" /></p>
@@ -900,8 +1014,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Notice that we are not building an explicit policy at every iteration and also, importantly, the intermediate value functions may <em>not</em> correspond to a feasible policy. Before going into a more elaborate example, we can go back to the same simple world we have looked at in the policy iteration section and focus only on the state-value calculation using the formula above.</p>
 <p><img alt="gridworld-value-iteration" src="../../../../../_images/gridworld-value-iteration-value-only.png" />
 <em>State values for an MDP with random policy (0.25 prob of taking any of the four available actions), <span class="math notranslate nohighlight">\(\gamma=1\)</span>, that rewards the agent with -1 at each transition except towards the goal states that are in the top left and bottom right corners</em></p>
-<div class="section" id="value-iteration-example">
-<h2>Value iteration example<a class="headerlink" href="#value-iteration-example" title="Permalink to this headline">¶</a></h2>
+<section id="value-iteration-example">
+<h2>Value iteration example<a class="headerlink" href="#value-iteration-example" title="Permalink to this headline">#</a></h2>
 <p>In example world shown below.</p>
 <p><img alt="gridworld" src="../../../../../_images/gridworld.png" /></p>
 <p><em>Gridworld to showcase the state-value calculation in Python code below. The states are numbered sequentially from top right.</em></p>
@@ -961,9 +1075,9 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="c1"># [1, 1, 1, 0, 0, 3, 3, 0, 3, 3, 2]</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="value-iteration-in-gridworld-example">
-<h2>Value Iteration in Gridworld Example<a class="headerlink" href="#value-iteration-in-gridworld-example" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="value-iteration-in-gridworld-example">
+<h2>Value Iteration in Gridworld Example<a class="headerlink" href="#value-iteration-in-gridworld-example" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>To solve the non-linear equations for <span class="math notranslate nohighlight">\(U^{*}(s)\)</span> we use an iterative approach.</p></li>
 <li><p>Steps:</p>
@@ -983,9 +1097,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p><img alt="val-iter-initial" src="../../../../../_images/val-iter-initial.png" /></p>
 <p><em>Initialize value estimates to <span class="math notranslate nohighlight">\(0\)</span></em></p>
-</div>
-<div class="section" id="value-iteration">
-<h2>Value Iteration<a class="headerlink" href="#value-iteration" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="value-iteration">
+<h2>Value Iteration<a class="headerlink" href="#value-iteration" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Next we want to apply <strong>Bellman Update</strong>:
 $<span class="math notranslate nohighlight">\(V_{t+1}(s) \leftarrow R(s) + \gamma \max_{a} \left[\sum_{s^\prime} P(s^\prime | s,a)U_t(s^\prime) \right] \forall s \epsilon S\)</span>$</p></li>
@@ -993,8 +1107,8 @@ $<span class="math notranslate nohighlight">\(V_{t+1}(s) \leftarrow R(s) + \gamm
 <li><p>For the remaining states, the utility is equal to the immediate reward in the first iteration.</p></li>
 </ul>
 <p><img alt="States to consider for value iteration" src="../../../../../_images/val-iter-step1-states.png" /></p>
-<div class="section" id="value-iteration-t-0">
-<h3>Value Iteration (t=0)<a class="headerlink" href="#value-iteration-t-0" title="Permalink to this headline">¶</a></h3>
+<section id="value-iteration-t-0">
+<h3>Value Iteration (t=0)<a class="headerlink" href="#value-iteration-t-0" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[ V_{t+1}(s_{33})  =  R(s_{33}) + \gamma \max_a \left[\sum_{s^{'}} P(s^{'}| s_{33},a)U(s^{'}) \right] \forall s \in S \]</div>
 <div class="math notranslate nohighlight">
@@ -1005,9 +1119,9 @@ $<span class="math notranslate nohighlight">\(V_{t+1}(s) \leftarrow R(s) + \gamm
 \[V_{t+1}(s_{33}) = -0.04 + P(s_{43}|s_{33},\rightarrow)U(s_{43})+P(s_{33}|s_{33},\rightarrow)U(s_{33})+P(s_{32}|s_{33},\rightarrow)U_t(s_{32}) \]</div>
 <div class="math notranslate nohighlight">
 \[V_{t+1}(s_{33}) =   -0.04 + 0.8 \times 1 + 0.1 \times 0 + 0.1 \times 0 = 0.76 \]</div>
-</div>
-<div class="section" id="value-iteration-t-1">
-<h3>Value Iteration (t=1)<a class="headerlink" href="#value-iteration-t-1" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="value-iteration-t-1">
+<h3>Value Iteration (t=1)<a class="headerlink" href="#value-iteration-t-1" title="Permalink to this headline">#</a></h3>
 <p><img alt="val-iter-step2" src="../../../../../_images/val-iter-step2-initial.png" /></p>
 <p><em>(A) Initial utility estimates for iteration 2. (B) States with next state positive utility</em></p>
 <div class="math notranslate nohighlight">
@@ -1020,9 +1134,9 @@ $<span class="math notranslate nohighlight">\(V_{t+1}(s) \leftarrow R(s) + \gamm
 \[V_{t+1}(s_{32}) =  -0.04 + P(s_{33}|s_{32},\uparrow)U_t(s_{33})+P(s_{42}|s_{32},\uparrow)U_t(s_{42}) +P(s_{32}|s_{32},\uparrow)U_t(s_{32})\]</div>
 <div class="math notranslate nohighlight">
 \[V_{t+1}(s_{32}) = -0.04 + 0.8 \times 0.76 + 0.1 \times -1 + 0.1 \times 0= 0.468\]</div>
-</div>
-<div class="section" id="value-iteration-t-2">
-<h3>Value Iteration (t=2)<a class="headerlink" href="#value-iteration-t-2" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="value-iteration-t-2">
+<h3>Value Iteration (t=2)<a class="headerlink" href="#value-iteration-t-2" title="Permalink to this headline">#</a></h3>
 <p><img alt="val-iter-step3" src="../../../../../_images/val-iter-step3-initial.png" /></p>
 <p><em>(A)Initial utility estimates for iteration 3. (B) States with next state positive utility</em></p>
 <ul class="simple">
@@ -1031,9 +1145,9 @@ and eventually all states have correct value estimates</p></li>
 <li><p>Notice that <span class="math notranslate nohighlight">\(s_{32}\)</span> has a lower utility compared to <span class="math notranslate nohighlight">\(s_{23}\)</span> due to the red oval state with negative reward next to <span class="math notranslate nohighlight">\(s_{32}\)</span></p></li>
 </ul>
 <p><img alt="Optimal Policy and Utilities for Maze" src="../../../../../_images/policy-utility.png" /></p>
-</div>
-<div class="section" id="value-iteration-convergence">
-<h3>Value Iteration - Convergence<a class="headerlink" href="#value-iteration-convergence" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="value-iteration-convergence">
+<h3>Value Iteration - Convergence<a class="headerlink" href="#value-iteration-convergence" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Rate of convergence depends on the maximum reward value and more importantly on the discount factor <span class="math notranslate nohighlight">\(\gamma\)</span>.</p></li>
 <li><p>The policy that we get from coarse estimates is close to the optimal policy long before <span class="math notranslate nohighlight">\(U\)</span> has converged.</p></li>
@@ -1046,9 +1160,9 @@ $<span class="math notranslate nohighlight">\(\pi(s) = \argmax_a \left[ \sum_{s^
 <ul class="simple">
 <li><p>For the maze problem, convergence is reached within 5 to 10  iterations</p></li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1072,9 +1186,11 @@ $<span class="math notranslate nohighlight">\(\pi(s) = \argmax_a \left[ \sum_{s^
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../policy-improvement/_index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1090,24 +1206,28 @@ $<span class="math notranslate nohighlight">\(\pi(s) = \argmax_a \left[ \sum_{s^
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Pantelis Monogioudis, Ph.D<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Pantelis Monogioudis, Ph.D<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

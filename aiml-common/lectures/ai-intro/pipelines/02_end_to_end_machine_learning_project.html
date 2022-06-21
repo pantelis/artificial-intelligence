@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Setup &#8212; Introduction to Artificial Intelligence</title>
     
-  <link href="../../../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
@@ -40,13 +38,14 @@
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script src="../../../../_static/tabs.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -65,7 +64,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -74,9 +87,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../../../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -680,93 +694,193 @@ const thebe_selector_output = ".output, .cell_output"
    Maximum Likelihood Parameter Estimation
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../assignments/object-tracking/_index.html">
+   Multiple Object Tracking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../projects/usv/_index.html">
+   Unmanned Surface Vehicle Navigation
+  </a>
+ </li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../../_sources/aiml-common/lectures/ai-intro/pipelines/02_end_to_end_machine_learning_project.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/pantelis/artificial-intelligence"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/ai-intro/pipelines/02_end_to_end_machine_learning_project.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/pantelis/artificial-intelligence"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/ai-intro/pipelines/02_end_to_end_machine_learning_project.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../_sources/aiml-common/lectures/ai-intro/pipelines/02_end_to_end_machine_learning_project.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Setup
@@ -948,12 +1062,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Setup</h1>
@@ -1151,7 +1264,8 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
   <p><strong>Chapter 2 – End-to-end Machine Learning project</strong></p>
@@ -1164,8 +1278,8 @@ const thebe_selector_output = ".output, .cell_output"
   <td>
     <a target="_blank" href="https://kaggle.com/kernels/welcome?src=https://github.com/ageron/handson-ml2/blob/master/02_end_to_end_machine_learning_project.ipynb"><img src="https://kaggle.com/static/images/open-in-kaggle.svg" /></a>
   </td>
-</table><div class="tex2jax_ignore mathjax_ignore section" id="setup">
-<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+</table><section class="tex2jax_ignore mathjax_ignore" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h1>
 <p>First, let’s import a few common modules, ensure MatplotLib plots figures inline and prepare a function to save the figures. We also check that Python 3.5 or later is installed (although Python 2.x may work, it is deprecated so we strongly recommend you use Python 3 instead), as well as Scikit-Learn ≥0.20.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1205,11 +1319,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="get-the-data">
-<h1>Get the Data<a class="headerlink" href="#get-the-data" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="download-the-data">
-<h2>Download the Data<a class="headerlink" href="#download-the-data" title="Permalink to this headline">¶</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="get-the-data">
+<h1>Get the Data<a class="headerlink" href="#get-the-data" title="Permalink to this headline">#</a></h1>
+<section id="download-the-data">
+<h2>Download the Data<a class="headerlink" href="#download-the-data" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -1250,9 +1364,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="take-a-quick-look-at-the-data-structure">
-<h2>Take a Quick Look at the Data Structure<a class="headerlink" href="#take-a-quick-look-at-the-data-structure" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="take-a-quick-look-at-the-data-structure">
+<h2>Take a Quick Look at the Data Structure<a class="headerlink" href="#take-a-quick-look-at-the-data-structure" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span> <span class="o">=</span> <span class="n">load_housing_data</span><span class="p">()</span>
@@ -1560,9 +1674,9 @@ Name: ocean_proximity, dtype: int64
 <img alt="../../../../_images/02_end_to_end_machine_learning_project_15_1.png" src="../../../../_images/02_end_to_end_machine_learning_project_15_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="create-a-test-set">
-<h2>Create a Test Set<a class="headerlink" href="#create-a-test-set" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="create-a-test-set">
+<h2>Create a Test Set<a class="headerlink" href="#create-a-test-set" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to make this notebook&#39;s output identical at every run</span>
@@ -2098,10 +2212,10 @@ Name: income_cat, dtype: float64
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="discover-and-visualize-the-data-to-gain-insights">
-<h1>Discover and Visualize the Data to Gain Insights<a class="headerlink" href="#discover-and-visualize-the-data-to-gain-insights" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="discover-and-visualize-the-data-to-gain-insights">
+<h1>Discover and Visualize the Data to Gain Insights<a class="headerlink" href="#discover-and-visualize-the-data-to-gain-insights" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span> <span class="o">=</span> <span class="n">strat_train_set</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -2109,8 +2223,8 @@ Name: income_cat, dtype: float64
 </div>
 </div>
 </div>
-<div class="section" id="visualizing-geographical-data">
-<h2>Visualizing Geographical Data<a class="headerlink" href="#visualizing-geographical-data" title="Permalink to this headline">¶</a></h2>
+<section id="visualizing-geographical-data">
+<h2>Visualizing Geographical Data<a class="headerlink" href="#visualizing-geographical-data" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;latitude&quot;</span><span class="p">)</span>
@@ -2213,9 +2327,9 @@ Name: income_cat, dtype: float64
 <img alt="../../../../_images/02_end_to_end_machine_learning_project_49_1.png" src="../../../../_images/02_end_to_end_machine_learning_project_49_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="looking-for-correlations">
-<h2>Looking for Correlations<a class="headerlink" href="#looking-for-correlations" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="looking-for-correlations">
+<h2>Looking for Correlations<a class="headerlink" href="#looking-for-correlations" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
@@ -2279,9 +2393,9 @@ Name: median_house_value, dtype: float64
 <img alt="../../../../_images/02_end_to_end_machine_learning_project_54_1.png" src="../../../../_images/02_end_to_end_machine_learning_project_54_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="experimenting-with-attribute-combinations">
-<h2>Experimenting with Attribute Combinations<a class="headerlink" href="#experimenting-with-attribute-combinations" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="experimenting-with-attribute-combinations">
+<h2>Experimenting with Attribute Combinations<a class="headerlink" href="#experimenting-with-attribute-combinations" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="p">[</span><span class="s2">&quot;rooms_per_household&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">housing</span><span class="p">[</span><span class="s2">&quot;total_rooms&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">housing</span><span class="p">[</span><span class="s2">&quot;households&quot;</span><span class="p">]</span>
@@ -2493,10 +2607,10 @@ Name: median_house_value, dtype: float64
 </table>
 </div></div></div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="prepare-the-data-for-machine-learning-algorithms">
-<h1>Prepare the Data for Machine Learning Algorithms<a class="headerlink" href="#prepare-the-data-for-machine-learning-algorithms" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="prepare-the-data-for-machine-learning-algorithms">
+<h1>Prepare the Data for Machine Learning Algorithms<a class="headerlink" href="#prepare-the-data-for-machine-learning-algorithms" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span> <span class="o">=</span> <span class="n">strat_train_set</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;median_house_value&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># drop labels for training set</span>
@@ -2505,8 +2619,8 @@ Name: median_house_value, dtype: float64
 </div>
 </div>
 </div>
-<div class="section" id="data-cleaning">
-<h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h2>
+<section id="data-cleaning">
+<h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">#</a></h2>
 <p>In the book 3 options are listed:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;total_bedrooms&quot;</span><span class="p">])</span>    <span class="c1"># option 1</span>
 <span class="n">housing</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;total_bedrooms&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>       <span class="c1"># option 2</span>
@@ -3144,9 +3258,9 @@ Name: median_house_value, dtype: float64
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="handling-text-and-categorical-attributes">
-<h2>Handling Text and Categorical Attributes<a class="headerlink" href="#handling-text-and-categorical-attributes" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="handling-text-and-categorical-attributes">
+<h2>Handling Text and Categorical Attributes<a class="headerlink" href="#handling-text-and-categorical-attributes" title="Permalink to this headline">#</a></h2>
 <p>Now let’s preprocess the categorical input feature, <code class="docutils literal notranslate"><span class="pre">ocean_proximity</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3330,9 +3444,9 @@ Name: median_house_value, dtype: float64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="custom-transformers">
-<h2>Custom Transformers<a class="headerlink" href="#custom-transformers" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="custom-transformers">
+<h2>Custom Transformers<a class="headerlink" href="#custom-transformers" title="Permalink to this headline">#</a></h2>
 <p>Let’s create a custom transformer to add extra attributes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3490,9 +3604,9 @@ Name: median_house_value, dtype: float64
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="transformation-pipelines">
-<h2>Transformation Pipelines<a class="headerlink" href="#transformation-pipelines" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="transformation-pipelines">
+<h2>Transformation Pipelines<a class="headerlink" href="#transformation-pipelines" title="Permalink to this headline">#</a></h2>
 <p>Now let’s build a pipeline for preprocessing the numerical attributes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3675,12 +3789,12 @@ Name: median_house_value, dtype: float64
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="select-and-train-a-model">
-<h1>Select and Train a Model<a class="headerlink" href="#select-and-train-a-model" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="training-and-evaluating-on-the-training-set">
-<h2>Training and Evaluating on the Training Set<a class="headerlink" href="#training-and-evaluating-on-the-training-set" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="select-and-train-a-model">
+<h1>Select and Train a Model<a class="headerlink" href="#select-and-train-a-model" title="Permalink to this headline">#</a></h1>
+<section id="training-and-evaluating-on-the-training-set">
+<h2>Training and Evaluating on the Training Set<a class="headerlink" href="#training-and-evaluating-on-the-training-set" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
@@ -3821,9 +3935,9 @@ Name: median_house_value, dtype: float64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="better-evaluation-using-cross-validation">
-<h2>Better Evaluation Using Cross-Validation<a class="headerlink" href="#better-evaluation-using-cross-validation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="better-evaluation-using-cross-validation">
+<h2>Better Evaluation Using Cross-Validation<a class="headerlink" href="#better-evaluation-using-cross-validation" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
@@ -3967,12 +4081,12 @@ dtype: float64
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="fine-tune-your-model">
-<h1>Fine-Tune Your Model<a class="headerlink" href="#fine-tune-your-model" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="grid-search">
-<h2>Grid Search<a class="headerlink" href="#grid-search" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="fine-tune-your-model">
+<h1>Fine-Tune Your Model<a class="headerlink" href="#fine-tune-your-model" title="Permalink to this headline">#</a></h1>
+<section id="grid-search">
+<h2>Grid Search<a class="headerlink" href="#grid-search" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
@@ -4547,9 +4661,9 @@ dtype: float64
 <p>18 rows × 23 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="randomized-search">
-<h2>Randomized Search<a class="headerlink" href="#randomized-search" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="randomized-search">
+<h2>Randomized Search<a class="headerlink" href="#randomized-search" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RandomizedSearchCV</span>
@@ -4599,9 +4713,9 @@ dtype: float64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="analyze-the-best-models-and-their-errors">
-<h2>Analyze the Best Models and Their Errors<a class="headerlink" href="#analyze-the-best-models-and-their-errors" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="analyze-the-best-models-and-their-errors">
+<h2>Analyze the Best Models and Their Errors<a class="headerlink" href="#analyze-the-best-models-and-their-errors" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_importances</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">feature_importances_</span>
@@ -4650,9 +4764,9 @@ dtype: float64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="evaluate-your-system-on-the-test-set">
-<h2>Evaluate Your System on the Test Set<a class="headerlink" href="#evaluate-your-system-on-the-test-set" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="evaluate-your-system-on-the-test-set">
+<h2>Evaluate Your System on the Test Set<a class="headerlink" href="#evaluate-your-system-on-the-test-set" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_model</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span>
@@ -4732,12 +4846,12 @@ dtype: float64
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="extra-material">
-<h1>Extra material<a class="headerlink" href="#extra-material" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="a-full-pipeline-with-both-preparation-and-prediction">
-<h2>A full pipeline with both preparation and prediction<a class="headerlink" href="#a-full-pipeline-with-both-preparation-and-prediction" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="extra-material">
+<h1>Extra material<a class="headerlink" href="#extra-material" title="Permalink to this headline">#</a></h1>
+<section id="a-full-pipeline-with-both-preparation-and-prediction">
+<h2>A full pipeline with both preparation and prediction<a class="headerlink" href="#a-full-pipeline-with-both-preparation-and-prediction" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">full_pipeline_with_predictor</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
@@ -4757,9 +4871,9 @@ dtype: float64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="model-persistence-using-joblib">
-<h2>Model persistence using joblib<a class="headerlink" href="#model-persistence-using-joblib" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="model-persistence-using-joblib">
+<h2>Model persistence using joblib<a class="headerlink" href="#model-persistence-using-joblib" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_model</span> <span class="o">=</span> <span class="n">full_pipeline_with_predictor</span>
@@ -4777,9 +4891,9 @@ dtype: float64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="example-scipy-distributions-for-randomizedsearchcv">
-<h2>Example SciPy distributions for <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code><a class="headerlink" href="#example-scipy-distributions-for-randomizedsearchcv" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="example-scipy-distributions-for-randomizedsearchcv">
+<h2>Example SciPy distributions for <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code><a class="headerlink" href="#example-scipy-distributions-for-randomizedsearchcv" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">geom</span><span class="p">,</span> <span class="n">expon</span>
@@ -4797,12 +4911,12 @@ dtype: float64
 <img alt="../../../../_images/02_end_to_end_machine_learning_project_169_1.png" src="../../../../_images/02_end_to_end_machine_learning_project_169_1.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="exercise-solutions">
-<h1>Exercise solutions<a class="headerlink" href="#exercise-solutions" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id1">
-<h2>1.<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercise-solutions">
+<h1>Exercise solutions<a class="headerlink" href="#exercise-solutions" title="Permalink to this headline">#</a></h1>
+<section id="id1">
+<h2>1.<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>Question: Try a Support Vector Machine regressor (<code class="docutils literal notranslate"><span class="pre">sklearn.svm.SVR</span></code>), with various hyperparameters such as <code class="docutils literal notranslate"><span class="pre">kernel=&quot;linear&quot;</span></code> (with various values for the <code class="docutils literal notranslate"><span class="pre">C</span></code> hyperparameter) or <code class="docutils literal notranslate"><span class="pre">kernel=&quot;rbf&quot;</span></code> (with various values for the <code class="docutils literal notranslate"><span class="pre">C</span></code> and <code class="docutils literal notranslate"><span class="pre">gamma</span></code> hyperparameters). Don’t worry about what these hyperparameters mean for now. How does the best <code class="docutils literal notranslate"><span class="pre">SVR</span></code> predictor perform?</p>
 <p><strong>Warning</strong>: the following cell may take close to 30 minutes to run, or more depending on your hardware.</p>
 <div class="cell docutils container">
@@ -4946,9 +5060,9 @@ dtype: float64
 </div>
 </div>
 <p>The linear kernel seems better than the RBF kernel. Notice that the value of <code class="docutils literal notranslate"><span class="pre">C</span></code> is the maximum tested value. When this happens you definitely want to launch the grid search again with higher values for <code class="docutils literal notranslate"><span class="pre">C</span></code> (removing the smallest values), because it is likely that higher values of <code class="docutils literal notranslate"><span class="pre">C</span></code> will be better.</p>
-</div>
-<div class="section" id="id2">
-<h2>2.<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id2">
+<h2>2.<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>Question: Try replacing <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> with <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code>.</p>
 <p><strong>Warning</strong>: the following cell may take close to 45 minutes to run, or more depending on your hardware.</p>
 <div class="cell docutils container">
@@ -5138,9 +5252,9 @@ dtype: float64
 </div>
 </div>
 <p>The reciprocal distribution is useful when you have no idea what the scale of the hyperparameter should be (indeed, as you can see on the figure on the right, all scales are equally likely, within the given range), whereas the exponential distribution is best when you know (more or less) what the scale of the hyperparameter should be.</p>
-</div>
-<div class="section" id="id3">
-<h2>3.<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id3">
+<h2>3.<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <p>Question: Try adding a transformer in the preparation pipeline to select only the most important attributes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5264,9 +5378,9 @@ dtype: float64
 </div>
 </div>
 <p>Works great!  :)</p>
-</div>
-<div class="section" id="id4">
-<h2>4.<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id4">
+<h2>4.<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
 <p>Question: Try creating a single pipeline that does the full data preparation plus the final prediction.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5331,9 +5445,9 @@ Labels:		 [286600.0, 340600.0, 196900.0, 46300.0]
 </div>
 </div>
 <p>Well, the full pipeline seems to work fine. Of course, the predictions are not fantastic: they would be better if we used the best <code class="docutils literal notranslate"><span class="pre">RandomForestRegressor</span></code> that we found earlier, rather than the best <code class="docutils literal notranslate"><span class="pre">SVR</span></code>.</p>
-</div>
-<div class="section" id="id5">
-<h2>5.<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id5">
+<h2>5.<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
 <p>Question: Automatically explore some preparation options using <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code>.</p>
 <p><strong>Warning</strong>: the following cell may take close to 45 minutes to run, or more depending on your hardware.</p>
 <p><strong>Note:</strong> In the code below, I’ve set the <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code>’s <code class="docutils literal notranslate"><span class="pre">handle_unknown</span></code> hyperparameter to <code class="docutils literal notranslate"><span class="pre">'ignore'</span></code>, to avoid warnings during training. Without this, the <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> would default to <code class="docutils literal notranslate"><span class="pre">handle_unknown='error'</span></code>, meaning that it would raise an error when transforming any data containing a category it didn’t see during training. If we kept the default, then the <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> would run into errors during training when evaluating the folds in which not all the categories are in the training set. This is likely to happen since there’s only one sample in the <code class="docutils literal notranslate"><span class="pre">'ISLAND'</span></code> category, and it may end up in the test set in some of the folds. So some folds would just be dropped by the <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code>, and it’s best to avoid that.</p>
@@ -5484,8 +5598,8 @@ Labels:		 [286600.0, 340600.0, 196900.0, 46300.0]
 </div>
 <p>The best imputer strategy is <code class="docutils literal notranslate"><span class="pre">most_frequent</span></code> and apparently almost all features are useful (15 out of 16). The last one (<code class="docutils literal notranslate"><span class="pre">ISLAND</span></code>) seems to just add some noise.</p>
 <p>Congratulations! You already know quite a lot about Machine Learning. :)</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -5509,9 +5623,11 @@ Labels:		 [286600.0, 340600.0, 196900.0, 46300.0]
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../../uber-ml-arch-case-study/_index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -5527,24 +5643,28 @@ Labels:		 [286600.0, 340600.0, 196900.0, 46300.0]
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Pantelis Monogioudis, Ph.D<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Pantelis Monogioudis, Ph.D<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
