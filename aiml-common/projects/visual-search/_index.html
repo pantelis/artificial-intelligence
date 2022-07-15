@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Unmanned Surface Vehicle Navigation &#8212; Introduction to Artificial Intelligence</title>
+    <title>Reverse Visual Search &#8212; Introduction to Artificial Intelligence</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/projects/usv/_index.html" />
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/projects/visual-search/_index.html" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="prev" title="Multiple Object Tracking" href="../../assignments/object-tracking/_index.html" />
@@ -700,7 +700,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Unmanned Surface Vehicle Navigation
+   Reverse Visual Search
   </a>
  </li>
 </ul>
@@ -793,7 +793,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/projects/usv/_index.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/projects/visual-search/_index.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -821,7 +821,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../_sources/aiml-common/projects/usv/_index.md"
+        <a href="../../../_sources/aiml-common/projects/visual-search/_index.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -881,51 +881,41 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#system-setup">
-   System Setup
+  <a class="reference internal nav-link" href="#lfw-dataset-0-points">
+   LFW Dataset (0 points)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tasks">
-   Tasks
+  <a class="reference internal nav-link" href="#reverse-image-search-baseline-30-points">
+   Reverse Image Search - Baseline (30 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reverse-image-search-improvement-30-points">
+   Reverse Image Search Improvement (30 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#documentation-40-points">
+   Documentation (40 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extra-credit-reverse-video-search-20-points">
+   Extra Credit: Reverse Video Search (20 points)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#task-1-station-keeping">
-     Task 1: Station Keeping
+    <a class="reference internal nav-link" href="#videos-youtube-faces">
+     Videos - YouTube Faces
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#task-2-wayfinding">
-     Task 2: Wayfinding
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#task-3-perception">
-     Task 3: Perception
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#task-4-wildlife-encounter-and-avoid">
-     Task 4: Wildlife Encounter and Avoid
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#task-5-channel-navigation-acoustic-beacon-localization-and-obstacle-avoidance">
-     Task 5: Channel Navigation, Acoustic Beacon Localization and Obstacle Avoidance
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#task-6-scan-and-dock-and-deliver">
-     Task 6: Scan and Dock and Deliver
+    <a class="reference internal nav-link" href="#similarity-search">
+     Similarity Search
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deliverables">
-   Deliverables
-  </a>
  </li>
 </ul>
 
@@ -936,7 +926,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Unmanned Surface Vehicle Navigation</h1>
+                <h1>Reverse Visual Search</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -947,51 +937,41 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#system-setup">
-   System Setup
+  <a class="reference internal nav-link" href="#lfw-dataset-0-points">
+   LFW Dataset (0 points)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tasks">
-   Tasks
+  <a class="reference internal nav-link" href="#reverse-image-search-baseline-30-points">
+   Reverse Image Search - Baseline (30 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reverse-image-search-improvement-30-points">
+   Reverse Image Search Improvement (30 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#documentation-40-points">
+   Documentation (40 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extra-credit-reverse-video-search-20-points">
+   Extra Credit: Reverse Video Search (20 points)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#task-1-station-keeping">
-     Task 1: Station Keeping
+    <a class="reference internal nav-link" href="#videos-youtube-faces">
+     Videos - YouTube Faces
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#task-2-wayfinding">
-     Task 2: Wayfinding
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#task-3-perception">
-     Task 3: Perception
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#task-4-wildlife-encounter-and-avoid">
-     Task 4: Wildlife Encounter and Avoid
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#task-5-channel-navigation-acoustic-beacon-localization-and-obstacle-avoidance">
-     Task 5: Channel Navigation, Acoustic Beacon Localization and Obstacle Avoidance
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#task-6-scan-and-dock-and-deliver">
-     Task 6: Scan and Dock and Deliver
+    <a class="reference internal nav-link" href="#similarity-search">
+     Similarity Search
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deliverables">
-   Deliverables
-  </a>
  </li>
 </ul>
 
@@ -1003,40 +983,42 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="unmanned-surface-vehicle-navigation">
-<h1>Unmanned Surface Vehicle Navigation<a class="headerlink" href="#unmanned-surface-vehicle-navigation" title="Permalink to this headline">#</a></h1>
-<p><img alt="" src="../../../_images/vrx-2022.png" /></p>
-<p>Unmanned Surface Vehicles (USV) are heavily researched at present for both civilian and defense applications. You will participate in the VRX 2022 competition and immerse yourself in a virtual environment in ROS (and in the future ROS2) while at the same time learn the domain of maritime navigation.</p>
-<p>To navigate a robot and complete you will be implement the whole stack of an AI agent from perception to thruster control.</p>
-<section id="system-setup">
-<h2>System Setup<a class="headerlink" href="#system-setup" title="Permalink to this headline">#</a></h2>
-<p>Follow the instructions in <a class="reference external" href="https://github.com/osrf/vrx/wiki/system_setup_tutorials">here</a>. make sure you follow the  <em>container</em> setup option. Coordinate with your team to ensure access to the AWS workspace provided by Pantelis <strong>solely for the use in this project</strong>.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="reverse-visual-search">
+<h1>Reverse Visual Search<a class="headerlink" href="#reverse-visual-search" title="Permalink to this headline">#</a></h1>
+<p>In many domains we are interested in finding artifacts that are similar to a query artifact. In this project you are going to implement a system that can find artifacts when the queries are visual.  The type of queries you will test your system on are images of faces (30 points) and videos of people. You will also document your approach clearly showing advantages over the baseline.</p>
+<p>In the following we use the term person of interest (PoI) to indicate the person that we reverse search on images and videos. The PoI may be present together with others in the datasets but the system should be able to retrieve the images / videos that the PoI.  See bonus points for partial occlusion.</p>
+<section id="lfw-dataset-0-points">
+<h2>LFW Dataset (0 points)<a class="headerlink" href="#lfw-dataset-0-points" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="http://vis-www.cs.umass.edu/lfw/">This</a> dataset will be used for images.</p>
 </section>
-<section id="tasks">
-<h2>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">#</a></h2>
-<section id="task-1-station-keeping">
-<h3>Task 1: <a class="reference external" href="https://github.com/osrf/vrx/wiki/vrx_2022-station_keeping_task">Station Keeping</a><a class="headerlink" href="#task-1-station-keeping" title="Permalink to this headline">#</a></h3>
+<section id="reverse-image-search-baseline-30-points">
+<h2>Reverse Image Search - Baseline (30 points)<a class="headerlink" href="#reverse-image-search-baseline-30-points" title="Permalink to this headline">#</a></h2>
+<p>You will use <a class="reference external" href="https://aws.amazon.com/blogs/machine-learning/building-a-visual-search-application-with-amazon-sagemaker-and-amazon-es/">this</a> reverse image search system as an example system that you will replicate its functionality using libraries. Please do not use the AWS managed  services detailed in this system as you will exhaust your AWS credits. At the end of this task you have documented the components of a reverse image search system and have implemented a baseline system for faces that will be used to obtain a <strong>baseline performance for LFW</strong>.</p>
 </section>
-<section id="task-2-wayfinding">
-<h3>Task 2: <a class="reference external" href="https://github.com/osrf/vrx/wiki/vrx_2022-wayfinding_task">Wayfinding</a><a class="headerlink" href="#task-2-wayfinding" title="Permalink to this headline">#</a></h3>
+<section id="reverse-image-search-improvement-30-points">
+<h2>Reverse Image Search Improvement (30 points)<a class="headerlink" href="#reverse-image-search-improvement-30-points" title="Permalink to this headline">#</a></h2>
+<p>In this step you will need to:</p>
+<ol class="simple">
+<li><p>Work inside a Deep Learning AMI Virtual Machine to deploy ES <a class="reference external" href="https://github.com/alexklibisz/elastiknn">elasticknn</a> <a class="reference external" href="https://www.semi.technology/developers/weaviate/current/index.html">Weaviate</a> or <a class="reference external" href="https://milvus.io/">Milvus</a>. See for example <a class="reference external" href="https://colab.research.google.com/github/tensorflow/io/blob/master/docs/tutorials/elasticsearch.ipynb#scrollTo=Tce3stUlHN0L">here</a> how ES can be used with python.</p></li>
+<li><p>You will need to beat the baseline performance you obtained earlier. To improve over the baseline you may want to look at networks such as FaceNet and others quoted <a class="reference external" href="https://hackernoon.com/6-best-open-source-projects-for-real-time-face-recognition-vr1w34x5">here</a> as well as try various similarity search algorithms.</p></li>
+</ol>
 </section>
-<section id="task-3-perception">
-<h3>Task 3: <a class="reference external" href="https://github.com/osrf/vrx/wiki/vrx_2022-perception_task">Perception</a><a class="headerlink" href="#task-3-perception" title="Permalink to this headline">#</a></h3>
+<section id="documentation-40-points">
+<h2>Documentation (40 points)<a class="headerlink" href="#documentation-40-points" title="Permalink to this headline">#</a></h2>
+<p>Remember to document everything - setup instructions written in such a way so that someone else can replicate your experiments, methods and methodologies, how each method works eg. if you use FaceNet you need to explain Siamese Networks, experiments you made, explain the similarity search method you used etc.</p>
 </section>
-<section id="task-4-wildlife-encounter-and-avoid">
-<h3>Task 4: <a class="reference external" href="https://github.com/osrf/vrx/wiki/vrx_2022-wildlife_task">Wildlife Encounter and Avoid</a><a class="headerlink" href="#task-4-wildlife-encounter-and-avoid" title="Permalink to this headline">#</a></h3>
+<section id="extra-credit-reverse-video-search-20-points">
+<h2>Extra Credit: Reverse Video Search (20 points)<a class="headerlink" href="#extra-credit-reverse-video-search-20-points" title="Permalink to this headline">#</a></h2>
+<section id="videos-youtube-faces">
+<h3>Videos - YouTube Faces<a class="headerlink" href="#videos-youtube-faces" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://www.cs.tau.ac.il/~wolf/ytfaces/">This</a> dataset will be used for videos. We will post an alternative link to a Gdrive download folder in the class slack. Please do not publish this link anywhere as we need to respect the dataset authors’ restrictions. For the description of each file please consult the dataset website.</p>
 </section>
-<section id="task-5-channel-navigation-acoustic-beacon-localization-and-obstacle-avoidance">
-<h3>Task 5: <a class="reference external" href="https://github.com/osrf/vrx/wiki/vrx_2022-gymkhana_task">Channel Navigation, Acoustic Beacon Localization and Obstacle Avoidance</a><a class="headerlink" href="#task-5-channel-navigation-acoustic-beacon-localization-and-obstacle-avoidance" title="Permalink to this headline">#</a></h3>
+<section id="similarity-search">
+<h3>Similarity Search<a class="headerlink" href="#similarity-search" title="Permalink to this headline">#</a></h3>
+<p>Here you will demonstrate that the system is able to produce the videos involving a person of interest from a query video that obviously contains the person of interest. The query video can be one of the videos in the database.</p>
+<p>Note that you may want to work with  <a class="reference external" href="https://www.kaggle.com/selfishgene/youtube-faces-with-facial-keypoints">a cleaner version</a> of the dataset that uses an alignment library as demonstrated below:</p>
+<p>Clearly explain your ideas on how best to obtain the embeddings for the query / database videos. Perhaps a straightforward way is to average the per frame embeddings but you can think of other methods. Your notebook must be able to return the videos of the person of interest that exists in the database (other than the query video). Ideas that can address problems with partial occlusions are also welcomed.</p>
 </section>
-<section id="task-6-scan-and-dock-and-deliver">
-<h3>Task 6: <a class="reference external" href="https://github.com/osrf/vrx/wiki/vrx_2022-scan_dock_deliver_task">Scan and Dock and Deliver</a><a class="headerlink" href="#task-6-scan-and-dock-and-deliver" title="Permalink to this headline">#</a></h3>
-</section>
-</section>
-<section id="deliverables">
-<h2>Deliverables<a class="headerlink" href="#deliverables" title="Permalink to this headline">#</a></h2>
-<p>Deliver on as many tasks as you can. Each task accounts for 20 points with Task 6 being optional. Task 6 can be used as an extra credit to increase you8r chances to max out the 100 points you can be granted for the project in this course.</p>
-<p>You can split tasks between team members but understand that there are dependencies. Please shoot a video of your screen after a successful (or not successful) completion of a task.</p>
 </section>
 </section>
 
@@ -1053,7 +1035,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./aiml-common/projects/usv"
+            path: "./aiml-common/projects/visual-search"
         },
         predefinedOutput: true
     }
