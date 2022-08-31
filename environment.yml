@@ -3,16 +3,13 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python
   - pip
-  - jupyter-book
   # - ghp-import
   # - seaborn
   # - matplotlib
   # - numpy
   # #- git+https://github.com/pantelis-classes/PRML.git#egg=prml
   # - plotly
-  - ipywidgets
   # - dash
   # - pandas
   # - jupyter
@@ -20,7 +17,8 @@ dependencies:
   # # - jupyter-dash
   # # - tensorflow
   # - pyppeteer
-  - pip: 
+  - pip:
+    - jupyter-book
     - sphinxcontrib-svg2pdfconverter
     - sphinxcontrib-youtube
     - sphinx_inline_tabs
