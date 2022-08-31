@@ -33,10 +33,10 @@ jobs:
     - uses: conda-incubator/setup-miniconda@v2
       with:
         environment-file: environment.yml
-        auto-activate-base: true
         activate-environment: "ai-course"
         
     - name: Build the book
+      shell: bash -l {0}
       run: |
         jupyter-book build artificial_intelligence
 
