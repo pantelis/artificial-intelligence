@@ -17,3 +17,8 @@ jupyter-dash
 tensorflow
 pyppeteer
 sphinxcontrib-svg2pdfconverter
+sphinx_click
+sphinx_inline_tabs
+sphinxext.rediraffe
+sphinx_proof
+sphinx_examples

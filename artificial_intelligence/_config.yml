@@ -52,10 +52,28 @@ sphinx:
       use_issues_button: true
       use_repository_button: true
       use_edit_page_button: false
+    mathjax3_config:
+      tex:
+        macros:
+          #"N": "\\mathbb{N}"
+          "floor": ["\\lfloor#1\\rfloor", 1]
+          "bmat": ["\\left[\\begin{array}"]
+          "emat": ["\\end{array}\\right]"]
+    latex_elements:
+        preamble: |
+          \newcommand\N{\mathbb{N}}
+          \newcommand\floor[1]{\lfloor#1\rfloor}
+          \newcommand{\bmat}{\left[\begin{array}}
+          \newcommand{\emat}{\end{array}\right]}
   extra_extensions:
     - sphinxcontrib.youtube
     - sphinx_inline_tabs
     - sphinxcontrib.inkscapeconverter
+    - sphinx_click.ext
+    - sphinx_inline_tabs
+    - sphinxext.rediraffe
+    - sphinx_proof
+    - sphinx_examples
 
 parse:
   myst_enable_extensions:

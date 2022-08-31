@@ -6,7 +6,7 @@
 author = 'Pantelis Monogioudis, Ph.D'
 bibtex_bibfiles = ['references.bib']
 comments_config = {'hypothesis': False, 'utterances': True}
-copyright = '2021'
+copyright = '2022'
 exclude_patterns = ['**.ipynb_checkpoints', '.DS_Store', 'Thumbs.db', '_build']
 execution_allow_errors = False
 execution_excludepatterns = []
