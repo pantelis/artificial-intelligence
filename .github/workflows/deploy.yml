@@ -30,6 +30,10 @@ jobs:
         $CONDA/bin/conda env update --file environment.yml --name base
         
     # Build the book
+    - name: Activate base env
+      run: |
+        $CONDA/bin/conda activate base
+        
     - name: Build the book
       run: |
         jupyter-book build artificial_intelligence
