@@ -20,19 +20,21 @@ jobs:
         submodules: recursive
         token: ${{ secrets.AIML_COMMON_CICD_TOKEN }}
 
-    # Install dependencies
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        $CONDA/bin/conda env update --file environment.yml --name base
+    # # Install dependencies
+    # - name: Set up Python ${{ matrix.python-version }}
+    #   uses: actions/setup-python@v2
+    #   with:
+    #     python-version: ${{ matrix.python-version }}
+    # - name: Install dependencies
+    #   run: |
+    #     $CONDA/bin/conda env update --file environment.yml --name ai-course
         
     # Build the book
-    - name: Activate base env
-      run: |
-        $CONDA/bin/conda activate base
+    - uses: conda-incubator/setup-miniconda@v2
+      with:
+        environment-file: environment.yml
+        auto-activate-base: true
+        activate-environment: "ai-course"
         
     - name: Build the book
       run: |
