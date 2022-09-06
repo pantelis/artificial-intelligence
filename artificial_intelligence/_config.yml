@@ -26,8 +26,8 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/pantelis/aiml-common # artificial-intelligence  # Online location of your book
-  path_to_book: ''#lectures #artificial_intelligence/aiml-common  # Optional path to your book, relative to the repository root
+  url: https://github.com/pantelis/artificial-intelligence # artificial-intelligence  # Online location of your book
+  path_to_book: artificial_intelligence/aiml_common #artificial_intelligence/aiml-common  # Optional path to your book, relative to the repository root
   branch: master  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
