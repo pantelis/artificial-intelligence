@@ -155,7 +155,7 @@ parts:
 
 - caption:  Assignments & Projects
   chapters:
-  - file: aiml-common/assignments/probability/probability-assignment-4/index.ipynb
+  - file: aiml-common/assignments/probability/probability-assignment-3/index.ipynb
   # - file: aiml-common/assignments/mle/mle_exponential_linear_regression.ipynb
   # - file: aiml-common/assignments/object-tracking/_index.md
   # - file: aiml-common/projects/usv/_index.md
