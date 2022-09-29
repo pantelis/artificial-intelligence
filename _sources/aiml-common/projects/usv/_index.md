@@ -28,7 +28,7 @@ Follow the instructions in [here](https://github.com/osrf/vrx/wiki/system_setup_
 
 ## Deliverables
 
-Each task accounts for 16.667 points with Task 6 being optional. Task 6 can be used as an extra credit to increase your chances to max out the 100 points you can be granted for the project in this course.
+Each task accounts for 20 points with Task 6 being optional. Task 6 can be used as an extra credit to increase your chances to max out the 100 points you can be granted for the project in this course.
 
 You can split tasks between team members but understand that there are dependencies. Please shoot a video of your screen after a successful (or your best possible outcome) completion of a task and upload it to youtube. Submit a Github URL to the repository and include a Github collaborators your professor and the TAs. Your repo should include extensive documentation of each task authored in jupyter-book site format.  Each task should be authored in a separate chapter and should include the author name. 
 
