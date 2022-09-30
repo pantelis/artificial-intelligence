@@ -156,7 +156,7 @@ parts:
 - caption:  Assignments & Projects
   chapters:
   - file: aiml-common/assignments/probability/probability-assignment-3/index.ipynb
-  - file: aiml-common/assignments/bayesian-learning.ipynb
+  - file: aiml-common/assignments/bayesian-learning/index.ipynb
   # - file: aiml-common/assignments/object-tracking/_index.md
   - file: aiml-common/projects/usv/_index.md
   # - file: aiml-common/projects/visual-search/_index.md
