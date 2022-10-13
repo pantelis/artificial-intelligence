@@ -1,10 +1,4 @@
----
-title: Faster RCNN Object Detection
-weight: 73
-draft: false
----
-
-# Faster RCNN Object Detection
+# Fast and Faster RCNN Object Detection
 
 ## Fast RCNN
 

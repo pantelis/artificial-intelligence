@@ -1,9 +1,3 @@
----
-title: Region-CNN (RCNN) Object Detection
-weight: 73
-draft: false
----
-
 # Region-CNN (RCNN) Object Detection
 
 ## Region Proposals 

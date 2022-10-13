@@ -1,7 +1,3 @@
----
-title: Object Detection Metrics
----
-
 # Object Detection and Semantic Segmentation Metrics
 
 NOTE: The following example is based on  [here](https://www.mdpi.com/2079-9292/10/3/279) and [its corresponding implementation](https://github.com/rafaelpadilla/review_object_detection_metrics)

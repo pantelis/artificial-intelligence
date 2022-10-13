@@ -1,7 +1,3 @@
----
-title: Introduction to Scene Understanding
----
-
 # Introduction to Scene Understanding
 
 In the previous chapters we have treated the perception subsystem mainly from starting the first principles that govern supervised learning to the deep learning architectures that can be used in computer vision. Now we are synthesizing these algorithms to pipelines that can potentially allow us to decompose the scene into objects. As discussed in the  [](content:cnn-intro), humans has a unique to interpret scenes based on their ability to infer (reason) what they _dont_ see. This is the reason why scene understanding involves far more than just perception. In this chapter we will cover algorithms that allow us to, detect and segment objects in the scene. 

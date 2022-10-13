@@ -1,8 +1,6 @@
----
-title: Object Detection and Semantic Segmentation Workshop
----
+# MaskRCNN Semantic Segmentation
 
-# Object Detection and Semantic Segmentation Workshop
+The semantic segmentation approach described in this section is [MaskRCNN based on this paper](https://arxiv.org/abs/1703.06870) paper. 
 
 The following notebook is the end result of the Mask RCNN implementation for object detection and semantic segmentation. Scroll down to see three other notebooks that explain how the end result was obtained. 
 
@@ -19,4 +17,5 @@ This notebook goes in depth into the steps performed to detect and segment objec
 This notebooks inspects the weights of a trained model and looks for anomalies and odd patterns.
 
 <iframe src="https://nbviewer.jupyter.org/github/matterport/Mask_RCNN/blob/master/samples/coco/inspect_weights.ipynb" width="900" height="1200"></iframe>
+
 
