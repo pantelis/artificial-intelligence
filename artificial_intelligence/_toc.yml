@@ -58,13 +58,18 @@ parts:
 
 - caption: Scene Understanding
   chapters:    
-  - file: aiml-common/lectures/scene-understanding/scene-understanding-intro/_index.md
-  - file: aiml-common/lectures/scene-understanding/feature-extraction-resnet/_index.md
-  - file: aiml-common/lectures/scene-understanding/object-detection/_index.md
-  - file: aiml-common/lectures/scene-understanding/detection-segmentation-metrics/_index.md
-  - file: aiml-common/lectures/scene-understanding/rcnn/_index.md    
-  - file: aiml-common/lectures/scene-understanding/faster-rcnn/_index.md
-  - file: aiml-common/lectures/scene-understanding/object-detection/detection-segmentation-workshop/_index.md
+  - file: aiml-common/lectures/scene-understanding/scene-understanding-intro/index.md
+  - file: aiml-common/lectures/scene-understanding/feature-extraction-resnet/index.md
+  - file: aiml-common/lectures/scene-understanding/object-detection/object-detection-intro/index.md
+    title: Object Detection
+    sections:  
+    - file: aiml-common/lectures/scene-understanding/object-detection/detection-metrics/index.md
+    - file: aiml-common/lectures/scene-understanding/object-detection/rcnn-object-detection/index.md    
+    - file: aiml-common/lectures/scene-understanding/object-detection/faster-rcnn-object-detection/index.md
+  - file: aiml-common/lectures/scene-understanding/semantic-segmentation/index.md
+    title: Semantic Segmentation
+    sections:  
+    - file: aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/index.md
   
 - caption: Probabilistic Reasoning
   chapters:    
