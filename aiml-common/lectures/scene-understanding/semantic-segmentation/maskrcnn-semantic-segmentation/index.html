@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/index.html" />
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="Introduction to Probabilistic Reasoning" href="../../../pgm/pgm-intro/_index.html" />
+    <link rel="next" title="Mask R-CNN Demo" href="demo.html" />
     <link rel="prev" title="Semantic Segmentation" href="../index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -360,6 +360,26 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      MaskRCNN Semantic Segmentation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="demo.html">
+     Mask R-CNN Demo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="inspect_data.html">
+     Mask R-CNN - Inspect Training Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="inspect_model.html">
+     Mask R-CNN - Inspect Trained Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="inspect_weights.html">
+     Mask R-CNN - Inspect Weights of a Trained Model
     </a>
    </li>
   </ul>
@@ -880,12 +900,36 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation-and-notebooks">
+   Implementation and Notebooks
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -897,6 +941,19 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation-and-notebooks">
+   Implementation and Notebooks
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -908,13 +965,16 @@ title="Print to PDF"
 <h1>MaskRCNN Semantic Segmentation<a class="headerlink" href="#maskrcnn-semantic-segmentation" title="Permalink to this headline">#</a></h1>
 <p>The semantic segmentation approach described in this section is <a class="reference external" href="https://arxiv.org/abs/1703.06870">MaskRCNN based on this paper</a> paper.</p>
 <p>The following notebook is the end result of the Mask RCNN implementation for object detection and semantic segmentation. Scroll down to see three other notebooks that explain how the end result was obtained.</p>
-<iframe src="https://nbviewer.jupyter.org/github/matterport/Mask_RCNN/blob/master/samples/demo.ipynb" width="900" height="1200"></iframe>
-<p>This notebook visualizes the different pre-processing steps to prepare the training data.</p>
-<iframe src="https://nbviewer.jupyter.org/github/matterport/Mask_RCNN/blob/master/samples/coco/inspect_data.ipynb" width="900" height="1200"></iframe>
-<p>This notebook goes in depth into the steps performed to detect and segment objects. It provides visualizations of every step of the pipeline.</p>
-<iframe src="https://nbviewer.jupyter.org/github/matterport/Mask_RCNN/blob/master/samples/coco/inspect_model.ipynb" width="900" height="1200"></iframe>
-<p>This notebooks inspects the weights of a trained model and looks for anomalies and odd patterns.</p>
-<iframe src="https://nbviewer.jupyter.org/github/matterport/Mask_RCNN/blob/master/samples/coco/inspect_weights.ipynb" width="900" height="1200"></iframe>
+<section id="implementation-and-notebooks">
+<h2>Implementation and Notebooks<a class="headerlink" href="#implementation-and-notebooks" title="Permalink to this headline">#</a></h2>
+<p>The four notebooks in this section use Tensorflow. For Pytorch see <a class="reference external" href="https://github.com/tensorflow/tpu/tree/master/models/official/detection">Detectron2</a>.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/scene-understanding/semantic-segmentation/demo.ipynb">This notebook</a> demos MaskRCNN.</p></li>
+<li><p><a class="reference external" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/scene-understanding/semantic-segmentation/inspect_data.ipynb">This notebook</a> visualizes the different pre-processing steps to prepare the training data.</p></li>
+<li><p><a class="reference external" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/scene-understanding/semantic-segmentation/inspect_model.ipynb">This notebook</a> goes in depth into the steps performed to detect and segment objects. It provides visualizations of every step of the pipeline.</p></li>
+<li><p><a class="reference external" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/scene-understanding/semantic-segmentation/inspect_weights.ipynb">This notebook</a> inspects the weights of a trained model and looks for anomalies and odd patterns.</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -951,10 +1011,10 @@ title="Print to PDF"
             <p class="prev-next-title">Semantic Segmentation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../../../pgm/pgm-intro/_index.html" title="next page">
+    <a class='right-next' id="next-link" href="demo.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to Probabilistic Reasoning</p>
+        <p class="prev-next-title">Mask R-CNN Demo</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
