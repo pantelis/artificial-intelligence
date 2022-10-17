@@ -39,7 +39,7 @@ parts:
   - file: aiml-common/lectures/dnn/dnn-intro/_index.md
   - file: aiml-common/lectures/dnn/backprop-intro/_index.md
   - file: aiml-common/lectures/dnn/backprop-dnn/_index.md
-  - file: aiml-common/lectures/dnn/backprop-intro-exercises/_index.md
+  - file: aiml-common/lectures/dnn/backprop-dnn-exercises/_index.md
   - file: aiml-common/lectures/dnn/fashion-mnist-case-study/_index.md
   - file: aiml-common/lectures/optimization/regularization/_index.md
   - file: aiml-common/lectures/optimization/regularization/regularization-workshop-1/_index.md
