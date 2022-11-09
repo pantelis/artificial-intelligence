@@ -70,7 +70,7 @@ Professor Office hours will be coordinated via chat  - the process is simple: di
 **Staff (TAs)** {octicon}`person;1em;sd-text-info`
 ^^^
 
-Vahibhav Singh (vs2410)
+Vaibhav Singh (vs2410)
 
 Anshul Agrawal (ava8249)
 
