@@ -1048,7 +1048,7 @@ title="Print to PDF"
 \[\hat{\mathbf y}_j = \mathtt{softmax}(\mathbf z^\prime_j), j \in [1,...,C]\]</div>
 <div class="math notranslate nohighlight">
 \[L = CE(\mathbf{y}, \hat{\mathbf y} )\]</div>
-<p>The parameters <span class="math notranslate nohighlight">\(\theta = \[ \mathbf W, \mathbf W^\prime \]\)</span> will be optimized via an optimization algorithm (from the usual SGD family).</p>
+<p>The parameters $<span class="math notranslate nohighlight">\( \theta = \{\mathbf W, \mathbf W^{\prime} \} \)</span>$ will be optimized via an optimization algorithm (from the usual SGD family).</p>
 <p>Training for large vocabularies can be quite computationally intensive.  At the end of training we are then able to store the matrix <span class="math notranslate nohighlight">\(\mathbf W\)</span> and load it during the parsing stage of the NLP pipeline.  In practice we use a loss functions that avoids computing losses that go over the vocabulary size <span class="math notranslate nohighlight">\(|V|\)</span> and instead we pose the problem as a logistic regression problem where the positive examples are the (center,context) word pairs and the negative examples are the (center, random) word pairs. This is called <em>negative sampling</em> and the interested reader can read more <a class="reference external" href="https://web.stanford.edu/class/cs224n/readings/cs224n-2019-notes01-wordvecs1.pdf">here</a>.</p>
 <!-- For a more hands on treatment on word2vec see the blog posts by Chris McCormick [cite](http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/). -->
 <div class="admonition warning">
