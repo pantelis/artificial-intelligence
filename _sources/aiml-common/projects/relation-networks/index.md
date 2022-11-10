@@ -1,4 +1,4 @@
-# Separating Perception and Reasoning vis Relation Networks
+# Separating Perception and Reasoning via Relation Networks
 
 Purely symbolic approaches to artificial intelligence are inherently relational. Practitioners define
 the relations between symbols using the language of logic and mathematics, and then reason about
