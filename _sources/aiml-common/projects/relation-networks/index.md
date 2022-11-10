@@ -11,7 +11,7 @@ underlying structure is characterized by sparse but complex relations.
 
 In this project you will study the implementation of AI approaches that offer the ability to combine neural and symbolic representations in their attempt to answer the so called Visual Question-Answer task. 
 
-The approach here is based on relation networks and is considered a milestone in the development of such capability due to its simplicity and representational flexibility. The second approach is introducing object-level scene parsing and uses a program-based response system. 
+The approach here is based on relation networks and is considered a milestone in the development of such capability due to its simplicity and representational flexibility. 
 
 
 ## Relation Networks (by DeepMind)
