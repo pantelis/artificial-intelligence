@@ -264,8 +264,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../../dnn/fashion-mnist-case-study.html">
+   Fashion MNIST Case Study
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../optimization/regularization/_index.html">
    Regularization in Deep Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../optimization/regularization/regularization-workshop-1.html">
+   Regularization Workshop
   </a>
  </li>
 </ul>
@@ -300,6 +310,13 @@ const thebe_selector_output = ".output, .cell_output"
    CNN Explainers
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Transfer Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../transfer-learning/transfer-learning-introduction.html">
    Introduction to Transfer Learning
@@ -623,13 +640,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../rnn/15_processing_sequences_using_rnns_and_cnns.html">
-   Processing Sequences Using RNN
+  <a class="reference internal" href="../../rnn/lstm/_index.html">
+   The Long Short-Term Memory (LSTM) Cell Architecture
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../rnn/lstm/_index.html">
-   The Long Short-Term Memory (LSTM) Cell Architecture
+  <a class="reference internal" href="../../rnn/15_processing_sequences_using_rnns_and_cnns.html">
+   Processing Sequences Using RNN
   </a>
  </li>
 </ul>
@@ -650,8 +667,23 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../nlp/rnn-language-models/_index.html">
+  <a class="reference internal" href="../../nlp/word2vec/word2vec-workshop.html">
+   Word2Vec Workshop
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../nlp/language-models/_index.html">
    RNN Language Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../nlp/language-models/simple-rnn-language-model.html">
+   Simple RNN Language Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../nlp/language-models/cnn-language-model.html">
+   CNN Language Model
   </a>
  </li>
  <li class="toctree-l1">
@@ -1015,9 +1047,11 @@ title="Print to PDF"
 <span class="math notranslate nohighlight">\(\sigma(x) ≡ max(x, 0)\)</span>. Other formulations are typically composed of the same operations, but may differ
 in their order.</p>
 <p>During the lecture we will go through <a class="reference external" href="https://arxiv.org/pdf/1605.06431.pdf">this</a> paper analysis of the unrolled network to understand the behavior of ResNets that are inherently scalable networks.</p>
-<p>ResNets introduced below - are commonly used as feature extractors for object detection. They are not the only ones but these networks are the obvious / typical choice today and they can also be used in real time video streaming applications achieving significant throughput e.g. 20 frames per second.</p>
-<iframe width="560" height="315" src="http://kaiminghe.com/icml16tutorial/icml2016_tutorial_deep_residual_networks_kaiminghe.pdf"></iframe>
-</section>
+<p>ResNets are commonly used as feature extractors for object detection <a class="reference external" href="https://kaiminghe.github.io/icml16tutorial/icml2016_tutorial_deep_residual_networks_kaiminghe.pdf">as in this tutorial</a>.</p>
+<p>These networks are the obvious / typical choice today and they can also be used in real time video streaming applications achieving significant frames per second throughputs.</p>
+<div class="video_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/1PGLj-uKT1w" style="border: 0; height: 345px; width: 560px">
+</iframe></div></section>
 <section id="resnets-and-batch-normalization">
 <h2>ResNets and Batch Normalization<a class="headerlink" href="#resnets-and-batch-normalization" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://colab.research.google.com/github/davidcpage/cifar10-fast/blob/master/batch_norm_post.ipynb">This notebook</a> is very instructive of what now is considered a canonical new ResNet block that includes batch normalization.</p>

@@ -59,7 +59,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/nlp/word2vec/_index.html" />
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="RNN Language Models" href="../rnn-language-models/_index.html" />
+    <link rel="next" title="Word2Vec Workshop" href="word2vec-workshop.html" />
     <link rel="prev" title="Introduction to NLP" href="../nlp-intro/_index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -264,8 +264,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../../dnn/fashion-mnist-case-study.html">
+   Fashion MNIST Case Study
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../optimization/regularization/_index.html">
    Regularization in Deep Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../optimization/regularization/regularization-workshop-1.html">
+   Regularization Workshop
   </a>
  </li>
 </ul>
@@ -300,6 +310,13 @@ const thebe_selector_output = ".output, .cell_output"
    CNN Explainers
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Transfer Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../transfer-learning/transfer-learning-introduction.html">
    Introduction to Transfer Learning
@@ -623,13 +640,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../rnn/15_processing_sequences_using_rnns_and_cnns.html">
-   Processing Sequences Using RNN
+  <a class="reference internal" href="../../rnn/lstm/_index.html">
+   The Long Short-Term Memory (LSTM) Cell Architecture
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../rnn/lstm/_index.html">
-   The Long Short-Term Memory (LSTM) Cell Architecture
+  <a class="reference internal" href="../../rnn/15_processing_sequences_using_rnns_and_cnns.html">
+   Processing Sequences Using RNN
   </a>
  </li>
 </ul>
@@ -650,8 +667,23 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../rnn-language-models/_index.html">
+  <a class="reference internal" href="word2vec-workshop.html">
+   Word2Vec Workshop
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../language-models/_index.html">
    RNN Language Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../language-models/simple-rnn-language-model.html">
+   Simple RNN Language Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../language-models/cnn-language-model.html">
+   CNN Language Model
   </a>
  </li>
  <li class="toctree-l1">
@@ -1024,7 +1056,7 @@ title="Print to PDF"
 </section>
 <section id="features-of-word2vec-embeddings">
 <h2>Features of Word2Vec embeddings<a class="headerlink" href="#features-of-word2vec-embeddings" title="Permalink to this headline">#</a></h2>
-<p>In 2012, Thomas Mikolov, an <em>intern</em> at Microsoft, <a class="reference external" href="https://arxiv.org/abs/1310.4546">found a way</a><a class="footnote-reference brackets" href="#id3" id="id1">2</a> to encode the meaning of words in a modest number of vector dimensions <span class="math notranslate nohighlight">\(d\)</span>. Mikolov trained a neural network to predict word occurrences near each target word. In 2013, once at Google, Mikolov and his teammates released the software for creating these word vectors and called it word2vec.</p>
+<p>In 2012, Thomas Mikolov, an <em>intern</em> at Microsoft, <a class="reference external" href="https://arxiv.org/abs/1310.4546">found a way</a> to encode the meaning of words in a modest number of vector dimensions <span class="math notranslate nohighlight">\(d\)</span>. Mikolov trained a neural network to predict word occurrences near each target word. In 2013, once at Google, Mikolov and his teammates released the software for creating these word vectors and called it word2vec.</p>
 <p><img alt="banking-vector" src="../../../../_images/banking-vector.png" />
 <em>word2vec generated embedding for the word <code class="docutils literal notranslate"><span class="pre">banking</span></code> in d=8 dimensions</em></p>
 <p>Here is a <a class="reference external" href="http://projector.tensorflow.org/">visualization</a> of these embeddings in the re-projected 3D space (from <span class="math notranslate nohighlight">\(d\)</span> to 3). Try searching for the word “truck” for the visualizer to show the <em>distorted</em> neighbors of this work - distorted because of the 3D re-projection. In another example, word2vec embeddings of US cities projected in the 2D space result in poor topological but excellent <em>semantic</em> mapping which is exactly what we are after.</p>
@@ -1033,7 +1065,7 @@ title="Print to PDF"
 <p>Another classic example that shows the power of word2vec representations to encode analogies, is  classical king + woman − man ≈ queen example shown below.</p>
 <p><img alt="queen-example" src="../../../../_images/queen-example.png" />
 <em>Classic queen example where <code class="docutils literal notranslate"><span class="pre">king</span> <span class="pre">−</span> <span class="pre">man</span> <span class="pre">≈</span> <span class="pre">queen</span> <span class="pre">−</span> <span class="pre">woman</span></code>, and we can visually see that in the red arrows. There are 4 analogies one can construct, based on the parallel red arrows and their direction. This is slightly idealized; the vectors need not be so similar to be the most similar from all word vectors. The similar direction of the red arrows indicates similar relational meaning.</em></p>
-<p>So what is the more formal description of the word2vec algorithm? We will focus on one of the two computational algorithms<a class="footnote-reference brackets" href="#id4" id="id2">1</a> - the skip-gram method and use the following diagrams as examples to explain how it works.</p>
+<p>So what is the more formal description of the word2vec algorithm? We will focus on one of the two computational algorithms<a class="footnote-reference brackets" href="#id2" id="id1">1</a> - the skip-gram method and use the following diagrams as examples to explain how it works.</p>
 <p><img alt="word2vec-idea" src="../../../../_images/word2vec-idea.png" />
 <img alt="word2vec-idea2" src="../../../../_images/word2vec-idea2.png" />
 <em>In the skip-gram we predict the <strong>context given the center word</strong>.We need to calculate the probability <span class="math notranslate nohighlight">\(p(w_{t+j} | w_t)\)</span>.</em></p>
@@ -1074,10 +1106,7 @@ title="Print to PDF"
 </ol>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
-<dd><p>You don’t come across papers with 10K citations very often.</p>
-</dd>
-<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>The other method is called Continuous Bag of Words (CBOW) and its the reverse of the skip-gram method: it predicts the center word from the words around it. Skip-gram works well with small corpora and rare terms while CBOW shows higher accuracies for frequent words and is faster to train <a class="reference external" href="https://www.manning.com/books/natural-language-processing-in-action">ref</a>.</p>
 </dd>
 </dl>
@@ -1118,10 +1147,10 @@ title="Print to PDF"
             <p class="prev-next-title">Introduction to NLP</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../rnn-language-models/_index.html" title="next page">
+    <a class='right-next' id="next-link" href="word2vec-workshop.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">RNN Language Models</p>
+        <p class="prev-next-title">Word2Vec Workshop</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

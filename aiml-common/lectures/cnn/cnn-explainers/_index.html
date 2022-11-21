@@ -262,8 +262,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../../dnn/fashion-mnist-case-study.html">
+   Fashion MNIST Case Study
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../optimization/regularization/_index.html">
    Regularization in Deep Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../optimization/regularization/regularization-workshop-1.html">
+   Regularization Workshop
   </a>
  </li>
 </ul>
@@ -298,6 +308,13 @@ const thebe_selector_output = ".output, .cell_output"
    CNN Explainers
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Transfer Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../transfer-learning/transfer-learning-introduction.html">
    Introduction to Transfer Learning
@@ -621,13 +638,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../rnn/15_processing_sequences_using_rnns_and_cnns.html">
-   Processing Sequences Using RNN
+  <a class="reference internal" href="../../rnn/lstm/_index.html">
+   The Long Short-Term Memory (LSTM) Cell Architecture
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../rnn/lstm/_index.html">
-   The Long Short-Term Memory (LSTM) Cell Architecture
+  <a class="reference internal" href="../../rnn/15_processing_sequences_using_rnns_and_cnns.html">
+   Processing Sequences Using RNN
   </a>
  </li>
 </ul>
@@ -648,8 +665,23 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../nlp/rnn-language-models/_index.html">
+  <a class="reference internal" href="../../nlp/word2vec/word2vec-workshop.html">
+   Word2Vec Workshop
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../nlp/language-models/_index.html">
    RNN Language Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../nlp/language-models/simple-rnn-language-model.html">
+   Simple RNN Language Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../nlp/language-models/cnn-language-model.html">
+   CNN Language Model
   </a>
  </li>
  <li class="toctree-l1">
@@ -1016,6 +1048,10 @@ title="Print to PDF"
 <section id="visualising-the-cnn-internals-and-what-they-pay-attention-to">
 <h2>Visualising the CNN internals and what they pay attention to<a class="headerlink" href="#visualising-the-cnn-internals-and-what-they-pay-attention-to" title="Permalink to this headline">#</a></h2>
 <p>Given the ‘black box’ nature of CNNs, we need to be familiar with the tooling needed to visualize their internal representations.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must run step by step the notebook below to fully understand what kind of transformations the convolutional layers are performing. It uses simple as well as VGG16 networks.</p>
+</div>
 <iframe src="https://nbviewer.jupyter.org/github/pantelis/deep-learning-with-python-notebooks/blob/master/5.4-visualizing-what-convnets-learn.ipynb" width="900" height="1200"></iframe>
 </section>
 <section id="grad-cam">
