@@ -40,9 +40,9 @@ parts:
   - file: aiml-common/lectures/dnn/backprop-intro/_index.md
   - file: aiml-common/lectures/dnn/backprop-dnn/_index.md
   - file: aiml-common/lectures/dnn/backprop-dnn-exercises/_index.md
-  - file: aiml-common/lectures/dnn/fashion-mnist-case-study/_index.md
+  - file: aiml-common/lectures/dnn/fashion-mnist-case-study.md
   - file: aiml-common/lectures/optimization/regularization/_index.md
-  - file: aiml-common/lectures/optimization/regularization/regularization-workshop-1/_index.md
+  - file: aiml-common/lectures/optimization/regularization/regularization-workshop-1.md
       
 - caption: Convolutional Neural Networks
   chapters:    
@@ -51,10 +51,12 @@ parts:
   - file: aiml-common/lectures/cnn/cnn-example-architectures/_index.md
   - file: aiml-common/lectures/cnn/cnn-example-architectures/using_convnets_with_small_datasets.ipynb
   - file: aiml-common/lectures/cnn/cnn-explainers/_index.md  
-  - file: aiml-common/lectures/cnn/cnn-gradcam-workshop/_index.md
-  - file: aiml-common/lectures/transfer-learning/transfer-learning-introduction.md
-  - file: aiml-common/lectures/transfer-learning/transfer_learning_tutorial.ipynb  
-  #- file: aiml-common/lectures/transfer-learning/Quantized_Transfer_Learning.ipynb    
+  
+- caption:  Transfer Learning
+  chapters:  
+  - file: aiml-common/lectures/transfer-learning/transfer-learning-introduction.md  
+  - file: aiml-common/lectures/transfer-learning/transfer_learning_tutorial.ipynb
+    #- file: aiml-common/lectures/transfer-learning/quantized_transfer_learning.ipynb  
 
 - caption: Scene Understanding
   chapters:    
@@ -134,16 +136,17 @@ parts:
   chapters:    
   - file: aiml-common/lectures/rnn/introduction/_index.md 
   - file: aiml-common/lectures/rnn/simple-rnn/_index.md 
-  - file: aiml-common/lectures/rnn/15_processing_sequences_using_rnns_and_cnns.ipynb   
-  - file: aiml-common/lectures/rnn/lstm/_index.md   
+  - file: aiml-common/lectures/rnn/lstm/_index.md
+  - file: aiml-common/lectures/rnn/15_processing_sequences_using_rnns_and_cnns.ipynb     
 
 - caption:  Natural Language Processing
-  chapters:      
+  chapters:
   - file: aiml-common/lectures/nlp/nlp-intro/_index.md 
   - file: aiml-common/lectures/nlp/word2vec/_index.md 
-  - file: aiml-common/lectures/nlp/word2vec-workshop/_index.md 
-  - file: aiml-common/lectures/nlp/rnn-language-models/_index.md   
-  - file: aiml-common/lectures/nlp/rnn-language-models/language-models-workshop/_index.md   
+  - file: aiml-common/lectures/nlp/word2vec/word2vec-workshop.md 
+  - file: aiml-common/lectures/nlp/language-models/_index.md   
+  - file: aiml-common/lectures/nlp/language-models/simple-rnn-language-model.ipynb
+  - file: aiml-common/lectures/nlp/language-models/cnn-language-model.ipynb
   - file: aiml-common/lectures/nlp/nmt/_index.md     
   - file: aiml-common/lectures/nlp/nmt-metrics/_index.md       
   - file: aiml-common/lectures/nlp/attention/_index.md       
