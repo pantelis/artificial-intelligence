@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Dynamic Programming Algorithms - Value Iteration &#8212; Introduction to Artificial Intelligence</title>
+    <title>Value Iteration &#8212; Introduction to Artificial Intelligence</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -515,7 +515,7 @@ const thebe_selector_output = ".output, .cell_output"
   Markov Decision Processes
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../_index.html">
    Markov Decision Processes
@@ -531,54 +531,42 @@ const thebe_selector_output = ".output, .cell_output"
    Bellman Expectation Backup
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../../bellman-optimality-backup/_index.html">
-   Bellman Optimality Backup
+   MDP Dynamic Programming Algorithms
   </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Dynamic Programming Algorithms
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../policy-iteration/_index.html">
-   Dynamic Programming Algorithms - Policy Iteration
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../policy-evaluation/_index.html">
-   Policy Evaluation (Prediction)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../policy-improvement/_index.html">
-   Policy Improvement (Control)
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Dynamic Programming Algorithms - Value Iteration
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  MDP Lab
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp-lab/recycling-robot/_index.html">
-   Finding the optimal policy of a recycling robot.
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp-lab/yield-management-capacity-control/_index.html">
-   Optimal Capacity Control
-  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../policy-iteration/_index.html">
+     Policy Iteration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../policy-evaluation/_index.html">
+     Policy Evaluation (Prediction)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../policy-improvement/_index.html">
+     Policy Improvement (Control)
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Value Iteration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../mdp-lab/recycling-robot/_index.html">
+     Finding the optimal policy of a recycling robot.
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -717,8 +705,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../../../ml-math/_index.html">
    Math for ML
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -987,7 +975,7 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#value-iteration">
+  <a class="reference internal nav-link" href="#id1">
    Value Iteration
   </a>
   <ul class="nav section-nav flex-column">
@@ -1022,7 +1010,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Dynamic Programming Algorithms - Value Iteration</h1>
+                <h1>Value Iteration</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1043,7 +1031,7 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#value-iteration">
+  <a class="reference internal nav-link" href="#id1">
    Value Iteration
   </a>
   <ul class="nav section-nav flex-column">
@@ -1079,8 +1067,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="dynamic-programming-algorithms-value-iteration">
-<h1>Dynamic Programming Algorithms - Value Iteration<a class="headerlink" href="#dynamic-programming-algorithms-value-iteration" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="value-iteration">
+<h1>Value Iteration<a class="headerlink" href="#value-iteration" title="Permalink to this headline">#</a></h1>
 <p>We already have seen that in the Gridworld example in the policy iteration section , we may not <em>need</em> to reach the optimal state value function <span class="math notranslate nohighlight">\(v_*(s)\)</span> to obtain an optimal policy result. The value function for the <span class="math notranslate nohighlight">\(k=3\)</span> iteration results the same policy as the policy from a far more accurate value function (large k).</p>
 <p>We can therefore stop early and taking the argument to the limit, do the policy improvement step in <em>each</em> iteration.  In this section we will look at an algorithm called value iteration that does that.</p>
 <p><img alt="value-iteration-summary" src="../../../../../_images/value-iteration-summary.png" /></p>
@@ -1191,8 +1179,8 @@ title="Print to PDF"
 <p><img alt="val-iter-initial" src="../../../../../_images/val-iter-initial.png" /></p>
 <p><em>Initialize value estimates to <span class="math notranslate nohighlight">\(0\)</span></em></p>
 </section>
-<section id="value-iteration">
-<h2>Value Iteration<a class="headerlink" href="#value-iteration" title="Permalink to this headline">#</a></h2>
+<section id="id1">
+<h2>Value Iteration<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Next we want to apply <strong>Bellman Update</strong>:
 $<span class="math notranslate nohighlight">\(V_{t+1}(s) \leftarrow R(s) + \gamma \max_{a} \left[\sum_{s^\prime} P(s^\prime | s,a)U_t(s^\prime) \right] \forall s \epsilon S\)</span>$</p></li>

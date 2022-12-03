@@ -2,7 +2,7 @@
 title: Dynamic Programming Algorithms - Policy Iteration
 ---
 
-# Dynamic Programming Algorithms - Policy Iteration
+# Policy Iteration
 
 In this section we develop dynamic programming algorithms for the so called _planning_ problem (which is RL without learning) where we are dealing with a _perfectly known MDP_. 
 
@@ -33,15 +33,16 @@ The grid world example shown below is characterized by:
 * Not discounted episodic MDP (γ = 1)
 * Non terminal states 1, ..., 14
 * One terminal state (shown twice as shaded squares)
-* Actions leading out of the grid leave state unchanged
+* The action that the agent takes, cause the intended state transition with probability 1.0. Actions leading out of the grid leave state unchanged.
 * Reward is −1 until the terminal state is reached
 * Agent follows a uniform random policy $\pi(north|.) = \pi(south|.) = \pi(east|.) = \pi(west | .) = 0.25$
+
   
 ![Grid world (source: Sutton)](./images/gridworld-sutton.PNG)
 
 * The terminal states are shaded. The reward is $-1$ on all transitions until the terminal states are reached. The non-terminal states are $S_1,S_2,...,s_{14}$.
 
-* We begin with random values (or utilities) and random policy $\pi$
+* We begin with random values (or 0.0) and a random policy $\pi$
 
 ![policy-iter-1](images/policy-iter-1.PNG)
 *Initial values and policy for policy iteration*

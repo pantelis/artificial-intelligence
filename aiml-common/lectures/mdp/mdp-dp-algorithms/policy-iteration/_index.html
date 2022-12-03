@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Dynamic Programming Algorithms - Policy Iteration &#8212; Introduction to Artificial Intelligence</title>
+    <title>Policy Iteration &#8212; Introduction to Artificial Intelligence</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -515,7 +515,7 @@ const thebe_selector_output = ".output, .cell_output"
   Markov Decision Processes
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../_index.html">
    Markov Decision Processes
@@ -531,54 +531,42 @@ const thebe_selector_output = ".output, .cell_output"
    Bellman Expectation Backup
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../../bellman-optimality-backup/_index.html">
-   Bellman Optimality Backup
+   MDP Dynamic Programming Algorithms
   </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Dynamic Programming Algorithms
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Dynamic Programming Algorithms - Policy Iteration
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../policy-evaluation/_index.html">
-   Policy Evaluation (Prediction)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../policy-improvement/_index.html">
-   Policy Improvement (Control)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../value-iteration/_index.html">
-   Dynamic Programming Algorithms - Value Iteration
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  MDP Lab
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp-lab/recycling-robot/_index.html">
-   Finding the optimal policy of a recycling robot.
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp-lab/yield-management-capacity-control/_index.html">
-   Optimal Capacity Control
-  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Policy Iteration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../policy-evaluation/_index.html">
+     Policy Evaluation (Prediction)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../policy-improvement/_index.html">
+     Policy Improvement (Control)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../value-iteration/_index.html">
+     Value Iteration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../mdp-lab/recycling-robot/_index.html">
+     Finding the optimal policy of a recycling robot.
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -717,8 +705,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../../../ml-math/_index.html">
    Math for ML
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -1007,7 +995,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Dynamic Programming Algorithms - Policy Iteration</h1>
+                <h1>Policy Iteration</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1049,8 +1037,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="dynamic-programming-algorithms-policy-iteration">
-<h1>Dynamic Programming Algorithms - Policy Iteration<a class="headerlink" href="#dynamic-programming-algorithms-policy-iteration" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="policy-iteration">
+<h1>Policy Iteration<a class="headerlink" href="#policy-iteration" title="Permalink to this headline">#</a></h1>
 <p>In this section we develop dynamic programming algorithms for the so called <em>planning</em> problem (which is RL without learning) where we are dealing with a <em>perfectly known MDP</em>.</p>
 <p>In the Bellman expectation backup section we have derived the equations which allowed us to efficiently compute the value function.</p>
 <p>We have seen also that the Bellman optimality backup  that are non linear and need to be solved using iterative approaches - their solution will result in the optimal value function <span class="math notranslate nohighlight">\(v_*\)</span> and the optimal policy <span class="math notranslate nohighlight">\(\pi_*\)</span>.</p>
@@ -1072,14 +1060,14 @@ title="Print to PDF"
 <li><p>Not discounted episodic MDP (γ = 1)</p></li>
 <li><p>Non terminal states 1, …, 14</p></li>
 <li><p>One terminal state (shown twice as shaded squares)</p></li>
-<li><p>Actions leading out of the grid leave state unchanged</p></li>
+<li><p>The action that the agent takes, cause the intended state transition with probability 1.0. Actions leading out of the grid leave state unchanged.</p></li>
 <li><p>Reward is −1 until the terminal state is reached</p></li>
 <li><p>Agent follows a uniform random policy <span class="math notranslate nohighlight">\(\pi(north|.) = \pi(south|.) = \pi(east|.) = \pi(west | .) = 0.25\)</span></p></li>
 </ul>
 <p><img alt="Grid world (source: Sutton)" src="../../../../../_images/gridworld-sutton.PNG" /></p>
 <ul class="simple">
 <li><p>The terminal states are shaded. The reward is <span class="math notranslate nohighlight">\(-1\)</span> on all transitions until the terminal states are reached. The non-terminal states are <span class="math notranslate nohighlight">\(S_1,S_2,...,s_{14}\)</span>.</p></li>
-<li><p>We begin with random values (or utilities) and random policy <span class="math notranslate nohighlight">\(\pi\)</span></p></li>
+<li><p>We begin with random values (or 0.0) and a random policy <span class="math notranslate nohighlight">\(\pi\)</span></p></li>
 </ul>
 <p><img alt="policy-iter-1" src="../../../../../_images/policy-iter-1.PNG" />
 <em>Initial values and policy for policy iteration</em></p>

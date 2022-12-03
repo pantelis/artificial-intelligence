@@ -60,7 +60,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
     <link rel="next" title="Policy Improvement (Control)" href="../policy-improvement/_index.html" />
-    <link rel="prev" title="Dynamic Programming Algorithms - Policy Iteration" href="../policy-iteration/_index.html" />
+    <link rel="prev" title="Policy Iteration" href="../policy-iteration/_index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -515,7 +515,7 @@ const thebe_selector_output = ".output, .cell_output"
   Markov Decision Processes
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../_index.html">
    Markov Decision Processes
@@ -531,54 +531,42 @@ const thebe_selector_output = ".output, .cell_output"
    Bellman Expectation Backup
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../../bellman-optimality-backup/_index.html">
-   Bellman Optimality Backup
+   MDP Dynamic Programming Algorithms
   </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Dynamic Programming Algorithms
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../policy-iteration/_index.html">
-   Dynamic Programming Algorithms - Policy Iteration
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Policy Evaluation (Prediction)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../policy-improvement/_index.html">
-   Policy Improvement (Control)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../value-iteration/_index.html">
-   Dynamic Programming Algorithms - Value Iteration
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  MDP Lab
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp-lab/recycling-robot/_index.html">
-   Finding the optimal policy of a recycling robot.
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp-lab/yield-management-capacity-control/_index.html">
-   Optimal Capacity Control
-  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../policy-iteration/_index.html">
+     Policy Iteration
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Policy Evaluation (Prediction)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../policy-improvement/_index.html">
+     Policy Improvement (Control)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../value-iteration/_index.html">
+     Value Iteration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../mdp-lab/recycling-robot/_index.html">
+     Finding the optimal policy of a recycling robot.
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -717,8 +705,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../../../ml-math/_index.html">
    Math for ML
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -981,7 +969,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="policy-evaluation-prediction">
 <h1>Policy Evaluation (Prediction)<a class="headerlink" href="#policy-evaluation-prediction" title="Permalink to this headline">#</a></h1>
 <p>The policy <span class="math notranslate nohighlight">\(\pi\)</span> is evaluated when we have produced the state-value function <span class="math notranslate nohighlight">\(v_\pi(s)\)</span> for all states. In other words when we know the expected discounted returns that each state can offer us. To do so we apply the Bellman expectation backup equations repeatedly in an iterative fashion.</p>
-<p>We start at <span class="math notranslate nohighlight">\(k=0\)</span> by initializing all state-value function (a vactor) to <span class="math notranslate nohighlight">\(v_0(s)=0\)</span>. In each iteration <span class="math notranslate nohighlight">\(k+1\)</span> we start with the state value function of the previous iteration <span class="math notranslate nohighlight">\(v_k(s)\)</span> and apply the Bellman expectation backup as prescribed by the one step lookahead tree below that is decorated relative to what we have seen in the Bellman expectation backup with the iteration information. This is called the synchronous backup formulation as we are updating all the elements of the value function vector at the same time.</p>
+<p>We start at <span class="math notranslate nohighlight">\(k=0\)</span> by initializing all state-value function (a vector) to <span class="math notranslate nohighlight">\(v_0(s)=0\)</span>. In each iteration <span class="math notranslate nohighlight">\(k\)</span> we start with the state value function of the previous iteration <span class="math notranslate nohighlight">\(v_k(s)\)</span> and apply the Bellman expectation backup as prescribed by the one step lookahead tree below that is decorated relative to what we have seen in the Bellman expectation backup with the iteration information. This is called the synchronous backup formulation as we are updating all the elements of the value function vector at the same time.</p>
 <p><img alt="policy-evaluation-tree" src="../../../../../_images/policy-evaluation-tree.png" />
 <em>Tree representation of the state-value function with one step look ahead across iterations.</em></p>
 <p>The Bellman expectation backup is given by,</p>
@@ -1100,7 +1088,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Dynamic Programming Algorithms - Policy Iteration</p>
+            <p class="prev-next-title">Policy Iteration</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../policy-improvement/_index.html" title="next page">

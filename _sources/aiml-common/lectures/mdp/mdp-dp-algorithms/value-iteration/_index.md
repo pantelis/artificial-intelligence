@@ -1,8 +1,4 @@
----
-title: Dynamic Programming Algorithms - Value Iteration
----
-
-# Dynamic Programming Algorithms - Value Iteration
+# Value Iteration
 
 We already have seen that in the Gridworld example in the policy iteration section , we may not _need_ to reach the optimal state value function $v_*(s)$ to obtain an optimal policy result. The value function for the $k=3$ iteration results the same policy as the policy from a far more accurate value function (large k). 
 
