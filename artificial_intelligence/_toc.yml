@@ -78,7 +78,6 @@ parts:
     - file: aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_weights.ipynb      
     - file: aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.ipynb            
       
-  
 - caption: Probabilistic Reasoning
   chapters:    
   - file: aiml-common/lectures/pgm/pgm-intro/_index.md
@@ -109,18 +108,15 @@ parts:
   - file: aiml-common/lectures/mdp/mdp-intro/_index.md
   - file: aiml-common/lectures/mdp/bellman-expectation-backup/_index.md      
   - file: aiml-common/lectures/mdp/bellman-optimality-backup/_index.md      
-
-- caption:  Dynamic Programming Algorithms
-  chapters:
-  - file: aiml-common/lectures/mdp/mdp-dp-algorithms/policy-iteration/_index.md        
-  - file: aiml-common/lectures/mdp/mdp-dp-algorithms/policy-evaluation/_index.md        
-  - file: aiml-common/lectures/mdp/mdp-dp-algorithms/policy-improvement/_index.md        
-  - file: aiml-common/lectures/mdp/mdp-dp-algorithms/value-iteration/_index.md           
-
-- caption:  MDP Lab
-  chapters:  
-  - file: aiml-common/lectures/mdp/mdp-lab/recycling-robot/_index.md      
-  - file: aiml-common/lectures/mdp/mdp-lab/yield-management-capacity-control/_index.md      
+  
+    title: MDP Dynamic Programming Algorithms
+    sections:  
+      - file: aiml-common/lectures/mdp/mdp-dp-algorithms/policy-iteration/_index.md          
+      - file: aiml-common/lectures/mdp/mdp-dp-algorithms/policy-evaluation/_index.md        
+      - file: aiml-common/lectures/mdp/mdp-dp-algorithms/policy-improvement/_index.md        
+      - file: aiml-common/lectures/mdp/mdp-dp-algorithms/value-iteration/_index.md           
+      - file: aiml-common/lectures/mdp/mdp-lab/recycling-robot/_index.md      
+      #- file: aiml-common/lectures/mdp/mdp-lab/yield-management-capacity-control/_index.md      
   
 - caption: Reinforcement Learning
   chapters:
