@@ -25,6 +25,6 @@ Apart from the notes here that are largely based on [David Silver's (Deep Mind) 
 
 * You may also want to watch Andrew Ng's, [2018 version of his ML class](https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU) that includes MDP and RL lectures.
 
-Many of the algorithms presented here like policy and value iteration have been developed in [this](https://github.com/rlcode/reinforcement-learning) git repo that you should download and run while reading the notes. 
+Many of the algorithms presented here like policy and value iteration have been developed in [this](https://github.com/rlcode/reinforcement-learning) and [this](https://github.com/dennybritz/reinforcement-learning)  git repos that you should download and run while reading the notes. 
 
 ```
