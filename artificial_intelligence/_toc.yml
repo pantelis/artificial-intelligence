@@ -22,7 +22,7 @@ parts:
 - caption: The Learning Problem
   chapters:
   - file: aiml-common/lectures/learning-problem/_index.md
-  - file: aiml-common/lectures/regression/linear-regression/_index.ipynb 
+  - file: aiml-common/lectures/regression/linear-regression/linear_regression.ipynb 
   - file: aiml-common/lectures/optimization/sgd/_index.md
   - file: aiml-common/lectures/entropy/_index.md
   - file: aiml-common/lectures/optimization/maximum-likelihood/_index.md
