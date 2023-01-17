@@ -34,7 +34,8 @@ Artificial Intelligence (AI) is an important topic in computer science and offer
 
 **Logistics** {octicon}`organization;1em;sd-text-info`
 ^^^
-NYU Course Dates:  Sept 2  - Dec 9th 2022
+NYU Course Dates:  Jan 2023  - May 2023
+CS-GY-4613: Fri 11.30pm-2:00pm EST,  Loc:  Brooklyn
 CS-GY-6613: Fri 5.00pm-7:30pm EST,  Loc:  Brooklyn
 
 :::
@@ -70,10 +71,9 @@ Professor Office hours will be coordinated via chat  - the process is simple: di
 **Staff (TAs)** {octicon}`person;1em;sd-text-info`
 ^^^
 
-Vaibhav Singh (vs2410)
-
-Anshul Agrawal (ava8249)
-
+Vaibhav Singh (Graduate, 6613)
+Anshul Agrawal (Undergrad, 4613)
+Himanhsu Payal (Undergrad, 4613)
 :::
 
 :::{grid-item-card}
