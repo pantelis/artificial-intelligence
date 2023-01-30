@@ -5,11 +5,9 @@ title: Syllabus
 
 ## Books
 
-(a) AIMA - [Artificial Intelligence: A Modern Approach, by Stuart Russell, 4th edition, 2021](https://www.amazon.com/Artificial-Intelligence-A-Modern-Approach/dp/0134610997) and also [here.](http://aima.cs.berkeley.edu/)
-
-(b) GERON: "[Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow", 2nd Edition](https://www.amazon.com/Hands-Machine-Learning-Scikit-Learn-TensorFlow-dp-1492032646/dp/1492032646/ref=dp_ob_title_bk), by Geron, 2019. This is very useful if you aim in using TF2 but irrespectively of the framework essential for those new to Python to complete your projects. 
-
-(c) DL - Deep Learning: https://www.deeplearningbook.org/  (free). NOTE: See also the very good https://d2l.ai/ but the chapter references below are from the Ian Goodfellow's book that I am familiar with. 
+1. AIMA - [Artificial Intelligence: A Modern Approach, by Stuart Russell, 4th edition, 2021](https://www.amazon.com/Artificial-Intelligence-A-Modern-Approach/dp/0134610997) and also [here.](http://aima.cs.berkeley.edu/)
+2. GERON: "[Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow", 3rd Edition](https://www.amazon.com/Hands-Machine-Learning-Scikit-Learn-TensorFlow-dp-1492032646/dp/1492032646/ref=dp_ob_title_bk), by Geron, 2019. This is very useful if you aim in using TF2 but irrespectively of the framework essential for those new to Python to complete your projects. 
+3. DL - Deep Learning: https://www.deeplearningbook.org/  (free). NOTE: See also the very good https://d2l.ai/ but the chapter references below are from the Ian Goodfellow's book that I am familiar with. 
 
 ## Planned Schedule
 
