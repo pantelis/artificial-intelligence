@@ -743,6 +743,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments &amp; Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../assignments/probability/probability-assignment-5/index.html">
+   Probability Assignment
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -919,12 +931,7 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Generalized Policy Iteration
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#gpi-algorithms">
    GPI Algorithms
   </a>
@@ -948,12 +955,7 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Generalized Policy Iteration
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#gpi-algorithms">
    GPI Algorithms
   </a>
@@ -968,7 +970,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="generalized-policy-iteration">
+  <section class="tex2jax_ignore mathjax_ignore" id="generalized-policy-iteration">
 <h1>Generalized Policy Iteration<a class="headerlink" href="#generalized-policy-iteration" title="Permalink to this headline">#</a></h1>
 <p>Policy iteration consists of two simultaneous, interacting processes, one making the value function consistent with the current policy (policy evaluation), and the other making the policy greedy with respect to the current value function (policy improvement).</p>
 <p>In policy iteration, these two processes alternate, each completing before the other begins,but this is not really necessary.</p>
@@ -982,14 +984,14 @@ title="Print to PDF"
 <p><strong>The evaluation and improvement processes in GPI can be viewed as both competing and cooperating.</strong>  They compete in the sense that they pull in opposing directions.  Making the policy greedy with respect to the value function typically makes the value function incorrect for the changed policy, and making the value function consistent with the policy typically causes that policy no longer to be greedy.  In the long run,  however,  these two processes interact to find a single joint solution:  the optimal value function and an optimal policy.</p>
 <p><img alt="gpi" src="../../../../_images/gpi.png" />
 <em>We have seen this diagram in policy iteration where the arrows takes the system all the way to achieving one of the two goals completely.  In GPI one could also take smaller, incomplete steps toward each goal (not shown).  In either case, the two processes together achieve the overall goal of optimality even though neither is attempting to achieve it directly.</em></p>
-</section>
 <section id="gpi-algorithms">
-<h1>GPI Algorithms<a class="headerlink" href="#gpi-algorithms" title="Permalink to this headline">#</a></h1>
+<h2>GPI Algorithms<a class="headerlink" href="#gpi-algorithms" title="Permalink to this headline">#</a></h2>
 <p>The following tables summarize the algorithms between sample backup and full backup and are provided in this GPI section for reference.</p>
 <p><img alt="dp-td-tree-comparison" src="../../../../_images/dp-td-tree-comparison.png" />
 <em>Backup Trees for DP vs TD.</em></p>
 <p><img alt="dp-td-comparison-equations" src="../../../../_images/dp-td-comparison-equations.png" />
 <em>Update equation comparison between DP vs TD</em></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1042,7 +1044,7 @@ title="Print to PDF"
   
     By Pantelis Monogioudis, Ph.D<br/>
   
-      &copy; Copyright 2022.<br/>
+      &copy; Copyright 2023.<br/>
 </p>
         </footer>
     </div>

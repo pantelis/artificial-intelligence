@@ -1,9 +1,3 @@
----
-title: Lecture 9 - Reinforcement Learning
-weight: 110
-draft: false
----
-
 # Reinforcement Learning
 
 ![unified-view-rl](images/unified-view-rl.png)

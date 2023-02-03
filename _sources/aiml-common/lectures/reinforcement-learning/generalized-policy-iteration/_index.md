@@ -1,8 +1,5 @@
----
-title: Generalized Policy Iteration
----
 
-## Generalized Policy Iteration
+# Generalized Policy Iteration
 
 Policy iteration consists of two simultaneous, interacting processes, one making the value function consistent with the current policy (policy evaluation), and the other making the policy greedy with respect to the current value function (policy improvement).  
 
