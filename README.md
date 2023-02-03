@@ -10,7 +10,7 @@ If you'd like to develop and/or build the data-science book, you should:
 2. Launch the devcontainer via vscode dev container extension and run `poetry shell` to lauch the virtual environment `ai-book-py3.9`
 3. (Optional) Edit the books source files located in the `artificial_intelligence/` directory
 4. (Optional) Run `jupyter-book clean artificial_intelligence/` to remove any existing builds
-5.  Run `sphinx-autobuild --host 0.0.0.0 artificial_intelligence artificial_intelligence/_build/html` for interactive editing and liveview. 
+5.  Run `sphinx-autobuild --host 0.0.0.0 artificial_intelligence _build/html` for interactive editing and liveview. 
 6. (Optiona) Run `jupyter-book build artificial_intelligence/` for an offline build
 
 A fully-rendered HTML version of the book will be built in `artificial_intelligence/_build/html/`.
