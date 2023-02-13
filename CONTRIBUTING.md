@@ -42,7 +42,7 @@ If you are proposing a feature:
 
 ## Get Started
 
-Ready to contribute? Here's how to set up `data-science` for local development.
+Ready to contribute? Here's a typical local development workflow.
 
 1. Fork the repo on GitHub.
 2. Clone your fork locally.
@@ -51,6 +51,3 @@ Ready to contribute? Here's how to set up `data-science` for local development.
 5. Commit your changes and push your branch to GitHub.
 6. Submit a pull request through the GitHub website.
 
-## Code of Conduct
-
-Please note that the data-science project is released with a [Contributor Code of Conduct](CONDUCT.md). By contributing to this project you agree to abide by its terms.
