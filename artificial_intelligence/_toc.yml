@@ -176,7 +176,7 @@ parts:
   
 - caption:  Assignments CS-GY-6613
   chapters: 
-  file: aiml-common/assignments/logistic-regression-1/index.md
+  - file: aiml-common/assignments/logistic-regression-1/index.md
 #   - file: aiml-common/projects/usv/_index.md
 #   - file: aiml-common/projects/relation-networks/index.md
 #   - file: aiml-common/projects/ns-vqa/index.md    
