@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Planning &#8212; Introduction to Artificial Intelligence</title>
+    <title>Logistic Regression &#8212; Introduction to Artificial Intelligence</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,11 +53,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/planning/_index.html" />
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/assignments/logistic-regression-1/index.html" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Autonomous Agents" href="../autonomous-cars/_index.html" />
-    <link rel="prev" title="Logical Agents" href="../logical-reasoning/logical-agents/_index.html" />
+    <link rel="prev" title="Bike Rides and the Poisson Model" href="../mle/poisson-regression-1/index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -128,27 +127,27 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../ai-intro/course-introduction/_index.html">
+  <a class="reference internal" href="../../lectures/ai-intro/course-introduction/_index.html">
    Course Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../ai-intro/data-science-360/_index.html">
+  <a class="reference internal" href="../../lectures/ai-intro/data-science-360/_index.html">
    Data Science 360
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../ai-intro/systems-approach/_index.html">
+  <a class="reference internal" href="../../lectures/ai-intro/systems-approach/_index.html">
    The four approaches towards AI
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../ai-intro/agents/_index.html">
+  <a class="reference internal" href="../../lectures/ai-intro/agents/_index.html">
    Agent-Environment Interface
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ai-intro/pipelines/_index.html">
+  <a class="reference internal" href="../../lectures/ai-intro/pipelines/_index.html">
    Pipelines
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -158,12 +157,12 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../uber-ml-arch-case-study/_index.html">
+    <a class="reference internal" href="../../lectures/uber-ml-arch-case-study/_index.html">
      A Case Study of an ML Architecture - Uber
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ai-intro/pipelines/02_end_to_end_machine_learning_project.html">
+    <a class="reference internal" href="../../lectures/ai-intro/pipelines/02_end_to_end_machine_learning_project.html">
      Setup
     </a>
    </li>
@@ -177,37 +176,37 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../learning-problem/_index.html">
+  <a class="reference internal" href="../../lectures/learning-problem/_index.html">
    The Learning Problem
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../regression/linear-regression/linear_regression.html">
+  <a class="reference internal" href="../../lectures/regression/linear-regression/linear_regression.html">
    Linear Regression
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../optimization/sgd/_index.html">
+  <a class="reference internal" href="../../lectures/optimization/sgd/_index.html">
    Stochastic Gradient Descent
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../entropy/_index.html">
+  <a class="reference internal" href="../../lectures/entropy/_index.html">
    Entropy
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../optimization/maximum-likelihood/marginal_maximum_likelihood.html">
+  <a class="reference internal" href="../../lectures/optimization/maximum-likelihood/marginal_maximum_likelihood.html">
    Maximum Likelihood Estimation of a marginal model
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../optimization/maximum-likelihood/conditional_maximum_likelihood.html">
+  <a class="reference internal" href="../../lectures/optimization/maximum-likelihood/conditional_maximum_likelihood.html">
    Maximum Likelihood (ML) Estimation of conditional models
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../pgm/bayesian-inference/_index.html">
+  <a class="reference internal" href="../../lectures/pgm/bayesian-inference/_index.html">
    Bayesian Inference
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -217,19 +216,19 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../pgm/bayesian-coin/_index.html">
+    <a class="reference internal" href="../../lectures/pgm/bayesian-coin/_index.html">
      Bayesian Coin Flipping
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../classification/classification-intro/_index.html">
+  <a class="reference internal" href="../../lectures/classification/classification-intro/_index.html">
    Introduction to Classification
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../classification/logistic-regression/_index.html">
+  <a class="reference internal" href="../../lectures/classification/logistic-regression/_index.html">
    Logistic Regression
   </a>
  </li>
@@ -241,42 +240,42 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../classification/perceptron/_index.html">
+  <a class="reference internal" href="../../lectures/classification/perceptron/_index.html">
    The Neuron (Perceptron)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../dnn/dnn-intro/_index.html">
+  <a class="reference internal" href="../../lectures/dnn/dnn-intro/_index.html">
    Deep Neural Networks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../dnn/backprop-intro/_index.html">
+  <a class="reference internal" href="../../lectures/dnn/backprop-intro/_index.html">
    Introduction to Backpropagation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../dnn/backprop-dnn/_index.html">
+  <a class="reference internal" href="../../lectures/dnn/backprop-dnn/_index.html">
    Backpropagation in Deep Neural Networks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../dnn/backprop-dnn-exercises/_index.html">
+  <a class="reference internal" href="../../lectures/dnn/backprop-dnn-exercises/_index.html">
    Backpropagation DNN exercises
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../dnn/fashion-mnist-case-study.html">
+  <a class="reference internal" href="../../lectures/dnn/fashion-mnist-case-study.html">
    Fashion MNIST Case Study
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../optimization/regularization/_index.html">
+  <a class="reference internal" href="../../lectures/optimization/regularization/_index.html">
    Regularization in Deep Neural Networks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../optimization/regularization/regularization-workshop-1.html">
+  <a class="reference internal" href="../../lectures/optimization/regularization/regularization-workshop-1.html">
    Regularization Workshop
   </a>
  </li>
@@ -288,27 +287,27 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../cnn/cnn-intro/_index.html">
+  <a class="reference internal" href="../../lectures/cnn/cnn-intro/_index.html">
    Introduction to Convolutional Neural Networks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../cnn/cnn-layers/_index.html">
+  <a class="reference internal" href="../../lectures/cnn/cnn-layers/_index.html">
    CNN Architectures
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../cnn/cnn-example-architectures/_index.html">
+  <a class="reference internal" href="../../lectures/cnn/cnn-example-architectures/_index.html">
    CNN Example Architectures
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">
+  <a class="reference internal" href="../../lectures/cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">
    Using convnets with small datasets
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../cnn/cnn-explainers/_index.html">
+  <a class="reference internal" href="../../lectures/cnn/cnn-explainers/_index.html">
    CNN Explainers
   </a>
  </li>
@@ -320,12 +319,12 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../transfer-learning/transfer-learning-introduction.html">
+  <a class="reference internal" href="../../lectures/transfer-learning/transfer-learning-introduction.html">
    Introduction to Transfer Learning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../transfer-learning/transfer_learning_tutorial.html">
+  <a class="reference internal" href="../../lectures/transfer-learning/transfer_learning_tutorial.html">
    Transfer Learning for Computer Vision Tutorial
   </a>
  </li>
@@ -337,17 +336,17 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../scene-understanding/scene-understanding-intro/index.html">
+  <a class="reference internal" href="../../lectures/scene-understanding/scene-understanding-intro/index.html">
    Introduction to Scene Understanding
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../scene-understanding/feature-extraction-resnet/index.html">
+  <a class="reference internal" href="../../lectures/scene-understanding/feature-extraction-resnet/index.html">
    Feature Extraction via Residual Networks
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../scene-understanding/object-detection/object-detection-intro/index.html">
+  <a class="reference internal" href="../../lectures/scene-understanding/object-detection/object-detection-intro/index.html">
    Object Detection
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -357,24 +356,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../scene-understanding/object-detection/detection-metrics/index.html">
+    <a class="reference internal" href="../../lectures/scene-understanding/object-detection/detection-metrics/index.html">
      Object Detection and Semantic Segmentation Metrics
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../scene-understanding/object-detection/rcnn-object-detection/index.html">
+    <a class="reference internal" href="../../lectures/scene-understanding/object-detection/rcnn-object-detection/index.html">
      Region-CNN (RCNN) Object Detection
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../scene-understanding/object-detection/faster-rcnn-object-detection/index.html">
+    <a class="reference internal" href="../../lectures/scene-understanding/object-detection/faster-rcnn-object-detection/index.html">
      Fast and Faster RCNN Object Detection
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../scene-understanding/semantic-segmentation/index.html">
+  <a class="reference internal" href="../../lectures/scene-understanding/semantic-segmentation/index.html">
    Semantic Segmentation
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -384,32 +383,32 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/index.html">
+    <a class="reference internal" href="../../lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/index.html">
      Mask R-CNN Semantic Segmentation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/demo.html">
+    <a class="reference internal" href="../../lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/demo.html">
      Mask R-CNN Demo
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_data.html">
+    <a class="reference internal" href="../../lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_data.html">
      Mask R-CNN - Inspect Training Data
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_model.html">
+    <a class="reference internal" href="../../lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_model.html">
      Mask R-CNN - Inspect Trained Model
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_weights.html">
+    <a class="reference internal" href="../../lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_weights.html">
      Mask R-CNN - Inspect Weights of a Trained Model
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.html">
+    <a class="reference internal" href="../../lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.html">
      Detectron2 Beginner’s Tutorial
     </a>
    </li>
@@ -423,27 +422,27 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../pgm/pgm-intro/_index.html">
+  <a class="reference internal" href="../../lectures/pgm/pgm-intro/_index.html">
    Introduction to Probabilistic Reasoning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../pgm/recursive-state-estimation/_index.html">
+  <a class="reference internal" href="../../lectures/pgm/recursive-state-estimation/_index.html">
    Recursive State Estimation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../pgm/bayesian-filter-workshop/_index.html">
+  <a class="reference internal" href="../../lectures/pgm/bayesian-filter-workshop/_index.html">
    Bayesian Filter Workshop
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../pgm/hmm-localization/_index.html">
+  <a class="reference internal" href="../../lectures/pgm/hmm-localization/_index.html">
    Localization and Tracking
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../pgm/kalman-workshop/_index.html">
+  <a class="reference internal" href="../../lectures/pgm/kalman-workshop/_index.html">
    Kalman Filter Workshop
   </a>
  </li>
@@ -455,17 +454,17 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../logical-reasoning/automated-reasoning/_index.html">
+  <a class="reference internal" href="../../lectures/logical-reasoning/automated-reasoning/_index.html">
    Automated Reasoning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../logical-reasoning/propositional-logic/_index.html">
+  <a class="reference internal" href="../../lectures/logical-reasoning/propositional-logic/_index.html">
    World Models
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../logical-reasoning/logical-agents/_index.html">
+  <a class="reference internal" href="../../lectures/logical-reasoning/logical-agents/_index.html">
    Logical Agents
   </a>
  </li>
@@ -475,39 +474,39 @@ const thebe_selector_output = ".output, .cell_output"
   Planning without Interactions
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lectures/planning/_index.html">
    Planning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../autonomous-cars/_index.html">
+  <a class="reference internal" href="../../lectures/autonomous-cars/_index.html">
    Autonomous Agents
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../autonomous-cars/imitation-learning/_index.html">
+  <a class="reference internal" href="../../lectures/autonomous-cars/imitation-learning/_index.html">
    Imitation Learning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="classical-planning/_index.html">
+  <a class="reference internal" href="../../lectures/planning/classical-planning/_index.html">
    Classical Planning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="search/_index.html">
+  <a class="reference internal" href="../../lectures/planning/search/_index.html">
    Planning with Search
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="search/forward-search/_index.html">
+  <a class="reference internal" href="../../lectures/planning/search/forward-search/_index.html">
    Forward Search Algorithms
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="search/a-star/_index.html">
+  <a class="reference internal" href="../../lectures/planning/search/a-star/_index.html">
    The A* Algorithm
   </a>
  </li>
@@ -519,22 +518,22 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../mdp/_index.html">
+  <a class="reference internal" href="../../lectures/mdp/_index.html">
    Markov Decision Processes
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../mdp/mdp-intro/_index.html">
+  <a class="reference internal" href="../../lectures/mdp/mdp-intro/_index.html">
    Introduction to MDP
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../mdp/bellman-expectation-backup/_index.html">
+  <a class="reference internal" href="../../lectures/mdp/bellman-expectation-backup/_index.html">
    Bellman Expectation Backup
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../mdp/bellman-optimality-backup/_index.html">
+  <a class="reference internal" href="../../lectures/mdp/bellman-optimality-backup/_index.html">
    MDP Dynamic Programming Algorithms
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -544,27 +543,27 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../mdp/mdp-dp-algorithms/policy-iteration/_index.html">
+    <a class="reference internal" href="../../lectures/mdp/mdp-dp-algorithms/policy-iteration/_index.html">
      Policy Iteration
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../mdp/mdp-dp-algorithms/policy-evaluation/_index.html">
+    <a class="reference internal" href="../../lectures/mdp/mdp-dp-algorithms/policy-evaluation/_index.html">
      Policy Evaluation (Prediction)
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../mdp/mdp-dp-algorithms/policy-improvement/_index.html">
+    <a class="reference internal" href="../../lectures/mdp/mdp-dp-algorithms/policy-improvement/_index.html">
      Policy Improvement (Control)
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../mdp/mdp-dp-algorithms/value-iteration/_index.html">
+    <a class="reference internal" href="../../lectures/mdp/mdp-dp-algorithms/value-iteration/_index.html">
      Value Iteration
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../mdp/mdp-lab/recycling-robot/_index.html">
+    <a class="reference internal" href="../../lectures/mdp/mdp-lab/recycling-robot/_index.html">
      Finding the optimal policy of a recycling robot.
     </a>
    </li>
@@ -578,37 +577,37 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../reinforcement-learning/_index.html">
+  <a class="reference internal" href="../../lectures/reinforcement-learning/_index.html">
    Reinforcement Learning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../reinforcement-learning/prediction/monte-carlo.html">
+  <a class="reference internal" href="../../lectures/reinforcement-learning/prediction/monte-carlo.html">
    Monte-Carlo Prediction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../reinforcement-learning/prediction/temporal-difference.html">
+  <a class="reference internal" href="../../lectures/reinforcement-learning/prediction/temporal-difference.html">
    Temporal Difference (TD) Prediction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../reinforcement-learning/control/_index.html">
+  <a class="reference internal" href="../../lectures/reinforcement-learning/control/_index.html">
    Model-free Control
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../reinforcement-learning/generalized-policy-iteration/_index.html">
+  <a class="reference internal" href="../../lectures/reinforcement-learning/generalized-policy-iteration/_index.html">
    Generalized Policy Iteration
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../reinforcement-learning/control/sarsa/_index.html">
+  <a class="reference internal" href="../../lectures/reinforcement-learning/control/sarsa/_index.html">
    The SARSA Algorithm
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../reinforcement-learning/reinforce/_index.html">
+  <a class="reference internal" href="../../lectures/reinforcement-learning/reinforce/_index.html">
    The REINFORCE Algorithm
   </a>
  </li>
@@ -620,22 +619,22 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../rnn/introduction/_index.html">
+  <a class="reference internal" href="../../lectures/rnn/introduction/_index.html">
    Introduction to Recurrent Neural Networks (RNN)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../rnn/simple-rnn/_index.html">
+  <a class="reference internal" href="../../lectures/rnn/simple-rnn/_index.html">
    Simple RNN
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../rnn/lstm/_index.html">
+  <a class="reference internal" href="../../lectures/rnn/lstm/_index.html">
    The Long Short-Term Memory (LSTM) Cell Architecture
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../rnn/15_processing_sequences_using_rnns_and_cnns.html">
+  <a class="reference internal" href="../../lectures/rnn/15_processing_sequences_using_rnns_and_cnns.html">
    Processing Sequences Using RNN
   </a>
  </li>
@@ -647,52 +646,52 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../nlp/nlp-intro/_index.html">
+  <a class="reference internal" href="../../lectures/nlp/nlp-intro/_index.html">
    Introduction to NLP
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../nlp/word2vec/_index.html">
+  <a class="reference internal" href="../../lectures/nlp/word2vec/_index.html">
    Word2Vec Embeddings
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../nlp/word2vec/word2vec-workshop.html">
+  <a class="reference internal" href="../../lectures/nlp/word2vec/word2vec-workshop.html">
    Word2Vec Workshop
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../nlp/language-models/_index.html">
+  <a class="reference internal" href="../../lectures/nlp/language-models/_index.html">
    RNN Language Models
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../nlp/language-models/simple-rnn-language-model.html">
+  <a class="reference internal" href="../../lectures/nlp/language-models/simple-rnn-language-model.html">
    Simple RNN Language Model
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../nlp/language-models/cnn-language-model.html">
+  <a class="reference internal" href="../../lectures/nlp/language-models/cnn-language-model.html">
    CNN Language Model
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../nlp/nmt/_index.html">
+  <a class="reference internal" href="../../lectures/nlp/nmt/_index.html">
    Neural Machine Translation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../nlp/nmt-metrics/_index.html">
+  <a class="reference internal" href="../../lectures/nlp/nmt-metrics/_index.html">
    NMT Metrics - BLEU
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../nlp/attention/_index.html">
+  <a class="reference internal" href="../../lectures/nlp/attention/_index.html">
    Attention in NMT
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../nlp/transformers/_index.html">
+  <a class="reference internal" href="../../lectures/nlp/transformers/_index.html">
    Transformers Workshop
   </a>
  </li>
@@ -704,7 +703,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ml-math/_index.html">
+  <a class="reference internal" href="../../lectures/ml-math/_index.html">
    Math for ML
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -714,17 +713,17 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ml-math/probability/_index.html">
+    <a class="reference internal" href="../../lectures/ml-math/probability/_index.html">
      Probability Basics
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../linear-algebra/_index.html">
+    <a class="reference internal" href="../../lectures/linear-algebra/_index.html">
      Linear Algebra for Machine Learning
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ml-math/calculus/_index.html">
+    <a class="reference internal" href="../../lectures/ml-math/calculus/_index.html">
      Calculus
     </a>
    </li>
@@ -743,7 +742,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../python/_index.html">
+  <a class="reference internal" href="../../lectures/python/_index.html">
    Learn Python
   </a>
  </li>
@@ -755,7 +754,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../assignments/probability/probability-assignment-5/index.html">
+  <a class="reference internal" href="../probability/probability-assignment-5/index.html">
    Probability Assignment
   </a>
  </li>
@@ -767,12 +766,12 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../assignments/mle/mle-gaussian.html">
+  <a class="reference internal" href="../mle/mle-gaussian.html">
    Gaussian Maximum Likelihood
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../assignments/mle/poisson-regression-1/index.html">
+  <a class="reference internal" href="../mle/poisson-regression-1/index.html">
    Bike Rides and the Poisson Model
   </a>
  </li>
@@ -782,9 +781,9 @@ const thebe_selector_output = ".output, .cell_output"
   Assignments CS-GY-6613
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../assignments/logistic-regression-1/index.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Logistic Regression
   </a>
  </li>
@@ -878,7 +877,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/planning/_index.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/assignments/logistic-regression-1/index.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -906,7 +905,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../_sources/aiml-common/lectures/planning/_index.md"
+        <a href="../../../_sources/aiml-common/assignments/logistic-regression-1/index.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -943,23 +942,90 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#environment-setup-10-points">
+   Environment Setup (10 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-preprocessing-30-points">
+   Data Preprocessing (30 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistic-regression-40-points">
+   Logistic Regression (40 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performance-results-20-points">
+   Performance Results (20 points)
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Planning</h1>
+                <h1>Logistic Regression</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#environment-setup-10-points">
+   Environment Setup (10 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-preprocessing-30-points">
+   Data Preprocessing (30 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistic-regression-40-points">
+   Logistic Regression (40 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performance-results-20-points">
+   Performance Results (20 points)
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -967,9 +1033,30 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="planning">
-<h1>Planning<a class="headerlink" href="#planning" title="Permalink to this headline">#</a></h1>
-<p>If we are able to express the domain and problem at hand in a suitably expressive language, with  logical reasoning we are able to infer if predicates are satisfied or not and in this chapter can use domain-independent solvers to find solutions (e.g. via search algorithms) of the best sequence of actions to reach our goal state.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="logistic-regression">
+<h1>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">#</a></h1>
+<p>You are interviewing with Google’s data science team having the responsibility of predicting the Click Through Rate (CTR) of ads they place on multiple web properties. Your hiring manager keen on testing you out, suggests to download <a class="reference external" href="https://www.kaggle.com/competitions/avazu-ctr-prediction/data">this dataset</a> and asks you to code up a model that predicts the CTR based on Logistic Regression.</p>
+<section id="environment-setup-10-points">
+<h2>Environment Setup (10 points)<a class="headerlink" href="#environment-setup-10-points" title="Permalink to this headline">#</a></h2>
+<p>You will deliver this assignment in the form of a Colab notebook (or a Github repo if you like). Both must be configured to allow anyone to run the code (in Colab this is <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">All</span></code>) and get the results. Setup your environment that can automatically download the data from Kaggle and store them in a location. You may <a class="reference external" href="https://www.kaggle.com/docs/api#interacting-with-datasets">want to read for this task</a> and ensure that this task is implemented with Python.</p>
+</section>
+<section id="data-preprocessing-30-points">
+<h2>Data Preprocessing (30 points)<a class="headerlink" href="#data-preprocessing-30-points" title="Permalink to this headline">#</a></h2>
+<p>Preprocess the data you are given to your liking. This may include dropping some columns you wont use, addressing noisy or missing data etc.</p>
+<p>Use Pandas as a  dataframe abstraction for this task. You can learn about Pandas here:</p>
+<div class="video_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/PcvsOaixUh8" style="border: 0; height: 345px; width: 560px">
+</iframe></div><p>Ultimately this task has to result to a dataframe that you will use for the training and testing the classifier.</p>
+</section>
+<section id="logistic-regression-40-points">
+<h2>Logistic Regression (40 points)<a class="headerlink" href="#logistic-regression-40-points" title="Permalink to this headline">#</a></h2>
+<p>Implement the logistic regression solution to the prediction problem that can work with Stochastic Gradient Descent (SGD).</p>
+<p>Show clearly all equations of the gradient and include comments in either markdown or Python (inline to code) explaining every stage of processing. Also, highlight any enhancements you may have done to improve performance.</p>
+</section>
+<section id="performance-results-20-points">
+<h2>Performance Results (20 points)<a class="headerlink" href="#performance-results-20-points" title="Permalink to this headline">#</a></h2>
+<p>Plot the precision vs recall curve of your classifier. Clearly explain the tradeoff between the two quantities and the shape of the curve.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -985,7 +1072,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./aiml-common/lectures/planning"
+            path: "./aiml-common/assignments/logistic-regression-1"
         },
         predefinedOutput: true
     }
@@ -999,19 +1086,12 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../logical-reasoning/logical-agents/_index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../mle/poisson-regression-1/index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Logical Agents</p>
+            <p class="prev-next-title">Bike Rides and the Poisson Model</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="../autonomous-cars/_index.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Autonomous Agents</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
