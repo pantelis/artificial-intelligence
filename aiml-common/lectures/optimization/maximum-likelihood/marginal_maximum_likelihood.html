@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Maximum Likelihood (ML) Estimation &#8212; Introduction to Artificial Intelligence</title>
+    <title>Maximum Likelihood Estimation of a marginal model &#8212; Introduction to Artificial Intelligence</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,10 +55,10 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/optimization/maximum-likelihood/_index.html" />
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/optimization/maximum-likelihood/marginal_maximum_likelihood.html" />
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Bayesian Inference" href="../../pgm/bayesian-inference/_index.html" />
+    <link rel="next" title="Maximum Likelihood (ML) Estimation of conditional models" href="conditional_maximum_likelihood.html" />
     <link rel="prev" title="Entropy" href="../../entropy/_index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -200,7 +200,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Maximum Likelihood (ML) Estimation
+   Maximum Likelihood Estimation of a marginal model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="conditional_maximum_likelihood.html">
+   Maximum Likelihood (ML) Estimation of conditional models
   </a>
  </li>
  <li class="toctree-l1 has-children">
@@ -846,7 +851,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/optimization/maximum-likelihood/_index.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/optimization/maximum-likelihood/marginal_maximum_likelihood.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -874,7 +879,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../../_sources/aiml-common/lectures/optimization/maximum-likelihood/_index.md"
+        <a href="../../../../_sources/aiml-common/lectures/optimization/maximum-likelihood/marginal_maximum_likelihood.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -885,7 +890,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -933,28 +938,15 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-marginal-models-p-model-mathbf-x-mathbf-w">
-   Learning marginal models -
-   <span class="math notranslate nohighlight">
-    \(p_{model}(\mathbf{x}; \mathbf w)\)
-   </span>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Maximum Likelihood Estimation of a marginal model
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-conditional-models-hat-p-model-mathbf-y-mathbf-x-mathbf-w">
-   Learning conditional models -
-   <span class="math notranslate nohighlight">
-    \(\hat p_{model}(\mathbf y | \mathbf x; \mathbf w)\)
-   </span>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-and-implementation">
-     Example and implementation
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -965,7 +957,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Maximum Likelihood (ML) Estimation</h1>
+                <h1>Maximum Likelihood Estimation of a marginal model</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -975,28 +967,15 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-marginal-models-p-model-mathbf-x-mathbf-w">
-   Learning marginal models -
-   <span class="math notranslate nohighlight">
-    \(p_{model}(\mathbf{x}; \mathbf w)\)
-   </span>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Maximum Likelihood Estimation of a marginal model
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-conditional-models-hat-p-model-mathbf-y-mathbf-x-mathbf-w">
-   Learning conditional models -
-   <span class="math notranslate nohighlight">
-    \(\hat p_{model}(\mathbf y | \mathbf x; \mathbf w)\)
-   </span>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-and-implementation">
-     Example and implementation
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -1008,12 +987,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="maximum-likelihood-ml-estimation">
-<h1>Maximum Likelihood (ML) Estimation<a class="headerlink" href="#maximum-likelihood-ml-estimation" title="Permalink to this headline">#</a></h1>
-<p>Most of the models in supervised machine learning are estimated using the ML principle. In this section we introduce the principle and outline the objective function of the ML estimator that has wide applicability in many learning tasks.</p>
-<section id="learning-marginal-models-p-model-mathbf-x-mathbf-w">
-<h2>Learning marginal models -  <span class="math notranslate nohighlight">\(p_{model}(\mathbf{x}; \mathbf w)\)</span><a class="headerlink" href="#learning-marginal-models-p-model-mathbf-x-mathbf-w" title="Permalink to this headline">#</a></h2>
-<p>Assume that we have <span class="math notranslate nohighlight">\(m\)</span> examples drawn from a data generator that generates the vectors <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathcal{X}\)</span> <em>independently and identically distributed (i.i.d.)</em> according to some unknown (but fixed) probability distribution function <span class="math notranslate nohighlight">\(p_{data}(\mathbf{x})\)</span>.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="maximum-likelihood-estimation-of-a-marginal-model">
+<h1>Maximum Likelihood Estimation of a marginal model<a class="headerlink" href="#maximum-likelihood-estimation-of-a-marginal-model" title="Permalink to this headline">#</a></h1>
+<p>Most of the models in supervised machine learning are estimated using the ML principle. In this section we introduce the principle and outline the objective function of the ML estimator that has wide applicability in many learning tasks.  Assume that we have <span class="math notranslate nohighlight">\(m\)</span> examples drawn from a data generator that generates the vectors <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathcal{X}\)</span> <em>independently and identically distributed (i.i.d.)</em> according to some unknown (but fixed) probability distribution function <span class="math notranslate nohighlight">\(p_{data}(\mathbf{x})\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\mathbb{X} = \{ \mathbf{x}_1, \dots, \mathbf{x}_m \}\]</div>
 <p>Let <span class="math notranslate nohighlight">\(p_{model}(\mathbf x, \mathbf w)\)</span> a parametric family of probability distributions (our hypothesis set) over the same space that attempts to approximate (model) <span class="math notranslate nohighlight">\(p_{data}(\mathbf{x})\)</span> as closely as possible using a suitable estimate of the parameter vector <span class="math notranslate nohighlight">\(\mathbf w\)</span>. The ML estimator for <span class="math notranslate nohighlight">\(\mathbf w\)</span> is defined as:</p>
@@ -1037,27 +1013,167 @@ title="Print to PDF"
 <div class="math notranslate nohighlight">
 \[ L(\mathbf w) = CE = - \mathbb{E_{\mathbf x \sim \hat p_{data}}}  \log p_{model}(\mathbf x, \mathbf w)\]</div>
 <p>Cross entropy is a very generic objective (loss) function that is applicable to any <em>supervised learning</em> problem that uses maximum likelihood to estimate a model.</p>
-</section>
-<section id="learning-conditional-models-hat-p-model-mathbf-y-mathbf-x-mathbf-w">
-<h2>Learning conditional models - <span class="math notranslate nohighlight">\(\hat p_{model}(\mathbf y | \mathbf x; \mathbf w)\)</span><a class="headerlink" href="#learning-conditional-models-hat-p-model-mathbf-y-mathbf-x-mathbf-w" title="Permalink to this headline">#</a></h2>
-<p>The discussion in the marginal distribution  is equivalently applicable to the conditional distribution <span class="math notranslate nohighlight">\(p_{model}(\mathbf y | \mathbf x, \mathbf w)\)</span> which governs supervised learning, <span class="math notranslate nohighlight">\(y\)</span> being the symbol of the label / target variable. Therefore all machine learning software frameworks offer excellent APIs on CE calculation.</p>
+<p>To visualize the above, lets start with a simple Gaussian distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.01</span><span class="p">),</span>
+                <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.99</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+       <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;norm pdf&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fdfd523b588&gt;]
+</pre></div>
+</div>
+<img alt="../../../../_images/marginal_maximum_likelihood_2_1.png" src="../../../../_images/marginal_maximum_likelihood_2_1.png" />
+</div>
+</div>
+<p>We can retrieve the probability of events happening, e.g. x=3.0</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p_3</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also easily calculate the joint probability of iid (indepenent and identically distributed) events</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p_7</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
+
+<span class="n">joint</span> <span class="o">=</span> <span class="n">p_3</span><span class="o">*</span><span class="n">p_7</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Assume now that someone is giving us an array of values and ask us to estimate a <span class="math notranslate nohighlight">\(p_{model}\)</span> that is a ‘good fit’ to the gievn data. How we can go about solving this problem with Maximum Likelihood Estimation (MLE)? Notice that as addressed in [3], probability and likelihood have a reverse relationship.  Probability attaches to possible results; likelihood attaches to hypotheses. The likelihood function gives the relative likelihoods of different values for the parameter(s) of the distribution from which the data are assumed to have been drawn, given those data.</p>
+<p>Lets plot a couple of <span class="math notranslate nohighlight">\(p_{model}\)</span> hypotheses - the data are shown below in the same plot. Both hypotheses are plausible.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+       <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;norm pdf&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+       <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;norm pdf&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fdfc6b32208&gt;]
+</pre></div>
+</div>
+<img alt="../../../../_images/marginal_maximum_likelihood_8_1.png" src="../../../../_images/marginal_maximum_likelihood_8_1.png" />
+</div>
+</div>
+<p>As detailed in Ref [2], its important to safeguard against underflow that may well result from multiplying many numbers (for large datasets) that are less than 1.0 (probabilities). So we do the calculations in the log domain using the identity</p>
 <div class="math notranslate nohighlight">
-\[ L(\mathbf w) = - \mathbb{E_{\mathbf x, \mathbf y \sim \hat p_{data}}}  \log p_{model}(\mathbf y | \mathbf x; \mathbf w)\]</div>
-<p>The attractiveness of the ML solution is that the CE (also known as log-loss) is general and we <em>don’t need to re-design it</em> when we change the model.</p>
-<section id="example-and-implementation">
-<h3>Example and implementation<a class="headerlink" href="#example-and-implementation" title="Permalink to this headline">#</a></h3>
-<p>It is now instructive to go over an example to understand that even the plain-old mean squared error (MSE), the objective that is common in the regression setting, falls under the same umbrella - its the cross entropy between <span class="math notranslate nohighlight">\(\hat p_{data}\)</span> and a Gaussian model.</p>
-<p>Please follow the discussion associated with Section 5.5.1 of the Ian Goodfellow’s book or section 20.2.4 of Russell &amp; Norvig’s book and <span class="xref myst">these notes</span>  and consider the following figure for assistance to visualize the relationship of <span class="math notranslate nohighlight">\(p_{data}\)</span> and <span class="math notranslate nohighlight">\(p_{model}\)</span>.</p>
-<p><img alt="conditional-model-gaussian" src="../../../../_images/conditional-model-gaussian.png" />
-<em>Please replace the y-axis target variable <span class="math notranslate nohighlight">\(t\)</span> with <span class="math notranslate nohighlight">\(y\)</span>. The green dashed line shows the mean of the <span class="math notranslate nohighlight">\(p_{model}\)</span> distribution.</em></p>
-<p>The following notebook goes through the MLE calculation from scratch and shows the negative log-likelihood curves for a very simple MLE problem of fitting a Gaussian <span class="math notranslate nohighlight">\(p_{model}\)</span> to an array produced by sampling an unknown underlying distribution <span class="math notranslate nohighlight">\(p_{data}\)</span>.</p>
-<iframe src="https://nbviewer.jupyter.org/github/pantelis-classes/cs634-notebooks/blob/master/maximum_likelihood.ipynb" width="900" height="1200"></iframe>
-<p>The following notebook is instructive of what MLE is calculating for the dataset we have seen before. Note that this notebook reveals also the large swings that the <span class="math notranslate nohighlight">\(\mathbf w\)</span> takes to fit the model for larger capacities. Please vary <span class="math notranslate nohighlight">\(M\)</span> in the code to observe the dynamic range of the weights of the model.</p>
-<p><img alt="w-star-various-capacities" src="../../../../_images/w-star-various-capacities.png" />
-<em>Optimal <span class="math notranslate nohighlight">\(\mathbf w\)</span> for various model capacities</em></p>
-<iframe src="https://nbviewer.jupyter.org/github/pantelis/PRML/blob/master/notebooks/ch03_Linear_Models_for_Regression.ipynb" width="900" height="1200"></iframe>
+\[log(a \times b)=log(a) + log(b)\]</div>
+<p>Lets look at a function that calculates the log-likelihood for the two hypotheses above given the data denoted by <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compare_data_to_dist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu_1</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">mu_2</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">sd_1</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sd_2</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">ll_1</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">ll_2</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+        <span class="n">ll_1</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">mu_1</span><span class="p">,</span> <span class="n">sd_1</span><span class="p">))</span>
+        <span class="n">ll_2</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">mu_2</span><span class="p">,</span> <span class="n">sd_2</span><span class="p">))</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The LL of of x for mu = </span><span class="si">%d</span><span class="s2"> and sd = </span><span class="si">%d</span><span class="s2"> is: </span><span class="si">%.4f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mu_1</span><span class="p">,</span> <span class="n">sd_1</span><span class="p">,</span> <span class="n">ll_1</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The LL of of x for mu = </span><span class="si">%d</span><span class="s2"> and sd = </span><span class="si">%d</span><span class="s2"> is: </span><span class="si">%.4f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mu_2</span><span class="p">,</span> <span class="n">sd_2</span><span class="p">,</span> <span class="n">ll_2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can readily compate the two hypotheses according to the maximum likelihood criterion. Note that because the <span class="math notranslate nohighlight">\(log\)</span> is a monotonic function, the conclusion as to which hypothesis makes the data more likely is the same in the natural or the <span class="math notranslate nohighlight">\(log\)</span> domain.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ll_comparison</span> <span class="o">=</span> <span class="n">compare_data_to_dist</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The LL of of x for mu = 5 and sd = 3 is: -33.9679
+The LL of of x for mu = 7 and sd = 3 is: -33.3013
+</pre></div>
+</div>
+</div>
+</div>
+<p>It seems that the second hypothesis</p>
+<div class="math notranslate nohighlight">
+\[p_{model}(x|\mathbf{w}) = N(x | [\mu_2, \sigma_2^2])\]</div>
+<p>is preferred compared to the first.</p>
+<p>We can now start searching the hypothesis space (parameter space) for the best parameter set <span class="math notranslate nohighlight">\(\mathbf w\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the Negative Log Likelihood Functions for different values of mu </span>
+<span class="c1"># and sigma</span>
+<span class="k">def</span> <span class="nf">plot_ll</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Neg Log Likelihood Functions&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Mean Estimate&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Neg Log Likelihood&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+    <span class="n">mu_set</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="n">sd_set</span> <span class="o">=</span> <span class="p">[</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">]</span>
+    <span class="n">max_val</span> <span class="o">=</span> <span class="n">max_val_location</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sd_set</span><span class="p">:</span>
+        <span class="n">ll_array</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">mu_set</span><span class="p">:</span>
+            <span class="n">temp_mm</span> <span class="o">=</span> <span class="mi">0</span>
+            
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+                <span class="n">temp_mm</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span> <span class="c1"># The LL function</span>
+            <span class="n">ll_array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">temp_mm</span><span class="p">)</span> <span class="c1"># negative LL</span>
+        
+            <span class="k">if</span> <span class="p">(</span><span class="n">max_val</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
+                <span class="n">max_val</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ll_array</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">max</span><span class="p">(</span><span class="n">ll_array</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">max_val</span><span class="p">:</span>
+                <span class="n">max_val</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ll_array</span><span class="p">)</span>
+                <span class="n">max_val_location</span> <span class="o">=</span> <span class="n">j</span>
+        
+        <span class="c1"># Plot the results</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mu_set</span><span class="p">,</span> <span class="n">ll_array</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;sd: </span><span class="si">%.1f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The max LL for sd </span><span class="si">%.2f</span><span class="s2"> is </span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">ll_array</span><span class="p">)))</span>    
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">max_val_location</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">)</span>
+<span class="n">plot_ll</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The max LL for sd 0.50 is 167.88
+The max LL for sd 1.50 is 36.84
+The max LL for sd 2.50 is 32.28
+The max LL for sd 3.50 is 33.77
+The max LL for sd 4.50 is 35.96
+</pre></div>
+</div>
+<img alt="../../../../_images/marginal_maximum_likelihood_16_1.png" src="../../../../_images/marginal_maximum_likelihood_16_1.png" />
+</div>
+</div>
+<p>But there is a better method than exhaustively searching in the parameter space. We developed a method that incrementally minimizes a loss function that is ultimately linked to the concept of entropy - the cross entropy (CE) that for the supervided learning problem as shown in the notes has a lot to do with minimizing the KL divergence - a type of probabilistic ‘distance’ between <span class="math notranslate nohighlight">\(\hat p_{data}\)</span> and <span class="math notranslate nohighlight">\(p_{model}\)</span>.</p>
+<p>This method is the Stochastic Gradient Descent as described in another section.</p>
 </section>
-</section>
+<section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h1>
+<ol class="simple">
+<li><p><a class="reference external" href="http://jrmeyer.github.io/machinelearning/2017/08/18/mle.html">Maximum Likelihood Estimation of Gaussian Parameters</a></p></li>
+<li><p><a class="reference external" href="https://www.deeplearningbook.org/contents/numerical.html">Section 4.1 - Numerical computation</a></p></li>
+<li><p><a class="reference external" href="https://www.psychologicalscience.org/observer/bayes-for-beginners-probability-and-likelihood">Bayes for beginners - probability and likelihood</a></p></li>
+</ol>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1094,10 +1210,10 @@ title="Print to PDF"
             <p class="prev-next-title">Entropy</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../../pgm/bayesian-inference/_index.html" title="next page">
+    <a class='right-next' id="next-link" href="conditional_maximum_likelihood.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Bayesian Inference</p>
+        <p class="prev-next-title">Maximum Likelihood (ML) Estimation of conditional models</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

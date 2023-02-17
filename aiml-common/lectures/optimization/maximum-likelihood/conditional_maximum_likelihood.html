@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>ML Pipelines &#8212; Introduction to Artificial Intelligence</title>
+    <title>Maximum Likelihood (ML) Estimation of conditional models &#8212; Introduction to Artificial Intelligence</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,11 +53,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/ai-intro/pipelines/_index.html" />
+    <script>window.MathJax = {"tex": {"macros": {"floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/optimization/maximum-likelihood/conditional_maximum_likelihood.html" />
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="A Case Study of an ML Architecture - Uber" href="../../uber-ml-arch-case-study/_index.html" />
-    <link rel="prev" title="Agent-Environment Interface" href="../agents/_index.html" />
+    <link rel="next" title="Bayesian Inference" href="../../pgm/bayesian-inference/_index.html" />
+    <link rel="prev" title="Maximum Likelihood Estimation of a marginal model" href="marginal_maximum_likelihood.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -126,32 +128,32 @@ const thebe_selector_output = ".output, .cell_output"
   Introduction to AI
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../course-introduction/_index.html">
+  <a class="reference internal" href="../../ai-intro/course-introduction/_index.html">
    Course Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../data-science-360/_index.html">
+  <a class="reference internal" href="../../ai-intro/data-science-360/_index.html">
    Data Science 360
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../systems-approach/_index.html">
+  <a class="reference internal" href="../../ai-intro/systems-approach/_index.html">
    The four approaches towards AI
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../agents/_index.html">
+  <a class="reference internal" href="../../ai-intro/agents/_index.html">
    Agent-Environment Interface
   </a>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../ai-intro/pipelines/_index.html">
    Pipelines
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
@@ -163,7 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="02_end_to_end_machine_learning_project.html">
+    <a class="reference internal" href="../../ai-intro/pipelines/02_end_to_end_machine_learning_project.html">
      Setup
     </a>
    </li>
@@ -175,7 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
   The Learning Problem
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../learning-problem/_index.html">
    The Learning Problem
@@ -187,7 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../optimization/sgd/_index.html">
+  <a class="reference internal" href="../sgd/_index.html">
    Stochastic Gradient Descent
   </a>
  </li>
@@ -197,12 +199,12 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../optimization/maximum-likelihood/marginal_maximum_likelihood.html">
+  <a class="reference internal" href="marginal_maximum_likelihood.html">
    Maximum Likelihood Estimation of a marginal model
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../optimization/maximum-likelihood/conditional_maximum_likelihood.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Maximum Likelihood (ML) Estimation of conditional models
   </a>
  </li>
@@ -271,12 +273,12 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../optimization/regularization/_index.html">
+  <a class="reference internal" href="../regularization/_index.html">
    Regularization in Deep Neural Networks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../optimization/regularization/regularization-workshop-1.html">
+  <a class="reference internal" href="../regularization/regularization-workshop-1.html">
    Regularization Workshop
   </a>
  </li>
@@ -849,7 +851,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/ai-intro/pipelines/_index.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/optimization/maximum-likelihood/conditional_maximum_likelihood.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -877,7 +879,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../../_sources/aiml-common/lectures/ai-intro/pipelines/_index.md"
+        <a href="../../../../_sources/aiml-common/lectures/optimization/maximum-likelihood/conditional_maximum_likelihood.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -888,7 +890,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -937,18 +939,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-four-pipelines-of-an-end-to-end-ml-platform">
-   The four pipelines of an end-to-end ML platform
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#roles-in-data-science-product-development">
-   Roles in data science product development
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#landscape-of-the-data-science-ecosystem">
-   Landscape of the data science ecosystem
+  <a class="reference internal nav-link" href="#visualizing-the-regression-function-the-conditional-mean">
+   Visualizing the regression function - the conditional mean
   </a>
  </li>
 </ul>
@@ -960,7 +952,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>ML Pipelines</h1>
+                <h1>Maximum Likelihood (ML) Estimation of conditional models</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -971,18 +963,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-four-pipelines-of-an-end-to-end-ml-platform">
-   The four pipelines of an end-to-end ML platform
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#roles-in-data-science-product-development">
-   Roles in data science product development
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#landscape-of-the-data-science-ecosystem">
-   Landscape of the data science ecosystem
+  <a class="reference internal nav-link" href="#visualizing-the-regression-function-the-conditional-mean">
+   Visualizing the regression function - the conditional mean
   </a>
  </li>
 </ul>
@@ -995,44 +977,19 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="ml-pipelines">
-<h1>ML Pipelines<a class="headerlink" href="#ml-pipelines" title="Permalink to this headline">#</a></h1>
-<p>As we have seen from the syllabus, this course approaches the subject from an applied perspective - this means teaching concepts but at the same time looking how these concepts are applied in the industry to solve real world problems. In this respect here we take an architecture driven approach, presenting the components in a form of a software stack but also how the components are mechanized in what we call <strong>Pipelines</strong> to provide the required utility to applications. For a complete overview of real world ML pipelines used today we will go through <a class="reference external" href="http://stevenwhang.com/tfx_paper.pdf">this paper that describes a production grade pipeline</a>.</p>
-<p><img alt="AI stack" src="../../../../_images/ai-stack.png" /><em>AI Stack circa 2019</em></p>
-<section id="the-four-pipelines-of-an-end-to-end-ml-platform">
-<h2>The four pipelines of an end-to-end ML platform<a class="headerlink" href="#the-four-pipelines-of-an-end-to-end-ml-platform" title="Permalink to this headline">#</a></h2>
-<p><img alt="E2E ML Pipeline" src="../../../../_images/acumos-E2E.svg" />
-<em>Example of end to end pipeline - serial arrangement</em></p>
-<p><img alt="Data Pipeline" src="../../../../_images/acumos-DP1.svg" />
-<em>Example of Data Pipeline (DP)</em></p>
-<p><img alt="Model Training Pipeline" src="../../../../_images/acumos-MTP.svg" />
-<em>Example of Model Training Pipeline (MTP)</em></p>
-<p><img alt="Model Evaluation and Validation Pipeline" src="../../../../_images/acumos-MEVP.svg" />
-<em>Example of Model Evaluation and Validation Pipeline (MEVP)</em></p>
-<p><img alt="Serving Pipeline" src="../../../../_images/acumos-SP.svg" />
-<em>Example of Serving Pipeline (SP)</em></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="maximum-likelihood-ml-estimation-of-conditional-models">
+<h1>Maximum Likelihood (ML) Estimation of conditional models<a class="headerlink" href="#maximum-likelihood-ml-estimation-of-conditional-models" title="Permalink to this headline">#</a></h1>
+<p>The discussion in the marginal distribution  is equivalently applicable to the conditional distribution <span class="math notranslate nohighlight">\(p_{model}(\mathbf y | \mathbf x, \mathbf w)\)</span> which governs supervised learning, <span class="math notranslate nohighlight">\(y\)</span> being the symbol of the label / target variable. Therefore all machine learning software frameworks offer excellent APIs on CE calculation.</p>
+<div class="math notranslate nohighlight">
+\[ L(\mathbf w) = - \mathbb{E_{\mathbf x, \mathbf y \sim \hat p_{data}}}  \log p_{model}(\mathbf y | \mathbf x; \mathbf w)\]</div>
+<p>The attractiveness of the ML solution is that the CE (also known as log-loss) is general and we <em>don’t need to re-design it</em> when we change the model.</p>
+<section id="visualizing-the-regression-function-the-conditional-mean">
+<h2>Visualizing the regression function - the conditional mean<a class="headerlink" href="#visualizing-the-regression-function-the-conditional-mean" title="Permalink to this headline">#</a></h2>
+<p>It is now instructive to go over an example to understand that even the plain-old mean squared error (MSE), the objective that is common in the regression setting, falls under the same umbrella - its the cross entropy between <span class="math notranslate nohighlight">\(\hat p_{data}\)</span> and a Gaussian model.</p>
+<p>Please follow the discussion associated with Section 5.5.1 of the Ian Goodfellow’s book or section 20.2.4 of Russell &amp; Norvig’s book and <span class="xref myst">these notes</span>  and consider the following figure for assistance to visualize the relationship of <span class="math notranslate nohighlight">\(p_{data}\)</span> and <span class="math notranslate nohighlight">\(p_{model}\)</span>.</p>
+<p><img alt="conditional-model-gaussian" src="../../../../_images/conditional-model-gaussian.png" />
+<em>Please replace the y-axis target variable <span class="math notranslate nohighlight">\(t\)</span> with <span class="math notranslate nohighlight">\(y\)</span>. The green dashed line shows the mean of the <span class="math notranslate nohighlight">\(p_{model}\)</span> distribution.</em></p>
 </section>
-<section id="roles-in-data-science-product-development">
-<h2>Roles in data science product development<a class="headerlink" href="#roles-in-data-science-product-development" title="Permalink to this headline">#</a></h2>
-<p><img alt="Data scientists and other actors" src="../../../../_images/acumos-actors.svg" />
-<em>Who data scientists need to interact with, during the development of AI systems?</em></p>
-<blockquote>
-<div><p>“Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization’s communication structure.” <a class="reference external" href="http://www.melconway.com/Home/Conways_Law.html">http://www.melconway.com/Home/Conways_Law.html</a></p>
-</div></blockquote>
-<p>“We do research differently here at Google. Research Scientists aren’t cloistered in the lab, but instead they work closely with Software Engineers to discover, invent, and build at the largest scale.”</p>
-<p>Contrast this to an organizational structure that isolates researchers from product development.  What about Alphabet’s X <a class="reference external" href="https://x.company/">https://x.company/</a> ?</p>
-</section>
-<section id="landscape-of-the-data-science-ecosystem">
-<h2>Landscape of the data science ecosystem<a class="headerlink" href="#landscape-of-the-data-science-ecosystem" title="Permalink to this headline">#</a></h2>
-<p>Due to the complexity and common interest to addresses industrial players are partnering to define and implement the necessary components for the complete automation of AI pipelines.  This work is going in within the <a class="reference external" href="https://landscape.lfai.foundation/fullscreen=yes">Linux Foundation AI (sub)Foundation</a> amongst many other open source communities.</p>
-<section class="bg-apple">
-              <div class="wrap">
-          <iframe width="2120" height="630" src="https://landscape.lfdl.io/format=landscape&fullscreen=yes" frameborder="0" allowfullscreen></iframe>
-          </div>
-</section>
-</section>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1048,7 +1005,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./aiml-common/lectures/ai-intro/pipelines"
+            path: "./aiml-common/lectures/optimization/maximum-likelihood"
         },
         predefinedOutput: true
     }
@@ -1062,17 +1019,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../agents/_index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="marginal_maximum_likelihood.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Agent-Environment Interface</p>
+            <p class="prev-next-title">Maximum Likelihood Estimation of a marginal model</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../../uber-ml-arch-case-study/_index.html" title="next page">
+    <a class='right-next' id="next-link" href="../../pgm/bayesian-inference/_index.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">A Case Study of an ML Architecture - Uber</p>
+        <p class="prev-next-title">Bayesian Inference</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
