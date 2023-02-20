@@ -73,6 +73,8 @@ sphinx:
     - sphinx_inline_tabs
     - sphinxext.rediraffe
     - sphinx_proof
+    - sphinxcontrib.mermaid
+    - sphinxcontrib.seqdiag
     #- sphinx_examples
 
 parse:

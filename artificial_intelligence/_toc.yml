@@ -9,6 +9,7 @@ parts:
 
 - caption: Introduction to AI
   chapters:
+  # - file: aiml-common/lectures/ai-intro/key-topics.md
   - file: aiml-common/lectures/ai-intro/course-introduction/_index.md
   - file: aiml-common/lectures/ai-intro/data-science-360/_index.md
   - file: aiml-common/lectures/ai-intro/systems-approach/_index.md

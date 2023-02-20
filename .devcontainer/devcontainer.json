@@ -31,5 +31,5 @@
 			]
 		}
 	},
-	"postAttachCommand": "poetry run sphinx-autobuild artificial_intelligence _build/html/"
+	"postStartCommand": "poetry run sphinx-autobuild artificial_intelligence _build/html/"
 }
