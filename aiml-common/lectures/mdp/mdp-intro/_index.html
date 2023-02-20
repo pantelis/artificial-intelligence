@@ -55,6 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/mdp/mdp-intro/_index.html" />
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -1274,7 +1276,7 @@ $$r(s,a, s') = \mathop{\mathbb{E}}[ R_{t+1} | S_t=s, A_t=a, S_t+1}=s'] = \sum_{r
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./aiml-common/lectures/mdp/mdp-intro"
         },
         predefinedOutput: true

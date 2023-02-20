@@ -55,6 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/assignments/mle/mle-gaussian.html" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -968,21 +970,19 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mle-of-a-gaussian-p-model-x-w-25-points">
+  <a class="reference internal nav-link" href="#mle-of-a-gaussian-p-model-x-w">
    MLE of a  Gaussian
    <span class="math notranslate nohighlight">
     \(p_{model}(x|w)\)
    </span>
-   (25 points)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mle-of-a-conditional-gaussian-p-model-y-x-w-25-points">
+  <a class="reference internal nav-link" href="#mle-of-a-conditional-gaussian-p-model-y-x-w">
    MLE of a conditional Gaussian
    <span class="math notranslate nohighlight">
     \(p_{model}(y|x,w)\)
    </span>
-   (25 points)
   </a>
  </li>
 </ul>
@@ -1005,21 +1005,19 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mle-of-a-gaussian-p-model-x-w-25-points">
+  <a class="reference internal nav-link" href="#mle-of-a-gaussian-p-model-x-w">
    MLE of a  Gaussian
    <span class="math notranslate nohighlight">
     \(p_{model}(x|w)\)
    </span>
-   (25 points)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mle-of-a-conditional-gaussian-p-model-y-x-w-25-points">
+  <a class="reference internal nav-link" href="#mle-of-a-conditional-gaussian-p-model-y-x-w">
    MLE of a conditional Gaussian
    <span class="math notranslate nohighlight">
     \(p_{model}(y|x,w)\)
    </span>
-   (25 points)
   </a>
  </li>
 </ul>
@@ -1034,8 +1032,8 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="gaussian-maximum-likelihood">
 <h1>Gaussian Maximum Likelihood<a class="headerlink" href="#gaussian-maximum-likelihood" title="Permalink to this headline">#</a></h1>
-<section id="mle-of-a-gaussian-p-model-x-w-25-points">
-<h2>MLE of a  Gaussian <span class="math notranslate nohighlight">\(p_{model}(x|w)\)</span> (25 points)<a class="headerlink" href="#mle-of-a-gaussian-p-model-x-w-25-points" title="Permalink to this headline">#</a></h2>
+<section id="mle-of-a-gaussian-p-model-x-w">
+<h2>MLE of a  Gaussian <span class="math notranslate nohighlight">\(p_{model}(x|w)\)</span><a class="headerlink" href="#mle-of-a-gaussian-p-model-x-w" title="Permalink to this headline">#</a></h2>
 <p>You are given an array of data points called <code class="docutils literal notranslate"><span class="pre">data</span></code>. Your course site plots the negative log-likelihood  function for several candidate hypotheses. Estimate the parameters of the Gaussian <span class="math notranslate nohighlight">\(p_{model}\)</span> by  coding an implementation that estimates its optimal parameters (15 points) and explaining what it does (10 points). You are free to use any Gradient-based optimization method you like.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1049,8 +1047,8 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="mle-of-a-conditional-gaussian-p-model-y-x-w-25-points">
-<h2>MLE of a conditional Gaussian <span class="math notranslate nohighlight">\(p_{model}(y|x,w)\)</span> (25 points)<a class="headerlink" href="#mle-of-a-conditional-gaussian-p-model-y-x-w-25-points" title="Permalink to this headline">#</a></h2>
+<section id="mle-of-a-conditional-gaussian-p-model-y-x-w">
+<h2>MLE of a conditional Gaussian <span class="math notranslate nohighlight">\(p_{model}(y|x,w)\)</span><a class="headerlink" href="#mle-of-a-conditional-gaussian-p-model-y-x-w" title="Permalink to this headline">#</a></h2>
 <p>You are given a problem that involves the relationship between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. Estimate the parameters of a <span class="math notranslate nohighlight">\(p_{model}\)</span> that fit the dataset (x,y) shown below.   You are free to use any Gradient-based optimization method you like.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1077,7 +1075,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./aiml-common/assignments/mle"
         },
         predefinedOutput: true
