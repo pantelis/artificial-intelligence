@@ -28,14 +28,14 @@ parts:
   - file: aiml-common/lectures/entropy/_index.md
   - file: aiml-common/lectures/optimization/maximum-likelihood/marginal_maximum_likelihood.ipynb
   - file: aiml-common/lectures/optimization/maximum-likelihood/conditional_maximum_likelihood.ipynb
-    
-  - file: aiml-common/lectures/pgm/bayesian-inference/_index.md
-    title: Bayesian Inference
-    sections:   
-    - file: aiml-common/lectures/pgm/bayesian-coin/_index.md
   - file: aiml-common/lectures/classification/classification-intro/_index.md
   - file: aiml-common/lectures/classification/logistic-regression/_index.md
-      
+  
+- caption: Bayesian Inference
+  chapters:
+  - file: aiml-common/lectures/pgm/bayesian-inference/_index.md
+  - file: aiml-common/lectures/pgm/bayesian-coin/_index.md
+          
 - caption: Deep Neural Networks
   chapters:    
   - file: aiml-common/lectures/classification/perceptron/_index.md
