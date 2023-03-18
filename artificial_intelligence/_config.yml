@@ -4,19 +4,27 @@
 title: Introduction to Artificial Intelligence
 author: Pantelis Monogioudis, Ph.D
 copyright: "2023"  # Copyright year to be placed in the footer
-logo: logo.png
+logo: ./logo.png
 
 only_build_toc_files: true
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: 'off'
+  execute_notebooks: cache
+  timeout: 3600 #seconds
+  stdout_output: show
+  stderr_output: show
+  allow_errors: false
+  # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
+  exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
   # exclude_patterns: 
   #   - data_mining/aiml-common/lectures/transfer-learning/quantized_transfer_learning.ipynb
-    
+
+
 # Define the name of the latex output file for PDF builds
 latex:
+  latex_engine: xelatex
   latex_documents:
     targetname: ai-course.tex
 
@@ -26,9 +34,9 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/pantelis/artificial-intelligence # artificial-intelligence  # Online location of your book
-  path_to_book: artificial_intelligence/aiml-common #artificial_intelligence/aiml-common  # Optional path to your book, relative to the repository root
-  branch: main  # Which branch of the repository should be used when creating links (optional)
+  url: https://github.com/pantelis/artificial-intelligence  # Online location of your book
+  path_to_book: artificial_intelligence  # Optional path to your book, relative to the repository root
+  #branch: master  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
@@ -42,16 +50,20 @@ html:
 
 launch_buttons:
   colab_url: "https://colab.research.google.com"
+  binderhub_url: "https://mybinder.org"
+  thebe: true 
 
 sphinx:
-  recursive_update: false
+  recursive_update: true
   config:
+    nb_merge_streams: true
+    nb_execution_show_tb: true
     html_theme_options:
       use_download_button: true
       repository_url: https://github.com/pantelis/artificial-intelligence
       use_issues_button: true
       use_repository_button: true
-      use_edit_page_button: false
+      use_edit_page_button: true
     mathjax3_config:
       tex:
         macros:
@@ -66,6 +78,7 @@ sphinx:
           \newcommand{\bmat}{\left[\begin{array}}
           \newcommand{\emat}{\end{array}\right]}
   extra_extensions:
+    - sphinx-press-theme
     - sphinxcontrib.youtube
     - sphinx_inline_tabs
     - sphinxcontrib.inkscapeconverter
@@ -76,6 +89,8 @@ sphinx:
     - sphinxcontrib.mermaid
     - sphinxcontrib.seqdiag
     #- sphinx_examples
+    # - nbsite.pyodide
+    - jupyterlite_sphinx
 
 parse:
   myst_enable_extensions:

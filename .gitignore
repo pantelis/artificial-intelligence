@@ -76,7 +76,7 @@ docs/_build/
 target/
 
 # Jupyter Notebook
-.ipynb_checkpoints
+.ipynb_checkpoints/
 
 # IPython
 profile_default/
@@ -292,5 +292,14 @@ cython_debug/
 
 _build/
 
-artificial_intelligence/aiml-common/lectures/transfer-learning/data/
+# models and data
+*.pb
+*.h5
+
+
 .ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# IPython
+profile_default/
+ipython_config.py

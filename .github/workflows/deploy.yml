@@ -18,6 +18,7 @@ jobs:
         with:
           submodules: recursive
           token: ${{ secrets.AIML_COMMON_CICD_TOKEN }}
+      
       - name: Set up python
         id: setup-python
         uses: actions/setup-python@v4
@@ -46,8 +47,9 @@ jobs:
       # install dependencies if cache does not exist
       #----------------------------------------------
       - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction --no-root
+        #if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: 
+          poetry update --no-root --no-interaction
       #----------------------------------------------
       # install your root project, if required
       #----------------------------------------------

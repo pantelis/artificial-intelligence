@@ -15,10 +15,6 @@ parts:
   - file: aiml-common/lectures/ai-intro/systems-approach/_index.md
   - file: aiml-common/lectures/ai-intro/agents/_index.md
   - file: aiml-common/lectures/ai-intro/pipelines/_index.md
-    title: Pipelines
-    sections: 
-    - file: aiml-common/lectures/uber-ml-arch-case-study/_index.md
-    - file: aiml-common/lectures/ai-intro/pipelines/02_end_to_end_machine_learning_project.ipynb
   
 - caption: The Learning Problem
   chapters:
@@ -34,8 +30,9 @@ parts:
 - caption: Bayesian Inference
   chapters:
   - file: aiml-common/lectures/pgm/bayesian-inference/_index.md
-  - file: aiml-common/lectures/pgm/bayesian-coin/_index.md
-          
+  - file: aiml-common/lectures/pgm/bayesian-inference/bayesian_regression.ipynb
+  - file: aiml-common/lectures/pgm/bayesian-coin/bayesian_update_coin_flip.ipynb
+            
 - caption: Deep Neural Networks
   chapters:    
   - file: aiml-common/lectures/classification/perceptron/_index.md
@@ -163,7 +160,10 @@ parts:
 - caption: Resources
   chapters:
   - file: aiml-common/resources/environment/index.md
+  - file: aiml-common/resources/environment/assignment-submission.md
   - file: aiml-common/lectures/python/_index.md
+  #- file: aiml-common/lectures/ensemble/gradient-boosting/xgboost-app/xgboost.ipynb
+  - file: aiml-common/resources/environment/notebook-status.md
   # - file: aiml-common/lectures/runbook.md  
 
 - caption: Common Assignments
