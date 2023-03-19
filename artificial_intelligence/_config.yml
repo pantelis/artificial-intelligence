@@ -41,6 +41,7 @@ repository:
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
+  favicon: ./logo.ico
   home_page_in_navbar: true
   use_edit_page_button: true
   use_issues_button: true
@@ -90,7 +91,7 @@ sphinx:
     - sphinxcontrib.seqdiag
     #- sphinx_examples
     # - nbsite.pyodide
-    - jupyterlite_sphinx
+    #- jupyterlite_sphinx
 
 parse:
   myst_enable_extensions:

@@ -12,7 +12,8 @@
 
 	"remoteEnv": {
 		"PATH": "${localEnv:PATH}:/home/vscode/.local/bin:/usr/local/cuda/bin",
-		"LD_LIBRARY_PATH": "${localEnv:LD_LIBRARY_PATH}:/usr/local/cuda/lib64"
+		"LD_LIBRARY_PATH": "/usr/local/cuda/lib64",
+		"XLA_FLAGS": "--xla_gpu_cuda_data_dir=/usr/local/cuda/"
 	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
@@ -43,5 +44,5 @@
 			]
 		}
 	},
-	"postStartCommand": "poetry run sphinx-autobuild artificial_intelligence _build/html/"
+	"postStartCommand": "poetry run sphinx-autobuild artificial_intelligence _build/html"
 }
