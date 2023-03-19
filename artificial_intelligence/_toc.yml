@@ -160,7 +160,7 @@ parts:
   chapters:
   - file: aiml-common/resources/environment/index.md
   - file: aiml-common/resources/environment/assignment-submission.md
-  - file: aiml-common/lectures/python/_index.md
+  - file: aiml-common/lectures/python/index.md
   #- file: aiml-common/lectures/ensemble/gradient-boosting/xgboost-app/xgboost.ipynb
   - file: aiml-common/resources/environment/notebook-status.md
   # - file: aiml-common/lectures/runbook.md  
