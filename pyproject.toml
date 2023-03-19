@@ -10,7 +10,6 @@ packages = [{include = "b2c"}]
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
 jupyter-book = "^0.15.1"
-
 sphinx-book-theme = "^1.0.0"
 sphinxcontrib-youtube = "^1.2.0"
 sphinxcontrib-svg2pdfconverter = "^1.2.1"
@@ -22,18 +21,6 @@ sphinx-panels = "^0.6.0"
 sphinxcontrib-mermaid = "^0.8"
 sphinxcontrib-seqdiag = "^3.0.0"
 libarchive-c = "^4.0"
-
-nbdev = "^2.3.12"
-jupyter_bokeh="^2.0.4"
-notebook = "^6.5.3"
-holoviews = "^1.15.4"
-pydeck = "^0.8.0"
-jupyter = "^1.0.0"
-jinja2="^3.0.3"
-nbconvert="^6.4.4"
-jupyterlite-sphinx = "^0.8.0"
-seaborn = "^0.12.2"
-
 numpy = "^1.24.1"
 pandas = "^1.5.2"
 scikit-learn = "^1.2.0"
