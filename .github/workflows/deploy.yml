@@ -62,7 +62,7 @@ jobs:
         shell: bash -l {0}
         run: |
           source .venv/bin/activate
-          jupyter-book build artificial_intelligence
+          poetry run jupyter-book build artificial_intelligence
 
     # Deploy the book's HTML to gh-pages branch
       - name: GitHub Pages action
