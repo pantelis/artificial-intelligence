@@ -1,37 +1,49 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>CNN Language Model &#8212; Introduction to Artificial Intelligence</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyterlite_sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
@@ -39,13 +51,14 @@
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
-    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="../../../../_static/tabs.js"></script>
+    <script src="../../../../_static/jupyterlite_sphinx.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../../../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -53,929 +66,591 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/nlp/language-models/cnn-language-model';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/nlp/language-models/cnn-language-model.html" />
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="Neural Machine Translation" href="../nmt/_index.html" />
     <link rel="prev" title="Simple RNN Language Model" href="simple-rnn-language-model.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../../../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../../../../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Introduction to Artificial Intelligence</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Syllabus
- </span>
-</p>
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Introduction to Artificial Intelligence
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../../syllabus/_index.html">
-   Syllabus
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../syllabus/_index.html">Syllabus</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction to AI
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to AI</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../ai-intro/course-introduction/_index.html">
-   Course Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../ai-intro/data-science-360/_index.html">
-   Data Science 360
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../ai-intro/systems-approach/_index.html">
-   The four approaches towards AI
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../ai-intro/agents/_index.html">
-   Agent-Environment Interface
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../ai-intro/pipelines/_index.html">
-   Pipelines
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../uber-ml-arch-case-study/_index.html">
-     A Case Study of an ML Architecture - Uber
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../ai-intro/pipelines/02_end_to_end_machine_learning_project.html">
-     Setup
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../ai-intro/course-introduction/_index.html">Course Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ai-intro/data-science-360/_index.html">Data Science 360</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ai-intro/systems-approach/_index.html">The four approaches towards AI</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../ai-intro/agents/_index.html">Agent-Environment Interface</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../ai-intro/pipelines/_index.html">ML Pipelines</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  The Learning Problem
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Learning Problem</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../learning-problem/_index.html">
-   The Learning Problem
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../regression/linear-regression/linear_regression.html">
-   Linear Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../optimization/sgd/_index.html">
-   Stochastic Gradient Descent
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../entropy/_index.html">
-   Entropy
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../optimization/maximum-likelihood/marginal_maximum_likelihood.html">
-   Maximum Likelihood Estimation of a marginal model
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../optimization/maximum-likelihood/conditional_maximum_likelihood.html">
-   Maximum Likelihood (ML) Estimation of conditional models
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../classification/classification-intro/_index.html">
-   Introduction to Classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../classification/logistic-regression/_index.html">
-   Logistic Regression
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../learning-problem/_index.html">The Learning Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../regression/linear-regression/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../optimization/sgd/_index.html">Stochastic Gradient Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../entropy/_index.html">Entropy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../optimization/maximum-likelihood/marginal_maximum_likelihood.html">Maximum Likelihood Estimation of a marginal model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../optimization/maximum-likelihood/conditional_maximum_likelihood.html">Maximum Likelihood (ML) Estimation of conditional models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../classification/classification-intro/_index.html">Introduction to Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../classification/logistic-regression/_index.html">Logistic Regression</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Bayesian Inference
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bayesian Inference</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../pgm/bayesian-inference/_index.html">
-   Bayesian Inference
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../pgm/bayesian-coin/_index.html">
-   Bayesian Coin Flipping
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/bayesian-inference/_index.html">Bayesian Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/bayesian-inference/bayesian_regression.html">Bayesian Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/bayesian-coin/bayesian_update_coin_flip.html">Posterior updates in a coin flipping experiment</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Deep Neural Networks
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Neural Networks</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../classification/perceptron/_index.html">
-   The Neuron (Perceptron)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../dnn/dnn-intro/_index.html">
-   Deep Neural Networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../dnn/backprop-intro/_index.html">
-   Introduction to Backpropagation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../dnn/backprop-dnn/_index.html">
-   Backpropagation in Deep Neural Networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../dnn/backprop-dnn-exercises/_index.html">
-   Backpropagation DNN exercises
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../dnn/fashion-mnist-case-study.html">
-   Fashion MNIST Case Study
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../optimization/regularization/_index.html">
-   Regularization in Deep Neural Networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../optimization/regularization/regularization-workshop-1.html">
-   Regularization Workshop
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../classification/perceptron/_index.html">The Neuron (Perceptron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/dnn-intro/_index.html">Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/backprop-intro/_index.html">Introduction to Backpropagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/backprop-dnn/_index.html">Backpropagation in Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/backprop-dnn-exercises/_index.html">Backpropagation DNN exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/fashion-mnist-case-study.html">Fashion MNIST Case Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../optimization/regularization/_index.html">Regularization in Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../optimization/regularization/regularization-workshop-1.html">Regularization Workshop</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Convolutional Neural Networks
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Convolutional Neural Networks</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../cnn/cnn-intro/_index.html">
-   Introduction to Convolutional Neural Networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../cnn/cnn-layers/_index.html">
-   CNN Architectures
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../cnn/cnn-example-architectures/_index.html">
-   CNN Example Architectures
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">
-   Using convnets with small datasets
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../cnn/cnn-explainers/_index.html">
-   CNN Explainers
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-intro/_index.html">Introduction to Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-layers/_index.html">CNN Architectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/_index.html">CNN Example Architectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">Using convnets with small datasets</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Transfer Learning
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../transfer-learning/transfer-learning-introduction.html">
-   Introduction to Transfer Learning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../transfer-learning/transfer_learning_tutorial.html">
-   Transfer Learning for Computer Vision Tutorial
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../transfer-learning/transfer-learning-introduction.html">Introduction to Transfer Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../transfer-learning/transfer_learning_tutorial.html">Transfer Learning for Computer Vision Tutorial</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Scene Understanding
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Scene Understanding</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../scene-understanding/scene-understanding-intro/index.html">
-   Introduction to Scene Understanding
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../scene-understanding/feature-extraction-resnet/index.html">
-   Feature Extraction via Residual Networks
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../scene-understanding/object-detection/object-detection-intro/index.html">
-   Object Detection
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scene-understanding/object-detection/detection-metrics/index.html">
-     Object Detection and Semantic Segmentation Metrics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scene-understanding/object-detection/rcnn-object-detection/index.html">
-     Region-CNN (RCNN) Object Detection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scene-understanding/object-detection/faster-rcnn-object-detection/index.html">
-     Fast and Faster RCNN Object Detection
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../scene-understanding/semantic-segmentation/index.html">
-   Semantic Segmentation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/index.html">
-     Mask R-CNN Semantic Segmentation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/demo.html">
-     Mask R-CNN Demo
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_data.html">
-     Mask R-CNN - Inspect Training Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_model.html">
-     Mask R-CNN - Inspect Trained Model
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_weights.html">
-     Mask R-CNN - Inspect Weights of a Trained Model
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.html">
-     Detectron2 Beginner’s Tutorial
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../scene-understanding/scene-understanding-intro/index.html">Introduction to Scene Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scene-understanding/feature-extraction-resnet/index.html">Feature Extraction via Residual Networks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../scene-understanding/object-detection/object-detection-intro/index.html">Object Detection</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/detection-metrics/index.html">Object Detection and Semantic Segmentation Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/rcnn-object-detection/index.html">Region-CNN (RCNN) Object Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/faster-rcnn-object-detection/index.html">Fast and Faster RCNN Object Detection</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Probabilistic Reasoning
- </span>
-</p>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/index.html">Semantic Segmentation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/index.html">Mask R-CNN Semantic Segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/demo.html">Mask R-CNN Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_data.html">Mask R-CNN - Inspect Training Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_model.html">Mask R-CNN - Inspect Trained Model</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_weights.html">Mask R-CNN - Inspect Weights of a Trained Model</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.html">Detectron2 Beginner’s Tutorial</a></li>
+
+
+
+
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Probabilistic Reasoning</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../pgm/pgm-intro/_index.html">
-   Introduction to Probabilistic Reasoning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../pgm/recursive-state-estimation/_index.html">
-   Recursive State Estimation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../pgm/bayesian-filter-workshop/_index.html">
-   Bayesian Filter Workshop
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../pgm/hmm-localization/_index.html">
-   Localization and Tracking
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../pgm/kalman-workshop/_index.html">
-   Kalman Filter Workshop
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/pgm-intro/_index.html">Introduction to Probabilistic Reasoning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/recursive-state-estimation/_index.html">Recursive State Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/bayesian-filter-workshop/_index.html">Bayesian Filter Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/hmm-localization/_index.html">Localization and Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/kalman-workshop/_index.html">Kalman Filter Workshop</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Logical Reasoning
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logical Reasoning</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../logical-reasoning/automated-reasoning/_index.html">
-   Automated Reasoning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../logical-reasoning/propositional-logic/_index.html">
-   World Models
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../logical-reasoning/logical-agents/_index.html">
-   Logical Agents
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/automated-reasoning/_index.html">Automated Reasoning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/propositional-logic/_index.html">World Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/logical-agents/_index.html">Logical Agents</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Planning without Interactions
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning without Interactions</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../planning/_index.html">
-   Planning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../autonomous-cars/_index.html">
-   Autonomous Agents
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../autonomous-cars/imitation-learning/_index.html">
-   Imitation Learning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../planning/classical-planning/_index.html">
-   Classical Planning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../planning/search/_index.html">
-   Planning with Search
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../planning/search/forward-search/_index.html">
-   Forward Search Algorithms
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../planning/search/a-star/_index.html">
-   The A* Algorithm
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../planning/_index.html">Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autonomous-cars/_index.html">Autonomous Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autonomous-cars/imitation-learning/_index.html">Imitation Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../planning/classical-planning/_index.html">Classical Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../planning/search/_index.html">Planning with Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../planning/search/forward-search/_index.html">Forward Search Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../planning/search/a-star/_index.html">The A* Algorithm</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Markov Decision Processes
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Markov Decision Processes</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp/_index.html">
-   Markov Decision Processes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp/mdp-intro/_index.html">
-   Introduction to MDP
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../mdp/bellman-expectation-backup/_index.html">
-   Bellman Expectation Backup
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../mdp/bellman-optimality-backup/_index.html">
-   MDP Dynamic Programming Algorithms
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../mdp/mdp-dp-algorithms/policy-iteration/_index.html">
-     Policy Iteration
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../mdp/mdp-dp-algorithms/policy-evaluation/_index.html">
-     Policy Evaluation (Prediction)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../mdp/mdp-dp-algorithms/policy-improvement/_index.html">
-     Policy Improvement (Control)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../mdp/mdp-dp-algorithms/value-iteration/_index.html">
-     Value Iteration
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../mdp/mdp-lab/recycling-robot/_index.html">
-     Finding the optimal policy of a recycling robot.
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/_index.html">Markov Decision Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/mdp-intro/_index.html">Introduction to MDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/bellman-expectation-backup/_index.html">Bellman Expectation Backup</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../mdp/bellman-optimality-backup/_index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-dp-algorithms/policy-iteration/_index.html">Policy Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-dp-algorithms/policy-evaluation/_index.html">Policy Evaluation (Prediction)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-dp-algorithms/policy-improvement/_index.html">Policy Improvement (Control)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-dp-algorithms/value-iteration/_index.html">Value Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-lab/recycling-robot/_index.html">Finding the optimal policy of a recycling robot.</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Reinforcement Learning
- </span>
-</p>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/_index.html">
-   Reinforcement Learning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/prediction/monte-carlo.html">
-   Monte-Carlo Prediction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/prediction/temporal-difference.html">
-   Temporal Difference (TD) Prediction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/control/_index.html">
-   Model-free Control
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/generalized-policy-iteration/_index.html">
-   Generalized Policy Iteration
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/control/sarsa/_index.html">
-   The SARSA Algorithm
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../reinforcement-learning/reinforce/_index.html">
-   The REINFORCE Algorithm
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/_index.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/prediction/monte-carlo.html">Monte-Carlo Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/prediction/temporal-difference.html">Temporal Difference (TD) Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/control/_index.html">Model-free Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/generalized-policy-iteration/_index.html">Generalized Policy Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/control/sarsa/_index.html">The SARSA Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/reinforce/_index.html">The REINFORCE Algorithm</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Sequences and RNNs
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../rnn/introduction/_index.html">
-   Introduction to Recurrent Neural Networks (RNN)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../rnn/simple-rnn/_index.html">
-   Simple RNN
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../rnn/lstm/_index.html">
-   The Long Short-Term Memory (LSTM) Cell Architecture
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../rnn/15_processing_sequences_using_rnns_and_cnns.html">
-   Processing Sequences Using RNN
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/introduction/_index.html">Introduction to Recurrent Neural Networks (RNN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/simple-rnn/_index.html">Simple RNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/lstm/_index.html">The Long Short-Term Memory (LSTM) Cell Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/15_processing_sequences_using_rnns_and_cnns.html">Processing Sequences Using RNN</a></li>
+
+
+
+
+
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Natural Language Processing
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../nlp-intro/_index.html">
-   Introduction to NLP
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../word2vec/_index.html">
-   Word2Vec Embeddings
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../word2vec/word2vec-workshop.html">
-   Word2Vec Workshop
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="_index.html">
-   RNN Language Models
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="simple-rnn-language-model.html">
-   Simple RNN Language Model
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   CNN Language Model
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../nmt/_index.html">
-   Neural Machine Translation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../nmt-metrics/_index.html">
-   NMT Metrics - BLEU
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../attention/_index.html">
-   Attention in NMT
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../transformers/_index.html">
-   Transformers Workshop
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp-intro/_index.html">Introduction to NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../word2vec/_index.html">Word2Vec Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../word2vec/word2vec-workshop.html">Word2Vec Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_index.html">RNN Language Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-rnn-language-model.html">Simple RNN Language Model</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">CNN Language Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nmt/_index.html">Neural Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nmt-metrics/_index.html">NMT Metrics - BLEU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attention/_index.html">Attention in NMT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transformers/_index.html">Transformers Workshop</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Math Background
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../ml-math/_index.html">
-   Math for ML
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../ml-math/probability/_index.html">
-     Probability Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../linear-algebra/_index.html">
-     Linear Algebra for Machine Learning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../ml-math/calculus/_index.html">
-     Calculus
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ml-math/_index.html">Math for ML</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ml-math/probability/_index.html">Probability Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../linear-algebra/_index.html">Linear Algebra for Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ml-math/calculus/_index.html">Calculus</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Resources
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../resources/environment/index.html">
-   Your Programming Environment
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../python/_index.html">
-   Learn Python
-  </a>
- </li>
+</li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Common Assignments
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../assignments/probability/probability-assignment-5/index.html">
-   Probability Assignment
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/index.html">Your Programming Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_index.html">Learn Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Assignments CS-UY-4613
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Common Assignments</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../assignments/mle/mle-gaussian.html">
-   Gaussian Maximum Likelihood
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../assignments/mle/poisson-regression-1/index.html">
-   Bike Rides and the Poisson Model
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/probability/probability-assignment-5/index.html">Probability Assignment</a></li>
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Assignments CS-GY-6613
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments CS-UY-4613</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../assignments/logistic-regression-1/index.html">
-   Logistic Regression
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/mle/mle-gaussian.html">Gaussian Maximum Likelihood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/mle/poisson-regression-1/index.html">Bike Rides and the Poisson Model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments CS-GY-6613</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/logistic-regression-1/index.html">Logistic Regression</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/pantelis/artificial-intelligence/master?urlpath=tree/artificial_intelligence/aiml-common/lectures/nlp/language-models/cnn-language-model.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/pantelis/artificial-intelligence/blob/master/artificial_intelligence/aiml-common/lectures/nlp/language-models/cnn-language-model.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
 </div>
 
 
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
 
 
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pantelis/artificial-intelligence" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
   </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pantelis/artificial-intelligence/edit/master/artificial_intelligence/aiml-common/lectures/nlp/language-models/cnn-language-model.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/nlp/language-models/cnn-language-model.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/aiml-common/lectures/nlp/language-models/cnn-language-model.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/pantelis/artificial-intelligence"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/nlp/language-models/cnn-language-model.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../../../_sources/aiml-common/lectures/nlp/language-models/cnn-language-model.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
+</div></div>
       
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
+    </div>
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
 </div>
+</div>
+              
+              
 
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>CNN Language Model</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
     </div>
 </div>
 
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-</div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>CNN Language Model</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                    </div>
-                </div>
-            </div>
-            <main id="main-content" role="main">
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <p><a class="reference external" href="https://colab.research.google.com/github/pantelis-nlp/tutorial-nlp-notebooks/blob/main/rnn_language_model.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="cnn-language-model">
 <h1>CNN Language Model<a class="headerlink" href="#cnn-language-model" title="Permalink to this headline">#</a></h1>
 <p>The following was developed by Harini Appansrinivasan, NYU as part of an assignment submission.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">array</span>
 <span class="kn">import</span> <span class="nn">keras</span> <span class="k">as</span> <span class="nn">K</span>
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
@@ -984,6 +659,7 @@ title="Print to PDF"
 <span class="kn">from</span> <span class="nn">keras.layers.convolutional</span> <span class="kn">import</span> <span class="n">Conv1D</span><span class="p">,</span> <span class="n">MaxPooling1D</span>
 <span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Dense</span>
 <span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Conv1D</span><span class="p">,</span> <span class="n">MaxPooling1D</span><span class="p">,</span> <span class="n">Dropout</span>
+
 <span class="c1"># split input sequence into inputs X of size = n_steps and targets Y with the subsequent integer after each X</span>
 <span class="k">def</span> <span class="nf">split_sequence</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">):</span>
 	<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(),</span> <span class="nb">list</span><span class="p">()</span>
@@ -995,6 +671,9 @@ title="Print to PDF"
 		<span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">seq_x</span><span class="p">)</span>
 		<span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">seq_y</span><span class="p">)</span>
 	<span class="k">return</span> <span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;Chios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and arid, with a ridge of mountains running the length of the island. The two largest of these mountains, Pelineon (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are situated in the north of the island. The center of the island is divided between east and west by a range of smaller peaks, known as Provatas.&#39;</span>
+
 <span class="c1"># creating a vocabulary of unique characters</span>
 <span class="n">chars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
 <span class="n">data_size</span><span class="p">,</span> <span class="n">vocab_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span>
@@ -1031,30 +710,1056 @@ title="Print to PDF"
 <span class="n">X_onehot</span><span class="o">.</span><span class="n">shape</span>                        <span class="c1"># shape = [num_samples, seq_length, vocab_size]</span>
 <span class="n">y_onehot</span> <span class="o">=</span> <span class="n">onehot_encoding</span><span class="p">(</span><span class="n">y_tokens</span><span class="p">)</span>  <span class="c1"># one-hot encode the targets</span>
 <span class="n">y_onehot</span><span class="o">.</span><span class="n">shape</span>                        <span class="c1"># shape = [num_samples, vocab_size]</span>
-<span class="c1"># reset model</span>
-<span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data has 508 characters, 43 unique.
+{&#39;b&#39;: 0, &#39;v&#39;: 1, &#39;c&#39;: 2, &#39;)&#39;: 3, &#39;t&#39;: 4, &#39;s&#39;: 5, &#39;E&#39;: 6, &#39;e&#39;: 7, &#39;y&#39;: 8, &#39;n&#39;: 9, &#39;h&#39;: 10, &#39;[&#39;: 11, &#39;.&#39;: 12, &#39;l&#39;: 13, &#39;a&#39;: 14, &#39; &#39;: 15, &#39;4&#39;: 16, &#39;r&#39;: 17, &#39;2&#39;: 18, &#39;o&#39;: 19, &#39;P&#39;: 20, &#39;i&#39;: 21, &#39;,&#39;: 22, &#39;k&#39;: 23, &#39;3&#39;: 24, &#39;0&#39;: 25, &#39;d&#39;: 26, &#39;g&#39;: 27, &#39;]&#39;: 28, &#39;p&#39;: 29, &#39;C&#39;: 30, &#39;q&#39;: 31, &#39;9&#39;: 32, &#39;u&#39;: 33, &#39;m&#39;: 34, &#39;5&#39;: 35, &#39;8&#39;: 36, &#39;f&#39;: 37, &#39;7&#39;: 38, &#39;T&#39;: 39, &#39;w&#39;: 40, &#39;(&#39;: 41, &#39;1&#39;: 42}
+{0: &#39;b&#39;, 1: &#39;v&#39;, 2: &#39;c&#39;, 3: &#39;)&#39;, 4: &#39;t&#39;, 5: &#39;s&#39;, 6: &#39;E&#39;, 7: &#39;e&#39;, 8: &#39;y&#39;, 9: &#39;n&#39;, 10: &#39;h&#39;, 11: &#39;[&#39;, 12: &#39;.&#39;, 13: &#39;l&#39;, 14: &#39;a&#39;, 15: &#39; &#39;, 16: &#39;4&#39;, 17: &#39;r&#39;, 18: &#39;2&#39;, 19: &#39;o&#39;, 20: &#39;P&#39;, 21: &#39;i&#39;, 22: &#39;,&#39;, 23: &#39;k&#39;, 24: &#39;3&#39;, 25: &#39;0&#39;, 26: &#39;d&#39;, 27: &#39;g&#39;, 28: &#39;]&#39;, 29: &#39;p&#39;, 30: &#39;C&#39;, 31: &#39;q&#39;, 32: &#39;9&#39;, 33: &#39;u&#39;, 34: &#39;m&#39;, 35: &#39;5&#39;, 36: &#39;8&#39;, 37: &#39;f&#39;, 38: &#39;7&#39;, 39: &#39;T&#39;, 40: &#39;w&#39;, 41: &#39;(&#39;, 42: &#39;1&#39;}
+[30 10 21 19  5 15 21  5 13 14  9 26 15 21  5 15  2 17  7  5  2  7  9  4
+ 15] 19
+[10 21 19  5 15 21  5 13 14  9 26 15 21  5 15  2 17  7  5  2  7  9  4 15
+ 19] 17
+[21 19  5 15 21  5 13 14  9 26 15 21  5 15  2 17  7  5  2  7  9  4 15 19
+ 17] 15
+[19  5 15 21  5 13 14  9 26 15 21  5 15  2 17  7  5  2  7  9  4 15 19 17
+ 15] 23
+[ 5 15 21  5 13 14  9 26 15 21  5 15  2 17  7  5  2  7  9  4 15 19 17 15
+ 23] 21
+[15 21  5 13 14  9 26 15 21  5 15  2 17  7  5  2  7  9  4 15 19 17 15 23
+ 21] 26
+[21  5 13 14  9 26 15 21  5 15  2 17  7  5  2  7  9  4 15 19 17 15 23 21
+ 26] 9
+[ 5 13 14  9 26 15 21  5 15  2 17  7  5  2  7  9  4 15 19 17 15 23 21 26
+  9] 7
+[13 14  9 26 15 21  5 15  2 17  7  5  2  7  9  4 15 19 17 15 23 21 26  9
+  7] 8
+[14  9 26 15 21  5 15  2 17  7  5  2  7  9  4 15 19 17 15 23 21 26  9  7
+  8] 15
+[ 9 26 15 21  5 15  2 17  7  5  2  7  9  4 15 19 17 15 23 21 26  9  7  8
+ 15] 5
+[26 15 21  5 15  2 17  7  5  2  7  9  4 15 19 17 15 23 21 26  9  7  8 15
+  5] 10
+[15 21  5 15  2 17  7  5  2  7  9  4 15 19 17 15 23 21 26  9  7  8 15  5
+ 10] 14
+[21  5 15  2 17  7  5  2  7  9  4 15 19 17 15 23 21 26  9  7  8 15  5 10
+ 14] 29
+[ 5 15  2 17  7  5  2  7  9  4 15 19 17 15 23 21 26  9  7  8 15  5 10 14
+ 29] 7
+[15  2 17  7  5  2  7  9  4 15 19 17 15 23 21 26  9  7  8 15  5 10 14 29
+  7] 26
+[ 2 17  7  5  2  7  9  4 15 19 17 15 23 21 26  9  7  8 15  5 10 14 29  7
+ 26] 22
+[17  7  5  2  7  9  4 15 19 17 15 23 21 26  9  7  8 15  5 10 14 29  7 26
+ 22] 15
+[ 7  5  2  7  9  4 15 19 17 15 23 21 26  9  7  8 15  5 10 14 29  7 26 22
+ 15] 35
+[ 5  2  7  9  4 15 19 17 15 23 21 26  9  7  8 15  5 10 14 29  7 26 22 15
+ 35] 25
+[ 2  7  9  4 15 19 17 15 23 21 26  9  7  8 15  5 10 14 29  7 26 22 15 35
+ 25] 15
+[ 7  9  4 15 19 17 15 23 21 26  9  7  8 15  5 10 14 29  7 26 22 15 35 25
+ 15] 23
+[ 9  4 15 19 17 15 23 21 26  9  7  8 15  5 10 14 29  7 26 22 15 35 25 15
+ 23] 34
+[ 4 15 19 17 15 23 21 26  9  7  8 15  5 10 14 29  7 26 22 15 35 25 15 23
+ 34] 15
+[15 19 17 15 23 21 26  9  7  8 15  5 10 14 29  7 26 22 15 35 25 15 23 34
+ 15] 41
+[19 17 15 23 21 26  9  7  8 15  5 10 14 29  7 26 22 15 35 25 15 23 34 15
+ 41] 24
+[17 15 23 21 26  9  7  8 15  5 10 14 29  7 26 22 15 35 25 15 23 34 15 41
+ 24] 42
+[15 23 21 26  9  7  8 15  5 10 14 29  7 26 22 15 35 25 15 23 34 15 41 24
+ 42] 15
+[23 21 26  9  7  8 15  5 10 14 29  7 26 22 15 35 25 15 23 34 15 41 24 42
+ 15] 34
+[21 26  9  7  8 15  5 10 14 29  7 26 22 15 35 25 15 23 34 15 41 24 42 15
+ 34] 21
+[26  9  7  8 15  5 10 14 29  7 26 22 15 35 25 15 23 34 15 41 24 42 15 34
+ 21] 3
+[ 9  7  8 15  5 10 14 29  7 26 22 15 35 25 15 23 34 15 41 24 42 15 34 21
+  3] 15
+[ 7  8 15  5 10 14 29  7 26 22 15 35 25 15 23 34 15 41 24 42 15 34 21  3
+ 15] 13
+[ 8 15  5 10 14 29  7 26 22 15 35 25 15 23 34 15 41 24 42 15 34 21  3 15
+ 13] 19
+[15  5 10 14 29  7 26 22 15 35 25 15 23 34 15 41 24 42 15 34 21  3 15 13
+ 19] 9
+[ 5 10 14 29  7 26 22 15 35 25 15 23 34 15 41 24 42 15 34 21  3 15 13 19
+  9] 27
+[10 14 29  7 26 22 15 35 25 15 23 34 15 41 24 42 15 34 21  3 15 13 19  9
+ 27] 15
+[14 29  7 26 22 15 35 25 15 23 34 15 41 24 42 15 34 21  3 15 13 19  9 27
+ 15] 37
+[29  7 26 22 15 35 25 15 23 34 15 41 24 42 15 34 21  3 15 13 19  9 27 15
+ 37] 17
+[ 7 26 22 15 35 25 15 23 34 15 41 24 42 15 34 21  3 15 13 19  9 27 15 37
+ 17] 19
+[26 22 15 35 25 15 23 34 15 41 24 42 15 34 21  3 15 13 19  9 27 15 37 17
+ 19] 34
+[22 15 35 25 15 23 34 15 41 24 42 15 34 21  3 15 13 19  9 27 15 37 17 19
+ 34] 15
+[15 35 25 15 23 34 15 41 24 42 15 34 21  3 15 13 19  9 27 15 37 17 19 34
+ 15] 9
+[35 25 15 23 34 15 41 24 42 15 34 21  3 15 13 19  9 27 15 37 17 19 34 15
+  9] 19
+[25 15 23 34 15 41 24 42 15 34 21  3 15 13 19  9 27 15 37 17 19 34 15  9
+ 19] 17
+[15 23 34 15 41 24 42 15 34 21  3 15 13 19  9 27 15 37 17 19 34 15  9 19
+ 17] 4
+[23 34 15 41 24 42 15 34 21  3 15 13 19  9 27 15 37 17 19 34 15  9 19 17
+  4] 10
+[34 15 41 24 42 15 34 21  3 15 13 19  9 27 15 37 17 19 34 15  9 19 17  4
+ 10] 15
+[15 41 24 42 15 34 21  3 15 13 19  9 27 15 37 17 19 34 15  9 19 17  4 10
+ 15] 4
+[41 24 42 15 34 21  3 15 13 19  9 27 15 37 17 19 34 15  9 19 17  4 10 15
+  4] 19
+[24 42 15 34 21  3 15 13 19  9 27 15 37 17 19 34 15  9 19 17  4 10 15  4
+ 19] 15
+[42 15 34 21  3 15 13 19  9 27 15 37 17 19 34 15  9 19 17  4 10 15  4 19
+ 15] 5
+[15 34 21  3 15 13 19  9 27 15 37 17 19 34 15  9 19 17  4 10 15  4 19 15
+  5] 19
+[34 21  3 15 13 19  9 27 15 37 17 19 34 15  9 19 17  4 10 15  4 19 15  5
+ 19] 33
+[21  3 15 13 19  9 27 15 37 17 19 34 15  9 19 17  4 10 15  4 19 15  5 19
+ 33] 4
+[ 3 15 13 19  9 27 15 37 17 19 34 15  9 19 17  4 10 15  4 19 15  5 19 33
+  4] 10
+[15 13 19  9 27 15 37 17 19 34 15  9 19 17  4 10 15  4 19 15  5 19 33  4
+ 10] 22
+[13 19  9 27 15 37 17 19 34 15  9 19 17  4 10 15  4 19 15  5 19 33  4 10
+ 22] 15
+[19  9 27 15 37 17 19 34 15  9 19 17  4 10 15  4 19 15  5 19 33  4 10 22
+ 15] 14
+[ 9 27 15 37 17 19 34 15  9 19 17  4 10 15  4 19 15  5 19 33  4 10 22 15
+ 14] 9
+[27 15 37 17 19 34 15  9 19 17  4 10 15  4 19 15  5 19 33  4 10 22 15 14
+  9] 26
+[15 37 17 19 34 15  9 19 17  4 10 15  4 19 15  5 19 33  4 10 22 15 14  9
+ 26] 15
+[37 17 19 34 15  9 19 17  4 10 15  4 19 15  5 19 33  4 10 22 15 14  9 26
+ 15] 18
+[17 19 34 15  9 19 17  4 10 15  4 19 15  5 19 33  4 10 22 15 14  9 26 15
+ 18] 32
+[19 34 15  9 19 17  4 10 15  4 19 15  5 19 33  4 10 22 15 14  9 26 15 18
+ 32] 15
+[34 15  9 19 17  4 10 15  4 19 15  5 19 33  4 10 22 15 14  9 26 15 18 32
+ 15] 23
+[15  9 19 17  4 10 15  4 19 15  5 19 33  4 10 22 15 14  9 26 15 18 32 15
+ 23] 34
+[ 9 19 17  4 10 15  4 19 15  5 19 33  4 10 22 15 14  9 26 15 18 32 15 23
+ 34] 15
+[19 17  4 10 15  4 19 15  5 19 33  4 10 22 15 14  9 26 15 18 32 15 23 34
+ 15] 41
+[17  4 10 15  4 19 15  5 19 33  4 10 22 15 14  9 26 15 18 32 15 23 34 15
+ 41] 42
+[ 4 10 15  4 19 15  5 19 33  4 10 22 15 14  9 26 15 18 32 15 23 34 15 41
+ 42] 36
+[10 15  4 19 15  5 19 33  4 10 22 15 14  9 26 15 18 32 15 23 34 15 41 42
+ 36] 15
+[15  4 19 15  5 19 33  4 10 22 15 14  9 26 15 18 32 15 23 34 15 41 42 36
+ 15] 34
+[ 4 19 15  5 19 33  4 10 22 15 14  9 26 15 18 32 15 23 34 15 41 42 36 15
+ 34] 21
+[19 15  5 19 33  4 10 22 15 14  9 26 15 18 32 15 23 34 15 41 42 36 15 34
+ 21] 3
+[15  5 19 33  4 10 22 15 14  9 26 15 18 32 15 23 34 15 41 42 36 15 34 21
+  3] 15
+[ 5 19 33  4 10 22 15 14  9 26 15 18 32 15 23 34 15 41 42 36 15 34 21  3
+ 15] 14
+[19 33  4 10 22 15 14  9 26 15 18 32 15 23 34 15 41 42 36 15 34 21  3 15
+ 14] 4
+[33  4 10 22 15 14  9 26 15 18 32 15 23 34 15 41 42 36 15 34 21  3 15 14
+  4] 15
+[ 4 10 22 15 14  9 26 15 18 32 15 23 34 15 41 42 36 15 34 21  3 15 14  4
+ 15] 21
+[10 22 15 14  9 26 15 18 32 15 23 34 15 41 42 36 15 34 21  3 15 14  4 15
+ 21] 4
+[22 15 14  9 26 15 18 32 15 23 34 15 41 42 36 15 34 21  3 15 14  4 15 21
+  4] 5
+[15 14  9 26 15 18 32 15 23 34 15 41 42 36 15 34 21  3 15 14  4 15 21  4
+  5] 15
+[14  9 26 15 18 32 15 23 34 15 41 42 36 15 34 21  3 15 14  4 15 21  4  5
+ 15] 40
+[ 9 26 15 18 32 15 23 34 15 41 42 36 15 34 21  3 15 14  4 15 21  4  5 15
+ 40] 21
+[26 15 18 32 15 23 34 15 41 42 36 15 34 21  3 15 14  4 15 21  4  5 15 40
+ 21] 26
+[15 18 32 15 23 34 15 41 42 36 15 34 21  3 15 14  4 15 21  4  5 15 40 21
+ 26] 7
+[18 32 15 23 34 15 41 42 36 15 34 21  3 15 14  4 15 21  4  5 15 40 21 26
+  7] 5
+[32 15 23 34 15 41 42 36 15 34 21  3 15 14  4 15 21  4  5 15 40 21 26  7
+  5] 4
+[15 23 34 15 41 42 36 15 34 21  3 15 14  4 15 21  4  5 15 40 21 26  7  5
+  4] 22
+[23 34 15 41 42 36 15 34 21  3 15 14  4 15 21  4  5 15 40 21 26  7  5  4
+ 22] 15
+[34 15 41 42 36 15 34 21  3 15 14  4 15 21  4  5 15 40 21 26  7  5  4 22
+ 15] 2
+[15 41 42 36 15 34 21  3 15 14  4 15 21  4  5 15 40 21 26  7  5  4 22 15
+  2] 19
+[41 42 36 15 34 21  3 15 14  4 15 21  4  5 15 40 21 26  7  5  4 22 15  2
+ 19] 1
+[42 36 15 34 21  3 15 14  4 15 21  4  5 15 40 21 26  7  5  4 22 15  2 19
+  1] 7
+[36 15 34 21  3 15 14  4 15 21  4  5 15 40 21 26  7  5  4 22 15  2 19  1
+  7] 17
+[15 34 21  3 15 14  4 15 21  4  5 15 40 21 26  7  5  4 22 15  2 19  1  7
+ 17] 21
+[34 21  3 15 14  4 15 21  4  5 15 40 21 26  7  5  4 22 15  2 19  1  7 17
+ 21] 9
+[21  3 15 14  4 15 21  4  5 15 40 21 26  7  5  4 22 15  2 19  1  7 17 21
+  9] 27
+[ 3 15 14  4 15 21  4  5 15 40 21 26  7  5  4 22 15  2 19  1  7 17 21  9
+ 27] 15
+[15 14  4 15 21  4  5 15 40 21 26  7  5  4 22 15  2 19  1  7 17 21  9 27
+ 15] 14
+[14  4 15 21  4  5 15 40 21 26  7  5  4 22 15  2 19  1  7 17 21  9 27 15
+ 14] 9
+[ 4 15 21  4  5 15 40 21 26  7  5  4 22 15  2 19  1  7 17 21  9 27 15 14
+  9] 15
+[15 21  4  5 15 40 21 26  7  5  4 22 15  2 19  1  7 17 21  9 27 15 14  9
+ 15] 14
+[21  4  5 15 40 21 26  7  5  4 22 15  2 19  1  7 17 21  9 27 15 14  9 15
+ 14] 17
+[ 4  5 15 40 21 26  7  5  4 22 15  2 19  1  7 17 21  9 27 15 14  9 15 14
+ 17] 7
+[ 5 15 40 21 26  7  5  4 22 15  2 19  1  7 17 21  9 27 15 14  9 15 14 17
+  7] 14
+[15 40 21 26  7  5  4 22 15  2 19  1  7 17 21  9 27 15 14  9 15 14 17  7
+ 14] 15
+[40 21 26  7  5  4 22 15  2 19  1  7 17 21  9 27 15 14  9 15 14 17  7 14
+ 15] 19
+[21 26  7  5  4 22 15  2 19  1  7 17 21  9 27 15 14  9 15 14 17  7 14 15
+ 19] 37
+[26  7  5  4 22 15  2 19  1  7 17 21  9 27 15 14  9 15 14 17  7 14 15 19
+ 37] 15
+[ 7  5  4 22 15  2 19  1  7 17 21  9 27 15 14  9 15 14 17  7 14 15 19 37
+ 15] 36
+[ 5  4 22 15  2 19  1  7 17 21  9 27 15 14  9 15 14 17  7 14 15 19 37 15
+ 36] 16
+[ 4 22 15  2 19  1  7 17 21  9 27 15 14  9 15 14 17  7 14 15 19 37 15 36
+ 16] 18
+[22 15  2 19  1  7 17 21  9 27 15 14  9 15 14 17  7 14 15 19 37 15 36 16
+ 18] 12
+[15  2 19  1  7 17 21  9 27 15 14  9 15 14 17  7 14 15 19 37 15 36 16 18
+ 12] 18
+[ 2 19  1  7 17 21  9 27 15 14  9 15 14 17  7 14 15 19 37 15 36 16 18 12
+ 18] 36
+[19  1  7 17 21  9 27 15 14  9 15 14 17  7 14 15 19 37 15 36 16 18 12 18
+ 36] 32
+[ 1  7 17 21  9 27 15 14  9 15 14 17  7 14 15 19 37 15 36 16 18 12 18 36
+ 32] 15
+[ 7 17 21  9 27 15 14  9 15 14 17  7 14 15 19 37 15 36 16 18 12 18 36 32
+ 15] 23
+[17 21  9 27 15 14  9 15 14 17  7 14 15 19 37 15 36 16 18 12 18 36 32 15
+ 23] 34
+[21  9 27 15 14  9 15 14 17  7 14 15 19 37 15 36 16 18 12 18 36 32 15 23
+ 34] 18
+[ 9 27 15 14  9 15 14 17  7 14 15 19 37 15 36 16 18 12 18 36 32 15 23 34
+ 18] 15
+[27 15 14  9 15 14 17  7 14 15 19 37 15 36 16 18 12 18 36 32 15 23 34 18
+ 15] 41
+[15 14  9 15 14 17  7 14 15 19 37 15 36 16 18 12 18 36 32 15 23 34 18 15
+ 41] 24
+[14  9 15 14 17  7 14 15 19 37 15 36 16 18 12 18 36 32 15 23 34 18 15 41
+ 24] 18
+[ 9 15 14 17  7 14 15 19 37 15 36 16 18 12 18 36 32 15 23 34 18 15 41 24
+ 18] 35
+[15 14 17  7 14 15 19 37 15 36 16 18 12 18 36 32 15 23 34 18 15 41 24 18
+ 35] 12
+[14 17  7 14 15 19 37 15 36 16 18 12 18 36 32 15 23 34 18 15 41 24 18 35
+ 12] 18
+[17  7 14 15 19 37 15 36 16 18 12 18 36 32 15 23 34 18 15 41 24 18 35 12
+ 18] 42
+[ 7 14 15 19 37 15 36 16 18 12 18 36 32 15 23 34 18 15 41 24 18 35 12 18
+ 42] 25
+[14 15 19 37 15 36 16 18 12 18 36 32 15 23 34 18 15 41 24 18 35 12 18 42
+ 25] 15
+[15 19 37 15 36 16 18 12 18 36 32 15 23 34 18 15 41 24 18 35 12 18 42 25
+ 15] 5
+[19 37 15 36 16 18 12 18 36 32 15 23 34 18 15 41 24 18 35 12 18 42 25 15
+  5] 31
+[37 15 36 16 18 12 18 36 32 15 23 34 18 15 41 24 18 35 12 18 42 25 15  5
+ 31] 15
+[15 36 16 18 12 18 36 32 15 23 34 18 15 41 24 18 35 12 18 42 25 15  5 31
+ 15] 34
+[36 16 18 12 18 36 32 15 23 34 18 15 41 24 18 35 12 18 42 25 15  5 31 15
+ 34] 21
+[16 18 12 18 36 32 15 23 34 18 15 41 24 18 35 12 18 42 25 15  5 31 15 34
+ 21] 3
+[18 12 18 36 32 15 23 34 18 15 41 24 18 35 12 18 42 25 15  5 31 15 34 21
+  3] 12
+[12 18 36 32 15 23 34 18 15 41 24 18 35 12 18 42 25 15  5 31 15 34 21  3
+ 12] 11
+[18 36 32 15 23 34 18 15 41 24 18 35 12 18 42 25 15  5 31 15 34 21  3 12
+ 11] 18
+[36 32 15 23 34 18 15 41 24 18 35 12 18 42 25 15  5 31 15 34 21  3 12 11
+ 18] 28
+[32 15 23 34 18 15 41 24 18 35 12 18 42 25 15  5 31 15 34 21  3 12 11 18
+ 28] 15
+[15 23 34 18 15 41 24 18 35 12 18 42 25 15  5 31 15 34 21  3 12 11 18 28
+ 15] 39
+[23 34 18 15 41 24 18 35 12 18 42 25 15  5 31 15 34 21  3 12 11 18 28 15
+ 39] 10
+[34 18 15 41 24 18 35 12 18 42 25 15  5 31 15 34 21  3 12 11 18 28 15 39
+ 10] 7
+[18 15 41 24 18 35 12 18 42 25 15  5 31 15 34 21  3 12 11 18 28 15 39 10
+  7] 15
+[15 41 24 18 35 12 18 42 25 15  5 31 15 34 21  3 12 11 18 28 15 39 10  7
+ 15] 4
+[41 24 18 35 12 18 42 25 15  5 31 15 34 21  3 12 11 18 28 15 39 10  7 15
+  4] 7
+[24 18 35 12 18 42 25 15  5 31 15 34 21  3 12 11 18 28 15 39 10  7 15  4
+  7] 17
+[18 35 12 18 42 25 15  5 31 15 34 21  3 12 11 18 28 15 39 10  7 15  4  7
+ 17] 17
+[35 12 18 42 25 15  5 31 15 34 21  3 12 11 18 28 15 39 10  7 15  4  7 17
+ 17] 14
+[12 18 42 25 15  5 31 15 34 21  3 12 11 18 28 15 39 10  7 15  4  7 17 17
+ 14] 21
+[18 42 25 15  5 31 15 34 21  3 12 11 18 28 15 39 10  7 15  4  7 17 17 14
+ 21] 9
+[42 25 15  5 31 15 34 21  3 12 11 18 28 15 39 10  7 15  4  7 17 17 14 21
+  9] 15
+[25 15  5 31 15 34 21  3 12 11 18 28 15 39 10  7 15  4  7 17 17 14 21  9
+ 15] 21
+[15  5 31 15 34 21  3 12 11 18 28 15 39 10  7 15  4  7 17 17 14 21  9 15
+ 21] 5
+[ 5 31 15 34 21  3 12 11 18 28 15 39 10  7 15  4  7 17 17 14 21  9 15 21
+  5] 15
+[31 15 34 21  3 12 11 18 28 15 39 10  7 15  4  7 17 17 14 21  9 15 21  5
+ 15] 34
+[15 34 21  3 12 11 18 28 15 39 10  7 15  4  7 17 17 14 21  9 15 21  5 15
+ 34] 19
+[34 21  3 12 11 18 28 15 39 10  7 15  4  7 17 17 14 21  9 15 21  5 15 34
+ 19] 33
+[21  3 12 11 18 28 15 39 10  7 15  4  7 17 17 14 21  9 15 21  5 15 34 19
+ 33] 9
+[ 3 12 11 18 28 15 39 10  7 15  4  7 17 17 14 21  9 15 21  5 15 34 19 33
+  9] 4
+[12 11 18 28 15 39 10  7 15  4  7 17 17 14 21  9 15 21  5 15 34 19 33  9
+  4] 14
+[11 18 28 15 39 10  7 15  4  7 17 17 14 21  9 15 21  5 15 34 19 33  9  4
+ 14] 21
+[18 28 15 39 10  7 15  4  7 17 17 14 21  9 15 21  5 15 34 19 33  9  4 14
+ 21] 9
+[28 15 39 10  7 15  4  7 17 17 14 21  9 15 21  5 15 34 19 33  9  4 14 21
+  9] 19
+[15 39 10  7 15  4  7 17 17 14 21  9 15 21  5 15 34 19 33  9  4 14 21  9
+ 19] 33
+[39 10  7 15  4  7 17 17 14 21  9 15 21  5 15 34 19 33  9  4 14 21  9 19
+ 33] 5
+[10  7 15  4  7 17 17 14 21  9 15 21  5 15 34 19 33  9  4 14 21  9 19 33
+  5] 15
+[ 7 15  4  7 17 17 14 21  9 15 21  5 15 34 19 33  9  4 14 21  9 19 33  5
+ 15] 14
+[15  4  7 17 17 14 21  9 15 21  5 15 34 19 33  9  4 14 21  9 19 33  5 15
+ 14] 9
+[ 4  7 17 17 14 21  9 15 21  5 15 34 19 33  9  4 14 21  9 19 33  5 15 14
+  9] 26
+[ 7 17 17 14 21  9 15 21  5 15 34 19 33  9  4 14 21  9 19 33  5 15 14  9
+ 26] 15
+[17 17 14 21  9 15 21  5 15 34 19 33  9  4 14 21  9 19 33  5 15 14  9 26
+ 15] 14
+[17 14 21  9 15 21  5 15 34 19 33  9  4 14 21  9 19 33  5 15 14  9 26 15
+ 14] 17
+[14 21  9 15 21  5 15 34 19 33  9  4 14 21  9 19 33  5 15 14  9 26 15 14
+ 17] 21
+[21  9 15 21  5 15 34 19 33  9  4 14 21  9 19 33  5 15 14  9 26 15 14 17
+ 21] 26
+[ 9 15 21  5 15 34 19 33  9  4 14 21  9 19 33  5 15 14  9 26 15 14 17 21
+ 26] 22
+[15 21  5 15 34 19 33  9  4 14 21  9 19 33  5 15 14  9 26 15 14 17 21 26
+ 22] 15
+[21  5 15 34 19 33  9  4 14 21  9 19 33  5 15 14  9 26 15 14 17 21 26 22
+ 15] 40
+[ 5 15 34 19 33  9  4 14 21  9 19 33  5 15 14  9 26 15 14 17 21 26 22 15
+ 40] 21
+[15 34 19 33  9  4 14 21  9 19 33  5 15 14  9 26 15 14 17 21 26 22 15 40
+ 21] 4
+[34 19 33  9  4 14 21  9 19 33  5 15 14  9 26 15 14 17 21 26 22 15 40 21
+  4] 10
+[19 33  9  4 14 21  9 19 33  5 15 14  9 26 15 14 17 21 26 22 15 40 21  4
+ 10] 15
+[33  9  4 14 21  9 19 33  5 15 14  9 26 15 14 17 21 26 22 15 40 21  4 10
+ 15] 14
+[ 9  4 14 21  9 19 33  5 15 14  9 26 15 14 17 21 26 22 15 40 21  4 10 15
+ 14] 15
+[ 4 14 21  9 19 33  5 15 14  9 26 15 14 17 21 26 22 15 40 21  4 10 15 14
+ 15] 17
+[14 21  9 19 33  5 15 14  9 26 15 14 17 21 26 22 15 40 21  4 10 15 14 15
+ 17] 21
+[21  9 19 33  5 15 14  9 26 15 14 17 21 26 22 15 40 21  4 10 15 14 15 17
+ 21] 26
+[ 9 19 33  5 15 14  9 26 15 14 17 21 26 22 15 40 21  4 10 15 14 15 17 21
+ 26] 27
+[19 33  5 15 14  9 26 15 14 17 21 26 22 15 40 21  4 10 15 14 15 17 21 26
+ 27] 7
+[33  5 15 14  9 26 15 14 17 21 26 22 15 40 21  4 10 15 14 15 17 21 26 27
+  7] 15
+[ 5 15 14  9 26 15 14 17 21 26 22 15 40 21  4 10 15 14 15 17 21 26 27  7
+ 15] 19
+[15 14  9 26 15 14 17 21 26 22 15 40 21  4 10 15 14 15 17 21 26 27  7 15
+ 19] 37
+[14  9 26 15 14 17 21 26 22 15 40 21  4 10 15 14 15 17 21 26 27  7 15 19
+ 37] 15
+[ 9 26 15 14 17 21 26 22 15 40 21  4 10 15 14 15 17 21 26 27  7 15 19 37
+ 15] 34
+[26 15 14 17 21 26 22 15 40 21  4 10 15 14 15 17 21 26 27  7 15 19 37 15
+ 34] 19
+[15 14 17 21 26 22 15 40 21  4 10 15 14 15 17 21 26 27  7 15 19 37 15 34
+ 19] 33
+[14 17 21 26 22 15 40 21  4 10 15 14 15 17 21 26 27  7 15 19 37 15 34 19
+ 33] 9
+[17 21 26 22 15 40 21  4 10 15 14 15 17 21 26 27  7 15 19 37 15 34 19 33
+  9] 4
+[21 26 22 15 40 21  4 10 15 14 15 17 21 26 27  7 15 19 37 15 34 19 33  9
+  4] 14
+[26 22 15 40 21  4 10 15 14 15 17 21 26 27  7 15 19 37 15 34 19 33  9  4
+ 14] 21
+[22 15 40 21  4 10 15 14 15 17 21 26 27  7 15 19 37 15 34 19 33  9  4 14
+ 21] 9
+[15 40 21  4 10 15 14 15 17 21 26 27  7 15 19 37 15 34 19 33  9  4 14 21
+  9] 5
+[40 21  4 10 15 14 15 17 21 26 27  7 15 19 37 15 34 19 33  9  4 14 21  9
+  5] 15
+[21  4 10 15 14 15 17 21 26 27  7 15 19 37 15 34 19 33  9  4 14 21  9  5
+ 15] 17
+[ 4 10 15 14 15 17 21 26 27  7 15 19 37 15 34 19 33  9  4 14 21  9  5 15
+ 17] 33
+[10 15 14 15 17 21 26 27  7 15 19 37 15 34 19 33  9  4 14 21  9  5 15 17
+ 33] 9
+[15 14 15 17 21 26 27  7 15 19 37 15 34 19 33  9  4 14 21  9  5 15 17 33
+  9] 9
+[14 15 17 21 26 27  7 15 19 37 15 34 19 33  9  4 14 21  9  5 15 17 33  9
+  9] 21
+[15 17 21 26 27  7 15 19 37 15 34 19 33  9  4 14 21  9  5 15 17 33  9  9
+ 21] 9
+[17 21 26 27  7 15 19 37 15 34 19 33  9  4 14 21  9  5 15 17 33  9  9 21
+  9] 27
+[21 26 27  7 15 19 37 15 34 19 33  9  4 14 21  9  5 15 17 33  9  9 21  9
+ 27] 15
+[26 27  7 15 19 37 15 34 19 33  9  4 14 21  9  5 15 17 33  9  9 21  9 27
+ 15] 4
+[27  7 15 19 37 15 34 19 33  9  4 14 21  9  5 15 17 33  9  9 21  9 27 15
+  4] 10
+[ 7 15 19 37 15 34 19 33  9  4 14 21  9  5 15 17 33  9  9 21  9 27 15  4
+ 10] 7
+[15 19 37 15 34 19 33  9  4 14 21  9  5 15 17 33  9  9 21  9 27 15  4 10
+  7] 15
+[19 37 15 34 19 33  9  4 14 21  9  5 15 17 33  9  9 21  9 27 15  4 10  7
+ 15] 13
+[37 15 34 19 33  9  4 14 21  9  5 15 17 33  9  9 21  9 27 15  4 10  7 15
+ 13] 7
+[15 34 19 33  9  4 14 21  9  5 15 17 33  9  9 21  9 27 15  4 10  7 15 13
+  7] 9
+[34 19 33  9  4 14 21  9  5 15 17 33  9  9 21  9 27 15  4 10  7 15 13  7
+  9] 27
+[19 33  9  4 14 21  9  5 15 17 33  9  9 21  9 27 15  4 10  7 15 13  7  9
+ 27] 4
+[33  9  4 14 21  9  5 15 17 33  9  9 21  9 27 15  4 10  7 15 13  7  9 27
+  4] 10
+[ 9  4 14 21  9  5 15 17 33  9  9 21  9 27 15  4 10  7 15 13  7  9 27  4
+ 10] 15
+[ 4 14 21  9  5 15 17 33  9  9 21  9 27 15  4 10  7 15 13  7  9 27  4 10
+ 15] 19
+[14 21  9  5 15 17 33  9  9 21  9 27 15  4 10  7 15 13  7  9 27  4 10 15
+ 19] 37
+[21  9  5 15 17 33  9  9 21  9 27 15  4 10  7 15 13  7  9 27  4 10 15 19
+ 37] 15
+[ 9  5 15 17 33  9  9 21  9 27 15  4 10  7 15 13  7  9 27  4 10 15 19 37
+ 15] 4
+[ 5 15 17 33  9  9 21  9 27 15  4 10  7 15 13  7  9 27  4 10 15 19 37 15
+  4] 10
+[15 17 33  9  9 21  9 27 15  4 10  7 15 13  7  9 27  4 10 15 19 37 15  4
+ 10] 7
+[17 33  9  9 21  9 27 15  4 10  7 15 13  7  9 27  4 10 15 19 37 15  4 10
+  7] 15
+[33  9  9 21  9 27 15  4 10  7 15 13  7  9 27  4 10 15 19 37 15  4 10  7
+ 15] 21
+[ 9  9 21  9 27 15  4 10  7 15 13  7  9 27  4 10 15 19 37 15  4 10  7 15
+ 21] 5
+[ 9 21  9 27 15  4 10  7 15 13  7  9 27  4 10 15 19 37 15  4 10  7 15 21
+  5] 13
+[21  9 27 15  4 10  7 15 13  7  9 27  4 10 15 19 37 15  4 10  7 15 21  5
+ 13] 14
+[ 9 27 15  4 10  7 15 13  7  9 27  4 10 15 19 37 15  4 10  7 15 21  5 13
+ 14] 9
+[27 15  4 10  7 15 13  7  9 27  4 10 15 19 37 15  4 10  7 15 21  5 13 14
+  9] 26
+[15  4 10  7 15 13  7  9 27  4 10 15 19 37 15  4 10  7 15 21  5 13 14  9
+ 26] 12
+[ 4 10  7 15 13  7  9 27  4 10 15 19 37 15  4 10  7 15 21  5 13 14  9 26
+ 12] 15
+[10  7 15 13  7  9 27  4 10 15 19 37 15  4 10  7 15 21  5 13 14  9 26 12
+ 15] 39
+[ 7 15 13  7  9 27  4 10 15 19 37 15  4 10  7 15 21  5 13 14  9 26 12 15
+ 39] 10
+[15 13  7  9 27  4 10 15 19 37 15  4 10  7 15 21  5 13 14  9 26 12 15 39
+ 10] 7
+[13  7  9 27  4 10 15 19 37 15  4 10  7 15 21  5 13 14  9 26 12 15 39 10
+  7] 15
+[ 7  9 27  4 10 15 19 37 15  4 10  7 15 21  5 13 14  9 26 12 15 39 10  7
+ 15] 4
+[ 9 27  4 10 15 19 37 15  4 10  7 15 21  5 13 14  9 26 12 15 39 10  7 15
+  4] 40
+[27  4 10 15 19 37 15  4 10  7 15 21  5 13 14  9 26 12 15 39 10  7 15  4
+ 40] 19
+[ 4 10 15 19 37 15  4 10  7 15 21  5 13 14  9 26 12 15 39 10  7 15  4 40
+ 19] 15
+[10 15 19 37 15  4 10  7 15 21  5 13 14  9 26 12 15 39 10  7 15  4 40 19
+ 15] 13
+[15 19 37 15  4 10  7 15 21  5 13 14  9 26 12 15 39 10  7 15  4 40 19 15
+ 13] 14
+[19 37 15  4 10  7 15 21  5 13 14  9 26 12 15 39 10  7 15  4 40 19 15 13
+ 14] 17
+[37 15  4 10  7 15 21  5 13 14  9 26 12 15 39 10  7 15  4 40 19 15 13 14
+ 17] 27
+[15  4 10  7 15 21  5 13 14  9 26 12 15 39 10  7 15  4 40 19 15 13 14 17
+ 27] 7
+[ 4 10  7 15 21  5 13 14  9 26 12 15 39 10  7 15  4 40 19 15 13 14 17 27
+  7] 5
+[10  7 15 21  5 13 14  9 26 12 15 39 10  7 15  4 40 19 15 13 14 17 27  7
+  5] 4
+[ 7 15 21  5 13 14  9 26 12 15 39 10  7 15  4 40 19 15 13 14 17 27  7  5
+  4] 15
+[15 21  5 13 14  9 26 12 15 39 10  7 15  4 40 19 15 13 14 17 27  7  5  4
+ 15] 19
+[21  5 13 14  9 26 12 15 39 10  7 15  4 40 19 15 13 14 17 27  7  5  4 15
+ 19] 37
+[ 5 13 14  9 26 12 15 39 10  7 15  4 40 19 15 13 14 17 27  7  5  4 15 19
+ 37] 15
+[13 14  9 26 12 15 39 10  7 15  4 40 19 15 13 14 17 27  7  5  4 15 19 37
+ 15] 4
+[14  9 26 12 15 39 10  7 15  4 40 19 15 13 14 17 27  7  5  4 15 19 37 15
+  4] 10
+[ 9 26 12 15 39 10  7 15  4 40 19 15 13 14 17 27  7  5  4 15 19 37 15  4
+ 10] 7
+[26 12 15 39 10  7 15  4 40 19 15 13 14 17 27  7  5  4 15 19 37 15  4 10
+  7] 5
+[12 15 39 10  7 15  4 40 19 15 13 14 17 27  7  5  4 15 19 37 15  4 10  7
+  5] 7
+[15 39 10  7 15  4 40 19 15 13 14 17 27  7  5  4 15 19 37 15  4 10  7  5
+  7] 15
+[39 10  7 15  4 40 19 15 13 14 17 27  7  5  4 15 19 37 15  4 10  7  5  7
+ 15] 34
+[10  7 15  4 40 19 15 13 14 17 27  7  5  4 15 19 37 15  4 10  7  5  7 15
+ 34] 19
+[ 7 15  4 40 19 15 13 14 17 27  7  5  4 15 19 37 15  4 10  7  5  7 15 34
+ 19] 33
+[15  4 40 19 15 13 14 17 27  7  5  4 15 19 37 15  4 10  7  5  7 15 34 19
+ 33] 9
+[ 4 40 19 15 13 14 17 27  7  5  4 15 19 37 15  4 10  7  5  7 15 34 19 33
+  9] 4
+[40 19 15 13 14 17 27  7  5  4 15 19 37 15  4 10  7  5  7 15 34 19 33  9
+  4] 14
+[19 15 13 14 17 27  7  5  4 15 19 37 15  4 10  7  5  7 15 34 19 33  9  4
+ 14] 21
+[15 13 14 17 27  7  5  4 15 19 37 15  4 10  7  5  7 15 34 19 33  9  4 14
+ 21] 9
+[13 14 17 27  7  5  4 15 19 37 15  4 10  7  5  7 15 34 19 33  9  4 14 21
+  9] 5
+[14 17 27  7  5  4 15 19 37 15  4 10  7  5  7 15 34 19 33  9  4 14 21  9
+  5] 22
+[17 27  7  5  4 15 19 37 15  4 10  7  5  7 15 34 19 33  9  4 14 21  9  5
+ 22] 15
+[27  7  5  4 15 19 37 15  4 10  7  5  7 15 34 19 33  9  4 14 21  9  5 22
+ 15] 20
+[ 7  5  4 15 19 37 15  4 10  7  5  7 15 34 19 33  9  4 14 21  9  5 22 15
+ 20] 7
+[ 5  4 15 19 37 15  4 10  7  5  7 15 34 19 33  9  4 14 21  9  5 22 15 20
+  7] 13
+[ 4 15 19 37 15  4 10  7  5  7 15 34 19 33  9  4 14 21  9  5 22 15 20  7
+ 13] 21
+[15 19 37 15  4 10  7  5  7 15 34 19 33  9  4 14 21  9  5 22 15 20  7 13
+ 21] 9
+[19 37 15  4 10  7  5  7 15 34 19 33  9  4 14 21  9  5 22 15 20  7 13 21
+  9] 7
+[37 15  4 10  7  5  7 15 34 19 33  9  4 14 21  9  5 22 15 20  7 13 21  9
+  7] 19
+[15  4 10  7  5  7 15 34 19 33  9  4 14 21  9  5 22 15 20  7 13 21  9  7
+ 19] 9
+[ 4 10  7  5  7 15 34 19 33  9  4 14 21  9  5 22 15 20  7 13 21  9  7 19
+  9] 15
+[10  7  5  7 15 34 19 33  9  4 14 21  9  5 22 15 20  7 13 21  9  7 19  9
+ 15] 41
+[ 7  5  7 15 34 19 33  9  4 14 21  9  5 22 15 20  7 13 21  9  7 19  9 15
+ 41] 42
+[ 5  7 15 34 19 33  9  4 14 21  9  5 22 15 20  7 13 21  9  7 19  9 15 41
+ 42] 22
+[ 7 15 34 19 33  9  4 14 21  9  5 22 15 20  7 13 21  9  7 19  9 15 41 42
+ 22] 18
+[15 34 19 33  9  4 14 21  9  5 22 15 20  7 13 21  9  7 19  9 15 41 42 22
+ 18] 32
+[34 19 33  9  4 14 21  9  5 22 15 20  7 13 21  9  7 19  9 15 41 42 22 18
+ 32] 38
+[19 33  9  4 14 21  9  5 22 15 20  7 13 21  9  7 19  9 15 41 42 22 18 32
+ 38] 15
+[33  9  4 14 21  9  5 22 15 20  7 13 21  9  7 19  9 15 41 42 22 18 32 38
+ 15] 34
+[ 9  4 14 21  9  5 22 15 20  7 13 21  9  7 19  9 15 41 42 22 18 32 38 15
+ 34] 15
+[ 4 14 21  9  5 22 15 20  7 13 21  9  7 19  9 15 41 42 22 18 32 38 15 34
+ 15] 41
+[14 21  9  5 22 15 20  7 13 21  9  7 19  9 15 41 42 22 18 32 38 15 34 15
+ 41] 16
+[21  9  5 22 15 20  7 13 21  9  7 19  9 15 41 42 22 18 32 38 15 34 15 41
+ 16] 22
+[ 9  5 22 15 20  7 13 21  9  7 19  9 15 41 42 22 18 32 38 15 34 15 41 16
+ 22] 18
+[ 5 22 15 20  7 13 21  9  7 19  9 15 41 42 22 18 32 38 15 34 15 41 16 22
+ 18] 35
+[22 15 20  7 13 21  9  7 19  9 15 41 42 22 18 32 38 15 34 15 41 16 22 18
+ 35] 35
+[15 20  7 13 21  9  7 19  9 15 41 42 22 18 32 38 15 34 15 41 16 22 18 35
+ 35] 15
+[20  7 13 21  9  7 19  9 15 41 42 22 18 32 38 15 34 15 41 16 22 18 35 35
+ 15] 37
+[ 7 13 21  9  7 19  9 15 41 42 22 18 32 38 15 34 15 41 16 22 18 35 35 15
+ 37] 4
+[13 21  9  7 19  9 15 41 42 22 18 32 38 15 34 15 41 16 22 18 35 35 15 37
+  4] 3
+[21  9  7 19  9 15 41 42 22 18 32 38 15 34 15 41 16 22 18 35 35 15 37  4
+  3] 3
+[ 9  7 19  9 15 41 42 22 18 32 38 15 34 15 41 16 22 18 35 35 15 37  4  3
+  3] 15
+[ 7 19  9 15 41 42 22 18 32 38 15 34 15 41 16 22 18 35 35 15 37  4  3  3
+ 15] 14
+[19  9 15 41 42 22 18 32 38 15 34 15 41 16 22 18 35 35 15 37  4  3  3 15
+ 14] 9
+[ 9 15 41 42 22 18 32 38 15 34 15 41 16 22 18 35 35 15 37  4  3  3 15 14
+  9] 26
+[15 41 42 22 18 32 38 15 34 15 41 16 22 18 35 35 15 37  4  3  3 15 14  9
+ 26] 15
+[41 42 22 18 32 38 15 34 15 41 16 22 18 35 35 15 37  4  3  3 15 14  9 26
+ 15] 6
+[42 22 18 32 38 15 34 15 41 16 22 18 35 35 15 37  4  3  3 15 14  9 26 15
+  6] 29
+[22 18 32 38 15 34 15 41 16 22 18 35 35 15 37  4  3  3 15 14  9 26 15  6
+ 29] 19
+[18 32 38 15 34 15 41 16 22 18 35 35 15 37  4  3  3 15 14  9 26 15  6 29
+ 19] 5
+[32 38 15 34 15 41 16 22 18 35 35 15 37  4  3  3 15 14  9 26 15  6 29 19
+  5] 15
+[38 15 34 15 41 16 22 18 35 35 15 37  4  3  3 15 14  9 26 15  6 29 19  5
+ 15] 41
+[15 34 15 41 16 22 18 35 35 15 37  4  3  3 15 14  9 26 15  6 29 19  5 15
+ 41] 42
+[34 15 41 16 22 18 35 35 15 37  4  3  3 15 14  9 26 15  6 29 19  5 15 41
+ 42] 22
+[15 41 16 22 18 35 35 15 37  4  3  3 15 14  9 26 15  6 29 19  5 15 41 42
+ 22] 42
+[41 16 22 18 35 35 15 37  4  3  3 15 14  9 26 15  6 29 19  5 15 41 42 22
+ 42] 36
+[16 22 18 35 35 15 37  4  3  3 15 14  9 26 15  6 29 19  5 15 41 42 22 42
+ 36] 36
+[22 18 35 35 15 37  4  3  3 15 14  9 26 15  6 29 19  5 15 41 42 22 42 36
+ 36] 15
+[18 35 35 15 37  4  3  3 15 14  9 26 15  6 29 19  5 15 41 42 22 42 36 36
+ 15] 34
+[35 35 15 37  4  3  3 15 14  9 26 15  6 29 19  5 15 41 42 22 42 36 36 15
+ 34] 15
+[35 15 37  4  3  3 15 14  9 26 15  6 29 19  5 15 41 42 22 42 36 36 15 34
+ 15] 41
+[15 37  4  3  3 15 14  9 26 15  6 29 19  5 15 41 42 22 42 36 36 15 34 15
+ 41] 24
+[37  4  3  3 15 14  9 26 15  6 29 19  5 15 41 42 22 42 36 36 15 34 15 41
+ 24] 22
+[ 4  3  3 15 14  9 26 15  6 29 19  5 15 41 42 22 42 36 36 15 34 15 41 24
+ 22] 36
+[ 3  3 15 14  9 26 15  6 29 19  5 15 41 42 22 42 36 36 15 34 15 41 24 22
+ 36] 32
+[ 3 15 14  9 26 15  6 29 19  5 15 41 42 22 42 36 36 15 34 15 41 24 22 36
+ 32] 36
+[15 14  9 26 15  6 29 19  5 15 41 42 22 42 36 36 15 34 15 41 24 22 36 32
+ 36] 15
+[14  9 26 15  6 29 19  5 15 41 42 22 42 36 36 15 34 15 41 24 22 36 32 36
+ 15] 37
+[ 9 26 15  6 29 19  5 15 41 42 22 42 36 36 15 34 15 41 24 22 36 32 36 15
+ 37] 4
+[26 15  6 29 19  5 15 41 42 22 42 36 36 15 34 15 41 24 22 36 32 36 15 37
+  4] 3
+[15  6 29 19  5 15 41 42 22 42 36 36 15 34 15 41 24 22 36 32 36 15 37  4
+  3] 3
+[ 6 29 19  5 15 41 42 22 42 36 36 15 34 15 41 24 22 36 32 36 15 37  4  3
+  3] 22
+[29 19  5 15 41 42 22 42 36 36 15 34 15 41 24 22 36 32 36 15 37  4  3  3
+ 22] 15
+[19  5 15 41 42 22 42 36 36 15 34 15 41 24 22 36 32 36 15 37  4  3  3 22
+ 15] 14
+[ 5 15 41 42 22 42 36 36 15 34 15 41 24 22 36 32 36 15 37  4  3  3 22 15
+ 14] 17
+[15 41 42 22 42 36 36 15 34 15 41 24 22 36 32 36 15 37  4  3  3 22 15 14
+ 17] 7
+[41 42 22 42 36 36 15 34 15 41 24 22 36 32 36 15 37  4  3  3 22 15 14 17
+  7] 15
+[42 22 42 36 36 15 34 15 41 24 22 36 32 36 15 37  4  3  3 22 15 14 17  7
+ 15] 5
+[22 42 36 36 15 34 15 41 24 22 36 32 36 15 37  4  3  3 22 15 14 17  7 15
+  5] 21
+[42 36 36 15 34 15 41 24 22 36 32 36 15 37  4  3  3 22 15 14 17  7 15  5
+ 21] 4
+[36 36 15 34 15 41 24 22 36 32 36 15 37  4  3  3 22 15 14 17  7 15  5 21
+  4] 33
+[36 15 34 15 41 24 22 36 32 36 15 37  4  3  3 22 15 14 17  7 15  5 21  4
+ 33] 14
+[15 34 15 41 24 22 36 32 36 15 37  4  3  3 22 15 14 17  7 15  5 21  4 33
+ 14] 4
+[34 15 41 24 22 36 32 36 15 37  4  3  3 22 15 14 17  7 15  5 21  4 33 14
+  4] 7
+[15 41 24 22 36 32 36 15 37  4  3  3 22 15 14 17  7 15  5 21  4 33 14  4
+  7] 26
+[41 24 22 36 32 36 15 37  4  3  3 22 15 14 17  7 15  5 21  4 33 14  4  7
+ 26] 15
+[24 22 36 32 36 15 37  4  3  3 22 15 14 17  7 15  5 21  4 33 14  4  7 26
+ 15] 21
+[22 36 32 36 15 37  4  3  3 22 15 14 17  7 15  5 21  4 33 14  4  7 26 15
+ 21] 9
+[36 32 36 15 37  4  3  3 22 15 14 17  7 15  5 21  4 33 14  4  7 26 15 21
+  9] 15
+[32 36 15 37  4  3  3 22 15 14 17  7 15  5 21  4 33 14  4  7 26 15 21  9
+ 15] 4
+[36 15 37  4  3  3 22 15 14 17  7 15  5 21  4 33 14  4  7 26 15 21  9 15
+  4] 10
+[15 37  4  3  3 22 15 14 17  7 15  5 21  4 33 14  4  7 26 15 21  9 15  4
+ 10] 7
+[37  4  3  3 22 15 14 17  7 15  5 21  4 33 14  4  7 26 15 21  9 15  4 10
+  7] 15
+[ 4  3  3 22 15 14 17  7 15  5 21  4 33 14  4  7 26 15 21  9 15  4 10  7
+ 15] 9
+[ 3  3 22 15 14 17  7 15  5 21  4 33 14  4  7 26 15 21  9 15  4 10  7 15
+  9] 19
+[ 3 22 15 14 17  7 15  5 21  4 33 14  4  7 26 15 21  9 15  4 10  7 15  9
+ 19] 17
+[22 15 14 17  7 15  5 21  4 33 14  4  7 26 15 21  9 15  4 10  7 15  9 19
+ 17] 4
+[15 14 17  7 15  5 21  4 33 14  4  7 26 15 21  9 15  4 10  7 15  9 19 17
+  4] 10
+[14 17  7 15  5 21  4 33 14  4  7 26 15 21  9 15  4 10  7 15  9 19 17  4
+ 10] 15
+[17  7 15  5 21  4 33 14  4  7 26 15 21  9 15  4 10  7 15  9 19 17  4 10
+ 15] 19
+[ 7 15  5 21  4 33 14  4  7 26 15 21  9 15  4 10  7 15  9 19 17  4 10 15
+ 19] 37
+[15  5 21  4 33 14  4  7 26 15 21  9 15  4 10  7 15  9 19 17  4 10 15 19
+ 37] 15
+[ 5 21  4 33 14  4  7 26 15 21  9 15  4 10  7 15  9 19 17  4 10 15 19 37
+ 15] 4
+[21  4 33 14  4  7 26 15 21  9 15  4 10  7 15  9 19 17  4 10 15 19 37 15
+  4] 10
+[ 4 33 14  4  7 26 15 21  9 15  4 10  7 15  9 19 17  4 10 15 19 37 15  4
+ 10] 7
+[33 14  4  7 26 15 21  9 15  4 10  7 15  9 19 17  4 10 15 19 37 15  4 10
+  7] 15
+[14  4  7 26 15 21  9 15  4 10  7 15  9 19 17  4 10 15 19 37 15  4 10  7
+ 15] 21
+[ 4  7 26 15 21  9 15  4 10  7 15  9 19 17  4 10 15 19 37 15  4 10  7 15
+ 21] 5
+[ 7 26 15 21  9 15  4 10  7 15  9 19 17  4 10 15 19 37 15  4 10  7 15 21
+  5] 13
+[26 15 21  9 15  4 10  7 15  9 19 17  4 10 15 19 37 15  4 10  7 15 21  5
+ 13] 14
+[15 21  9 15  4 10  7 15  9 19 17  4 10 15 19 37 15  4 10  7 15 21  5 13
+ 14] 9
+[21  9 15  4 10  7 15  9 19 17  4 10 15 19 37 15  4 10  7 15 21  5 13 14
+  9] 26
+[ 9 15  4 10  7 15  9 19 17  4 10 15 19 37 15  4 10  7 15 21  5 13 14  9
+ 26] 12
+[15  4 10  7 15  9 19 17  4 10 15 19 37 15  4 10  7 15 21  5 13 14  9 26
+ 12] 15
+[ 4 10  7 15  9 19 17  4 10 15 19 37 15  4 10  7 15 21  5 13 14  9 26 12
+ 15] 39
+[10  7 15  9 19 17  4 10 15 19 37 15  4 10  7 15 21  5 13 14  9 26 12 15
+ 39] 10
+[ 7 15  9 19 17  4 10 15 19 37 15  4 10  7 15 21  5 13 14  9 26 12 15 39
+ 10] 7
+[15  9 19 17  4 10 15 19 37 15  4 10  7 15 21  5 13 14  9 26 12 15 39 10
+  7] 15
+[ 9 19 17  4 10 15 19 37 15  4 10  7 15 21  5 13 14  9 26 12 15 39 10  7
+ 15] 2
+[19 17  4 10 15 19 37 15  4 10  7 15 21  5 13 14  9 26 12 15 39 10  7 15
+  2] 7
+[17  4 10 15 19 37 15  4 10  7 15 21  5 13 14  9 26 12 15 39 10  7 15  2
+  7] 9
+[ 4 10 15 19 37 15  4 10  7 15 21  5 13 14  9 26 12 15 39 10  7 15  2  7
+  9] 4
+[10 15 19 37 15  4 10  7 15 21  5 13 14  9 26 12 15 39 10  7 15  2  7  9
+  4] 7
+[15 19 37 15  4 10  7 15 21  5 13 14  9 26 12 15 39 10  7 15  2  7  9  4
+  7] 17
+[19 37 15  4 10  7 15 21  5 13 14  9 26 12 15 39 10  7 15  2  7  9  4  7
+ 17] 15
+[37 15  4 10  7 15 21  5 13 14  9 26 12 15 39 10  7 15  2  7  9  4  7 17
+ 15] 19
+[15  4 10  7 15 21  5 13 14  9 26 12 15 39 10  7 15  2  7  9  4  7 17 15
+ 19] 37
+[ 4 10  7 15 21  5 13 14  9 26 12 15 39 10  7 15  2  7  9  4  7 17 15 19
+ 37] 15
+[10  7 15 21  5 13 14  9 26 12 15 39 10  7 15  2  7  9  4  7 17 15 19 37
+ 15] 4
+[ 7 15 21  5 13 14  9 26 12 15 39 10  7 15  2  7  9  4  7 17 15 19 37 15
+  4] 10
+[15 21  5 13 14  9 26 12 15 39 10  7 15  2  7  9  4  7 17 15 19 37 15  4
+ 10] 7
+[21  5 13 14  9 26 12 15 39 10  7 15  2  7  9  4  7 17 15 19 37 15  4 10
+  7] 15
+[ 5 13 14  9 26 12 15 39 10  7 15  2  7  9  4  7 17 15 19 37 15  4 10  7
+ 15] 21
+[13 14  9 26 12 15 39 10  7 15  2  7  9  4  7 17 15 19 37 15  4 10  7 15
+ 21] 5
+[14  9 26 12 15 39 10  7 15  2  7  9  4  7 17 15 19 37 15  4 10  7 15 21
+  5] 13
+[ 9 26 12 15 39 10  7 15  2  7  9  4  7 17 15 19 37 15  4 10  7 15 21  5
+ 13] 14
+[26 12 15 39 10  7 15  2  7  9  4  7 17 15 19 37 15  4 10  7 15 21  5 13
+ 14] 9
+[12 15 39 10  7 15  2  7  9  4  7 17 15 19 37 15  4 10  7 15 21  5 13 14
+  9] 26
+[15 39 10  7 15  2  7  9  4  7 17 15 19 37 15  4 10  7 15 21  5 13 14  9
+ 26] 15
+[39 10  7 15  2  7  9  4  7 17 15 19 37 15  4 10  7 15 21  5 13 14  9 26
+ 15] 21
+[10  7 15  2  7  9  4  7 17 15 19 37 15  4 10  7 15 21  5 13 14  9 26 15
+ 21] 5
+[ 7 15  2  7  9  4  7 17 15 19 37 15  4 10  7 15 21  5 13 14  9 26 15 21
+  5] 15
+[15  2  7  9  4  7 17 15 19 37 15  4 10  7 15 21  5 13 14  9 26 15 21  5
+ 15] 26
+[ 2  7  9  4  7 17 15 19 37 15  4 10  7 15 21  5 13 14  9 26 15 21  5 15
+ 26] 21
+[ 7  9  4  7 17 15 19 37 15  4 10  7 15 21  5 13 14  9 26 15 21  5 15 26
+ 21] 1
+[ 9  4  7 17 15 19 37 15  4 10  7 15 21  5 13 14  9 26 15 21  5 15 26 21
+  1] 21
+[ 4  7 17 15 19 37 15  4 10  7 15 21  5 13 14  9 26 15 21  5 15 26 21  1
+ 21] 26
+[ 7 17 15 19 37 15  4 10  7 15 21  5 13 14  9 26 15 21  5 15 26 21  1 21
+ 26] 7
+[17 15 19 37 15  4 10  7 15 21  5 13 14  9 26 15 21  5 15 26 21  1 21 26
+  7] 26
+[15 19 37 15  4 10  7 15 21  5 13 14  9 26 15 21  5 15 26 21  1 21 26  7
+ 26] 15
+[19 37 15  4 10  7 15 21  5 13 14  9 26 15 21  5 15 26 21  1 21 26  7 26
+ 15] 0
+[37 15  4 10  7 15 21  5 13 14  9 26 15 21  5 15 26 21  1 21 26  7 26 15
+  0] 7
+[15  4 10  7 15 21  5 13 14  9 26 15 21  5 15 26 21  1 21 26  7 26 15  0
+  7] 4
+[ 4 10  7 15 21  5 13 14  9 26 15 21  5 15 26 21  1 21 26  7 26 15  0  7
+  4] 40
+[10  7 15 21  5 13 14  9 26 15 21  5 15 26 21  1 21 26  7 26 15  0  7  4
+ 40] 7
+[ 7 15 21  5 13 14  9 26 15 21  5 15 26 21  1 21 26  7 26 15  0  7  4 40
+  7] 7
+[15 21  5 13 14  9 26 15 21  5 15 26 21  1 21 26  7 26 15  0  7  4 40  7
+  7] 9
+[21  5 13 14  9 26 15 21  5 15 26 21  1 21 26  7 26 15  0  7  4 40  7  7
+  9] 15
+[ 5 13 14  9 26 15 21  5 15 26 21  1 21 26  7 26 15  0  7  4 40  7  7  9
+ 15] 7
+[13 14  9 26 15 21  5 15 26 21  1 21 26  7 26 15  0  7  4 40  7  7  9 15
+  7] 14
+[14  9 26 15 21  5 15 26 21  1 21 26  7 26 15  0  7  4 40  7  7  9 15  7
+ 14] 5
+[ 9 26 15 21  5 15 26 21  1 21 26  7 26 15  0  7  4 40  7  7  9 15  7 14
+  5] 4
+[26 15 21  5 15 26 21  1 21 26  7 26 15  0  7  4 40  7  7  9 15  7 14  5
+  4] 15
+[15 21  5 15 26 21  1 21 26  7 26 15  0  7  4 40  7  7  9 15  7 14  5  4
+ 15] 14
+[21  5 15 26 21  1 21 26  7 26 15  0  7  4 40  7  7  9 15  7 14  5  4 15
+ 14] 9
+[ 5 15 26 21  1 21 26  7 26 15  0  7  4 40  7  7  9 15  7 14  5  4 15 14
+  9] 26
+[15 26 21  1 21 26  7 26 15  0  7  4 40  7  7  9 15  7 14  5  4 15 14  9
+ 26] 15
+[26 21  1 21 26  7 26 15  0  7  4 40  7  7  9 15  7 14  5  4 15 14  9 26
+ 15] 40
+[21  1 21 26  7 26 15  0  7  4 40  7  7  9 15  7 14  5  4 15 14  9 26 15
+ 40] 7
+[ 1 21 26  7 26 15  0  7  4 40  7  7  9 15  7 14  5  4 15 14  9 26 15 40
+  7] 5
+[21 26  7 26 15  0  7  4 40  7  7  9 15  7 14  5  4 15 14  9 26 15 40  7
+  5] 4
+[26  7 26 15  0  7  4 40  7  7  9 15  7 14  5  4 15 14  9 26 15 40  7  5
+  4] 15
+[ 7 26 15  0  7  4 40  7  7  9 15  7 14  5  4 15 14  9 26 15 40  7  5  4
+ 15] 0
+[26 15  0  7  4 40  7  7  9 15  7 14  5  4 15 14  9 26 15 40  7  5  4 15
+  0] 8
+[15  0  7  4 40  7  7  9 15  7 14  5  4 15 14  9 26 15 40  7  5  4 15  0
+  8] 15
+[ 0  7  4 40  7  7  9 15  7 14  5  4 15 14  9 26 15 40  7  5  4 15  0  8
+ 15] 14
+[ 7  4 40  7  7  9 15  7 14  5  4 15 14  9 26 15 40  7  5  4 15  0  8 15
+ 14] 15
+[ 4 40  7  7  9 15  7 14  5  4 15 14  9 26 15 40  7  5  4 15  0  8 15 14
+ 15] 17
+[40  7  7  9 15  7 14  5  4 15 14  9 26 15 40  7  5  4 15  0  8 15 14 15
+ 17] 14
+[ 7  7  9 15  7 14  5  4 15 14  9 26 15 40  7  5  4 15  0  8 15 14 15 17
+ 14] 9
+[ 7  9 15  7 14  5  4 15 14  9 26 15 40  7  5  4 15  0  8 15 14 15 17 14
+  9] 27
+[ 9 15  7 14  5  4 15 14  9 26 15 40  7  5  4 15  0  8 15 14 15 17 14  9
+ 27] 7
+[15  7 14  5  4 15 14  9 26 15 40  7  5  4 15  0  8 15 14 15 17 14  9 27
+  7] 15
+[ 7 14  5  4 15 14  9 26 15 40  7  5  4 15  0  8 15 14 15 17 14  9 27  7
+ 15] 19
+[14  5  4 15 14  9 26 15 40  7  5  4 15  0  8 15 14 15 17 14  9 27  7 15
+ 19] 37
+[ 5  4 15 14  9 26 15 40  7  5  4 15  0  8 15 14 15 17 14  9 27  7 15 19
+ 37] 15
+[ 4 15 14  9 26 15 40  7  5  4 15  0  8 15 14 15 17 14  9 27  7 15 19 37
+ 15] 5
+[15 14  9 26 15 40  7  5  4 15  0  8 15 14 15 17 14  9 27  7 15 19 37 15
+  5] 34
+[14  9 26 15 40  7  5  4 15  0  8 15 14 15 17 14  9 27  7 15 19 37 15  5
+ 34] 14
+[ 9 26 15 40  7  5  4 15  0  8 15 14 15 17 14  9 27  7 15 19 37 15  5 34
+ 14] 13
+[26 15 40  7  5  4 15  0  8 15 14 15 17 14  9 27  7 15 19 37 15  5 34 14
+ 13] 13
+[15 40  7  5  4 15  0  8 15 14 15 17 14  9 27  7 15 19 37 15  5 34 14 13
+ 13] 7
+[40  7  5  4 15  0  8 15 14 15 17 14  9 27  7 15 19 37 15  5 34 14 13 13
+  7] 17
+[ 7  5  4 15  0  8 15 14 15 17 14  9 27  7 15 19 37 15  5 34 14 13 13  7
+ 17] 15
+[ 5  4 15  0  8 15 14 15 17 14  9 27  7 15 19 37 15  5 34 14 13 13  7 17
+ 15] 29
+[ 4 15  0  8 15 14 15 17 14  9 27  7 15 19 37 15  5 34 14 13 13  7 17 15
+ 29] 7
+[15  0  8 15 14 15 17 14  9 27  7 15 19 37 15  5 34 14 13 13  7 17 15 29
+  7] 14
+[ 0  8 15 14 15 17 14  9 27  7 15 19 37 15  5 34 14 13 13  7 17 15 29  7
+ 14] 23
+[ 8 15 14 15 17 14  9 27  7 15 19 37 15  5 34 14 13 13  7 17 15 29  7 14
+ 23] 5
+[15 14 15 17 14  9 27  7 15 19 37 15  5 34 14 13 13  7 17 15 29  7 14 23
+  5] 22
+[14 15 17 14  9 27  7 15 19 37 15  5 34 14 13 13  7 17 15 29  7 14 23  5
+ 22] 15
+[15 17 14  9 27  7 15 19 37 15  5 34 14 13 13  7 17 15 29  7 14 23  5 22
+ 15] 23
+[17 14  9 27  7 15 19 37 15  5 34 14 13 13  7 17 15 29  7 14 23  5 22 15
+ 23] 9
+[14  9 27  7 15 19 37 15  5 34 14 13 13  7 17 15 29  7 14 23  5 22 15 23
+  9] 19
+[ 9 27  7 15 19 37 15  5 34 14 13 13  7 17 15 29  7 14 23  5 22 15 23  9
+ 19] 40
+[27  7 15 19 37 15  5 34 14 13 13  7 17 15 29  7 14 23  5 22 15 23  9 19
+ 40] 9
+[ 7 15 19 37 15  5 34 14 13 13  7 17 15 29  7 14 23  5 22 15 23  9 19 40
+  9] 15
+[15 19 37 15  5 34 14 13 13  7 17 15 29  7 14 23  5 22 15 23  9 19 40  9
+ 15] 14
+[19 37 15  5 34 14 13 13  7 17 15 29  7 14 23  5 22 15 23  9 19 40  9 15
+ 14] 5
+[37 15  5 34 14 13 13  7 17 15 29  7 14 23  5 22 15 23  9 19 40  9 15 14
+  5] 15
+[15  5 34 14 13 13  7 17 15 29  7 14 23  5 22 15 23  9 19 40  9 15 14  5
+ 15] 20
+[ 5 34 14 13 13  7 17 15 29  7 14 23  5 22 15 23  9 19 40  9 15 14  5 15
+ 20] 17
+[34 14 13 13  7 17 15 29  7 14 23  5 22 15 23  9 19 40  9 15 14  5 15 20
+ 17] 19
+[14 13 13  7 17 15 29  7 14 23  5 22 15 23  9 19 40  9 15 14  5 15 20 17
+ 19] 1
+[13 13  7 17 15 29  7 14 23  5 22 15 23  9 19 40  9 15 14  5 15 20 17 19
+  1] 14
+[13  7 17 15 29  7 14 23  5 22 15 23  9 19 40  9 15 14  5 15 20 17 19  1
+ 14] 4
+[ 7 17 15 29  7 14 23  5 22 15 23  9 19 40  9 15 14  5 15 20 17 19  1 14
+  4] 14
+[17 15 29  7 14 23  5 22 15 23  9 19 40  9 15 14  5 15 20 17 19  1 14  4
+ 14] 5
+[15 29  7 14 23  5 22 15 23  9 19 40  9 15 14  5 15 20 17 19  1 14  4 14
+  5] 12
+(483, 25)
+(483,)
+483
+25
+43
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-03-19 11:02:34.699346: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-03-19 11:02:34.851920: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudart.so.11.0&#39;; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.10.10/x64/lib
+2023-03-19 11:02:34.851955: I tensorflow/compiler/xla/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2023-03-19 11:02:35.718378: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer.so.7&#39;; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.10.10/x64/lib
+2023-03-19 11:02:35.718508: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer_plugin.so.7&#39;; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.10.10/x64/lib
+2023-03-19 11:02:35.718521: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(483, 43)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span>
 
 <span class="c1"># define model</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-
 <span class="c1"># conv1d layer with input dim (seq_length, vocab_size), ReLU activation, 64 7x7 filters</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv1D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">seq_length</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">)))</span>  
-
 <span class="c1"># maxpool layer, with pool size=2</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling1D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
-
 <span class="c1"># flatten the data before passing it to a fully connected / dense layer</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span>
-
 <span class="c1"># a dense layer with output size=43 for the 43 unique classes and a softmax activation to give the 43 class probabilities</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">43</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
-
 <span class="c1"># compile the model with adam optimizer and cross entropy loss. Print accuracy metrics while training the model</span>
 <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 
 <span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
-<span class="n">X_input</span> <span class="o">=</span> <span class="n">X_onehot</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential&quot;
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv1d (Conv1D)             (None, 19, 64)            19328     
+                                                                 
+ max_pooling1d (MaxPooling1D  (None, 9, 64)            0         
+ )                                                               
+                                                                 
+ flatten (Flatten)           (None, 576)               0         
+                                                                 
+ dense (Dense)               (None, 43)                24811     
+                                                                 
+=================================================================
+Total params: 44,139
+Trainable params: 44,139
+Non-trainable params: 0
+_________________________________________________________________
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-03-19 11:02:37.469558: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcuda.so.1&#39;; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.10.10/x64/lib
+2023-03-19 11:02:37.469609: W tensorflow/compiler/xla/stream_executor/cuda/cuda_driver.cc:265] failed call to cuInit: UNKNOWN ERROR (303)
+2023-03-19 11:02:37.469631: I tensorflow/compiler/xla/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (fv-az337-145): /proc/driver/nvidia/version does not exist
+2023-03-19 11:02:37.469893: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_input</span> <span class="o">=</span> <span class="n">X_onehot</span>
 <span class="n">y_target</span> <span class="o">=</span> <span class="n">y_onehot</span>
+
 <span class="c1"># function to test the model and predict characters after each epoch</span>
 <span class="k">class</span> <span class="nc">PredictionCallback</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">Callback</span><span class="p">):</span>    
   <span class="k">def</span> <span class="nf">on_epoch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="p">{}):</span>
@@ -1081,10 +1786,17 @@ title="Print to PDF"
       <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">seq_length</span><span class="p">,</span><span class="n">vocab_size</span><span class="p">)</span>      <span class="c1"># reshape the input x into [1, seq_length, vocab_size]</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----</span><span class="se">\n</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">----&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="p">))</span>           <span class="c1"># print the entire string of our model predictions</span>
-<span class="c1"># train the model for 100 epochs on X_input</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># train the model for 100 epochs on X_input</span>
 <span class="c1"># call the PredictionCallback() function to predict all characters and print them after each epoch</span>
 <span class="c1"># print the loss and accuracies after each epoch</span>
-<span class="n">hist</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_input</span><span class="p">,</span> <span class="n">y_target</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">PredictionCallback</span><span class="p">()])</span>
+
+<span class="c1">#hist = model.fit(X_input, y_target, epochs=100, verbose=2, callbacks=[PredictionCallback()])</span>
 </pre></div>
 </div>
 </div>
@@ -1095,7 +1807,7 @@ title="Print to PDF"
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
+            repo: "pantelis/artificial-intelligence",
             ref: "master",
         },
         codeMirrorConfig: {
@@ -1111,50 +1823,85 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="simple-rnn-language-model.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Simple RNN Language Model</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="simple-rnn-language-model.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Simple RNN Language Model</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="../nmt/_index.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="../nmt/_index.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Neural Machine Translation</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By Pantelis Monogioudis, Ph.D<br/>
-  
-      &copy; Copyright 2023.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By Pantelis Monogioudis, Ph.D
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

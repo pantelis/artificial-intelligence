@@ -1,37 +1,49 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Detectron2 Beginner’s Tutorial &#8212; Introduction to Artificial Intelligence</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/jupyterlite_sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/jquery.js"></script>
@@ -39,13 +51,14 @@
     <script src="../../../../../_static/doctools.js"></script>
     <script src="../../../../../_static/clipboard.min.js"></script>
     <script src="../../../../../_static/copybutton.js"></script>
-    <script src="../../../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="../../../../../_static/tabs.js"></script>
+    <script src="../../../../../_static/jupyterlite_sphinx.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../../../../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -53,1043 +66,605 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../../_static/sphinx-thebe.js"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.html" />
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
     <link rel="next" title="Introduction to Probabilistic Reasoning" href="../../../pgm/pgm-intro/_index.html" />
     <link rel="prev" title="Mask R-CNN - Inspect Weights of a Trained Model" href="inspect_weights.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../../../../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../../../intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../../../../../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Introduction to Artificial Intelligence</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../../../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Syllabus
- </span>
-</p>
+    
+    
+    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../../intro.html">
+                    Introduction to Artificial Intelligence
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../../../syllabus/_index.html">
-   Syllabus
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../syllabus/_index.html">Syllabus</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction to AI
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to AI</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../ai-intro/course-introduction/_index.html">
-   Course Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../ai-intro/data-science-360/_index.html">
-   Data Science 360
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../ai-intro/systems-approach/_index.html">
-   The four approaches towards AI
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../ai-intro/agents/_index.html">
-   Agent-Environment Interface
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../../ai-intro/pipelines/_index.html">
-   Pipelines
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../uber-ml-arch-case-study/_index.html">
-     A Case Study of an ML Architecture - Uber
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../ai-intro/pipelines/02_end_to_end_machine_learning_project.html">
-     Setup
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ai-intro/course-introduction/_index.html">Course Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ai-intro/data-science-360/_index.html">Data Science 360</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ai-intro/systems-approach/_index.html">The four approaches towards AI</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../../ai-intro/agents/_index.html">Agent-Environment Interface</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../../ai-intro/pipelines/_index.html">ML Pipelines</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  The Learning Problem
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Learning Problem</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../learning-problem/_index.html">
-   The Learning Problem
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../regression/linear-regression/linear_regression.html">
-   Linear Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../optimization/sgd/_index.html">
-   Stochastic Gradient Descent
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../entropy/_index.html">
-   Entropy
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../optimization/maximum-likelihood/marginal_maximum_likelihood.html">
-   Maximum Likelihood Estimation of a marginal model
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../optimization/maximum-likelihood/conditional_maximum_likelihood.html">
-   Maximum Likelihood (ML) Estimation of conditional models
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../classification/classification-intro/_index.html">
-   Introduction to Classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../classification/logistic-regression/_index.html">
-   Logistic Regression
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../learning-problem/_index.html">The Learning Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../regression/linear-regression/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../optimization/sgd/_index.html">Stochastic Gradient Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../entropy/_index.html">Entropy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../optimization/maximum-likelihood/marginal_maximum_likelihood.html">Maximum Likelihood Estimation of a marginal model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../../optimization/maximum-likelihood/conditional_maximum_likelihood.html">Maximum Likelihood (ML) Estimation of conditional models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../classification/classification-intro/_index.html">Introduction to Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../classification/logistic-regression/_index.html">Logistic Regression</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Bayesian Inference
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bayesian Inference</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../pgm/bayesian-inference/_index.html">
-   Bayesian Inference
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../pgm/bayesian-coin/_index.html">
-   Bayesian Coin Flipping
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pgm/bayesian-inference/_index.html">Bayesian Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pgm/bayesian-inference/bayesian_regression.html">Bayesian Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pgm/bayesian-coin/bayesian_update_coin_flip.html">Posterior updates in a coin flipping experiment</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Deep Neural Networks
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Neural Networks</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../classification/perceptron/_index.html">
-   The Neuron (Perceptron)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../dnn/dnn-intro/_index.html">
-   Deep Neural Networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../dnn/backprop-intro/_index.html">
-   Introduction to Backpropagation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../dnn/backprop-dnn/_index.html">
-   Backpropagation in Deep Neural Networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../dnn/backprop-dnn-exercises/_index.html">
-   Backpropagation DNN exercises
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../dnn/fashion-mnist-case-study.html">
-   Fashion MNIST Case Study
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../optimization/regularization/_index.html">
-   Regularization in Deep Neural Networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../optimization/regularization/regularization-workshop-1.html">
-   Regularization Workshop
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../classification/perceptron/_index.html">The Neuron (Perceptron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dnn/dnn-intro/_index.html">Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dnn/backprop-intro/_index.html">Introduction to Backpropagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dnn/backprop-dnn/_index.html">Backpropagation in Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dnn/backprop-dnn-exercises/_index.html">Backpropagation DNN exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dnn/fashion-mnist-case-study.html">Fashion MNIST Case Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../optimization/regularization/_index.html">Regularization in Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../optimization/regularization/regularization-workshop-1.html">Regularization Workshop</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Convolutional Neural Networks
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Convolutional Neural Networks</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../cnn/cnn-intro/_index.html">
-   Introduction to Convolutional Neural Networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../cnn/cnn-layers/_index.html">
-   CNN Architectures
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../cnn/cnn-example-architectures/_index.html">
-   CNN Example Architectures
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">
-   Using convnets with small datasets
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../cnn/cnn-explainers/_index.html">
-   CNN Explainers
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cnn/cnn-intro/_index.html">Introduction to Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cnn/cnn-layers/_index.html">CNN Architectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cnn/cnn-example-architectures/_index.html">CNN Example Architectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">Using convnets with small datasets</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Transfer Learning
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../transfer-learning/transfer-learning-introduction.html">
-   Introduction to Transfer Learning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../transfer-learning/transfer_learning_tutorial.html">
-   Transfer Learning for Computer Vision Tutorial
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../transfer-learning/transfer-learning-introduction.html">Introduction to Transfer Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../transfer-learning/transfer_learning_tutorial.html">Transfer Learning for Computer Vision Tutorial</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Scene Understanding
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Scene Understanding</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../scene-understanding-intro/index.html">
-   Introduction to Scene Understanding
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../feature-extraction-resnet/index.html">
-   Feature Extraction via Residual Networks
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../object-detection/object-detection-intro/index.html">
-   Object Detection
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../object-detection/detection-metrics/index.html">
-     Object Detection and Semantic Segmentation Metrics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../object-detection/rcnn-object-detection/index.html">
-     Region-CNN (RCNN) Object Detection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../object-detection/faster-rcnn-object-detection/index.html">
-     Fast and Faster RCNN Object Detection
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../index.html">
-   Semantic Segmentation
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="index.html">
-     Mask R-CNN Semantic Segmentation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="demo.html">
-     Mask R-CNN Demo
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="inspect_data.html">
-     Mask R-CNN - Inspect Training Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="inspect_model.html">
-     Mask R-CNN - Inspect Trained Model
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="inspect_weights.html">
-     Mask R-CNN - Inspect Weights of a Trained Model
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Detectron2 Beginner’s Tutorial
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../scene-understanding-intro/index.html">Introduction to Scene Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../feature-extraction-resnet/index.html">Feature Extraction via Residual Networks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../object-detection/object-detection-intro/index.html">Object Detection</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../object-detection/detection-metrics/index.html">Object Detection and Semantic Segmentation Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../object-detection/rcnn-object-detection/index.html">Region-CNN (RCNN) Object Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../object-detection/faster-rcnn-object-detection/index.html">Fast and Faster RCNN Object Detection</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Probabilistic Reasoning
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../pgm/pgm-intro/_index.html">
-   Introduction to Probabilistic Reasoning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../pgm/recursive-state-estimation/_index.html">
-   Recursive State Estimation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../pgm/bayesian-filter-workshop/_index.html">
-   Bayesian Filter Workshop
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../pgm/hmm-localization/_index.html">
-   Localization and Tracking
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../pgm/kalman-workshop/_index.html">
-   Kalman Filter Workshop
-  </a>
- </li>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Semantic Segmentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html">Mask R-CNN Semantic Segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo.html">Mask R-CNN Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inspect_data.html">Mask R-CNN - Inspect Training Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inspect_model.html">Mask R-CNN - Inspect Trained Model</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="inspect_weights.html">Mask R-CNN - Inspect Weights of a Trained Model</a></li>
+
+
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Detectron2 Beginner’s Tutorial</a></li>
+
+
+
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Logical Reasoning
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../logical-reasoning/automated-reasoning/_index.html">
-   Automated Reasoning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../logical-reasoning/propositional-logic/_index.html">
-   World Models
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../logical-reasoning/logical-agents/_index.html">
-   Logical Agents
-  </a>
- </li>
+</li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Planning without Interactions
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Probabilistic Reasoning</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../planning/_index.html">
-   Planning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../autonomous-cars/_index.html">
-   Autonomous Agents
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../autonomous-cars/imitation-learning/_index.html">
-   Imitation Learning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../planning/classical-planning/_index.html">
-   Classical Planning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../planning/search/_index.html">
-   Planning with Search
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../planning/search/forward-search/_index.html">
-   Forward Search Algorithms
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../planning/search/a-star/_index.html">
-   The A* Algorithm
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pgm/pgm-intro/_index.html">Introduction to Probabilistic Reasoning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pgm/recursive-state-estimation/_index.html">Recursive State Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pgm/bayesian-filter-workshop/_index.html">Bayesian Filter Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pgm/hmm-localization/_index.html">Localization and Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pgm/kalman-workshop/_index.html">Kalman Filter Workshop</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Markov Decision Processes
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logical Reasoning</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../mdp/_index.html">
-   Markov Decision Processes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../mdp/mdp-intro/_index.html">
-   Introduction to MDP
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../mdp/bellman-expectation-backup/_index.html">
-   Bellman Expectation Backup
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../../mdp/bellman-optimality-backup/_index.html">
-   MDP Dynamic Programming Algorithms
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../mdp/mdp-dp-algorithms/policy-iteration/_index.html">
-     Policy Iteration
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../mdp/mdp-dp-algorithms/policy-evaluation/_index.html">
-     Policy Evaluation (Prediction)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../mdp/mdp-dp-algorithms/policy-improvement/_index.html">
-     Policy Improvement (Control)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../mdp/mdp-dp-algorithms/value-iteration/_index.html">
-     Value Iteration
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../mdp/mdp-lab/recycling-robot/_index.html">
-     Finding the optimal policy of a recycling robot.
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../logical-reasoning/automated-reasoning/_index.html">Automated Reasoning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../logical-reasoning/propositional-logic/_index.html">World Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../logical-reasoning/logical-agents/_index.html">Logical Agents</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Reinforcement Learning
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning without Interactions</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../reinforcement-learning/_index.html">
-   Reinforcement Learning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../reinforcement-learning/prediction/monte-carlo.html">
-   Monte-Carlo Prediction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../reinforcement-learning/prediction/temporal-difference.html">
-   Temporal Difference (TD) Prediction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../reinforcement-learning/control/_index.html">
-   Model-free Control
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../reinforcement-learning/generalized-policy-iteration/_index.html">
-   Generalized Policy Iteration
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../reinforcement-learning/control/sarsa/_index.html">
-   The SARSA Algorithm
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../reinforcement-learning/reinforce/_index.html">
-   The REINFORCE Algorithm
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../planning/_index.html">Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../autonomous-cars/_index.html">Autonomous Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../autonomous-cars/imitation-learning/_index.html">Imitation Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../planning/classical-planning/_index.html">Classical Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../planning/search/_index.html">Planning with Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../planning/search/forward-search/_index.html">Forward Search Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../planning/search/a-star/_index.html">The A* Algorithm</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Sequences and RNNs
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Markov Decision Processes</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../rnn/introduction/_index.html">
-   Introduction to Recurrent Neural Networks (RNN)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../rnn/simple-rnn/_index.html">
-   Simple RNN
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../rnn/lstm/_index.html">
-   The Long Short-Term Memory (LSTM) Cell Architecture
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../rnn/15_processing_sequences_using_rnns_and_cnns.html">
-   Processing Sequences Using RNN
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mdp/_index.html">Markov Decision Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mdp/mdp-intro/_index.html">Introduction to MDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mdp/bellman-expectation-backup/_index.html">Bellman Expectation Backup</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../mdp/bellman-optimality-backup/_index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/policy-iteration/_index.html">Policy Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/policy-evaluation/_index.html">Policy Evaluation (Prediction)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/policy-improvement/_index.html">Policy Improvement (Control)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/value-iteration/_index.html">Value Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-lab/recycling-robot/_index.html">Finding the optimal policy of a recycling robot.</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Natural Language Processing
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../nlp/nlp-intro/_index.html">
-   Introduction to NLP
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../nlp/word2vec/_index.html">
-   Word2Vec Embeddings
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../nlp/word2vec/word2vec-workshop.html">
-   Word2Vec Workshop
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../nlp/language-models/_index.html">
-   RNN Language Models
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../nlp/language-models/simple-rnn-language-model.html">
-   Simple RNN Language Model
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../nlp/language-models/cnn-language-model.html">
-   CNN Language Model
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../nlp/nmt/_index.html">
-   Neural Machine Translation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../nlp/nmt-metrics/_index.html">
-   NMT Metrics - BLEU
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../nlp/attention/_index.html">
-   Attention in NMT
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../nlp/transformers/_index.html">
-   Transformers Workshop
-  </a>
- </li>
+</li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Math Background
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../../ml-math/_index.html">
-   Math for ML
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../ml-math/probability/_index.html">
-     Probability Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../linear-algebra/_index.html">
-     Linear Algebra for Machine Learning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../ml-math/calculus/_index.html">
-     Calculus
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/_index.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/prediction/monte-carlo.html">Monte-Carlo Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/prediction/temporal-difference.html">Temporal Difference (TD) Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/control/_index.html">Model-free Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/generalized-policy-iteration/_index.html">Generalized Policy Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/control/sarsa/_index.html">The SARSA Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/reinforce/_index.html">The REINFORCE Algorithm</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Resources
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../../resources/environment/index.html">
-   Your Programming Environment
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../python/_index.html">
-   Learn Python
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rnn/introduction/_index.html">Introduction to Recurrent Neural Networks (RNN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rnn/simple-rnn/_index.html">Simple RNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rnn/lstm/_index.html">The Long Short-Term Memory (LSTM) Cell Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rnn/15_processing_sequences_using_rnns_and_cnns.html">Processing Sequences Using RNN</a></li>
+
+
+
+
+
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Common Assignments
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../../assignments/probability/probability-assignment-5/index.html">
-   Probability Assignment
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nlp/nlp-intro/_index.html">Introduction to NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nlp/word2vec/_index.html">Word2Vec Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nlp/word2vec/word2vec-workshop.html">Word2Vec Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nlp/language-models/_index.html">RNN Language Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nlp/language-models/simple-rnn-language-model.html">Simple RNN Language Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nlp/language-models/cnn-language-model.html">CNN Language Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nlp/nmt/_index.html">Neural Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nlp/nmt-metrics/_index.html">NMT Metrics - BLEU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nlp/attention/_index.html">Attention in NMT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nlp/transformers/_index.html">Transformers Workshop</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Assignments CS-UY-4613
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../../assignments/mle/mle-gaussian.html">
-   Gaussian Maximum Likelihood
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../../assignments/mle/poisson-regression-1/index.html">
-   Bike Rides and the Poisson Model
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../ml-math/_index.html">Math for ML</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../ml-math/probability/_index.html">Probability Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../linear-algebra/_index.html">Linear Algebra for Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ml-math/calculus/_index.html">Calculus</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Assignments CS-GY-6613
- </span>
-</p>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../../assignments/logistic-regression-1/index.html">
-   Logistic Regression
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/index.html">Your Programming Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/_index.html">Learn Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Common Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../assignments/probability/probability-assignment-5/index.html">Probability Assignment</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments CS-UY-4613</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../assignments/mle/mle-gaussian.html">Gaussian Maximum Likelihood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../assignments/mle/poisson-regression-1/index.html">Bike Rides and the Poisson Model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments CS-GY-6613</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../assignments/logistic-regression-1/index.html">Logistic Regression</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/pantelis/artificial-intelligence/master?urlpath=tree/artificial_intelligence/aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/pantelis/artificial-intelligence/blob/master/artificial_intelligence/aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
 </div>
 
 
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
 
 
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pantelis/artificial-intelligence" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
   </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pantelis/artificial-intelligence/edit/master/artificial_intelligence/aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../../_sources/aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/pantelis/artificial-intelligence"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../../../../_sources/aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Detectron2 Beginner’s Tutorial
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#install-detectron2">
-   Install detectron2
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-a-pre-trained-detectron2-model">
-   Run a pre-trained detectron2 model
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#train-on-a-custom-dataset">
-   Train on a custom dataset
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#prepare-the-dataset">
-     Prepare the dataset
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#train">
-     Train!
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inference-evaluation-using-the-trained-model">
-     Inference &amp; evaluation using the trained model
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#other-types-of-builtin-models">
-   Other types of builtin models
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-panoptic-segmentation-on-a-video">
-   Run panoptic segmentation on a video
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Detectron2 Beginner’s Tutorial</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Detectron2 Beginner’s Tutorial
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#install-detectron2">
-   Install detectron2
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-a-pre-trained-detectron2-model">
-   Run a pre-trained detectron2 model
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#train-on-a-custom-dataset">
-   Train on a custom dataset
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#prepare-the-dataset">
-     Prepare the dataset
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#train">
-     Train!
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inference-evaluation-using-the-trained-model">
-     Inference &amp; evaluation using the trained model
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#other-types-of-builtin-models">
-   Other types of builtin models
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-panoptic-segmentation-on-a-video">
-   Run panoptic segmentation on a video
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Detectron2 Beginner’s Tutorial</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Detectron2 Beginner’s Tutorial</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#install-detectron2">Install detectron2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-a-pre-trained-detectron2-model">Run a pre-trained detectron2 model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#train-on-a-custom-dataset">Train on a custom dataset</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-dataset">Prepare the dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train">Train!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-evaluation-using-the-trained-model">Inference &amp; evaluation using the trained model</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#other-types-of-builtin-models">Other types of builtin models</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-panoptic-segmentation-on-a-video">Run panoptic segmentation on a video</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="detectron2-beginners-tutorial">
 <h1>Detectron2 Beginner’s Tutorial<a class="headerlink" href="#detectron2-beginners-tutorial" title="Permalink to this headline">#</a></h1>
 <a class="reference internal image-reference" href="https://dl.fbaipublicfiles.com/detectron2/Detectron2-Logo-Horz.png"><img alt="https://dl.fbaipublicfiles.com/detectron2/Detectron2-Logo-Horz.png" src="https://dl.fbaipublicfiles.com/detectron2/Detectron2-Logo-Horz.png" style="width: 500px;" /></a>
@@ -1104,178 +679,177 @@ title="Print to PDF"
 <h1>Install detectron2<a class="headerlink" href="#install-detectron2" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install detectron2@git+https://github.com/facebookresearch/detectron2@7c2c8fb
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>detectron2@git+https://github.com/facebookresearch/detectron2@7c2c8fb
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Collecting detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb
-  Cloning https://github.com/facebookresearch/detectron2 (to revision 7c2c8fb) to /tmp/pip-install-pvcq_72b/detectron2_47da90cc98fe46b5af32f374caa6e530
-  Running command git clone -q https://github.com/facebookresearch/detectron2 /tmp/pip-install-pvcq_72b/detectron2_47da90cc98fe46b5af32f374caa6e530
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb
+  Cloning https://github.com/facebookresearch/detectron2 (to revision 7c2c8fb) to /tmp/pip-install-cbgvc6ab/detectron2_2ec441a9e2f2478180a9b6291c9e39ab
+  Running command git clone --filter=blob:none --quiet https://github.com/facebookresearch/detectron2 /tmp/pip-install-cbgvc6ab/detectron2_2ec441a9e2f2478180a9b6291c9e39ab
 <span class=" -Color -Color-Yellow">  WARNING: Did not find branch or tag &#39;7c2c8fb&#39;, assuming revision or ref.</span>
   Running command git checkout -q 7c2c8fb
-Requirement already satisfied: Pillow&gt;=7.1 in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (7.1.2)
-Requirement already satisfied: matplotlib in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.2.2)
-Requirement already satisfied: pycocotools&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.0.5)
-Requirement already satisfied: termcolor&gt;=1.1 in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.0.1)
+  Resolved https://github.com/facebookresearch/detectron2 to commit 7c2c8fb
+  Preparing metadata (setup.py) ... ?25l- done
+?25hRequirement already satisfied: Pillow&gt;=7.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (9.4.0)
+Requirement already satisfied: matplotlib in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.7.1)
+Requirement already satisfied: pycocotools&gt;=2.0.2 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.0.6)
+Requirement already satisfied: termcolor&gt;=1.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.2.0)
 Collecting yacs&gt;=0.1.8
   Downloading yacs-0.1.8-py3-none-any.whl (14 kB)
-Requirement already satisfied: tabulate in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.8.10)
-Requirement already satisfied: cloudpickle in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.5.0)
-Requirement already satisfied: tqdm&gt;4.29.0 in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (4.64.1)
-Requirement already satisfied: tensorboard in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.9.1)
+Requirement already satisfied: tabulate in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.9.0)
+Requirement already satisfied: cloudpickle in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.2.1)
+Requirement already satisfied: tqdm&gt;4.29.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (4.65.0)
+Requirement already satisfied: tensorboard in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.11.2)
 Collecting fvcore&lt;0.1.6,&gt;=0.1.5
-  Downloading fvcore-0.1.5.post20220512.tar.gz (50 kB)
-     |████████████████████████████████| 50 kB 2.4 MB/s 
+  Downloading fvcore-0.1.5.post20221221.tar.gz (50 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">50.2/50.2 kB</span> <span class=" -Color -Color-Red">2.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h  Preparing metadata (setup.py) ... ?25l- done
 ?25hCollecting iopath&lt;0.1.10,&gt;=0.1.7
   Downloading iopath-0.1.9-py3-none-any.whl (27 kB)
-Requirement already satisfied: future in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.16.0)
-Requirement already satisfied: pydot in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.3.0)
+Collecting future
+  Downloading future-0.18.3.tar.gz (840 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">840.9/840.9 kB</span> <span class=" -Color -Color-Red">9.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h  Preparing metadata (setup.py) ... ?25l- \ done
+?25hCollecting pydot
+  Downloading pydot-1.4.2-py2.py3-none-any.whl (21 kB)
 Collecting omegaconf&gt;=2.1
-  Downloading omegaconf-2.2.3-py3-none-any.whl (79 kB)
-     |████████████████████████████████| 79 kB 4.6 MB/s 
+  Downloading omegaconf-2.3.0-py3-none-any.whl (79 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">79.5/79.5 kB</span> <span class=" -Color -Color-Red">21.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
 ?25hCollecting hydra-core&gt;=1.1
-  Downloading hydra_core-1.2.0-py3-none-any.whl (151 kB)
-     |████████████████████████████████| 151 kB 41.6 MB/s 
+  Downloading hydra_core-1.3.2-py3-none-any.whl (154 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">154.5/154.5 kB</span> <span class=" -Color -Color-Red">9.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
 ?25hCollecting black==22.3.0
-  Downloading black-22.3.0-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.4 MB)
-     |████████████████████████████████| 1.4 MB 84.1 MB/s 
+  Downloading black-22.3.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.5/1.5 MB</span> <span class=" -Color -Color-Red">15.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
 ?25hCollecting timm
-  Downloading timm-0.6.11-py3-none-any.whl (548 kB)
-     |████████████████████████████████| 548 kB 81.0 MB/s 
+  Downloading timm-0.6.12-py3-none-any.whl (549 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">549.1/549.1 kB</span> <span class=" -Color -Color-Red">21.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
 ?25hCollecting fairscale
-  Downloading fairscale-0.4.6.tar.gz (248 kB)
-     |████████████████████████████████| 248 kB 55.3 MB/s 
-?25h  Installing build dependencies ... ?25l?25hdone
-  Getting requirements to build wheel ... ?25l?25hdone
-  Installing backend dependencies ... ?25l?25hdone
-    Preparing wheel metadata ... ?25l?25hdone
-Requirement already satisfied: packaging in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (21.3)
-Collecting click&gt;=8.0.0
-  Downloading click-8.1.3-py3-none-any.whl (96 kB)
-     |████████████████████████████████| 96 kB 6.5 MB/s 
-?25hCollecting pathspec&gt;=0.9.0
-  Downloading pathspec-0.10.1-py3-none-any.whl (27 kB)
-Collecting platformdirs&gt;=2
-  Downloading platformdirs-2.5.3-py3-none-any.whl (14 kB)
-Collecting typed-ast&gt;=1.4.2
-  Downloading typed_ast-1.5.4-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (843 kB)
-     |████████████████████████████████| 843 kB 79.7 MB/s 
-?25hRequirement already satisfied: typing-extensions&gt;=3.10.0.0 in /usr/local/lib/python3.7/dist-packages (from black==22.3.0-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (4.1.1)
+  Downloading fairscale-0.4.13.tar.gz (266 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">266.3/266.3 kB</span> <span class=" -Color -Color-Red">20.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h  Installing build dependencies ... ?25l- \ | / - done
+?25h  Getting requirements to build wheel ... ?25ldone
+?25h  Installing backend dependencies ... ?25l- \ | done
+?25h  Preparing metadata (pyproject.toml) ... ?25l- done
+?25hRequirement already satisfied: packaging in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (23.0)
+Requirement already satisfied: platformdirs&gt;=2 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from black==22.3.0-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.1.1)
+Collecting pathspec&gt;=0.9.0
+  Downloading pathspec-0.11.1-py3-none-any.whl (29 kB)
 Collecting mypy-extensions&gt;=0.4.3
-  Downloading mypy_extensions-0.4.3-py2.py3-none-any.whl (4.5 kB)
-Requirement already satisfied: tomli&gt;=1.1.0 in /usr/local/lib/python3.7/dist-packages (from black==22.3.0-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.0.1)
-Requirement already satisfied: importlib-metadata in /usr/local/lib/python3.7/dist-packages (from click&gt;=8.0.0-&gt;black==22.3.0-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (4.13.0)
-Requirement already satisfied: numpy in /usr/local/lib/python3.7/dist-packages (from fvcore&lt;0.1.6,&gt;=0.1.5-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.21.6)
-Requirement already satisfied: pyyaml&gt;=5.1 in /usr/local/lib/python3.7/dist-packages (from fvcore&lt;0.1.6,&gt;=0.1.5-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (6.0)
-Requirement already satisfied: importlib-resources in /usr/local/lib/python3.7/dist-packages (from hydra-core&gt;=1.1-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (5.10.0)
+  Downloading mypy_extensions-1.0.0-py3-none-any.whl (4.7 kB)
+Requirement already satisfied: click&gt;=8.0.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from black==22.3.0-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (8.1.3)
+Collecting tomli&gt;=1.1.0
+  Using cached tomli-2.0.1-py3-none-any.whl (12 kB)
+Requirement already satisfied: numpy in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from fvcore&lt;0.1.6,&gt;=0.1.5-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.24.2)
+Requirement already satisfied: pyyaml&gt;=5.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from fvcore&lt;0.1.6,&gt;=0.1.5-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (6.0)
 Collecting antlr4-python3-runtime==4.9.*
   Downloading antlr4-python3-runtime-4.9.3.tar.gz (117 kB)
-     |████████████████████████████████| 117 kB 93.8 MB/s 
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">117.0/117.0 kB</span> <span class=" -Color -Color-Red">31.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h  Preparing metadata (setup.py) ... ?25l- done
 ?25hCollecting portalocker
-  Downloading portalocker-2.6.0-py2.py3-none-any.whl (15 kB)
-Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.7/dist-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.11.0)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.0.9)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.4.4)
-Requirement already satisfied: python-dateutil&gt;=2.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.8.2)
-Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.7/dist-packages (from python-dateutil&gt;=2.1-&gt;matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.15.0)
-Requirement already satisfied: torch&gt;=1.8.0 in /usr/local/lib/python3.7/dist-packages (from fairscale-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.12.1+cu113)
-Requirement already satisfied: zipp&gt;=0.5 in /usr/local/lib/python3.7/dist-packages (from importlib-metadata-&gt;click&gt;=8.0.0-&gt;black==22.3.0-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.10.0)
-Requirement already satisfied: grpcio&gt;=1.24.3 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.50.0)
-Requirement already satisfied: setuptools&gt;=41.0.0 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (57.4.0)
-Requirement already satisfied: absl-py&gt;=0.4 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.3.0)
-Requirement already satisfied: google-auth&lt;3,&gt;=1.6.3 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.35.0)
-Requirement already satisfied: tensorboard-data-server&lt;0.7.0,&gt;=0.6.0 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.6.1)
-Requirement already satisfied: requests&lt;3,&gt;=2.21.0 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.23.0)
-Requirement already satisfied: werkzeug&gt;=1.0.1 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.0.1)
-Requirement already satisfied: wheel&gt;=0.26 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.37.1)
-Requirement already satisfied: protobuf&lt;3.20,&gt;=3.9.2 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.17.3)
-Requirement already satisfied: google-auth-oauthlib&lt;0.5,&gt;=0.4.1 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.4.6)
-Requirement already satisfied: markdown&gt;=2.6.8 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.4.1)
-Requirement already satisfied: tensorboard-plugin-wit&gt;=1.6.0 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.8.1)
-Requirement already satisfied: rsa&lt;5,&gt;=3.1.4 in /usr/local/lib/python3.7/dist-packages (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (4.9)
-Requirement already satisfied: cachetools&lt;5.0,&gt;=2.0.0 in /usr/local/lib/python3.7/dist-packages (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (4.2.4)
-Requirement already satisfied: pyasn1-modules&gt;=0.2.1 in /usr/local/lib/python3.7/dist-packages (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.2.8)
-Requirement already satisfied: requests-oauthlib&gt;=0.7.0 in /usr/local/lib/python3.7/dist-packages (from google-auth-oauthlib&lt;0.5,&gt;=0.4.1-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.3.1)
-Requirement already satisfied: pyasn1&lt;0.5.0,&gt;=0.4.6 in /usr/local/lib/python3.7/dist-packages (from pyasn1-modules&gt;=0.2.1-&gt;google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.4.8)
-Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.0.4)
-Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.10)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2022.9.24)
-Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.24.3)
-Requirement already satisfied: oauthlib&gt;=3.0.0 in /usr/local/lib/python3.7/dist-packages (from requests-oauthlib&gt;=0.7.0-&gt;google-auth-oauthlib&lt;0.5,&gt;=0.4.1-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.2.2)
+  Downloading portalocker-2.7.0-py2.py3-none-any.whl (15 kB)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.0.7)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.4.4)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.0.9)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (4.39.2)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.8.2)
+Requirement already satisfied: cycler&gt;=0.10 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.11.0)
+Requirement already satisfied: torch&gt;=1.8.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from fairscale-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.13.1)
+Requirement already satisfied: markdown&gt;=2.6.8 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.4.1)
+Requirement already satisfied: tensorboard-data-server&lt;0.7.0,&gt;=0.6.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.6.1)
+Requirement already satisfied: google-auth&lt;3,&gt;=1.6.3 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.16.2)
+Requirement already satisfied: requests&lt;3,&gt;=2.21.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.28.2)
+Requirement already satisfied: tensorboard-plugin-wit&gt;=1.6.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.8.1)
+Requirement already satisfied: absl-py&gt;=0.4 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.4.0)
+Requirement already satisfied: google-auth-oauthlib&lt;0.5,&gt;=0.4.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.4.6)
+Requirement already satisfied: werkzeug&gt;=1.0.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.2.3)
+Requirement already satisfied: grpcio&gt;=1.24.3 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.51.3)
+Requirement already satisfied: setuptools&gt;=41.0.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (67.6.0)
+Requirement already satisfied: wheel&gt;=0.26 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.40.0)
+Requirement already satisfied: protobuf&lt;4,&gt;=3.9.2 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.19.6)
 Collecting huggingface-hub
-  Downloading huggingface_hub-0.10.1-py3-none-any.whl (163 kB)
-     |████████████████████████████████| 163 kB 93.3 MB/s 
-?25hRequirement already satisfied: torchvision in /usr/local/lib/python3.7/dist-packages (from timm-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.13.1+cu113)
-Requirement already satisfied: filelock in /usr/local/lib/python3.7/dist-packages (from huggingface-hub-&gt;timm-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.8.0)
-Building wheels for collected packages: detectron2, fvcore, antlr4-python3-runtime, fairscale
-  Building wheel for detectron2 (setup.py) ... ?25l?25hdone
-  Created wheel for detectron2: filename=detectron2-0.6-cp37-cp37m-linux_x86_64.whl size=5190584 sha256=70403c98f5863fb103f2e7994330f8af5deb1cffee7c676369d6e4f3c2d323df
-  Stored in directory: /tmp/pip-ephem-wheel-cache-min7dqb2/wheels/60/28/6a/0c738f8bc994d1adeb3032e6490b93af5b6c155b0edf0a4125
-  Building wheel for fvcore (setup.py) ... ?25l?25hdone
-  Created wheel for fvcore: filename=fvcore-0.1.5.post20220512-py3-none-any.whl size=61288 sha256=3c2c57b1052e0cdb7ae3f608aa7b28205865bc347b0fd43632c5eec8f75e5a70
-  Stored in directory: /root/.cache/pip/wheels/68/20/f9/a11a0dd63f4c13678b2a5ec488e48078756505c7777b75b29e
-  Building wheel for antlr4-python3-runtime (setup.py) ... ?25l?25hdone
-  Created wheel for antlr4-python3-runtime: filename=antlr4_python3_runtime-4.9.3-py3-none-any.whl size=144575 sha256=181903ce74d3ae957590698c4d3497b7d949765ce4f54c44e2ff6015eae7b8b7
-  Stored in directory: /root/.cache/pip/wheels/8b/8d/53/2af8772d9aec614e3fc65e53d4a993ad73c61daa8bbd85a873
-  Building wheel for fairscale (PEP 517) ... ?25l?25hdone
-  Created wheel for fairscale: filename=fairscale-0.4.6-py3-none-any.whl size=307252 sha256=95e3aeb45e3805ab8b1b3b9fea0d201d4561018a9e92583f0a28102e3ad826d7
-  Stored in directory: /root/.cache/pip/wheels/4e/4f/0b/94c29ea06dfad93260cb0377855f87b7b863312317a7f69fe7
-Successfully built detectron2 fvcore antlr4-python3-runtime fairscale
-Installing collected packages: portalocker, antlr4-python3-runtime, yacs, typed-ast, platformdirs, pathspec, omegaconf, mypy-extensions, iopath, huggingface-hub, click, timm, hydra-core, fvcore, fairscale, black, detectron2
-  Attempting uninstall: click
-    Found existing installation: click 7.1.2
-    Uninstalling click-7.1.2:
-      Successfully uninstalled click-7.1.2
-<span class=" -Color -Color-Red">ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.</span>
-<span class=" -Color -Color-Red">flask 1.1.4 requires click&lt;8.0,&gt;=5.1, but you have click 8.1.3 which is incompatible.</span>
-Successfully installed antlr4-python3-runtime-4.9.3 black-22.3.0 click-8.1.3 detectron2-0.6 fairscale-0.4.6 fvcore-0.1.5.post20220512 huggingface-hub-0.10.1 hydra-core-1.2.0 iopath-0.1.9 mypy-extensions-0.4.3 omegaconf-2.2.3 pathspec-0.10.1 platformdirs-2.5.3 portalocker-2.6.0 timm-0.6.11 typed-ast-1.5.4 yacs-0.1.8
+  Downloading huggingface_hub-0.13.2-py3-none-any.whl (199 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">199.2/199.2 kB</span> <span class=" -Color -Color-Red">36.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: torchvision in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from timm-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.14.1)
+Requirement already satisfied: rsa&lt;5,&gt;=3.1.4 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (4.9)
+Requirement already satisfied: cachetools&lt;6.0,&gt;=2.0.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (5.3.0)
+Requirement already satisfied: six&gt;=1.9.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.16.0)
+Requirement already satisfied: pyasn1-modules&gt;=0.2.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.2.8)
+Requirement already satisfied: requests-oauthlib&gt;=0.7.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from google-auth-oauthlib&lt;0.5,&gt;=0.4.1-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.3.1)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.1.0)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.26.15)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2022.12.7)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.4)
+Requirement already satisfied: typing-extensions in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from torch&gt;=1.8.0-&gt;fairscale-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (4.5.0)
+Requirement already satisfied: nvidia-cuda-runtime-cu11==11.7.99 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from torch&gt;=1.8.0-&gt;fairscale-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (11.7.99)
+Requirement already satisfied: nvidia-cudnn-cu11==8.5.0.96 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from torch&gt;=1.8.0-&gt;fairscale-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (8.5.0.96)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu11==11.7.99 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from torch&gt;=1.8.0-&gt;fairscale-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (11.7.99)
+Requirement already satisfied: nvidia-cublas-cu11==11.10.3.66 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from torch&gt;=1.8.0-&gt;fairscale-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (11.10.3.66)
+Requirement already satisfied: MarkupSafe&gt;=2.1.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from werkzeug&gt;=1.0.1-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.1.2)
+Requirement already satisfied: filelock in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from huggingface-hub-&gt;timm-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.10.0)
+Requirement already satisfied: pyasn1&lt;0.5.0,&gt;=0.4.6 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from pyasn1-modules&gt;=0.2.1-&gt;google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.4.8)
+Requirement already satisfied: oauthlib&gt;=3.0.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from requests-oauthlib&gt;=0.7.0-&gt;google-auth-oauthlib&lt;0.5,&gt;=0.4.1-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.2.2)
+Building wheels for collected packages: detectron2, fvcore, antlr4-python3-runtime, fairscale, future
+  Building wheel for detectron2 (setup.py) ... ?25l- \ | / - \ | / - \ | / - \ done
+?25h  Created wheel for detectron2: filename=detectron2-0.6-cp310-cp310-linux_x86_64.whl size=5854530 sha256=8eef2bd0583e8a9cd35e6646398595eb2da39f5427c81c7d5d8af6e944b2e2f4
+  Stored in directory: /tmp/pip-ephem-wheel-cache-ssd0k5oq/wheels/76/4e/84/fc146c920b5c5f5b56c1c8fdc89a5956a8f3e9af07f38a3b46
+  Building wheel for fvcore (setup.py) ... ?25l- \ | done
+?25h  Created wheel for fvcore: filename=fvcore-0.1.5.post20221221-py3-none-any.whl size=61405 sha256=c55a8cc3566a796d24ccea28be1ef4df5fdb71e6d5f3247193bb5ac9b1383f9c
+  Stored in directory: /home/runner/.cache/pip/wheels/01/c0/af/77c1cf53a1be9e42a52b48e5af2169d40ec2e89f7362489dd0
+  Building wheel for antlr4-python3-runtime (setup.py) ... ?25l- \ | done
+?25h  Created wheel for antlr4-python3-runtime: filename=antlr4_python3_runtime-4.9.3-py3-none-any.whl size=144554 sha256=6c80f25ea37c5c857a0017a06b7278c1c51b594497896a57d980cbf4668a7e72
+  Stored in directory: /home/runner/.cache/pip/wheels/12/93/dd/1f6a127edc45659556564c5730f6d4e300888f4bca2d4c5a88
+  Building wheel for fairscale (pyproject.toml) ... ?25l- \ done
+?25h  Created wheel for fairscale: filename=fairscale-0.4.13-py3-none-any.whl size=332112 sha256=cc346ef592ac4d2121c5d475f1a8152d2fa824cf6a164388ff485ce05712a921
+  Stored in directory: /home/runner/.cache/pip/wheels/78/a4/c0/fb0a7ef03cff161611c3fa40c6cf898f76e58ec421b88e8cb3
+  Building wheel for future (setup.py) ... ?25l- \ | / - done
+?25h  Created wheel for future: filename=future-0.18.3-py3-none-any.whl size=492022 sha256=da612f6f8a198028bb995799ac1c879e3082244e4d146c5fd79ef6d6909df9aa
+  Stored in directory: /home/runner/.cache/pip/wheels/5e/a9/47/f118e66afd12240e4662752cc22cefae5d97275623aa8ef57d
+Successfully built detectron2 fvcore antlr4-python3-runtime fairscale future
+Installing collected packages: antlr4-python3-runtime, yacs, tomli, pydot, portalocker, pathspec, omegaconf, mypy-extensions, future, iopath, hydra-core, huggingface-hub, black, fvcore, fairscale, timm, detectron2
+Successfully installed antlr4-python3-runtime-4.9.3 black-22.3.0 detectron2-0.6 fairscale-0.4.13 future-0.18.3 fvcore-0.1.5.post20221221 huggingface-hub-0.13.2 hydra-core-1.3.2 iopath-0.1.9 mypy-extensions-1.0.0 omegaconf-2.3.0 pathspec-0.11.1 portalocker-2.7.0 pydot-1.4.2 timm-0.6.12 tomli-2.0.1 yacs-0.1.8
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import torch, torchvision, detectron2
-!nvcc --version
-TORCH_VERSION = &quot;.&quot;.join(torch.__version__.split(&quot;.&quot;)[:2])
-TORCHVISION_VERSION = &quot;.&quot;.join(torchvision.__version__.split(&quot;.&quot;)[:2])
-CUDA_VERSION = torch.__version__.split(&quot;+&quot;)[-1]
-print(&quot;torch: &quot;, TORCH_VERSION, &quot;; cuda: &quot;, CUDA_VERSION)
-print(&quot;detectron2:&quot;, detectron2.__version__)
-print(&quot;torchvision: &quot;, TORCHVISION_VERSION)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span><span class="o">,</span> <span class="nn">torchvision</span><span class="o">,</span> <span class="nn">detectron2</span>
+<span class="o">!</span>nvcc<span class="w"> </span>--version
+<span class="n">TORCH_VERSION</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">__version__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">TORCHVISION_VERSION</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">torchvision</span><span class="o">.</span><span class="n">__version__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">CUDA_VERSION</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">__version__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;+&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;torch: &quot;</span><span class="p">,</span> <span class="n">TORCH_VERSION</span><span class="p">,</span> <span class="s2">&quot;; cuda: &quot;</span><span class="p">,</span> <span class="n">CUDA_VERSION</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;detectron2:&quot;</span><span class="p">,</span> <span class="n">detectron2</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;torchvision: &quot;</span><span class="p">,</span> <span class="n">TORCHVISION_VERSION</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nvcc: NVIDIA (R) Cuda compiler driver
-Copyright (c) 2005-2021 NVIDIA Corporation
-Built on Sun_Feb_14_21:12:58_PST_2021
-Cuda compilation tools, release 11.2, V11.2.152
-Build cuda_11.2.r11.2/compiler.29618528_0
-torch:  1.12 ; cuda:  cu113
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/bin/sh: 1: nvcc: not found
+torch:  1.13 ; cuda:  cu117
 detectron2: 0.6
-torchvision:  0.13
+torchvision:  0.14
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!nvidia-smi -L
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nvidia-smi<span class="w"> </span>-L
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GPU 0: A100-SXM4-40GB (UUID: GPU-da6de55e-ad78-924d-8cf3-4be0595eef77)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/bin/sh: 1: nvidia-smi: not found
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some basic setup:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some basic setup:</span>
 <span class="c1"># Setup detectron2 logger</span>
 <span class="kn">import</span> <span class="nn">detectron2</span>
 <span class="kn">from</span> <span class="nn">detectron2.utils.logger</span> <span class="kn">import</span> <span class="n">setup_logger</span>
@@ -1295,6 +869,20 @@ torchvision:  0.13
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># import some common libraries</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">cv2</span><span class="o">,</span> <span class="nn">random</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">google.colab.patches</span> <span class="kn">import</span> <span class="n">cv2_imshow</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># import some common detectron2 utilities</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;cv2&#39;
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="run-a-pre-trained-detectron2-model">
@@ -1302,20 +890,20 @@ torchvision:  0.13
 <p>We first download an image from the COCO dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!wget http://images.cocodataset.org/val2017/000000439715.jpg -q -O input.jpg
-im = cv2.imread(&quot;./input.jpg&quot;)
-cv2_imshow(im)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>http://images.cocodataset.org/val2017/000000439715.jpg<span class="w"> </span>-q<span class="w"> </span>-O<span class="w"> </span>input.jpg
+<span class="n">im</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;./input.jpg&quot;</span><span class="p">)</span>
+<span class="n">cv2_imshow</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../../../_images/detectron2_tutorial_8_0.png" src="../../../../../_images/detectron2_tutorial_8_0.png" />
+<img alt="../../../../../_images/32be09e3bc50420e11c5de19bbc91f9faa75a650e6657c01eedfe0fd611e3c8d.png" src="../../../../../_images/32be09e3bc50420e11c5de19bbc91f9faa75a650e6657c01eedfe0fd611e3c8d.png" />
 </div>
 </div>
 <p>Then, we create a detectron2 config and a detectron2 <code class="docutils literal notranslate"><span class="pre">DefaultPredictor</span></code> to run inference on this image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">()</span>
 <span class="c1"># add project-specific config (e.g., TensorMask) here if you&#39;re not running a model in detectron2&#39;s core library</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">merge_from_file</span><span class="p">(</span><span class="n">model_zoo</span><span class="o">.</span><span class="n">get_config_file</span><span class="p">(</span><span class="s2">&quot;COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml&quot;</span><span class="p">))</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">ROI_HEADS</span><span class="o">.</span><span class="n">SCORE_THRESH_TEST</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># set threshold for this model</span>
@@ -1335,7 +923,7 @@ cv2_imshow(im)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># look at the outputs. See https://detectron2.readthedocs.io/tutorials/models.html#model-output-format for specification</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># look at the outputs. See https://detectron2.readthedocs.io/tutorials/models.html#model-output-format for specification</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;instances&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">pred_classes</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;instances&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">pred_boxes</span><span class="p">)</span>
 </pre></div>
@@ -1365,7 +953,7 @@ Boxes(tensor([[126.5927, 244.9072, 459.8221, 480.0000],
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can use `Visualizer` to draw the predictions on the image.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can use `Visualizer` to draw the predictions on the image.</span>
 <span class="n">v</span> <span class="o">=</span> <span class="n">Visualizer</span><span class="p">(</span><span class="n">im</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">MetadataCatalog</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">DATASETS</span><span class="o">.</span><span class="n">TRAIN</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
 <span class="n">out</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">draw_instance_predictions</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;instances&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">))</span>
 <span class="n">cv2_imshow</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">get_image</span><span class="p">()[:,</span> <span class="p">:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
@@ -1373,7 +961,7 @@ Boxes(tensor([[126.5927, 244.9072, 459.8221, 480.0000],
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../../../_images/detectron2_tutorial_12_0.png" src="../../../../../_images/detectron2_tutorial_12_0.png" />
+<img alt="../../../../../_images/eb09aaee6bed2574e7ac6e6732376e238eee5c108627c43f728d949b8d18e84e.png" src="../../../../../_images/eb09aaee6bed2574e7ac6e6732376e238eee5c108627c43f728d949b8d18e84e.png" />
 </div>
 </div>
 </section>
@@ -1388,9 +976,9 @@ We’ll train a balloon segmentation model from an existing model pre-trained on
 <h2>Prepare the dataset<a class="headerlink" href="#prepare-the-dataset" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># download, decompress the data
-!wget https://github.com/matterport/Mask_RCNN/releases/download/v2.1/balloon_dataset.zip
-!unzip balloon_dataset.zip &gt; /dev/null
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download, decompress the data</span>
+<span class="o">!</span>wget<span class="w"> </span>https://github.com/matterport/Mask_RCNN/releases/download/v2.1/balloon_dataset.zip
+<span class="o">!</span>unzip<span class="w"> </span>balloon_dataset.zip<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
 </pre></div>
 </div>
 </div>
@@ -1424,7 +1012,7 @@ replace balloon/train/53500107_d24b11b3c2_b.jpg? [y]es, [n]o, [A]ll, [N]one, [r]
 Here, the dataset is in its custom format, therefore we write a function to parse it and prepare it into detectron2’s standard format. User should write such a function when using a dataset in custom format. See the tutorial for more details.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># if your dataset is in COCO format, this cell can be replaced by the following three lines:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if your dataset is in COCO format, this cell can be replaced by the following three lines:</span>
 <span class="c1"># from detectron2.data.datasets import register_coco_instances</span>
 <span class="c1"># register_coco_instances(&quot;my_dataset_train&quot;, {}, &quot;json_annotation_train.json&quot;, &quot;path/to/image/dir&quot;)</span>
 <span class="c1"># register_coco_instances(&quot;my_dataset_val&quot;, {}, &quot;json_annotation_val.json&quot;, &quot;path/to/image/dir&quot;)</span>
@@ -1480,7 +1068,7 @@ Here, the dataset is in its custom format, therefore we write a function to pars
 <p>To verify the dataset is in correct format, let’s visualize the annotations of randomly selected samples in the training set:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_dicts</span> <span class="o">=</span> <span class="n">get_balloon_dicts</span><span class="p">(</span><span class="s2">&quot;balloon/train&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_dicts</span> <span class="o">=</span> <span class="n">get_balloon_dicts</span><span class="p">(</span><span class="s2">&quot;balloon/train&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">dataset_dicts</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;file_name&quot;</span><span class="p">])</span>
     <span class="n">visualizer</span> <span class="o">=</span> <span class="n">Visualizer</span><span class="p">(</span><span class="n">img</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">metadata</span><span class="o">=</span><span class="n">balloon_metadata</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -1490,9 +1078,9 @@ Here, the dataset is in its custom format, therefore we write a function to pars
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../../../_images/detectron2_tutorial_19_0.png" src="../../../../../_images/detectron2_tutorial_19_0.png" />
-<img alt="../../../../../_images/detectron2_tutorial_19_1.png" src="../../../../../_images/detectron2_tutorial_19_1.png" />
-<img alt="../../../../../_images/detectron2_tutorial_19_2.png" src="../../../../../_images/detectron2_tutorial_19_2.png" />
+<img alt="../../../../../_images/f562e97dd6b1d0791484d6120f6ab1be5a3df216dd2da1a25292b92daf1ca6f2.png" src="../../../../../_images/f562e97dd6b1d0791484d6120f6ab1be5a3df216dd2da1a25292b92daf1ca6f2.png" />
+<img alt="../../../../../_images/0084a8170ca8ff8ac66a707035fd972f6b8a7189790820307eaa52b90aca2c5c.png" src="../../../../../_images/0084a8170ca8ff8ac66a707035fd972f6b8a7189790820307eaa52b90aca2c5c.png" />
+<img alt="../../../../../_images/f4cb717e031902da2bb8f41cc9446e1243d5cc7009362c849fb9187e643fc7b5.png" src="../../../../../_images/f4cb717e031902da2bb8f41cc9446e1243d5cc7009362c849fb9187e643fc7b5.png" />
 </div>
 </div>
 </section>
@@ -1501,7 +1089,7 @@ Here, the dataset is in its custom format, therefore we write a function to pars
 <p>Now, let’s fine-tune a COCO-pretrained R50-FPN Mask R-CNN model on the balloon dataset. It takes ~2 minutes to train 300 iterations on a P100 GPU.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">detectron2.engine</span> <span class="kn">import</span> <span class="n">DefaultTrainer</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">detectron2.engine</span> <span class="kn">import</span> <span class="n">DefaultTrainer</span>
 
 <span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">()</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">merge_from_file</span><span class="p">(</span><span class="n">model_zoo</span><span class="o">.</span><span class="n">get_config_file</span><span class="p">(</span><span class="s2">&quot;COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml&quot;</span><span class="p">))</span>
@@ -1868,21 +1456,7 @@ GeneralizedRCNN(
 <span class=" -Color -Color-Green">[11/08 16:58:10 d2.data.build]: </span>Using training sampler TrainingSampler
 <span class=" -Color -Color-Green">[11/08 16:58:10 d2.data.common]: </span>Serializing 61 elements to byte tensors and concatenating them all ...
 <span class=" -Color -Color-Green">[11/08 16:58:10 d2.data.common]: </span>Serialized dataset takes 0.17 MiB
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:fvcore.common.checkpoint:Skip loading parameter &#39;roi_heads.box_predictor.cls_score.weight&#39; to the model due to incompatible shapes: (81, 1024) in the checkpoint but (2, 1024) in the model! You might want to double check if this is expected.
-WARNING:fvcore.common.checkpoint:Skip loading parameter &#39;roi_heads.box_predictor.cls_score.bias&#39; to the model due to incompatible shapes: (81,) in the checkpoint but (2,) in the model! You might want to double check if this is expected.
-WARNING:fvcore.common.checkpoint:Skip loading parameter &#39;roi_heads.box_predictor.bbox_pred.weight&#39; to the model due to incompatible shapes: (320, 1024) in the checkpoint but (4, 1024) in the model! You might want to double check if this is expected.
-WARNING:fvcore.common.checkpoint:Skip loading parameter &#39;roi_heads.box_predictor.bbox_pred.bias&#39; to the model due to incompatible shapes: (320,) in the checkpoint but (4,) in the model! You might want to double check if this is expected.
-WARNING:fvcore.common.checkpoint:Skip loading parameter &#39;roi_heads.mask_head.predictor.weight&#39; to the model due to incompatible shapes: (80, 256, 1, 1) in the checkpoint but (1, 256, 1, 1) in the model! You might want to double check if this is expected.
-WARNING:fvcore.common.checkpoint:Skip loading parameter &#39;roi_heads.mask_head.predictor.bias&#39; to the model due to incompatible shapes: (80,) in the checkpoint but (1,) in the model! You might want to double check if this is expected.
-WARNING:fvcore.common.checkpoint:Some model parameters or buffers are not found in the checkpoint:
-<span class=" -Color -Color-Blue">roi_heads.box_predictor.bbox_pred.{bias, weight}</span>
-<span class=" -Color -Color-Blue">roi_heads.box_predictor.cls_score.{bias, weight}</span>
-<span class=" -Color -Color-Blue">roi_heads.mask_head.predictor.{bias, weight}</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[11/08 16:58:13 d2.engine.train_loop]: </span>Starting training from iteration 0
+<span class=" -Color -Color-Green">[11/08 16:58:13 d2.engine.train_loop]: </span>Starting training from iteration 0
 <span class=" -Color -Color-Green">[11/08 16:58:16 d2.utils.events]: </span> eta: 0:00:31  iter: 19  total_loss: 2.122  loss_cls: 0.7862  loss_box_reg: 0.5421  loss_mask: 0.6833  loss_rpn_cls: 0.04036  loss_rpn_loc: 0.009012  time: 0.1142  data_time: 0.0248  lr: 1.6068e-05  max_mem: 2463M
 <span class=" -Color -Color-Green">[11/08 16:58:19 d2.utils.events]: </span> eta: 0:00:29  iter: 39  total_loss: 1.93  loss_cls: 0.6266  loss_box_reg: 0.6646  loss_mask: 0.6063  loss_rpn_cls: 0.009647  loss_rpn_loc: 0.003854  time: 0.1209  data_time: 0.0250  lr: 3.2718e-05  max_mem: 2463M
 <span class=" -Color -Color-Green">[11/08 16:58:21 d2.utils.events]: </span> eta: 0:00:27  iter: 59  total_loss: 1.641  loss_cls: 0.4662  loss_box_reg: 0.6081  loss_mask: 0.467  loss_rpn_cls: 0.02909  loss_rpn_loc: 0.008287  time: 0.1215  data_time: 0.0197  lr: 4.9367e-05  max_mem: 2464M
@@ -1902,13 +1476,25 @@ WARNING:fvcore.common.checkpoint:Some model parameters or buffers are not found 
 <span class=" -Color -Color-Green">[11/08 16:58:52 d2.engine.hooks]: </span>Total training time: 0:00:37 (0:00:02 on hooks)
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:fvcore.common.checkpoint:Skip loading parameter &#39;roi_heads.box_predictor.cls_score.weight&#39; to the model due to incompatible shapes: (81, 1024) in the checkpoint but (2, 1024) in the model! You might want to double check if this is expected.
+WARNING:fvcore.common.checkpoint:Skip loading parameter &#39;roi_heads.box_predictor.cls_score.bias&#39; to the model due to incompatible shapes: (81,) in the checkpoint but (2,) in the model! You might want to double check if this is expected.
+WARNING:fvcore.common.checkpoint:Skip loading parameter &#39;roi_heads.box_predictor.bbox_pred.weight&#39; to the model due to incompatible shapes: (320, 1024) in the checkpoint but (4, 1024) in the model! You might want to double check if this is expected.
+WARNING:fvcore.common.checkpoint:Skip loading parameter &#39;roi_heads.box_predictor.bbox_pred.bias&#39; to the model due to incompatible shapes: (320,) in the checkpoint but (4,) in the model! You might want to double check if this is expected.
+WARNING:fvcore.common.checkpoint:Skip loading parameter &#39;roi_heads.mask_head.predictor.weight&#39; to the model due to incompatible shapes: (80, 256, 1, 1) in the checkpoint but (1, 256, 1, 1) in the model! You might want to double check if this is expected.
+WARNING:fvcore.common.checkpoint:Skip loading parameter &#39;roi_heads.mask_head.predictor.bias&#39; to the model due to incompatible shapes: (80,) in the checkpoint but (1,) in the model! You might want to double check if this is expected.
+WARNING:fvcore.common.checkpoint:Some model parameters or buffers are not found in the checkpoint:
+<span class=" -Color -Color-Blue">roi_heads.box_predictor.bbox_pred.{bias, weight}</span>
+<span class=" -Color -Color-Blue">roi_heads.box_predictor.cls_score.{bias, weight}</span>
+<span class=" -Color -Color-Blue">roi_heads.mask_head.predictor.{bias, weight}</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Look at training curves in tensorboard:</span>
-<span class="o">%</span><span class="n">load_ext</span> <span class="n">tensorboard</span>
-<span class="o">%</span><span class="n">tensorboard</span> <span class="o">--</span><span class="n">logdir</span> <span class="n">output</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Look at training curves in tensorboard:</span>
+<span class="o">%</span><span class="k">load_ext</span> tensorboard
+<span class="o">%</span><span class="k">tensorboard</span> --logdir output
 </pre></div>
 </div>
 </div>
@@ -1932,7 +1518,7 @@ WARNING:fvcore.common.checkpoint:Some model parameters or buffers are not found 
 <p>Now, let’s run inference with the trained model on the balloon validation dataset. First, let’s create a predictor using the model we just trained:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inference should use the config with parameters that are used in training</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inference should use the config with parameters that are used in training</span>
 <span class="c1"># cfg now already contains everything we&#39;ve set previously. We changed it a little bit for inference:</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">WEIGHTS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">OUTPUT_DIR</span><span class="p">,</span> <span class="s2">&quot;model_final.pth&quot;</span><span class="p">)</span>  <span class="c1"># path to the model we just trained</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">ROI_HEADS</span><span class="o">.</span><span class="n">SCORE_THRESH_TEST</span> <span class="o">=</span> <span class="mf">0.7</span>   <span class="c1"># set a custom testing threshold</span>
@@ -2025,7 +1611,7 @@ WARNING:fvcore.common.checkpoint:Some model parameters or buffers are not found 
 <p>Then, we randomly select several samples to visualize the prediction results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">detectron2.utils.visualizer</span> <span class="kn">import</span> <span class="n">ColorMode</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">detectron2.utils.visualizer</span> <span class="kn">import</span> <span class="n">ColorMode</span>
 <span class="n">dataset_dicts</span> <span class="o">=</span> <span class="n">get_balloon_dicts</span><span class="p">(</span><span class="s2">&quot;balloon/val&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">dataset_dicts</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>    
     <span class="n">im</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;file_name&quot;</span><span class="p">])</span>
@@ -2041,16 +1627,16 @@ WARNING:fvcore.common.checkpoint:Some model parameters or buffers are not found 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../../../_images/detectron2_tutorial_26_0.png" src="../../../../../_images/detectron2_tutorial_26_0.png" />
-<img alt="../../../../../_images/detectron2_tutorial_26_1.png" src="../../../../../_images/detectron2_tutorial_26_1.png" />
-<img alt="../../../../../_images/detectron2_tutorial_26_2.png" src="../../../../../_images/detectron2_tutorial_26_2.png" />
+<img alt="../../../../../_images/d03fd21ead7121fe5e4ce539210f4cfffe12b7a259b1d5c0359cf5f9a9bacee3.png" src="../../../../../_images/d03fd21ead7121fe5e4ce539210f4cfffe12b7a259b1d5c0359cf5f9a9bacee3.png" />
+<img alt="../../../../../_images/a003c645a5c3a430f8bcb3e56e21e00cc4c2892f6b6cebe51ef515c59939517b.png" src="../../../../../_images/a003c645a5c3a430f8bcb3e56e21e00cc4c2892f6b6cebe51ef515c59939517b.png" />
+<img alt="../../../../../_images/82445913a9ec9d2fb1c3d91ef29da96037603803de620a1c25e04dc1e6100fca.png" src="../../../../../_images/82445913a9ec9d2fb1c3d91ef29da96037603803de620a1c25e04dc1e6100fca.png" />
 </div>
 </div>
 <p>We can also evaluate its performance using AP metric implemented in COCO API.
 This gives an AP of ~70. Not bad!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">detectron2.evaluation</span> <span class="kn">import</span> <span class="n">COCOEvaluator</span><span class="p">,</span> <span class="n">inference_on_dataset</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">detectron2.evaluation</span> <span class="kn">import</span> <span class="n">COCOEvaluator</span><span class="p">,</span> <span class="n">inference_on_dataset</span>
 <span class="kn">from</span> <span class="nn">detectron2.data</span> <span class="kn">import</span> <span class="n">build_detection_test_loader</span>
 <span class="n">evaluator</span> <span class="o">=</span> <span class="n">COCOEvaluator</span><span class="p">(</span><span class="s2">&quot;balloon_val&quot;</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;./output&quot;</span><span class="p">)</span>
 <span class="n">val_loader</span> <span class="o">=</span> <span class="n">build_detection_test_loader</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="s2">&quot;balloon_val&quot;</span><span class="p">)</span>
@@ -2137,7 +1723,7 @@ OrderedDict([(&#39;bbox&#39;, {&#39;AP&#39;: 73.54345467878944, &#39;AP50&#39;: 
 <p>We showcase simple demos of other types of models below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inference with a keypoint detection model</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inference with a keypoint detection model</span>
 <span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">()</span>   <span class="c1"># get a fresh new config</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">merge_from_file</span><span class="p">(</span><span class="n">model_zoo</span><span class="o">.</span><span class="n">get_config_file</span><span class="p">(</span><span class="s2">&quot;COCO-Keypoints/keypoint_rcnn_R_50_FPN_3x.yaml&quot;</span><span class="p">))</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">ROI_HEADS</span><span class="o">.</span><span class="n">SCORE_THRESH_TEST</span> <span class="o">=</span> <span class="mf">0.7</span>  <span class="c1"># set threshold for this model</span>
@@ -2155,12 +1741,12 @@ OrderedDict([(&#39;bbox&#39;, {&#39;AP&#39;: 73.54345467878944, &#39;AP50&#39;: 
   y_int = (pos - x_int) // w
 </pre></div>
 </div>
-<img alt="../../../../../_images/detectron2_tutorial_30_1.png" src="../../../../../_images/detectron2_tutorial_30_1.png" />
+<img alt="../../../../../_images/e1d5d89544621fa4b8bdf665654c7af5763fc233f481cae2b4ac9f66b5854012.png" src="../../../../../_images/e1d5d89544621fa4b8bdf665654c7af5763fc233f481cae2b4ac9f66b5854012.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inference with a panoptic segmentation model</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inference with a panoptic segmentation model</span>
 <span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">()</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">merge_from_file</span><span class="p">(</span><span class="n">model_zoo</span><span class="o">.</span><span class="n">get_config_file</span><span class="p">(</span><span class="s2">&quot;COCO-PanopticSegmentation/panoptic_fpn_R_101_3x.yaml&quot;</span><span class="p">))</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">WEIGHTS</span> <span class="o">=</span> <span class="n">model_zoo</span><span class="o">.</span><span class="n">get_checkpoint_url</span><span class="p">(</span><span class="s2">&quot;COCO-PanopticSegmentation/panoptic_fpn_R_101_3x.yaml&quot;</span><span class="p">)</span>
@@ -2173,7 +1759,7 @@ OrderedDict([(&#39;bbox&#39;, {&#39;AP&#39;: 73.54345467878944, &#39;AP50&#39;: 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../../../_images/detectron2_tutorial_31_0.png" src="../../../../../_images/detectron2_tutorial_31_0.png" />
+<img alt="../../../../../_images/87fdd6c0be972ad1cd3ad651b0b8718070e7a7d9b9f99dd2bc2e11611be1fb22.png" src="../../../../../_images/87fdd6c0be972ad1cd3ad651b0b8718070e7a7d9b9f99dd2bc2e11611be1fb22.png" />
 </div>
 </div>
 </section>
@@ -2181,7 +1767,7 @@ OrderedDict([(&#39;bbox&#39;, {&#39;AP&#39;: 73.54345467878944, &#39;AP50&#39;: 
 <h1>Run panoptic segmentation on a video<a class="headerlink" href="#run-panoptic-segmentation-on-a-video" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is the video we&#39;re going to process</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is the video we&#39;re going to process</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span><span class="p">,</span> <span class="n">display</span>
 <span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&quot;ll8TgCZ0plk&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">video</span><span class="p">)</span>
@@ -2190,21 +1776,21 @@ OrderedDict([(&#39;bbox&#39;, {&#39;AP&#39;: 73.54345467878944, &#39;AP50&#39;: 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<iframe
-    width="500"
-    height="300"
-    src="https://www.youtube.com/embed/ll8TgCZ0plk"
-    frameborder="0"
-    allowfullscreen
-></iframe>
-</div></div>
+        <iframe
+            width="500"
+            height="300"
+            src="https://www.youtube.com/embed/ll8TgCZ0plk"
+            frameborder="0"
+            allowfullscreen
+        ></iframe>
+        </div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># Install dependencies, download the video, and crop 5 seconds for processing
-!pip install youtube-dl
-!youtube-dl https://www.youtube.com/watch?v=ll8TgCZ0plk -f 22 -o video.mp4
-!ffmpeg -i video.mp4 -t 00:00:06 -c:v copy video-clip.mp4
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install dependencies, download the video, and crop 5 seconds for processing</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>youtube-dl
+<span class="o">!</span>youtube-dl<span class="w"> </span>https://www.youtube.com/watch?v<span class="o">=</span>ll8TgCZ0plk<span class="w"> </span>-f<span class="w"> </span><span class="m">22</span><span class="w"> </span>-o<span class="w"> </span>video.mp4
+<span class="o">!</span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>video.mp4<span class="w"> </span>-t<span class="w"> </span><span class="m">00</span>:00:06<span class="w"> </span>-c:v<span class="w"> </span>copy<span class="w"> </span>video-clip.mp4
 </pre></div>
 </div>
 </div>
@@ -2248,18 +1834,18 @@ File &#39;video-clip.mp4&#39; already exists. Overwrite ? [y/N]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># Run frame-by-frame inference demo on this video (takes 3-4 minutes) with the &quot;demo.py&quot; tool we provided in the repo.
-!git clone https://github.com/facebookresearch/detectron2
-# Note: this is currently BROKEN due to missing codec. See https://github.com/facebookresearch/detectron2/issues/2901 for workaround.
-%run detectron2/demo/demo.py --config-file detectron2/configs/COCO-PanopticSegmentation/panoptic_fpn_R_101_3x.yaml --video-input video-clip.mp4 --confidence-threshold 0.6 --output video-output.mkv \
-  --opts MODEL.WEIGHTS detectron2://COCO-PanopticSegmentation/panoptic_fpn_R_101_3x/139514519/model_final_cafdb1.pkl
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run frame-by-frame inference demo on this video (takes 3-4 minutes) with the &quot;demo.py&quot; tool we provided in the repo.</span>
+<span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/facebookresearch/detectron2
+<span class="c1"># Note: this is currently BROKEN due to missing codec. See https://github.com/facebookresearch/detectron2/issues/2901 for workaround.</span>
+<span class="o">%</span><span class="k">run</span> detectron2/demo/demo.py --config-file detectron2/configs/COCO-PanopticSegmentation/panoptic_fpn_R_101_3x.yaml --video-input video-clip.mp4 --confidence-threshold 0.6 --output video-output.mkv \
+  <span class="o">--</span><span class="n">opts</span> <span class="n">MODEL</span><span class="o">.</span><span class="n">WEIGHTS</span> <span class="n">detectron2</span><span class="p">:</span><span class="o">//</span><span class="n">COCO</span><span class="o">-</span><span class="n">PanopticSegmentation</span><span class="o">/</span><span class="n">panoptic_fpn_R_101_3x</span><span class="o">/</span><span class="mi">139514519</span><span class="o">/</span><span class="n">model_final_cafdb1</span><span class="o">.</span><span class="n">pkl</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download the results</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download the results</span>
 <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">files</span>
 <span class="n">files</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;video-output.mkv&#39;</span><span class="p">)</span>
 </pre></div>
@@ -2272,7 +1858,7 @@ File &#39;video-clip.mp4&#39; already exists. Overwrite ? [y/N]
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
+            repo: "pantelis/artificial-intelligence",
             ref: "master",
         },
         codeMirrorConfig: {
@@ -2288,50 +1874,110 @@ File &#39;video-clip.mp4&#39; already exists. Overwrite ? [y/N]
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="inspect_weights.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Mask R-CNN - Inspect Weights of a Trained Model</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="inspect_weights.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Mask R-CNN - Inspect Weights of a Trained Model</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="../../../pgm/pgm-intro/_index.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="../../../pgm/pgm-intro/_index.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Introduction to Probabilistic Reasoning</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Detectron2 Beginner’s Tutorial</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#install-detectron2">Install detectron2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-a-pre-trained-detectron2-model">Run a pre-trained detectron2 model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#train-on-a-custom-dataset">Train on a custom dataset</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-dataset">Prepare the dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train">Train!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-evaluation-using-the-trained-model">Inference &amp; evaluation using the trained model</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#other-types-of-builtin-models">Other types of builtin models</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-panoptic-segmentation-on-a-video">Run panoptic segmentation on a video</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By Pantelis Monogioudis, Ph.D<br/>
-  
-      &copy; Copyright 2023.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By Pantelis Monogioudis, Ph.D
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
