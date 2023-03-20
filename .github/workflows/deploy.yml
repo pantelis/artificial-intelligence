@@ -33,6 +33,7 @@ jobs:
           virtualenvs-create: true
           virtualenvs-in-project: true
           installer-parallel: true
+          installer.modern-installation: false
 
       #----------------------------------------------
       #       load cached venv if cache exists
