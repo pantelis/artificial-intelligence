@@ -11,7 +11,7 @@ only_build_toc_files: true
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: cache
+  execute_notebooks: 'off' #cache
   timeout: 3600 #seconds
   stdout_output: show
   stderr_output: show
