@@ -10,6 +10,7 @@ packages = [{include = "b2c"}]
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
 jupyter-book = "^0.15.1"
+sphinx-book-theme = "^1.0.0"
 sphinxcontrib-youtube = "^1.2.0"
 sphinxcontrib-svg2pdfconverter = "^1.2.1"
 sphinx-proof = "^0.1.3"
