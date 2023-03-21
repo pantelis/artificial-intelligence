@@ -174,12 +174,14 @@ parts:
   - file: aiml-common/assignments/mle/mle-gaussian.ipynb
   - file: aiml-common/assignments/mle/poisson-regression-1/index.ipynb
   
+- caption:  Project CS-UY-4613
+  chapters: 
+  - file: aiml-common/projects/nlp/finetuning-language-models-tweets/index.md
+
 - caption:  Assignments CS-GY-6613
   chapters: 
   - file: aiml-common/assignments/logistic-regression-1/index.md
-#   - file: aiml-common/projects/usv/_index.md
-#   - file: aiml-common/projects/relation-networks/index.md
-#   - file: aiml-common/projects/ns-vqa/index.md    
-  # - file: aiml-common/projects/visual-search/_index.md
-  # # - file: aiml-common/projects/_index.md  
-  # # - file: aiml-common/projects/container-terminal-automation/container-terminal-automation.md
+
+- caption:  Project CS-GY-6613
+  chapters: 
+  - file: aiml-common/projects/nlp/finetuning-language-models-patents/index.md
