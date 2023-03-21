@@ -37,8 +37,6 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/jupyterlite_sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -53,7 +51,6 @@
     <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="../../../_static/tabs.js"></script>
-    <script src="../../../_static/jupyterlite_sphinx.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -70,10 +67,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/resources/environment/notebook-status';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/resources/environment/notebook-status.html" />
+    <link rel="shortcut icon" href="../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Probability Assignment" href="../../assignments/probability/probability-assignment-5/index.html" />
-    <link rel="prev" title="Learn Python" href="../../lectures/python/_index.html" />
+    <link rel="prev" title="Learn Python" href="../../lectures/python/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -215,6 +213,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/cnn/cnn-layers/_index.html">CNN Architectures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/cnn/cnn-example-architectures/_index.html">CNN Example Architectures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">Using convnets with small datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/cnn/cnn-example-architectures/visualizing-what-convnets-learn.html">Visualizing what convnets learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/cnn/cnn-explainers/gradcam.html">CNN Explainers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p>
 <ul class="nav bd-sidenav">
@@ -338,18 +338,16 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../lectures/ml-math/_index.html">Math for ML</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../lectures/ml-math/probability/_index.html">Probability Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../lectures/linear-algebra/_index.html">Linear Algebra for Machine Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../lectures/ml-math/calculus/_index.html">Calculus</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/ml-math/index.html">Math for ML Textbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/ml-math/probability/index.html">Probability Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/ml-math/linear-algebra/index.html">Linear Algebra for Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/ml-math/calculus/index.html">Calculus</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Your Programming Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assignment-submission.html">Submitting Your Assignment / Project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lectures/python/_index.html">Learn Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/python/index.html">Learn Python</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Notebook execution status</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Common Assignments</span></p>
@@ -590,114 +588,6 @@ document.write(`
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../../assignments/mle/mle-gaussian.html"><span class="doc">aiml-common/assignments/mle/mle-gaussian</span></a></p></td>
-<td><p>2023-03-19 09:23</p></td>
-<td><p>cache</p></td>
-<td><p>2.22</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../../assignments/mle/poisson-regression-1/index.html"><span class="doc">aiml-common/assignments/mle/poisson-regression-1/index</span></a></p></td>
-<td><p>2023-03-19 09:23</p></td>
-<td><p>cache</p></td>
-<td><p>1.21</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../../assignments/probability/probability-assignment-5/index.html"><span class="doc">aiml-common/assignments/probability/probability-assignment-5/index</span></a></p></td>
-<td><p>2023-03-19 09:23</p></td>
-<td><p>cache</p></td>
-<td><p>1.34</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../../lectures/cnn/cnn-example-architectures/using_convnets_with_small_datasets.html"><span class="doc">aiml-common/lectures/cnn/cnn-example-architectures/using_convnets_with_small_datasets</span></a></p></td>
-<td><p>2023-03-19 11:02</p></td>
-<td><p>cache</p></td>
-<td><p>5919.18</p></td>
-<td><p><abbr title="CellTimeoutError">❌</abbr></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../../lectures/nlp/language-models/cnn-language-model.html"><span class="doc">aiml-common/lectures/nlp/language-models/cnn-language-model</span></a></p></td>
-<td><p>2023-03-19 11:02</p></td>
-<td><p>cache</p></td>
-<td><p>7.02</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../../lectures/nlp/language-models/simple-rnn-language-model.html"><span class="doc">aiml-common/lectures/nlp/language-models/simple-rnn-language-model</span></a></p></td>
-<td><p>2023-03-19 11:03</p></td>
-<td><p>cache</p></td>
-<td><p>31.35</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../../lectures/optimization/maximum-likelihood/conditional_maximum_likelihood.html"><span class="doc">aiml-common/lectures/optimization/maximum-likelihood/conditional_maximum_likelihood</span></a></p></td>
-<td><p>2023-03-19 11:03</p></td>
-<td><p>cache</p></td>
-<td><p>1.3</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../../lectures/optimization/maximum-likelihood/marginal_maximum_likelihood.html"><span class="doc">aiml-common/lectures/optimization/maximum-likelihood/marginal_maximum_likelihood</span></a></p></td>
-<td><p>2023-03-19 11:03</p></td>
-<td><p>cache</p></td>
-<td><p>14.35</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../../lectures/pgm/bayesian-coin/bayesian_update_coin_flip.html"><span class="doc">aiml-common/lectures/pgm/bayesian-coin/bayesian_update_coin_flip</span></a></p></td>
-<td><p>2023-03-19 11:03</p></td>
-<td><p>cache</p></td>
-<td><p>4.36</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../../lectures/pgm/bayesian-inference/bayesian_regression.html"><span class="doc">aiml-common/lectures/pgm/bayesian-inference/bayesian_regression</span></a></p></td>
-<td><p>2023-03-19 11:03</p></td>
-<td><p>cache</p></td>
-<td><p>17.33</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../../lectures/regression/linear-regression/linear_regression.html"><span class="doc">aiml-common/lectures/regression/linear-regression/linear_regression</span></a></p></td>
-<td><p>2023-03-19 11:04</p></td>
-<td><p>cache</p></td>
-<td><p>10.4</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../../lectures/rnn/15_processing_sequences_using_rnns_and_cnns.html"><span class="doc">aiml-common/lectures/rnn/15_processing_sequences_using_rnns_and_cnns</span></a></p></td>
-<td><p>2023-03-19 12:29</p></td>
-<td><p>cache</p></td>
-<td><p>5115.02</p></td>
-<td><p><abbr title="CellTimeoutError">❌</abbr></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../../lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/demo.html"><span class="doc">aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/demo</span></a></p></td>
-<td><p>2023-03-19 12:30</p></td>
-<td><p>cache</p></td>
-<td><p>2.61</p></td>
-<td><p><abbr title="CellExecutionError">❌</abbr></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../../lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.html"><span class="doc">aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial</span></a></p></td>
-<td><p>2023-03-19 12:32</p></td>
-<td><p>cache</p></td>
-<td><p>123.16</p></td>
-<td><p><abbr title="CellExecutionError">❌</abbr></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../../lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_data.html"><span class="doc">aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_data</span></a></p></td>
-<td><p>2023-03-19 12:32</p></td>
-<td><p>cache</p></td>
-<td><p>5.02</p></td>
-<td><p><abbr title="CellExecutionError">❌</abbr></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../../lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_model.html"><span class="doc">aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_model</span></a></p></td>
-<td><p>2023-03-19 12:32</p></td>
-<td><p>cache</p></td>
-<td><p>8.02</p></td>
-<td><p><abbr title="CellExecutionError">❌</abbr></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../../lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_weights.html"><span class="doc">aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_weights</span></a></p></td>
-<td><p>2023-03-19 12:32</p></td>
-<td><p>cache</p></td>
-<td><p>8.02</p></td>
-<td><p><abbr title="CellExecutionError">❌</abbr></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../../lectures/transfer-learning/transfer_learning_tutorial.html"><span class="doc">aiml-common/lectures/transfer-learning/transfer_learning_tutorial</span></a></p></td>
-<td><p>2023-03-19 12:32</p></td>
-<td><p>cache</p></td>
-<td><p>4.02</p></td>
-<td><p><abbr title="CellExecutionError">❌</abbr></p></td>
-</tr>
 </tbody>
 </table>
 </section>
@@ -731,7 +621,7 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../lectures/python/_index.html"
+       href="../../lectures/python/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">

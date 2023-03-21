@@ -37,8 +37,6 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/jupyterlite_sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -53,7 +51,6 @@
     <script src="../../../../../_static/copybutton.js"></script>
     <script src="../../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="../../../../../_static/tabs.js"></script>
-    <script src="../../../../../_static/jupyterlite_sphinx.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -70,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.html" />
+    <link rel="shortcut icon" href="../../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
     <link rel="next" title="Introduction to Probabilistic Reasoning" href="../../../pgm/pgm-intro/_index.html" />
@@ -215,6 +213,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../cnn/cnn-layers/_index.html">CNN Architectures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../cnn/cnn-example-architectures/_index.html">CNN Example Architectures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">Using convnets with small datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cnn/cnn-example-architectures/visualizing-what-convnets-learn.html">Visualizing what convnets learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cnn/cnn-explainers/gradcam.html">CNN Explainers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p>
 <ul class="nav bd-sidenav">
@@ -338,18 +338,16 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../ml-math/_index.html">Math for ML</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../ml-math/probability/_index.html">Probability Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../linear-algebra/_index.html">Linear Algebra for Machine Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../ml-math/calculus/_index.html">Calculus</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ml-math/index.html">Math for ML Textbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ml-math/probability/index.html">Probability Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ml-math/linear-algebra/index.html">Linear Algebra for Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ml-math/calculus/index.html">Calculus</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/index.html">Your Programming Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../python/_index.html">Learn Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/index.html">Learn Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Common Assignments</span></p>
@@ -679,177 +677,178 @@ document.write(`
 <h1>Install detectron2<a class="headerlink" href="#install-detectron2" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>detectron2@git+https://github.com/facebookresearch/detectron2@7c2c8fb
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install detectron2@git+https://github.com/facebookresearch/detectron2@7c2c8fb
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb
-  Cloning https://github.com/facebookresearch/detectron2 (to revision 7c2c8fb) to /tmp/pip-install-cbgvc6ab/detectron2_2ec441a9e2f2478180a9b6291c9e39ab
-  Running command git clone --filter=blob:none --quiet https://github.com/facebookresearch/detectron2 /tmp/pip-install-cbgvc6ab/detectron2_2ec441a9e2f2478180a9b6291c9e39ab
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Collecting detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb
+  Cloning https://github.com/facebookresearch/detectron2 (to revision 7c2c8fb) to /tmp/pip-install-pvcq_72b/detectron2_47da90cc98fe46b5af32f374caa6e530
+  Running command git clone -q https://github.com/facebookresearch/detectron2 /tmp/pip-install-pvcq_72b/detectron2_47da90cc98fe46b5af32f374caa6e530
 <span class=" -Color -Color-Yellow">  WARNING: Did not find branch or tag &#39;7c2c8fb&#39;, assuming revision or ref.</span>
   Running command git checkout -q 7c2c8fb
-  Resolved https://github.com/facebookresearch/detectron2 to commit 7c2c8fb
-  Preparing metadata (setup.py) ... ?25l- done
-?25hRequirement already satisfied: Pillow&gt;=7.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (9.4.0)
-Requirement already satisfied: matplotlib in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.7.1)
-Requirement already satisfied: pycocotools&gt;=2.0.2 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.0.6)
-Requirement already satisfied: termcolor&gt;=1.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.2.0)
+Requirement already satisfied: Pillow&gt;=7.1 in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (7.1.2)
+Requirement already satisfied: matplotlib in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.2.2)
+Requirement already satisfied: pycocotools&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.0.5)
+Requirement already satisfied: termcolor&gt;=1.1 in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.0.1)
 Collecting yacs&gt;=0.1.8
   Downloading yacs-0.1.8-py3-none-any.whl (14 kB)
-Requirement already satisfied: tabulate in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.9.0)
-Requirement already satisfied: cloudpickle in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.2.1)
-Requirement already satisfied: tqdm&gt;4.29.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (4.65.0)
-Requirement already satisfied: tensorboard in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.11.2)
+Requirement already satisfied: tabulate in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.8.10)
+Requirement already satisfied: cloudpickle in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.5.0)
+Requirement already satisfied: tqdm&gt;4.29.0 in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (4.64.1)
+Requirement already satisfied: tensorboard in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.9.1)
 Collecting fvcore&lt;0.1.6,&gt;=0.1.5
-  Downloading fvcore-0.1.5.post20221221.tar.gz (50 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">50.2/50.2 kB</span> <span class=" -Color -Color-Red">2.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h  Preparing metadata (setup.py) ... ?25l- done
+  Downloading fvcore-0.1.5.post20220512.tar.gz (50 kB)
+     |████████████████████████████████| 50 kB 2.4 MB/s 
 ?25hCollecting iopath&lt;0.1.10,&gt;=0.1.7
   Downloading iopath-0.1.9-py3-none-any.whl (27 kB)
-Collecting future
-  Downloading future-0.18.3.tar.gz (840 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">840.9/840.9 kB</span> <span class=" -Color -Color-Red">9.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h  Preparing metadata (setup.py) ... ?25l- \ done
-?25hCollecting pydot
-  Downloading pydot-1.4.2-py2.py3-none-any.whl (21 kB)
+Requirement already satisfied: future in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.16.0)
+Requirement already satisfied: pydot in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.3.0)
 Collecting omegaconf&gt;=2.1
-  Downloading omegaconf-2.3.0-py3-none-any.whl (79 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">79.5/79.5 kB</span> <span class=" -Color -Color-Red">21.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+  Downloading omegaconf-2.2.3-py3-none-any.whl (79 kB)
+     |████████████████████████████████| 79 kB 4.6 MB/s 
 ?25hCollecting hydra-core&gt;=1.1
-  Downloading hydra_core-1.3.2-py3-none-any.whl (154 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">154.5/154.5 kB</span> <span class=" -Color -Color-Red">9.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+  Downloading hydra_core-1.2.0-py3-none-any.whl (151 kB)
+     |████████████████████████████████| 151 kB 41.6 MB/s 
 ?25hCollecting black==22.3.0
-  Downloading black-22.3.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.5 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.5/1.5 MB</span> <span class=" -Color -Color-Red">15.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+  Downloading black-22.3.0-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.4 MB)
+     |████████████████████████████████| 1.4 MB 84.1 MB/s 
 ?25hCollecting timm
-  Downloading timm-0.6.12-py3-none-any.whl (549 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">549.1/549.1 kB</span> <span class=" -Color -Color-Red">21.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+  Downloading timm-0.6.11-py3-none-any.whl (548 kB)
+     |████████████████████████████████| 548 kB 81.0 MB/s 
 ?25hCollecting fairscale
-  Downloading fairscale-0.4.13.tar.gz (266 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">266.3/266.3 kB</span> <span class=" -Color -Color-Red">20.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h  Installing build dependencies ... ?25l- \ | / - done
-?25h  Getting requirements to build wheel ... ?25ldone
-?25h  Installing backend dependencies ... ?25l- \ | done
-?25h  Preparing metadata (pyproject.toml) ... ?25l- done
-?25hRequirement already satisfied: packaging in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (23.0)
-Requirement already satisfied: platformdirs&gt;=2 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from black==22.3.0-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.1.1)
-Collecting pathspec&gt;=0.9.0
-  Downloading pathspec-0.11.1-py3-none-any.whl (29 kB)
+  Downloading fairscale-0.4.6.tar.gz (248 kB)
+     |████████████████████████████████| 248 kB 55.3 MB/s 
+?25h  Installing build dependencies ... ?25l?25hdone
+  Getting requirements to build wheel ... ?25l?25hdone
+  Installing backend dependencies ... ?25l?25hdone
+    Preparing wheel metadata ... ?25l?25hdone
+Requirement already satisfied: packaging in /usr/local/lib/python3.7/dist-packages (from detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (21.3)
+Collecting click&gt;=8.0.0
+  Downloading click-8.1.3-py3-none-any.whl (96 kB)
+     |████████████████████████████████| 96 kB 6.5 MB/s 
+?25hCollecting pathspec&gt;=0.9.0
+  Downloading pathspec-0.10.1-py3-none-any.whl (27 kB)
+Collecting platformdirs&gt;=2
+  Downloading platformdirs-2.5.3-py3-none-any.whl (14 kB)
+Collecting typed-ast&gt;=1.4.2
+  Downloading typed_ast-1.5.4-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (843 kB)
+     |████████████████████████████████| 843 kB 79.7 MB/s 
+?25hRequirement already satisfied: typing-extensions&gt;=3.10.0.0 in /usr/local/lib/python3.7/dist-packages (from black==22.3.0-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (4.1.1)
 Collecting mypy-extensions&gt;=0.4.3
-  Downloading mypy_extensions-1.0.0-py3-none-any.whl (4.7 kB)
-Requirement already satisfied: click&gt;=8.0.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from black==22.3.0-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (8.1.3)
-Collecting tomli&gt;=1.1.0
-  Using cached tomli-2.0.1-py3-none-any.whl (12 kB)
-Requirement already satisfied: numpy in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from fvcore&lt;0.1.6,&gt;=0.1.5-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.24.2)
-Requirement already satisfied: pyyaml&gt;=5.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from fvcore&lt;0.1.6,&gt;=0.1.5-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (6.0)
+  Downloading mypy_extensions-0.4.3-py2.py3-none-any.whl (4.5 kB)
+Requirement already satisfied: tomli&gt;=1.1.0 in /usr/local/lib/python3.7/dist-packages (from black==22.3.0-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.0.1)
+Requirement already satisfied: importlib-metadata in /usr/local/lib/python3.7/dist-packages (from click&gt;=8.0.0-&gt;black==22.3.0-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (4.13.0)
+Requirement already satisfied: numpy in /usr/local/lib/python3.7/dist-packages (from fvcore&lt;0.1.6,&gt;=0.1.5-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.21.6)
+Requirement already satisfied: pyyaml&gt;=5.1 in /usr/local/lib/python3.7/dist-packages (from fvcore&lt;0.1.6,&gt;=0.1.5-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (6.0)
+Requirement already satisfied: importlib-resources in /usr/local/lib/python3.7/dist-packages (from hydra-core&gt;=1.1-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (5.10.0)
 Collecting antlr4-python3-runtime==4.9.*
   Downloading antlr4-python3-runtime-4.9.3.tar.gz (117 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">117.0/117.0 kB</span> <span class=" -Color -Color-Red">31.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h  Preparing metadata (setup.py) ... ?25l- done
+     |████████████████████████████████| 117 kB 93.8 MB/s 
 ?25hCollecting portalocker
-  Downloading portalocker-2.7.0-py2.py3-none-any.whl (15 kB)
-Requirement already satisfied: contourpy&gt;=1.0.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.0.7)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.4.4)
-Requirement already satisfied: pyparsing&gt;=2.3.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.0.9)
-Requirement already satisfied: fonttools&gt;=4.22.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (4.39.2)
-Requirement already satisfied: python-dateutil&gt;=2.7 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.8.2)
-Requirement already satisfied: cycler&gt;=0.10 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.11.0)
-Requirement already satisfied: torch&gt;=1.8.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from fairscale-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.13.1)
-Requirement already satisfied: markdown&gt;=2.6.8 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.4.1)
-Requirement already satisfied: tensorboard-data-server&lt;0.7.0,&gt;=0.6.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.6.1)
-Requirement already satisfied: google-auth&lt;3,&gt;=1.6.3 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.16.2)
-Requirement already satisfied: requests&lt;3,&gt;=2.21.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.28.2)
-Requirement already satisfied: tensorboard-plugin-wit&gt;=1.6.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.8.1)
-Requirement already satisfied: absl-py&gt;=0.4 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.4.0)
-Requirement already satisfied: google-auth-oauthlib&lt;0.5,&gt;=0.4.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.4.6)
-Requirement already satisfied: werkzeug&gt;=1.0.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.2.3)
-Requirement already satisfied: grpcio&gt;=1.24.3 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.51.3)
-Requirement already satisfied: setuptools&gt;=41.0.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (67.6.0)
-Requirement already satisfied: wheel&gt;=0.26 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.40.0)
-Requirement already satisfied: protobuf&lt;4,&gt;=3.9.2 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.19.6)
+  Downloading portalocker-2.6.0-py2.py3-none-any.whl (15 kB)
+Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.7/dist-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.11.0)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.0.9)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.4.4)
+Requirement already satisfied: python-dateutil&gt;=2.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.8.2)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.7/dist-packages (from python-dateutil&gt;=2.1-&gt;matplotlib-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.15.0)
+Requirement already satisfied: torch&gt;=1.8.0 in /usr/local/lib/python3.7/dist-packages (from fairscale-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.12.1+cu113)
+Requirement already satisfied: zipp&gt;=0.5 in /usr/local/lib/python3.7/dist-packages (from importlib-metadata-&gt;click&gt;=8.0.0-&gt;black==22.3.0-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.10.0)
+Requirement already satisfied: grpcio&gt;=1.24.3 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.50.0)
+Requirement already satisfied: setuptools&gt;=41.0.0 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (57.4.0)
+Requirement already satisfied: absl-py&gt;=0.4 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.3.0)
+Requirement already satisfied: google-auth&lt;3,&gt;=1.6.3 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.35.0)
+Requirement already satisfied: tensorboard-data-server&lt;0.7.0,&gt;=0.6.0 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.6.1)
+Requirement already satisfied: requests&lt;3,&gt;=2.21.0 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.23.0)
+Requirement already satisfied: werkzeug&gt;=1.0.1 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.0.1)
+Requirement already satisfied: wheel&gt;=0.26 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.37.1)
+Requirement already satisfied: protobuf&lt;3.20,&gt;=3.9.2 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.17.3)
+Requirement already satisfied: google-auth-oauthlib&lt;0.5,&gt;=0.4.1 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.4.6)
+Requirement already satisfied: markdown&gt;=2.6.8 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.4.1)
+Requirement already satisfied: tensorboard-plugin-wit&gt;=1.6.0 in /usr/local/lib/python3.7/dist-packages (from tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.8.1)
+Requirement already satisfied: rsa&lt;5,&gt;=3.1.4 in /usr/local/lib/python3.7/dist-packages (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (4.9)
+Requirement already satisfied: cachetools&lt;5.0,&gt;=2.0.0 in /usr/local/lib/python3.7/dist-packages (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (4.2.4)
+Requirement already satisfied: pyasn1-modules&gt;=0.2.1 in /usr/local/lib/python3.7/dist-packages (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.2.8)
+Requirement already satisfied: requests-oauthlib&gt;=0.7.0 in /usr/local/lib/python3.7/dist-packages (from google-auth-oauthlib&lt;0.5,&gt;=0.4.1-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.3.1)
+Requirement already satisfied: pyasn1&lt;0.5.0,&gt;=0.4.6 in /usr/local/lib/python3.7/dist-packages (from pyasn1-modules&gt;=0.2.1-&gt;google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.4.8)
+Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.0.4)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.10)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2022.9.24)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.24.3)
+Requirement already satisfied: oauthlib&gt;=3.0.0 in /usr/local/lib/python3.7/dist-packages (from requests-oauthlib&gt;=0.7.0-&gt;google-auth-oauthlib&lt;0.5,&gt;=0.4.1-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.2.2)
 Collecting huggingface-hub
-  Downloading huggingface_hub-0.13.2-py3-none-any.whl (199 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">199.2/199.2 kB</span> <span class=" -Color -Color-Red">36.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: torchvision in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from timm-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.14.1)
-Requirement already satisfied: rsa&lt;5,&gt;=3.1.4 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (4.9)
-Requirement already satisfied: cachetools&lt;6.0,&gt;=2.0.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (5.3.0)
-Requirement already satisfied: six&gt;=1.9.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.16.0)
-Requirement already satisfied: pyasn1-modules&gt;=0.2.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.2.8)
-Requirement already satisfied: requests-oauthlib&gt;=0.7.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from google-auth-oauthlib&lt;0.5,&gt;=0.4.1-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.3.1)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.1.0)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (1.26.15)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2022.12.7)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.4)
-Requirement already satisfied: typing-extensions in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from torch&gt;=1.8.0-&gt;fairscale-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (4.5.0)
-Requirement already satisfied: nvidia-cuda-runtime-cu11==11.7.99 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from torch&gt;=1.8.0-&gt;fairscale-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (11.7.99)
-Requirement already satisfied: nvidia-cudnn-cu11==8.5.0.96 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from torch&gt;=1.8.0-&gt;fairscale-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (8.5.0.96)
-Requirement already satisfied: nvidia-cuda-nvrtc-cu11==11.7.99 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from torch&gt;=1.8.0-&gt;fairscale-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (11.7.99)
-Requirement already satisfied: nvidia-cublas-cu11==11.10.3.66 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from torch&gt;=1.8.0-&gt;fairscale-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (11.10.3.66)
-Requirement already satisfied: MarkupSafe&gt;=2.1.1 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from werkzeug&gt;=1.0.1-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (2.1.2)
-Requirement already satisfied: filelock in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from huggingface-hub-&gt;timm-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.10.0)
-Requirement already satisfied: pyasn1&lt;0.5.0,&gt;=0.4.6 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from pyasn1-modules&gt;=0.2.1-&gt;google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.4.8)
-Requirement already satisfied: oauthlib&gt;=3.0.0 in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from requests-oauthlib&gt;=0.7.0-&gt;google-auth-oauthlib&lt;0.5,&gt;=0.4.1-&gt;tensorboard-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.2.2)
-Building wheels for collected packages: detectron2, fvcore, antlr4-python3-runtime, fairscale, future
-  Building wheel for detectron2 (setup.py) ... ?25l- \ | / - \ | / - \ | / - \ done
-?25h  Created wheel for detectron2: filename=detectron2-0.6-cp310-cp310-linux_x86_64.whl size=5854530 sha256=8eef2bd0583e8a9cd35e6646398595eb2da39f5427c81c7d5d8af6e944b2e2f4
-  Stored in directory: /tmp/pip-ephem-wheel-cache-ssd0k5oq/wheels/76/4e/84/fc146c920b5c5f5b56c1c8fdc89a5956a8f3e9af07f38a3b46
-  Building wheel for fvcore (setup.py) ... ?25l- \ | done
-?25h  Created wheel for fvcore: filename=fvcore-0.1.5.post20221221-py3-none-any.whl size=61405 sha256=c55a8cc3566a796d24ccea28be1ef4df5fdb71e6d5f3247193bb5ac9b1383f9c
-  Stored in directory: /home/runner/.cache/pip/wheels/01/c0/af/77c1cf53a1be9e42a52b48e5af2169d40ec2e89f7362489dd0
-  Building wheel for antlr4-python3-runtime (setup.py) ... ?25l- \ | done
-?25h  Created wheel for antlr4-python3-runtime: filename=antlr4_python3_runtime-4.9.3-py3-none-any.whl size=144554 sha256=6c80f25ea37c5c857a0017a06b7278c1c51b594497896a57d980cbf4668a7e72
-  Stored in directory: /home/runner/.cache/pip/wheels/12/93/dd/1f6a127edc45659556564c5730f6d4e300888f4bca2d4c5a88
-  Building wheel for fairscale (pyproject.toml) ... ?25l- \ done
-?25h  Created wheel for fairscale: filename=fairscale-0.4.13-py3-none-any.whl size=332112 sha256=cc346ef592ac4d2121c5d475f1a8152d2fa824cf6a164388ff485ce05712a921
-  Stored in directory: /home/runner/.cache/pip/wheels/78/a4/c0/fb0a7ef03cff161611c3fa40c6cf898f76e58ec421b88e8cb3
-  Building wheel for future (setup.py) ... ?25l- \ | / - done
-?25h  Created wheel for future: filename=future-0.18.3-py3-none-any.whl size=492022 sha256=da612f6f8a198028bb995799ac1c879e3082244e4d146c5fd79ef6d6909df9aa
-  Stored in directory: /home/runner/.cache/pip/wheels/5e/a9/47/f118e66afd12240e4662752cc22cefae5d97275623aa8ef57d
-Successfully built detectron2 fvcore antlr4-python3-runtime fairscale future
-Installing collected packages: antlr4-python3-runtime, yacs, tomli, pydot, portalocker, pathspec, omegaconf, mypy-extensions, future, iopath, hydra-core, huggingface-hub, black, fvcore, fairscale, timm, detectron2
-Successfully installed antlr4-python3-runtime-4.9.3 black-22.3.0 detectron2-0.6 fairscale-0.4.13 future-0.18.3 fvcore-0.1.5.post20221221 huggingface-hub-0.13.2 hydra-core-1.3.2 iopath-0.1.9 mypy-extensions-1.0.0 omegaconf-2.3.0 pathspec-0.11.1 portalocker-2.7.0 pydot-1.4.2 timm-0.6.12 tomli-2.0.1 yacs-0.1.8
+  Downloading huggingface_hub-0.10.1-py3-none-any.whl (163 kB)
+     |████████████████████████████████| 163 kB 93.3 MB/s 
+?25hRequirement already satisfied: torchvision in /usr/local/lib/python3.7/dist-packages (from timm-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (0.13.1+cu113)
+Requirement already satisfied: filelock in /usr/local/lib/python3.7/dist-packages (from huggingface-hub-&gt;timm-&gt;detectron2@ git+https://github.com/facebookresearch/detectron2@7c2c8fb) (3.8.0)
+Building wheels for collected packages: detectron2, fvcore, antlr4-python3-runtime, fairscale
+  Building wheel for detectron2 (setup.py) ... ?25l?25hdone
+  Created wheel for detectron2: filename=detectron2-0.6-cp37-cp37m-linux_x86_64.whl size=5190584 sha256=70403c98f5863fb103f2e7994330f8af5deb1cffee7c676369d6e4f3c2d323df
+  Stored in directory: /tmp/pip-ephem-wheel-cache-min7dqb2/wheels/60/28/6a/0c738f8bc994d1adeb3032e6490b93af5b6c155b0edf0a4125
+  Building wheel for fvcore (setup.py) ... ?25l?25hdone
+  Created wheel for fvcore: filename=fvcore-0.1.5.post20220512-py3-none-any.whl size=61288 sha256=3c2c57b1052e0cdb7ae3f608aa7b28205865bc347b0fd43632c5eec8f75e5a70
+  Stored in directory: /root/.cache/pip/wheels/68/20/f9/a11a0dd63f4c13678b2a5ec488e48078756505c7777b75b29e
+  Building wheel for antlr4-python3-runtime (setup.py) ... ?25l?25hdone
+  Created wheel for antlr4-python3-runtime: filename=antlr4_python3_runtime-4.9.3-py3-none-any.whl size=144575 sha256=181903ce74d3ae957590698c4d3497b7d949765ce4f54c44e2ff6015eae7b8b7
+  Stored in directory: /root/.cache/pip/wheels/8b/8d/53/2af8772d9aec614e3fc65e53d4a993ad73c61daa8bbd85a873
+  Building wheel for fairscale (PEP 517) ... ?25l?25hdone
+  Created wheel for fairscale: filename=fairscale-0.4.6-py3-none-any.whl size=307252 sha256=95e3aeb45e3805ab8b1b3b9fea0d201d4561018a9e92583f0a28102e3ad826d7
+  Stored in directory: /root/.cache/pip/wheels/4e/4f/0b/94c29ea06dfad93260cb0377855f87b7b863312317a7f69fe7
+Successfully built detectron2 fvcore antlr4-python3-runtime fairscale
+Installing collected packages: portalocker, antlr4-python3-runtime, yacs, typed-ast, platformdirs, pathspec, omegaconf, mypy-extensions, iopath, huggingface-hub, click, timm, hydra-core, fvcore, fairscale, black, detectron2
+  Attempting uninstall: click
+    Found existing installation: click 7.1.2
+    Uninstalling click-7.1.2:
+      Successfully uninstalled click-7.1.2
+<span class=" -Color -Color-Red">ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.</span>
+<span class=" -Color -Color-Red">flask 1.1.4 requires click&lt;8.0,&gt;=5.1, but you have click 8.1.3 which is incompatible.</span>
+Successfully installed antlr4-python3-runtime-4.9.3 black-22.3.0 click-8.1.3 detectron2-0.6 fairscale-0.4.6 fvcore-0.1.5.post20220512 huggingface-hub-0.10.1 hydra-core-1.2.0 iopath-0.1.9 mypy-extensions-0.4.3 omegaconf-2.2.3 pathspec-0.10.1 platformdirs-2.5.3 portalocker-2.6.0 timm-0.6.11 typed-ast-1.5.4 yacs-0.1.8
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span><span class="o">,</span> <span class="nn">torchvision</span><span class="o">,</span> <span class="nn">detectron2</span>
-<span class="o">!</span>nvcc<span class="w"> </span>--version
-<span class="n">TORCH_VERSION</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">__version__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">])</span>
-<span class="n">TORCHVISION_VERSION</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">torchvision</span><span class="o">.</span><span class="n">__version__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">])</span>
-<span class="n">CUDA_VERSION</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">__version__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;+&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;torch: &quot;</span><span class="p">,</span> <span class="n">TORCH_VERSION</span><span class="p">,</span> <span class="s2">&quot;; cuda: &quot;</span><span class="p">,</span> <span class="n">CUDA_VERSION</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;detectron2:&quot;</span><span class="p">,</span> <span class="n">detectron2</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;torchvision: &quot;</span><span class="p">,</span> <span class="n">TORCHVISION_VERSION</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import torch, torchvision, detectron2
+!nvcc --version
+TORCH_VERSION = &quot;.&quot;.join(torch.__version__.split(&quot;.&quot;)[:2])
+TORCHVISION_VERSION = &quot;.&quot;.join(torchvision.__version__.split(&quot;.&quot;)[:2])
+CUDA_VERSION = torch.__version__.split(&quot;+&quot;)[-1]
+print(&quot;torch: &quot;, TORCH_VERSION, &quot;; cuda: &quot;, CUDA_VERSION)
+print(&quot;detectron2:&quot;, detectron2.__version__)
+print(&quot;torchvision: &quot;, TORCHVISION_VERSION)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/bin/sh: 1: nvcc: not found
-torch:  1.13 ; cuda:  cu117
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2021 NVIDIA Corporation
+Built on Sun_Feb_14_21:12:58_PST_2021
+Cuda compilation tools, release 11.2, V11.2.152
+Build cuda_11.2.r11.2/compiler.29618528_0
+torch:  1.12 ; cuda:  cu113
 detectron2: 0.6
-torchvision:  0.14
+torchvision:  0.13
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nvidia-smi<span class="w"> </span>-L
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!nvidia-smi -L
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/bin/sh: 1: nvidia-smi: not found
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GPU 0: A100-SXM4-40GB (UUID: GPU-da6de55e-ad78-924d-8cf3-4be0595eef77)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some basic setup:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some basic setup:</span>
 <span class="c1"># Setup detectron2 logger</span>
 <span class="kn">import</span> <span class="nn">detectron2</span>
 <span class="kn">from</span> <span class="nn">detectron2.utils.logger</span> <span class="kn">import</span> <span class="n">setup_logger</span>
@@ -869,20 +868,6 @@ torchvision:  0.14
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># import some common libraries</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">cv2</span><span class="o">,</span> <span class="nn">random</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">google.colab.patches</span> <span class="kn">import</span> <span class="n">cv2_imshow</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># import some common detectron2 utilities</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;cv2&#39;
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="run-a-pre-trained-detectron2-model">
@@ -890,9 +875,9 @@ torchvision:  0.14
 <p>We first download an image from the COCO dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>http://images.cocodataset.org/val2017/000000439715.jpg<span class="w"> </span>-q<span class="w"> </span>-O<span class="w"> </span>input.jpg
-<span class="n">im</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;./input.jpg&quot;</span><span class="p">)</span>
-<span class="n">cv2_imshow</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!wget http://images.cocodataset.org/val2017/000000439715.jpg -q -O input.jpg
+im = cv2.imread(&quot;./input.jpg&quot;)
+cv2_imshow(im)
 </pre></div>
 </div>
 </div>
@@ -903,7 +888,7 @@ torchvision:  0.14
 <p>Then, we create a detectron2 config and a detectron2 <code class="docutils literal notranslate"><span class="pre">DefaultPredictor</span></code> to run inference on this image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">()</span>
 <span class="c1"># add project-specific config (e.g., TensorMask) here if you&#39;re not running a model in detectron2&#39;s core library</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">merge_from_file</span><span class="p">(</span><span class="n">model_zoo</span><span class="o">.</span><span class="n">get_config_file</span><span class="p">(</span><span class="s2">&quot;COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml&quot;</span><span class="p">))</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">ROI_HEADS</span><span class="o">.</span><span class="n">SCORE_THRESH_TEST</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># set threshold for this model</span>
@@ -923,7 +908,7 @@ torchvision:  0.14
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># look at the outputs. See https://detectron2.readthedocs.io/tutorials/models.html#model-output-format for specification</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># look at the outputs. See https://detectron2.readthedocs.io/tutorials/models.html#model-output-format for specification</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;instances&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">pred_classes</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;instances&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">pred_boxes</span><span class="p">)</span>
 </pre></div>
@@ -953,7 +938,7 @@ Boxes(tensor([[126.5927, 244.9072, 459.8221, 480.0000],
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can use `Visualizer` to draw the predictions on the image.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can use `Visualizer` to draw the predictions on the image.</span>
 <span class="n">v</span> <span class="o">=</span> <span class="n">Visualizer</span><span class="p">(</span><span class="n">im</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">MetadataCatalog</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">DATASETS</span><span class="o">.</span><span class="n">TRAIN</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
 <span class="n">out</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">draw_instance_predictions</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;instances&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">))</span>
 <span class="n">cv2_imshow</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">get_image</span><span class="p">()[:,</span> <span class="p">:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
@@ -976,9 +961,9 @@ We’ll train a balloon segmentation model from an existing model pre-trained on
 <h2>Prepare the dataset<a class="headerlink" href="#prepare-the-dataset" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download, decompress the data</span>
-<span class="o">!</span>wget<span class="w"> </span>https://github.com/matterport/Mask_RCNN/releases/download/v2.1/balloon_dataset.zip
-<span class="o">!</span>unzip<span class="w"> </span>balloon_dataset.zip<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># download, decompress the data
+!wget https://github.com/matterport/Mask_RCNN/releases/download/v2.1/balloon_dataset.zip
+!unzip balloon_dataset.zip &gt; /dev/null
 </pre></div>
 </div>
 </div>
@@ -1012,7 +997,7 @@ replace balloon/train/53500107_d24b11b3c2_b.jpg? [y]es, [n]o, [A]ll, [N]one, [r]
 Here, the dataset is in its custom format, therefore we write a function to parse it and prepare it into detectron2’s standard format. User should write such a function when using a dataset in custom format. See the tutorial for more details.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if your dataset is in COCO format, this cell can be replaced by the following three lines:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># if your dataset is in COCO format, this cell can be replaced by the following three lines:</span>
 <span class="c1"># from detectron2.data.datasets import register_coco_instances</span>
 <span class="c1"># register_coco_instances(&quot;my_dataset_train&quot;, {}, &quot;json_annotation_train.json&quot;, &quot;path/to/image/dir&quot;)</span>
 <span class="c1"># register_coco_instances(&quot;my_dataset_val&quot;, {}, &quot;json_annotation_val.json&quot;, &quot;path/to/image/dir&quot;)</span>
@@ -1068,7 +1053,7 @@ Here, the dataset is in its custom format, therefore we write a function to pars
 <p>To verify the dataset is in correct format, let’s visualize the annotations of randomly selected samples in the training set:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_dicts</span> <span class="o">=</span> <span class="n">get_balloon_dicts</span><span class="p">(</span><span class="s2">&quot;balloon/train&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_dicts</span> <span class="o">=</span> <span class="n">get_balloon_dicts</span><span class="p">(</span><span class="s2">&quot;balloon/train&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">dataset_dicts</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;file_name&quot;</span><span class="p">])</span>
     <span class="n">visualizer</span> <span class="o">=</span> <span class="n">Visualizer</span><span class="p">(</span><span class="n">img</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">metadata</span><span class="o">=</span><span class="n">balloon_metadata</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -1089,7 +1074,7 @@ Here, the dataset is in its custom format, therefore we write a function to pars
 <p>Now, let’s fine-tune a COCO-pretrained R50-FPN Mask R-CNN model on the balloon dataset. It takes ~2 minutes to train 300 iterations on a P100 GPU.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">detectron2.engine</span> <span class="kn">import</span> <span class="n">DefaultTrainer</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">detectron2.engine</span> <span class="kn">import</span> <span class="n">DefaultTrainer</span>
 
 <span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">()</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">merge_from_file</span><span class="p">(</span><span class="n">model_zoo</span><span class="o">.</span><span class="n">get_config_file</span><span class="p">(</span><span class="s2">&quot;COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml&quot;</span><span class="p">))</span>
@@ -1492,9 +1477,9 @@ WARNING:fvcore.common.checkpoint:Some model parameters or buffers are not found 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Look at training curves in tensorboard:</span>
-<span class="o">%</span><span class="k">load_ext</span> tensorboard
-<span class="o">%</span><span class="k">tensorboard</span> --logdir output
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Look at training curves in tensorboard:</span>
+<span class="o">%</span><span class="n">load_ext</span> <span class="n">tensorboard</span>
+<span class="o">%</span><span class="n">tensorboard</span> <span class="o">--</span><span class="n">logdir</span> <span class="n">output</span>
 </pre></div>
 </div>
 </div>
@@ -1518,7 +1503,7 @@ WARNING:fvcore.common.checkpoint:Some model parameters or buffers are not found 
 <p>Now, let’s run inference with the trained model on the balloon validation dataset. First, let’s create a predictor using the model we just trained:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inference should use the config with parameters that are used in training</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inference should use the config with parameters that are used in training</span>
 <span class="c1"># cfg now already contains everything we&#39;ve set previously. We changed it a little bit for inference:</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">WEIGHTS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">OUTPUT_DIR</span><span class="p">,</span> <span class="s2">&quot;model_final.pth&quot;</span><span class="p">)</span>  <span class="c1"># path to the model we just trained</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">ROI_HEADS</span><span class="o">.</span><span class="n">SCORE_THRESH_TEST</span> <span class="o">=</span> <span class="mf">0.7</span>   <span class="c1"># set a custom testing threshold</span>
@@ -1611,7 +1596,7 @@ WARNING:fvcore.common.checkpoint:Some model parameters or buffers are not found 
 <p>Then, we randomly select several samples to visualize the prediction results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">detectron2.utils.visualizer</span> <span class="kn">import</span> <span class="n">ColorMode</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">detectron2.utils.visualizer</span> <span class="kn">import</span> <span class="n">ColorMode</span>
 <span class="n">dataset_dicts</span> <span class="o">=</span> <span class="n">get_balloon_dicts</span><span class="p">(</span><span class="s2">&quot;balloon/val&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">dataset_dicts</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>    
     <span class="n">im</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;file_name&quot;</span><span class="p">])</span>
@@ -1636,7 +1621,7 @@ WARNING:fvcore.common.checkpoint:Some model parameters or buffers are not found 
 This gives an AP of ~70. Not bad!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">detectron2.evaluation</span> <span class="kn">import</span> <span class="n">COCOEvaluator</span><span class="p">,</span> <span class="n">inference_on_dataset</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">detectron2.evaluation</span> <span class="kn">import</span> <span class="n">COCOEvaluator</span><span class="p">,</span> <span class="n">inference_on_dataset</span>
 <span class="kn">from</span> <span class="nn">detectron2.data</span> <span class="kn">import</span> <span class="n">build_detection_test_loader</span>
 <span class="n">evaluator</span> <span class="o">=</span> <span class="n">COCOEvaluator</span><span class="p">(</span><span class="s2">&quot;balloon_val&quot;</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;./output&quot;</span><span class="p">)</span>
 <span class="n">val_loader</span> <span class="o">=</span> <span class="n">build_detection_test_loader</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="s2">&quot;balloon_val&quot;</span><span class="p">)</span>
@@ -1723,7 +1708,7 @@ OrderedDict([(&#39;bbox&#39;, {&#39;AP&#39;: 73.54345467878944, &#39;AP50&#39;: 
 <p>We showcase simple demos of other types of models below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inference with a keypoint detection model</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inference with a keypoint detection model</span>
 <span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">()</span>   <span class="c1"># get a fresh new config</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">merge_from_file</span><span class="p">(</span><span class="n">model_zoo</span><span class="o">.</span><span class="n">get_config_file</span><span class="p">(</span><span class="s2">&quot;COCO-Keypoints/keypoint_rcnn_R_50_FPN_3x.yaml&quot;</span><span class="p">))</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">ROI_HEADS</span><span class="o">.</span><span class="n">SCORE_THRESH_TEST</span> <span class="o">=</span> <span class="mf">0.7</span>  <span class="c1"># set threshold for this model</span>
@@ -1746,7 +1731,7 @@ OrderedDict([(&#39;bbox&#39;, {&#39;AP&#39;: 73.54345467878944, &#39;AP50&#39;: 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inference with a panoptic segmentation model</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inference with a panoptic segmentation model</span>
 <span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">()</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">merge_from_file</span><span class="p">(</span><span class="n">model_zoo</span><span class="o">.</span><span class="n">get_config_file</span><span class="p">(</span><span class="s2">&quot;COCO-PanopticSegmentation/panoptic_fpn_R_101_3x.yaml&quot;</span><span class="p">))</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">WEIGHTS</span> <span class="o">=</span> <span class="n">model_zoo</span><span class="o">.</span><span class="n">get_checkpoint_url</span><span class="p">(</span><span class="s2">&quot;COCO-PanopticSegmentation/panoptic_fpn_R_101_3x.yaml&quot;</span><span class="p">)</span>
@@ -1767,7 +1752,7 @@ OrderedDict([(&#39;bbox&#39;, {&#39;AP&#39;: 73.54345467878944, &#39;AP50&#39;: 
 <h1>Run panoptic segmentation on a video<a class="headerlink" href="#run-panoptic-segmentation-on-a-video" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is the video we&#39;re going to process</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is the video we&#39;re going to process</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span><span class="p">,</span> <span class="n">display</span>
 <span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&quot;ll8TgCZ0plk&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">video</span><span class="p">)</span>
@@ -1787,10 +1772,10 @@ OrderedDict([(&#39;bbox&#39;, {&#39;AP&#39;: 73.54345467878944, &#39;AP50&#39;: 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install dependencies, download the video, and crop 5 seconds for processing</span>
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>youtube-dl
-<span class="o">!</span>youtube-dl<span class="w"> </span>https://www.youtube.com/watch?v<span class="o">=</span>ll8TgCZ0plk<span class="w"> </span>-f<span class="w"> </span><span class="m">22</span><span class="w"> </span>-o<span class="w"> </span>video.mp4
-<span class="o">!</span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>video.mp4<span class="w"> </span>-t<span class="w"> </span><span class="m">00</span>:00:06<span class="w"> </span>-c:v<span class="w"> </span>copy<span class="w"> </span>video-clip.mp4
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># Install dependencies, download the video, and crop 5 seconds for processing
+!pip install youtube-dl
+!youtube-dl https://www.youtube.com/watch?v=ll8TgCZ0plk -f 22 -o video.mp4
+!ffmpeg -i video.mp4 -t 00:00:06 -c:v copy video-clip.mp4
 </pre></div>
 </div>
 </div>
@@ -1834,18 +1819,18 @@ File &#39;video-clip.mp4&#39; already exists. Overwrite ? [y/N]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run frame-by-frame inference demo on this video (takes 3-4 minutes) with the &quot;demo.py&quot; tool we provided in the repo.</span>
-<span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/facebookresearch/detectron2
-<span class="c1"># Note: this is currently BROKEN due to missing codec. See https://github.com/facebookresearch/detectron2/issues/2901 for workaround.</span>
-<span class="o">%</span><span class="k">run</span> detectron2/demo/demo.py --config-file detectron2/configs/COCO-PanopticSegmentation/panoptic_fpn_R_101_3x.yaml --video-input video-clip.mp4 --confidence-threshold 0.6 --output video-output.mkv \
-  <span class="o">--</span><span class="n">opts</span> <span class="n">MODEL</span><span class="o">.</span><span class="n">WEIGHTS</span> <span class="n">detectron2</span><span class="p">:</span><span class="o">//</span><span class="n">COCO</span><span class="o">-</span><span class="n">PanopticSegmentation</span><span class="o">/</span><span class="n">panoptic_fpn_R_101_3x</span><span class="o">/</span><span class="mi">139514519</span><span class="o">/</span><span class="n">model_final_cafdb1</span><span class="o">.</span><span class="n">pkl</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># Run frame-by-frame inference demo on this video (takes 3-4 minutes) with the &quot;demo.py&quot; tool we provided in the repo.
+!git clone https://github.com/facebookresearch/detectron2
+# Note: this is currently BROKEN due to missing codec. See https://github.com/facebookresearch/detectron2/issues/2901 for workaround.
+%run detectron2/demo/demo.py --config-file detectron2/configs/COCO-PanopticSegmentation/panoptic_fpn_R_101_3x.yaml --video-input video-clip.mp4 --confidence-threshold 0.6 --output video-output.mkv \
+  --opts MODEL.WEIGHTS detectron2://COCO-PanopticSegmentation/panoptic_fpn_R_101_3x/139514519/model_final_cafdb1.pkl
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download the results</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download the results</span>
 <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">files</span>
 <span class="n">files</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;video-output.mkv&#39;</span><span class="p">)</span>
 </pre></div>

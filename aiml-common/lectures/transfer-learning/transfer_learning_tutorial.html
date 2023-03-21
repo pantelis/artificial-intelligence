@@ -37,8 +37,6 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/jupyterlite_sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -53,7 +51,6 @@
     <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="../../../_static/tabs.js"></script>
-    <script src="../../../_static/jupyterlite_sphinx.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -70,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/transfer-learning/transfer_learning_tutorial';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/transfer-learning/transfer_learning_tutorial.html" />
+    <link rel="shortcut icon" href="../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Introduction to Scene Understanding" href="../scene-understanding/scene-understanding-intro/index.html" />
@@ -215,6 +213,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../cnn/cnn-layers/_index.html">CNN Architectures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cnn/cnn-example-architectures/_index.html">CNN Example Architectures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">Using convnets with small datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cnn/cnn-example-architectures/visualizing-what-convnets-learn.html">Visualizing what convnets learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cnn/cnn-explainers/gradcam.html">CNN Explainers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p>
 <ul class="current nav bd-sidenav">
@@ -338,18 +338,16 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml-math/_index.html">Math for ML</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ml-math/probability/_index.html">Probability Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/_index.html">Linear Algebra for Machine Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml-math/calculus/_index.html">Calculus</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../ml-math/index.html">Math for ML Textbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml-math/probability/index.html">Probability Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml-math/linear-algebra/index.html">Linear Algebra for Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml-math/calculus/index.html">Calculus</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../resources/environment/index.html">Your Programming Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python/_index.html">Learn Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Learn Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resources/environment/notebook-status.html">Notebook execution status</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Common Assignments</span></p>
@@ -675,16 +673,13 @@ document.write(`
 <p>In this tutorial, you will learn how to train a convolutional neural network for
 image classification using transfer learning. You can read more about the transfer
 learning at <code class="docutils literal notranslate"><span class="pre">cs231n</span> <span class="pre">notes</span> <span class="pre">&lt;https://cs231n.github.io/transfer-learning/&gt;</span></code>__</p>
-<p>Quoting these notes,</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In practice, very few people train an entire Convolutional Network
+<p>In practice, very few people train an entire Convolutional Network
 from scratch (with random initialization), because it is relatively
 rare to have a dataset of sufficient size. Instead, it is common to
 pretrain a ConvNet on a very large dataset (e.g. ImageNet, which
 contains 1.2 million images with 1000 categories), and then use the
 ConvNet either as an initialization or a fixed feature extractor for
-the task of interest.
-</pre></div>
-</div>
+the task of interest.</p>
 <p>These two major transfer learning scenarios look as follows:</p>
 <ul class="simple">
 <li><p><strong>Finetuning the convnet</strong>: Instead of random initialization, we
@@ -722,7 +717,7 @@ with random weights and only this layer is trained.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;contextlib.ExitStack at 0x7f712194f9a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;contextlib.ExitStack at 0x7f718b80b520&gt;
 </pre></div>
 </div>
 </div>
@@ -737,11 +732,17 @@ There are 75 validation images for each class. Usually, this is a very
 small dataset to generalize upon, if trained from scratch. Since we
 are using transfer learning, we should be able to generalize reasonably
 well.</p>
-<p>This dataset is a very small subset of imagenet.</p>
-<p>… Note ::
-Download the data from
-<code class="docutils literal notranslate"><span class="pre">here</span> <span class="pre">&lt;https://download.pytorch.org/tutorial/hymenoptera_data.zip&gt;</span></code>_
+<p>This dataset is a very small subset of imagenet. The data was downloaded from  <a class="reference external" href="https://download.pytorch.org/tutorial/hymenoptera_data.zip_">https://download.pytorch.org/tutorial/hymenoptera_data.zip_</a>
 and extract it to the current directory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Unzip data</span>
+<span class="o">!</span>mkdir<span class="w"> </span>-p<span class="w"> </span>data/hymenoptera_data
+<span class="o">!</span>unzip<span class="w"> </span>-o<span class="w"> </span>-q<span class="w"> </span>hymenoptera_data.zip<span class="w"> </span>-d<span class="w"> </span>data<span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data augmentation and normalization for training</span>
@@ -775,94 +776,6 @@ and extract it to the current directory.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">19</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">data_transforms</span> <span class="o">=</span> <span class="p">{</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="s1">&#39;train&#39;</span><span class="p">:</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="n">transforms</span><span class="o">.</span><span class="n">RandomResizedCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">),</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="p">]),</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="p">}</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;data/hymenoptera_data&#39;</span>
-<span class="ne">---&gt; </span><span class="mi">19</span> <span class="n">image_datasets</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">datasets</span><span class="o">.</span><span class="n">ImageFolder</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span>                                           <span class="n">data_transforms</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span>                   <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;val&#39;</span><span class="p">]}</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="n">dataloaders</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">image_datasets</span><span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>                                              <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span>               <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;val&#39;</span><span class="p">]}</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="n">dataset_sizes</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_datasets</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;val&#39;</span><span class="p">]}</span>
-
-<span class="nn">Cell In[3], line 19,</span> in <span class="ni">&lt;dictcomp&gt;</span><span class="nt">(.0)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">data_transforms</span> <span class="o">=</span> <span class="p">{</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="s1">&#39;train&#39;</span><span class="p">:</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="n">transforms</span><span class="o">.</span><span class="n">RandomResizedCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">),</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="p">]),</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="p">}</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;data/hymenoptera_data&#39;</span>
-<span class="ne">---&gt; </span><span class="mi">19</span> <span class="n">image_datasets</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">datasets</span><span class="o">.</span><span class="n">ImageFolder</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span>                                           <span class="n">data_transforms</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span>                   <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;val&#39;</span><span class="p">]}</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="n">dataloaders</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">image_datasets</span><span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>                                              <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span>               <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;val&#39;</span><span class="p">]}</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="n">dataset_sizes</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_datasets</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;val&#39;</span><span class="p">]}</span>
-
-<span class="nn">File ~/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages/torchvision/datasets/folder.py:309,</span> in <span class="ni">ImageFolder.__init__</span><span class="nt">(self, root, transform, target_transform, loader, is_valid_file)</span>
-<span class="g g-Whitespace">    </span><span class="mi">301</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">302</span>     <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">303</span>     <span class="n">root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">307</span>     <span class="n">is_valid_file</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">308</span> <span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">309</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">310</span>         <span class="n">root</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">311</span>         <span class="n">loader</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">312</span>         <span class="n">IMG_EXTENSIONS</span> <span class="k">if</span> <span class="n">is_valid_file</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">314</span>         <span class="n">target_transform</span><span class="o">=</span><span class="n">target_transform</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">315</span>         <span class="n">is_valid_file</span><span class="o">=</span><span class="n">is_valid_file</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">316</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">317</span>     <span class="bp">self</span><span class="o">.</span><span class="n">imgs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">samples</span>
-
-<span class="nn">File ~/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages/torchvision/datasets/folder.py:144,</span> in <span class="ni">DatasetFolder.__init__</span><span class="nt">(self, root, loader, extensions, transform, target_transform, is_valid_file)</span>
-<span class="g g-Whitespace">    </span><span class="mi">134</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">135</span>     <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">136</span>     <span class="n">root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span>     <span class="n">is_valid_file</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">target_transform</span><span class="o">=</span><span class="n">target_transform</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">144</span>     <span class="n">classes</span><span class="p">,</span> <span class="n">class_to_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_classes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span>     <span class="n">samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="n">class_to_idx</span><span class="p">,</span> <span class="n">extensions</span><span class="p">,</span> <span class="n">is_valid_file</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">147</span>     <span class="bp">self</span><span class="o">.</span><span class="n">loader</span> <span class="o">=</span> <span class="n">loader</span>
-
-<span class="nn">File ~/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages/torchvision/datasets/folder.py:218,</span> in <span class="ni">DatasetFolder.find_classes</span><span class="nt">(self, directory)</span>
-<span class="g g-Whitespace">    </span><span class="mi">191</span> <span class="k">def</span> <span class="nf">find_classes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
-<span class="g g-Whitespace">    </span><span class="mi">192</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Find the class folders in a dataset structured as follows::</span>
-<span class="g g-Whitespace">    </span><span class="mi">193</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">194</span><span class="sd">         directory/</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">216</span><span class="sd">         (Tuple[List[str], Dict[str, int]]): List of all classes and dictionary mapping each class to an index.</span>
-<span class="g g-Whitespace">    </span><span class="mi">217</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">218</span>     <span class="k">return</span> <span class="n">find_classes</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
-
-<span class="nn">File ~/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages/torchvision/datasets/folder.py:40,</span> in <span class="ni">find_classes</span><span class="nt">(directory)</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="k">def</span> <span class="nf">find_classes</span><span class="p">(</span><span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
-<span class="g g-Whitespace">     </span><span class="mi">36</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Finds the class folders in a dataset.</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span><span class="sd"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span><span class="sd">     See :class:`DatasetFolder` for details.</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="nn">---&gt; 40     classes = sorted(entry.name for entry</span> in <span class="ni">os.scandir(directory) if entry.is_dir</span><span class="nt">())</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">classes</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span>         <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Couldn&#39;t find any class folder in </span><span class="si">{</span><span class="n">directory</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/hymenoptera_data/train&#39;
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="visualize-a-few-images">
@@ -893,6 +806,9 @@ augmentations.</p>
 <span class="n">imshow</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="p">[</span><span class="n">class_names</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/8dd245e22245574f4a92d5deea96aaafb0e03a3a8ec65e6eeaec156eedad401d.png" src="../../../_images/8dd245e22245574f4a92d5deea96aaafb0e03a3a8ec65e6eeaec156eedad401d.png" />
 </div>
 </div>
 </section>
@@ -1036,6 +952,15 @@ illustrate:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/workspaces/artificial_intelligence/.venv/lib/python3.10/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter &#39;pretrained&#39; is deprecated since 0.13 and may be removed in the future, please use &#39;weights&#39; instead.
+  warnings.warn(
+/workspaces/artificial_intelligence/.venv/lib/python3.10/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for &#39;weights&#39; are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet18_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet18_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Downloading: &quot;https://download.pytorch.org/models/resnet18-f37072fd.pth&quot; to /home/vscode/.cache/torch/hub/checkpoints/resnet18-f37072fd.pth
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "527022982e4a41a5beface7a03f16682", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 </section>
 <section id="train-and-evaluate">
@@ -1049,12 +974,151 @@ minute.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 0/24
+----------
+train Loss: 0.6682 Acc: 0.6844
+val Loss: 0.4972 Acc: 0.8039
+
+Epoch 1/24
+----------
+train Loss: 0.6931 Acc: 0.7254
+val Loss: 0.2619 Acc: 0.9281
+
+Epoch 2/24
+----------
+train Loss: 0.6481 Acc: 0.7828
+val Loss: 0.2864 Acc: 0.8758
+
+Epoch 3/24
+----------
+train Loss: 0.5984 Acc: 0.8156
+val Loss: 0.6362 Acc: 0.7908
+
+Epoch 4/24
+----------
+train Loss: 0.4897 Acc: 0.8115
+val Loss: 0.4631 Acc: 0.8301
+
+Epoch 5/24
+----------
+train Loss: 0.4897 Acc: 0.8197
+val Loss: 0.3792 Acc: 0.8562
+
+Epoch 6/24
+----------
+train Loss: 0.4491 Acc: 0.7951
+val Loss: 0.3498 Acc: 0.8693
+
+Epoch 7/24
+----------
+train Loss: 0.4476 Acc: 0.8156
+val Loss: 0.3002 Acc: 0.8627
+
+Epoch 8/24
+----------
+train Loss: 0.3146 Acc: 0.8689
+val Loss: 0.2753 Acc: 0.8889
+
+Epoch 9/24
+----------
+train Loss: 0.2530 Acc: 0.9139
+val Loss: 0.2525 Acc: 0.8954
+
+Epoch 10/24
+----------
+train Loss: 0.2522 Acc: 0.9098
+val Loss: 0.2410 Acc: 0.9150
+
+Epoch 11/24
+----------
+train Loss: 0.3417 Acc: 0.8484
+val Loss: 0.2489 Acc: 0.9085
+
+Epoch 12/24
+----------
+train Loss: 0.2227 Acc: 0.9098
+val Loss: 0.2426 Acc: 0.9085
+
+Epoch 13/24
+----------
+train Loss: 0.3280 Acc: 0.8607
+val Loss: 0.2268 Acc: 0.9150
+
+Epoch 14/24
+----------
+train Loss: 0.3335 Acc: 0.8648
+val Loss: 0.2487 Acc: 0.9020
+
+Epoch 15/24
+----------
+train Loss: 0.2828 Acc: 0.8730
+val Loss: 0.2276 Acc: 0.9150
+
+Epoch 16/24
+----------
+train Loss: 0.2447 Acc: 0.8975
+val Loss: 0.2197 Acc: 0.9216
+
+Epoch 17/24
+----------
+train Loss: 0.2392 Acc: 0.8893
+val Loss: 0.2497 Acc: 0.9020
+
+Epoch 18/24
+----------
+train Loss: 0.3230 Acc: 0.8770
+val Loss: 0.2313 Acc: 0.9085
+
+Epoch 19/24
+----------
+train Loss: 0.3141 Acc: 0.8566
+val Loss: 0.2161 Acc: 0.9281
+
+Epoch 20/24
+----------
+train Loss: 0.3094 Acc: 0.8730
+val Loss: 0.2456 Acc: 0.9085
+
+Epoch 21/24
+----------
+train Loss: 0.3657 Acc: 0.8566
+val Loss: 0.2300 Acc: 0.9150
+
+Epoch 22/24
+----------
+train Loss: 0.2825 Acc: 0.8770
+val Loss: 0.2296 Acc: 0.9150
+
+Epoch 23/24
+----------
+train Loss: 0.2966 Acc: 0.8648
+val Loss: 0.2195 Acc: 0.9281
+
+Epoch 24/24
+----------
+train Loss: 0.2631 Acc: 0.8893
+val Loss: 0.2220 Acc: 0.9085
+
+Training complete in 0m 37s
+Best val Acc: 0.928105
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">visualize_model</span><span class="p">(</span><span class="n">model_ft</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/0e1dc40a89d67a0bbfa4082a0f758385f933ef3ec47f280ea0b7b0d2b71c7daa.png" src="../../../_images/0e1dc40a89d67a0bbfa4082a0f758385f933ef3ec47f280ea0b7b0d2b71c7daa.png" />
+<img alt="../../../_images/99c56153981bd9408b8d84f3ed83807ceb56bfb329a230ae450eb6b3d9c34170.png" src="../../../_images/99c56153981bd9408b8d84f3ed83807ceb56bfb329a230ae450eb6b3d9c34170.png" />
+<img alt="../../../_images/fc04c497274fe25afff408d502d4829d46e85f582dbd1bfe01686bac9572c1b6.png" src="../../../_images/fc04c497274fe25afff408d502d4829d46e85f582dbd1bfe01686bac9572c1b6.png" />
+<img alt="../../../_images/cbf49dcd60989646b0ba56716a7858eef10729d443587b018c45b457b582dbd0.png" src="../../../_images/cbf49dcd60989646b0ba56716a7858eef10729d443587b018c45b457b582dbd0.png" />
+<img alt="../../../_images/93e45c76e3ce259b0293508646cafc635819e7859d4111c2f7692f7d7ff7b8f3.png" src="../../../_images/93e45c76e3ce259b0293508646cafc635819e7859d4111c2f7692f7d7ff7b8f3.png" />
+<img alt="../../../_images/da74e94d512c2ca374b0e16027cf1da04c4a8c1fafce1fafc93dbc8739d2a67d.png" src="../../../_images/da74e94d512c2ca374b0e16027cf1da04c4a8c1fafce1fafc93dbc8739d2a67d.png" />
 </div>
 </div>
 </section>
@@ -1102,6 +1166,137 @@ network. However, forward does need to be computed.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 0/24
+----------
+train Loss: 0.6031 Acc: 0.6680
+val Loss: 0.2526 Acc: 0.9346
+
+Epoch 1/24
+----------
+train Loss: 0.5132 Acc: 0.7254
+val Loss: 0.2130 Acc: 0.9412
+
+Epoch 2/24
+----------
+train Loss: 0.4905 Acc: 0.7787
+val Loss: 0.2027 Acc: 0.9412
+
+Epoch 3/24
+----------
+train Loss: 0.5901 Acc: 0.7336
+val Loss: 0.1964 Acc: 0.9412
+
+Epoch 4/24
+----------
+train Loss: 0.5100 Acc: 0.7951
+val Loss: 0.3413 Acc: 0.8562
+
+Epoch 5/24
+----------
+train Loss: 0.4256 Acc: 0.8033
+val Loss: 0.1984 Acc: 0.9477
+
+Epoch 6/24
+----------
+train Loss: 0.4232 Acc: 0.8279
+val Loss: 0.1937 Acc: 0.9412
+
+Epoch 7/24
+----------
+train Loss: 0.3542 Acc: 0.8115
+val Loss: 0.1952 Acc: 0.9281
+
+Epoch 8/24
+----------
+train Loss: 0.4106 Acc: 0.8320
+val Loss: 0.1759 Acc: 0.9477
+
+Epoch 9/24
+----------
+train Loss: 0.3410 Acc: 0.8279
+val Loss: 0.1790 Acc: 0.9477
+
+Epoch 10/24
+----------
+train Loss: 0.3573 Acc: 0.8238
+val Loss: 0.1990 Acc: 0.9412
+
+Epoch 11/24
+----------
+train Loss: 0.3382 Acc: 0.8525
+val Loss: 0.1994 Acc: 0.9281
+
+Epoch 12/24
+----------
+train Loss: 0.3315 Acc: 0.8484
+val Loss: 0.1961 Acc: 0.9346
+
+Epoch 13/24
+----------
+train Loss: 0.3014 Acc: 0.8730
+val Loss: 0.2121 Acc: 0.9346
+
+Epoch 14/24
+----------
+train Loss: 0.3267 Acc: 0.8648
+val Loss: 0.2121 Acc: 0.9281
+
+Epoch 15/24
+----------
+train Loss: 0.3681 Acc: 0.8238
+val Loss: 0.2085 Acc: 0.9281
+
+Epoch 16/24
+----------
+train Loss: 0.2891 Acc: 0.8689
+val Loss: 0.2224 Acc: 0.9216
+
+Epoch 17/24
+----------
+train Loss: 0.2871 Acc: 0.8811
+val Loss: 0.2013 Acc: 0.9346
+
+Epoch 18/24
+----------
+train Loss: 0.2311 Acc: 0.9139
+val Loss: 0.1951 Acc: 0.9542
+
+Epoch 19/24
+----------
+train Loss: 0.3362 Acc: 0.8320
+val Loss: 0.2021 Acc: 0.9346
+
+Epoch 20/24
+----------
+train Loss: 0.3685 Acc: 0.8443
+val Loss: 0.2014 Acc: 0.9281
+
+Epoch 21/24
+----------
+train Loss: 0.3464 Acc: 0.8607
+val Loss: 0.2043 Acc: 0.9412
+
+Epoch 22/24
+----------
+train Loss: 0.2885 Acc: 0.8811
+val Loss: 0.1886 Acc: 0.9346
+
+Epoch 23/24
+----------
+train Loss: 0.3048 Acc: 0.8730
+val Loss: 0.1868 Acc: 0.9412
+
+Epoch 24/24
+----------
+train Loss: 0.3638 Acc: 0.8361
+val Loss: 0.2322 Acc: 0.9150
+
+Training complete in 0m 23s
+Best val Acc: 0.954248
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1111,6 +1306,14 @@ network. However, forward does need to be computed.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/f0222bf98c6d7ae6ad64184a4c722a7ca4ac5fb178354edd7218073f4c96ce74.png" src="../../../_images/f0222bf98c6d7ae6ad64184a4c722a7ca4ac5fb178354edd7218073f4c96ce74.png" />
+<img alt="../../../_images/5678cebbbf972c3a6760bb58ad51bc83082cd82d8cc6ce200fa822af4a3e4cd8.png" src="../../../_images/5678cebbbf972c3a6760bb58ad51bc83082cd82d8cc6ce200fa822af4a3e4cd8.png" />
+<img alt="../../../_images/168a6b406b49deb8318e630d866b06ebf1d28b80e2074a1ca5f74669c1ab6407.png" src="../../../_images/168a6b406b49deb8318e630d866b06ebf1d28b80e2074a1ca5f74669c1ab6407.png" />
+<img alt="../../../_images/3e83afddc47da4af6264d947a7aed4330311e8a0c98e0788aafb365eac635f3d.png" src="../../../_images/3e83afddc47da4af6264d947a7aed4330311e8a0c98e0788aafb365eac635f3d.png" />
+<img alt="../../../_images/2234105e3e260f9357db100bd1723ca331d77083ecfca4a63e546bacc99a1e8d.png" src="../../../_images/2234105e3e260f9357db100bd1723ca331d77083ecfca4a63e546bacc99a1e8d.png" />
+<img alt="../../../_images/e91ff5f72c6cc8d339e78ee81f71b1999e05eab4e89e20a3c3e3deaccdc47390.png" src="../../../_images/e91ff5f72c6cc8d339e78ee81f71b1999e05eab4e89e20a3c3e3deaccdc47390.png" />
 </div>
 </div>
 </section>

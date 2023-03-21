@@ -37,8 +37,6 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyterlite_sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -53,7 +51,6 @@
     <script src="../../../../_static/copybutton.js"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="../../../../_static/tabs.js"></script>
-    <script src="../../../../_static/jupyterlite_sphinx.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -72,6 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/nlp/language-models/simple-rnn-language-model';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/nlp/language-models/simple-rnn-language-model.html" />
+    <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="CNN Language Model" href="cnn-language-model.html" />
@@ -217,6 +215,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-layers/_index.html">CNN Architectures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/_index.html">CNN Example Architectures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">Using convnets with small datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/visualizing-what-convnets-learn.html">Visualizing what convnets learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-explainers/gradcam.html">CNN Explainers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p>
 <ul class="nav bd-sidenav">
@@ -340,18 +340,16 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../ml-math/_index.html">Math for ML</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../ml-math/probability/_index.html">Probability Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../linear-algebra/_index.html">Linear Algebra for Machine Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../ml-math/calculus/_index.html">Calculus</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/index.html">Math for ML Textbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/probability/index.html">Probability Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/linear-algebra/index.html">Linear Algebra for Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/calculus/index.html">Calculus</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/index.html">Your Programming Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/_index.html">Learn Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Learn Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Common Assignments</span></p>
@@ -651,7 +649,7 @@ document.write(`
 <h1>Simple RNN Language Model<a class="headerlink" href="#simple-rnn-language-model" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;Chios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and arid, with a ridge of mountains running the length of the island. The two largest of these mountains, Pelineon (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are situated in the north of the island. The center of the island is divided between east and west by a range of smaller peaks, known as Provatas.&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;Chios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and arid, with a ridge of mountains running the length of the island. The two largest of these mountains, Pelineon (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are situated in the north of the island. The center of the island is divided between east and west by a range of smaller peaks, known as Provatas.&#39;</span>
 <span class="c1"># data I/O</span>
 <span class="c1"># data = open(&#39;input.txt&#39;, &#39;r&#39;).read() # should be simple plain text file - you can use any (small) file in txt format from the web or type your own. </span>
 </pre></div>
@@ -660,14 +658,14 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creating a vocabulary of unique characters</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># creating a vocabulary of unique characters</span>
 <span class="n">chars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>                                                   
 <span class="n">data_size</span><span class="p">,</span> <span class="n">vocab_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;data has </span><span class="si">%d</span><span class="s1"> characters, </span><span class="si">%d</span><span class="s1"> unique.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">data_size</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">))</span>
@@ -682,7 +680,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data pre-processing</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data pre-processing</span>
 <span class="c1"># creating a dictionary, mapping characters to index and index to characters</span>
 <span class="n">char_to_ix</span> <span class="o">=</span> <span class="p">{</span> <span class="n">ch</span><span class="p">:</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">ch</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span> <span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">char_to_ix</span><span class="p">)</span>
@@ -692,8 +690,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;w&#39;: 0, &#39;b&#39;: 1, &#39;0&#39;: 2, &#39;k&#39;: 3, &#39;p&#39;: 4, &#39;r&#39;: 5, &#39;[&#39;: 6, &#39;d&#39;: 7, &#39;E&#39;: 8, &#39;i&#39;: 9, &#39;P&#39;: 10, &#39;3&#39;: 11, &#39;1&#39;: 12, &#39;2&#39;: 13, &#39;,&#39;: 14, &#39;l&#39;: 15, &#39;q&#39;: 16, &#39;]&#39;: 17, &#39;9&#39;: 18, &#39;(&#39;: 19, &#39;c&#39;: 20, &#39;T&#39;: 21, &#39;v&#39;: 22, &#39;o&#39;: 23, &#39;a&#39;: 24, &#39;.&#39;: 25, &#39;n&#39;: 26, &#39; &#39;: 27, &#39;7&#39;: 28, &#39;s&#39;: 29, &#39;m&#39;: 30, &#39;)&#39;: 31, &#39;g&#39;: 32, &#39;u&#39;: 33, &#39;t&#39;: 34, &#39;h&#39;: 35, &#39;C&#39;: 36, &#39;f&#39;: 37, &#39;5&#39;: 38, &#39;y&#39;: 39, &#39;4&#39;: 40, &#39;e&#39;: 41, &#39;8&#39;: 42}
-{0: &#39;w&#39;, 1: &#39;b&#39;, 2: &#39;0&#39;, 3: &#39;k&#39;, 4: &#39;p&#39;, 5: &#39;r&#39;, 6: &#39;[&#39;, 7: &#39;d&#39;, 8: &#39;E&#39;, 9: &#39;i&#39;, 10: &#39;P&#39;, 11: &#39;3&#39;, 12: &#39;1&#39;, 13: &#39;2&#39;, 14: &#39;,&#39;, 15: &#39;l&#39;, 16: &#39;q&#39;, 17: &#39;]&#39;, 18: &#39;9&#39;, 19: &#39;(&#39;, 20: &#39;c&#39;, 21: &#39;T&#39;, 22: &#39;v&#39;, 23: &#39;o&#39;, 24: &#39;a&#39;, 25: &#39;.&#39;, 26: &#39;n&#39;, 27: &#39; &#39;, 28: &#39;7&#39;, 29: &#39;s&#39;, 30: &#39;m&#39;, 31: &#39;)&#39;, 32: &#39;g&#39;, 33: &#39;u&#39;, 34: &#39;t&#39;, 35: &#39;h&#39;, 36: &#39;C&#39;, 37: &#39;f&#39;, 38: &#39;5&#39;, 39: &#39;y&#39;, 40: &#39;4&#39;, 41: &#39;e&#39;, 42: &#39;8&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;9&#39;: 0, &#39;d&#39;: 1, &#39;s&#39;: 2, &#39;0&#39;: 3, &#39;c&#39;: 4, &#39;7&#39;: 5, &#39;a&#39;: 6, &#39;u&#39;: 7, &#39;P&#39;: 8, &#39;b&#39;: 9, &#39;n&#39;: 10, &#39;)&#39;: 11, &#39;k&#39;: 12, &#39;g&#39;: 13, &#39;o&#39;: 14, &#39;r&#39;: 15, &#39;l&#39;: 16, &#39;.&#39;: 17, &#39;p&#39;: 18, &#39;2&#39;: 19, &#39;1&#39;: 20, &#39;[&#39;: 21, &#39;5&#39;: 22, &#39;i&#39;: 23, &#39;w&#39;: 24, &#39;q&#39;: 25, &#39;m&#39;: 26, &#39;(&#39;: 27, &#39;t&#39;: 28, &#39;3&#39;: 29, &#39;4&#39;: 30, &#39;]&#39;: 31, &#39;v&#39;: 32, &#39;,&#39;: 33, &#39;C&#39;: 34, &#39;y&#39;: 35, &#39;8&#39;: 36, &#39;h&#39;: 37, &#39;T&#39;: 38, &#39;f&#39;: 39, &#39;E&#39;: 40, &#39;e&#39;: 41, &#39; &#39;: 42}
+{0: &#39;9&#39;, 1: &#39;d&#39;, 2: &#39;s&#39;, 3: &#39;0&#39;, 4: &#39;c&#39;, 5: &#39;7&#39;, 6: &#39;a&#39;, 7: &#39;u&#39;, 8: &#39;P&#39;, 9: &#39;b&#39;, 10: &#39;n&#39;, 11: &#39;)&#39;, 12: &#39;k&#39;, 13: &#39;g&#39;, 14: &#39;o&#39;, 15: &#39;r&#39;, 16: &#39;l&#39;, 17: &#39;.&#39;, 18: &#39;p&#39;, 19: &#39;2&#39;, 20: &#39;1&#39;, 21: &#39;[&#39;, 22: &#39;5&#39;, 23: &#39;i&#39;, 24: &#39;w&#39;, 25: &#39;q&#39;, 26: &#39;m&#39;, 27: &#39;(&#39;, 28: &#39;t&#39;, 29: &#39;3&#39;, 30: &#39;4&#39;, 31: &#39;]&#39;, 32: &#39;v&#39;, 33: &#39;,&#39;, 34: &#39;C&#39;, 35: &#39;y&#39;, 36: &#39;8&#39;, 37: &#39;h&#39;, 38: &#39;T&#39;, 39: &#39;f&#39;, 40: &#39;E&#39;, 41: &#39;e&#39;, 42: &#39; &#39;}
 </pre></div>
 </div>
 </div>
@@ -702,7 +700,7 @@ document.write(`
 <p>For our RNN  implementation, we would take a sequence of length 25 characters as inputs to predict the next character.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># see here for notation http://cs231n.stanford.edu/slides/2018/cs231n_2018_lecture10.pdf</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># see here for notation http://cs231n.stanford.edu/slides/2018/cs231n_2018_lecture10.pdf</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Minimal character-level Vanilla RNN model. Written by Andrej Karpathy (@karpathy)</span>
 <span class="sd">BSD License</span>
@@ -757,7 +755,7 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># hyperparameters</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># hyperparameters</span>
 <span class="n">hidden_size</span> <span class="o">=</span> <span class="mi">100</span>           <span class="c1"># size of hidden layer of neurons</span>
 <span class="n">seq_length</span> <span class="o">=</span> <span class="mi">25</span>             <span class="c1"># number of time steps to unroll the RNN for, taking 25 previous characters to predict the next</span>
 <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">1e-1</span>
@@ -806,7 +804,7 @@ document.write(`
 <p><span class="math notranslate nohighlight">\( \qquad \)</span> =&gt; dimension of <span class="math notranslate nohighlight">\(b_{y} =\)</span> (43,1)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># model parameters</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># model parameters</span>
 <span class="c1"># we set the initial values of the weights randomly from a normal distribution and set all the bias to zero</span>
 
 <span class="n">Wxh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">)</span><span class="o">*</span><span class="mf">0.01</span>   <span class="c1"># input to hidden, shape = (hidden_size, vocab_size) = (100,43)</span>
@@ -895,7 +893,7 @@ document.write(`
 <p><span class="math notranslate nohighlight">\( \qquad \qquad \qquad \qquad  \qquad = \sum_t diag\bigg(1-(h_{t})^2\bigg)  \frac{\partial L}{\partial h_t} (x_t)^T\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lossFun</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">hprev</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lossFun</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">hprev</span><span class="p">):</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  inputs,targets are both list of integers.</span>
 <span class="sd">  hprev is Hx1 array of initial hidden state</span>
@@ -940,7 +938,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">seed_ix</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">seed_ix</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">  sample a sequence of integers from the model </span>
 <span class="sd">  h is memory state, seed_ix is seed letter for first time step</span>
@@ -967,7 +965,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># p-data pointer, n-iteration counter</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># p-data pointer, n-iteration counter</span>
 <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>                        <span class="c1"># setting both to zero in the beginning</span>
 
 <span class="c1"># memory variables for Adagrad, initialized to all zeros</span>
@@ -1013,37 +1011,325 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----
- g0P2Cq5g(pE3E,ho050kdk4spvmo2ch. )(0qihssTarEyT4w ngulco8(C4s8cpcCq)fE9Ch.5np3uih0wi7a h9[T .91e389unT]dar2rT)hv5y i2ho E17E87mmP8wTm(v,vl39EoCC4l5v8bdE].T3 .)c1wE9f3,slEf1iwksE]EalE]5v([u[70c81e2uhdT 
+ oq7wTvb.bksek.CTolkw]dl31[esuqwsww4gq2Ctd,)7P,fi00is3,Thi]2oEhtvoP.4Cybf83go90pa3y0PEs1req]v]khaeggivCf[8P5Cqpb[E5smtq)([gT0C5ns)sa4hTekk42yd]wqndTlk8u9m41bs,f078ew]7T1(2]T(,wp]P9)2flyybb.8hTPuukkb4]. 
 ----
-iter 0, loss: 94.030004
+iter 0, loss: 94.030000
 ----
- hios isndise ner ker aedg by weont kn wnerin of thet isor, (he thoP bf than s, km2ek irt,, as Eent5 Prci)e oft a d,25k ks (31om lmrlrid Parkiins The ofrthe is,[[3182 (3 828 mi))[Pr meent, Prlang wos w 
+ hiosh inseinoe o) s, kmt)e)algeidf  iolialsarrand. (h8 b39 kthe oris knoPires sa naf ates s47 f mitwf (4T2 a ndind awretf of th th2 i) apesotwed mt)  sniundemees thib  the ind is9inos1. Ped and t)ed i 
 ----
-iter 1000, loss: 64.304893
+iter 1000, loss: 72.848263
 ----
- hios island in fron sirnland. Tudaind The centw island wes min is (hescw es longth of the Pent arin in us and Epos (1,188 m (311m ()19 m )m amo sq mi)..22 Th Pf 8orgea loron oulteen earkidge of the is 
+ liss (Pi) ind lrst.[210 wnountaind we gestwt, islan a ge nten longet, is lanler t aid indwrmownwind islate in the nseanded ast)) kn5 s (31 mountast ipnd and islant orerineinescencer, aateain afntereth 
 ----
-iter 2000, loss: 30.812686
+iter 2000, loss: 41.491765
 ----
- hioe oo2the ler in aig aontaThe sorthes ertn .295wi s, kid dEs cro)s, knd EThe nt8 km22m2k8 m (31 mo))), and is wivids as (4,218 ft)), and. 5 m2188 m unrainis cre nirge widge the seathe tw noust and T 
+ heos inge of these mountwre teon (1, Th the a st)), [1 and west bed west 4,188 ft)), an isis and Epos (1,255 ak iountanenty mowntan (1,297 m (4,18, st.[2] The the island. The center in the of the isla 
 ----
-iter 3000, loss: 17.394946
+iter 3000, loss: 21.440355
 ----
- hios isvanea so mon mountains oms an diswins crg mrounouth, and ar ins knoruthaeseof thellentin sor mounta ns the length of the island. Thes (19m m (3,888 88 m (3,289 km (4,25.290 sq wid. The twe ler  
+ hios island is aped, 508 mounn(31 mi) long from north of the island. The tso lares pos arent or klent isdd)e covering an area of 842.289 km2 (325.210 s.2.[89 km2 ((25.210 sq mit.[2] 29 km (18 mi) at i 
 ----
-iter 4000, loss: 10.603177
+iter 4000, loss: 10.351897
 ----
- hios ront an area is argest of these mountains, 89 winge of sor8 km2(1,88 m2(18 m (3,898 ft)), are si(3,297 ms mountains, Pelineon (1,297 m (4,255 ft))aanded swan (1,297 f the in argtg colertka lorkid 
+ hioss,898 mounthe n ens The two lared enoes, kidan of 842.289 kmi).[2] The tonsof these misland or kids, mithe n erak ith west Epos (1,18 m (18 kn (3,898 ft)),89 m97 m (3,255 ft)), ares of the islanes 
 ----
-iter 5000, loss: 6.288901
+iter 5000, loss: 9.279704
 ----
- hios island is crescente oun ain as the tor an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and arid, with as Prinis ane of the island is divided between earain is rt kisland is  
+ hios island is crescent or kidney shaped, 50 km (31 mi) long fro, south, and 29 km mland. The center of the eridge of mountains running the length of the island. The center of the island is divided bi 
 ----
-iter 6000, loss: 3.352706
+iter 6000, loss: 4.833243
 ----
- hios island island we s andit  s2(3o))) and Epos (1,188 f the island (1 The tuen is mrannt ros (4,297 m ((1,898 m2 (325.210 sq mi).[215 fy mountains, 89 (325.210 sq mi).[2] The terrep in argea of ta n 
+ hios island is aped, 51t1 a ridge of mountains runeing the land Epom (1,188 i)) widest, covering an area of 842.[2] The terthe ous, widod be Prin, wit of these mountains, Pelineen ingth of the island. 
 ----
-iter 7000, loss: 2.756362
+iter 7000, loss: 2.589996
+----
+ hios island is (4,255 ft)) and Epos (1,188 m (3,898 ft)), are situst, saaped, 5orunning tud in the north of the island. The center of the island is divids wideor kteom smt nt.[2] The terrain is mounta 
+----
+iter 8000, loss: 1.566884
+----
+ hios island is (4,255 ft)), are kiteated in the north of the island. The center twnt areat islan(1,29, area o  Prd an area of the island. The center of the island ish weakino ith wed arid, with in the 
+----
+iter 9000, loss: 1.073685
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq 5q mi).[2] The terrain is mountainous ind 
+----
+iter 10000, loss: 0.815450
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering and. The two largest of these mountains, Pelineon (1,297 m (42255 and.210 sq 
+----
+iter 11000, loss: 0.666259
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 k12 (325.21m (31 mi) long from north to south, and 29 km (18 mi)..210 Pelineon (1,297 m (4,255 ft)) and Epos (1 
+----
+iter 12000, loss: 0.571068
+----
+ hios island is crest, covering an area of 842.289 km2 (325.210 sq mi).[2] The mous and arid, kitwn arid, kitm a  sland, Pr( and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq 
+----
+iter 13000, loss: 0.504284
+----
+ hios island is crescent or kidney shaped, 50 km (3,898 ft)), are situated in the north of the island. The two largest of thes of 842.289 km2 (325.210 sq mi).[2] The ternor9 kintwn ast and west by a ra 
+----
+iter 14000, loss: 0.454044
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842..210 sq mi).[2] The terrain is mountainous and arid, with a r 
+----
+iter 15000, loss: 0.414568
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its wideaits mountainous and arid, with a ridge of mountains running the length of the island. Th 
+----
+iter 16000, loss: 0.382602
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering and west by a range of smaller peaks, known as Prid, with a ridge of mountai 
+----
+iter 17000, loss: 0.356144
+----
+ hios island is crescent or kidney shaped, 50 km (31 5,8328 km (18 m (18 5.,898 ft)), ak island. The center of the island is divided between east and west by a range nf the Epos (1,188 m (3,898 ft)), a 
+----
+iter 18000, loss: 0.333839
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 llrges arid, with i9 mof th tfe oun an ind rren er of the 
+----
+iter 19000, loss: 0.314753
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 25.2189 mi)) and Epos (1,188 m (3,898 ft)), are situated in the north of the island. The center of the island is d 
+----
+iter 20000, loss: 0.298233
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 s, kntwn asd ilsn arid, with  mit. th the islast and west by a range of smaller peaks, known as Prgth to 
+----
+iter 21000, loss: 0.283769
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north tt north tf to south, and 29 km (18 mi) ak it) larges aretce tuono of these mountains, Pelineon (1,297 m (4,255 ft)) and Epos (9 
+----
+iter 22000, loss: 0.271125
+----
+ hios island is crescent or kidney shaped, 50 km (3,898 ft)), are situated in the north of the island. The two largest of these mountains, Pelineorid in and arid, with a ridge of mountains running the  
+----
+iter 23000, loss: 0.260058
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+----
+iter 24000, loss: 0.251042
+----
+ hios island is Pridge oron brthe north tt south, ares Ped ar s,297 m (4idg 89 knt blong the land by anes ares (188 moung fnthe island. The thes crid, with weaknit anea ois am coveris aig are kist its  
+----
+iter 25000, loss: 11.138854
+----
+ hios uned an aivideeeislaltnous Emd am (1,297 m (4,255 ft)) and Epos (1id peat are tisllange north tt kof th sh.)w nth[21 8 and. The two laristhese mountains, Prange mowneastwits widest, covering an a 
+----
+iter 26000, loss: 6.324848
+----
+ hios island or the island. The thestam of the t, ftth of sm mi)53210 aid are ta) (325.210 sq mi).[2] The terrain is mountarea of 842.289 km2 (325.29 kmd as Pelineon (1,297 m (4,255 ft)) and Ewos Pridg 
+----
+iter 27000, loss: 3.588278
+----
+ hios island is crescerange ise s,831 mi) aid is (1,297 m (4,255 ft)) and are t by a range of sm lartrge aareon (1,131 mi) awn ispest by a rans8 mid bis ind betweeof smaller peaks, known as Pridde of t 
+----
+iter 28000, loss: 2.098169
+----
+ hios island is crescent or kidney shaped, with wedent of the island. The two largestnorof wits wist an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and aret, with a ridge of moun 
+----
+iter 29000, loss: 1.531017
+----
+ hios arant, 50 Th  f,842.289 km2 (325.210 sq mi).[2] The terrain is mountainous mof the island. The ben the kitnd between east and west by a range of smaller peaks, and Epos (1,188 m (3,898 ft)), are  
+----
+iter 30000, loss: 1.004267
+----
+ hios island is crescented lwnd by area of 842.289 km2 (325.210 sq mi).[2] The tainous and arescenter of the island is divided between east and west by a range of smaller peaks, known as Pridge of moun 
+----
+iter 31000, loss: 0.742361
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to sout4,898 ft)), are situated in the north of the island. The center of the islangest of these mountains, Pelineon (1,297 m (4 
+----
+iter 32000, loss: 0.597886
+----
+ hios island is crescent or kidney shaped, 50 km (31 mountbit ane 29 km (18 mi) at its widest, covering an aneas atnous and is crescent or kidney shaped, 50 km (3, and west by a range of smaller peaks, 
+----
+iter 33000, loss: 0.509623
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) an ar mountains, Pelineon (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are situated in the no 
+----
+iter 34000, loss: 0.450951
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 the n east and west by a rant in ismand between east and wealing an area of 842.289 km2 (325.210 sq mi).[2] The 
+----
+iter 35000, loss: 0.409344
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long Epnd between east ann wedera n erange noud in the north of the island. The two largest of these mountains, Pelineon (1,297 m (4,255 ft)) an 
+----
+iter 36000, loss: 0.376838
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to sten iransis divided between east and west by a range of smaller peaks, known as Prand rog an are titps ind is crescent or ki 
+----
+iter 37000, loss: 0.350307
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+----
+iter 38000, loss: 0.327764
+----
+ hios island is crescent or km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrawe erannis and west by a range of smaller  
+----
+iter 39000, loss: 0.308869
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering and west by a ranta o. The center of the island is divided between east and  
+----
+iter 40000, loss: 0.292480
+----
+ hios island is crescent or kidney shaped, Pelineon (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are situated in the north of the island. The center of the islandnif divided between east and wes 
+----
+iter 41000, loss: 0.278175
+----
+ hios island is crescent or kid)ey d argese the length of the island. The center of the island is divided between east and west by . The center of the island is divided between east and wes brthe nnt p 
+----
+iter 42000, loss: 0.265652
+----
+ hios island is cred, with a ridge of mountains running the length of the island. The two largest of these mountains, Pelineon (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), ane s9ithe is crescent 
+----
+iter 43000, loss: 0.254642
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain irand, 50 km (3, mou) 
+----
+iter 44000, loss: 0.245017
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+----
+iter 45000, loss: 0.236550
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325m210 sq mi).[2] The terrain is mountainous and ar 
+----
+iter 46000, loss: 0.228955
+----
+ hios island is crescent or kins widest, coveyi lergth of the island. The two largest of these mountains, Pelineon (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are situated in the north of the i 
+----
+iter 47000, loss: 0.221976
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+----
+iter 48000, loss: 0.215698
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+----
+iter 49000, loss: 0.209889
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+----
+iter 50000, loss: 0.204583
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+----
+iter 51000, loss: 0.199602
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+----
+iter 52000, loss: 0.194990
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 25 2. km (of terrain is mount, 84, 55 foundaind west by a range of smaller peaks, known as Prand re norranneer pea 
+----
+iter 53000, loss: 0.190968
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, alea tert, s lrngth of the ouscand is crescent or kidney shaped, 50 km (31 mi) long f 
+----
+iter 54000, loss: 0.186888
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (31 mi) long from north to south, and 29 km (18 mi) a 
+----
+iter 55000, loss: 0.183269
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, ay  peaks, known as Prand is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at i 
+----
+iter 56000, loss: 0.179754
+----
+ hios island is crescent or kidney shaped, 50 km (31.289 km2 (325.210 sq mi).[2] The terrain is mountainous and arid, with a ridge of mountains running the length of the island. The center of the islan 
+----
+iter 57000, loss: 0.176605
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to torth of the island. The land between east an area of 842.289 km2 (325.210 sq mi).[8898 m (3,898 ft)), are siof thes of Pof t 
+----
+iter 58000, loss: 5.376437
+----
+ hios island is crest, covering the length of the island. The center of the island are situated in the south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The te 
+----
+iter 59000, loss: 2.290689
+----
+ hios island is crest, covering the length of the island. The two largest covided between east and west by a range of she ithe island are the norvm ind is atea oi asta) crescent or kidney shaped, 50 km 
+----
+iter 60000, loss: 1.053711
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from northes and arid, with a ridge of mountains, known as Pridge of mountains running the length of the island. The two largest of these m 
+----
+iter 61000, loss: 0.565654
+----
+ hios island is crescen ind The two largest of these mountains, Pelineon (1,297 m (4,255 ft)) and Epos (3,898 ft)), are situated in the north of the island. The two largest of these mountains, Pelineon 
+----
+iter 62000, loss: 0.369324
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+----
+iter 63000, loss: 0.285917
+----
+ hios island is crescent or kidnere kituthe sland is divided between east and west by a range of smaller peaks, known as Prane islasd by a range of smaller peaks, known as Prand between east and west b 
+----
+iter 64000, loss: 0.247174
+----
+ hios island ind Ey ftea of 842.289 km2 (325.210 sq mi).[2] The tainous and arid, with a ridge of m2und ar mo) amd ast and west by a range of smaller peaks, known as Pridge of mountains running the len 
+----
+iter 65000, loss: 0.226341
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, coveritg shape the inout a ridge of mountains running the length of the island. The t 
+----
+iter 66000, loss: 0.213156
+----
+ hios island is crescent or kidney sh[88 ft)) and Epos (1,188 m (3,898 ft)), are situated in the north of the island. The center of the island is divided between east and west by a range of smaller pea 
+----
+iter 67000, loss: 0.203560
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+----
+iter 68000, loss: 0.195921
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] km2 (3,898 ft)), are situated in  
+----
+iter 69000, loss: 0.189520
+----
+ hios island is arede north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and arid, with a ridge of mountains running the len 
+----
+iter 70000, loss: 0.183996
+----
+ hios island is crest, covering the leng from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and arid, with a ridge of m 
+----
+iter 71000, loss: 0.179140
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+----
+iter 72000, loss: 0.174820
+----
+ hios island is crescent or kidney  runn areanof 842.289 km2 (325.210 sq mi).[2] The terrane the n eranney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an a 
+----
+iter 73000, loss: 0.170937
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an are s fithe island. The center of the island is divided between east and  
+----
+iter 74000, loss: 0.167423
+----
+ hios island r runnis cridse otrans running the length of the island. The two largese of mountains running the length of the island. The center of the island is divided between east and west by a range 
+----
+iter 75000, loss: 0.164220
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to torth of the island. The two largest of these mountains, Pelineon (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are sit 
+----
+iter 76000, loss: 0.161288
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at iss, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an areag a 
+----
+iter 77000, loss: 0.158590
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+----
+iter 78000, loss: 0.156101
+----
+ hios island is crescent or kidney shaped, 50 km (31 mi) langth of the island. The center of the island is divided between east and west by a range of smaller peaks, known as Pra ain in the north of th 
+----
+iter 79000, loss: 0.153797
 </pre></div>
 </div>
 </div>

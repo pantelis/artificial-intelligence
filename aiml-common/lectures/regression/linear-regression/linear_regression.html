@@ -37,8 +37,6 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyterlite_sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -53,7 +51,6 @@
     <script src="../../../../_static/copybutton.js"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="../../../../_static/tabs.js"></script>
-    <script src="../../../../_static/jupyterlite_sphinx.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -72,6 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/regression/linear-regression/linear_regression';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/regression/linear-regression/linear_regression.html" />
+    <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="Stochastic Gradient Descent" href="../../optimization/sgd/_index.html" />
@@ -217,6 +215,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-layers/_index.html">CNN Architectures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/_index.html">CNN Example Architectures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">Using convnets with small datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/visualizing-what-convnets-learn.html">Visualizing what convnets learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-explainers/gradcam.html">CNN Explainers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p>
 <ul class="nav bd-sidenav">
@@ -340,18 +340,16 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../ml-math/_index.html">Math for ML</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../ml-math/probability/_index.html">Probability Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../linear-algebra/_index.html">Linear Algebra for Machine Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../ml-math/calculus/_index.html">Calculus</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/index.html">Math for ML Textbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/probability/index.html">Probability Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/linear-algebra/index.html">Linear Algebra for Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/calculus/index.html">Calculus</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/index.html">Your Programming Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/_index.html">Learn Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Learn Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Common Assignments</span></p>
@@ -678,12 +676,12 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting prml
-  Cloning https://github.com/pantelis-classes/PRML.git to /tmp/pip-install-fp9hcke8/prml_ea9a9e93f9a242ab9140303367064cb0
-  Running command git clone --filter=blob:none --quiet https://github.com/pantelis-classes/PRML.git /tmp/pip-install-fp9hcke8/prml_ea9a9e93f9a242ab9140303367064cb0
+  Cloning https://github.com/pantelis-classes/PRML.git to /tmp/pip-install-kt837t33/prml_fbde2824406846458faf10bba20d7db0
+  Running command git clone --filter=blob:none --quiet https://github.com/pantelis-classes/PRML.git /tmp/pip-install-kt837t33/prml_fbde2824406846458faf10bba20d7db0
   Resolved https://github.com/pantelis-classes/PRML.git to commit 14cf88538d2704fd18b391ae6309fb38c65a6412
-  Preparing metadata (setup.py) ... ?25l- done
-?25hRequirement already satisfied: numpy in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from prml) (1.24.2)
-Requirement already satisfied: scipy in /home/runner/work/artificial-intelligence/artificial-intelligence/.venv/lib/python3.10/site-packages (from prml) (1.10.1)
+  Preparing metadata (setup.py) ... ?25ldone
+?25hRequirement already satisfied: numpy in /workspaces/artificial_intelligence/.venv/lib/python3.10/site-packages (from prml) (1.24.2)
+Requirement already satisfied: scipy in /workspaces/artificial_intelligence/.venv/lib/python3.10/site-packages (from prml) (1.10.1)
 </pre></div>
 </div>
 </div>
@@ -732,9 +730,6 @@ Requirement already satisfied: scipy in /home/runner/work/artificial-intelligenc
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../../_images/9d9a20c580f79da1f7cd2bbff4c3b0fe0d44b2dee30dd4dbc11b93aed239ff8a.png" src="../../../../_images/9d9a20c580f79da1f7cd2bbff4c3b0fe0d44b2dee30dd4dbc11b93aed239ff8a.png" />
-</div>
 </div>
 <p>Let us now pick the hypothesis set that corresponds in general to the following sum,</p>
 <div class="math notranslate nohighlight">
@@ -756,12 +751,6 @@ Requirement already satisfied: scipy in /home/runner/work/artificial-intelligenc
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">txt</span><span class="p">,</span> <span class="n">wrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.01, &#39;Polynomial, Gaussian and Sigmoidal basis functions&#39;)
-</pre></div>
-</div>
-<img alt="../../../../_images/da12d960c40ed27ef47a40f61697be87908f212f11a8103c58fd7a79b7e2319a.png" src="../../../../_images/da12d960c40ed27ef47a40f61697be87908f212f11a8103c58fd7a79b7e2319a.png" />
 </div>
 </div>
 <p>Our job is to find <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> such that the polynomial expansion above fits the data we are given - as we will see there are multiple hypothesis that can satisfy this requirement. Consistent with the block diagram we need to define a metric, an figure of merit or loss function in fact, that is also a common metric in regression problems of this nature. This is the Mean Squared Error (MSE) function.</p>
@@ -816,10 +805,6 @@ Requirement already satisfied: scipy in /home/runner/work/artificial-intelligenc
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../../_images/d6ab5aac578e2dc7741a887cf59caa2c0fb400304131175a3c0f9c31f86f757b.png" src="../../../../_images/d6ab5aac578e2dc7741a887cf59caa2c0fb400304131175a3c0f9c31f86f757b.png" />
-<img alt="../../../../_images/466e3924db382e945f73c80388f090e73d6eb821f35b4fc63f0f39b3431e0af3.png" src="../../../../_images/466e3924db382e945f73c80388f090e73d6eb821f35b4fc63f0f39b3431e0af3.png" />
-</div>
 </div>
 <p>To avoid overfitting we have multiple strategies. One straightforward one is evident by observing the wild oscillations of the <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> elements as the model complexity increases. We can penalize such oscillations by introducing the <span class="math notranslate nohighlight">\(l_2\)</span> norm of <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> in our loss function.</p>
 <div class="math notranslate nohighlight">
@@ -840,9 +825,6 @@ Requirement already satisfied: scipy in /home/runner/work/artificial-intelligenc
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../../_images/b96086f5cb4bdbab100de1d1ebdc99dedbfe153ea0a23eb7c1f061ef35f7f657.png" src="../../../../_images/b96086f5cb4bdbab100de1d1ebdc99dedbfe153ea0a23eb7c1f061ef35f7f657.png" />
 </div>
 </div>
 <p>Lets reflect on the MSE and how model complexity gives raise to various generalization errors.</p>
