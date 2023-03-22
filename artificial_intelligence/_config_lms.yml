@@ -47,7 +47,7 @@ html:
   use_issues_button: true
   use_repository_button: true
   use_download_button: true
-  baseurl: https://pantelis.github.io/artificial-intelligence
+  baseurl: https://pantelis.github.io/artificial-intelligence/lms
 
 launch_buttons:
   colab_url: "https://colab.research.google.com"
@@ -57,7 +57,7 @@ launch_buttons:
 sphinx:
   recursive_update: true
   config:
-    html_theme: sphinx_book_theme
+    html_theme: pydata_sphinx_theme
     nb_merge_streams: true
     nb_execution_show_tb: true
     html_theme_options:

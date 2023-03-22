@@ -68,10 +68,27 @@ jobs:
           source .venv/bin/activate
           poetry run jupyter-book build artificial_intelligence
 
+      #----------------------------------------------
+      #              Build the book for LMS
+      #----------------------------------------------      
+      - name: Build the book for LMS
+        shell: bash -l {0}
+        run: |
+          source .venv/bin/activate
+          poetry run jupyter-book build --config _config_lms.yml --path-output _build/lms/html artificial_intelligence  
+
     # Deploy the book's HTML to gh-pages branch
       - name: GitHub Pages action
         uses: peaceiris/actions-gh-pages@v3.6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: artificial_intelligence/_build/html    
+    
+  
+    # Deploy the book's HTML to gh-pages branch for lms
+      - name: GitHub Pages action
+        uses: peaceiris/actions-gh-pages@v3.6.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: artificial_intelligence/_build/lms/html    
           
