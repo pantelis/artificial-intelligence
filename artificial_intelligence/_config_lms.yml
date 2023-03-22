@@ -49,10 +49,10 @@ html:
   use_download_button: true
   baseurl: https://pantelis.github.io/artificial-intelligence/lms
 
-launch_buttons:
-  colab_url: "https://colab.research.google.com"
-  binderhub_url: "https://mybinder.org"
-  thebe: true 
+# launch_buttons:
+#   colab_url: "https://colab.research.google.com"
+#   binderhub_url: "https://mybinder.org"
+#   thebe: true 
 
 sphinx:
   recursive_update: true
@@ -60,12 +60,12 @@ sphinx:
     html_theme: pydata_sphinx_theme
     nb_merge_streams: true
     nb_execution_show_tb: true
-    html_theme_options:
-      use_download_button: true
-      repository_url: https://github.com/pantelis/artificial-intelligence
-      use_issues_button: true
-      use_repository_button: true
-      use_edit_page_button: true
+    # html_theme_options:
+    #   use_download_button: true
+    #   repository_url: https://github.com/pantelis/artificial-intelligence
+    #   use_issues_button: true
+    #   use_repository_button: true
+    #   use_edit_page_button: true
     mathjax3_config:
       tex:
         macros:
