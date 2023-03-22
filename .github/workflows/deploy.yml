@@ -82,7 +82,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3.6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: artificial_intelligence/standard/_build/html    
+          publish_dir: standard/_build/html    
     
   
     # Deploy the book's HTML to gh-pages branch for lms
@@ -90,5 +90,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3.6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: artificial_intelligence/lms/_build/html    
+          publish_dir: lms/_build/html    
           
