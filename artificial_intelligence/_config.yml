@@ -42,7 +42,7 @@ repository:
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
   favicon: ./logo.ico
-  home_page_in_navbar: true
+  home_page_in_navbar: false
   use_edit_page_button: true
   use_issues_button: true
   use_repository_button: true
@@ -58,14 +58,19 @@ sphinx:
   recursive_update: true
   config:
     html_theme: sphinx_book_theme
+    bibtex_reference_style: author_year  # or label, super, \supercite
     nb_merge_streams: true
     nb_execution_show_tb: true
+    html_sidebars: {"artificial_intelligence/*": []} #sbt-sidebar-nav.html
     html_theme_options:
       use_download_button: true
       repository_url: https://github.com/pantelis/artificial-intelligence
       use_issues_button: true
       use_repository_button: true
       use_edit_page_button: true
+      show_navbar_depth: 0
+      
+
     mathjax3_config:
       tex:
         macros:

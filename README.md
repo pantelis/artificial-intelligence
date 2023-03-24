@@ -13,7 +13,9 @@ If you'd like to develop and/or build the data-science book, you should:
 3. (Optional) Edit the books source files located in the `artificial_intelligence/` directory
 4. (Optional) Run `jupyter-book clean artificial_intelligence/` to remove any existing builds
 5.  Run `sphinx-autobuild --host 0.0.0.0 artificial_intelligence _build/html` for interactive editing and liveview. 
-6. (Optiona) Run `jupyter-book build artificial_intelligence/` for an offline build
+6. (Optiona) Run `poetry run jupyter-book build --config artificial_intelligence/_config.yml --path-output standard artificial_intelligence` for a local build that uses the shphinx_book_theme theme.
+7. (Optiona) Run `poetry run jupyter-book build --config artificial_intelligence/_config_lms.yml --path-output lms artificial_intelligence` for a local build that uses the pydata_shphinx_theme theme.
+
 
 A fully-rendered HTML version of the book will be built in `artificial_intelligence/_build/html/`.
 

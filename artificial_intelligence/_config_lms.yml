@@ -60,6 +60,8 @@ sphinx:
     html_theme: pydata_sphinx_theme
     nb_merge_streams: true
     nb_execution_show_tb: true
+    bibtex_reference_style: author_year  # or label, super, \supercite
+    
     # html_theme_options:
     #   use_download_button: true
     #   repository_url: https://github.com/pantelis/artificial-intelligence
