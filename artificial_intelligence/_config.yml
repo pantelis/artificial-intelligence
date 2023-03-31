@@ -84,6 +84,9 @@ sphinx:
           \newcommand\floor[1]{\lfloor#1\rfloor}
           \newcommand{\bmat}{\left[\begin{array}}
           \newcommand{\emat}{\end{array}\right]}
+          \DeclareMathOperator*{\argmax}{arg\,max}
+          \DeclareMathOperator*{\argmin}{arg\,min}
+
   extra_extensions:
     # - sphinx_press_theme
     - sphinxcontrib.youtube

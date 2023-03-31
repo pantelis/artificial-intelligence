@@ -83,9 +83,9 @@ parts:
   chapters:    
   - file: aiml-common/lectures/pgm/pgm-intro/_index.md
   - file: aiml-common/lectures/pgm/recursive-state-estimation/_index.md
-  - file: aiml-common/lectures/pgm/bayesian-filter-workshop/_index.md
+  - file: aiml-common/lectures/pgm/discrete-bayesian-filter/discrete-bayesian-filter.ipynb
   - file: aiml-common/lectures/pgm/hmm-localization/_index.md   
-  - file: aiml-common/lectures/pgm/kalman-workshop/_index.md   
+  - file: aiml-common/lectures/pgm/kalman-filters/one-dimensional-kalman-filters.ipynb
 
 - caption: Logical Reasoning
   chapters:        
@@ -168,11 +168,12 @@ parts:
 - caption: Common Assignments
   chapters:
   - file: aiml-common/assignments/probability/probability-assignment-5/index.ipynb
-
+  
 - caption:  Assignments CS-UY-4613
   chapters: 
   - file: aiml-common/assignments/mle/mle-gaussian.ipynb
   - file: aiml-common/assignments/mle/poisson-regression-1/index.ipynb
+  - file: aiml-common/assignments/object-tracking-kalman/balls.md
   
 - caption:  Project CS-UY-4613
   chapters: 
@@ -181,6 +182,7 @@ parts:
 - caption:  Assignments CS-GY-6613
   chapters: 
   - file: aiml-common/assignments/logistic-regression-1/index.md
+  - file: aiml-common/assignments/object-tracking-kalman/soccer.md
 
 - caption:  Project CS-GY-6613
   chapters: 
