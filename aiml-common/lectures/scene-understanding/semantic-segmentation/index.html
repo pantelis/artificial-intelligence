@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>RNN Language Models &#8212; Introduction to Artificial Intelligence</title>
+    <title>Object Detection &amp; Semantic Segmentation Workshop &#8212; Introduction to Artificial Intelligence</title>
   
   
   
@@ -63,17 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/nlp/language-models/_index';</script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/nlp/language-models/_index.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/scene-understanding/semantic-segmentation/index';</script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/scene-understanding/semantic-segmentation/index.html" />
     <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Simple RNN Language Model" href="simple-rnn-language-model.html" />
-    <link rel="prev" title="Word2Vec Workshop" href="../word2vec/word2vec-workshop.html" />
+    <link rel="next" title="Mask R-CNN Semantic Segmentation" href="maskrcnn-semantic-segmentation/index.html" />
+    <link rel="prev" title="Fast and Faster RCNN Object Detection" href="../object-detection/faster-rcnn-object-detection/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -201,20 +199,20 @@ const thebe_selector_output = ".output, .cell_output"
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="label-parts" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../transfer-learning/transfer-learning-introduction.html">Introduction to Transfer Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../transfer-learning/transfer_learning_tutorial.html">Transfer Learning for Computer Vision Tutorial</a></li>
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Scene Understanding</span></p><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="label-parts" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../scene-understanding/scene-understanding-intro/index.html">Introduction to Scene Understanding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../scene-understanding/feature-extraction-resnet/index.html">Feature Extraction via Residual Networks</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../scene-understanding/object-detection/object-detection-intro/index.html">Object Detection</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/detection-metrics/index.html">Object Detection and Semantic Segmentation Metrics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/rcnn-object-detection/index.html">Region-CNN (RCNN) Object Detection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/faster-rcnn-object-detection/index.html">Fast and Faster RCNN Object Detection</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Scene Understanding</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="label-parts" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../scene-understanding-intro/index.html">Introduction to Scene Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feature-extraction-resnet/index.html">Feature Extraction via Residual Networks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../object-detection/object-detection-intro/index.html">Object Detection</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../object-detection/detection-metrics/index.html">Object Detection and Semantic Segmentation Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../object-detection/rcnn-object-detection/index.html">Region-CNN (RCNN) Object Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../object-detection/faster-rcnn-object-detection/index.html">Fast and Faster RCNN Object Detection</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/index.html">Object Det. &amp; Semantic Segm. Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/index.html">Mask R-CNN Semantic Segmentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/demo.html">Mask R-CNN Demo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_data.html">Mask R-CNN - Inspect Training Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_model.html">Mask R-CNN - Inspect Trained Model</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Object Det. &amp; Semantic Segm. Workshop</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="maskrcnn-semantic-segmentation/index.html">Mask R-CNN Semantic Segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maskrcnn-semantic-segmentation/demo.html">Mask R-CNN Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maskrcnn-semantic-segmentation/inspect_data.html">Mask R-CNN - Inspect Training Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maskrcnn-semantic-segmentation/inspect_model.html">Mask R-CNN - Inspect Trained Model</a></li>
 
 
 
@@ -225,13 +223,13 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_weights.html">Mask R-CNN - Inspect Weights of a Trained Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maskrcnn-semantic-segmentation/inspect_weights.html">Mask R-CNN - Inspect Weights of a Trained Model</a></li>
 
 
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.html">Detectron2 Beginner’s Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maskrcnn-semantic-segmentation/detectron2_tutorial.html">Detectron2 Beginner’s Tutorial</a></li>
 
 
 
@@ -289,17 +287,17 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="label-parts" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../nlp-intro/_index.html">Introduction to NLP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../word2vec/_index.html">Word2Vec Embeddings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../word2vec/word2vec-workshop.html">Word2Vec Workshop</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">RNN Language Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="simple-rnn-language-model.html">Simple RNN Language Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cnn-language-model.html">CNN Language Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nmt/_index.html">Neural Machine Translation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nmt-metrics/_index.html">NMT Metrics - BLEU</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../attention/_index.html">Attention in NMT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../transformers/_index.html">Transformers Workshop</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="label-parts" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../nlp/nlp-intro/_index.html">Introduction to NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nlp/word2vec/_index.html">Word2Vec Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nlp/word2vec/word2vec-workshop.html">Word2Vec Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nlp/language-models/_index.html">RNN Language Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nlp/language-models/simple-rnn-language-model.html">Simple RNN Language Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nlp/language-models/cnn-language-model.html">CNN Language Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nlp/nmt/_index.html">Neural Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nlp/nmt-metrics/_index.html">NMT Metrics - BLEU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nlp/attention/_index.html">Attention in NMT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nlp/transformers/_index.html">Transformers Workshop</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="label-parts" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/index.html">Math for ML Textbook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/probability/index.html">Probability Basics</a></li>
@@ -394,7 +392,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pantelis/artificial-intelligence/edit/master/artificial_intelligence/aiml-common/lectures/nlp/language-models/_index.md" target="_blank"
+      <li><a href="https://github.com/pantelis/artificial-intelligence/edit/master/artificial_intelligence/aiml-common/lectures/scene-understanding/semantic-segmentation/index.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -411,7 +409,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/nlp/language-models/_index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/scene-understanding/semantic-segmentation/index.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -441,7 +439,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../../../_sources/aiml-common/lectures/nlp/language-models/_index.md" target="_blank"
+      <li><a href="../../../../_sources/aiml-common/lectures/scene-understanding/semantic-segmentation/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -510,9 +508,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -523,20 +519,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>RNN Language Models</h1>
+    <h1>Object Detection & Semantic Segmentation Workshop</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-language-model">What is a language model?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lstm-language-models">LSTM Language Models</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -546,61 +533,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="rnn-language-models">
-<h1>RNN Language Models<a class="headerlink" href="#rnn-language-models" title="Permalink to this headline">#</a></h1>
-<blockquote>
-<div><p>These notes heavily borrowing from <a class="reference external" href="https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1194/readings/cs224n-2019-notes05-LM_RNN.pdf">the CS229N 2019 set of notes on Language Models</a>.</p>
-</div></blockquote>
-<section id="what-is-a-language-model">
-<h2>What is a language model?<a class="headerlink" href="#what-is-a-language-model" title="Permalink to this headline">#</a></h2>
-<p><img alt="language-model-google-search" src="../../../../_images/language-model-google-search.png" />
-*Language model example that completes the search query. We need a language model that given a sequence of words <span class="math notranslate nohighlight">\(\{ \mathbf w_1, ..., \mathbf w_t \}\)</span> it returns</p>
-<div class="math notranslate nohighlight">
-\[p(\mathbf w_{t+1} | \mathbf w_1, ..., \mathbf w_t)\]</div>
-<p>Language models in general compute the probability of occurrence of a number of words in a particular sequence.  How we can build language models though ?</p>
-<p>The probability of a sequence of <span class="math notranslate nohighlight">\(m\)</span> words <span class="math notranslate nohighlight">\(\{\mathbf w_1, ..., \mathbf w_m \}\)</span> is denoted as <span class="math notranslate nohighlight">\(p(\mathbf w_1,...,\mathbf w_m)\)</span>. Since the number of words coming before a word, <span class="math notranslate nohighlight">\(\mathbf w_i\)</span>, varies depending on its location in the input document, <span class="math notranslate nohighlight">\(p(\mathbf w_1,...,\mathbf w_m)\)</span> is usually conditioned on a window of <span class="math notranslate nohighlight">\(n\)</span> previous words rather than all other words:</p>
-<div class="math notranslate nohighlight">
-\[ p(\mathbf w_1,...,\mathbf w_m) = \prod_{i=1}^{i=m} p(\mathbf w_{i} | \mathbf w_1, ..., \mathbf w_{i-1}) \approx \prod_{i=1}^{i=m} p(\mathbf w_{i} | \mathbf w_{i-n}, ..., \mathbf w_{i-1})\]</div>
-<p>To compute these probabilities, the count of each n-gram would be compared against the frequency of each word. For instance, if the model takes bi-grams, the frequency of each bi-gram, calculated via combining a word with its previous word, would be divided by the frequency of the corresponding unigram. For example for bi-gram and trigram models the above equation becomes:</p>
-<div class="math notranslate nohighlight">
-\[p(\mathbf w_2 | \mathbf w_1) = \dfrac {count(\mathbf w_1,\mathbf w_2)}{count(\mathbf w_1)}\]</div>
-<div class="math notranslate nohighlight">
-\[p(\mathbf w_3 | \mathbf w_1, \mathbf w_2) = \dfrac {count(\mathbf w_1, \mathbf w_2, \mathbf w_3)}{count(\mathbf w_1, \mathbf w_2)}\]</div>
-<p>Counting these probabilities is notoriously space (memory) inefficient as we need to store the counts for all possible grams in the corpus. At the same time when we have no events in the denominators to count we have no possibility of estimating such probabilities (the so-called sparsity problem).</p>
-<p>To solve these issues we will create neural models that are able to predict the required word.</p>
-</section>
-<section id="lstm-language-models">
-<h2>LSTM Language Models<a class="headerlink" href="#lstm-language-models" title="Permalink to this headline">#</a></h2>
-<p>When we focus on making predictions based on a fixed window of context (i.e. the <span class="math notranslate nohighlight">\(n\)</span> previous words), in some cases, the window may not be sufficient to capture the context. For instance, consider a case where an article discusses the history of Spain and France and somewhere later in the text, it reads “The two countries went on a battle”; clearly the information presented in this sentence alone is not sufficient to identify the name of the two countries.</p>
-<p>Out of the many neural architectures and to provide the required long memory (up to a point that is) we will use the LSTM architectures as shown next.</p>
-<p><img alt="rnn-language-model" src="../../../../_images/rnn-language-model-words.png" />
-<em>RNN Language Model. Note the different notation and certain replacements must be made: <span class="math notranslate nohighlight">\(W_h → W\)</span>, <span class="math notranslate nohighlight">\(W_e \rightarrow U\)</span>, <span class="math notranslate nohighlight">\(U → V\)</span></em></p>
-<p>To train an LSTM language model</p>
-<ol class="arabic simple">
-<li><p>We start with  big corpus of text which is a sequence of tokens <span class="math notranslate nohighlight">\(\mathbf x_1, ..., \mathbf x_{T}\)</span> where T is the number of words / tokens in the corpus.</p></li>
-<li><p>Every time step we feed one word at a time to the LSTM and compute the output probability distribution <span class="math notranslate nohighlight">\(\mathbf{\hat  y}_t\)</span>, which is, by construction, a <em>conditional</em> probability distribution of every word in the dictionary given the words we have seen so far.</p></li>
-<li><p>The loss function at time step <span class="math notranslate nohighlight">\(t\)</span> is the classic cross entropy loss between the predicted probability distribution and the distribution that corresponds to the one-hot encoded true next token.</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[J_t(\theta) = CE(\mathbf{\hat  y}_t, \mathbf{y}_t) = - \sum_j^{|V|} \mathbf{y}_{t,j} \log \mathbf{\hat y}_{t,j} = - \log \mathbf{\hat y}_{t,j}\]</div>
-<ol class="arabic simple" start="4">
-<li><p>Average all the t-step losses</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[J(\theta) = \frac{1}{T} \sum_t J_t(\theta)\]</div>
-<p>This is visually shown in the next figure for a hypothetical example of the shown sequence of words.</p>
-<p><img alt="rnn-language-model-loss" src="../../../../_images/rnn-language-model-loss.png" />
-<em>RNN Language Model Training Loss. For each input word (at step t<span class="math notranslate nohighlight">\(t\)</span>), the RNN predicts the next word and is penalized with a loss <span class="math notranslate nohighlight">\(J_t(\theta)\)</span>. The total loss is the average across the corpus.</em></p>
-<p>In practice <strong>we don’t compute the total loss over the whole corpus but we train over a finite span</strong> and compute gradients over that span iterating on a stochastic gradient decent optimization algorithm.</p>
-<p><strong>Example</strong>:</p>
-<p>Character-level language models have achieved <a class="reference external" href="https://github.com/flairNLP/flair">state of the art NLP results by Facebook Research</a>.  As a simple example, lets assume the very small vocabulary {‘h’,‘e’,‘l’,‘o’} and tokens are single letters represented in the input with a one-hot encoded vector.</p>
-<p><img alt="rnn-language-model" src="../../../../_images/rnn-language-model.png" />
-<em>RNN language model example - training <a class="reference external" href="https://www.youtube.com/watch?v=6niqTuYFZLQ&amp;t=521s">ref</a>. Note that in practice instead of one-hot encoded word vectors we will have word embeddings.</em></p>
-<p>Let feed into the RNN the sequence “hello”. The letters will come in one at a time, each letter going through the forward pass that produces at the output the <span class="math notranslate nohighlight">\(\mathbf y_t\)</span> that indicates which letter is expected to arrive next.  You can see, since we are just started training,  that this network is not predicting correctly - this will improve over time as the model is trained with more sequence permutations form our limited vocabulary.</p>
-<p>During inference we will use the language model to generate the next token.</p>
-<p><img alt="rnn-language-model-inference" src="../../../../_images/rnn-language-model-inference.png" />
-<em>RNN language model example - generate the next token <a class="reference external" href="https://www.youtube.com/watch?v=6niqTuYFZLQ&amp;t=521s">reference</a></em></p>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="object-detection-semantic-segmentation-workshop">
+<h1>Object Detection &amp; Semantic Segmentation Workshop<a class="headerlink" href="#object-detection-semantic-segmentation-workshop" title="Permalink to this headline">#</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -616,7 +552,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./aiml-common/lectures/nlp/language-models"
+            path: "./aiml-common/lectures/scene-understanding/semantic-segmentation"
         },
         predefinedOutput: true
     }
@@ -635,20 +571,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../word2vec/word2vec-workshop.html"
+       href="../object-detection/faster-rcnn-object-detection/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Word2Vec Workshop</p>
+        <p class="prev-next-title">Fast and Faster RCNN Object Detection</p>
       </div>
     </a>
     <a class="right-next"
-       href="simple-rnn-language-model.html"
+       href="maskrcnn-semantic-segmentation/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Simple RNN Language Model</p>
+        <p class="prev-next-title">Mask R-CNN Semantic Segmentation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -661,21 +597,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-language-model">What is a language model?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lstm-language-models">LSTM Language Models</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
