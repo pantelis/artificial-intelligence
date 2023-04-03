@@ -135,7 +135,7 @@ parts:
   - file: aiml-common/lectures/rnn/introduction/_index.md 
   - file: aiml-common/lectures/rnn/simple-rnn/_index.md 
   - file: aiml-common/lectures/rnn/lstm/_index.md
-  - file: aiml-common/lectures/rnn/15_processing_sequences_using_rnns_and_cnns.ipynb     
+  - file: aiml-common/lectures/rnn/time_series_using_simple_rnn_lstm.ipynb     
 
 - caption:  Natural Language Processing
   chapters:

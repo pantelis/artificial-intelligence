@@ -40,7 +40,8 @@
 			"extensions": [
 				"ms-python.vscode-pylance",
 				"ExecutableBookProject.myst-highlight",
-				"GitHub.copilot"
+				"GitHub.copilot",
+				"njpwerner.autodocstring"
 			]
 		}
 	},
