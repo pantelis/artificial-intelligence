@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
@@ -75,7 +75,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="The Long Short-Term Memory (LSTM) Cell Architecture" href="../lstm/_index.html" />
     <link rel="prev" title="Introduction to Recurrent Neural Networks (RNN)" href="../introduction/_index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -281,9 +281,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../introduction/_index.html">Introduction to Recurrent Neural Networks (RNN)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Simple RNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lstm/_index.html">The Long Short-Term Memory (LSTM) Cell Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../15_processing_sequences_using_rnns_and_cnns.html">Processing Sequences Using RNN</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="../time_series_using_simple_rnn_lstm.html">Time Series Prediction using RNNs</a></li>
 
 
 
@@ -626,7 +624,7 @@ document.write(`
 <p>Lets now see how the training through backward propagation would work for RNNs.</p>
 <p><img alt="rnn-BPTT" src="../../../../_images/rnn-BPTT.png" />
 <em>Understanding RNN memory through BPTT procedure</em></p>
-<p>Backpropagation is similar to that of feed-forward (FF) networks simply because the unrolled architecture resembles a FF one. But there is an important difference and we explain this using the above computational graph for the unrolled recurrences <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(t-1\)</span>. During computation of the variable <span class="math notranslate nohighlight">\(\mathbf h_t\)</span> we use the value of the variable <span class="math notranslate nohighlight">\(\mathbf h_{t-1}\)</span> calculated in the previous recurrence. So when we apply the chain rule in the backward phase of BP, for all nodes that involve the such variables with recurrent dependencies, the end result is that <em>non local</em> gradients from previous backpropagation steps (<span class="math notranslate nohighlight">\(t\)</span> in the figure) appear. This is effectively why we say that simple RNNs feature <em>memory</em>. This is in contrast to the FF network case where during BP only local to each gate gradients where involved as we have seen in the the DNN chapter.</p>
+<p>Backpropagation is similar to that of feed-forward (FF) networks simply because the unrolled architecture resembles a FF one. But there is an important difference and we can see it using the above computational graph for the unrolled recurrences <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(t-1\)</span>. During computation of the variable <span class="math notranslate nohighlight">\(\mathbf h_t\)</span> we use the value of the variable <span class="math notranslate nohighlight">\(\mathbf h_{t-1}\)</span> calculated in the previous recurrence. So when we apply the chain rule in the backward phase of BP, for all nodes that involve such variables with recurrent dependencies, the end result is that <em>non local</em> gradients appear from previous backpropagation steps (<span class="math notranslate nohighlight">\(t\)</span> in the figure). This is effectively why we say that simple RNNs feature <em>memory</em>. This is in contrast to the FF network case where during BP only local to each gate gradients where involved as we have seen earlier.</p>
 <p>The key point to notice in the backpropagation in recurrence <span class="math notranslate nohighlight">\(t-1\)</span> is the junction between <span class="math notranslate nohighlight">\(\tanh\)</span> and <span class="math notranslate nohighlight">\(\mathbf V \mathbf h_{t-1}\)</span>. This junction brings in the gradient <span class="math notranslate nohighlight">\(\nabla_{\mathbf h_{t-1}}L_t\)</span> from the backpropagation of the <span class="math notranslate nohighlight">\(\mathbf W h_{t-1}\)</span> node in recurrence <span class="math notranslate nohighlight">\(t\)</span> and just because its a junction, it is added to the backpropagated gradient from above in the current recurrence <span class="math notranslate nohighlight">\(t-1\)</span> i.e.</p>
 <div class="math notranslate nohighlight">
 \[\nabla_{\mathbf h_{t-1}}L_{t-1} \leftarrow \nabla_{\mathbf h_{t-1}}L_{t-1} + \nabla_{\mathbf h_{t-1}}L_t \]</div>

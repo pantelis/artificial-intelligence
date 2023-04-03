@@ -1,9 +1,3 @@
----
-title: Simple RNNs and their Backpropagation
-draft: false
-weight: 132
----
-
 # Simple RNN 
 
 The simple RNN architecture with just a single layer of neurons that receive the input $\mathbf{x}$ is shown below.
@@ -77,7 +71,7 @@ Lets now see how the training through backward propagation would work for RNNs.
 ![rnn-BPTT](images/rnn-BPTT.png)
 *Understanding RNN memory through BPTT procedure*
 
-Backpropagation is similar to that of feed-forward (FF) networks simply because the unrolled architecture resembles a FF one. But there is an important difference and we explain this using the above computational graph for the unrolled recurrences $t$ and $t-1$. During computation of the variable $\mathbf h_t$ we use the value of the variable $\mathbf h_{t-1}$ calculated in the previous recurrence. So when we apply the chain rule in the backward phase of BP, for all nodes that involve the such variables with recurrent dependencies, the end result is that _non local_ gradients from previous backpropagation steps ($t$ in the figure) appear. This is effectively why we say that simple RNNs feature _memory_. This is in contrast to the FF network case where during BP only local to each gate gradients where involved as we have seen in the the DNN chapter. 
+Backpropagation is similar to that of feed-forward (FF) networks simply because the unrolled architecture resembles a FF one. But there is an important difference and we can see it using the above computational graph for the unrolled recurrences $t$ and $t-1$. During computation of the variable $\mathbf h_t$ we use the value of the variable $\mathbf h_{t-1}$ calculated in the previous recurrence. So when we apply the chain rule in the backward phase of BP, for all nodes that involve such variables with recurrent dependencies, the end result is that _non local_ gradients appear from previous backpropagation steps ($t$ in the figure). This is effectively why we say that simple RNNs feature _memory_. This is in contrast to the FF network case where during BP only local to each gate gradients where involved as we have seen earlier. 
 
 The key point to notice in the backpropagation in recurrence $t-1$ is the junction between $\tanh$ and $\mathbf V \mathbf h_{t-1}$. This junction brings in the gradient $\nabla_{\mathbf h_{t-1}}L_t$ from the backpropagation of the $\mathbf W h_{t-1}$ node in recurrence $t$ and just because its a junction, it is added to the backpropagated gradient from above in the current recurrence $t-1$ i.e.
 
