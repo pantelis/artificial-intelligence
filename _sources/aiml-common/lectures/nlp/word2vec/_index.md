@@ -87,15 +87,61 @@ Training for large vocabularies can be quite computationally intensive.  At the 
 ```{warning}
 Mind the important difference between learning a representation that from the context across the corpus and the _application_ of that representation. Word2Vec are applied _context-free_.  After training, a single $\mathbf W$ matrix will be used. This means that the word 'bank' will be encoded using the same dense vector  irrespectively when it is located close to 'river' or 'food' or 'deposit'. 
 
-_Contextual representations_ are addressed in a separate section. 
+_Contextual representations_ will be addressed in a separate section. 
 
 ```
+
+
+## Example
+
+Consider the training corpus having the following sentences:
+
+“the dog saw a cat”, 
+
+“the dog chased the cat”, 
+
+“the cat climbed a tree”
+
+In this corpus $V=8$ and we are interested in creating word embeddings of order $d=3$. The parameter matrices are randomly initialized as
+
+$$W = \begin{bmatrix} 0.54 &  0.28 &  0.42\\0.84 &  0.00 &  0.12\\ 0.67 &  0.83 &  0.14\\0.58 &  0.89 &  0.21\\0.19 &  0.11 &  0.22\\0.98 &  0.81 &  0.17\\0.82 &  0.27 &  0.43\\0.94 &  0.82 &  0.34
+\end{bmatrix}$$
+
+$$ W^\prime = \begin{bmatrix}0.18 &  0.37 &  0.01 &  0.25 &  0.80 &  0.02 &  0.60 &  0.60\\0.11 &  0.38 &  0.04 &  0.89 &  0.98 &  0.06 &  0.89 &  0.58\\0.74 &  0.63 &  0.58 &  0.02 &  0.21 &  0.54 &  0.77 &  0.25
+\end{bmatrix}$$
+
+
+**Suppose we want the network to learn relationship between the words “cat” and “climbed”. That is, the network should show a high probability for “cat” when “climbed” is presented at the input of the network.** In word embedding terminology, the word “cat” is referred as the target word and the word “climbed” is referred as the context word. In this case, the input vector $\mathbf x_{t+1}  =  [0 0 0 1 0 0 0 0]^T$. Notice that only the 4th component of the vector is 1 - the input word “climbed” holds for example the 4th position in a sorted list of corpus words. Given that the target word is "cat", the target vector will be $\mathbf x_t = [0 1 0 0 0 0 0 0 ]^T$.
+
+With the input vector representing “climbed”, the output at the hidden layer neurons can be computed as 
+
+$$\mathbf z_t^T = \mathbf x_{t+j}^T \mathbf W = \begin{bmatrix}
+  0.58 &  0.89 &  0.21
+\end{bmatrix}, j=1$$
+
+Carrying out similar manipulations for hidden to output layer, the activation vector for output layer neurons can be written as
+
+$$\mathbf z^\prime_j = \mathbf z_t^T \mathbf W^\prime =\begin{bmatrix}
+  0.35 &  0.69 &  0.16 &  0.94 &  1.38 &  0.18 &  1.30 &  0.91
+\end{bmatrix}$$
+
+Since the goal is produce probabilities for words in the output layer,  $p(w_{t+j} | w_t; \theta)$ to reflect their next word relationship with the context word at input, we need the sum of neuron outputs in the output layer to add to one. This can be achieved with the softmax
+
+$$\hat{\mathbf y}_j = \mathtt{softmax}(\mathbf z^\prime_j), j=1$$
+
+Thus, the probabilities for eight words in the corpus are:
+
+$$\hat{\mathbf y} = \begin{bmatrix}
+  0.35 &  \mathbf{0.69} &  0.16 &  0.94 &  1.38 &  0.18 &  1.30 &  0.91
+\end{bmatrix}$$
+
+The probability in bold is for the chosen target word 'cat'. Given the target vector [0 1 0 0 0 0 0 0 ], the error vector for the output layer is easily computed via CE loss. Once the loss is known, the weights in the matrices W can be updated using backpropagation. Thus, the training can proceed by presenting different context-target words pairs from the corpus. The context can be more than one word and in this case the loss is the average loss across all pairs. 
 
 ## References
 
 1. [Word2Vec Parameter Learning Explained](https://arxiv.org/abs/1411.2738)
 
-
+2.  The simple example was from [here](https://iksinc.online/tag/skip-gram-model/).
 
 [^1]: The other method is called Continuous Bag of Words (CBOW) and its the reverse of the skip-gram method: it predicts the center word from the words around it. Skip-gram works well with small corpora and rare terms while CBOW shows higher accuracies for frequent words and is faster to train [ref](https://www.manning.com/books/natural-language-processing-in-action). 
 

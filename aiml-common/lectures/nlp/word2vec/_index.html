@@ -72,7 +72,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Word2Vec Workshop" href="word2vec-workshop.html" />
+    <link rel="next" title="Word2Vec from scratch" href="word2vec_from_scratch.html" />
     <link rel="prev" title="Introduction to NLP" href="../nlp-intro/_index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -290,7 +290,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="label-parts" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../nlp-intro/_index.html">Introduction to NLP</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Word2Vec Embeddings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="word2vec-workshop.html">Word2Vec Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="word2vec_from_scratch.html">Word2Vec from scratch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="word2vec_tensorflow_tutorial.html">Word2Vec Tensorflow Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../language-models/_index.html">RNN Language Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../language-models/cnn-language-model/index.html">CNN Language Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../language-models/simple-rnn-language-model/index.html">Simple RNN Language Model</a></li>
@@ -546,6 +547,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features-of-word2vec-embeddings">Features of Word2Vec embeddings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
@@ -619,13 +621,48 @@ document.write(`
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Mind the important difference between learning a representation that from the context across the corpus and the <em>application</em> of that representation. Word2Vec are applied <em>context-free</em>.  After training, a single <span class="math notranslate nohighlight">\(\mathbf W\)</span> matrix will be used. This means that the word ‘bank’ will be encoded using the same dense vector  irrespectively when it is located close to ‘river’ or ‘food’ or ‘deposit’.</p>
-<p><em>Contextual representations</em> are addressed in a separate section.</p>
+<p><em>Contextual representations</em> will be addressed in a separate section.</p>
 </div>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h2>
+<p>Consider the training corpus having the following sentences:</p>
+<p>“the dog saw a cat”,</p>
+<p>“the dog chased the cat”,</p>
+<p>“the cat climbed a tree”</p>
+<p>In this corpus <span class="math notranslate nohighlight">\(V=8\)</span> and we are interested in creating word embeddings of order <span class="math notranslate nohighlight">\(d=3\)</span>. The parameter matrices are randomly initialized as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}W = \begin{bmatrix} 0.54 &amp;  0.28 &amp;  0.42\\0.84 &amp;  0.00 &amp;  0.12\\ 0.67 &amp;  0.83 &amp;  0.14\\0.58 &amp;  0.89 &amp;  0.21\\0.19 &amp;  0.11 &amp;  0.22\\0.98 &amp;  0.81 &amp;  0.17\\0.82 &amp;  0.27 &amp;  0.43\\0.94 &amp;  0.82 &amp;  0.34
+\end{bmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split} W^\prime = \begin{bmatrix}0.18 &amp;  0.37 &amp;  0.01 &amp;  0.25 &amp;  0.80 &amp;  0.02 &amp;  0.60 &amp;  0.60\\0.11 &amp;  0.38 &amp;  0.04 &amp;  0.89 &amp;  0.98 &amp;  0.06 &amp;  0.89 &amp;  0.58\\0.74 &amp;  0.63 &amp;  0.58 &amp;  0.02 &amp;  0.21 &amp;  0.54 &amp;  0.77 &amp;  0.25
+\end{bmatrix}\end{split}\]</div>
+<p><strong>Suppose we want the network to learn relationship between the words “cat” and “climbed”. That is, the network should show a high probability for “cat” when “climbed” is presented at the input of the network.</strong> In word embedding terminology, the word “cat” is referred as the target word and the word “climbed” is referred as the context word. In this case, the input vector <span class="math notranslate nohighlight">\(\mathbf x_{t+1}  =  [0 0 0 1 0 0 0 0]^T\)</span>. Notice that only the 4th component of the vector is 1 - the input word “climbed” holds for example the 4th position in a sorted list of corpus words. Given that the target word is “cat”, the target vector will be <span class="math notranslate nohighlight">\(\mathbf x_t = [0 1 0 0 0 0 0 0 ]^T\)</span>.</p>
+<p>With the input vector representing “climbed”, the output at the hidden layer neurons can be computed as</p>
+<div class="math notranslate nohighlight">
+\[\mathbf z_t^T = \mathbf x_{t+j}^T \mathbf W = \begin{bmatrix}
+  0.58 &amp;  0.89 &amp;  0.21
+\end{bmatrix}, j=1\]</div>
+<p>Carrying out similar manipulations for hidden to output layer, the activation vector for output layer neurons can be written as</p>
+<div class="math notranslate nohighlight">
+\[\mathbf z^\prime_j = \mathbf z_t^T \mathbf W^\prime =\begin{bmatrix}
+  0.35 &amp;  0.69 &amp;  0.16 &amp;  0.94 &amp;  1.38 &amp;  0.18 &amp;  1.30 &amp;  0.91
+\end{bmatrix}\]</div>
+<p>Since the goal is produce probabilities for words in the output layer,  <span class="math notranslate nohighlight">\(p(w_{t+j} | w_t; \theta)\)</span> to reflect their next word relationship with the context word at input, we need the sum of neuron outputs in the output layer to add to one. This can be achieved with the softmax</p>
+<div class="math notranslate nohighlight">
+\[\hat{\mathbf y}_j = \mathtt{softmax}(\mathbf z^\prime_j), j=1\]</div>
+<p>Thus, the probabilities for eight words in the corpus are:</p>
+<div class="math notranslate nohighlight">
+\[\hat{\mathbf y} = \begin{bmatrix}
+  0.35 &amp;  \mathbf{0.69} &amp;  0.16 &amp;  0.94 &amp;  1.38 &amp;  0.18 &amp;  1.30 &amp;  0.91
+\end{bmatrix}\]</div>
+<p>The probability in bold is for the chosen target word ‘cat’. Given the target vector [0 1 0 0 0 0 0 0 ], the error vector for the output layer is easily computed via CE loss. Once the loss is known, the weights in the matrices W can be updated using backpropagation. Thus, the training can proceed by presenting different context-target words pairs from the corpus. The context can be more than one word and in this case the loss is the average loss across all pairs.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1411.2738">Word2Vec Parameter Learning Explained</a></p></li>
+<li><p>The simple example was from <a class="reference external" href="https://iksinc.online/tag/skip-gram-model/">here</a>.</p></li>
 </ol>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
@@ -677,11 +714,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="word2vec-workshop.html"
+       href="word2vec_from_scratch.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Word2Vec Workshop</p>
+        <p class="prev-next-title">Word2Vec from scratch</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -705,6 +742,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features-of-word2vec-embeddings">Features of Word2Vec embeddings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
