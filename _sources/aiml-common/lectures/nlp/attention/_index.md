@@ -1,15 +1,10 @@
----
-title: Attention in NMT
----
-
 # Attention in NMT
 
 When you hear the sentence "the soccer ball is on the field," you don’t assign the same importance to all 7 words. You primarily take note of the words "_ball_" "_on_," and "_field_" since those are the words that are most "important" to you.  
 
 Using the _final_ RNN hidden state as _the_ single "context vector" for sequence-to-sequence models cannot differentiate between significant and less significant words. Moreover, different parts of the output may even consider different parts of the input "important." 
 
-
-Attention mechanisms make use of this observation by providing the decoder network with a look at the entire input sequence at every decoding step; the decoder can then decide what input words are important at any point in time. There are many types of attention mechanisms - we focus here the [archetypical method](https://arxiv.org/abs/1409.0473) that maximizes a new conditional probability that now has a **time dependency** in the context vector. 
+Attention mechanisms make use of this observation by providing the decoder network with a look at the _entire_ input sequence at every decoding step; the decoder can then decide what input words are important at any point in time. There are many types of attention mechanisms - we focus here the [archetypical method](https://arxiv.org/abs/1409.0473) that maximizes a new conditional probability that now has a **time dependency** in the context vector. 
 
 $$p(\mathbf y | \mathbf x) = g(y_{t-1}, h_{t-1}, \phi_t)$$
 

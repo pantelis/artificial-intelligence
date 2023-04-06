@@ -278,7 +278,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="label-parts" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../rnn/introduction/_index.html">Introduction to Recurrent Neural Networks (RNN)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rnn/simple-rnn/_index.html">Simple RNN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../rnn/lstm/_index.html">The Long Short-Term Memory (LSTM) Cell Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/lstm/_index.html">The Long Short-Term Memory (LSTM) Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rnn/time_series_using_simple_rnn_lstm.html">Time Series Prediction using RNNs</a></li>
 
 
@@ -290,12 +290,25 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../word2vec/_index.html">Word2Vec Embeddings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../word2vec/word2vec-workshop.html">Word2Vec Workshop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../language-models/_index.html">RNN Language Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../language-models/simple-rnn-language-model.html">Simple RNN Language Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../language-models/cnn-language-model.html">CNN Language Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language-models/cnn-language-model/index.html">CNN Language Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language-models/simple-rnn-language-model/index.html">Simple RNN Language Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language-models/lstm-language-model/index.html">Vanilla LSTM implementation from scratch with Numpy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nmt/_index.html">Neural Machine Translation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nmt-metrics/_index.html">NMT Metrics - BLEU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nmt/lstm_seq2seq.html">Character-level recurrent sequence-to-sequence model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../attention/_index.html">Attention in NMT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../transformers/_index.html">Transformers Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transformers/annotated_transformer.html">The Annotated Transformer</a></li>
+
+
+
+
+
+
+
+
+
+
+
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="label-parts" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/index.html">Math for ML Textbook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/probability/index.html">Probability Basics</a></li>
@@ -529,8 +542,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#same-context-different-meaning">Same context, different meaning</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#different-context-alltogether">Different context alltogether</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nlp-pipelines">NLP Pipelines</a></li>
 </ul>
             </nav>
         </div>
@@ -544,6 +556,26 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-nlp">
 <h1>Introduction to NLP<a class="headerlink" href="#introduction-to-nlp" title="Permalink to this headline">#</a></h1>
+<p>Python and almost all programming languages are formal. They define a strict set of rules called a <em>grammar</em> that the programmer must follow religiously. In addition formal languages also define semantics or meaning of the program via a set of rules. So the exit code <code class="docutils literal notranslate"><span class="pre">0</span></code> after the execution of a routine has the meaning of successful termination but a <code class="docutils literal notranslate"><span class="pre">1</span></code> the opposite. The English language on the other hand is “free wheeling” so to speak due to its ambiguity and size.</p>
+<p>Some examples are in order:</p>
+<ul class="simple">
+<li><p><strong>Ambiguity</strong>: “he met his maker”</p></li>
+<li><p><strong>Same context, different meaning</strong>:</p>
+<ol class="arabic simple">
+<li><p>“The food in this restaurant was good, not bad at all”</p></li>
+<li><p>“The food in this restaurant was bad, not good at all.”</p></li>
+</ol>
+</li>
+<li><p><strong>Different context alltogether</strong>:</p>
+<ol class="arabic simple">
+<li><p>“The bank’s profits eroded soon after the 2008 crisis”</p></li>
+<li><p>“The river’s bank eroded after the 2008 floods”</p></li>
+</ol>
+</li>
+</ul>
+<p>To capture the fuzziness of natural language we need to define probabilistic models. We do not speak of a single meaning for a sentence - rather we speak of <em>a probability distribution over possible meanings</em>.</p>
+<section id="nlp-pipelines">
+<h2>NLP Pipelines<a class="headerlink" href="#nlp-pipelines" title="Permalink to this headline">#</a></h2>
 <p>To get started, we need some common ground on the NLP terminology - the terms are presented in the processing order of an NLP pipeline. This paragraph is heavily borrowed from <a class="reference external" href="https://medium.com/&#64;ageitgey/natural-language-processing-is-fun-9a0bff37854e">here</a>.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -555,7 +587,7 @@ document.write(`
 <tr class="row-even"><td><p><strong>Segmentation</strong></p></td>
 <td><p>The first step in the pipeline is to break the text apart into separate sentences. Coding a Sentence Segmentation model can be as simple as splitting apart sentences whenever you see a punctuation mark. But modern NLP pipelines often use more complex techniques that work even when a document isn’t formatted cleanly. Take for example the sentence “London is the capital and most populous city of England and the United Kingdom.”</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Word Tokenization</strong></p></td>
+<tr class="row-odd"><td><p><strong>Tokenization</strong></p></td>
 <td><p>The next step in our pipeline is to break this sentence into separate words or tokens. This is called tokenization. “London”, “is”, “ the”, “capital”, “and”, “most”, “populous”, “city”, “of”, “England”, “and”, “the”, “United”, “Kingdom”, “.”</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Part of Speech Tagging</strong></p></td>
@@ -596,18 +628,10 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<p>Python and almost all programming languages are formal. They define a strict set of rules called a <em>grammar</em> that the programmer must follow religiously. In addition formal languages also define semantics or meaning of the program via a set of rules. So the exit code <code class="docutils literal notranslate"><span class="pre">0</span></code> after the execution of a routine has the meaning of <code class="docutils literal notranslate"><span class="pre">successful</span> <span class="pre">termination</span></code> but a <code class="docutils literal notranslate"><span class="pre">1</span></code> the opposite. The English language on the other hand is “free wheeling” so to speak due to its ambiguity (“he met his maker”) and size.</p>
-<section id="same-context-different-meaning">
-<h2>Same context, different meaning<a class="headerlink" href="#same-context-different-meaning" title="Permalink to this headline">#</a></h2>
-<p>“The food in this restaurant was good, not bad at all”</p>
-<p>“The food in this restaurant was bad, not good at all.”</p>
-</section>
-<section id="different-context-alltogether">
-<h2>Different context alltogether<a class="headerlink" href="#different-context-alltogether" title="Permalink to this headline">#</a></h2>
-<p>“The bank’s profits eroded soon after the 2008 crisis”</p>
-<p>“The river’s bank eroded after the 2008 floods”</p>
-<p>To capture the fuzziness of natural language we define language models probabilistically. We do not speak of a single meaning for a sentence - rather we speak of <em>a probability distribution over possible meanings</em>. In the next section we will start to quantify such probabilistic language models in detail.</p>
-</section>
+<p>In terms of NLP we are just scratching the surface here. Watch the following video to review some of the challenges NLP researchers face (circa 2020) and the rise of natural language generation (NLG) with the earlier GPT-2 and GPT-3 models. The presentation contains some key papers as well.</p>
+<div class="video_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/G5lmya6eKtc" style="border: 0; height: 345px; width: 560px">
+</iframe></div></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -677,8 +701,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#same-context-different-meaning">Same context, different meaning</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#different-context-alltogether">Different context alltogether</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nlp-pipelines">NLP Pipelines</a></li>
 </ul>
   </nav></div>
 

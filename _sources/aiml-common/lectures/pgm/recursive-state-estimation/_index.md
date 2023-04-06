@@ -155,8 +155,8 @@ In the next time step lets assume that the agent pushes the door and senses that
 $$\mathtt{\hat{bel}}(s_2 = open) = 1 \times 0.75 + 0.8 \times 0.25 = 0.95$$
 $$\mathtt{\hat{bel}}(s_2 = closed) =0 \times 0.75 + 0.2 \times 0.25 = 0.05$$
 
-$$\mathtt{bel}(s_2 = open) = \eta 0.6 \times 0.95 = 0.983$$
-$$\mathtt{bel}(s_2 = closed) = \eta 0.2 \times 0.05 = 0.017$$
+$$\mathtt{bel}(s_2 = open) = \eta 0.6 \times 0.95 = 0.57$$
+$$\mathtt{bel}(s_2 = closed) = \eta 0.2 \times 0.05 = 0.01$$
 
 where $\eta = (0.01 + 0.57)^{-1}$
 

@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Introduction to NLP" href="../nlp/nlp-intro/_index.html" />
-    <link rel="prev" title="The Long Short-Term Memory (LSTM) Cell Architecture" href="lstm/_index.html" />
+    <link rel="prev" title="The Long Short-Term Memory (LSTM) Architecture" href="lstm/_index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -278,7 +278,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="label-parts" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="introduction/_index.html">Introduction to Recurrent Neural Networks (RNN)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="simple-rnn/_index.html">Simple RNN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lstm/_index.html">The Long Short-Term Memory (LSTM) Cell Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lstm/_index.html">The Long Short-Term Memory (LSTM) Architecture</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Time Series Prediction using RNNs</a></li>
 
 
@@ -290,12 +290,25 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../nlp/word2vec/_index.html">Word2Vec Embeddings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nlp/word2vec/word2vec-workshop.html">Word2Vec Workshop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nlp/language-models/_index.html">RNN Language Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nlp/language-models/simple-rnn-language-model.html">Simple RNN Language Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nlp/language-models/cnn-language-model.html">CNN Language Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp/language-models/cnn-language-model/index.html">CNN Language Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp/language-models/simple-rnn-language-model/index.html">Simple RNN Language Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp/language-models/lstm-language-model/index.html">Vanilla LSTM implementation from scratch with Numpy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nlp/nmt/_index.html">Neural Machine Translation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nlp/nmt-metrics/_index.html">NMT Metrics - BLEU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp/nmt/lstm_seq2seq.html">Character-level recurrent sequence-to-sequence model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp/nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nlp/attention/_index.html">Attention in NMT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nlp/transformers/_index.html">Transformers Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp/transformers/annotated_transformer.html">The Annotated Transformer</a></li>
+
+
+
+
+
+
+
+
+
+
+
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="label-parts" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ml-math/index.html">Math for ML Textbook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ml-math/probability/index.html">Probability Basics</a></li>
@@ -687,17 +700,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-04-03 01:15:01.610290: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-2023-04-03 01:15:01.641691: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2023-04-03 01:15:03.037917: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-2023-04-03 01:15:05.944904: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
-2023-04-03 01:15:05.962084: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
-2023-04-03 01:15:05.962221: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="basic-rnns">
@@ -791,13 +793,13 @@ To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, re
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-04-03 01:15:07.230039: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
-2023-04-03 01:15:07.230238: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
-2023-04-03 01:15:07.230340: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
-2023-04-03 01:15:07.723222: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
-2023-04-03 01:15:07.723385: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
-2023-04-03 01:15:07.723467: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
-2023-04-03 01:15:07.723538: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1635] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 10709 MB memory:  -&gt; device: 0, name: NVIDIA RTX A4500 Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.6
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-04-04 13:03:42.738268: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2023-04-04 13:03:42.738469: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2023-04-04 13:03:42.738547: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2023-04-04 13:03:45.573522: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2023-04-04 13:03:45.573896: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2023-04-04 13:03:45.574148: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2023-04-04 13:03:45.574349: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1635] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 13868 MB memory:  -&gt; device: 0, name: NVIDIA RTX A4500 Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.6
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.020211367
@@ -835,45 +837,45 @@ To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, re
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
-219/219 [==============================] - 1s 3ms/step - loss: 0.2138 - val_loss: 0.0607
+219/219 [==============================] - 2s 3ms/step - loss: 0.1313 - val_loss: 0.0564
 Epoch 2/20
-219/219 [==============================] - 1s 2ms/step - loss: 0.0353 - val_loss: 0.0217
+219/219 [==============================] - 0s 2ms/step - loss: 0.0298 - val_loss: 0.0183
 Epoch 3/20
-219/219 [==============================] - 1s 2ms/step - loss: 0.0171 - val_loss: 0.0136
+219/219 [==============================] - 0s 2ms/step - loss: 0.0132 - val_loss: 0.0106
 Epoch 4/20
-219/219 [==============================] - 1s 3ms/step - loss: 0.0120 - val_loss: 0.0105
+219/219 [==============================] - 0s 2ms/step - loss: 0.0091 - val_loss: 0.0082
 Epoch 5/20
-219/219 [==============================] - 1s 2ms/step - loss: 0.0097 - val_loss: 0.0090
+219/219 [==============================] - 1s 2ms/step - loss: 0.0074 - val_loss: 0.0071
 Epoch 6/20
-219/219 [==============================] - 1s 2ms/step - loss: 0.0085 - val_loss: 0.0082
+219/219 [==============================] - 0s 2ms/step - loss: 0.0065 - val_loss: 0.0063
 Epoch 7/20
-219/219 [==============================] - 0s 2ms/step - loss: 0.0078 - val_loss: 0.0076
+219/219 [==============================] - 0s 2ms/step - loss: 0.0059 - val_loss: 0.0057
 Epoch 8/20
-219/219 [==============================] - 1s 3ms/step - loss: 0.0072 - val_loss: 0.0070
+219/219 [==============================] - 0s 2ms/step - loss: 0.0054 - val_loss: 0.0052
 Epoch 9/20
-219/219 [==============================] - 0s 1ms/step - loss: 0.0067 - val_loss: 0.0066
+219/219 [==============================] - 0s 1ms/step - loss: 0.0050 - val_loss: 0.0049
 Epoch 10/20
-219/219 [==============================] - 1s 3ms/step - loss: 0.0063 - val_loss: 0.0062
+219/219 [==============================] - 0s 1ms/step - loss: 0.0047 - val_loss: 0.0046
 Epoch 11/20
-219/219 [==============================] - 0s 2ms/step - loss: 0.0060 - val_loss: 0.0059
+219/219 [==============================] - 0s 2ms/step - loss: 0.0045 - val_loss: 0.0044
 Epoch 12/20
-219/219 [==============================] - 0s 2ms/step - loss: 0.0057 - val_loss: 0.0057
+219/219 [==============================] - 0s 1ms/step - loss: 0.0043 - val_loss: 0.0043
 Epoch 13/20
-219/219 [==============================] - 0s 1ms/step - loss: 0.0054 - val_loss: 0.0053
+219/219 [==============================] - 0s 1ms/step - loss: 0.0042 - val_loss: 0.0040
 Epoch 14/20
-219/219 [==============================] - 0s 2ms/step - loss: 0.0052 - val_loss: 0.0051
+219/219 [==============================] - 0s 2ms/step - loss: 0.0041 - val_loss: 0.0039
 Epoch 15/20
-219/219 [==============================] - 0s 2ms/step - loss: 0.0050 - val_loss: 0.0050
+219/219 [==============================] - 0s 2ms/step - loss: 0.0040 - val_loss: 0.0038
 Epoch 16/20
-219/219 [==============================] - 0s 2ms/step - loss: 0.0049 - val_loss: 0.0051
+219/219 [==============================] - 0s 1ms/step - loss: 0.0039 - val_loss: 0.0040
 Epoch 17/20
-219/219 [==============================] - 0s 2ms/step - loss: 0.0048 - val_loss: 0.0046
+219/219 [==============================] - 0s 1ms/step - loss: 0.0038 - val_loss: 0.0037
 Epoch 18/20
-219/219 [==============================] - 0s 2ms/step - loss: 0.0046 - val_loss: 0.0046
+219/219 [==============================] - 0s 1ms/step - loss: 0.0038 - val_loss: 0.0037
 Epoch 19/20
-219/219 [==============================] - 0s 2ms/step - loss: 0.0045 - val_loss: 0.0045
+219/219 [==============================] - 0s 1ms/step - loss: 0.0037 - val_loss: 0.0037
 Epoch 20/20
-219/219 [==============================] - 0s 2ms/step - loss: 0.0044 - val_loss: 0.0043
+219/219 [==============================] - 0s 2ms/step - loss: 0.0037 - val_loss: 0.0036
 </pre></div>
 </div>
 </div>
@@ -885,10 +887,10 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63/63 [==============================] - 0s 959us/step - loss: 0.0043
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63/63 [==============================] - 0s 793us/step - loss: 0.0036
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0042771766893565655
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.003601563163101673
 </pre></div>
 </div>
 </div>
@@ -911,7 +913,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/e6973e9f043e75425b6ff4d336161801460860c871481beb260d17440b2a05f8.png" src="../../../_images/e6973e9f043e75425b6ff4d336161801460860c871481beb260d17440b2a05f8.png" />
+<img alt="../../../_images/1367bc207bf48d356af5e386b7ab35b830d82e78d13885c0a20d9bcd43c127fd.png" src="../../../_images/1367bc207bf48d356af5e386b7ab35b830d82e78d13885c0a20d9bcd43c127fd.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -923,10 +925,10 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63/63 [==============================] - 0s 701us/step
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63/63 [==============================] - 0s 586us/step
 </pre></div>
 </div>
-<img alt="../../../_images/948b40358217a7b5e6be70e5f80cff5305e73620001cebc5378ac3940263ba83.png" src="../../../_images/948b40358217a7b5e6be70e5f80cff5305e73620001cebc5378ac3940263ba83.png" />
+<img alt="../../../_images/73528ea5202da1d87fd52a3fdafa25cfaf7b5ecb814e38d8ad3a71ab438b1d6f.png" src="../../../_images/73528ea5202da1d87fd52a3fdafa25cfaf7b5ecb814e38d8ad3a71ab438b1d6f.png" />
 </div>
 </div>
 </section>
@@ -955,45 +957,45 @@ Epoch 20/20
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
-219/219 [==============================] - 3s 13ms/step - loss: 0.3467 - val_loss: 0.2507
+219/219 [==============================] - 3s 11ms/step - loss: 0.1699 - val_loss: 0.1090
 Epoch 2/20
-219/219 [==============================] - 3s 13ms/step - loss: 0.1673 - val_loss: 0.1192
+219/219 [==============================] - 3s 12ms/step - loss: 0.0630 - val_loss: 0.0332
 Epoch 3/20
-219/219 [==============================] - 3s 12ms/step - loss: 0.0749 - val_loss: 0.0462
+219/219 [==============================] - 2s 11ms/step - loss: 0.0196 - val_loss: 0.0132
 Epoch 4/20
-219/219 [==============================] - 3s 12ms/step - loss: 0.0285 - val_loss: 0.0183
+219/219 [==============================] - 2s 11ms/step - loss: 0.0122 - val_loss: 0.0114
 Epoch 5/20
-219/219 [==============================] - 3s 12ms/step - loss: 0.0142 - val_loss: 0.0120
+219/219 [==============================] - 2s 10ms/step - loss: 0.0117 - val_loss: 0.0112
 Epoch 6/20
-219/219 [==============================] - 3s 13ms/step - loss: 0.0117 - val_loss: 0.0111
+219/219 [==============================] - 3s 12ms/step - loss: 0.0116 - val_loss: 0.0111
 Epoch 7/20
-219/219 [==============================] - 3s 12ms/step - loss: 0.0115 - val_loss: 0.0110
+219/219 [==============================] - 2s 11ms/step - loss: 0.0115 - val_loss: 0.0110
 Epoch 8/20
-219/219 [==============================] - 3s 13ms/step - loss: 0.0115 - val_loss: 0.0110
+219/219 [==============================] - 3s 12ms/step - loss: 0.0114 - val_loss: 0.0109
 Epoch 9/20
-219/219 [==============================] - 3s 13ms/step - loss: 0.0114 - val_loss: 0.0109
+219/219 [==============================] - 2s 10ms/step - loss: 0.0114 - val_loss: 0.0109
 Epoch 10/20
-219/219 [==============================] - 3s 13ms/step - loss: 0.0114 - val_loss: 0.0109
+219/219 [==============================] - 2s 10ms/step - loss: 0.0114 - val_loss: 0.0109
 Epoch 11/20
-219/219 [==============================] - 3s 14ms/step - loss: 0.0114 - val_loss: 0.0109
+219/219 [==============================] - 2s 11ms/step - loss: 0.0114 - val_loss: 0.0109
 Epoch 12/20
-219/219 [==============================] - 3s 14ms/step - loss: 0.0114 - val_loss: 0.0109
+219/219 [==============================] - 3s 13ms/step - loss: 0.0114 - val_loss: 0.0109
 Epoch 13/20
 219/219 [==============================] - 3s 13ms/step - loss: 0.0114 - val_loss: 0.0109
 Epoch 14/20
-219/219 [==============================] - 3s 13ms/step - loss: 0.0114 - val_loss: 0.0109
+219/219 [==============================] - 2s 11ms/step - loss: 0.0114 - val_loss: 0.0109
 Epoch 15/20
-219/219 [==============================] - 3s 13ms/step - loss: 0.0114 - val_loss: 0.0109
+219/219 [==============================] - 3s 12ms/step - loss: 0.0114 - val_loss: 0.0109
 Epoch 16/20
-219/219 [==============================] - 3s 13ms/step - loss: 0.0114 - val_loss: 0.0109
+219/219 [==============================] - 3s 12ms/step - loss: 0.0114 - val_loss: 0.0109
 Epoch 17/20
-219/219 [==============================] - 3s 13ms/step - loss: 0.0114 - val_loss: 0.0109
+219/219 [==============================] - 3s 12ms/step - loss: 0.0114 - val_loss: 0.0109
 Epoch 18/20
-219/219 [==============================] - 3s 14ms/step - loss: 0.0114 - val_loss: 0.0109
+219/219 [==============================] - 3s 12ms/step - loss: 0.0114 - val_loss: 0.0109
 Epoch 19/20
-219/219 [==============================] - 3s 14ms/step - loss: 0.0114 - val_loss: 0.0109
-Epoch 20/20
 219/219 [==============================] - 3s 13ms/step - loss: 0.0114 - val_loss: 0.0109
+Epoch 20/20
+219/219 [==============================] - 3s 12ms/step - loss: 0.0114 - val_loss: 0.0109
 </pre></div>
 </div>
 </div>
@@ -1005,10 +1007,10 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63/63 [==============================] - 0s 5ms/step - loss: 0.0109
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63/63 [==============================] - 0s 6ms/step - loss: 0.0109
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.010874304920434952
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.01088138297200203
 </pre></div>
 </div>
 </div>
@@ -1021,7 +1023,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/749440b1dafbf6668c467552f54893ecd8338ac560610e6e6ccc3a72c13716ee.png" src="../../../_images/749440b1dafbf6668c467552f54893ecd8338ac560610e6e6ccc3a72c13716ee.png" />
+<img alt="../../../_images/71936083bb5114c7cc031e13f17888c622291b54c28f0ed3edf00c968fe73f0d.png" src="../../../_images/71936083bb5114c7cc031e13f17888c622291b54c28f0ed3edf00c968fe73f0d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1033,7 +1035,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63/63 [==============================] - 0s 5ms/step
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63/63 [==============================] - 1s 7ms/step
 </pre></div>
 </div>
 <img alt="../../../_images/ef96cf6591708b51eebf0a37ed2e14d4778fab54a983d807f3659dfc389c1b7a.png" src="../../../_images/ef96cf6591708b51eebf0a37ed2e14d4778fab54a983d807f3659dfc389c1b7a.png" />
@@ -1062,48 +1064,48 @@ Epoch 20/20
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
-  5/219 [..............................] - ETA: 7s - loss: 0.6929 219/219 [==============================] - 9s 38ms/step - loss: 0.0586 - val_loss: 0.0075
+  5/219 [..............................] - ETA: 7s - loss: 0.2693 219/219 [==============================] - 9s 37ms/step - loss: 0.0254 - val_loss: 0.0053
 Epoch 2/20
-219/219 [==============================] - 9s 40ms/step - loss: 0.0064 - val_loss: 0.0054
+219/219 [==============================] - 8s 34ms/step - loss: 0.0045 - val_loss: 0.0036
 Epoch 3/20
-219/219 [==============================] - 9s 41ms/step - loss: 0.0049 - val_loss: 0.0042
+219/219 [==============================] - 8s 37ms/step - loss: 0.0034 - val_loss: 0.0030
 Epoch 4/20
-219/219 [==============================] - 9s 43ms/step - loss: 0.0044 - val_loss: 0.0043
+219/219 [==============================] - 8s 35ms/step - loss: 0.0032 - val_loss: 0.0030
 Epoch 5/20
-219/219 [==============================] - 10s 44ms/step - loss: 0.0039 - val_loss: 0.0036
+219/219 [==============================] - 8s 36ms/step - loss: 0.0030 - val_loss: 0.0030
 Epoch 6/20
-219/219 [==============================] - 9s 42ms/step - loss: 0.0037 - val_loss: 0.0043
+219/219 [==============================] - 8s 36ms/step - loss: 0.0030 - val_loss: 0.0028
 Epoch 7/20
-219/219 [==============================] - 9s 42ms/step - loss: 0.0036 - val_loss: 0.0038
+219/219 [==============================] - 8s 34ms/step - loss: 0.0029 - val_loss: 0.0028
 Epoch 8/20
-219/219 [==============================] - 9s 40ms/step - loss: 0.0037 - val_loss: 0.0035
+219/219 [==============================] - 8s 35ms/step - loss: 0.0030 - val_loss: 0.0029
 Epoch 9/20
-219/219 [==============================] - 9s 41ms/step - loss: 0.0036 - val_loss: 0.0030
+219/219 [==============================] - 8s 36ms/step - loss: 0.0029 - val_loss: 0.0026
 Epoch 10/20
-219/219 [==============================] - 9s 40ms/step - loss: 0.0033 - val_loss: 0.0033
+219/219 [==============================] - 8s 36ms/step - loss: 0.0028 - val_loss: 0.0027
 Epoch 11/20
-219/219 [==============================] - 9s 41ms/step - loss: 0.0034 - val_loss: 0.0030
+219/219 [==============================] - 8s 36ms/step - loss: 0.0028 - val_loss: 0.0026
 Epoch 12/20
-219/219 [==============================] - 9s 39ms/step - loss: 0.0033 - val_loss: 0.0032
+219/219 [==============================] - 8s 35ms/step - loss: 0.0028 - val_loss: 0.0027
 Epoch 13/20
-219/219 [==============================] - 9s 40ms/step - loss: 0.0032 - val_loss: 0.0030
+219/219 [==============================] - 8s 35ms/step - loss: 0.0028 - val_loss: 0.0027
 Epoch 14/20
-219/219 [==============================] - 9s 39ms/step - loss: 0.0032 - val_loss: 0.0030
+219/219 [==============================] - 8s 35ms/step - loss: 0.0028 - val_loss: 0.0028
 Epoch 15/20
-219/219 [==============================] - 8s 39ms/step - loss: 0.0033 - val_loss: 0.0028
+219/219 [==============================] - 8s 35ms/step - loss: 0.0028 - val_loss: 0.0031
 Epoch 16/20
-219/219 [==============================] - 8s 38ms/step - loss: 0.0032 - val_loss: 0.0032
+219/219 [==============================] - 8s 35ms/step - loss: 0.0029 - val_loss: 0.0026
 Epoch 17/20
-219/219 [==============================] - 9s 42ms/step - loss: 0.0031 - val_loss: 0.0028
+219/219 [==============================] - 8s 35ms/step - loss: 0.0027 - val_loss: 0.0026
 Epoch 18/20
-219/219 [==============================] - 9s 39ms/step - loss: 0.0031 - val_loss: 0.0028
+219/219 [==============================] - 8s 36ms/step - loss: 0.0027 - val_loss: 0.0025
 Epoch 19/20
-219/219 [==============================] - 8s 39ms/step - loss: 0.0030 - val_loss: 0.0028
+219/219 [==============================] - 8s 36ms/step - loss: 0.0027 - val_loss: 0.0026
 Epoch 20/20
-219/219 [==============================] - 9s 39ms/step - loss: 0.0030 - val_loss: 0.0030
+219/219 [==============================] - 8s 35ms/step - loss: 0.0027 - val_loss: 0.0025
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-04-03 01:16:18.206168: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:637] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-04-04 13:04:50.263686: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:637] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
 </pre></div>
 </div>
 </div>
@@ -1115,10 +1117,10 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63/63 [==============================] - 1s 12ms/step - loss: 0.0030
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63/63 [==============================] - 1s 13ms/step - loss: 0.0025
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0029970561154186726
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0025295214727520943
 </pre></div>
 </div>
 </div>
@@ -1131,7 +1133,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/1324af75ea40726068e75a1458aaee8e34012182c2bdc039ea8e499639fbb743.png" src="../../../_images/1324af75ea40726068e75a1458aaee8e34012182c2bdc039ea8e499639fbb743.png" />
+<img alt="../../../_images/afb3c8f73251adc958262c1741c659f50dbbc814b8fa6f7ec413f8f2a623964a.png" src="../../../_images/afb3c8f73251adc958262c1741c659f50dbbc814b8fa6f7ec413f8f2a623964a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1146,7 +1148,7 @@ Epoch 20/20
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63/63 [==============================] - 1s 11ms/step
 </pre></div>
 </div>
-<img alt="../../../_images/320edc36f15e5c590962e6339cad55285f17e6eea144dee01fd9b6c7a58e6eb6.png" src="../../../_images/320edc36f15e5c590962e6339cad55285f17e6eea144dee01fd9b6c7a58e6eb6.png" />
+<img alt="../../../_images/039d24336e533174e578c7d3bd286337edc0aa2bcfd6bc8c0185751a3404dbe2.png" src="../../../_images/039d24336e533174e578c7d3bd286337edc0aa2bcfd6bc8c0185751a3404dbe2.png" />
 </div>
 </div>
 <p>Make the second <code class="docutils literal notranslate"><span class="pre">SimpleRNN</span></code> layer return only the last output:</p>
@@ -1170,45 +1172,45 @@ Epoch 20/20
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
-219/219 [==============================] - 7s 27ms/step - loss: 0.0158 - val_loss: 0.0043
+219/219 [==============================] - 6s 25ms/step - loss: 0.0225 - val_loss: 0.0055
 Epoch 2/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0038 - val_loss: 0.0034
+219/219 [==============================] - 5s 25ms/step - loss: 0.0045 - val_loss: 0.0039
 Epoch 3/20
-219/219 [==============================] - 6s 27ms/step - loss: 0.0034 - val_loss: 0.0030
+219/219 [==============================] - 5s 25ms/step - loss: 0.0034 - val_loss: 0.0030
 Epoch 4/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0032 - val_loss: 0.0029
+219/219 [==============================] - 5s 24ms/step - loss: 0.0031 - val_loss: 0.0030
 Epoch 5/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0031 - val_loss: 0.0029
+219/219 [==============================] - 5s 24ms/step - loss: 0.0030 - val_loss: 0.0031
 Epoch 6/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0030 - val_loss: 0.0028
+219/219 [==============================] - 5s 25ms/step - loss: 0.0030 - val_loss: 0.0027
 Epoch 7/20
-219/219 [==============================] - 6s 27ms/step - loss: 0.0029 - val_loss: 0.0033
+219/219 [==============================] - 5s 25ms/step - loss: 0.0029 - val_loss: 0.0030
 Epoch 8/20
-219/219 [==============================] - 6s 27ms/step - loss: 0.0030 - val_loss: 0.0027
+219/219 [==============================] - 5s 24ms/step - loss: 0.0030 - val_loss: 0.0027
 Epoch 9/20
-219/219 [==============================] - 6s 27ms/step - loss: 0.0029 - val_loss: 0.0028
+219/219 [==============================] - 5s 24ms/step - loss: 0.0029 - val_loss: 0.0026
 Epoch 10/20
-219/219 [==============================] - 6s 27ms/step - loss: 0.0028 - val_loss: 0.0027
+219/219 [==============================] - 5s 24ms/step - loss: 0.0028 - val_loss: 0.0027
 Epoch 11/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0028 - val_loss: 0.0026
+219/219 [==============================] - 5s 25ms/step - loss: 0.0028 - val_loss: 0.0027
 Epoch 12/20
-219/219 [==============================] - 6s 27ms/step - loss: 0.0028 - val_loss: 0.0025
+219/219 [==============================] - 5s 24ms/step - loss: 0.0028 - val_loss: 0.0027
 Epoch 13/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0028 - val_loss: 0.0029
+219/219 [==============================] - 5s 25ms/step - loss: 0.0028 - val_loss: 0.0028
 Epoch 14/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0028 - val_loss: 0.0027
+219/219 [==============================] - 5s 25ms/step - loss: 0.0028 - val_loss: 0.0027
 Epoch 15/20
-219/219 [==============================] - 7s 31ms/step - loss: 0.0029 - val_loss: 0.0027
+219/219 [==============================] - 5s 24ms/step - loss: 0.0029 - val_loss: 0.0027
 Epoch 16/20
-219/219 [==============================] - 7s 30ms/step - loss: 0.0029 - val_loss: 0.0028
+219/219 [==============================] - 5s 25ms/step - loss: 0.0028 - val_loss: 0.0026
 Epoch 17/20
-219/219 [==============================] - 7s 30ms/step - loss: 0.0027 - val_loss: 0.0025
+219/219 [==============================] - 5s 24ms/step - loss: 0.0028 - val_loss: 0.0027
 Epoch 18/20
-219/219 [==============================] - 6s 29ms/step - loss: 0.0027 - val_loss: 0.0025
+219/219 [==============================] - 5s 24ms/step - loss: 0.0028 - val_loss: 0.0026
 Epoch 19/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0027 - val_loss: 0.0025
+219/219 [==============================] - 5s 25ms/step - loss: 0.0027 - val_loss: 0.0027
 Epoch 20/20
-219/219 [==============================] - 6s 29ms/step - loss: 0.0027 - val_loss: 0.0026
+219/219 [==============================] - 5s 24ms/step - loss: 0.0027 - val_loss: 0.0026
 </pre></div>
 </div>
 </div>
@@ -1220,10 +1222,10 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63/63 [==============================] - 1s 9ms/step - loss: 0.0026
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63/63 [==============================] - 1s 11ms/step - loss: 0.0026
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0025967753026634455
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0025954328011721373
 </pre></div>
 </div>
 </div>
@@ -1236,7 +1238,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/b20197f1891481dd122d9dde0e41c7396f61cd77d503e112d46cc5dc1d16458b.png" src="../../../_images/b20197f1891481dd122d9dde0e41c7396f61cd77d503e112d46cc5dc1d16458b.png" />
+<img alt="../../../_images/e06db287282e60342493eb635723d987f82f7feb1296d14d9504e4f375a2680f.png" src="../../../_images/e06db287282e60342493eb635723d987f82f7feb1296d14d9504e4f375a2680f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1248,10 +1250,10 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63/63 [==============================] - 1s 8ms/step
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63/63 [==============================] - 1s 10ms/step
 </pre></div>
 </div>
-<img alt="../../../_images/9430f680c2a6a8cd6b3727e764d8e293913c72f77ee35f39c0e4a46d37527ba3.png" src="../../../_images/9430f680c2a6a8cd6b3727e764d8e293913c72f77ee35f39c0e4a46d37527ba3.png" />
+<img alt="../../../_images/782dee3f50661b46fe0a0c7912e7af7991521b0bb6d7128a524959ef26c06356.png" src="../../../_images/782dee3f50661b46fe0a0c7912e7af7991521b0bb6d7128a524959ef26c06356.png" />
 </div>
 </div>
 </section>
@@ -1273,16 +1275,16 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 0s 19ms/step
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 0s 18ms/step
+1/1 [==============================] - 0s 18ms/step
+1/1 [==============================] - 0s 22ms/step
+1/1 [==============================] - 0s 18ms/step
+1/1 [==============================] - 0s 18ms/step
+1/1 [==============================] - 0s 22ms/step
+1/1 [==============================] - 0s 19ms/step
+1/1 [==============================] - 0s 19ms/step
+1/1 [==============================] - 0s 21ms/step
 1/1 [==============================] - 0s 20ms/step
-1/1 [==============================] - 0s 19ms/step
-1/1 [==============================] - 0s 19ms/step
-1/1 [==============================] - 0s 19ms/step
-1/1 [==============================] - 0s 24ms/step
-1/1 [==============================] - 0s 20ms/step
-1/1 [==============================] - 0s 17ms/step
-1/1 [==============================] - 0s 17ms/step
-1/1 [==============================] - 0s 17ms/step
 </pre></div>
 </div>
 </div>
@@ -1320,7 +1322,7 @@ Epoch 20/20
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saving figure forecast_ahead_plot
 </pre></div>
 </div>
-<img alt="../../../_images/d059752f1ce7d3823790b50469ec3b1a3aa1a4c1aac23312b846903e36b2f7e7.png" src="../../../_images/d059752f1ce7d3823790b50469ec3b1a3aa1a4c1aac23312b846903e36b2f7e7.png" />
+<img alt="../../../_images/463571e7519a1ef8ccfc5f41450b58556bd5e74af3f03b65f6cf2482f1b2201a.png" src="../../../_images/463571e7519a1ef8ccfc5f41450b58556bd5e74af3f03b65f6cf2482f1b2201a.png" />
 </div>
 </div>
 <p>Now let’s use this model to predict the next 10 values. We first need to regenerate the sequences with 9 more time steps.</p>
@@ -1350,16 +1352,16 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63/63 [==============================] - 0s 7ms/step
-63/63 [==============================] - 0s 5ms/step
-63/63 [==============================] - 0s 7ms/step
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63/63 [==============================] - 1s 10ms/step
 63/63 [==============================] - 1s 8ms/step
 63/63 [==============================] - 0s 6ms/step
 63/63 [==============================] - 0s 6ms/step
-63/63 [==============================] - 0s 5ms/step
-63/63 [==============================] - 0s 6ms/step
-63/63 [==============================] - 0s 6ms/step
+63/63 [==============================] - 1s 9ms/step
+63/63 [==============================] - 1s 11ms/step
+63/63 [==============================] - 1s 8ms/step
 63/63 [==============================] - 0s 7ms/step
+63/63 [==============================] - 0s 6ms/step
+63/63 [==============================] - 0s 5ms/step
 </pre></div>
 </div>
 </div>
@@ -1383,7 +1385,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.021999795
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.021216832
 </pre></div>
 </div>
 </div>
@@ -1421,45 +1423,45 @@ Epoch 20/20
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
-219/219 [==============================] - 1s 3ms/step - loss: 0.1268 - val_loss: 0.0661
+219/219 [==============================] - 0s 1ms/step - loss: 0.1342 - val_loss: 0.0637
 Epoch 2/20
-219/219 [==============================] - 0s 2ms/step - loss: 0.0525 - val_loss: 0.0440
+219/219 [==============================] - 0s 1ms/step - loss: 0.0512 - val_loss: 0.0437
 Epoch 3/20
-219/219 [==============================] - 0s 2ms/step - loss: 0.0393 - val_loss: 0.0359
+219/219 [==============================] - 0s 2ms/step - loss: 0.0390 - val_loss: 0.0360
 Epoch 4/20
-219/219 [==============================] - 0s 2ms/step - loss: 0.0337 - val_loss: 0.0317
+219/219 [==============================] - 0s 1ms/step - loss: 0.0336 - val_loss: 0.0320
 Epoch 5/20
-219/219 [==============================] - 1s 2ms/step - loss: 0.0303 - val_loss: 0.0290
+219/219 [==============================] - 0s 2ms/step - loss: 0.0305 - val_loss: 0.0294
 Epoch 6/20
-219/219 [==============================] - 1s 3ms/step - loss: 0.0280 - val_loss: 0.0272
+219/219 [==============================] - 0s 2ms/step - loss: 0.0282 - val_loss: 0.0276
 Epoch 7/20
-219/219 [==============================] - 1s 3ms/step - loss: 0.0264 - val_loss: 0.0257
+219/219 [==============================] - 0s 2ms/step - loss: 0.0265 - val_loss: 0.0260
 Epoch 8/20
-219/219 [==============================] - 1s 3ms/step - loss: 0.0252 - val_loss: 0.0245
+219/219 [==============================] - 0s 2ms/step - loss: 0.0253 - val_loss: 0.0247
 Epoch 9/20
-219/219 [==============================] - 1s 2ms/step - loss: 0.0242 - val_loss: 0.0238
+219/219 [==============================] - 0s 2ms/step - loss: 0.0242 - val_loss: 0.0238
 Epoch 10/20
-219/219 [==============================] - 1s 3ms/step - loss: 0.0234 - val_loss: 0.0230
+219/219 [==============================] - 1s 3ms/step - loss: 0.0233 - val_loss: 0.0229
 Epoch 11/20
-219/219 [==============================] - 1s 3ms/step - loss: 0.0228 - val_loss: 0.0224
+219/219 [==============================] - 0s 2ms/step - loss: 0.0225 - val_loss: 0.0222
 Epoch 12/20
-219/219 [==============================] - 1s 2ms/step - loss: 0.0222 - val_loss: 0.0219
+219/219 [==============================] - 1s 2ms/step - loss: 0.0219 - val_loss: 0.0217
 Epoch 13/20
-219/219 [==============================] - 1s 3ms/step - loss: 0.0217 - val_loss: 0.0215
+219/219 [==============================] - 1s 3ms/step - loss: 0.0214 - val_loss: 0.0212
 Epoch 14/20
-219/219 [==============================] - 1s 3ms/step - loss: 0.0213 - val_loss: 0.0213
+219/219 [==============================] - 1s 2ms/step - loss: 0.0209 - val_loss: 0.0210
 Epoch 15/20
-219/219 [==============================] - 1s 2ms/step - loss: 0.0209 - val_loss: 0.0208
+219/219 [==============================] - 1s 3ms/step - loss: 0.0205 - val_loss: 0.0205
 Epoch 16/20
-219/219 [==============================] - 1s 3ms/step - loss: 0.0205 - val_loss: 0.0204
+219/219 [==============================] - 1s 3ms/step - loss: 0.0202 - val_loss: 0.0202
 Epoch 17/20
-219/219 [==============================] - 1s 3ms/step - loss: 0.0202 - val_loss: 0.0200
+219/219 [==============================] - 1s 2ms/step - loss: 0.0198 - val_loss: 0.0197
 Epoch 18/20
-219/219 [==============================] - 1s 3ms/step - loss: 0.0198 - val_loss: 0.0196
-Epoch 19/20
 219/219 [==============================] - 1s 3ms/step - loss: 0.0195 - val_loss: 0.0194
-Epoch 20/20
+Epoch 19/20
 219/219 [==============================] - 1s 2ms/step - loss: 0.0192 - val_loss: 0.0191
+Epoch 20/20
+219/219 [==============================] - 0s 2ms/step - loss: 0.0190 - val_loss: 0.0189
 </pre></div>
 </div>
 </div>
@@ -1485,45 +1487,45 @@ Epoch 20/20
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
-219/219 [==============================] - 6s 26ms/step - loss: 0.0560 - val_loss: 0.0310
+219/219 [==============================] - 6s 24ms/step - loss: 0.0568 - val_loss: 0.0303
 Epoch 2/20
-219/219 [==============================] - 6s 26ms/step - loss: 0.0257 - val_loss: 0.0186
+219/219 [==============================] - 5s 25ms/step - loss: 0.0276 - val_loss: 0.0233
 Epoch 3/20
-219/219 [==============================] - 6s 26ms/step - loss: 0.0177 - val_loss: 0.0151
+219/219 [==============================] - 5s 24ms/step - loss: 0.0191 - val_loss: 0.0157
 Epoch 4/20
-219/219 [==============================] - 6s 27ms/step - loss: 0.0150 - val_loss: 0.0132
+219/219 [==============================] - 5s 24ms/step - loss: 0.0157 - val_loss: 0.0147
 Epoch 5/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0129 - val_loss: 0.0116
+219/219 [==============================] - 5s 24ms/step - loss: 0.0133 - val_loss: 0.0114
 Epoch 6/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0118 - val_loss: 0.0108
+219/219 [==============================] - 5s 25ms/step - loss: 0.0122 - val_loss: 0.0106
 Epoch 7/20
-219/219 [==============================] - 6s 29ms/step - loss: 0.0111 - val_loss: 0.0108
+219/219 [==============================] - 5s 23ms/step - loss: 0.0113 - val_loss: 0.0102
 Epoch 8/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0107 - val_loss: 0.0105
+219/219 [==============================] - 5s 24ms/step - loss: 0.0111 - val_loss: 0.0095
 Epoch 9/20
-219/219 [==============================] - 6s 29ms/step - loss: 0.0101 - val_loss: 0.0101
+219/219 [==============================] - 5s 24ms/step - loss: 0.0108 - val_loss: 0.0114
 Epoch 10/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0098 - val_loss: 0.0093
+219/219 [==============================] - 5s 25ms/step - loss: 0.0103 - val_loss: 0.0097
 Epoch 11/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0095 - val_loss: 0.0086
+219/219 [==============================] - 6s 25ms/step - loss: 0.0104 - val_loss: 0.0091
 Epoch 12/20
-219/219 [==============================] - 6s 29ms/step - loss: 0.0092 - val_loss: 0.0091
+219/219 [==============================] - 5s 24ms/step - loss: 0.0098 - val_loss: 0.0122
 Epoch 13/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0095 - val_loss: 0.0083
+219/219 [==============================] - 5s 24ms/step - loss: 0.0095 - val_loss: 0.0081
 Epoch 14/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0093 - val_loss: 0.0085
+219/219 [==============================] - 5s 24ms/step - loss: 0.0093 - val_loss: 0.0097
 Epoch 15/20
-219/219 [==============================] - 6s 29ms/step - loss: 0.0087 - val_loss: 0.0087
+219/219 [==============================] - 5s 25ms/step - loss: 0.0090 - val_loss: 0.0083
 Epoch 16/20
-219/219 [==============================] - 6s 29ms/step - loss: 0.0088 - val_loss: 0.0081
+219/219 [==============================] - 6s 25ms/step - loss: 0.0094 - val_loss: 0.0084
 Epoch 17/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0089 - val_loss: 0.0084
+219/219 [==============================] - 5s 24ms/step - loss: 0.0091 - val_loss: 0.0087
 Epoch 18/20
-219/219 [==============================] - 6s 29ms/step - loss: 0.0084 - val_loss: 0.0091
+219/219 [==============================] - 5s 24ms/step - loss: 0.0089 - val_loss: 0.0088
 Epoch 19/20
-219/219 [==============================] - 6s 29ms/step - loss: 0.0087 - val_loss: 0.0097
+219/219 [==============================] - 5s 25ms/step - loss: 0.0089 - val_loss: 0.0082
 Epoch 20/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0085 - val_loss: 0.0084
+219/219 [==============================] - 5s 25ms/step - loss: 0.0089 - val_loss: 0.0082
 </pre></div>
 </div>
 </div>
@@ -1539,7 +1541,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 0s 121ms/step
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 0s 127ms/step
 </pre></div>
 </div>
 </div>
@@ -1552,7 +1554,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/db69c84d388685927013ddfabde52e1875b49425e17bbe8a437e0158a3838fa6.png" src="../../../_images/db69c84d388685927013ddfabde52e1875b49425e17bbe8a437e0158a3838fa6.png" />
+<img alt="../../../_images/516880a225f70508419277efea3aa71ec80bbd0bef94be4271a59b6c6f039780.png" src="../../../_images/516880a225f70508419277efea3aa71ec80bbd0bef94be4271a59b6c6f039780.png" />
 </div>
 </div>
 <p>Now let’s create an RNN that predicts the next 10 steps at each time step. That is, instead of just forecasting time steps 50 to 59 based on time steps 0 to 49, it will forecast time steps 1 to 10 at time step 0, then time steps 2 to 11 at time step 1, and so on, and finally it will forecast time steps 50 to 59 at the last time step. Notice that the model is causal: when it makes predictions at any time step, it can only see past time steps.</p>
@@ -1609,45 +1611,45 @@ Epoch 20/20
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
-219/219 [==============================] - 7s 29ms/step - loss: 0.0500 - last_time_step_mse: 0.0393 - val_loss: 0.0417 - val_last_time_step_mse: 0.0307
+219/219 [==============================] - 6s 25ms/step - loss: 0.0523 - last_time_step_mse: 0.0421 - val_loss: 0.0425 - val_last_time_step_mse: 0.0308
 Epoch 2/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0362 - last_time_step_mse: 0.0243 - val_loss: 0.0353 - val_last_time_step_mse: 0.0252
+219/219 [==============================] - 5s 24ms/step - loss: 0.0407 - last_time_step_mse: 0.0288 - val_loss: 0.0333 - val_last_time_step_mse: 0.0194
 Epoch 3/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0298 - last_time_step_mse: 0.0182 - val_loss: 0.0281 - val_last_time_step_mse: 0.0174
+219/219 [==============================] - 5s 24ms/step - loss: 0.0335 - last_time_step_mse: 0.0214 - val_loss: 0.0312 - val_last_time_step_mse: 0.0203
 Epoch 4/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0260 - last_time_step_mse: 0.0137 - val_loss: 0.0234 - val_last_time_step_mse: 0.0107
+219/219 [==============================] - 5s 25ms/step - loss: 0.0300 - last_time_step_mse: 0.0179 - val_loss: 0.0262 - val_last_time_step_mse: 0.0130
 Epoch 5/20
-219/219 [==============================] - 6s 27ms/step - loss: 0.0235 - last_time_step_mse: 0.0108 - val_loss: 0.0221 - val_last_time_step_mse: 0.0097
+219/219 [==============================] - 5s 24ms/step - loss: 0.0262 - last_time_step_mse: 0.0135 - val_loss: 0.0235 - val_last_time_step_mse: 0.0105
 Epoch 6/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0225 - last_time_step_mse: 0.0102 - val_loss: 0.0207 - val_last_time_step_mse: 0.0079
+219/219 [==============================] - 5s 25ms/step - loss: 0.0234 - last_time_step_mse: 0.0109 - val_loss: 0.0234 - val_last_time_step_mse: 0.0111
 Epoch 7/20
-219/219 [==============================] - 6s 27ms/step - loss: 0.0218 - last_time_step_mse: 0.0097 - val_loss: 0.0210 - val_last_time_step_mse: 0.0090
+219/219 [==============================] - 5s 24ms/step - loss: 0.0220 - last_time_step_mse: 0.0101 - val_loss: 0.0202 - val_last_time_step_mse: 0.0082
 Epoch 8/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0208 - last_time_step_mse: 0.0083 - val_loss: 0.0198 - val_last_time_step_mse: 0.0077
+219/219 [==============================] - 5s 25ms/step - loss: 0.0208 - last_time_step_mse: 0.0088 - val_loss: 0.0198 - val_last_time_step_mse: 0.0081
 Epoch 9/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0205 - last_time_step_mse: 0.0082 - val_loss: 0.0193 - val_last_time_step_mse: 0.0072
+219/219 [==============================] - 5s 23ms/step - loss: 0.0203 - last_time_step_mse: 0.0085 - val_loss: 0.0197 - val_last_time_step_mse: 0.0081
 Epoch 10/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0201 - last_time_step_mse: 0.0079 - val_loss: 0.0206 - val_last_time_step_mse: 0.0103
+219/219 [==============================] - 5s 23ms/step - loss: 0.0197 - last_time_step_mse: 0.0078 - val_loss: 0.0208 - val_last_time_step_mse: 0.0111
 Epoch 11/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0197 - last_time_step_mse: 0.0077 - val_loss: 0.0188 - val_last_time_step_mse: 0.0068
+219/219 [==============================] - 5s 23ms/step - loss: 0.0197 - last_time_step_mse: 0.0080 - val_loss: 0.0194 - val_last_time_step_mse: 0.0075
 Epoch 12/20
-219/219 [==============================] - 6s 27ms/step - loss: 0.0195 - last_time_step_mse: 0.0075 - val_loss: 0.0184 - val_last_time_step_mse: 0.0066
+219/219 [==============================] - 5s 24ms/step - loss: 0.0193 - last_time_step_mse: 0.0076 - val_loss: 0.0178 - val_last_time_step_mse: 0.0060
 Epoch 13/20
-219/219 [==============================] - 6s 27ms/step - loss: 0.0194 - last_time_step_mse: 0.0075 - val_loss: 0.0204 - val_last_time_step_mse: 0.0087
+219/219 [==============================] - 6s 25ms/step - loss: 0.0187 - last_time_step_mse: 0.0069 - val_loss: 0.0194 - val_last_time_step_mse: 0.0078
 Epoch 14/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0191 - last_time_step_mse: 0.0072 - val_loss: 0.0178 - val_last_time_step_mse: 0.0066
+219/219 [==============================] - 5s 25ms/step - loss: 0.0185 - last_time_step_mse: 0.0068 - val_loss: 0.0183 - val_last_time_step_mse: 0.0069
 Epoch 15/20
-219/219 [==============================] - 6s 27ms/step - loss: 0.0192 - last_time_step_mse: 0.0074 - val_loss: 0.0198 - val_last_time_step_mse: 0.0090
+219/219 [==============================] - 5s 25ms/step - loss: 0.0187 - last_time_step_mse: 0.0071 - val_loss: 0.0177 - val_last_time_step_mse: 0.0064
 Epoch 16/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0188 - last_time_step_mse: 0.0070 - val_loss: 0.0180 - val_last_time_step_mse: 0.0068
+219/219 [==============================] - 5s 24ms/step - loss: 0.0187 - last_time_step_mse: 0.0071 - val_loss: 0.0191 - val_last_time_step_mse: 0.0083
 Epoch 17/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0186 - last_time_step_mse: 0.0069 - val_loss: 0.0182 - val_last_time_step_mse: 0.0069
+219/219 [==============================] - 5s 25ms/step - loss: 0.0183 - last_time_step_mse: 0.0066 - val_loss: 0.0173 - val_last_time_step_mse: 0.0059
 Epoch 18/20
-219/219 [==============================] - 6s 27ms/step - loss: 0.0187 - last_time_step_mse: 0.0070 - val_loss: 0.0181 - val_last_time_step_mse: 0.0069
+219/219 [==============================] - 5s 24ms/step - loss: 0.0183 - last_time_step_mse: 0.0069 - val_loss: 0.0178 - val_last_time_step_mse: 0.0067
 Epoch 19/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0182 - last_time_step_mse: 0.0066 - val_loss: 0.0188 - val_last_time_step_mse: 0.0075
+219/219 [==============================] - 6s 25ms/step - loss: 0.0178 - last_time_step_mse: 0.0063 - val_loss: 0.0188 - val_last_time_step_mse: 0.0072
 Epoch 20/20
-219/219 [==============================] - 6s 27ms/step - loss: 0.0182 - last_time_step_mse: 0.0066 - val_loss: 0.0191 - val_last_time_step_mse: 0.0078
+219/219 [==============================] - 5s 25ms/step - loss: 0.0181 - last_time_step_mse: 0.0068 - val_loss: 0.0199 - val_last_time_step_mse: 0.0083
 </pre></div>
 </div>
 </div>
@@ -1663,7 +1665,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 0s 129ms/step
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 0s 127ms/step
 </pre></div>
 </div>
 </div>
@@ -1676,7 +1678,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/8e73fb9c04bcdb6f1269c56d2eb28d6ba0efc29d0b71d3ea73e7326fcb23dd93.png" src="../../../_images/8e73fb9c04bcdb6f1269c56d2eb28d6ba0efc29d0b71d3ea73e7326fcb23dd93.png" />
+<img alt="../../../_images/c2f5307c3ad69f3f0860bd56356be8f3303155f7ade0ffdea7e34b0079554535.png" src="../../../_images/c2f5307c3ad69f3f0860bd56356be8f3303155f7ade0ffdea7e34b0079554535.png" />
 </div>
 </div>
 </section>
@@ -1705,45 +1707,45 @@ Epoch 20/20
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
-219/219 [==============================] - 7s 29ms/step - loss: 0.1563 - last_time_step_mse: 0.1382 - val_loss: 0.1005 - val_last_time_step_mse: 0.0948
+219/219 [==============================] - 7s 26ms/step - loss: 0.1921 - last_time_step_mse: 0.1716 - val_loss: 0.0865 - val_last_time_step_mse: 0.0776
 Epoch 2/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0515 - last_time_step_mse: 0.0411 - val_loss: 0.0498 - val_last_time_step_mse: 0.0398
+219/219 [==============================] - 6s 25ms/step - loss: 0.0540 - last_time_step_mse: 0.0439 - val_loss: 0.0519 - val_last_time_step_mse: 0.0421
 Epoch 3/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0445 - last_time_step_mse: 0.0339 - val_loss: 0.0425 - val_last_time_step_mse: 0.0315
+219/219 [==============================] - 6s 26ms/step - loss: 0.0466 - last_time_step_mse: 0.0365 - val_loss: 0.0451 - val_last_time_step_mse: 0.0345
 Epoch 4/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0409 - last_time_step_mse: 0.0297 - val_loss: 0.0399 - val_last_time_step_mse: 0.0282
+219/219 [==============================] - 5s 25ms/step - loss: 0.0420 - last_time_step_mse: 0.0312 - val_loss: 0.0404 - val_last_time_step_mse: 0.0295
 Epoch 5/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0377 - last_time_step_mse: 0.0258 - val_loss: 0.0361 - val_last_time_step_mse: 0.0240
+219/219 [==============================] - 6s 26ms/step - loss: 0.0383 - last_time_step_mse: 0.0267 - val_loss: 0.0373 - val_last_time_step_mse: 0.0256
 Epoch 6/20
-219/219 [==============================] - 6s 29ms/step - loss: 0.0350 - last_time_step_mse: 0.0221 - val_loss: 0.0346 - val_last_time_step_mse: 0.0203
+219/219 [==============================] - 6s 25ms/step - loss: 0.0357 - last_time_step_mse: 0.0235 - val_loss: 0.0356 - val_last_time_step_mse: 0.0232
 Epoch 7/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0333 - last_time_step_mse: 0.0198 - val_loss: 0.0323 - val_last_time_step_mse: 0.0181
+219/219 [==============================] - 6s 25ms/step - loss: 0.0342 - last_time_step_mse: 0.0222 - val_loss: 0.0338 - val_last_time_step_mse: 0.0218
 Epoch 8/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0321 - last_time_step_mse: 0.0187 - val_loss: 0.0314 - val_last_time_step_mse: 0.0172
+219/219 [==============================] - 6s 25ms/step - loss: 0.0326 - last_time_step_mse: 0.0206 - val_loss: 0.0318 - val_last_time_step_mse: 0.0197
 Epoch 9/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0311 - last_time_step_mse: 0.0175 - val_loss: 0.0320 - val_last_time_step_mse: 0.0177
+219/219 [==============================] - 6s 26ms/step - loss: 0.0315 - last_time_step_mse: 0.0193 - val_loss: 0.0311 - val_last_time_step_mse: 0.0190
 Epoch 10/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0307 - last_time_step_mse: 0.0173 - val_loss: 0.0301 - val_last_time_step_mse: 0.0157
+219/219 [==============================] - 6s 26ms/step - loss: 0.0310 - last_time_step_mse: 0.0190 - val_loss: 0.0309 - val_last_time_step_mse: 0.0191
 Epoch 11/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0302 - last_time_step_mse: 0.0168 - val_loss: 0.0299 - val_last_time_step_mse: 0.0173
+219/219 [==============================] - 6s 26ms/step - loss: 0.0304 - last_time_step_mse: 0.0184 - val_loss: 0.0313 - val_last_time_step_mse: 0.0197
 Epoch 12/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0296 - last_time_step_mse: 0.0162 - val_loss: 0.0300 - val_last_time_step_mse: 0.0161
+219/219 [==============================] - 6s 26ms/step - loss: 0.0298 - last_time_step_mse: 0.0178 - val_loss: 0.0292 - val_last_time_step_mse: 0.0169
 Epoch 13/20
-219/219 [==============================] - 6s 27ms/step - loss: 0.0294 - last_time_step_mse: 0.0161 - val_loss: 0.0287 - val_last_time_step_mse: 0.0156
+219/219 [==============================] - 6s 26ms/step - loss: 0.0293 - last_time_step_mse: 0.0173 - val_loss: 0.0289 - val_last_time_step_mse: 0.0169
 Epoch 14/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0290 - last_time_step_mse: 0.0157 - val_loss: 0.0288 - val_last_time_step_mse: 0.0153
+219/219 [==============================] - 6s 25ms/step - loss: 0.0290 - last_time_step_mse: 0.0169 - val_loss: 0.0282 - val_last_time_step_mse: 0.0163
 Epoch 15/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0287 - last_time_step_mse: 0.0156 - val_loss: 0.0287 - val_last_time_step_mse: 0.0155
+219/219 [==============================] - 6s 25ms/step - loss: 0.0286 - last_time_step_mse: 0.0166 - val_loss: 0.0280 - val_last_time_step_mse: 0.0159
 Epoch 16/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0282 - last_time_step_mse: 0.0153 - val_loss: 0.0290 - val_last_time_step_mse: 0.0146
+219/219 [==============================] - 6s 26ms/step - loss: 0.0284 - last_time_step_mse: 0.0164 - val_loss: 0.0293 - val_last_time_step_mse: 0.0176
 Epoch 17/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0281 - last_time_step_mse: 0.0151 - val_loss: 0.0299 - val_last_time_step_mse: 0.0173
+219/219 [==============================] - 6s 25ms/step - loss: 0.0281 - last_time_step_mse: 0.0161 - val_loss: 0.0281 - val_last_time_step_mse: 0.0155
 Epoch 18/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0277 - last_time_step_mse: 0.0148 - val_loss: 0.0277 - val_last_time_step_mse: 0.0147
+219/219 [==============================] - 6s 26ms/step - loss: 0.0277 - last_time_step_mse: 0.0157 - val_loss: 0.0273 - val_last_time_step_mse: 0.0153
 Epoch 19/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0274 - last_time_step_mse: 0.0147 - val_loss: 0.0271 - val_last_time_step_mse: 0.0148
+219/219 [==============================] - 6s 26ms/step - loss: 0.0275 - last_time_step_mse: 0.0155 - val_loss: 0.0272 - val_last_time_step_mse: 0.0153
 Epoch 20/20
-219/219 [==============================] - 6s 28ms/step - loss: 0.0272 - last_time_step_mse: 0.0145 - val_loss: 0.0271 - val_last_time_step_mse: 0.0137
+219/219 [==============================] - 5s 25ms/step - loss: 0.0273 - last_time_step_mse: 0.0153 - val_loss: 0.0274 - val_last_time_step_mse: 0.0152
 </pre></div>
 </div>
 </div>
@@ -1804,48 +1806,48 @@ Epoch 20/20
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
-  3/219 [..............................] - ETA: 9s - loss: 0.5561 - last_time_step_mse: 0.5485  219/219 [==============================] - 15s 63ms/step - loss: 0.1271 - last_time_step_mse: 0.1131 - val_loss: 0.0640 - val_last_time_step_mse: 0.0521
+  3/219 [..............................] - ETA: 9s - loss: 0.6127 - last_time_step_mse: 0.5811  219/219 [==============================] - 13s 54ms/step - loss: 0.1121 - last_time_step_mse: 0.0978 - val_loss: 0.0626 - val_last_time_step_mse: 0.0526
 Epoch 2/20
-219/219 [==============================] - 14s 63ms/step - loss: 0.0566 - last_time_step_mse: 0.0445 - val_loss: 0.0505 - val_last_time_step_mse: 0.0386
+219/219 [==============================] - 16s 71ms/step - loss: 0.0583 - last_time_step_mse: 0.0486 - val_loss: 0.0546 - val_last_time_step_mse: 0.0455
 Epoch 3/20
-219/219 [==============================] - 13s 60ms/step - loss: 0.0467 - last_time_step_mse: 0.0355 - val_loss: 0.0434 - val_last_time_step_mse: 0.0324
+219/219 [==============================] - 14s 66ms/step - loss: 0.0517 - last_time_step_mse: 0.0415 - val_loss: 0.0484 - val_last_time_step_mse: 0.0380
 Epoch 4/20
-219/219 [==============================] - 13s 60ms/step - loss: 0.0407 - last_time_step_mse: 0.0296 - val_loss: 0.0378 - val_last_time_step_mse: 0.0251
+219/219 [==============================] - 14s 65ms/step - loss: 0.0461 - last_time_step_mse: 0.0355 - val_loss: 0.0437 - val_last_time_step_mse: 0.0340
 Epoch 5/20
-219/219 [==============================] - 13s 60ms/step - loss: 0.0360 - last_time_step_mse: 0.0230 - val_loss: 0.0338 - val_last_time_step_mse: 0.0192
+219/219 [==============================] - 15s 67ms/step - loss: 0.0416 - last_time_step_mse: 0.0309 - val_loss: 0.0401 - val_last_time_step_mse: 0.0301
 Epoch 6/20
-219/219 [==============================] - 13s 60ms/step - loss: 0.0331 - last_time_step_mse: 0.0196 - val_loss: 0.0320 - val_last_time_step_mse: 0.0180
+219/219 [==============================] - 14s 66ms/step - loss: 0.0390 - last_time_step_mse: 0.0280 - val_loss: 0.0375 - val_last_time_step_mse: 0.0262
 Epoch 7/20
-219/219 [==============================] - 13s 60ms/step - loss: 0.0320 - last_time_step_mse: 0.0183 - val_loss: 0.0304 - val_last_time_step_mse: 0.0162
+219/219 [==============================] - 13s 61ms/step - loss: 0.0369 - last_time_step_mse: 0.0258 - val_loss: 0.0357 - val_last_time_step_mse: 0.0239
 Epoch 8/20
-219/219 [==============================] - 13s 60ms/step - loss: 0.0304 - last_time_step_mse: 0.0164 - val_loss: 0.0299 - val_last_time_step_mse: 0.0160
+219/219 [==============================] - 14s 62ms/step - loss: 0.0354 - last_time_step_mse: 0.0239 - val_loss: 0.0349 - val_last_time_step_mse: 0.0229
 Epoch 9/20
-219/219 [==============================] - 13s 60ms/step - loss: 0.0345 - last_time_step_mse: 0.0189 - val_loss: 0.0404 - val_last_time_step_mse: 0.0209
+219/219 [==============================] - 13s 61ms/step - loss: 0.0340 - last_time_step_mse: 0.0221 - val_loss: 0.0336 - val_last_time_step_mse: 0.0218
 Epoch 10/20
-219/219 [==============================] - 13s 60ms/step - loss: 0.0353 - last_time_step_mse: 0.0176 - val_loss: 0.0328 - val_last_time_step_mse: 0.0158
+219/219 [==============================] - 14s 62ms/step - loss: 0.0336 - last_time_step_mse: 0.0216 - val_loss: 0.0333 - val_last_time_step_mse: 0.0211
 Epoch 11/20
-219/219 [==============================] - 13s 60ms/step - loss: 0.0321 - last_time_step_mse: 0.0160 - val_loss: 0.0309 - val_last_time_step_mse: 0.0150
+219/219 [==============================] - 16s 72ms/step - loss: 0.0327 - last_time_step_mse: 0.0204 - val_loss: 0.0318 - val_last_time_step_mse: 0.0194
 Epoch 12/20
-219/219 [==============================] - 13s 60ms/step - loss: 0.0307 - last_time_step_mse: 0.0153 - val_loss: 0.0298 - val_last_time_step_mse: 0.0146
+219/219 [==============================] - 14s 63ms/step - loss: 0.0320 - last_time_step_mse: 0.0195 - val_loss: 0.0315 - val_last_time_step_mse: 0.0193
 Epoch 13/20
-219/219 [==============================] - 13s 59ms/step - loss: 0.0296 - last_time_step_mse: 0.0147 - val_loss: 0.0293 - val_last_time_step_mse: 0.0147
+219/219 [==============================] - 15s 70ms/step - loss: 0.0315 - last_time_step_mse: 0.0190 - val_loss: 0.0307 - val_last_time_step_mse: 0.0182
 Epoch 14/20
-219/219 [==============================] - 13s 59ms/step - loss: 0.0290 - last_time_step_mse: 0.0145 - val_loss: 0.0286 - val_last_time_step_mse: 0.0144
+219/219 [==============================] - 13s 61ms/step - loss: 0.0309 - last_time_step_mse: 0.0184 - val_loss: 0.0308 - val_last_time_step_mse: 0.0187
 Epoch 15/20
-219/219 [==============================] - 13s 60ms/step - loss: 0.0285 - last_time_step_mse: 0.0141 - val_loss: 0.0280 - val_last_time_step_mse: 0.0136
+219/219 [==============================] - 15s 66ms/step - loss: 0.0305 - last_time_step_mse: 0.0179 - val_loss: 0.0299 - val_last_time_step_mse: 0.0173
 Epoch 16/20
-219/219 [==============================] - 13s 60ms/step - loss: 0.0281 - last_time_step_mse: 0.0142 - val_loss: 0.0275 - val_last_time_step_mse: 0.0130
+219/219 [==============================] - 13s 62ms/step - loss: 0.0300 - last_time_step_mse: 0.0174 - val_loss: 0.0296 - val_last_time_step_mse: 0.0173
 Epoch 17/20
-219/219 [==============================] - 13s 60ms/step - loss: 0.0275 - last_time_step_mse: 0.0136 - val_loss: 0.0271 - val_last_time_step_mse: 0.0126
+219/219 [==============================] - 15s 68ms/step - loss: 0.0295 - last_time_step_mse: 0.0170 - val_loss: 0.0289 - val_last_time_step_mse: 0.0160
 Epoch 18/20
-219/219 [==============================] - 13s 60ms/step - loss: 0.0270 - last_time_step_mse: 0.0132 - val_loss: 0.0267 - val_last_time_step_mse: 0.0129
+219/219 [==============================] - 14s 65ms/step - loss: 0.0290 - last_time_step_mse: 0.0163 - val_loss: 0.0281 - val_last_time_step_mse: 0.0153
 Epoch 19/20
-219/219 [==============================] - 13s 60ms/step - loss: 0.0267 - last_time_step_mse: 0.0130 - val_loss: 0.0264 - val_last_time_step_mse: 0.0127
+219/219 [==============================] - 14s 64ms/step - loss: 0.0286 - last_time_step_mse: 0.0158 - val_loss: 0.0279 - val_last_time_step_mse: 0.0149
 Epoch 20/20
-219/219 [==============================] - 13s 60ms/step - loss: 0.0262 - last_time_step_mse: 0.0126 - val_loss: 0.0260 - val_last_time_step_mse: 0.0118
+219/219 [==============================] - 14s 63ms/step - loss: 0.0282 - last_time_step_mse: 0.0154 - val_loss: 0.0274 - val_last_time_step_mse: 0.0144
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-04-03 01:27:52.486722: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:424] Loaded cuDNN version 8600
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-04-04 13:15:05.308735: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:424] Loaded cuDNN version 8600
 </pre></div>
 </div>
 </div>
@@ -1907,50 +1909,50 @@ Epoch 20/20
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
-219/219 [==============================] - 16s 69ms/step - loss: 0.1704 - last_time_step_mse: 0.1578 - val_loss: 0.0834 - val_last_time_step_mse: 0.0751
+219/219 [==============================] - 16s 67ms/step - loss: 0.1450 - last_time_step_mse: 0.1322 - val_loss: 0.0623 - val_last_time_step_mse: 0.0509
 Epoch 2/20
-219/219 [==============================] - 15s 69ms/step - loss: 0.0652 - last_time_step_mse: 0.0531 - val_loss: 0.0572 - val_last_time_step_mse: 0.0447
+219/219 [==============================] - 15s 69ms/step - loss: 0.0557 - last_time_step_mse: 0.0451 - val_loss: 0.0507 - val_last_time_step_mse: 0.0401
 Epoch 3/20
-219/219 [==============================] - 15s 67ms/step - loss: 0.0538 - last_time_step_mse: 0.0426 - val_loss: 0.0499 - val_last_time_step_mse: 0.0377
+219/219 [==============================] - 15s 67ms/step - loss: 0.0474 - last_time_step_mse: 0.0367 - val_loss: 0.0446 - val_last_time_step_mse: 0.0334
 Epoch 4/20
-219/219 [==============================] - 15s 68ms/step - loss: 0.0477 - last_time_step_mse: 0.0371 - val_loss: 0.0453 - val_last_time_step_mse: 0.0339
+219/219 [==============================] - 14s 66ms/step - loss: 0.0429 - last_time_step_mse: 0.0320 - val_loss: 0.0405 - val_last_time_step_mse: 0.0285
 Epoch 5/20
-219/219 [==============================] - 15s 67ms/step - loss: 0.0439 - last_time_step_mse: 0.0334 - val_loss: 0.0417 - val_last_time_step_mse: 0.0304
+219/219 [==============================] - 14s 66ms/step - loss: 0.0406 - last_time_step_mse: 0.0286 - val_loss: 0.0383 - val_last_time_step_mse: 0.0248
 Epoch 6/20
-219/219 [==============================] - 15s 67ms/step - loss: 0.0409 - last_time_step_mse: 0.0306 - val_loss: 0.0392 - val_last_time_step_mse: 0.0288
+219/219 [==============================] - 14s 65ms/step - loss: 0.0360 - last_time_step_mse: 0.0216 - val_loss: 0.0343 - val_last_time_step_mse: 0.0197
 Epoch 7/20
-219/219 [==============================] - 15s 67ms/step - loss: 0.0393 - last_time_step_mse: 0.0291 - val_loss: 0.0376 - val_last_time_step_mse: 0.0270
+219/219 [==============================] - 14s 65ms/step - loss: 0.0338 - last_time_step_mse: 0.0191 - val_loss: 0.0321 - val_last_time_step_mse: 0.0170
 Epoch 8/20
-219/219 [==============================] - 15s 68ms/step - loss: 0.0378 - last_time_step_mse: 0.0281 - val_loss: 0.0367 - val_last_time_step_mse: 0.0264
+219/219 [==============================] - 16s 71ms/step - loss: 0.0319 - last_time_step_mse: 0.0171 - val_loss: 0.0309 - val_last_time_step_mse: 0.0158
 Epoch 9/20
-219/219 [==============================] - 15s 68ms/step - loss: 0.0366 - last_time_step_mse: 0.0269 - val_loss: 0.0374 - val_last_time_step_mse: 0.0270
+219/219 [==============================] - 14s 65ms/step - loss: 0.0308 - last_time_step_mse: 0.0159 - val_loss: 0.0302 - val_last_time_step_mse: 0.0158
 Epoch 10/20
-219/219 [==============================] - 15s 68ms/step - loss: 0.0356 - last_time_step_mse: 0.0259 - val_loss: 0.0353 - val_last_time_step_mse: 0.0249
+219/219 [==============================] - 16s 72ms/step - loss: 0.0302 - last_time_step_mse: 0.0154 - val_loss: 0.0296 - val_last_time_step_mse: 0.0147
 Epoch 11/20
-219/219 [==============================] - 15s 67ms/step - loss: 0.0349 - last_time_step_mse: 0.0252 - val_loss: 0.0342 - val_last_time_step_mse: 0.0239
+219/219 [==============================] - 14s 65ms/step - loss: 0.0296 - last_time_step_mse: 0.0149 - val_loss: 0.0295 - val_last_time_step_mse: 0.0144
 Epoch 12/20
-219/219 [==============================] - 15s 67ms/step - loss: 0.0341 - last_time_step_mse: 0.0238 - val_loss: 0.0326 - val_last_time_step_mse: 0.0208
+219/219 [==============================] - 16s 75ms/step - loss: 0.0295 - last_time_step_mse: 0.0143 - val_loss: 0.0282 - val_last_time_step_mse: 0.0139
 Epoch 13/20
-219/219 [==============================] - 15s 68ms/step - loss: 0.0327 - last_time_step_mse: 0.0213 - val_loss: 0.0323 - val_last_time_step_mse: 0.0199
+219/219 [==============================] - 16s 74ms/step - loss: 0.0281 - last_time_step_mse: 0.0131 - val_loss: 0.0280 - val_last_time_step_mse: 0.0131
 Epoch 14/20
-219/219 [==============================] - 15s 67ms/step - loss: 0.0322 - last_time_step_mse: 0.0204 - val_loss: 0.0313 - val_last_time_step_mse: 0.0194
+219/219 [==============================] - 16s 71ms/step - loss: 0.0276 - last_time_step_mse: 0.0126 - val_loss: 0.0269 - val_last_time_step_mse: 0.0125
 Epoch 15/20
-219/219 [==============================] - 15s 67ms/step - loss: 0.0314 - last_time_step_mse: 0.0191 - val_loss: 0.0308 - val_last_time_step_mse: 0.0189
+219/219 [==============================] - 12s 55ms/step - loss: 0.0269 - last_time_step_mse: 0.0117 - val_loss: 0.0255 - val_last_time_step_mse: 0.0103
 Epoch 16/20
-219/219 [==============================] - 15s 67ms/step - loss: 0.0308 - last_time_step_mse: 0.0186 - val_loss: 0.0303 - val_last_time_step_mse: 0.0177
+219/219 [==============================] - 12s 53ms/step - loss: 0.0260 - last_time_step_mse: 0.0110 - val_loss: 0.0251 - val_last_time_step_mse: 0.0104
 Epoch 17/20
-219/219 [==============================] - 15s 67ms/step - loss: 0.0304 - last_time_step_mse: 0.0180 - val_loss: 0.0298 - val_last_time_step_mse: 0.0174
+219/219 [==============================] - 12s 53ms/step - loss: 0.0253 - last_time_step_mse: 0.0103 - val_loss: 0.0250 - val_last_time_step_mse: 0.0104
 Epoch 18/20
-219/219 [==============================] - 15s 67ms/step - loss: 0.0298 - last_time_step_mse: 0.0172 - val_loss: 0.0296 - val_last_time_step_mse: 0.0183
+219/219 [==============================] - 12s 53ms/step - loss: 0.0245 - last_time_step_mse: 0.0096 - val_loss: 0.0237 - val_last_time_step_mse: 0.0091
 Epoch 19/20
-219/219 [==============================] - 15s 66ms/step - loss: 0.0293 - last_time_step_mse: 0.0168 - val_loss: 0.0291 - val_last_time_step_mse: 0.0162
+219/219 [==============================] - 12s 55ms/step - loss: 0.0241 - last_time_step_mse: 0.0091 - val_loss: 0.0234 - val_last_time_step_mse: 0.0086
 Epoch 20/20
-219/219 [==============================] - 15s 67ms/step - loss: 0.0289 - last_time_step_mse: 0.0164 - val_loss: 0.0288 - val_last_time_step_mse: 0.0165
+219/219 [==============================] - 12s 53ms/step - loss: 0.0236 - last_time_step_mse: 0.0090 - val_loss: 0.0230 - val_last_time_step_mse: 0.0081
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-04-03 01:32:16.046251: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;Placeholder&#39; with dtype float and shape [?,?,1]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-04-04 13:19:47.603857: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;Placeholder&#39; with dtype float and shape [?,?,1]
 	 [[{{node Placeholder}}]]
-2023-04-03 01:32:16.132142: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;Placeholder&#39; with dtype float and shape [?,?,20]
+2023-04-04 13:19:47.691018: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;Placeholder&#39; with dtype float and shape [?,?,20]
 	 [[{{node Placeholder}}]]
 </pre></div>
 </div>
@@ -1980,94 +1982,94 @@ Epoch 20/20
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
-219/219 [==============================] - ETA: 0s - loss: 0.0758 - last_time_step_mse: 0.0613219/219 [==============================] - 4s 11ms/step - loss: 0.0758 - last_time_step_mse: 0.0613 - val_loss: 0.0531 - val_last_time_step_mse: 0.0332
+215/219 [============================&gt;.] - ETA: 0s - loss: 0.0803 - last_time_step_mse: 0.0660219/219 [==============================] - 4s 12ms/step - loss: 0.0798 - last_time_step_mse: 0.0655 - val_loss: 0.0553 - val_last_time_step_mse: 0.0368
 Epoch 2/20
-219/219 [==============================] - 2s 9ms/step - loss: 0.0467 - last_time_step_mse: 0.0267 - val_loss: 0.0415 - val_last_time_step_mse: 0.0200
+219/219 [==============================] - 2s 9ms/step - loss: 0.0467 - last_time_step_mse: 0.0266 - val_loss: 0.0400 - val_last_time_step_mse: 0.0198
 Epoch 3/20
-219/219 [==============================] - 2s 9ms/step - loss: 0.0385 - last_time_step_mse: 0.0180 - val_loss: 0.0371 - val_last_time_step_mse: 0.0175
+219/219 [==============================] - 2s 9ms/step - loss: 0.0373 - last_time_step_mse: 0.0171 - val_loss: 0.0357 - val_last_time_step_mse: 0.0161
 Epoch 4/20
-219/219 [==============================] - 2s 9ms/step - loss: 0.0346 - last_time_step_mse: 0.0149 - val_loss: 0.0330 - val_last_time_step_mse: 0.0139
+219/219 [==============================] - 2s 10ms/step - loss: 0.0342 - last_time_step_mse: 0.0147 - val_loss: 0.0330 - val_last_time_step_mse: 0.0133
 Epoch 5/20
-219/219 [==============================] - 2s 10ms/step - loss: 0.0321 - last_time_step_mse: 0.0134 - val_loss: 0.0311 - val_last_time_step_mse: 0.0130
+219/219 [==============================] - 2s 10ms/step - loss: 0.0321 - last_time_step_mse: 0.0135 - val_loss: 0.0313 - val_last_time_step_mse: 0.0132
 Epoch 6/20
-219/219 [==============================] - 2s 10ms/step - loss: 0.0303 - last_time_step_mse: 0.0124 - val_loss: 0.0291 - val_last_time_step_mse: 0.0116
+219/219 [==============================] - 2s 10ms/step - loss: 0.0304 - last_time_step_mse: 0.0120 - val_loss: 0.0294 - val_last_time_step_mse: 0.0110
 Epoch 7/20
-219/219 [==============================] - 2s 10ms/step - loss: 0.0289 - last_time_step_mse: 0.0114 - val_loss: 0.0281 - val_last_time_step_mse: 0.0111
+219/219 [==============================] - 2s 9ms/step - loss: 0.0291 - last_time_step_mse: 0.0112 - val_loss: 0.0284 - val_last_time_step_mse: 0.0111
 Epoch 8/20
-219/219 [==============================] - 2s 9ms/step - loss: 0.0279 - last_time_step_mse: 0.0108 - val_loss: 0.0273 - val_last_time_step_mse: 0.0102
+219/219 [==============================] - 2s 10ms/step - loss: 0.0281 - last_time_step_mse: 0.0104 - val_loss: 0.0274 - val_last_time_step_mse: 0.0101
 Epoch 9/20
-219/219 [==============================] - 2s 9ms/step - loss: 0.0271 - last_time_step_mse: 0.0103 - val_loss: 0.0268 - val_last_time_step_mse: 0.0102
+219/219 [==============================] - 2s 10ms/step - loss: 0.0273 - last_time_step_mse: 0.0102 - val_loss: 0.0269 - val_last_time_step_mse: 0.0099
 Epoch 10/20
-219/219 [==============================] - 2s 8ms/step - loss: 0.0265 - last_time_step_mse: 0.0101 - val_loss: 0.0259 - val_last_time_step_mse: 0.0095
+219/219 [==============================] - 2s 9ms/step - loss: 0.0268 - last_time_step_mse: 0.0101 - val_loss: 0.0264 - val_last_time_step_mse: 0.0098
 Epoch 11/20
-219/219 [==============================] - 2s 8ms/step - loss: 0.0259 - last_time_step_mse: 0.0098 - val_loss: 0.0256 - val_last_time_step_mse: 0.0095
+219/219 [==============================] - 2s 8ms/step - loss: 0.0263 - last_time_step_mse: 0.0097 - val_loss: 0.0259 - val_last_time_step_mse: 0.0093
 Epoch 12/20
-219/219 [==============================] - 2s 9ms/step - loss: 0.0255 - last_time_step_mse: 0.0096 - val_loss: 0.0250 - val_last_time_step_mse: 0.0092
+219/219 [==============================] - 2s 10ms/step - loss: 0.0258 - last_time_step_mse: 0.0095 - val_loss: 0.0259 - val_last_time_step_mse: 0.0100
 Epoch 13/20
-219/219 [==============================] - 2s 7ms/step - loss: 0.0252 - last_time_step_mse: 0.0093 - val_loss: 0.0248 - val_last_time_step_mse: 0.0090
+219/219 [==============================] - 2s 9ms/step - loss: 0.0254 - last_time_step_mse: 0.0093 - val_loss: 0.0251 - val_last_time_step_mse: 0.0093
 Epoch 14/20
-219/219 [==============================] - 2s 8ms/step - loss: 0.0249 - last_time_step_mse: 0.0094 - val_loss: 0.0247 - val_last_time_step_mse: 0.0092
+219/219 [==============================] - 2s 9ms/step - loss: 0.0251 - last_time_step_mse: 0.0092 - val_loss: 0.0249 - val_last_time_step_mse: 0.0090
 Epoch 15/20
-219/219 [==============================] - 2s 8ms/step - loss: 0.0245 - last_time_step_mse: 0.0092 - val_loss: 0.0242 - val_last_time_step_mse: 0.0090
+219/219 [==============================] - 2s 9ms/step - loss: 0.0247 - last_time_step_mse: 0.0090 - val_loss: 0.0247 - val_last_time_step_mse: 0.0086
 Epoch 16/20
-219/219 [==============================] - 1s 5ms/step - loss: 0.0243 - last_time_step_mse: 0.0091 - val_loss: 0.0241 - val_last_time_step_mse: 0.0087
+219/219 [==============================] - 2s 9ms/step - loss: 0.0245 - last_time_step_mse: 0.0091 - val_loss: 0.0244 - val_last_time_step_mse: 0.0090
 Epoch 17/20
-219/219 [==============================] - 1s 4ms/step - loss: 0.0239 - last_time_step_mse: 0.0088 - val_loss: 0.0240 - val_last_time_step_mse: 0.0097
+219/219 [==============================] - 2s 10ms/step - loss: 0.0241 - last_time_step_mse: 0.0088 - val_loss: 0.0242 - val_last_time_step_mse: 0.0091
 Epoch 18/20
-219/219 [==============================] - 2s 7ms/step - loss: 0.0237 - last_time_step_mse: 0.0088 - val_loss: 0.0238 - val_last_time_step_mse: 0.0096
+219/219 [==============================] - 2s 9ms/step - loss: 0.0238 - last_time_step_mse: 0.0087 - val_loss: 0.0235 - val_last_time_step_mse: 0.0081
 Epoch 19/20
-219/219 [==============================] - 2s 9ms/step - loss: 0.0235 - last_time_step_mse: 0.0088 - val_loss: 0.0232 - val_last_time_step_mse: 0.0082
+219/219 [==============================] - 2s 9ms/step - loss: 0.0235 - last_time_step_mse: 0.0086 - val_loss: 0.0236 - val_last_time_step_mse: 0.0092
 Epoch 20/20
-219/219 [==============================] - 2s 8ms/step - loss: 0.0232 - last_time_step_mse: 0.0086 - val_loss: 0.0230 - val_last_time_step_mse: 0.0085
+219/219 [==============================] - 2s 9ms/step - loss: 0.0232 - last_time_step_mse: 0.0084 - val_loss: 0.0233 - val_last_time_step_mse: 0.0080
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-04-03 01:37:12.254896: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-04-04 13:24:29.090311: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_2_grad/concat/split_2/split_dim}}]]
-2023-04-03 01:37:12.255902: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
+2023-04-04 13:24:29.091362: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_grad/concat/split/split_dim}}]]
-2023-04-03 01:37:12.256584: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
+2023-04-04 13:24:29.092012: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_1_grad/concat/split_1/split_dim}}]]
-2023-04-03 01:37:12.348726: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
+2023-04-04 13:24:29.192498: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_2_grad/concat/split_2/split_dim}}]]
-2023-04-03 01:37:12.349563: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
+2023-04-04 13:24:29.193364: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_grad/concat/split/split_dim}}]]
-2023-04-03 01:37:12.350198: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
+2023-04-04 13:24:29.194040: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_1_grad/concat/split_1/split_dim}}]]
-2023-04-03 01:37:12.544219: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
+2023-04-04 13:24:29.389301: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_2_grad/concat/split_2/split_dim}}]]
-2023-04-03 01:37:12.545202: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
+2023-04-04 13:24:29.390136: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_grad/concat/split/split_dim}}]]
-2023-04-03 01:37:12.546000: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
+2023-04-04 13:24:29.391227: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_1_grad/concat/split_1/split_dim}}]]
-2023-04-03 01:37:12.651653: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
+2023-04-04 13:24:29.502526: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_2_grad/concat/split_2/split_dim}}]]
-2023-04-03 01:37:12.652475: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
+2023-04-04 13:24:29.503596: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_grad/concat/split/split_dim}}]]
-2023-04-03 01:37:12.653228: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
+2023-04-04 13:24:29.504377: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_1_grad/concat/split_1/split_dim}}]]
-2023-04-03 01:37:13.063637: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
+2023-04-04 13:24:29.936053: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_2_grad/concat/split_2/split_dim}}]]
-2023-04-03 01:37:13.064831: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
+2023-04-04 13:24:29.937077: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_grad/concat/split/split_dim}}]]
-2023-04-03 01:37:13.065761: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
+2023-04-04 13:24:29.937905: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_1_grad/concat/split_1/split_dim}}]]
-2023-04-03 01:37:13.169599: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
+2023-04-04 13:24:30.048650: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_2_grad/concat/split_2/split_dim}}]]
-2023-04-03 01:37:13.170542: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
+2023-04-04 13:24:30.049493: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_grad/concat/split/split_dim}}]]
-2023-04-03 01:37:13.171316: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
+2023-04-04 13:24:30.050288: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_1_grad/concat/split_1/split_dim}}]]
-2023-04-03 01:37:15.847494: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
+2023-04-04 13:24:32.964493: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_2_grad/concat/split_2/split_dim}}]]
-2023-04-03 01:37:15.848582: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
+2023-04-04 13:24:32.965565: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_grad/concat/split/split_dim}}]]
-2023-04-03 01:37:15.849500: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
+2023-04-04 13:24:32.966267: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_1_grad/concat/split_1/split_dim}}]]
-2023-04-03 01:37:15.956007: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
+2023-04-04 13:24:33.077266: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_2_grad/concat/split_2/split_dim}}]]
-2023-04-03 01:37:15.956927: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
+2023-04-04 13:24:33.078008: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_grad/concat/split/split_dim}}]]
-2023-04-03 01:37:15.957687: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
+2023-04-04 13:24:33.078737: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_1_grad/concat/split_1/split_dim}}]]
 </pre></div>
 </div>
@@ -2080,10 +2082,10 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63/63 [==============================] - 0s 4ms/step - loss: 0.0230 - last_time_step_mse: 0.0085
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63/63 [==============================] - 0s 5ms/step - loss: 0.0233 - last_time_step_mse: 0.0080
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.023015474900603294, 0.008515006862580776]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.02327839285135269, 0.008030006662011147]
 </pre></div>
 </div>
 </div>
@@ -2096,7 +2098,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/a3bb82bd6e8b7a0fa7474f87c4d63a7e7664d2d099965614f7df9105055c5567.png" src="../../../_images/a3bb82bd6e8b7a0fa7474f87c4d63a7e7664d2d099965614f7df9105055c5567.png" />
+<img alt="../../../_images/bdedfcc21910bd678edc8f74c933b185b3231db47d29a4ce14bea0865ec8585b.png" src="../../../_images/bdedfcc21910bd678edc8f74c933b185b3231db47d29a4ce14bea0865ec8585b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2110,20 +2112,20 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 0s 320ms/step
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 0s 335ms/step
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-04-03 01:37:52.916896: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-04-04 13:25:13.175645: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_2_grad/concat/split_2/split_dim}}]]
-2023-04-03 01:37:52.917818: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
+2023-04-04 13:25:13.176571: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_grad/concat/split/split_dim}}]]
-2023-04-03 01:37:52.918825: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
+2023-04-04 13:25:13.177468: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_1_grad/concat/split_1/split_dim}}]]
-2023-04-03 01:37:53.017977: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
+2023-04-04 13:25:13.284336: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_2_grad/concat/split_2/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_2_grad/concat/split_2/split_dim}}]]
-2023-04-03 01:37:53.018689: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
+2023-04-04 13:25:13.285894: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_grad/concat/split/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_grad/concat/split/split_dim}}]]
-2023-04-03 01:37:53.019338: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
+2023-04-04 13:25:13.286792: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor &#39;gradients/split_1_grad/concat/split_1/split_dim&#39; with dtype int32
 	 [[{{node gradients/split_1_grad/concat/split_1/split_dim}}]]
 </pre></div>
 </div>
@@ -2137,7 +2139,10 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/56a11767a62ee43ac8d597362a5962d22fe9236462a0708b36a25a80f26d77b4.png" src="../../../_images/56a11767a62ee43ac8d597362a5962d22fe9236462a0708b36a25a80f26d77b4.png" />
+<img alt="../../../_images/7e2d68dbf77e66a72732e4e8ccb0584b150219d2dc450196a3f82b06dfa6aa93.png" src="../../../_images/7e2d68dbf77e66a72732e4e8ccb0584b150219d2dc450196a3f82b06dfa6aa93.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">Kernel</span> <span class="n">crashed</span> <span class="k">while</span> <span class="n">executing</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">the</span> <span class="n">current</span> <span class="n">cell</span> <span class="ow">or</span> <span class="n">a</span> <span class="n">previous</span> <span class="n">cell</span><span class="o">.</span> <span class="n">Please</span> <span class="n">review</span> <span class="n">the</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">cell</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">to</span> <span class="n">identify</span> <span class="n">a</span> <span class="n">possible</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">failure</span><span class="o">.</span> <span class="n">Click</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;https://aka.ms/vscodeJupyterKernelCrash&#39;</span><span class="o">&gt;</span><span class="n">here</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">info</span><span class="o">.</span> <span class="n">View</span> <span class="n">Jupyter</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;command:jupyter.viewOutput&#39;</span><span class="o">&gt;</span><span class="n">log</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">further</span> <span class="n">details</span><span class="o">.</span>
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -2179,7 +2184,7 @@ Epoch 20/20
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">The Long Short-Term Memory (LSTM) Cell Architecture</p>
+        <p class="prev-next-title">The Long Short-Term Memory (LSTM) Architecture</p>
       </div>
     </a>
     <a class="right-next"
