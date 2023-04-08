@@ -73,7 +73,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="Character-level recurrent sequence-to-sequence model" href="lstm_seq2seq.html" />
-    <link rel="prev" title="Vanilla LSTM implementation from scratch with Numpy" href="../language-models/lstm-language-model/index.html" />
+    <link rel="prev" title="LSTM Language Model from scratch" href="../language-models/lstm-language-model/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -295,7 +295,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../language-models/_index.html">RNN Language Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../language-models/cnn-language-model/index.html">CNN Language Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../language-models/simple-rnn-language-model/index.html">Simple RNN Language Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../language-models/lstm-language-model/index.html">Vanilla LSTM implementation from scratch with Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language-models/lstm-language-model/index.html">LSTM Language Model from scratch</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Neural Machine Translation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lstm_seq2seq.html">Character-level recurrent sequence-to-sequence model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
@@ -589,24 +589,24 @@ document.write(`
 <em>Encoder-Decoder NMT Architecture <a class="reference external" href="https://www.amazon.com/Natural-Language-Processing-PyTorch-Applications/dp/1491978236">ref</a></em></p>
 <section id="encoder">
 <h3>Encoder<a class="headerlink" href="#encoder" title="Permalink to this headline">#</a></h3>
-<p>The encoder network’s job is to read the input sequence to our Seq2Seq model and generate a fixed-dimensional context vector <span class="math notranslate nohighlight">\(\phi\)</span> for the sequence. To do that we use an RNN (LSTM) that mathematically, it evolves its hidden state as we have seen as,</p>
+<p>The encoder network <span class="math notranslate nohighlight">\(q\)</span> reads the input sequence and generates a fixed-dimensional context vector <span class="math notranslate nohighlight">\(\phi\)</span> for the sequence. To do that we use an RNN that mathematically, it evolves its hidden state as follows:</p>
 <div class="math notranslate nohighlight">
 \[\mathbf h_t = f(\mathbf x_t, \mathbf h_{t-1})\]</div>
-<p>and the context vector <span class="math notranslate nohighlight">\(\mathbf \phi = q(\mathbf h_1, ..., \mathbf h_{Tx})\)</span> is generated in general from the sequence of hidden states.  <span class="math notranslate nohighlight">\(f\)</span> can be in e.g. any non-linear function such as an <em>bidirectional</em> LSTM with a given depth. The bidirectional RNN is shown schematically below.</p>
+<p>and <span class="math notranslate nohighlight">\(f\)</span> can be in e.g. any non-linear function such as an <em>bidirectional</em> RNN with a given depth. In the following we use the term RNN to refer to a gated RNN suchj as an LSTM.</p>
+<p>The context vector is generated from the sequence of hidden states.</p>
+<div class="math notranslate nohighlight">
+\[\mathbf \phi = q(\mathbf h_1, ..., \mathbf h_{Tx})\]</div>
+<p>The bidirectional RNN is shown schematically below.</p>
 <p><img alt="forward-backward-concat" src="../../../../_images/forward-backward-concat.png" />
 <em>Bidirectional RNNs used for representing each word in the context of the sentence</em></p>
-<p>In this architecture, we read the input tokens one at a time. The final hidden state of the cell will then become <span class="math notranslate nohighlight">\(\phi\)</span>. However, because it’s so difficult to compress an arbitrary-length sequence into a single fixed-size vector (especially for difficult tasks like translation), the encoder will usually consist of stacked LSTMs: a series of LSTM “layers” where each layer’s outputs are the input sequence to the next layer. The final layer’s LSTM hidden state will be used as <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
+<p>In this architecture, we read the input tokens one at a time to obtain the context vector <span class="math notranslate nohighlight">\(\phi\)</span>. To allow the encoder to build a richer representation of the arbitrary-length input sequence, especially for difficult tasks like translation, the encoder usually consist of stacked (deep) RNNs: a series of RNN layers where each layer’s outputs are the input sequence to the next layer. In this architecture the <em>final</em> layer’s RNN hidden state will be used as <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
 <p><img alt="lstm-nmt-encoder" src="../../../../_images/lstm-nmt-encoder.png" />
 <em>Stacked LSTM Encoder (unrolled and showing the reverse direction only)</em></p>
-<p>In addition, Seq2Seq encoders will often do something strange: they will process the input sequence in reverse. This is actually done on purpose. The idea is that, by doing this, the last thing that the encoder sees will (roughly) corresponds to the first thing that the model outputs; this makes it easier for the decoder to “get started” on the output.</p>
+<p>In addition, Seq2Seq encoders will often do something that initially look strange: they will process the input sequence in reverse. This is actually done on purpose with the idea being that the last thing that the encoder “sees” will roughly corresponds to the first thing that the model outputs; this makes it easier for the decoder to “get started” on the output.</p>
 </section>
 <section id="decoder">
 <h3>Decoder<a class="headerlink" href="#decoder" title="Permalink to this headline">#</a></h3>
-<p>The decoder is a language model that’s “aware” of the target words that it’s generated so far and of the input. In fact it is an example of <em>conditional language model</em> because it conditions on the source sentence or its context <span class="math notranslate nohighlight">\(\phi\)</span>. The context <span class="math notranslate nohighlight">\(\phi\)</span> can be calculated via</p>
-<div class="math notranslate nohighlight">
-\[ \phi = q(\mathbf h_1, \mathbf h_2 \dots \mathbf h_{Tx})\]</div>
-<p>NOTE: It is unfortunate but the Greek letters cant be boldfaced fonts on this site.</p>
-<p>For example, in the simplest case, <span class="math notranslate nohighlight">\(\mathbf \phi = \mathbf h_{Tx}\)</span></p>
+<p>The decoder is a language model that is “aware” of the target words that it’s generated so far and of the input. In fact it is an example of <em>conditional language model</em> because it conditions on the source sentence or its representation - the context <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
 <p>The decoder directly calculates,</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{\hat y}   = \argmax_y p(\mathbf y | \mathbf \phi)\]</div>
@@ -619,16 +619,18 @@ document.write(`
 <p>We can now write,</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{\hat y}   = \argmax_y p(\mathbf y | \mathbf \phi) = \prod_{t=1}^{T_y} p(y_t | y_1, ..., y_{t-1}, \mathbf \phi) \]</div>
-<p>In this equation <span class="math notranslate nohighlight">\(p(y_t | y_1, ..., y_{t-1}, \mathbf \phi)\)</span> is a probability distribution represented by a softmax across all all the words of the dictionary. We can use an RNN (LSTM) to model the conditional probabilities</p>
+<p>In this equation <span class="math notranslate nohighlight">\(p(y_t | y_1, ..., y_{t-1}, \mathbf \phi)\)</span> is a probability distribution represented by a softmax across all all the words of the dictionary.</p>
+<p>We can use an RNN to model the conditional probabilities</p>
 <div class="math notranslate nohighlight">
 \[LSTM = g(s_t,  y_{t-1}, \phi ) = p(y_t | y_1, ..., y_{t-1}, \mathbf \phi) \]</div>
 <p>To that end, we’ll keep the “stacked” LSTM architecture from the encoder, but we’ll initialize the hidden state of our first layer with the context vector. Once the decoder is set up with its context, we’ll pass in a special token to signify the start of output generation; in literature, this is usually an <SOS> token appended to the end of the input (there’s also one at the end of the output). Then, we’ll run all stacked layers of LSTM, one after the other, following at the end with a softmax on the final layer’s output that can tell us the most probable output word.</p>
+<p><em>Both</em> the encoder and decoder are trained at the same time, so that they both learn the same context vector representation as shown next.</p>
+<p><img alt="seq2seq-training" src="../../../../_images/seq2seq-training.png" />
+<em>Seq2Seq Training - backpropagation is end to end.</em></p>
 <p>To help training, we apply  <strong>teacher forcing</strong> wherein the input at each time step to the decoder is the ground truth. During inference just like in the language model we input the predicted output from the previous time step.</p>
 <p><img alt="lstm-nmt-decoder" src="../../../../_images/lstm-nmt-decoder.png" />
 <em>LSTM Decoder (unrolled). The decoder is a language model that’s “aware” of the words that it’s generated so far and of the input.</em></p>
-<p>Once we have the output sequence, we use the same learning strategy as usual. We define a loss, the cross entropy on the prediction sequence, and we minimize it with a gradient descent algorithm and back-propagation. <em>Both</em> the encoder and decoder are trained at the same time, so that they both learn the same context vector representation as shown next.</p>
-<p><img alt="seq2seq-training" src="../../../../_images/seq2seq-training.png" />
-<em>Seq2Seq Training - backpropagation is end to end.</em></p>
+<p>Once we have the output sequence, we use the same learning strategy as usual. We define a loss, the cross entropy on the prediction sequence, and we minimize it with a gradient descent algorithm and back-propagation.</p>
 <p>Note that the <span class="math notranslate nohighlight">\(\arg \max\)</span> we apply at each step on the softmax output results in some instances in suboptimal translations. The solution has been experimentally found to be the <em>beam search</em> heuristic that maintains a small number (e.g. 3-10) of the top likely sentences called the <em>beam width</em> , as opposed to <em>the</em> most likely sentence, and tries to extend them by one word at each step.</p>
 </section>
 </section>
@@ -671,7 +673,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Vanilla LSTM implementation from scratch with Numpy</p>
+        <p class="prev-next-title">LSTM Language Model from scratch</p>
       </div>
     </a>
     <a class="right-next"

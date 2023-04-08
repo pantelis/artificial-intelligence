@@ -30,33 +30,32 @@ For this reason, Seq2Seq models are often referred to as encoder-decoder models 
 
 ### Encoder
 
-The encoder network’s job is to read the input sequence to our Seq2Seq model and generate a fixed-dimensional context vector $\phi$ for the sequence. To do that we use an RNN (LSTM) that mathematically, it evolves its hidden state as we have seen as,
+The encoder network $q$ reads the input sequence and generates a fixed-dimensional context vector $\phi$ for the sequence. To do that we use an RNN that mathematically, it evolves its hidden state as follows:
 
 $$\mathbf h_t = f(\mathbf x_t, \mathbf h_{t-1})$$
 
-and the context vector $\mathbf \phi = q(\mathbf h_1, ..., \mathbf h_{Tx})$ is generated in general from the sequence of hidden states.  $f$ can be in e.g. any non-linear function such as an _bidirectional_ LSTM with a given depth. The bidirectional RNN is shown schematically below. 
+and $f$ can be in e.g. any non-linear function such as an _bidirectional_ RNN with a given depth. In the following we use the term RNN to refer to a gated RNN suchj as an LSTM.
 
+The context vector is generated from the sequence of hidden states.  
+
+$$\mathbf \phi = q(\mathbf h_1, ..., \mathbf h_{Tx})$$
+
+The bidirectional RNN is shown schematically below. 
 
 ![forward-backward-concat](images/forward-backward-concat.png)
 *Bidirectional RNNs used for representing each word in the context of the sentence*
 
 
-In this architecture, we read the input tokens one at a time. The final hidden state of the cell will then become $\phi$. However, because it’s so difficult to compress an arbitrary-length sequence into a single fixed-size vector (especially for difficult tasks like translation), the encoder will usually consist of stacked LSTMs: a series of LSTM "layers" where each layer’s outputs are the input sequence to the next layer. The final layer’s LSTM hidden state will be used as $\phi$.
+In this architecture, we read the input tokens one at a time to obtain the context vector $\phi$. To allow the encoder to build a richer representation of the arbitrary-length input sequence, especially for difficult tasks like translation, the encoder usually consist of stacked (deep) RNNs: a series of RNN layers where each layer’s outputs are the input sequence to the next layer. In this architecture the _final_ layer’s RNN hidden state will be used as $\phi$.
 
 ![lstm-nmt-encoder](images/lstm-nmt-encoder.png)
 *Stacked LSTM Encoder (unrolled and showing the reverse direction only)*
 
-In addition, Seq2Seq encoders will often do something strange: they will process the input sequence in reverse. This is actually done on purpose. The idea is that, by doing this, the last thing that the encoder sees will (roughly) corresponds to the first thing that the model outputs; this makes it easier for the decoder to "get started" on the output. 
+In addition, Seq2Seq encoders will often do something that initially look strange: they will process the input sequence in reverse. This is actually done on purpose with the idea being that the last thing that the encoder "sees" will roughly corresponds to the first thing that the model outputs; this makes it easier for the decoder to "get started" on the output. 
 
 ### Decoder
 
-The decoder is a language model that’s "aware" of the target words that it’s generated so far and of the input. In fact it is an example of _conditional language model_ because it conditions on the source sentence or its context $\phi$. The context $\phi$ can be calculated via
-
-$$ \phi = q(\mathbf h_1, \mathbf h_2 \dots \mathbf h_{Tx})$$
-
-NOTE: It is unfortunate but the Greek letters cant be boldfaced fonts on this site.
-
-For example, in the simplest case, $\mathbf \phi = \mathbf h_{Tx}$
+The decoder is a language model that is "aware" of the target words that it’s generated so far and of the input. In fact it is an example of _conditional language model_ because it conditions on the source sentence or its representation - the context $\phi$. 
 
 The decoder directly calculates,
 
@@ -74,20 +73,24 @@ We can now write,
 
 $$\mathbf{\hat y}   = \argmax_y p(\mathbf y | \mathbf \phi) = \prod_{t=1}^{T_y} p(y_t | y_1, ..., y_{t-1}, \mathbf \phi) $$
 
-In this equation $p(y_t | y_1, ..., y_{t-1}, \mathbf \phi)$ is a probability distribution represented by a softmax across all all the words of the dictionary. We can use an RNN (LSTM) to model the conditional probabilities 
+In this equation $p(y_t | y_1, ..., y_{t-1}, \mathbf \phi)$ is a probability distribution represented by a softmax across all all the words of the dictionary. 
+
+We can use an RNN to model the conditional probabilities 
 
 $$LSTM = g(s_t,  y_{t-1}, \phi ) = p(y_t | y_1, ..., y_{t-1}, \mathbf \phi) $$
 
 To that end, we’ll keep the "stacked" LSTM architecture from the encoder, but we’ll initialize the hidden state of our first layer with the context vector. Once the decoder is set up with its context, we’ll pass in a special token to signify the start of output generation; in literature, this is usually an <SOS> token appended to the end of the input (there’s also one at the end of the output). Then, we’ll run all stacked layers of LSTM, one after the other, following at the end with a softmax on the final layer’s output that can tell us the most probable output word. 
+
+_Both_ the encoder and decoder are trained at the same time, so that they both learn the same context vector representation as shown next. 
+
+![seq2seq-training](images/seq2seq-training.png)
+*Seq2Seq Training - backpropagation is end to end.*
 
 To help training, we apply  **teacher forcing** wherein the input at each time step to the decoder is the ground truth. During inference just like in the language model we input the predicted output from the previous time step.  
 
 ![lstm-nmt-decoder](images/lstm-nmt-decoder.png)
 *LSTM Decoder (unrolled). The decoder is a language model that’s "aware" of the words that it’s generated so far and of the input.*
 
-Once we have the output sequence, we use the same learning strategy as usual. We define a loss, the cross entropy on the prediction sequence, and we minimize it with a gradient descent algorithm and back-propagation. _Both_ the encoder and decoder are trained at the same time, so that they both learn the same context vector representation as shown next. 
-
-![seq2seq-training](images/seq2seq-training.png)
-*Seq2Seq Training - backpropagation is end to end.*
+Once we have the output sequence, we use the same learning strategy as usual. We define a loss, the cross entropy on the prediction sequence, and we minimize it with a gradient descent algorithm and back-propagation. 
 
 Note that the $\arg \max$ we apply at each step on the softmax output results in some instances in suboptimal translations. The solution has been experimentally found to be the _beam search_ heuristic that maintains a small number (e.g. 3-10) of the top likely sentences called the _beam width_ , as opposed to _the_ most likely sentence, and tries to extend them by one word at each step. 
