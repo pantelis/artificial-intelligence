@@ -14,8 +14,7 @@ parts:
   - file: aiml-common/lectures/ai-intro/data-science-360/_index.md
   - file: aiml-common/lectures/ai-intro/systems-approach/_index.md
   - file: aiml-common/lectures/ai-intro/agents/_index.md
-  - file: aiml-common/lectures/ai-intro/pipelines/_index.md
-  
+
 - caption: The Learning Problem
   chapters:
   - file: aiml-common/lectures/learning-problem/_index.md
@@ -140,6 +139,7 @@ parts:
 - caption:  Natural Language Processing
   chapters:
   - file: aiml-common/lectures/nlp/nlp-intro/_index.md 
+  - file: aiml-common/lectures/nlp/tokenization/index.ipynb
   - file: aiml-common/lectures/nlp/word2vec/_index.md 
   - file: aiml-common/lectures/nlp/word2vec/word2vec_from_scratch.ipynb 
   - file: aiml-common/lectures/nlp/word2vec/word2vec_tensorflow_tutorial.ipynb 
@@ -148,10 +148,13 @@ parts:
   - file: aiml-common/lectures/nlp/language-models/simple-rnn-language-model/index.ipynb
   - file: aiml-common/lectures/nlp/language-models/lstm-language-model/index.ipynb
   
+
   - file: aiml-common/lectures/nlp/nmt/_index.md     
   - file: aiml-common/lectures/nlp/nmt/lstm_seq2seq.ipynb     
   - file: aiml-common/lectures/nlp/nmt-metrics/index.ipynb       
-  - file: aiml-common/lectures/nlp/attention/_index.md       
+  - file: aiml-common/lectures/nlp/attention/_index.md
+
+  #- file: aiml-common/lectures/nlp/transformers/transformers-intro.md
   - file: aiml-common/lectures/nlp/transformers/annotated_transformer.ipynb         
 
 - caption: Math Background

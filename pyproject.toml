@@ -44,6 +44,7 @@ opencv-python = "^4.7.0.72"
 sphinxcontrib-bibtex = "^2.5.0"
 transformers = "^4.27.4"
 nltk = "^3.8.1"
+spacy = "^3.5.1"
 
 [build-system]
 requires = ["poetry-core"]
