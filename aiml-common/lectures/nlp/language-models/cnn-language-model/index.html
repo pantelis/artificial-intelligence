@@ -165,7 +165,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../../../ai-intro/pipelines/_index.html">ML Pipelines</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">The Learning Problem</span></p><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="label-parts" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../learning-problem/_index.html">The Learning Problem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../regression/linear-regression/linear_regression.html">Linear Regression</a></li>
@@ -287,6 +286,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="label-parts" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../nlp-intro/_index.html">Introduction to NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tokenization/index.html">Tokenization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../word2vec/_index.html">Word2Vec Embeddings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../word2vec/word2vec_from_scratch.html">Word2Vec from scratch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../word2vec/word2vec_tensorflow_tutorial.html">Word2Vec Tensorflow Tutorial</a></li>
@@ -297,7 +297,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../nmt/_index.html">Neural Machine Translation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../nmt/lstm_seq2seq.html">Character-level recurrent sequence-to-sequence model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../attention/_index.html">Attention in NMT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../transformers/annotated_transformer.html">The Annotated Transformer</a></li>
 
 
@@ -1775,7 +1774,7 @@ _________________________________________________________________
 <span class="g g-Whitespace">     </span><span class="mi">67</span>     <span class="n">filtered_tb</span> <span class="o">=</span> <span class="n">_process_traceback_frames</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">__traceback__</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">68</span>     <span class="c1"># To get the full stack trace, call:</span>
 <span class="g g-Whitespace">     </span><span class="mi">69</span>     <span class="c1"># `tf.debugging.disable_traceback_filtering()`</span>
-<span class="ne">---&gt; </span><span class="mi">70</span>     <span class="k">raise</span> <span class="n">e</span><span class="o">.</span><span class="n">with_traceback</span><span class="p">(</span><span class="n">filtered_tb</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
+<span class="ne">---&gt; </span><span class="mi">70</span>     <span class="k">raise</span> <span class="n">e</span><span class="o">.</span><span class="n">with_traceback</span><span class="p">(</span><span class="n">filtered_tb</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
 <span class="g g-Whitespace">     </span><span class="mi">71</span> <span class="k">finally</span><span class="p">:</span>
 <span class="g g-Whitespace">     </span><span class="mi">72</span>     <span class="k">del</span> <span class="n">filtered_tb</span>
 

@@ -17,7 +17,7 @@ Up to now we have seen how to generate word2vec embeddings and predict a single 
 
 ## Sequence-to-Sequence (Seq2Seq)  
 
-Sequence-to-sequence, or "Seq2Seq", is a relatively new paradigm, with its [first published in 2014](https://arxiv.org/abs/1409.3215) that treated English-French translation. At a high level, a sequence-to-sequence model is an end-to-end model made up of two recurrent neural networks (LSTMs):
+Sequence-to-sequence, or "Seq2Seq", was [first published in 2014](https://arxiv.org/abs/1409.3215). At a high level, a sequence-to-sequence model is an end-to-end model made up of two recurrent neural networks (LSTMs):
 
 * an encoder, which takes the a source sequence as input and encodes it into a fixed-size "context vector" $\phi$, and
 
@@ -34,9 +34,9 @@ The encoder network $q$ reads the input sequence and generates a fixed-dimension
 
 $$\mathbf h_t = f(\mathbf x_t, \mathbf h_{t-1})$$
 
-and $f$ can be in e.g. any non-linear function such as an _bidirectional_ RNN with a given depth. In the following we use the term RNN to refer to a gated RNN suchj as an LSTM.
+and $f$ can be in e.g. any non-linear function such as an _bidirectional_ RNN with a given depth. In the following we use the term RNN to refer to a gated RNN such as an LSTM.
 
-The context vector is generated from the sequence of hidden states.  
+The context vector is generated from the sequence of hidden states, 
 
 $$\mathbf \phi = q(\mathbf h_1, ..., \mathbf h_{Tx})$$
 
@@ -55,7 +55,7 @@ In addition, Seq2Seq encoders will often do something that initially look strang
 
 ### Decoder
 
-The decoder is a language model that is "aware" of the target words that it’s generated so far and of the input. In fact it is an example of _conditional language model_ because it conditions on the source sentence or its representation - the context $\phi$. 
+The decoder is "aware" of the target words that it’s generated so far and of the input. In fact it is an example of _conditional language model_ because it conditions on the source sentence or its representation - the context $\phi$. 
 
 The decoder directly calculates,
 
@@ -63,17 +63,17 @@ $$\mathbf{\hat y}   = \argmax_y p(\mathbf y | \mathbf \phi)$$
 
 We can write this as:
 
-$$\argmax_y p(\mathbf y| \mathbf x) = p(y_1, y_2, ..., y_{Ty} | \phi)$$
+$$\argmax_y p(\mathbf y| \mathbf \phi) = p(y_1, y_2, ..., y_{Ty} | \phi)$$
 
 and then use the product rule of probability to decompose this to:
 
-$$\argmax_y p(y_{Ty} | y_1, ..., y_{T_y-1}, \mathbf \phi)  \dots p(y_2|y_1, \mathbf \phi ) p(y_1| \mathbf \phi) $$
+$$\argmax_y p(y_{T_y} | y_1, ..., y_{T_y-1}, \mathbf \phi)  \dots p(y_2|y_1, \mathbf \phi ) p(y_1| \mathbf \phi) $$
 
 We can now write,
 
 $$\mathbf{\hat y}   = \argmax_y p(\mathbf y | \mathbf \phi) = \prod_{t=1}^{T_y} p(y_t | y_1, ..., y_{t-1}, \mathbf \phi) $$
 
-In this equation $p(y_t | y_1, ..., y_{t-1}, \mathbf \phi)$ is a probability distribution represented by a softmax across all all the words of the dictionary. 
+In this equation $p(y_t | y_1, ..., y_{t-1}, \mathbf \phi)$ is a probability distribution represented by a softmax across all all the words of the vocabulary. 
 
 We can use an RNN to model the conditional probabilities 
 
