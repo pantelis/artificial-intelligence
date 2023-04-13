@@ -1,4 +1,4 @@
-# Neural Machine Translation
+# RNN-based Neural Machine Translation
 
 > These notes heavily borrowing from [the CS229N 2019 set of notes on NMT](https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1194/readings/cs224n-2019-notes06-NMT_seq2seq_attention.pdf). 
 

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Introduction to NLP &#8212; Introduction to Artificial Intelligence</title>
+    <title>RNN-based Neural Machine Translation &#8212; Introduction to Artificial Intelligence</title>
   
   
   
@@ -63,15 +63,17 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/nlp/nlp-intro/_index';</script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/nlp/nlp-intro/_index.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/nlp/nmt/index';</script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/nlp/nmt/index.html" />
     <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Tokenization" href="../tokenization/index.html" />
-    <link rel="prev" title="Time Series Prediction using RNNs" href="../../rnn/time_series_using_simple_rnn_lstm.html" />
+    <link rel="next" title="NMT Metrics - BLEU" href="nmt-metrics/index.html" />
+    <link rel="prev" title="LSTM Language Model from scratch" href="../language-models/lstm-language-model/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -284,19 +286,25 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="label-parts" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to NLP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tokenization/index.html">Tokenization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../word2vec/_index.html">Word2Vec Embeddings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../word2vec/word2vec_from_scratch.html">Word2Vec from scratch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../word2vec/word2vec_tensorflow_tutorial.html">Word2Vec Tensorflow Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../language-models/_index.html">RNN Language Models</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">NLP Introduction</span></p><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="label-parts" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../_index.html">Natural Language Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp-introduction/nlp-pipelines/_index.html">Introduction to NLP Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp-introduction/tokenization/index.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp-introduction/word2vec/_index.html">Word2Vec Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp-introduction/word2vec/word2vec_from_scratch.html">Word2Vec from scratch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp-introduction/word2vec/word2vec_tensorflow_tutorial.html">Word2Vec Tensorflow Tutorial</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">NLP Language Models</span></p><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="label-parts" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../language-models/_index.html">RNN-based Language Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../language-models/cnn-language-model/index.html">CNN Language Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../language-models/simple-rnn-language-model/index.html">Simple RNN Language Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../language-models/lstm-language-model/index.html">LSTM Language Model from scratch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nmt/_index.html">Neural Machine Translation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nmt/lstm_seq2seq.html">Character-level recurrent sequence-to-sequence model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">NLP Neural Machine Translation</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="label-parts" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">RNN-based Neural Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lstm_seq2seq.html">Character-level recurrent sequence-to-sequence model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rnn-nmt-attention/index.html">Attention in RNN-based NMT</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">NLP Transformers</span></p><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="label-parts" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../transformers/transformers-intro.html">Introduction to Transformers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../transformers/annotated_transformer.html">The Annotated Transformer</a></li>
 
 
@@ -309,29 +317,29 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="label-parts" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="label-parts" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/index.html">Math for ML Textbook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/probability/index.html">Probability Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/linear-algebra/index.html">Linear Algebra for Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/calculus/index.html">Calculus</a></li>
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="label-parts" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="label-parts" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/index.html">Your Programming Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Learn Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Common Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="label-parts" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Common Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="label-parts" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/probability/probability-assignment-5/index.html">Probability Assignment</a></li>
 
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments CS-UY-4613</span></p><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="label-parts" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments CS-UY-4613</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/mle/mle-gaussian.html">Gaussian Maximum Likelihood</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/mle/poisson-regression-1/index.html">Bike Rides and the Poisson Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/object-tracking-kalman/balls.html">Multiple Object Tracking</a></li>
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project CS-UY-4613</span></p><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="label-parts" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project CS-UY-4613</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../projects/nlp/finetuning-language-models-tweets/index.html">Finetuning Language Models - Toxic Tweets</a></li>
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments CS-GY-6613</span></p><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="label-parts" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments CS-GY-6613</span></p><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="label-parts" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/logistic-regression-1/index.html">Logistic Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/object-tracking-kalman/soccer.html">Sports Analytics - Object Tracking and Kalman Filters</a></li>
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project CS-GY-6613</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project CS-GY-6613</span></p><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="label-parts" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../projects/nlp/finetuning-language-models-patents/index.html">Finetuning Language Models - Can I Patent This?</a></li>
 </ul></li></ul>
     </div>
@@ -403,7 +411,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pantelis/artificial-intelligence/edit/master/artificial_intelligence/aiml-common/lectures/nlp/nlp-intro/_index.md" target="_blank"
+      <li><a href="https://github.com/pantelis/artificial-intelligence/edit/master/artificial_intelligence/aiml-common/lectures/nlp/nmt/index.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -420,7 +428,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/nlp/nlp-intro/_index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/nlp/nmt/index.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -450,7 +458,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../../../_sources/aiml-common/lectures/nlp/nlp-intro/_index.md" target="_blank"
+      <li><a href="../../../../_sources/aiml-common/lectures/nlp/nmt/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -532,7 +540,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction to NLP</h1>
+    <h1>RNN-based Neural Machine Translation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -542,7 +550,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nlp-pipelines">NLP Pipelines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-to-sequence-seq2seq">Sequence-to-Sequence (Seq2Seq)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder">Encoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decoder">Decoder</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -554,84 +566,79 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-nlp">
-<h1>Introduction to NLP<a class="headerlink" href="#introduction-to-nlp" title="Permalink to this headline">#</a></h1>
-<p>Python and almost all programming languages are formal. They define a strict set of rules called a <em>grammar</em> that the programmer must follow religiously. In addition formal languages also define semantics or meaning of the program via a set of rules. So the exit code <code class="docutils literal notranslate"><span class="pre">0</span></code> after the execution of a routine has the meaning of successful termination but a <code class="docutils literal notranslate"><span class="pre">1</span></code> the opposite. The English language on the other hand is “free wheeling” so to speak due to its ambiguity and size.</p>
-<p>Some examples are in order:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="rnn-based-neural-machine-translation">
+<h1>RNN-based Neural Machine Translation<a class="headerlink" href="#rnn-based-neural-machine-translation" title="Permalink to this headline">#</a></h1>
+<blockquote>
+<div><p>These notes heavily borrowing from <a class="reference external" href="https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1194/readings/cs224n-2019-notes06-NMT_seq2seq_attention.pdf">the CS229N 2019 set of notes on NMT</a>.</p>
+</div></blockquote>
+<p><img alt="rosetta-stone" src="../../../../_images/rosetta-stone.jpg" />
+<em>Rosetta Stone at the British Museum - depicts the same text in Ancient Egyptian, Demotic and Ancient Greek.</em></p>
+<p>Up to now we have seen how to generate word2vec embeddings and predict a single output e.g. the single most likely next word in a sentence given the past few. However, there’s a whole class of NLP tasks that rely on sequential output, or outputs that are sequences of potentially varying length. For example,</p>
 <ul class="simple">
-<li><p><strong>Ambiguity</strong>: “he met his maker”</p></li>
-<li><p><strong>Same context, different meaning</strong>:</p>
-<ol class="arabic simple">
-<li><p>“The food in this restaurant was good, not bad at all”</p></li>
-<li><p>“The food in this restaurant was bad, not good at all.”</p></li>
-</ol>
-</li>
-<li><p><strong>Different context alltogether</strong>:</p>
-<ol class="arabic simple">
-<li><p>“The bank’s profits eroded soon after the 2008 crisis”</p></li>
-<li><p>“The river’s bank eroded after the 2008 floods”</p></li>
-</ol>
-</li>
+<li><p><strong>Translation</strong>: taking a sentence in one language as input and outputting the same sentence in another language.</p></li>
+<li><p><strong>Conversation</strong>: taking a statement or question as input and responding to it.</p></li>
+<li><p><strong>Summarization</strong>: taking a large body of text as input and outputting a summary of it.</p></li>
+<li><p><strong>Code Generation</strong>: Natural Language to formal language code (e.g. python)</p></li>
 </ul>
-<p>To capture the fuzziness of natural language we need to define probabilistic models. We do not speak of a single meaning for a sentence - rather we speak of <em>a probability distribution over possible meanings</em>.</p>
-<section id="nlp-pipelines">
-<h2>NLP Pipelines<a class="headerlink" href="#nlp-pipelines" title="Permalink to this headline">#</a></h2>
-<p>To get started, we need some common ground on the NLP terminology - the terms are presented in the processing order of an NLP pipeline. This paragraph is heavily borrowed from <a class="reference external" href="https://medium.com/&#64;ageitgey/natural-language-processing-is-fun-9a0bff37854e">here</a>.</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Term</p></th>
-<th class="head"><p>Definition</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Segmentation</strong></p></td>
-<td><p>The first step in the pipeline is to break the text apart into separate sentences. Coding a Sentence Segmentation model can be as simple as splitting apart sentences whenever you see a punctuation mark. But modern NLP pipelines often use more complex techniques that work even when a document isn’t formatted cleanly. Take for example the sentence “London is the capital and most populous city of England and the United Kingdom.”</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Tokenization</strong></p></td>
-<td><p>The next step in our pipeline is to break this sentence into separate words or tokens. This is called tokenization. “London”, “is”, “ the”, “capital”, “and”, “most”, “populous”, “city”, “of”, “England”, “and”, “the”, “United”, “Kingdom”, “.”</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Part of Speech Tagging</strong></p></td>
-<td><p>The next step tags each word with a classification result of its part - whether it is a noun, a verb, an adjective and so on. We can do this by feeding each word (and some extra words around it for context) into a pre-trained part-of-speech classification model:</p></td>
-</tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p><img alt="pos-classification" src="../../../../_images/pos-classification.png" /></p></td>
-</tr>
-<tr class="row-even"><td><p></p></td>
-<td><p><img alt="pos-example" src="../../../../_images/pos-example.png" /></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Lematization</strong></p></td>
-<td><p>This is one of the stages of <em>vocabulary normalization</em>.  At this stage we are figuring out the most basic form or lemma of each word in the sentence.</p></td>
-</tr>
-<tr class="row-even"><td><p></p></td>
-<td><p><img alt="lemmatization" src="../../../../_images/lemmatization.png" /></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Stop words identification</strong></p></td>
-<td><p>This is one of the stages of <em>vocabulary normalization</em>.  Stop words are common words in any language that occur with a high frequency but carry much less substantive information about the meaning of a phrase.</p></td>
-</tr>
-<tr class="row-even"><td><p></p></td>
-<td><p><img alt="stop-words" src="../../../../_images/stop-words.png" /></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Dependency Parsing</strong></p></td>
-<td><p>The next step is to figure out how all the words in our sentence relate to each other. This is called dependency parsing. The goal is to build a tree that assigns a single parent word to each word in the sentence. The root of the tree will be the main verb in the sentence. In addition to identifying the parent word of each word, we can also predict the type of relationship that exists between those parent and child. This parse tree shows us that the subject of the sentence is the noun “London” and it has a “be” relationship with “capital”. We finally know something useful — London is a capital. Dependency parsing in NLP stacks circa 2017 was heavily based on <a class="reference external" href="https://ai.googleblog.com/2017/03/an-upgrade-to-syntaxnet-new-models-and.html">deep learning</a> architectures - <a class="reference external" href="https://explosion.ai/demos/displacy?text=the%20students%20of%20CS-GY-6613%20are%20having%20a%20difficult%20time%20with%20professor%20Pantelis&amp;model=en_core_web_sm&amp;cpu=1&amp;cph=1">demo</a></p></td>
-</tr>
-<tr class="row-even"><td><p></p></td>
-<td><p><img alt="dependency-parsing" src="../../../../_images/dependency-parsing.png" /></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Named Entity Recognition (NER)</strong></p></td>
-<td><p>The goal of Named Entity Recognition, or NER, is to detect and label nouns with the real-world concepts that they represent. NER systems aren’t just doing a simple dictionary lookup. Instead, they are using the context of how a word appears in the sentence and a statistical model to guess which type of noun a word represents. <a class="reference external" href="https://explosion.ai/demos/displacy-ent?text=A%20rapid%20increase%20in%20virtual%20visits%20during%20the%202019%20coronavirus%20disease%20(COVID-19)%20pandemic%20could%20transform%20the%20way%20physicians%20provide%20care%20in%20the%20United%20States%20going%20forward%2C%20according%20to%20a%20new%20study%20led%20by%20researchers%20from%20NYU%20Grossman%20School%20of%20Medicine.%0A%0A%E2%80%9CThe%20pandemic%20created%20an%20urgent%20need%20to%20divert%20patients%20from%20inpatient%20care%20and%20prevent%20the%20flooding%20of%20our%20emergency%20rooms%20beyond%20capacity%2C%E2%80%9D%20says%20Devin%20Mann%2C%20MD%2C%20associate%20professor%20in%20the%20Departments%20of%20Population%20Health%20and%20Medicine%2C%20senior%20director%20for%20informatics%20innovation%20and%20the%20information%20technology%20team%20at%20NYU%20Langone%2C%20and%20the%20study%E2%80%99s%20lead%20author.%20%E2%80%9CThrough%20telemedicine%2C%20we%20pushed%20the%20front%20lines%20to%20locations%20far%20from%20our%20hospitals%20and%20doctor%E2%80%99s%20offices.%20And%20because%20NYU%20%0ALangone%20invested%20early%20in%20this%20technology%2C%20we%20quickly%20leveraged%20it%20to%20help%20hundreds%20of%20thousands%20of%20patients.%E2%80%9D&amp;model=en_core_web_sm&amp;ents=person%2Corg%2Cgpe%2Cloc%2Cproduct%2Cnorp%2Cdate%2Cper%2Cmisc">demo</a></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Coreference Resolution</strong></p></td>
-<td><p>Coreference resolution is the task of finding all expressions that refer to the same entity in a text. It is an important step for a lot of higher level NLP tasks that involve natural language understanding such as document summarization, question answering, and information extraction. Coreference resolution is one of the most difficult steps in our pipeline to <a class="reference external" href="https://huggingface.co/coref/">implement</a></p></td>
-</tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p><img alt="coreference-resolution" src="../../../../_images/coreference-resolution.png" /></p></td>
-</tr>
-</tbody>
-</table>
-<p>In terms of NLP we are just scratching the surface here. Watch the following video to review some of the challenges NLP researchers face (circa 2020) and the rise of natural language generation (NLG) with the earlier GPT-2 and GPT-3 models. The presentation contains some key papers as well.</p>
-<div class="video_wrapper" style="">
-<iframe allowfullscreen="true" src="https://www.youtube.com/embed/G5lmya6eKtc" style="border: 0; height: 345px; width: 560px">
-</iframe></div></section>
+<p><img alt="ios-keyboard-translation" src="../../../../_images/ios-keyboard-translation.png" />
+<em>Your smartphones translate the text you type in messaging applications to emojis and other symbols structured in such a way to convey the same meaning as the text</em>.</p>
+<section id="sequence-to-sequence-seq2seq">
+<h2>Sequence-to-Sequence (Seq2Seq)<a class="headerlink" href="#sequence-to-sequence-seq2seq" title="Permalink to this headline">#</a></h2>
+<p>Sequence-to-sequence, or “Seq2Seq”, was <a class="reference external" href="https://arxiv.org/abs/1409.3215">first published in 2014</a>. At a high level, a sequence-to-sequence model is an end-to-end model made up of two recurrent neural networks (LSTMs):</p>
+<ul class="simple">
+<li><p>an encoder, which takes the a source sequence as input and encodes it into a fixed-size “context vector” <span class="math notranslate nohighlight">\(\phi\)</span>, and</p></li>
+<li><p>a decoder, which uses the context vector from above as a “seed” from which to generate an output sequence.</p></li>
+</ul>
+<p>For this reason, Seq2Seq models are often referred to as encoder-decoder models as shown in the next figure.</p>
+<p><img alt="encoder-decoder-high-level" src="../../../../_images/encoder-decoder-high-level.png" />
+<em>Encoder-Decoder NMT Architecture <a class="reference external" href="https://www.amazon.com/Natural-Language-Processing-PyTorch-Applications/dp/1491978236">ref</a></em></p>
+<section id="encoder">
+<h3>Encoder<a class="headerlink" href="#encoder" title="Permalink to this headline">#</a></h3>
+<p>The encoder network <span class="math notranslate nohighlight">\(q\)</span> reads the input sequence and generates a fixed-dimensional context vector <span class="math notranslate nohighlight">\(\phi\)</span> for the sequence. To do that we use an RNN that mathematically, it evolves its hidden state as follows:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf h_t = f(\mathbf x_t, \mathbf h_{t-1})\]</div>
+<p>and <span class="math notranslate nohighlight">\(f\)</span> can be in e.g. any non-linear function such as an <em>bidirectional</em> RNN with a given depth. In the following we use the term RNN to refer to a gated RNN such as an LSTM.</p>
+<p>The context vector is generated from the sequence of hidden states,</p>
+<div class="math notranslate nohighlight">
+\[\mathbf \phi = q(\mathbf h_1, ..., \mathbf h_{Tx})\]</div>
+<p>The bidirectional RNN is shown schematically below.</p>
+<p><img alt="forward-backward-concat" src="../../../../_images/forward-backward-concat.png" />
+<em>Bidirectional RNNs used for representing each word in the context of the sentence</em></p>
+<p>In this architecture, we read the input tokens one at a time to obtain the context vector <span class="math notranslate nohighlight">\(\phi\)</span>. To allow the encoder to build a richer representation of the arbitrary-length input sequence, especially for difficult tasks like translation, the encoder usually consist of stacked (deep) RNNs: a series of RNN layers where each layer’s outputs are the input sequence to the next layer. In this architecture the <em>final</em> layer’s RNN hidden state will be used as <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
+<p><img alt="lstm-nmt-encoder" src="../../../../_images/lstm-nmt-encoder.png" />
+<em>Stacked LSTM Encoder (unrolled and showing the reverse direction only)</em></p>
+<p>In addition, Seq2Seq encoders will often do something that initially look strange: they will process the input sequence in reverse. This is actually done on purpose with the idea being that the last thing that the encoder “sees” will roughly corresponds to the first thing that the model outputs; this makes it easier for the decoder to “get started” on the output.</p>
+</section>
+<section id="decoder">
+<h3>Decoder<a class="headerlink" href="#decoder" title="Permalink to this headline">#</a></h3>
+<p>The decoder is “aware” of the target words that it’s generated so far and of the input. In fact it is an example of <em>conditional language model</em> because it conditions on the source sentence or its representation - the context <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
+<p>The decoder directly calculates,</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\hat y}   = \argmax_y p(\mathbf y | \mathbf \phi)\]</div>
+<p>We can write this as:</p>
+<div class="math notranslate nohighlight">
+\[\argmax_y p(\mathbf y| \mathbf \phi) = p(y_1, y_2, ..., y_{Ty} | \phi)\]</div>
+<p>and then use the product rule of probability to decompose this to:</p>
+<div class="math notranslate nohighlight">
+\[\argmax_y p(y_{T_y} | y_1, ..., y_{T_y-1}, \mathbf \phi)  \dots p(y_2|y_1, \mathbf \phi ) p(y_1| \mathbf \phi) \]</div>
+<p>We can now write,</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\hat y}   = \argmax_y p(\mathbf y | \mathbf \phi) = \prod_{t=1}^{T_y} p(y_t | y_1, ..., y_{t-1}, \mathbf \phi) \]</div>
+<p>In this equation <span class="math notranslate nohighlight">\(p(y_t | y_1, ..., y_{t-1}, \mathbf \phi)\)</span> is a probability distribution represented by a softmax across all all the words of the vocabulary.</p>
+<p>We can use an RNN to model the conditional probabilities</p>
+<div class="math notranslate nohighlight">
+\[LSTM = g(s_t,  y_{t-1}, \phi ) = p(y_t | y_1, ..., y_{t-1}, \mathbf \phi) \]</div>
+<p>To that end, we’ll keep the “stacked” LSTM architecture from the encoder, but we’ll initialize the hidden state of our first layer with the context vector. Once the decoder is set up with its context, we’ll pass in a special token to signify the start of output generation; in literature, this is usually an <SOS> token appended to the end of the input (there’s also one at the end of the output). Then, we’ll run all stacked layers of LSTM, one after the other, following at the end with a softmax on the final layer’s output that can tell us the most probable output word.</p>
+<p><em>Both</em> the encoder and decoder are trained at the same time, so that they both learn the same context vector representation as shown next.</p>
+<p><img alt="seq2seq-training" src="../../../../_images/seq2seq-training.png" />
+<em>Seq2Seq Training - backpropagation is end to end.</em></p>
+<p>To help training, we apply  <strong>teacher forcing</strong> wherein the input at each time step to the decoder is the ground truth. During inference just like in the language model we input the predicted output from the previous time step.</p>
+<p><img alt="lstm-nmt-decoder" src="../../../../_images/lstm-nmt-decoder.png" />
+<em>LSTM Decoder (unrolled). The decoder is a language model that’s “aware” of the words that it’s generated so far and of the input.</em></p>
+<p>Once we have the output sequence, we use the same learning strategy as usual. We define a loss, the cross entropy on the prediction sequence, and we minimize it with a gradient descent algorithm and back-propagation.</p>
+<p>Note that the <span class="math notranslate nohighlight">\(\arg \max\)</span> we apply at each step on the softmax output results in some instances in suboptimal translations. The solution has been experimentally found to be the <em>beam search</em> heuristic that maintains a small number (e.g. 3-10) of the top likely sentences called the <em>beam width</em> , as opposed to <em>the</em> most likely sentence, and tries to extend them by one word at each step.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -647,7 +654,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./aiml-common/lectures/nlp/nlp-intro"
+            path: "./aiml-common/lectures/nlp/nmt"
         },
         predefinedOutput: true
     }
@@ -666,20 +673,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../rnn/time_series_using_simple_rnn_lstm.html"
+       href="../language-models/lstm-language-model/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Time Series Prediction using RNNs</p>
+        <p class="prev-next-title">LSTM Language Model from scratch</p>
       </div>
     </a>
     <a class="right-next"
-       href="../tokenization/index.html"
+       href="nmt-metrics/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tokenization</p>
+        <p class="prev-next-title">NMT Metrics  - BLEU</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -701,7 +708,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nlp-pipelines">NLP Pipelines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-to-sequence-seq2seq">Sequence-to-Sequence (Seq2Seq)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder">Encoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decoder">Decoder</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

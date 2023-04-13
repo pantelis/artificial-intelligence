@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Tokenization &#8212; Introduction to Artificial Intelligence</title>
+    <title>Introduction to Transformers &#8212; Introduction to Artificial Intelligence</title>
   
   
   
@@ -63,15 +63,17 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/nlp/tokenization/index';</script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/nlp/tokenization/index.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/nlp/transformers/transformers-intro';</script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/nlp/transformers/transformers-intro.html" />
     <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Word2Vec Embeddings" href="../word2vec/_index.html" />
-    <link rel="prev" title="Introduction to NLP" href="../nlp-intro/_index.html" />
+    <link rel="next" title="The Annotated Transformer" href="annotated_transformer.html" />
+    <link rel="prev" title="Attention in RNN-based NMT" href="../nmt/rnn-nmt-attention/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -284,20 +286,26 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="label-parts" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../nlp-intro/_index.html">Introduction to NLP</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tokenization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../word2vec/_index.html">Word2Vec Embeddings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../word2vec/word2vec_from_scratch.html">Word2Vec from scratch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../word2vec/word2vec_tensorflow_tutorial.html">Word2Vec Tensorflow Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../language-models/_index.html">RNN Language Models</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">NLP Introduction</span></p><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="label-parts" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../_index.html">Natural Language Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp-introduction/nlp-pipelines/_index.html">Introduction to NLP Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp-introduction/tokenization/index.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp-introduction/word2vec/_index.html">Word2Vec Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp-introduction/word2vec/word2vec_from_scratch.html">Word2Vec from scratch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp-introduction/word2vec/word2vec_tensorflow_tutorial.html">Word2Vec Tensorflow Tutorial</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">NLP Language Models</span></p><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="label-parts" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../language-models/_index.html">RNN-based Language Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../language-models/cnn-language-model/index.html">CNN Language Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../language-models/simple-rnn-language-model/index.html">Simple RNN Language Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../language-models/lstm-language-model/index.html">LSTM Language Model from scratch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nmt/_index.html">Neural Machine Translation</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">NLP Neural Machine Translation</span></p><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="label-parts" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nmt/index.html">RNN-based Neural Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nmt/nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nmt/lstm_seq2seq.html">Character-level recurrent sequence-to-sequence model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../transformers/annotated_transformer.html">The Annotated Transformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nmt/rnn-nmt-attention/index.html">Attention in RNN-based NMT</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">NLP Transformers</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="label-parts" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Transformers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="annotated_transformer.html">The Annotated Transformer</a></li>
 
 
 
@@ -309,29 +317,29 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="label-parts" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="label-parts" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/index.html">Math for ML Textbook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/probability/index.html">Probability Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/linear-algebra/index.html">Linear Algebra for Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/calculus/index.html">Calculus</a></li>
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="label-parts" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="label-parts" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/index.html">Your Programming Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Learn Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Common Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="label-parts" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Common Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="label-parts" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/probability/probability-assignment-5/index.html">Probability Assignment</a></li>
 
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments CS-UY-4613</span></p><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="label-parts" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments CS-UY-4613</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/mle/mle-gaussian.html">Gaussian Maximum Likelihood</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/mle/poisson-regression-1/index.html">Bike Rides and the Poisson Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/object-tracking-kalman/balls.html">Multiple Object Tracking</a></li>
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project CS-UY-4613</span></p><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="label-parts" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project CS-UY-4613</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../projects/nlp/finetuning-language-models-tweets/index.html">Finetuning Language Models - Toxic Tweets</a></li>
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments CS-GY-6613</span></p><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="label-parts" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments CS-GY-6613</span></p><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="label-parts" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/logistic-regression-1/index.html">Logistic Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/object-tracking-kalman/soccer.html">Sports Analytics - Object Tracking and Kalman Filters</a></li>
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project CS-GY-6613</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project CS-GY-6613</span></p><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="label-parts" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../projects/nlp/finetuning-language-models-patents/index.html">Finetuning Language Models - Can I Patent This?</a></li>
 </ul></li></ul>
     </div>
@@ -378,73 +386,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://mybinder.org/v2/gh/pantelis/artificial-intelligence/master?urlpath=tree/artificial_intelligence/aiml-common/lectures/nlp/tokenization/index.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img src="../../../../_static/images/logo_binder.svg">
-  </span>
-<span class="btn__text-container">Binder</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://colab.research.google.com/github/pantelis/artificial-intelligence/blob/master/artificial_intelligence/aiml-common/lectures/nlp/tokenization/index.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch onColab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img src="../../../../_static/images/logo_colab.png">
-  </span>
-<span class="btn__text-container">Colab</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="initThebeSBT()"
-  class="btn btn-sm btn-launch-thebe dropdown-item"
-  title="Launch Thebe"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-play"></i>
-  </span>
-<span class="btn__text-container">Live Code</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -470,7 +411,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pantelis/artificial-intelligence/edit/master/artificial_intelligence/aiml-common/lectures/nlp/tokenization/index.ipynb" target="_blank"
+      <li><a href="https://github.com/pantelis/artificial-intelligence/edit/master/artificial_intelligence/aiml-common/lectures/nlp/transformers/transformers-intro.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -487,7 +428,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/nlp/tokenization/index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/nlp/transformers/transformers-intro.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -517,7 +458,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../../../_sources/aiml-common/lectures/nlp/tokenization/index.ipynb" target="_blank"
+      <li><a href="../../../../_sources/aiml-common/lectures/nlp/transformers/transformers-intro.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -527,7 +468,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -599,7 +540,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Tokenization</h1>
+    <h1>Introduction to Transformers</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -609,12 +550,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenizers">Tokenizers</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#word-level-tokenization">Word level tokenization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#character-level-tokenization">Character level tokenization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#byte-pair-encoding-bpe">Byte Pair Encoding (BPE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-self-attention-layer-explained">Simple self-attention layer explained</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scaled-dot-product-self-attention-layer-explained">Scaled dot product self-attention layer explained</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-head-attention-explained">Multi-head attention explained</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-embeddings-explained">Positional embeddings explained</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
             </nav>
         </div>
@@ -626,104 +568,116 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="tokenization">
-<h1>Tokenization<a class="headerlink" href="#tokenization" title="Permalink to this headline">#</a></h1>
-<div class="admonition-warning admonition">
-<p class="admonition-title">Warning</p>
-<p>If this notebook seems half done, its because it is. I am still working on it. I will update it based on <span class="xref myst">this</span> conceptual guide and <a class="reference external" href="https://huggingface.co/docs/transformers/tokenizer_summary">this</a> implementation guide.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-transformers">
+<h1>Introduction to Transformers<a class="headerlink" href="#introduction-to-transformers" title="Permalink to this headline">#</a></h1>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note</p>
+<p>To fully underastand the Transformer architecture, we need to understand the following concepts:</p>
+<ul class="simple">
+<li><p>Fully Connected and Recurrent Neural Networks (RNNs)</p></li>
+<li><p>Tokenization</p></li>
+<li><p>Embeddings</p></li>
+<li><p>Attention Mechanisms</p></li>
+</ul>
+<p>All such concepts were covered in earlier chapters.</p>
 </div>
-<p>In earlier chapters we have limited the discussion to tokenizers that either produce a list of words or a list of characters. Its very important though to understand the connection that exists between tokenization and modeling for various NLP tasks.</p>
-<p><strong>Model fine-tuning</strong></p>
-<p>The last few years we have seen the rise of pre-trained language models such as BERT, GPT-2, GPT-3, etc. These models are trained on large amounts of text data and are then used to perform downstream tasks such as text classification, text generation, etc. <strong>When you finetune a language model, you have to feed a pretrained model with the same type of tokens that it was trained on.</strong></p>
-<p><strong>Model training from scratch</strong></p>
-<p>If a language model is not available in the language you are interested in, or if your corpus is very different from the one your language model was trained on, you will most likely want to retrain the model from scratch using a tokenizer adapted to your data. That will require training a new tokenizer on your dataset. Follow <a class="reference external" href="https://huggingface.co/course/chapter6/2?fw=pt">this guide</a> to learn how to do that.</p>
-<section id="tokenizers">
-<h2>Tokenizers<a class="headerlink" href="#tokenizers" title="Permalink to this headline">#</a></h2>
-<p>Lets review the main tokenizers so we highlight such connection for each type specifically.</p>
-<section id="word-level-tokenization">
-<h3>Word level tokenization<a class="headerlink" href="#word-level-tokenization" title="Permalink to this headline">#</a></h3>
-<p>The word-level tokenizers are intuitive, however, they suffer from the problem of unknown words, tagged as Out Of Vocabulary (OOV) words. They also tend to result into large vocabulary sizes, assigning different tokens to “can’t” and “cannot”. They also have issues with abbreviations eg. “U.S.A”.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.lang.en</span> <span class="kn">import</span> <span class="n">English</span>
-<span class="n">nlp</span> <span class="o">=</span> <span class="n">English</span><span class="p">()</span>
-<span class="c1"># Create a Tokenizer with the default settings for English</span>
-<span class="c1"># including punctuation rules and exceptions</span>
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="o">.</span><span class="n">tokenizer</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;I have a new GPU!&quot;</span>
-
-<span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I
-have
-a
-new
-GPU
-!
-</pre></div>
-</div>
-</div>
-</div>
+<p>In the transformer architecture we</p>
+<ol class="arabic simple">
+<li><p>Eliminate all recurrent connections, therefore allowing the model to be trained and produce inference results much faster.</p></li>
+<li><p>Continue to use attention mechanisms to allow the model to focus on the most relevant parts of the input sequence.</p>
+<ul class="simple">
+<li><p>This means that the encoder output will be a weighted sum of all inputs (all words of the sequence), where the weights are computed by an attention mechanism called <em>self-attention</em>. The name indicates that the encoder will attend to itself, i.e. it will compute the weights based on the input sequence itself.</p></li>
+</ul>
+</li>
+</ol>
+<p>At a very high level, we will introduce an attention layer that for each input token will reveal predicates that connect these input words to all others. Such connectivity will be manifested by calculating a set of weights  as shown in the figure below.</p>
+<p><img alt="" src="../../../../_images/self-attention-visualization.png" /></p>
+<section id="simple-self-attention-layer-explained">
+<h2>Simple self-attention layer explained<a class="headerlink" href="#simple-self-attention-layer-explained" title="Permalink to this headline">#</a></h2>
+<p><img alt="" src="../../../../_images/self-attention-simple.png" /></p>
+<p>The self-attention mechanism is a mechanism that allows the model to focus on the most relevant parts of the input sequence. <strong>Given the <span class="math notranslate nohighlight">\(i-th\)</span> input word</strong> having embedding <span class="math notranslate nohighlight">\(x_i\)</span>, we perform the following calculations:</p>
+<ol class="arabic simple">
+<li><p><strong>Attention scores of the input word</strong>: These are computed as dot products of the embedding of the input word and each of the embeddings of the words of the input sentence (including the input word itself). For example if the input sequence consists of 3 words, we will compute 3 attention scores.</p></li>
+<li><p><strong>Attention weights</strong>: The attention scores are then passed through a softmax function to obtain the corresponding <em>attention weights</em>.  Recall that the softmax function is a vector input - vector output function that maps the input vector to a vector of values between 0 and 1, where the sum of all values is 1. So nwe expect to get 3 attention weights.</p></li>
+<li><p><strong>Weighted embedding of the input word</strong> : We then use the  attention weights to create a weighted sum of the word embeddings of the input sequence to obtain the new input word embedding i.e. the embedding that now includes information from all other embeddings of the input sequence.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\hat x_i = \sum_{j=1}^n \alpha_{ij} x_j\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha_{ij}\)</span> is the attention weight of the <span class="math notranslate nohighlight">\(j-th\)</span> word of the input sequence for the <span class="math notranslate nohighlight">\(i-th\)</span> word of the input sequence.</p>
+<p>Self-attention layers can be stacked on top of each other to create a multi-layer self-attention mechanism.</p>
 </section>
-<section id="character-level-tokenization">
-<h3>Character level tokenization<a class="headerlink" href="#character-level-tokenization" title="Permalink to this headline">#</a></h3>
-<p>Character-level tokenization are more flexible as they bypass the OOV issue, however to capture the context of each word we need to use much longer sequences and this results in loss of performance.</p>
+<section id="scaled-dot-product-self-attention-layer-explained">
+<h2>Scaled dot product self-attention layer explained<a class="headerlink" href="#scaled-dot-product-self-attention-layer-explained" title="Permalink to this headline">#</a></h2>
+<p>In the simple attention mechanism we have no trainable parameters. The attention weights are computed derministically from the embeddings of each word of the input sequence. The way to introduce trainable parameters is via the reuse of the principles we have seen in RNN attention mechanisms.</p>
+<div class="admonition-information-retrieval admonition">
+<p class="admonition-title">Information Retrieval</p>
+<p>Lets review some terminology used in information retrieval. Lets assume that you are searching for a movie in Netflix. The index is a list of all the movies in the database and for</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Term</p></th>
+<th class="head"><p>Definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Query</p></td>
+<td><p>The text you enter in search bar.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Keys</p></td>
+<td><p>Netflix has catalogued all the movies in its database and has created an indexed table of all the movies. Indexing may use one of more keys to accelerate the matching/search. Each moview is associated with a list of all the words that appear in the movie’s description.</p></td>
+</tr>
+<tr class="row-even"><td><p>Values</p></td>
+<td><p>The list of movies that best match your query text.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In RNN encoder-decoder architecture, the current decoder state served as a <em>query</em>  and the encoder states <span class="math notranslate nohighlight">\(h_i\)</span> serve as <em>keys</em> and the contents of the hidden state as <em>values</em>. The attention weights are computed by comparing the query against each of the keys and passing the results via a softmax. The values are then used to create a weighted sum of the encoder hidden states to obtain the new decoder state ie. a vector that incorporates all the encoder hidden states.</p>
+<p>In the transformer architecture we do something similar.</p>
+<ol class="arabic simple">
+<li><p><strong>Linear transformation of the input embeddings</strong>:  First we need to create the query, keys and values. To do so, we apply a linear transformation to the input embeddings to obtain new embeddings. This is done by multiplying the input embeddings with a corresdonding matrix <span class="math notranslate nohighlight">\(W\)</span> and adding a bias vector <span class="math notranslate nohighlight">\(b\)</span>.</p></li>
+<li><p>We then compute the attention scores by computing the dot product of the query and each of the keys.  We then divide the result by the square root of the dimension of the key vector. This is done to prevent the attention scores from growing too large.</p></li>
+<li><p>We then pass the attention scores through a softmax function to obtain the attention weights.</p></li>
+<li><p>We then use the attention weights to create a weighted sum of the values to obtain the new input embedding.</p></li>
+</ol>
+<p>Notice that steps 2-4 are identical to the simple soft attention.</p>
+<p><img alt="Single Attention Head" src="../../../../_images/scaled-dot-product-self-attention.png" /></p>
+<p>The equation for the attention  is as follows:</p>
+<div class="math notranslate nohighlight">
+\[Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d_k}})V\]</div>
+<p>where Q, K, V are the query, keys and values respectively. <span class="math notranslate nohighlight">\(d_k\)</span> is the dimension of the key vector.</p>
+<section id="multi-head-attention-explained">
+<h3>Multi-head attention explained<a class="headerlink" href="#multi-head-attention-explained" title="Permalink to this headline">#</a></h3>
+<p>For the input sentence</p>
+<p>“I usually go to the lab to run my experiments and to meet my collualgues.””</p>
+<p>we understand that multiple relationships must be understood with respect to the noun “lab”. For example, we need to understand that “lab” is a place where experiments are run, but also a place where we meet our colleagues.</p>
+<p>To capture such multiplicity of relationships, we can use multiple attention heads. Each attention head will learn a different relationship between the input words and will do so at the same time (in parallel).</p>
+<p><img alt="" src="../../../../_images/multi-head-attention.png" /></p>
+<p>The complexity of running multiple heads does not scale with the number of heads since the number of parameters is shared across the heads.</p>
 </section>
-<section id="byte-pair-encoding-bpe">
-<h3>Byte Pair Encoding (BPE)<a class="headerlink" href="#byte-pair-encoding-bpe" title="Permalink to this headline">#</a></h3>
-<p>In <a class="reference external" href="https://arxiv.org/abs/1508.07909">BPE</a>, one token can correspond to a character, an entire word or more, or anything in between and on average a token corresponds to 0.7 words. The idea behind BPE is to tokenize at word level frequently occuring words and at subword level the rarer words. GPT-3 uses a variant of BPE.</p>
-<p><img alt="" src="../../../../_images/bpe-example.png" /></p>
-<p>Let see an example a tokenizer in action. We wull use the HuggingFace Tokenizers API and the GPT2 tokenizer. Note that this is called the <em>encoder</em> as it is used to encode text into tokens.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">GPT2Tokenizer</span>
-
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">GPT2Tokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;gpt2&quot;</span><span class="p">)</span>
-<span class="n">tokens</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="s2">&quot;I have a new GPU!&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">convert_tokens_to_string</span><span class="p">(</span><span class="n">tokens</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">convert_tokens_to_ids</span><span class="p">(</span><span class="n">tokens</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;I&#39;, &#39;Ġhave&#39;, &#39;Ġa&#39;, &#39;Ġnew&#39;, &#39;ĠGPU&#39;, &#39;!&#39;]
-I have a new GPU!
-[40, 423, 257, 649, 11362, 0]
-</pre></div>
-</div>
-</div>
-</div>
-<p>If you are perplexed about the <code class="docutils literal notranslate"><span class="pre">Ġ</span></code> please note that this character is what the encoder produces for the space character. The encoder code doesn’t like spaces, so they replace spaces and other whitespace characters with other unicode bytes.  The encoder <a class="reference external" href="https://github.com/openai/gpt-2/issues/80">more specifically</a> takes all control and whitespace characters in code points 0-255 and shifts them up by 256 to make them printable. So space (code point 32) becomes Ġ (code point 288).</p>
-<p>In the following we have another subword tokenization from the BERT tokenizer known as <span class="xref myst">WordPiece</span>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">BertTokenizer</span>
-
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">BertTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;bert-base-uncased&quot;</span><span class="p">)</span>
-<span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="s2">&quot;I have a new GPU!&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/workspaces/artificial_intelligence/.venv/lib/python3.11/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
-  from .autonotebook import tqdm as notebook_tqdm
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;i&#39;, &#39;have&#39;, &#39;a&#39;, &#39;new&#39;, &#39;gp&#39;, &#39;##u&#39;, &#39;!&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p>“##” means that the rest of the token should be attached to the previous one, without space (for decoding or reversal of the tokenization).</p>
+<section id="positional-embeddings-explained">
+<h3>Positional embeddings explained<a class="headerlink" href="#positional-embeddings-explained" title="Permalink to this headline">#</a></h3>
+<p>In the RNN encoder-decoder architecture, the order of the words in the input sequence was important. The decoder state at time step <span class="math notranslate nohighlight">\(t\)</span> was a function of the decoder state at time step <span class="math notranslate nohighlight">\(t-1\)</span> and the input word at time step <span class="math notranslate nohighlight">\(t\)</span>. In transformers, since we got rid of the recurring connections, we need to capture the order of the words in the input sequence with some other way. To do so, we use positional embeddings <a class="footnote-reference brackets" href="#id2" id="id1">1</a>.</p>
+<p>See <a class="reference external" href="https://theaisummer.com/positional-embeddings/">here</a> for an explanation of positional embeddings.</p>
 </section>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
+<ol class="arabic simple">
+<li><p>An interesting video for the many attention mechanisms that are the roots of self-attention found in transformers.</p></li>
+</ol>
+<div class="video_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/AIiwuClvH6k" style="border: 0; height: 345px; width: 560px">
+</iframe></div><ol class="arabic simple" start="2">
+<li><p>In terms of NLP we just scratched the surface here. Watch the following video to review some of the challenges NLP researchers face (circa 2020) and the rise of natural language generation (NLG) with the earlier GPT-2 and GPT-3 models. The presentation contains some key papers as well.</p></li>
+</ol>
+<div class="video_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/G5lmya6eKtc" style="border: 0; height: 345px; width: 560px">
+</iframe></div><hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Positional embeddings have replaced the so called positional encodings of earlier architectures.</p>
+</dd>
+</dl>
 </section>
 </section>
 
@@ -740,7 +694,7 @@ I have a new GPU!
         },
         kernelOptions: {
             name: "python3",
-            path: "./aiml-common/lectures/nlp/tokenization"
+            path: "./aiml-common/lectures/nlp/transformers"
         },
         predefinedOutput: true
     }
@@ -759,20 +713,20 @@ I have a new GPU!
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../nlp-intro/_index.html"
+       href="../nmt/rnn-nmt-attention/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction to NLP</p>
+        <p class="prev-next-title">Attention in RNN-based NMT</p>
       </div>
     </a>
     <a class="right-next"
-       href="../word2vec/_index.html"
+       href="annotated_transformer.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Word2Vec Embeddings</p>
+        <p class="prev-next-title">The Annotated Transformer</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -794,12 +748,13 @@ I have a new GPU!
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenizers">Tokenizers</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#word-level-tokenization">Word level tokenization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#character-level-tokenization">Character level tokenization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#byte-pair-encoding-bpe">Byte Pair Encoding (BPE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-self-attention-layer-explained">Simple self-attention layer explained</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scaled-dot-product-self-attention-layer-explained">Scaled dot product self-attention layer explained</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-head-attention-explained">Multi-head attention explained</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-embeddings-explained">Positional embeddings explained</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
   </nav></div>
 

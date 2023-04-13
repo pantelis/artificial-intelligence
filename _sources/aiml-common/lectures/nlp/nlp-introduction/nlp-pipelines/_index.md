@@ -1,6 +1,10 @@
-# Introduction to NLP
+# Introduction to NLP Pipelines
 
-Python and almost all programming languages are formal. They define a strict set of rules called a _grammar_ that the programmer must follow religiously. In addition formal languages also define semantics or meaning of the program via a set of rules. So the exit code `0` after the execution of a routine has the meaning of successful termination but a `1` the opposite. The English language on the other hand is "free wheeling" so to speak due to its ambiguity and size. 
+In this chapter, we will introduce the topic of processing with neural architectures language in general. This includes natural language, code etc. 
+
+Python and almost all programming languages are formal. They define a strict set of rules called a _grammar_ that the programmer must follow religiously. In addition formal languages also define semantics or meaning of the program via a set of rules. So the exit code `0` after the execution of a routine has the meaning of successful termination but a `1` the opposite. 
+
+The English language on the other hand is "free wheeling" so to speak due to its ambiguity and size. 
 
 Some examples are in order:
 
@@ -16,12 +20,12 @@ Some examples are in order:
     2. "The river's bank eroded after the 2008 floods"
 
 
-To capture the fuzziness of natural language we need to define probabilistic models. We do not speak of a single meaning for a sentence - rather we speak of _a probability distribution over possible meanings_.  
+To capture the fuzziness of language we need to define probabilistic models. In other words we will be speaking of _a probability distribution over possible meanings_ of the input text.  
 
 
 ## NLP Pipelines
 
-To get started, we need some common ground on the NLP terminology - the terms are presented in the processing order of an NLP pipeline. This paragraph is heavily borrowed from [here](https://medium.com/@ageitgey/natural-language-processing-is-fun-9a0bff37854e).
+This paragraph is heavily borrowed from [here](https://medium.com/@ageitgey/natural-language-processing-is-fun-9a0bff37854e).
 
 | Term                               | Definition                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -41,11 +45,5 @@ To get started, we need some common ground on the NLP terminology - the terms ar
 |                                    | ![coreference-resolution](images/coreference-resolution.png) |
 
 
-In terms of NLP we are just scratching the surface here. Watch the following video to review some of the challenges NLP researchers face (circa 2020) and the rise of natural language generation (NLG) with the earlier GPT-2 and GPT-3 models. The presentation contains some key papers as well. 
 
-```{eval-rst}
-
-.. youtube:: G5lmya6eKtc
-
-```
 
