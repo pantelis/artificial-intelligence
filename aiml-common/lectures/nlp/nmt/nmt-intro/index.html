@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>NMT Metrics - BLEU &#8212; Introduction to Artificial Intelligence</title>
+    <title>RNN-based Neural Machine Translation &#8212; Introduction to Artificial Intelligence</title>
   
   
   
@@ -67,13 +67,13 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/nlp/nmt/nmt-metrics/index';</script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/nlp/nmt/nmt-metrics/index.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/nlp/nmt/nmt-intro/index';</script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/nlp/nmt/nmt-intro/index.html" />
     <link rel="shortcut icon" href="../../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="Character-level recurrent sequence-to-sequence model" href="../lstm_seq2seq.html" />
-    <link rel="prev" title="RNN-based Neural Machine Translation" href="../nmt-intro/index.html" />
+    <link rel="next" title="NMT Metrics - BLEU" href="../nmt-metrics/index.html" />
+    <link rel="prev" title="LSTM Language Model from scratch" href="../../language-models/lstm-language-model/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -301,8 +301,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../language-models/lstm-language-model/index.html">LSTM Language Model from scratch</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../nmt-intro/index.html">Neural Machine Translation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">NMT Metrics  - BLEU</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Neural Machine Translation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lstm_seq2seq.html">Character-level recurrent sequence-to-sequence model</a></li>
 </ul>
 </li>
@@ -391,73 +391,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://mybinder.org/v2/gh/pantelis/artificial-intelligence/master?urlpath=tree/artificial_intelligence/aiml-common/lectures/nlp/nmt/nmt-metrics/index.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img src="../../../../../_static/images/logo_binder.svg">
-  </span>
-<span class="btn__text-container">Binder</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://colab.research.google.com/github/pantelis/artificial-intelligence/blob/master/artificial_intelligence/aiml-common/lectures/nlp/nmt/nmt-metrics/index.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch onColab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img src="../../../../../_static/images/logo_colab.png">
-  </span>
-<span class="btn__text-container">Colab</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="initThebeSBT()"
-  class="btn btn-sm btn-launch-thebe dropdown-item"
-  title="Launch Thebe"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-play"></i>
-  </span>
-<span class="btn__text-container">Live Code</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -483,7 +416,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pantelis/artificial-intelligence/edit/master/artificial_intelligence/aiml-common/lectures/nlp/nmt/nmt-metrics/index.ipynb" target="_blank"
+      <li><a href="https://github.com/pantelis/artificial-intelligence/edit/master/artificial_intelligence/aiml-common/lectures/nlp/nmt/nmt-intro/index.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -500,7 +433,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/nlp/nmt/nmt-metrics/index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/nlp/nmt/nmt-intro/index.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -530,7 +463,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../../../../_sources/aiml-common/lectures/nlp/nmt/nmt-metrics/index.ipynb" target="_blank"
+      <li><a href="../../../../../_sources/aiml-common/lectures/nlp/nmt/nmt-intro/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -540,7 +473,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -612,7 +545,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>NMT Metrics  - BLEU</h1>
+    <h1>RNN-based Neural Machine Translation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -622,8 +555,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intuition">Intuition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation">Calculation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-to-sequence-seq2seq">Sequence-to-Sequence (Seq2Seq)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder">Encoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decoder">Decoder</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -635,133 +571,81 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="nmt-metrics-bleu">
-<h1>NMT Metrics  - BLEU<a class="headerlink" href="#nmt-metrics-bleu" title="Permalink to this headline">#</a></h1>
-<p>In 2002, IBM researchers developed the <a class="reference external" href="https://aclanthology.org/P02-1040/">BiLingual Evaluation Understudy (BLEU)</a> metric that remains, with its many variants to this day, one of the most quoted <a class="reference external" href="https://huggingface.co/evaluate-metric">metrics</a> for evaluating machine translation applications.</p>
-<section id="intuition">
-<h2>Intuition<a class="headerlink" href="#intuition" title="Permalink to this headline">#</a></h2>
-<p>The BLEU algorithm evaluates the precision score of a candidate machine translation against a reference human translation.</p>
-<p>The reference human translation is a assumed to be a model example of a translation, and we use <em>n-gram</em> matches as our metric for how similar a candidate translation is to it. Why simple precision can’t be used? Consider the following example of poor machine translation output with high precision metric using unigrams.</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Output</p></th>
-<th class="head"><p></p></th>
-<th class="head"><p></p></th>
-<th class="head"><p></p></th>
-<th class="head"><p></p></th>
-<th class="head"><p></p></th>
-<th class="head"><p></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Candidate</p></td>
-<td><p>the</p></td>
-<td><p>the</p></td>
-<td><p>the</p></td>
-<td><p>the</p></td>
-<td><p>the</p></td>
-<td><p>the</p></td>
-</tr>
-<tr class="row-odd"><td><p>Reference 1</p></td>
-<td><p>the</p></td>
-<td><p>cat</p></td>
-<td><p>is</p></td>
-<td><p>on</p></td>
-<td><p>the</p></td>
-<td><p>mat</p></td>
-</tr>
-<tr class="row-even"><td><p>Reference 2</p></td>
-<td><p>there</p></td>
-<td><p>is</p></td>
-<td><p>a</p></td>
-<td><p>cat</p></td>
-<td><p>on</p></td>
-<td><p>the</p></td>
-</tr>
-</tbody>
-</table>
-<p>Of the seven words in the candidate translation, all of them appear in the reference translations. Thus the candidate text is given a unigram precision of,</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="rnn-based-neural-machine-translation">
+<h1>RNN-based Neural Machine Translation<a class="headerlink" href="#rnn-based-neural-machine-translation" title="Permalink to this headline">#</a></h1>
+<blockquote>
+<div><p>These notes heavily borrowing from <a class="reference external" href="https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1194/readings/cs224n-2019-notes06-NMT_seq2seq_attention.pdf">the CS229N 2019 set of notes on NMT</a>.</p>
+</div></blockquote>
+<p><img alt="rosetta-stone" src="../../../../../_images/rosetta-stone.jpg" />
+<em>Rosetta Stone at the British Museum - depicts the same text in Ancient Egyptian, Demotic and Ancient Greek.</em></p>
+<p>Up to now we have seen how to generate word2vec embeddings and predict a single output e.g. the single most likely next word in a sentence given the past few. However, there’s a whole class of NLP tasks that rely on sequential output, or outputs that are sequences of potentially varying length. For example,</p>
+<ul class="simple">
+<li><p><strong>Translation</strong>: taking a sentence in one language as input and outputting the same sentence in another language.</p></li>
+<li><p><strong>Conversation</strong>: taking a statement or question as input and responding to it.</p></li>
+<li><p><strong>Summarization</strong>: taking a large body of text as input and outputting a summary of it.</p></li>
+<li><p><strong>Code Generation</strong>: Natural Language to formal language code (e.g. python)</p></li>
+</ul>
+<p><img alt="ios-keyboard-translation" src="../../../../../_images/ios-keyboard-translation.png" />
+<em>Your smartphones translate the text you type in messaging applications to emojis and other symbols structured in such a way to convey the same meaning as the text</em>.</p>
+<section id="sequence-to-sequence-seq2seq">
+<h2>Sequence-to-Sequence (Seq2Seq)<a class="headerlink" href="#sequence-to-sequence-seq2seq" title="Permalink to this headline">#</a></h2>
+<p>Sequence-to-sequence, or “Seq2Seq”, was <a class="reference external" href="https://arxiv.org/abs/1409.3215">first published in 2014</a>. At a high level, a sequence-to-sequence model is an end-to-end model made up of two recurrent neural networks (LSTMs):</p>
+<ul class="simple">
+<li><p>an encoder, which takes the a source sequence as input and encodes it into a fixed-size “context vector” <span class="math notranslate nohighlight">\(\phi\)</span>, and</p></li>
+<li><p>a decoder, which uses the context vector from above as a “seed” from which to generate an output sequence.</p></li>
+</ul>
+<p>For this reason, Seq2Seq models are often referred to as encoder-decoder models as shown in the next figure.</p>
+<p><img alt="encoder-decoder-high-level" src="../../../../../_images/encoder-decoder-high-level.png" />
+<em>Encoder-Decoder NMT Architecture <a class="reference external" href="https://www.amazon.com/Natural-Language-Processing-PyTorch-Applications/dp/1491978236">ref</a></em></p>
+<section id="encoder">
+<h3>Encoder<a class="headerlink" href="#encoder" title="Permalink to this headline">#</a></h3>
+<p>The encoder network <span class="math notranslate nohighlight">\(q\)</span> reads the input sequence and generates a fixed-dimensional context vector <span class="math notranslate nohighlight">\(\phi\)</span> for the sequence. To do that we use an RNN that mathematically, it evolves its hidden state as follows:</p>
 <div class="math notranslate nohighlight">
-\[ P= \frac{m}{w_{t}} = \frac{7}{7}=1\]</div>
-<p>where <span class="math notranslate nohighlight">\(m\)</span> is number of words from the candidate that are found in the reference, and <span class="math notranslate nohighlight">\(w_t\)</span> is the total number of words in the candidate. This is a perfect score, despite the fact that the candidate translation above retains little of the content of either of the references.</p>
-<p>The modification that BLEU makes is fairly straightforward. For each word in the candidate translation, the algorithm takes its maximum total count, <span class="math notranslate nohighlight">\(m_{max}\)</span>, in any of the reference translations. In the example above, the word “the” appears twice in reference 1, and once in reference 2. Thus <span class="math notranslate nohighlight">\(m_{max}=2\)</span>.</p>
-<p>For the candidate translation, the count <span class="math notranslate nohighlight">\(m_{w}\)</span> of each word is clipped to a maximum of <span class="math notranslate nohighlight">\(m_{max}\)</span> for that word. In this case, “the” has <span class="math notranslate nohighlight">\(m_w=7\)</span> and <span class="math notranslate nohighlight">\(m_{max}=2\)</span> thus <span class="math notranslate nohighlight">\(m_w\)</span> is clipped to 2. These clipped counts <span class="math notranslate nohighlight">\(m_w\)</span> are then summed over all distinct words in the candidate. This sum is then divided by the total number of unigrams in the candidate translation. In the above example, the modified unigram precision score would be:</p>
+\[\mathbf h_t = f(\mathbf x_t, \mathbf h_{t-1})\]</div>
+<p>and <span class="math notranslate nohighlight">\(f\)</span> can be in e.g. any non-linear function such as an <em>bidirectional</em> RNN with a given depth. In the following we use the term RNN to refer to a gated RNN such as an LSTM.</p>
+<p>The context vector is generated from the sequence of hidden states,</p>
 <div class="math notranslate nohighlight">
-\[P= \frac{2}{7}\]</div>
-<p>More formally, the BLUE score is a cumulative score that refers to the calculation of individual n-gram scores at all orders from 1 to n and weighs them by calculating the weighted <em>geometric mean</em>, i.e.</p>
-<div class="math notranslate nohighlight">
-\[BLEU = \beta \prod_{i=1}^k p_n^{w_n}\]</div>
-<p>where the brevity penalty <span class="math notranslate nohighlight">\(\beta\)</span> considers the length of the reference ® and candidate © sentences.</p>
-<div class="math notranslate nohighlight">
-\[\beta = \exp(\min(0, 1- \frac{len(R)}{len(C)}))\]</div>
-<p>and <span class="math notranslate nohighlight">\(p_n\)</span> is the n-gram precision.</p>
-<p>You can remember BLUE by drawing the diagram we saw in binary classification metrics</p>
-<p><img alt="precision-recall" src="../../../../../_images/precision-recall.png" /></p>
-<p>and make the following associations</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Metric</p></th>
-<th class="head"><p>Description as it applies to the NMT</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>TP</p></td>
-<td><p>There are n-grams in C that are in R</p></td>
-</tr>
-<tr class="row-odd"><td><p>FP</p></td>
-<td><p>There are n-grams in C that are not in R</p></td>
-</tr>
-<tr class="row-even"><td><p>FN</p></td>
-<td><p>There are missing n-grams in C that are in R</p></td>
-</tr>
-</tbody>
-</table>
-<p>BLUE is concerned with the first two rows and calculates the n-gram precision as the usual ratio of the counts <span class="math notranslate nohighlight">\(\frac{TP}{TP+FP}\)</span>.</p>
+\[\mathbf \phi = q(\mathbf h_1, ..., \mathbf h_{Tx})\]</div>
+<p>The bidirectional RNN is shown schematically below.</p>
+<p><img alt="forward-backward-concat" src="../../../../../_images/forward-backward-concat.png" />
+<em>Bidirectional RNNs used for representing each word in the context of the sentence</em></p>
+<p>In this architecture, we read the input tokens one at a time to obtain the context vector <span class="math notranslate nohighlight">\(\phi\)</span>. To allow the encoder to build a richer representation of the arbitrary-length input sequence, especially for difficult tasks like translation, the encoder usually consist of stacked (deep) RNNs: a series of RNN layers where each layer’s outputs are the input sequence to the next layer. In this architecture the <em>final</em> layer’s RNN hidden state will be used as <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
+<p><img alt="lstm-nmt-encoder" src="../../../../../_images/lstm-nmt-encoder.png" />
+<em>Stacked LSTM Encoder (unrolled and showing the reverse direction only)</em></p>
+<p>In addition, Seq2Seq encoders will often do something that initially look strange: they will process the input sequence in reverse. This is actually done on purpose with the idea being that the last thing that the encoder “sees” will roughly corresponds to the first thing that the model outputs; this makes it easier for the decoder to “get started” on the output.</p>
 </section>
-<section id="calculation">
-<h2>Calculation<a class="headerlink" href="#calculation" title="Permalink to this headline">#</a></h2>
-<p>A simple practical example is shown next. Note that the weights are specified as a tuple where each index refers to the gram order. To calculate the BLEU score only for 1-gram matches, you can specify a weight of 1 for 1-gram and 0 for 2, 3 and 4 (1, 0, 0, 0).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1-gram individual BLEU</span>
-<span class="kn">from</span> <span class="nn">nltk.translate.bleu_score</span> <span class="kn">import</span> <span class="n">sentence_bleu</span>
-<span class="n">reference</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;small&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">]]</span>
-<span class="n">candidate</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">]</span>
-<span class="n">score</span> <span class="o">=</span> <span class="n">sentence_bleu</span><span class="p">(</span><span class="n">reference</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.75
-</pre></div>
-</div>
-</div>
-</div>
-<p>In practice, however, using individual words as the unit of comparison is not optimal. Instead, BLEU computes the same modified precision metric using n-grams. The length which has the “highest correlation with monolingual human judgement” was found to be <strong>four</strong>. This is also the default in many packages that calculate BLUE scores (BLUE-4 metric).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># n-gram individual BLEU</span>
-<span class="kn">from</span> <span class="nn">nltk.translate.bleu_score</span> <span class="kn">import</span> <span class="n">sentence_bleu</span>
-<span class="n">reference</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">]]</span>
-<span class="n">candidate</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Individual 1-gram: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">sentence_bleu</span><span class="p">(</span><span class="n">reference</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Individual 2-gram: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">sentence_bleu</span><span class="p">(</span><span class="n">reference</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Individual 3-gram: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">sentence_bleu</span><span class="p">(</span><span class="n">reference</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Individual 4-gram: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">sentence_bleu</span><span class="p">(</span><span class="n">reference</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Individual 1-gram: 1.000000
-Individual 2-gram: 1.000000
-Individual 3-gram: 1.000000
-Individual 4-gram: 1.000000
-</pre></div>
-</div>
-</div>
-</div>
+<section id="decoder">
+<h3>Decoder<a class="headerlink" href="#decoder" title="Permalink to this headline">#</a></h3>
+<p>The decoder is “aware” of the target words that it’s generated so far and of the input. In fact it is an example of <em>conditional language model</em> because it conditions on the source sentence or its representation - the context <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
+<p>The decoder directly calculates,</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\hat y}   = \argmax_y p(\mathbf y | \mathbf \phi)\]</div>
+<p>We can write this as:</p>
+<div class="math notranslate nohighlight">
+\[\argmax_y p(\mathbf y| \mathbf \phi) = p(y_1, y_2, ..., y_{Ty} | \phi)\]</div>
+<p>and then use the product rule of probability to decompose this to:</p>
+<div class="math notranslate nohighlight">
+\[\argmax_y p(y_{T_y} | y_1, ..., y_{T_y-1}, \mathbf \phi)  \dots p(y_2|y_1, \mathbf \phi ) p(y_1| \mathbf \phi) \]</div>
+<p>We can now write,</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\hat y}   = \argmax_y p(\mathbf y | \mathbf \phi) = \prod_{t=1}^{T_y} p(y_t | y_1, ..., y_{t-1}, \mathbf \phi) \]</div>
+<p>In this equation <span class="math notranslate nohighlight">\(p(y_t | y_1, ..., y_{t-1}, \mathbf \phi)\)</span> is a probability distribution represented by a softmax across all all the words of the vocabulary.</p>
+<p>We can use an RNN to model the conditional probabilities</p>
+<div class="math notranslate nohighlight">
+\[LSTM = g(s_t,  y_{t-1}, \phi ) = p(y_t | y_1, ..., y_{t-1}, \mathbf \phi) \]</div>
+<p>To that end, we’ll keep the “stacked” LSTM architecture from the encoder, but we’ll initialize the hidden state of our first layer with the context vector. Once the decoder is set up with its context, we’ll pass in a special token to signify the start of output generation; in literature, this is usually an <SOS> token appended to the end of the input (there’s also one at the end of the output). Then, we’ll run all stacked layers of LSTM, one after the other, following at the end with a softmax on the final layer’s output that can tell us the most probable output word.</p>
+<p><em>Both</em> the encoder and decoder are trained at the same time, so that they both learn the same context vector representation as shown next.</p>
+<p><img alt="seq2seq-training" src="../../../../../_images/seq2seq-training.png" />
+<em>Seq2Seq Training - backpropagation is end to end.</em></p>
+<p>To help training, we apply  <strong>teacher forcing</strong> wherein the input at each time step to the decoder is the ground truth. During inference just like in the language model we input the predicted output from the previous time step.</p>
+<p><img alt="lstm-nmt-decoder" src="../../../../../_images/lstm-nmt-decoder.png" />
+<em>LSTM Decoder (unrolled). The decoder is a language model that’s “aware” of the words that it’s generated so far and of the input.</em></p>
+<p>Once we have the output sequence, we use the same learning strategy as usual. We define a loss, the cross entropy on the prediction sequence, and we minimize it with a gradient descent algorithm and back-propagation.</p>
+<p>Note that the <span class="math notranslate nohighlight">\(\arg \max\)</span> we apply at each step on the softmax output results in some instances in suboptimal translations. The solution has been experimentally found to be the <em>beam search</em> heuristic that maintains a small number (e.g. 3-10) of the top likely sentences called the <em>beam width</em> , as opposed to <em>the</em> most likely sentence, and tries to extend them by one word at each step.</p>
 </section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -777,7 +661,7 @@ Individual 4-gram: 1.000000
         },
         kernelOptions: {
             name: "python3",
-            path: "./aiml-common/lectures/nlp/nmt/nmt-metrics"
+            path: "./aiml-common/lectures/nlp/nmt/nmt-intro"
         },
         predefinedOutput: true
     }
@@ -796,20 +680,20 @@ Individual 4-gram: 1.000000
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../nmt-intro/index.html"
+       href="../../language-models/lstm-language-model/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">RNN-based Neural Machine Translation</p>
+        <p class="prev-next-title">LSTM Language Model from scratch</p>
       </div>
     </a>
     <a class="right-next"
-       href="../lstm_seq2seq.html"
+       href="../nmt-metrics/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Character-level recurrent sequence-to-sequence model</p>
+        <p class="prev-next-title">NMT Metrics  - BLEU</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -831,8 +715,11 @@ Individual 4-gram: 1.000000
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intuition">Intuition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation">Calculation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-to-sequence-seq2seq">Sequence-to-Sequence (Seq2Seq)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder">Encoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decoder">Decoder</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
