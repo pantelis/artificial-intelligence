@@ -73,7 +73,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
     <link rel="next" title="Introduction to Transformers" href="../../transformers/transformers-intro.html" />
-    <link rel="prev" title="Character-level recurrent sequence-to-sequence model" href="../lstm_seq2seq.html" />
+    <link rel="prev" title="Character-level recurrent sequence-to-sequence model" href="../nmt-intro/lstm_seq2seq.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -287,7 +287,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="label-parts" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../_index.html">Natural Language Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../nlp-introduction/nlp-pipelines/_index.html">Introduction to NLP Pipelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../nlp-introduction/tokenization/index.html">Tokenization</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp-introduction/word2vec/_index.html">Embeddings</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -303,7 +302,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../nmt-intro/index.html">Neural Machine Translation</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lstm_seq2seq.html">Character-level recurrent sequence-to-sequence model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nmt-intro/lstm_seq2seq.html">Character-level recurrent sequence-to-sequence model</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Attention in RNN-based NMT</a></li>
@@ -575,17 +574,14 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[s_t = g(s_{t-1}, y_{t-1}, \phi_t)\]</div>
 <p>where <span class="math notranslate nohighlight">\(s_{t-1}\)</span> is the previous hidden state, <span class="math notranslate nohighlight">\(y_{t-1}\)</span> is the word at the previous step and <span class="math notranslate nohighlight">\(\phi_t\)</span> is the context vector that captures the context from the original sentence that is relevant to the decoder at time <span class="math notranslate nohighlight">\(t\)</span>.</p>
-<p>The <span class="math notranslate nohighlight">\(\phi_t\)</span> is computed with the help of a small neural network called attention layer, which is trained jointly with the rest of the Encoder–Decoder model. This model, called <strong>allignment model</strong> as it <em>alligns the decoder step and the relevant context for that step</em>, is illustrated on the right hand side of the figure above.</p>
+<p>The <span class="math notranslate nohighlight">\(\phi_t\)</span> is computed with the help of a small neural network called attention layer, which is trained jointly with the rest of the Encoder–Decoder model. This model, is also known as <strong>allignment model</strong> since it <em>alligns the decoder step and the relevant context for that step</em>, is illustrated on the right hand side of the figure above.</p>
 <div class="admonition-example admonition">
 <p class="admonition-title">Example</p>
-<p>To implement the above equation, we construct the following architecture with the additional capabilities:</p>
 <p><img alt="attention-example" src="../../../../../_images/attention-example.png" />
 <em>Attention mechanism in NMT. Instead of just sending the encoder’s final hidden state to the decoder (which is still done, although it is not shown in the figure), we now send all of its outputs to the decoder. At each time step, the decoder’s memory cell computes a weighted sum of all these encoder outputs: this determines which words it will focus on at this step. The weight <span class="math notranslate nohighlight">\(a_t(i)\)</span> is the weight of the ith encoder output at the t-th decoder time step. For example, if the weight <span class="math notranslate nohighlight">\(α_3(2)\)</span> is much larger than the weights <span class="math notranslate nohighlight">\(α_3(0)\)</span> and <span class="math notranslate nohighlight">\(α_3(1)\)</span>, then the decoder will pay much more attention to word number 2 (“milk”) than to the other two words, at least at this time step.</em></p>
 <p>It starts with a time-distributed Dense layer with a single neuron, which receives as input all the encoder outputs, concatenated with the decoder’s previous hidden state (e.g., <span class="math notranslate nohighlight">\(\mathbf h_2\)</span>). This layer outputs a score (or energy) for each encoder output that measures how well each output is aligned with the decoder’s previous hidden state.</p>
 </div>
-<p>maximizes a new conditional probability that now conditions on a time dependent context vector <span class="math notranslate nohighlight">\(\phi_t\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[p(\mathbf y | \mathbf x) = g(y_{t-1}, h_{t-1}, \phi_t)\]</div>
+<p>More specifically the <span class="math notranslate nohighlight">\(\phi_t\)</span> is computed as follows:</p>
 <ol class="arabic simple">
 <li><p>For each hidden state from the original sentence <span class="math notranslate nohighlight">\(h_i\)</span>, <span class="math notranslate nohighlight">\(i\)</span> is the index of the input sentence, we compute a score</p></li>
 </ol>
@@ -608,6 +604,7 @@ document.write(`
 <em>Attention in seq2seq neural machine translation - time step 1</em></p>
 <p><img alt="seq2seq-attention" src="../../../../../_images/seq2seq-attention-step5.png" />
 <em>Attention in seq2seq neural machine translation - time step 6</em></p>
+<p>The attention mechanism described in this section is not the only one - there is multiplicative attention that uses a dot product instead of a concatenation and there is also a <a class="reference external" href="https://arxiv.org/abs/1508.04025">Luong attention</a> that uses a single layer neural network instead of a fully connected layer.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -642,7 +639,7 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../lstm_seq2seq.html"
+       href="../nmt-intro/lstm_seq2seq.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
