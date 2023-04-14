@@ -45,6 +45,7 @@ sphinxcontrib-bibtex = "^2.5.0"
 transformers = "^4.27.4"
 nltk = "^3.8.1"
 spacy = "^3.5.1"
+diagrams = "^0.23.3"
 
 [build-system]
 requires = ["poetry-core"]
