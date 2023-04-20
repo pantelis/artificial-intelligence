@@ -155,9 +155,9 @@ parts:
   
   - file: aiml-common/lectures/nlp/nmt/nmt-intro/index.md  
     title:  Neural Machine Translation
-    sections:
-    - file: aiml-common/lectures/nlp/nmt/nmt-metrics/index.ipynb       
-    - file: aiml-common/lectures/nlp/nmt/nmt-intro/lstm_seq2seq.ipynb     
+    sections:       
+    - file: aiml-common/lectures/nlp/nmt/lstm-seq2seq-workshop/lstm_seq2seq.ipynb
+    - file: aiml-common/lectures/nlp/nmt/nmt-metrics/index.ipynb     
   
   - file: aiml-common/lectures/nlp/nmt/rnn-nmt-attention/index.md  
   - file: aiml-common/lectures/nlp/transformers/transformers-intro.md

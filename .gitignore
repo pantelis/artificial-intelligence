@@ -295,7 +295,7 @@ _build/
 # models and data
 *.pb
 *.h5
-
+s2s
 
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
