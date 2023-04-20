@@ -89,24 +89,24 @@ sphinx:
         - "https://pytorch.org/docs/master/"
         - null
     language: en
-      
-
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    latex_elements:
+      preamble: | 
+        \newcommand\N{\mathbb{N}}
+        \newcommand\floor[1]{\lfloor#1\rfloor}
+        \newcommand{\bmat}{\left[\begin{array}}
+        \newcommand{\emat}{\end{array}\right]}
+        \DeclareMathOperator*{\arg \max}{argmax}
+        \DeclareMathOperator*{\argmin}{argmin}
+    
     mathjax3_config:
       tex:
         macros:
-          #"N": "\\mathbb{N}"
+          "N": "\\mathbb{N}"
           "floor": ["\\lfloor#1\\rfloor", 1]
           "bmat": ["\\left[\\begin{array}"]
           "emat": ["\\end{array}\\right]"]
-    latex_elements:
-        preamble: |
-          \newcommand\N{\mathbb{N}}
-          \newcommand\floor[1]{\lfloor#1\rfloor}
-          \newcommand{\bmat}{\left[\begin{array}}
-          \newcommand{\emat}{\end{array}\right]}
-          \DeclareMathOperator*{\argmax}{arg\,max}
-          \DeclareMathOperator*{\argmin}{arg\,min}
-
+  
   extra_extensions:
     # - sphinx_press_theme
     - sphinxcontrib.youtube

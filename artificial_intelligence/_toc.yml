@@ -109,7 +109,7 @@ parts:
   - file: aiml-common/lectures/mdp/mdp-intro/_index.md
   - file: aiml-common/lectures/mdp/bellman-expectation-backup/_index.md      
   - file: aiml-common/lectures/mdp/bellman-optimality-backup/_index.md      
-  
+  - file: aiml-common/lectures/mdp/mdp-dp-algorithms/index.md
     title: MDP Dynamic Programming Algorithms
     sections:  
       - file: aiml-common/lectures/mdp/mdp-dp-algorithms/policy-iteration/_index.md          
