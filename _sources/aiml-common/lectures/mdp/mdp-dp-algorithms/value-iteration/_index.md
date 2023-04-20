@@ -186,7 +186,7 @@ and eventually all states have correct value estimates
 * Rate of convergence depends on the maximum reward value and more importantly on the discount factor $\gamma$. 
 * The policy that we get from coarse estimates is close to the optimal policy long before $U$ has converged.
 * This means that after a reasonable number of iterations, we could use: 
-  $$\pi(s) = \argmax_a \left[ \sum_{s^{'}} P(s^{'}| s,a)V_{est}(s^{'}) \right]$$
+  $$\pi(s) = \arg \max_a \left[ \sum_{s^{'}} P(s^{'}| s,a)V_{est}(s^{'}) \right]$$
 * Note that this is a form of **greedy** policy.
   
 ![value-iter-convergence](./images/value-iter-converge.PNG)

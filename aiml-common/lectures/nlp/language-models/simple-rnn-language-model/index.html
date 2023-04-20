@@ -63,7 +63,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -260,7 +260,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../mdp/_index.html">Markov Decision Processes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mdp/mdp-intro/_index.html">Introduction to MDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mdp/bellman-expectation-backup/_index.html">Bellman Expectation Backup</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../mdp/bellman-optimality-backup/_index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../mdp/bellman-optimality-backup/_index.html">Bellman Optimality Backup</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/policy-iteration/_index.html">Policy Iteration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/policy-evaluation/_index.html">Policy Evaluation (Prediction)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/policy-improvement/_index.html">Policy Improvement (Control)</a></li>
@@ -630,7 +631,7 @@ document.write(`
 <p>The notation used here was introduced first <a class="reference external" href="http://cs231n.stanford.edu/slides/2018/cs231n_2018_lecture10.pdf">here</a>. This minimal character-level Vanilla RNN model was first written by Andrej Karpathy (&#64;karpathy) and was decorated with the forward and backprop equations by students of the CS-GY-6613 course as part of an asignment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;Chiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and arid, with a ridge of mountains running the length of the island. The two largest of these mountains, Pelineon (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are situated in the north of the island. The center of the island is divided between east and west by a range of smaller peaks, known as Provatas.&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;Chios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and arid, with a ridge of mountains running the length of the island. The two largest of these mountains, Pelineon (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are situated in the north of the island. The center of the island is divided between east and west by a range of smaller peaks, known as Provatas.&#39;</span>
 <span class="c1"># data I/O</span>
 <span class="c1"># data = open(&#39;input.txt&#39;, &#39;r&#39;).read() # should be simple plain text file - you can use any (small) file in txt format from the web or type your own. </span>
 </pre></div>
@@ -748,7 +749,7 @@ document.write(`
 <p><span class="math notranslate nohighlight">\( \qquad \)</span> =&gt; dimension of output <span class="math notranslate nohighlight">\(o_t =\)</span> (43,1)</p>
 <ul class="simple">
 <li><p>The <span class="math notranslate nohighlight">\(softmax(o_t)\)</span> gives the class probabilities for next characters</p></li>
-<li><p>The probabilities are then converted into one-hot encoded vectors using <span class="math notranslate nohighlight">\(\argmax\)</span></p></li>
+<li><p>The probabilities are then converted into one-hot encoded vectors using <span class="math notranslate nohighlight">\(\arg \max\)</span></p></li>
 <li><p>The one-hot encoded vectors are converted into integer tokens and then to a single character using ‘ix_to_char’ function</p></li>
 </ul>
 <p>Hidden layers:</p>

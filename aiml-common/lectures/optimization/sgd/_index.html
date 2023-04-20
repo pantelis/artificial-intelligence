@@ -63,7 +63,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -260,7 +260,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../mdp/_index.html">Markov Decision Processes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../mdp/mdp-intro/_index.html">Introduction to MDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../mdp/bellman-expectation-backup/_index.html">Bellman Expectation Backup</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../mdp/bellman-optimality-backup/_index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/bellman-optimality-backup/_index.html">Bellman Optimality Backup</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../mdp/mdp-dp-algorithms/index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-dp-algorithms/policy-iteration/_index.html">Policy Iteration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-dp-algorithms/policy-evaluation/_index.html">Policy Evaluation (Prediction)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-dp-algorithms/policy-improvement/_index.html">Policy Improvement (Control)</a></li>
@@ -575,7 +576,7 @@ document.write(`
 <h2>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">#</a></h2>
 <p>Obviously for us to be able to find the right weights we need to pose the learning problem via a suitable objective (loss) function such as the cross-entropy.  Optimization refers to the task of either minimizing or maximizing some function <span class="math notranslate nohighlight">\(L(\mathbf w)\)</span> by altering <span class="math notranslate nohighlight">\(\mathbf w\)</span>. We usually phrase most optimization problems in terms of minimizing <span class="math notranslate nohighlight">\(L(\mathbf w)\)</span>. Maximization may be accomplished via a minimization algorithm by minimizing <span class="math notranslate nohighlight">\(−L\)</span>. Mathematically</p>
 <div class="math notranslate nohighlight">
-\[\mathbf w^* = \argmax_w L(\mathbf w)\]</div>
+\[\mathbf w^* = \arg \max_w L(\mathbf w)\]</div>
 <p>As the simplest possible example the following figure show the simplest possible objective function and what an optimization algorithm is doing.</p>
 <p><img alt="derivative" src="../../../../_images/derivative.png" />
 <em>Gradient descent. An illustration of how the gradient descent algorithm uses the derivatives of a function to follow the function downhill to a minimum</em></p>

@@ -63,7 +63,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -72,7 +72,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Policy Iteration" href="../mdp-dp-algorithms/policy-iteration/_index.html" />
+    <link rel="next" title="MDP Dynamic Programming Algorithms" href="../mdp-dp-algorithms/index.html" />
     <link rel="prev" title="Bellman Expectation Backup" href="../bellman-expectation-backup/_index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -260,7 +260,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../_index.html">Markov Decision Processes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mdp-intro/_index.html">Introduction to MDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bellman-expectation-backup/_index.html">Bellman Expectation Backup</a></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">MDP Dynamic Programming Algorithms</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Bellman Optimality Backup</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mdp-dp-algorithms/index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mdp-dp-algorithms/policy-iteration/_index.html">Policy Iteration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mdp-dp-algorithms/policy-evaluation/_index.html">Policy Evaluation (Prediction)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mdp-dp-algorithms/policy-improvement/_index.html">Policy Improvement (Control)</a></li>
@@ -575,7 +576,7 @@ document.write(`
 \[q_*(s,a) = \max_\pi q_\pi(s,a)\]</div>
 <p>The <span class="math notranslate nohighlight">\(v_*(s)\)</span> is the best possible value (expected return) we can get starting from state <span class="math notranslate nohighlight">\(s\)</span>.   The <span class="math notranslate nohighlight">\(q_*(s,a)\)</span> is the best value (expected return) starting at state <span class="math notranslate nohighlight">\(s\)</span> and taking an action <span class="math notranslate nohighlight">\(a\)</span>. In other words we can now obtain the <em>optimal policy</em> by maximizing over <span class="math notranslate nohighlight">\(q_*(s,a)\)</span> - mathematically this can be expressed as,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\pi_*(a|s) = \begin{cases}1 &amp; \text{if }\ a = \argmax_{a \in \mathcal A} q_*(s,a), \\ 
+\[\begin{split}\pi_*(a|s) = \begin{cases}1 &amp; \text{if }\ a = \arg \max_{a \in \mathcal A} q_*(s,a), \\ 
 0 &amp; \text{otherwise}\end{cases}\end{split}\]</div>
 <p>So the problem now becomes how to calculate the optimal value functions. We return to the tree structures that helped us understand the interdependencies between the two and this time we look at the optimal equivalents.</p>
 <p><img alt="optimal-state-value-tree" src="../../../../_images/optimal-state-value-tree.png" /></p>
@@ -614,8 +615,6 @@ document.write(`
 <div class="video_wrapper" style="">
 <iframe allowfullscreen="true" src="https://www.youtube.com/embed/9g32v7bK3Co" style="border: 0; height: 345px; width: 560px">
 </iframe></div></section>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -659,11 +658,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../mdp-dp-algorithms/policy-iteration/_index.html"
+       href="../mdp-dp-algorithms/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Policy Iteration</p>
+        <p class="prev-next-title">MDP Dynamic Programming Algorithms</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -63,7 +63,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -260,7 +260,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../mdp/_index.html">Markov Decision Processes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../mdp/mdp-intro/_index.html">Introduction to MDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../mdp/bellman-expectation-backup/_index.html">Bellman Expectation Backup</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../mdp/bellman-optimality-backup/_index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/bellman-optimality-backup/_index.html">Bellman Optimality Backup</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../mdp/mdp-dp-algorithms/index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-dp-algorithms/policy-iteration/_index.html">Policy Iteration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-dp-algorithms/policy-evaluation/_index.html">Policy Evaluation (Prediction)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-dp-algorithms/policy-improvement/_index.html">Policy Improvement (Control)</a></li>
@@ -573,10 +574,10 @@ document.write(`
 <h2><span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy Monte-Carlo Control<a class="headerlink" href="#epsilon-greedy-monte-carlo-control" title="Permalink to this headline">#</a></h2>
 <p>In the model-free prediction section we have seen that it is in fact possible to get to estimate the state value function without any MDP model dependencies. However, when we try to do do greedy policy improvement</p>
 <div class="math notranslate nohighlight">
-\[\pi^\prime(s) = \argmax_{a \in \mathcal A} (\mathcal R_s^a + \mathcal P_{ss^\prime}^a V(s^\prime))\]</div>
+\[\pi^\prime(s) = \arg \max_{a \in \mathcal A} (\mathcal R_s^a + \mathcal P_{ss^\prime}^a V(s^\prime))\]</div>
 <p>we do have dependencies on knowing the dynamics of the MDP. So the obvious question is - have we done all this discussion in vain? It turns out that we did not. All it takes is to <strong>apply prediction to the state-action value function <span class="math notranslate nohighlight">\(Q(s,a)\)</span></strong> and then apply the greedy policy improvement step</p>
 <div class="math notranslate nohighlight">
-\[\pi^\prime = \argmax_{a \in \mathcal A} Q(s,a)\]</div>
+\[\pi^\prime = \arg \max_{a \in \mathcal A} Q(s,a)\]</div>
 <p>This is shown next:</p>
 <p><img alt="generalized-policy-iteration" src="../../../../_images/generalized-policy-iteration.png" />
 <em>Generalized policy iteration using action-value function</em></p>

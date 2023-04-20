@@ -63,7 +63,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -260,7 +260,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../mdp/_index.html">Markov Decision Processes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mdp/mdp-intro/_index.html">Introduction to MDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mdp/bellman-expectation-backup/_index.html">Bellman Expectation Backup</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../mdp/bellman-optimality-backup/_index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../mdp/bellman-optimality-backup/_index.html">Bellman Optimality Backup</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/policy-iteration/_index.html">Policy Iteration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/policy-evaluation/_index.html">Policy Evaluation (Prediction)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/policy-improvement/_index.html">Policy Improvement (Control)</a></li>
@@ -618,16 +619,16 @@ document.write(`
 <p>The decoder is “aware” of the target words that it’s generated so far and of the input. In fact it is an example of <em>conditional language model</em> because it conditions on the source sentence or its representation - the context <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
 <p>The decoder directly calculates,</p>
 <div class="math notranslate nohighlight">
-\[\mathbf{\hat y}   = \argmax_y p(\mathbf y | \mathbf \phi)\]</div>
+\[\mathbf{\hat y}   = \arg \max_y p(\mathbf y | \mathbf \phi)\]</div>
 <p>We can write this as:</p>
 <div class="math notranslate nohighlight">
-\[\argmax_y p(\mathbf y| \mathbf \phi) = p(y_1, y_2, ..., y_{Ty} | \phi)\]</div>
+\[\arg \max_y p(\mathbf y| \mathbf \phi) = \arg \max_y p(y_1, y_2, ..., y_{Ty} | \phi)\]</div>
 <p>and then use the product rule of probability to decompose this to:</p>
 <div class="math notranslate nohighlight">
-\[\argmax_y p(y_{T_y} | y_1, ..., y_{T_y-1}, \mathbf \phi)  \dots p(y_2|y_1, \mathbf \phi ) p(y_1| \mathbf \phi) \]</div>
+\[\arg \max_y p(y_{Ty} | y_1, ..., y_{Ty-1}, \mathbf \phi)  \dots p(y_2|y_1, \mathbf \phi ) p(y_1| \mathbf \phi) \]</div>
 <p>We can now write,</p>
 <div class="math notranslate nohighlight">
-\[\mathbf{\hat y}   = \argmax_y p(\mathbf y | \mathbf \phi) = \prod_{t=1}^{T_y} p(y_t | y_1, ..., y_{t-1}, \mathbf \phi) \]</div>
+\[\mathbf{\hat y}   = \arg \max_y p(\mathbf y | \mathbf \phi) = \arg \max \prod_{t=1}^{T_y} p(y_t | y_1, ..., y_{t-1}, \mathbf \phi) \]</div>
 <p>In this equation <span class="math notranslate nohighlight">\(p(y_t | y_1, ..., y_{t-1}, \mathbf \phi)\)</span> is a probability distribution represented by a softmax across all all the words of the vocabulary.</p>
 <p>We can use an RNN to model the conditional probabilities</p>
 <div class="math notranslate nohighlight">
@@ -640,7 +641,7 @@ document.write(`
 <p><img alt="lstm-nmt-decoder" src="../../../../../_images/lstm-nmt-decoder.png" />
 <em>LSTM Decoder (unrolled). The decoder is a language model that’s “aware” of the words that it’s generated so far and of the input.</em></p>
 <p>Once we have the output sequence, we use the same learning strategy as usual. We define a loss, the cross entropy on the prediction sequence, and we minimize it with a gradient descent algorithm and back-propagation.</p>
-<p>Note that the <span class="math notranslate nohighlight">\(\arg \max\)</span> we apply at each step on the softmax output results in some instances in suboptimal translations. The solution has been experimentally found to be the <em>beam search</em> heuristic that maintains a small number (e.g. 3-10) of the top likely sentences called the <em>beam width</em> , as opposed to <em>the</em> most likely sentence, and tries to extend them by one word at each step.</p>
+<p>Note that the <span class="math notranslate nohighlight">\(\arg \max\)</span> we apply at each step on the softmax output results in some instances in suboptimal translations. <a class="reference external" href="https://towardsdatascience.com/an-intuitive-explanation-of-beam-search-9b1d744e7a0f"><em>Beam search</em></a>, a method that is rooted in maximum likelihood sequence estimation and the Viterbi algorithm, maintains a small number (e.g. 3-10) of the top likely sentences called the <em>beam width</em> , as opposed to <em>the</em> most likely sentence, and tries to extend them by one word at each step.</p>
 </section>
 </section>
 <div class="toctree-wrapper compound">
