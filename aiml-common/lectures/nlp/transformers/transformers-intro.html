@@ -559,9 +559,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-self-attention-layer-explained">Simple self-attention layer explained</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scaled-dot-product-self-attention-layer-explained">Scaled dot product self-attention layer explained</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-head-attention-explained">Multi-head attention explained</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-self-attention-layer">Simple self-attention layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scaled-dot-product-self-attention-layer">Scaled dot product self-attention layer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-head-attention">Multi-head attention</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-embeddings-explained">Positional embeddings explained</a></li>
 </ul>
 </li>
@@ -581,14 +581,7 @@ document.write(`
 <h1>Introduction to Transformers<a class="headerlink" href="#introduction-to-transformers" title="Permalink to this headline">#</a></h1>
 <div class="admonition-note admonition">
 <p class="admonition-title">Note</p>
-<p>To fully underastand the Transformer architecture, we need to understand the following concepts:</p>
-<ul class="simple">
-<li><p>Fully Connected and Recurrent Neural Networks (RNNs)</p></li>
-<li><p>Tokenization</p></li>
-<li><p>Embeddings</p></li>
-<li><p>Attention Mechanisms</p></li>
-</ul>
-<p>All such concepts were covered in earlier chapters.</p>
+<p>This is work in progress. We used reference [2] as a starting point and future version of this chapter will contain diagrams from [3] and [4] as well as a Pytorch implementation of the same.</p>
 </div>
 <p><img alt="" src="../../../../_images/transformer-architecture.png" /></p>
 <p>In the transformer architecture we</p>
@@ -600,10 +593,8 @@ document.write(`
 </ul>
 </li>
 </ol>
-<p>At a very high level, we will introduce an attention layer that for each input token will reveal predicates that connect these input words to all others. Such connectivity will be manifested by calculating a set of weights  as shown in the figure below.</p>
-<p><img alt="" src="../../../../_images/self-attention-visualization.png" /></p>
-<section id="simple-self-attention-layer-explained">
-<h2>Simple self-attention layer explained<a class="headerlink" href="#simple-self-attention-layer-explained" title="Permalink to this headline">#</a></h2>
+<section id="simple-self-attention-layer">
+<h2>Simple self-attention layer<a class="headerlink" href="#simple-self-attention-layer" title="Permalink to this headline">#</a></h2>
 <p><img alt="" src="../../../../_images/self-attention-simple.png" /></p>
 <p>The self-attention mechanism is a mechanism that allows the model to focus on the most relevant parts of the input sequence. <strong>Given the <span class="math notranslate nohighlight">\(i-th\)</span> input word</strong> having embedding <span class="math notranslate nohighlight">\(x_i\)</span>, we perform the following calculations:</p>
 <ol class="arabic simple">
@@ -616,8 +607,8 @@ document.write(`
 <p>where <span class="math notranslate nohighlight">\(\alpha_{ij}\)</span> is the attention weight of the <span class="math notranslate nohighlight">\(j-th\)</span> word of the input sequence for the <span class="math notranslate nohighlight">\(i-th\)</span> word of the input sequence.</p>
 <p>Self-attention layers can be stacked on top of each other to create a multi-layer self-attention mechanism.</p>
 </section>
-<section id="scaled-dot-product-self-attention-layer-explained">
-<h2>Scaled dot product self-attention layer explained<a class="headerlink" href="#scaled-dot-product-self-attention-layer-explained" title="Permalink to this headline">#</a></h2>
+<section id="scaled-dot-product-self-attention-layer">
+<h2>Scaled dot product self-attention layer<a class="headerlink" href="#scaled-dot-product-self-attention-layer" title="Permalink to this headline">#</a></h2>
 <p>In the simple attention mechanism we have no trainable parameters. The attention weights are computed derministically from the embeddings of each word of the input sequence. The way to introduce trainable parameters is via the reuse of the principles we have seen in RNN attention mechanisms.</p>
 <div class="admonition-information-retrieval admonition">
 <p class="admonition-title">Information Retrieval</p>
@@ -655,8 +646,8 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d_k}})V\]</div>
 <p>where Q, K, V are the query, keys and values respectively. <span class="math notranslate nohighlight">\(d_k\)</span> is the dimension of the key vector.</p>
-<section id="multi-head-attention-explained">
-<h3>Multi-head attention explained<a class="headerlink" href="#multi-head-attention-explained" title="Permalink to this headline">#</a></h3>
+<section id="multi-head-attention">
+<h3>Multi-head attention<a class="headerlink" href="#multi-head-attention" title="Permalink to this headline">#</a></h3>
 <p>For the input sentence</p>
 <p>“I usually go to the lab to run my experiments and to meet my collualgues.””</p>
 <p>we understand that multiple relationships must be understood with respect to the noun “lab”. For example, we need to understand that “lab” is a place where experiments are run, but also a place where we meet our colleagues.</p>
@@ -677,7 +668,17 @@ document.write(`
 </ol>
 <div class="video_wrapper" style="">
 <iframe allowfullscreen="true" src="https://www.youtube.com/embed/AIiwuClvH6k" style="border: 0; height: 345px; width: 560px">
-</iframe></div><hr class="footnotes docutils" />
+</iframe></div><ol class="arabic simple" start="2">
+<li><p>Perhaps one of the best overviews of Transformers around with an implementation in TF.</p></li>
+</ol>
+<div class="video_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/acxqoltilME" style="border: 0; height: 345px; width: 560px">
+</iframe></div><ol class="arabic simple" start="3">
+<li><p><a class="reference external" href="https://towardsdatascience.com/transformers-explained-visually-part-3-multi-head-attention-deep-dive-1c1ff1024853">Dimensioning Transformers - Part 1 </a></p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/transformers-explained-visually-part-2-how-it-works-step-by-step-b49fa4a64f34">Dimensioning Transformers - Part 2</a></p></li>
+<li><p><a class="reference external" href="https://huggingface.co/docs/transformers/main/en/index">Tranformer Models</a></p></li>
+</ol>
+<hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Positional embeddings have replaced the so called positional encodings of earlier architectures.</p>
@@ -755,9 +756,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-self-attention-layer-explained">Simple self-attention layer explained</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scaled-dot-product-self-attention-layer-explained">Scaled dot product self-attention layer explained</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-head-attention-explained">Multi-head attention explained</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-self-attention-layer">Simple self-attention layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scaled-dot-product-self-attention-layer">Scaled dot product self-attention layer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-head-attention">Multi-head attention</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-embeddings-explained">Positional embeddings explained</a></li>
 </ul>
 </li>

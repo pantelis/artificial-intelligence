@@ -1,14 +1,8 @@
 # Introduction to Transformers
 
 ```{admonition} Note
-To fully underastand the Transformer architecture, we need to understand the following concepts:
 
-* Fully Connected and Recurrent Neural Networks (RNNs)
-* Tokenization
-* Embeddings
-* Attention Mechanisms
-
-All such concepts were covered in earlier chapters. 
+This is work in progress. We used reference [2] as a starting point and future version of this chapter will contain diagrams from [3] and [4] as well as a Pytorch implementation of the same. 
 
 ```
 
@@ -21,11 +15,8 @@ In the transformer architecture we
 2. Continue to use attention mechanisms to allow the model to focus on the most relevant parts of the input sequence. 
     * This means that the encoder output will be a weighted sum of all inputs (all words of the sequence), where the weights are computed by an attention mechanism called _self-attention_. The name indicates that the encoder will attend to itself, i.e. it will compute the weights based on the input sequence itself.
 
-At a very high level, we will introduce an attention layer that for each input token will reveal predicates that connect these input words to all others. Such connectivity will be manifested by calculating a set of weights  as shown in the figure below. 
 
-![](images/self-attention-visualization.png)
-
-## Simple self-attention layer explained 
+## Simple self-attention layer  
 
 ![](images/self-attention-simple.png)
 
@@ -43,7 +34,7 @@ where $\alpha_{ij}$ is the attention weight of the $j-th$ word of the input sequ
 
 Self-attention layers can be stacked on top of each other to create a multi-layer self-attention mechanism.
 
-## Scaled dot product self-attention layer explained 
+## Scaled dot product self-attention layer  
 
 In the simple attention mechanism we have no trainable parameters. The attention weights are computed derministically from the embeddings of each word of the input sequence. The way to introduce trainable parameters is via the reuse of the principles we have seen in RNN attention mechanisms.
 
@@ -81,7 +72,7 @@ $$Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d_k}})V$$
 where Q, K, V are the query, keys and values respectively. $d_k$ is the dimension of the key vector.
 
 
-### Multi-head attention explained
+### Multi-head attention 
 
 For the input sentence 
 
@@ -105,7 +96,6 @@ See [here](https://theaisummer.com/positional-embeddings/) for an explanation of
 [^1]: Positional embeddings have replaced the so called positional encodings of earlier architectures. 
 
 
-
 ## Resources
 
 1. An interesting video for the many attention mechanisms that are the roots of self-attention found in transformers. 
@@ -115,3 +105,15 @@ See [here](https://theaisummer.com/positional-embeddings/) for an explanation of
 .. youtube:: AIiwuClvH6k
 
 ```
+2. Perhaps one of the best overviews of Transformers around with an implementation in TF. 
+
+```{eval-rst}
+.. youtube:: acxqoltilME
+
+``` 
+
+3. [Dimensioning Transformers - Part 1 ](https://towardsdatascience.com/transformers-explained-visually-part-3-multi-head-attention-deep-dive-1c1ff1024853)
+
+4. [Dimensioning Transformers - Part 2](https://towardsdatascience.com/transformers-explained-visually-part-2-how-it-works-step-by-step-b49fa4a64f34)
+
+5. [Tranformer Models](https://huggingface.co/docs/transformers/main/en/index)
