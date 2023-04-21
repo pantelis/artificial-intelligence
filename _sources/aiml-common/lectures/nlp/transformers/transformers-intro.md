@@ -12,6 +12,8 @@ All such concepts were covered in earlier chapters.
 
 ```
 
+![](images/transformer-architecture.png)
+
 In the transformer architecture we 
 
 1. Eliminate all recurrent connections, therefore allowing the model to be trained and produce inference results much faster.
