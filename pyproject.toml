@@ -49,6 +49,7 @@ diagrams = "^0.23.3"
 pydot = "^1.4.2"
 altair = "^4.2.2"
 gputil = "^1.4.0"
+portalocker = "^2.7.0"
 
 [build-system]
 requires = ["poetry-core"]
