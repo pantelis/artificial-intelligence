@@ -632,7 +632,7 @@ f'(x)
 <h3>Backwards Pass<a class="headerlink" href="#backwards-pass" title="Permalink to this headline">#</a></h3>
 <p>In the backwards pass, we reverse direction and start at the top or rightmost node (the stored variables) of the graph and compute the input (in the reverse direction) derivative of input of each gate using the template depicted below:</p>
 <p><img alt="backprop-template" src="../../../../_images/backprop-template.png" />
-<em>Backpropagation template</em></p>
+<em>Backpropagation template based on the <a class="reference external" href="https://en.wikipedia.org/wiki/Chain_rule">chain rule</a></em>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="c1"># gradient at the top</span>
         <span class="n">df</span> <span class="o">=</span> <span class="mf">1.0</span>
 
