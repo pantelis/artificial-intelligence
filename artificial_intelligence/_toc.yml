@@ -15,7 +15,7 @@ parts:
   - file: aiml-common/lectures/ai-intro/systems-approach/_index.md
   - file: aiml-common/lectures/ai-intro/agents/_index.md
 
-- caption: The Learning Problem
+- caption: The Learning Problem - Regression
   chapters:
   - file: aiml-common/lectures/learning-problem/_index.md
   - file: aiml-common/lectures/regression/linear-regression/linear_regression.ipynb 
@@ -23,6 +23,9 @@ parts:
   - file: aiml-common/lectures/entropy/_index.md
   - file: aiml-common/lectures/optimization/maximum-likelihood/marginal_maximum_likelihood.ipynb
   - file: aiml-common/lectures/optimization/maximum-likelihood/conditional_maximum_likelihood.ipynb
+
+- caption: The Learning Problem - Classification
+  chapters:
   - file: aiml-common/lectures/classification/classification-intro/_index.md
   - file: aiml-common/lectures/classification/logistic-regression/_index.md
   
