@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Introduction to MDP" href="mdp-intro/_index.html" />
+    <link rel="next" title="Introduction to MDP" href="mdp-intro/mdp_intro.html" />
     <link rel="prev" title="The A* Algorithm" href="../planning/search/a-star/_index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -257,7 +257,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../planning/search/a-star/_index.html">The A* Algorithm</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Markov Decision Processes</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="label-parts" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Markov Decision Processes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mdp-intro/_index.html">Introduction to MDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mdp-intro/mdp_intro.html">Introduction to MDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bellman-expectation-backup/_index.html">Bellman Expectation Backup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bellman-optimality-backup/_index.html">Bellman Optimality Backup</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="mdp-dp-algorithms/index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -562,6 +562,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="markov-decision-processes">
 <h1>Markov Decision Processes<a class="headerlink" href="#markov-decision-processes" title="Permalink to this headline">#</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Many of the algorithms presented here like policy and value iteration have been developed in older repos such as <a class="reference external" href="https://github.com/rlcode/reinforcement-learning">this</a> and <a class="reference external" href="https://github.com/dennybritz/reinforcement-learning">this</a>. This site is being migrated to be compatible with Farama and their <a class="reference external" href="https://gymnasium.farama.org/">Gymnasium</a> tooling. See <a class="reference external" href="https://farama.org/projects">Farama.org</a> for additional information.</p>
+</div>
 <p>We started looking at different agent behavior architectures starting from the planning agents where the <em>model</em> of the environment is known and with <em>no interaction</em> with it, the agent improves its policy, using this model as well as problem solving and logical reasoning skills.</p>
 <p>We now look at agents that can plan by:</p>
 <ol class="arabic simple">
@@ -569,10 +573,10 @@ document.write(`
 <li><p>Receive <em>reward</em> signals after each interaction.</p></li>
 <li><p>Have an internal <em>objective</em> function that they try to optimize based on the <em>experience</em> they accumulate.</p></li>
 </ol>
-<p>The problem as will see, will be described via a set of four equations called Bellman expectation and Bellman optimality equations that connect the values (utility) with each state or action with the policy. These equations can be solved by Dynamic Programming algorithms to produce the optimal policy (strategy) that the agent must adopt.</p>
+<p>The problem as will see, will be described via a set of four equations called Bellman expectation and Bellman optimality equations that connect the values (utility) with each state or action with the policy (strategy). These equations can be solved by Dynamic Programming algorithms to produce the optimal policy  that the agent must adopt.</p>
 <p>Computationally we will go through approaches that solve the MDP as efficiently as possible - namely, the value and policy iteration algorithms.</p>
 <p><img alt="solving-mpd" src="../../../_images/solving-mdp.png" /></p>
-<p><em><a class="reference external" href="https://raw.githubusercontent.com/pantelis/aiml-common/25b7bb61d967ac418eeffb1f87ee771386da590a/lectures/mdp/images/solving-mdp.png">Solving MDP Problems</a></em></p>
+<p><em><a class="reference external" href="https://raw.githubusercontent.com/pantelis/aiml-common/25b7bb61d967ac418eeffb1f87ee771386da590a/lectures/mdp/images/solving-mdp.png">Solving MDP Problems</a> - click this link to display a larger image</em></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Apart from the notes here that are largely based on <a class="reference external" href="https://www.davidsilver.uk/teaching/">David Silver’s (Deep Mind) course material</a> and <a class="reference external" href="https://www.youtube.com/watch?v=2pWv7GOvuf0&amp;list=PLqYmG7hTraZDM-OYHWgPebj2MfCFzFObQ">video lectures</a>, the curious mind will be find additional resources:</p>
@@ -581,7 +585,6 @@ document.write(`
 <li><p><a class="reference external" href="https://www.amazon.com/Deep-Reinforcement-Learning-Python-Hands-dp-0135172381/dp/0135172381/ref=mt_paperback?_encoding=UTF8&amp;me=&amp;qid=">in the suggested book</a> written by Google researchers as well as on <a class="reference external" href="https://openai.com/resources/">OpenAI’s website</a>. The chapters we covered is 1-4.</p></li>
 <li><p>You may also want to watch Andrew Ng’s, <a class="reference external" href="https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU">2018 version of his ML class</a> that includes MDP and RL lectures.</p></li>
 </ul>
-<p>Many of the algorithms presented here like policy and value iteration have been developed in <a class="reference external" href="https://github.com/rlcode/reinforcement-learning">this</a> and <a class="reference external" href="https://github.com/dennybritz/reinforcement-learning">this</a>  git repos that you should download and run while reading the notes.</p>
 </div>
 </section>
 
@@ -626,7 +629,7 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="mdp-intro/_index.html"
+       href="mdp-intro/mdp_intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>

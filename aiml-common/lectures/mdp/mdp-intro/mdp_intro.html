@@ -1,0 +1,1068 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to MDP &#8212; Introduction to Artificial Intelligence</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/mdp/mdp-intro/mdp_intro';</script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/mdp/mdp-intro/mdp_intro.html" />
+    <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Bellman Expectation Backup" href="../bellman-expectation-backup/_index.html" />
+    <link rel="prev" title="Markov Decision Processes" href="../_index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="list-caption"><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="label-parts" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../syllabus/_index.html">Syllabus</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to AI</span></p><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="label-parts" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ai-intro/course-introduction/_index.html">Course Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ai-intro/data-science-360/_index.html">Data Science 360</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ai-intro/systems-approach/_index.html">The four approaches towards AI</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../ai-intro/agents/_index.html">Agent-Environment Interface</a></li>
+
+
+
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">The Learning Problem - Regression</span></p><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="label-parts" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../learning-problem/_index.html">The Learning Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../regression/linear-regression/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../optimization/sgd/_index.html">Stochastic Gradient Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../entropy/_index.html">Entropy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../optimization/maximum-likelihood/marginal_maximum_likelihood.html">Maximum Likelihood Estimation of a marginal model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../optimization/maximum-likelihood/conditional_maximum_likelihood.html">Maximum Likelihood (ML) Estimation of conditional models</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">The Learning Problem - Classification</span></p><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="label-parts" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../classification/classification-intro/_index.html">Introduction to Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../classification/logistic-regression/_index.html">Logistic Regression</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Bayesian Inference</span></p><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="label-parts" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/bayesian-inference/_index.html">Bayesian Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/bayesian-inference/bayesian_regression.html">Bayesian Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/bayesian-coin/bayesian_update_coin_flip.html">Posterior updates in a coin flipping experiment</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Neural Networks</span></p><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="label-parts" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../classification/perceptron/_index.html">The Neuron (Perceptron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/dnn-intro/_index.html">Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/backprop-intro/_index.html">Introduction to Backpropagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/backprop-dnn/_index.html">Backpropagation in Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/backprop-dnn-exercises/_index.html">Backpropagation DNN exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/fashion-mnist-case-study.html">Fashion MNIST Case Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../optimization/regularization/_index.html">Regularization in Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../optimization/regularization/regularization-workshop-1.html">Regularization Workshop</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Convolutional Neural Networks</span></p><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="label-parts" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-intro/_index.html">Introduction to Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-layers/_index.html">CNN Architectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/_index.html">CNN Example Architectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">Using convnets with small datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/visualizing-what-convnets-learn.html">Visualizing what convnets learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-explainers/gradcam.html">CNN Explainers</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="label-parts" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../transfer-learning/transfer-learning-introduction.html">Introduction to Transfer Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../transfer-learning/transfer_learning_tutorial.html">Transfer Learning for Computer Vision Tutorial</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Scene Understanding</span></p><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="label-parts" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../scene-understanding/scene-understanding-intro/index.html">Introduction to Scene Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scene-understanding/feature-extraction-resnet/index.html">Feature Extraction via Residual Networks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../scene-understanding/object-detection/object-detection-intro/index.html">Object Detection</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/detection-metrics/index.html">Object Detection and Semantic Segmentation Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/rcnn-object-detection/index.html">Region-CNN (RCNN) Object Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/faster-rcnn-object-detection/index.html">Fast and Faster RCNN Object Detection</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/index.html">Object Det. &amp; Semantic Segm. Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/index.html">Mask R-CNN Semantic Segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/demo.html">Mask R-CNN Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_data.html">Mask R-CNN - Inspect Training Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_model.html">Mask R-CNN - Inspect Trained Model</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_weights.html">Mask R-CNN - Inspect Weights of a Trained Model</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.html">Detectron2 Beginner’s Tutorial</a></li>
+
+
+
+
+
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Probabilistic Reasoning</span></p><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="label-parts" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/pgm-intro/_index.html">Introduction to Probabilistic Reasoning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/recursive-state-estimation/_index.html">Recursive State Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/discrete-bayesian-filter/discrete-bayesian-filter.html">Discrete Bayes Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/hmm-localization/_index.html">Localization and Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/kalman-filters/one-dimensional-kalman-filters.html">One Dimensional Kalman Filters</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Logical Reasoning</span></p><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="label-parts" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/automated-reasoning/_index.html">Automated Reasoning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/propositional-logic/_index.html">World Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/logical-agents/_index.html">Logical Agents</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning without Interactions</span></p><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="label-parts" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../planning/_index.html">Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autonomous-cars/_index.html">Autonomous Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autonomous-cars/imitation-learning/_index.html">Imitation Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../planning/classical-planning/_index.html">Classical Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../planning/search/_index.html">Planning with Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../planning/search/forward-search/_index.html">Forward Search Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../planning/search/a-star/_index.html">The A* Algorithm</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Markov Decision Processes</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="label-parts" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../_index.html">Markov Decision Processes</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to MDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bellman-expectation-backup/_index.html">Bellman Expectation Backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bellman-optimality-backup/_index.html">Bellman Optimality Backup</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mdp-dp-algorithms/index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mdp-dp-algorithms/policy-iteration/_index.html">Policy Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mdp-dp-algorithms/policy-evaluation/_index.html">Policy Evaluation (Prediction)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mdp-dp-algorithms/policy-improvement/_index.html">Policy Improvement (Control)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mdp-dp-algorithms/value-iteration/_index.html">Value Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mdp-lab/recycling-robot/_index.html">Finding the optimal policy of a recycling robot.</a></li>
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="label-parts" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/_index.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/prediction/monte-carlo.html">Monte-Carlo Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/prediction/temporal-difference.html">Temporal Difference (TD) Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/control/_index.html">Model-free Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/generalized-policy-iteration/_index.html">Generalized Policy Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/control/sarsa/_index.html">The SARSA Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/reinforce/_index.html">The REINFORCE Algorithm</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="label-parts" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/introduction/_index.html">Introduction to Recurrent Neural Networks (RNN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/simple-rnn/_index.html">Simple RNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/lstm/_index.html">The Long Short-Term Memory (LSTM) Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/time_series_using_simple_rnn_lstm.html">Time Series Prediction using RNNs</a></li>
+
+
+
+
+
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="label-parts" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../nlp/nlp-introduction/nlp-pipelines/_index.html">Introduction to NLP Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nlp/nlp-introduction/tokenization/index.html">Tokenization</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/nlp-introduction/word2vec/_index.html">Embeddings</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nlp-introduction/word2vec/word2vec_from_scratch.html">Word2Vec from scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nlp-introduction/word2vec/word2vec_tensorflow_tutorial.html">Word2Vec Tensorflow Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/language-models/_index.html">Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/language-models/cnn-language-model/index.html">CNN Language Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/language-models/simple-rnn-language-model/index.html">Simple RNN Language Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/language-models/lstm-language-model/index.html">LSTM Language Model from scratch</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/nmt/nmt-intro/index.html">Neural Machine Translation</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nmt/nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nmt/rnn-nmt-attention/index.html">Attention in RNN-based NMT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nmt/rnn-attention-workshop/seq2seq_and_attention.html">Attention in RNN NMT Workshop</a></li>
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/transformers/transformers-intro.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/transformers/annotated_transformer.html">The Annotated Transformer</a></li>
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="label-parts" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/index.html">Math for ML Textbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/probability/index.html">Probability Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/linear-algebra/index.html">Linear Algebra for Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/calculus/index.html">Calculus</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/index.html">Your Programming Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Learn Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Common Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/probability/probability-assignment-5/index.html">Probability Assignment</a></li>
+
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments CS-UY-4613</span></p><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="label-parts" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/mle/mle-gaussian.html">Gaussian Maximum Likelihood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/mle/poisson-regression-1/index.html">Bike Rides and the Poisson Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/object-tracking-kalman/balls.html">Multiple Object Tracking</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project CS-UY-4613</span></p><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="label-parts" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../projects/nlp/finetuning-language-models-tweets/index.html">Finetuning Language Models - Toxic Tweets</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments CS-GY-6613</span></p><input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/><label class="label-parts" for="toctree-checkbox-29"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/logistic-regression-1/index.html">Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/object-tracking-kalman/soccer.html">Sports Analytics - Object Tracking and Kalman Filters</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project CS-GY-6613</span></p><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/><label class="label-parts" for="toctree-checkbox-30"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../projects/nlp/finetuning-language-models-patents/index.html">Finetuning Language Models - Can I Patent This?</a></li>
+</ul></li></ul>
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/pantelis/artificial-intelligence/master?urlpath=tree/artificial_intelligence/aiml-common/lectures/mdp/mdp-intro/mdp_intro.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/pantelis/artificial-intelligence/blob/master/artificial_intelligence/aiml-common/lectures/mdp/mdp-intro/mdp_intro.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pantelis/artificial-intelligence" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pantelis/artificial-intelligence/edit/master/artificial_intelligence/aiml-common/lectures/mdp/mdp-intro/mdp_intro.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/mdp/mdp-intro/mdp_intro.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/aiml-common/lectures/mdp/mdp-intro/mdp_intro.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to MDP</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-elements-of-the-agent-environment-interface">The elements of the Agent - Environment interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-the-state-definition-of-the-mdp-problem">A Note on the state definition of the MDP problem</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mdp-loop">MDP Loop</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mdp-dynamics">The MDP dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state-transition">State transition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reward-function">Reward function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#return">Return</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-function">Policy function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#value-functions">Value Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state-value">State value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#action-value">Action value</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-mdp">
+<h1>Introduction to MDP<a class="headerlink" href="#introduction-to-mdp" title="Permalink to this headline">#</a></h1>
+<section id="the-elements-of-the-agent-environment-interface">
+<h2>The elements of the Agent - Environment interface<a class="headerlink" href="#the-elements-of-the-agent-environment-interface" title="Permalink to this headline">#</a></h2>
+<p>We start by reviewing the agent-environment interface with this evolved notation and provide additional definitions that will help in grasping the concepts behind DRL. We treat MDP analytically effectively deriving the four Bellman equations.</p>
+<p><img alt="agent-env-interface" src="../../../../_images/agent-env-interface.png" />
+<em>Agent-Environment Interface</em></p>
+<p>The following table summarizes the notation and contains useful definitions that we will use to describe required concepts later.  With capital letters we denote the random variables involved and with small letters their specific realizations (values) - for example <span class="math notranslate nohighlight">\(S_t\)</span> is the random state variable and <span class="math notranslate nohighlight">\(s_t\)</span> is the actual state at time <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p><strong>Symbol</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(S_t\)</span></p></td>
+<td><p>environment state at time step <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(s \in \mathcal{S}\)</span> the finite set of states</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(A_t\)</span></p></td>
+<td><p>agent action at time step <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(a \in \mathcal{A}\)</span> the finite set of actions</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(R_{t+1} \in \mathbb{R}\)</span></p></td>
+<td><p>numerical reward sent by the environment after taking action <span class="math notranslate nohighlight">\(A_t\)</span> and transition to next state <span class="math notranslate nohighlight">\(S_{t+1}=s'\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(t\)</span></p></td>
+<td><p>time step index associated with each experience that is defined as the tuple (<span class="math notranslate nohighlight">\(S_t, A_t, R_{t+1}\)</span>).</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(T\)</span></p></td>
+<td><p>final time step beyond which the interaction terminates</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><em>episode</em></p></td>
+<td><p>the time horizon from <span class="math notranslate nohighlight">\(t=0\)</span> to <span class="math notranslate nohighlight">\(T-1\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\tau\)</span></p></td>
+<td><p><em>trajectory</em> - the sequence of experiences over an episode</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(G_t\)</span></p></td>
+<td><p><em>return</em> - the total discounted rewards from time step <span class="math notranslate nohighlight">\(t\)</span> - it will be qualified shortly.</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\gamma\)</span></p></td>
+<td><p>the discount factor <span class="math notranslate nohighlight">\(\gamma \in [0,1]\)</span> embedded into the return <span class="math notranslate nohighlight">\(G_t\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>In fully observed MDP problems, the agent <em>perceives fully</em> the environment state <span class="math notranslate nohighlight">\(S_t\)</span>  - you can assume that there is a bank of sensors but they are ideal. In other words the agent knows which state the environment is in, perfectly.</p>
+<section id="a-note-on-the-state-definition-of-the-mdp-problem">
+<h3>A Note on the state definition of the MDP problem<a class="headerlink" href="#a-note-on-the-state-definition-of-the-mdp-problem" title="Permalink to this headline">#</a></h3>
+<p>Note that Markov processes are sometimes erroneously called <em>memoryless</em> but in any MDP above we can incorporate memory aka dependence in more than one state over time by cleverly defining the state <span class="math notranslate nohighlight">\(S_t\)</span> as a container of a number of states. For example, <span class="math notranslate nohighlight">\(S_t = \left[ S_t=s, S_{t-1} = s^\prime \right]\)</span> can still define an Markov transition using <span class="math notranslate nohighlight">\(S\)</span> states. The transition model</p>
+<div class="math notranslate nohighlight">
+\[p(S_t | S_{t-1}) = p(s_t, s_{t-1} | s_{t-1}, s_{t-2}) = p(s_t|s_{t-1}, s_{t-2})\]</div>
+<p>is called the 2nd-order Markov chain.</p>
+<p>DeepMind’s Q-learning algorithm playing pac-man converts the non-MDP problem to MDP by accumulating four frames instead of one. With a single frame the problem was not MDP since the state of all players could not be known - with a single frame the pacman could not know if the monster was moving towards it or nor for example. With a number of frames we get to know all the information needed to act optimally on this game.</p>
+</section>
+</section>
+<section id="mdp-loop">
+<h2>MDP Loop<a class="headerlink" href="#mdp-loop" title="Permalink to this headline">#</a></h2>
+<p>We define a Markov Decision Process as the 5-tuple <span class="math notranslate nohighlight">\(\mathcal M = &lt;\mathcal S, \mathcal P, \mathcal R, \mathcal A, \gamma&gt;\)</span> that produces a sequence of experiences <span class="math notranslate nohighlight">\((S_t, A_t, R_{t+1}), (S_{t+1}, A_{t+1}, R_{t+2}), ...\)</span>.  The MDP (event) loop is shown below:</p>
+<p><img alt="mdp-loop" src="../../../../_images/mdp-loop.png" />
+<em>This generic interface between the agent and the environment captures many problems outside of pure MDP including RL. The environment’s state in non-MDP problems can be experienced via sensor observations and the agent will build its own state estimate internally</em></p>
+<p>At the beginning of each episode, the environment and the agent are reset (lines 3–4). On reset, the environment produces an initial state. Then they begin interacting—an agent produces an action given a state (line 6), then the environment produces the next state and reward given the action (line 7), stepping into the next time step. The <code class="docutils literal notranslate"><span class="pre">agent.act-env.step</span></code> cycle continues until the maximum time step <span class="math notranslate nohighlight">\(T\)</span> is reached or the environment terminates. Here we also see a new component, <code class="docutils literal notranslate"><span class="pre">agent.update</span></code> (line 8), which encapsulates an agent’s learning algorithm. Over multiple time steps and episodes, this method collects data and performs learning internally to maximize the objective.</p>
+<p>We can now instantiate an simple environment in Gymnasium:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">gymnasium</span> <span class="k">as</span> <span class="nn">gym</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;LunarLander-v2&quot;</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="s2">&quot;rgb_array&quot;</span><span class="p">)</span>
+<span class="n">observation</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Create an empty dataframe with the desired columns</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+        <span class="s1">&#39;Action&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;Observation&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;Reward&#39;</span><span class="p">]</span>
+    <span class="p">)</span>
+
+<span class="n">dfs</span> <span class="o">=</span> <span class="p">[]</span>    
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">action</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>  <span class="c1"># agent policy that uses the observation and info</span>
+    <span class="n">observation</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+
+    <span class="c1"># Append the data to the dataframe</span>
+    <span class="n">row_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Action&#39;</span><span class="p">:</span> <span class="n">action</span><span class="p">,</span> <span class="s1">&#39;Observation&#39;</span><span class="p">:</span> <span class="n">observation</span><span class="p">,</span> <span class="s1">&#39;Reward&#39;</span><span class="p">:</span> <span class="n">reward</span><span class="p">})</span>
+    <span class="n">dfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row_df</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">terminated</span> <span class="ow">or</span> <span class="n">truncated</span><span class="p">:</span>
+        <span class="n">observation</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
+<span class="n">env</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Action  Observation    Reward
+7995       2     0.059681 -0.889951
+7996       2     0.018527 -0.889951
+7997       2     0.081864 -0.889951
+7998       2     0.000000 -0.889951
+7999       2     0.000000 -0.889951
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The docker container as of May 2023 seems to have a problem with the gymnaisum package in certain environments.  Sometimes the kernel in vscode will crash - we will  investigate this further when we rewrite these MDP pages during the summer of 2023 to make them more interactive.</p>
+</div>
+<section id="the-mdp-dynamics">
+<h3>The MDP dynamics<a class="headerlink" href="#the-mdp-dynamics" title="Permalink to this headline">#</a></h3>
+<p>The four foundational ingredients of MDP are:</p>
+<ol class="arabic simple">
+<li><p>Policy,</p></li>
+<li><p>Reward,</p></li>
+<li><p>Value function and</p></li>
+<li><p>Model of the environment.</p></li>
+</ol>
+<p>These are obtained from the <em>dynamics</em> of the <em>finite</em> MDP random process.</p>
+<div class="math notranslate nohighlight">
+\[p(s', r | s , a) = \Pr\{ S_{t+1} = s', R_{t+1} = r | S_{t}=s, A_{t}=a \}\]</div>
+<p>where <span class="math notranslate nohighlight">\(s^\prime\)</span> simply translates in English to the successor state whatever the new state is.</p>
+<p>The dynamics probability density function maps <span class="math notranslate nohighlight">\(\mathcal{S} \times \mathcal{R} \times \mathcal{S} \times \mathcal{A} \rightarrow [0,1]\)</span> and by marginalizing over the appropriate random variables we can get the probability distributions and statistical quantities.</p>
+</section>
+<section id="state-transition">
+<h3>State transition<a class="headerlink" href="#state-transition" title="Permalink to this headline">#</a></h3>
+<p>The action that the agent takes change the environment state to some other state. This can be represented via the environment <em>state transition</em> probabilistic model that generically can be written as:</p>
+<div class="math notranslate nohighlight">
+\[ p(s'|s,a) = p[S_{t+1}=s^\prime | S_t=s, A_t=a ] = \sum_{r \in \mathcal{R}} p(s', r | s , a)\]</div>
+<p>This function can be represented as a state transition probability tensor <span class="math notranslate nohighlight">\(\mathcal P\)</span></p>
+<div class="math notranslate nohighlight">
+\[\mathcal P^a_{ss^\prime} = p[S_{t+1}=s^\prime | S_t=s, A_t=a ]\]</div>
+<p>where one dimension represents the action space and the other two constitute a state transition probability matrix.</p>
+</section>
+<section id="reward-function">
+<h3>Reward function<a class="headerlink" href="#reward-function" title="Permalink to this headline">#</a></h3>
+<p>The action will also cause the environment to send the agent a signal called <em>instantaneous reward</em> <span class="math notranslate nohighlight">\(R_{t+1}\)</span>. The reward signal is effectively defining the goal of the agent and is the primary basis for altering a policy. The agent’s sole objective is to maximize the cumulative reward in the long run.</p>
+<p>Please note that in the literature the reward is also denoted as $R_{t}$ - this is a convention issue rather than something fundamental. The justification of the index $t+1$ is that the environment will take one step to respond to what action the agent took.</p>
+<p>The instantaneous reward is obtained by executing the reward function. the There are two broad cases for defining the reward function:</p>
+<ol class="arabic simple">
+<li><p>It can be a function of just the current state and the action we just committed to take and it is written as <span class="math notranslate nohighlight">\(r(s,a)\)</span>.</p></li>
+<li><p>It can include the current state, the action and <em>next</em> state  and it is writen as <span class="math notranslate nohighlight">\(r(s,a,s^\prime)\)</span></p></li>
+</ol>
+<p>Here is an example of for the Lunar Lander environment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gym</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;LunarLander-v2&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">reward_function</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">next_state</span><span class="p">):</span>
+    <span class="c1"># Unpack the state and action</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">v_x</span><span class="p">,</span> <span class="n">v_y</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">v_angle</span><span class="p">,</span> <span class="n">left_leg</span><span class="p">,</span> <span class="n">right_leg</span> <span class="o">=</span> <span class="n">state</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">action</span>
+    
+    <span class="c1"># Unpack the next state</span>
+    <span class="n">next_x</span><span class="p">,</span> <span class="n">next_y</span><span class="p">,</span> <span class="n">next_v_x</span><span class="p">,</span> <span class="n">next_v_y</span><span class="p">,</span> <span class="n">next_angle</span><span class="p">,</span> <span class="n">next_v_angle</span><span class="p">,</span> <span class="n">next_left_leg</span><span class="p">,</span> <span class="n">next_right_leg</span> <span class="o">=</span> <span class="n">next_state</span>
+    
+    <span class="c1"># Compute the reward based on the next state</span>
+    <span class="n">reward</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="c1"># Negative reward for crashing</span>
+    <span class="k">if</span> <span class="n">next_y</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">reward</span> <span class="o">-=</span> <span class="mi">100</span>
+        
+    <span class="c1"># Positive reward for landing successfully</span>
+    <span class="k">if</span> <span class="n">next_y</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">next_angle</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.1</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">next_v_x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.2</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">next_v_y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.2</span><span class="p">:</span>
+        <span class="n">reward</span> <span class="o">+=</span> <span class="mi">100</span>
+        
+    <span class="c1"># Negative reward for running out of fuel</span>
+    <span class="k">if</span> <span class="n">next_left_leg</span> <span class="o">&lt;</span> <span class="mf">0.01</span> <span class="ow">or</span> <span class="n">next_right_leg</span> <span class="o">&lt;</span> <span class="mf">0.01</span><span class="p">:</span>
+        <span class="n">reward</span> <span class="o">-=</span> <span class="mi">10</span>
+        
+    <span class="c1"># Penalty for using the engine</span>
+    <span class="n">reward</span> <span class="o">-=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.1</span>
+    
+    <span class="k">return</span> <span class="n">reward</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="../../../../_images/armed-bandit.jpg" /></p>
+<p>Please note that the instantaneus reward <strong>may be stochastic</strong>. This is a very important point and as an example consider the multi-armed bandit problems. The reward function there returns a random value based on the arm selected by the agent as shown. Dont be fooled by considering that multi-armed bandits apply to the cazino slot machines only. The multi-armed bandit problem applied far more generally: consider the case of experimental medical treatment and the decision to exploit it or explore others. The reward is the outcome of the treatment and is stochastic.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">class</span> <span class="nc">Bandit</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_arms</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_arms</span> <span class="o">=</span> <span class="n">n_arms</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reward_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_arms</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">pull_arm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm</span><span class="p">):</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reward_means</span><span class="p">[</span><span class="n">arm</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">reward</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we recognised that the reward can be a random variable another marginalization of the MDP dynamics allows us to get the  <em>expected reward</em> that tells us if we are in state <span class="math notranslate nohighlight">\(S_t=s\)</span>, what reward  <span class="math notranslate nohighlight">\(R_{t+1}\)</span>, in expectation, we get when taking an action <span class="math notranslate nohighlight">\(a\)</span>. It is given by,</p>
+<div class="math notranslate nohighlight">
+\[r(s,a) = \mathop{\mathbb{E}}[ R_{t+1} | S_t=s, A_t=a] = \sum_{r \in \mathcal{R}} r  \sum_{s \in \mathcal{S}}  p(s', r | s , a) \]</div>
+<p>This can be written as a matrix <span class="math notranslate nohighlight">\(\mathcal{R}^a_s\)</span>.</p>
+<p>And to accommodate the case where the reward is a function of the next state we can write the expected reward as</p>
+<div class="math notranslate nohighlight">
+\[r(s,a, s^\prime) = \mathop{\mathbb{E}}[ R_{t+1} | S_t=s, A_t=a, S_{t+1}=s^\prime] = \sum_{r \in \mathcal{R}} r  \frac{p(s', r | s , a)}{p(s' | s , a)}\]</div>
+</section>
+<section id="return">
+<h3>Return<a class="headerlink" href="#return" title="Permalink to this headline">#</a></h3>
+<p>To capture the objective,  consider first the <em>return</em> defined as a function of the reward sequence after time step <span class="math notranslate nohighlight">\(t\)</span>. Note that the return is also called <em>utility</em> in some texts.  In the simplest case this function is the total discounted reward,</p>
+<div class="math notranslate nohighlight">
+\[G_t = R_{t+1} + \gamma R_{t+2} + ... = \sum_{k=0}^∞\gamma^k R_{t+1+k}\]</div>
+<p>The discount rate determines the present value of future rewards:  a reward received <span class="math notranslate nohighlight">\(k\)</span> time steps in the future is worth only <span class="math notranslate nohighlight">\(γ^{k−1}\)</span>times what it would be worth if it were received immediately.  If <span class="math notranslate nohighlight">\(γ &lt;1\)</span>, the infinite sum above has a finite value as long as the reward sequence <span class="math notranslate nohighlight">\({R_k}\)</span> is bounded.  If <span class="math notranslate nohighlight">\(γ= 0\)</span>, the agent is “myopic” in being concerned only with maximizing immediate rewards:  its objective in this case is to learn how to choose <span class="math notranslate nohighlight">\(A_t\)</span> so  as  to  maximize  only <span class="math notranslate nohighlight">\(R_{t+1}\)</span>.   If  each  of  the  agent’s  actions  happened  to influence only the immediate reward, not future rewards as well, then a myopic agent could maximize by separately maximizing each immediate reward.  But in general, acting to maximize immediate reward can reduce access to future rewards so that the return is reduced.  As <span class="math notranslate nohighlight">\(γ\)</span> approaches 1, the return objective takes future rewards into account more strongly; the agent becomes more farsighted.</p>
+<p>Notice the two indices needed for its definition - one is the time step <span class="math notranslate nohighlight">\(t\)</span> that manifests where we are in the trajectory and the second index <span class="math notranslate nohighlight">\(k\)</span> is used to index future rewards up to infinity - this is the case of infinite horizon problems where we are not constrained to optimize the agent behavior within the limits of a finite horizon <span class="math notranslate nohighlight">\(T\)</span>. If the discount factor <span class="math notranslate nohighlight">\(\gamma &lt; 1\)</span> and the rewards are bounded (<span class="math notranslate nohighlight">\(|R| &lt; R_{max}\)</span>) then the above sum is <em>finite</em>.</p>
+<div class="math notranslate nohighlight">
+\[ \sum_{k=0}^∞\gamma^k R_{t+1+k} &lt;  \sum_{k=0}^∞\gamma^k R_{max} = \frac{R_{max}}{1-\gamma}\]</div>
+<p>The return is itself a random variable - for each trajectory defined by sampling the policy (strategy) of the agent we get a different return. For the Gridworld of the MDP section:</p>
+<div class="math notranslate nohighlight">
+\[\tau_1: S_0=s_{11}, S_1 = s_{12},  ... S_T=s_{43} \rightarrow G^{\tau_1}_0 = 5.6\]</div>
+<div class="math notranslate nohighlight">
+\[\tau_2: S_0=s_{11}, S_1=s_{21}, ... , S_T=s_{43} \rightarrow G^{\tau_2}_0 = 6.9\]</div>
+<div class="math notranslate nohighlight">
+\[ … \]</div>
+<p>Note that these are sample numbers to make the point that the return depends on the specific trajectory.</p>
+<p>The following is a useful recursion to remind that successive time steps are <em>related</em> to each other:</p>
+<div class="math notranslate nohighlight">
+\[G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3}+ \gamma^3 R_{t+4}\]</div>
+<div class="math notranslate nohighlight">
+\[ = R_{t+1} + \gamma (R_{t+2} + \gamma R_{t+3}+ \gamma^2 R_{t+4}) \]</div>
+<div class="math notranslate nohighlight">
+\[ = R_{t+1} + \gamma G_{t+1}\]</div>
+</section>
+<section id="policy-function">
+<h3>Policy function<a class="headerlink" href="#policy-function" title="Permalink to this headline">#</a></h3>
+<p>The agent’s behavior is expressed via a <strong>policy function</strong> <span class="math notranslate nohighlight">\(\pi\)</span> - that tells the agent what <em>action</em> to take for every possible state. The policy is a function of the state and can be:</p>
+<ol class="arabic simple">
+<li><p>Deterministic functions of the state the environment is in and by extension, the state that the agent is or believes (think about <em>posterior belief</em>) it is in.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[a = \pi(s)\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Stochastic functions of the state expressed as a conditional probability distribution function (conditional pdf) of actions given the current state:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[a \sim p(A_t=a|S_t=s) = \pi(a|s)\]</div>
+<p>The policy is assumed to be stationary i.e. not change with time step <span class="math notranslate nohighlight">\(t\)</span> and it will depend only on the state <span class="math notranslate nohighlight">\(S_t\)</span> i.e. <span class="math notranslate nohighlight">\(A_t=a \sim \pi(.|S_t=s), \forall t &gt; 0\)</span>.</p>
+</section>
+</section>
+<section id="value-functions">
+<h2>Value Functions<a class="headerlink" href="#value-functions" title="Permalink to this headline">#</a></h2>
+<p>The value of a state is the total amount of reward an agent can expect to accumulate over the future, starting from that state.   Whereas rewards determine the immediate,  intrinsic desirability of environmental states, values indicate the long-term desirability of states after taking into account the states that are likely to follow, and the rewards available in those states.</p>
+<section id="state-value">
+<h3>State value<a class="headerlink" href="#state-value" title="Permalink to this headline">#</a></h3>
+<p>The <em>state-value function</em> <span class="math notranslate nohighlight">\(v_\pi(s)\)</span> provides a notion of the long-term value of state <span class="math notranslate nohighlight">\(s\)</span>. It is equivalent to what other literature calls <em>expected utility</em> . It is defined as the expected_ return starting at state <span class="math notranslate nohighlight">\(s\)</span> and following policy <span class="math notranslate nohighlight">\(\pi(a|s)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[v_\pi(s) = \mathop{\mathbb{E}_\pi}(G_t | S_t=s)\]</div>
+<p>The expectation is obviously due to the fact that <span class="math notranslate nohighlight">\(G_t\)</span> are random variables since the <em>sequence</em> of states of each potential trajectory starting from <span class="math notranslate nohighlight">\(s\)</span> is dictated by the stochastic policy. As an example, assuming that there are just two possible trajectories from state <span class="math notranslate nohighlight">\(s{11}\)</span> whose returns were calculated above, the value function of state <span class="math notranslate nohighlight">\(s_{11}\)</span> will be</p>
+<div class="math notranslate nohighlight">
+\[v_\pi(s_{11}) = \frac{1}{2}(G^{\tau_1}_0 + G^{\tau_2}_0)\]</div>
+<p>One corner case is interesting - if we make <span class="math notranslate nohighlight">\(\gamma=0\)</span> then <span class="math notranslate nohighlight">\(v_\pi(s)\)</span>  becomes the average of instantaneous rewards we can get from that state.</p>
+</section>
+<section id="action-value">
+<h3>Action value<a class="headerlink" href="#action-value" title="Permalink to this headline">#</a></h3>
+<p>We also define the <em>action-value function</em> <span class="math notranslate nohighlight">\(q_\pi(s,a)\)</span> as the expected return starting from the state <span class="math notranslate nohighlight">\(s\)</span>, taking action <span class="math notranslate nohighlight">\(a\)</span> and following policy <span class="math notranslate nohighlight">\(\pi(a|s)\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[q_\pi(s,a) = \mathop{\mathbb{E}_\pi} (G_t | S_t=s, A_t=a)\]</div>
+<p>This is an important quantity as it helps us decide the action we need to take while in state <span class="math notranslate nohighlight">\(s\)</span>.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "pantelis/artificial-intelligence",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./aiml-common/lectures/mdp/mdp-intro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../_index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Markov Decision Processes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../bellman-expectation-backup/_index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bellman Expectation Backup</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-elements-of-the-agent-environment-interface">The elements of the Agent - Environment interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-the-state-definition-of-the-mdp-problem">A Note on the state definition of the MDP problem</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mdp-loop">MDP Loop</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mdp-dynamics">The MDP dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state-transition">State transition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reward-function">Reward function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#return">Return</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-function">Policy function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#value-functions">Value Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state-value">State value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#action-value">Action value</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Pantelis Monogioudis, Ph.D
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
