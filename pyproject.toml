@@ -50,6 +50,11 @@ pydot = "^1.4.2"
 altair = "^4.2.2"
 gputil = "^1.4.0"
 portalocker = "^2.7.0"
+gymnasium = "^0.28.1"
+swig = "^4.1.1"
+ufal-pybox2d = "^2.3.10.2"
+pygame = "^2.4.0"
+gym = "^0.26.2"
 
 [build-system]
 requires = ["poetry-core"]
