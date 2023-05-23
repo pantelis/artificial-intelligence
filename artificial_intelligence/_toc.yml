@@ -11,11 +11,11 @@ parts:
   chapters:
   # - file: aiml-common/lectures/ai-intro/key-topics.md
   - file: aiml-common/lectures/ai-intro/course-introduction/_index.md
-  - file: aiml-common/lectures/ai-intro/data-science-360/_index.md
+  # - file: aiml-common/lectures/ai-intro/data-science-360/_index.md
   - file: aiml-common/lectures/ai-intro/systems-approach/_index.md
   - file: aiml-common/lectures/ai-intro/agents/_index.md
 
-- caption: The Learning Problem - Regression
+- caption: Supervised Learning-1
   chapters:
   - file: aiml-common/lectures/learning-problem/_index.md
   - file: aiml-common/lectures/regression/linear-regression/linear_regression.ipynb 
@@ -24,16 +24,16 @@ parts:
   - file: aiml-common/lectures/optimization/maximum-likelihood/marginal_maximum_likelihood.ipynb
   - file: aiml-common/lectures/optimization/maximum-likelihood/conditional_maximum_likelihood.ipynb
 
-- caption: The Learning Problem - Classification
+- caption: Supervised Learning-2
   chapters:
   - file: aiml-common/lectures/classification/classification-intro/_index.md
   - file: aiml-common/lectures/classification/logistic-regression/_index.md
   
-- caption: Bayesian Inference
-  chapters:
-  - file: aiml-common/lectures/pgm/bayesian-inference/_index.md
-  - file: aiml-common/lectures/pgm/bayesian-inference/bayesian_regression.ipynb
-  - file: aiml-common/lectures/pgm/bayesian-coin/bayesian_update_coin_flip.ipynb
+# - caption: Bayesian Inference
+#   chapters:
+#   - file: aiml-common/lectures/pgm/bayesian-inference/_index.md
+#   - file: aiml-common/lectures/pgm/bayesian-inference/bayesian_regression.ipynb
+#   - file: aiml-common/lectures/pgm/bayesian-coin/bayesian_update_coin_flip.ipynb
             
 - caption: Deep Neural Networks
   chapters:    
@@ -53,7 +53,7 @@ parts:
   - file: aiml-common/lectures/cnn/cnn-example-architectures/_index.md
   - file: aiml-common/lectures/cnn/cnn-example-architectures/using_convnets_with_small_datasets.ipynb
   - file: aiml-common/lectures/cnn/cnn-example-architectures/visualizing-what-convnets-learn.ipynb
-  - file: aiml-common/lectures/cnn/cnn-explainers/gradcam.ipynb
+  #- file: aiml-common/lectures/cnn/cnn-explainers/gradcam.ipynb
   
 - caption:  Transfer Learning
   chapters:  
@@ -185,25 +185,25 @@ parts:
   - file: aiml-common/resources/environment/notebook-status.md
   # - file: aiml-common/lectures/runbook.md  
 
-- caption: Common Assignments
-  chapters:
-  - file: aiml-common/assignments/probability/probability-assignment-5/index.ipynb
+# - caption: Common Assignments
+#   chapters:
+#   - file: aiml-common/assignments/probability/probability-assignment-5/index.ipynb
   
-- caption:  Assignments CS-UY-4613
-  chapters: 
-  - file: aiml-common/assignments/mle/mle-gaussian.ipynb
-  - file: aiml-common/assignments/mle/poisson-regression-1/index.ipynb
-  - file: aiml-common/assignments/object-tracking-kalman/balls.md
+# - caption:  Assignments CS-UY-4613
+#   chapters: 
+#   - file: aiml-common/assignments/mle/mle-gaussian.ipynb
+#   - file: aiml-common/assignments/mle/poisson-regression-1/index.ipynb
+#   - file: aiml-common/assignments/object-tracking-kalman/balls.md
   
-- caption:  Project CS-UY-4613
-  chapters: 
-  - file: aiml-common/projects/nlp/finetuning-language-models-tweets/index.md
+# - caption:  Project CS-UY-4613
+#   chapters: 
+#   - file: aiml-common/projects/nlp/finetuning-language-models-tweets/index.md
 
-- caption:  Assignments CS-GY-6613
-  chapters: 
-  - file: aiml-common/assignments/logistic-regression-1/index.md
-  - file: aiml-common/assignments/object-tracking-kalman/soccer.md
+# - caption:  Assignments CS-GY-6613
+#   chapters: 
+#   - file: aiml-common/assignments/logistic-regression-1/index.md
+#   - file: aiml-common/assignments/object-tracking-kalman/soccer.md
 
-- caption:  Project CS-GY-6613
-  chapters: 
-  - file: aiml-common/projects/nlp/finetuning-language-models-patents/index.md
+# - caption:  Project CS-GY-6613
+#   chapters: 
+#   - file: aiml-common/projects/nlp/finetuning-language-models-patents/index.md

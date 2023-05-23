@@ -1,12 +1,9 @@
----
-title: Syllabus
----
 # Syllabus
 
 ## Books
 
 1. AIMA - [Artificial Intelligence: A Modern Approach, by Stuart Russell, 4th edition, 2021](https://www.amazon.com/Artificial-Intelligence-A-Modern-Approach/dp/0134610997) and also [here.](http://aima.cs.berkeley.edu/)
-2. GERON: "[Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow", 3rd Edition](https://www.amazon.com/Hands-Machine-Learning-Scikit-Learn-TensorFlow-dp-1492032646/dp/1492032646/ref=dp_ob_title_bk), by Geron, 2019. This is very useful if you aim in using TF2 but irrespectively of the framework essential for those new to Python to complete your projects. 
+2. GERON: "[Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow", 3rd Edition](https://www.amazon.com/Hands-Machine-Learning-Scikit-Learn-TensorFlow-dp-1098125975/dp/1098125975/ref=dp_ob_title_bk), 2022. This is very useful if you aim in using TF2 but irrespectively of the framework essential for those new to Python to complete your projects. 
 3. DL - Deep Learning: https://www.deeplearningbook.org/  (free). NOTE: See also the very good https://d2l.ai/ but the chapter references below are from the Ian Goodfellow's book that I am familiar with. 
 
 ## Planned Schedule
@@ -21,11 +18,11 @@ title: Syllabus
 
 **Lecture 4:** We dive into the most dominant DNN architecture today -  _Convolutional Neural Networks (CNNs)_. Reading: DL Chapter 9 & 10 and AIMA Chapter 25 (in part). 
 
-**Lecture 5:** When agents move in the environment they need to abilities such as _scene understanding_.  We will go through few key perception building blocks such as Object Detection, Semantic and Instance Segmentation. Some of these building blocks (autoencoders) are instructive examples of representations learning that will be shown to be an essential tool in the construction of environment state representations. Reading: AIMA Chapter 25 (in part). 
+**Lecture 5:** When agents move in the environment they need to abilities such as _scene understanding_.  We will go through few key perception building blocks such as Object Detection, Semantic and Instance Segmentation. Reading: AIMA Chapter 25 (in part). 
         
 ### Part II: Reasoning and Planning
 
-**Lecture 6:**  In this lecture we introduce probabilistic models that process the outputs of perception (measurement / sensor model) and the state transitions and understand how the agent will track / update its belief state over time. This is a achieved with probabilistic recursive state estimation algorithms and dynamic bayesian networks. Reading: AIMA Chapters 12, 13 & 14. 
+**Lecture 6:**  In this lecture we introduce probabilistic models that process the perceptive predictions over time and understand how the agent will track / update its time-varying belief about the state of the environment. This is achieved with recursive state estimation algorithms acting on dynamic bayesian networks. This lecture introduces Bayesian filters in descrete and continuous state spaces (Kalman filters).  All robots one way or another employ such filters.  Reading: AIMA Chapters 12, 13 & 14. 
 
 **Lecture 7:** After the last lecture, the agent has a clear view of the environment state such as what and where the objects that surround it are, its able to track them as they potentially move. It needs to plan the best sequence of actions to reach its goal state and the approach we take here is that of _problem solving_. In fact planning and problem solving are inherently connected as concepts. If the goal state is feasible then the problem to solve  becomes that of  _search_. For instructive purposes we start from simple environmental conditions that are fully observed, known and deterministic. This is where the A* algorithm comes in. We then relax some of the assumptions and treat environments that are deterministic but the agent takes stochastic actions or when both the environment and agent actions are stochastic. We also investigate what happens when we do not just care about reaching our goal state, but when we, in addition, need to do so with optimality. Optimal planning under uncertainty is perhaps the cornerstone application today in robotics and other fields. Readings: Reading: AIMA Chapters 3 & 4 (problem solving), AIMA Chapters 7 (Logical agents) 
 
