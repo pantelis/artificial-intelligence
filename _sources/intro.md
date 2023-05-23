@@ -26,9 +26,8 @@ Artificial Intelligence (AI) is an important topic in computer science and offer
 
 **Logistics** {octicon}`organization;1em;sd-text-info`
 ^^^
-NYU Course Dates:  Jan 2023  - May 2023
-CS-GY-4613: Fri 11.30pm-2:00pm EST,  Loc:  Brooklyn
-CS-GY-6613: Fri 5.00pm-7:30pm EST,  Loc:  Brooklyn
+
+CS670 Course Dates: 5/24/2023 - 8/2/2023
 
 :::
 
@@ -37,7 +36,8 @@ CS-GY-6613: Fri 5.00pm-7:30pm EST,  Loc:  Brooklyn
 
 **Communication** {octicon}`megaphone;1em;sd-text-info`
 ^^^
-We use Google chat (NYU account) for all communication and questions related to lectures and projects. Info has already been sent to you via Brightspace. Please install Chat in your smartphones as well. 
+
+We use Discord for all communication and questions related to lectures and projects. Info has already been sent to you via Canvas. Please install Discord in your smartphones as well. 
 
 
 :::
@@ -47,20 +47,10 @@ We use Google chat (NYU account) for all communication and questions related to 
 
 **Office Hours** {octicon}`clock;1em;sd-text-info`
 ^^^
-Professor Office hours will be coordinated via chat  - the process is simple: direct message and make arrangements for a 30min slot. After we agree on the slot, please send a **GMeet calendar** invitation to me. Please include in your invitation the questions / issues you face so that we can have a productive meeting. 
+Professor Office hours will be coordinated via chat  - the process is simple: direct message and make arrangements for a 30min slot. After we agree on the slot, please send a **Google calendar** invitation to me and include Gmeet conference info (no Webex or Zoom). Please include in your invitation the questions / issues you face so that we can have a productive meeting. 
 
 :::
 
-:::{grid-item-card}
-:class-header: bg-primary
-
-**Staff (TAs)** {octicon}`person;1em;sd-text-info`
-^^^
-
-Vaibhav Singh (Graduate, 6613)
-Anshul Agrawal (Undergrad, 4613)
-Himanhsu Payal (Undergrad, 4613)
-:::
 
 :::{grid-item-card}
 :class-header: bg-primary
@@ -75,6 +65,27 @@ Final (30%)
 Project (20%)
 
 Assignments (30%)
+
+:::
+
+:::{grid-item-card}
+:class-header: bg-primary
+
+**Staff (TAs)** {octicon}`person;1em;sd-text-info`
+^^^
+
+Pritam Shen (find him in our Discord class channel)
+
+:::
+
+
+:::{grid-item-card}
+:class-header: bg-primary
+
+**Support** {octicon}`person;1em;sd-text-info`
+^^^
+
+See Discord ticketing system. Open a ticket to request an assignment deadline extension, address a grading issue and other issues that require a by Staff or Professor.  
 
 
 
