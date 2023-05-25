@@ -47,7 +47,7 @@ We use Discord for all communication and questions related to lectures and proje
 
 **Office Hours** {octicon}`clock;1em;sd-text-info`
 ^^^
-Professor Office hours will be coordinated via chat  - the process is simple: direct message and make arrangements for a 30min slot. After we agree on the slot, please send a **Google calendar** invitation to me and include Gmeet conference info (no Webex or Zoom). Please include in your invitation the questions / issues you face so that we can have a productive meeting. 
+Professor Office hours will be coordinated via Discord  - the process is simple: direct message and make arrangements for a 30min slot. After we agree on the slot, please send a **Google calendar** invitation to me and include Gmeet conference info (no Webex or Zoom). Please include in your invitation the questions / issues you face so that we can have a productive meeting. 
 
 :::
 

@@ -539,7 +539,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute">Compute</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-your-own-machine-or-laptop-recommended">On your own machine or laptop (recommended)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-your-own-server-desktop-machine-or-laptop-recommended">On your own server/desktop machine or laptop (recommended)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colaboratory-recommended">Google Colaboratory (recommended)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-aws-recommended">On AWS  (recommended)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-hugging-face-spaces-recommended">On Hugging Face Spaces (recommended)</a></li>
@@ -570,9 +570,17 @@ document.write(`
 <h1>Your Programming Environment<a class="headerlink" href="#your-programming-environment" title="Permalink to this headline">#</a></h1>
 <section id="compute">
 <h2>Compute<a class="headerlink" href="#compute" title="Permalink to this headline">#</a></h2>
-<section id="on-your-own-machine-or-laptop-recommended">
-<h3>On your own machine or laptop (recommended)<a class="headerlink" href="#on-your-own-machine-or-laptop-recommended" title="Permalink to this headline">#</a></h3>
-<p>You need to create Python environments in  this course. Nothing beats a container based environment for data science/AI workflows and we recommend VS Code as the IDE due to its felxibility in supporting remote containers.</p>
+<section id="on-your-own-server-desktop-machine-or-laptop-recommended">
+<h3>On your own server/desktop machine or laptop (recommended)<a class="headerlink" href="#on-your-own-server-desktop-machine-or-laptop-recommended" title="Permalink to this headline">#</a></h3>
+<p>You need to create Python environments in  this course. Nothing beats a container based environment for data science/AI workflows and we recommend VS Code as the IDE due to its flexibility in supporting remote containers.</p>
+<ul class="simple">
+<li><p>For those in Windows, please follow <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-containers">this</a> to install WSL2 and Docker.</p></li>
+<li><p>For Mac users please follow the docker instructions <a class="reference external" href="https://docs.docker.com/docker-for-mac/install/">here</a>.</p></li>
+<li><p>For Ubuntu users please follow the docker instructions <a class="reference external" href="https://docs.docker.com/engine/install/ubuntu/">here</a>.</p></li>
+<li><p>For other linux users please follow the docker instructions <a class="reference external" href="https://docs.docker.com/engine/install/">here</a>.</p></li>
+</ul>
+<p>For those that do not have an existing NVIDIA-based GPU, please avoid <strong>buying</strong> any AMD or Intel GPUs. Even to this date, the best way of workload acceleration is via CUDA and NVIDIA is the only vendor that supports CUDA. Maybe one day we will have a true multivendor choice - its not today though.</p>
+<p>If you do already have AMD or Intel GPUs you <em>may</em> still be able to use them  or simply use Colab.</p>
 </section>
 <section id="google-colaboratory-recommended">
 <h3>Google Colaboratory (recommended)<a class="headerlink" href="#google-colaboratory-recommended" title="Permalink to this headline">#</a></h3>
@@ -603,11 +611,11 @@ document.write(`
 <section id="how-to-work-with-a-github-repository-in-colab">
 <h3>How to work with a github repository in Colab<a class="headerlink" href="#how-to-work-with-a-github-repository-in-colab" title="Permalink to this headline">#</a></h3>
 <ol class="arabic simple">
-<li><p>Fork the desired repository if this is not yours. For example go to <a class="github reference external" href="https://github.com/ageron/handson-ml2">ageron/handson-ml2</a> and press the Fork button.</p></li>
+<li><p>Fork the desired repository if this is not yours. For example go to <a class="github reference external" href="https://github.com/ageron/handson-ml3">ageron/handson-ml3</a> and press the Fork button.</p></li>
 <li><p>After forking you should see the repository appearing in your account.</p></li>
 <li><p>Click the green button <code class="docutils literal notranslate"><span class="pre">Clone</span> <span class="pre">or</span> <span class="pre">download</span></code>, click Use HTTPS and copy the field with the location of the repo your forked.</p></li>
-<li><p>Go to <a class="reference external" href="https://colab.research.google.com/">https://colab.research.google.com/</a> and login with your NJIT gmail account</p></li>
-<li><p>In the window that pops up select Github. Accept the requested additional permission request for your NJIT gmail account. After Github and Colab connects you will be able to see the forked repo from your drop down menu of Repository. You will also see all the notebooks that start with a number e.g 01_the_machine_learning_landscape.ipynb. The number indicates the chapter number.</p></li>
+<li><p>Go to <a class="reference external" href="https://colab.research.google.com/">https://colab.research.google.com/</a> and login with your university email account</p></li>
+<li><p>In the window that pops up select Github. Accept the requested additional permission request for your university email account. After Github and Colab connects you will be able to see the forked repo from your drop down menu of Repository. You will also see all the notebooks that start with a number e.g 01_the_machine_learning_landscape.ipynb. The number indicates the chapter number.</p></li>
 <li><p>Select to open the 01-*.ipynb notebook by clicking on it. You should see the notebook in your own colab account. Any change will be persisted in your github.</p></li>
 <li><p>Run the first cell. If you havent used Notebooks before, people with little programming experience will fall in love with them especially at this stage where you dont need to type new code. For a tutorial on how to use the notebooks in colab or in general open and run the notebook <a class="reference external" href="https://colab.research.google.com/notebooks/intro.ipynb">Welcome to Colaboratory</a>.</p></li>
 </ol>
@@ -690,7 +698,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute">Compute</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-your-own-machine-or-laptop-recommended">On your own machine or laptop (recommended)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-your-own-server-desktop-machine-or-laptop-recommended">On your own server/desktop machine or laptop (recommended)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colaboratory-recommended">Google Colaboratory (recommended)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-aws-recommended">On AWS  (recommended)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-hugging-face-spaces-recommended">On Hugging Face Spaces (recommended)</a></li>
