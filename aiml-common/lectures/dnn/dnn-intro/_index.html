@@ -554,6 +554,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-entropy-ce-loss">Cross Entropy (CE) Loss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videos-to-watch">Videos to watch</a></li>
 </ul>
             </nav>
         </div>
@@ -567,8 +568,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="deep-neural-networks">
 <h1>Deep Neural Networks<a class="headerlink" href="#deep-neural-networks" title="Permalink to this headline">#</a></h1>
-<p>For a historical recap on neural networks see:</p>
-<p><em>The Epistemology of Deep Learning - Yann LeCun</em></p>
 <p>DNNs are the implementation of <strong>connectionism</strong>, the philosophy that calls for algorithms that perform function approximations to be constructed by an interconnection of elementary circuits called neurons.  In this section, we provides some key points on the question of how the feed-forward neural networks are constructed. In subsequent sections we describe how they learn.</p>
 <section id="architecture">
 <h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">#</a></h2>
@@ -618,6 +617,17 @@ document.write(`
 <h2>Cross Entropy (CE) Loss<a class="headerlink" href="#cross-entropy-ce-loss" title="Permalink to this headline">#</a></h2>
 <p>This is used for multiclass classification problems.</p>
 <p>It offers certain advantages during the learning of deep neural networks. Given that the gradient must be large enough to act as a guiding direction during SGD,  we need to avoid situations that the output units result in flat responses (saturate). Since softmax involves exponentials, it saturates when for example the differences between inputs become extreme. The <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html">CE loss helps as the log undoes the exponential terms</a>.</p>
+</section>
+<section id="videos-to-watch">
+<h2>Videos to watch<a class="headerlink" href="#videos-to-watch" title="Permalink to this headline">#</a></h2>
+<p>For a historical recap on neural networks see:</p>
+<div class="video_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/gG5NCkMerHU" style="border: 0; height: 345px; width: 560px">
+</iframe></div><p><em>The Epistemology of Deep Learning - Yann LeCun</em></p>
+<p>For an astonishing visualization of the learning process of a (dense) neural network see:</p>
+<div class="video_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/aircAruvnKk" style="border: 0; height: 345px; width: 560px">
+</iframe></div><p><em>But what is a neural network?</em></p>
 </section>
 </section>
 
@@ -698,6 +708,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-entropy-ce-loss">Cross Entropy (CE) Loss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videos-to-watch">Videos to watch</a></li>
 </ul>
   </nav></div>
 
