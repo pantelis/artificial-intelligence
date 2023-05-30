@@ -1,0 +1,88 @@
+FROM nvcr.io/nvidia/tensorflow:23.02-tf2-py3
+
+# specify vscode as the user name in the docker
+# This user name should match that of the VS Code .devcontainer to allow seamless development inside the docker container via vscode 
+ARG USERNAME=vscode
+ARG USER_UID=1001
+ARG USER_GID=$USER_UID
+
+# Create a non-root user
+RUN groupadd --gid $USER_GID $USERNAME \
+  && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \
+  # [Optional] Add sudo support for the non-root user - this is ok for development dockers only
+  && apt-get update \
+  && apt-get install -y sudo \
+  && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME\
+  && chmod 0440 /etc/sudoers.d/$USERNAME \
+  # Cleanup
+  && rm -rf /var/lib/apt/lists/* \
+  # Set up git completion.
+  && echo "source /usr/share/bash-completion/completions/git" >> /home/$USERNAME/.bashrc 
+
+# Packages installation (eg git-lfs)
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get -y install --no-install-recommends curl git-lfs ffmpeg libsm6 libxext6 graphviz xdg-utils swig 
+
+USER vscode
+
+# ACT for executing locally Github workflows
+RUN curl -s https://raw.githubusercontent.com/nektos/act/master/install.sh |  sudo bash
+
+# NVM for managing npm versions
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh |  sudo bash
+
+# Git LFS repo configuration
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh |  sudo  bash
+
+# inscape installation for managing svg files
+RUN sudo apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && sudo apt-get -y install --no-install-recommends inkscape
+
+# Install conda
+# Install base utilities
+RUN sudo apt-get update \
+    && sudo apt-get install -y build-essential \
+    && sudo apt-get install -y wget \
+    && sudo apt-get clean \
+    && sudo rm -rf /var/lib/apt/lists/*
+
+# Install miniconda - the version of python **must match** the version of the base image - for the nvcr.io/nvidia/pytorch:23.02-py3 image this is python 3.8
+SHELL ["/bin/bash", "-c"]
+
+ENV CONDA_DIR /opt/conda
+
+RUN sudo wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py38_23.3.1-0-Linux-x86_64.sh -O ~/miniconda.sh && sudo /bin/bash ~/miniconda.sh -b -p /opt/conda
+
+# Put conda in path so we can use conda activate
+ENV PATH=$CONDA_DIR/bin:$PATH
+
+RUN source /opt/conda/etc/profile.d/conda.sh && conda init bash && conda create -p /tmp/bootstrap -c conda-forge mamba conda-lock poetry -y && source /opt/conda/etc/profile.d/conda.sh && conda activate /tmp/bootstrap
+
+SHELL ["/bin/bash", "-c", "source /tmp/bootstrap/bin/activate"]
+
+WORKDIR /workspaces/artificial_intelligence
+
+# Create Conda lock file(s) from environment.yml
+RUN source /tmp/bootstrap/bin/activate && conda-lock -k explicit --conda mamba
+
+# Set up Poetry - version spec should match the one from environment.yml
+# RUN poetry init --python=~3.8  
+# Fix package versions installed by Conda to prevent upgrades
+# RUN poetry add --lock tensorflow=2.12.0 torch=2.0.1 torchaudio=0.15.2 torchvision=0.15.2
+# Add conda-lock (and other packages, as needed) to pyproject.toml and poetry.lock
+# RUN poetry add --lock conda-lock
+
+# Remove the bootstrap env
+RUN conda deactivate
+#RUN rm -rf /tmp/bootstrap
+
+# Add Conda spec and lock files
+RUN git add environment.yml virtual-packages.yml conda-linux-64.lock
+# Add Poetry spec and lock files
+RUN git add pyproject.toml poetry.lock
+RUN git commit
+
+
+ENV PYTHONPATH="/usr/local/lib/python3.8/dist-packages:/opt/conda/lib/python3.8/site-packages"
+
+#CMD ["/bin/bash"]

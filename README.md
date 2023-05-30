@@ -4,6 +4,10 @@
 
 ## Usage
 
+### Reproducible environment for building the docker container
+
+
+
 ### Building the book
 
 If you'd like to develop and/or build the data-science book, you should:
