@@ -21,7 +21,6 @@
 		"--security-opt=seccomp:unconfined",
 		"--security-opt=apparmor:unconfined",
 		"--volume=/tmp/.X11-unix:/tmp/.X11-unix",
-		"--volume=/home/pantelis.monogioudis/s3-2.nj.aegean.ai:/workspaces/data",
 		"--env-file=.devcontainer/devcontainer.env"
 	],
 	"containerEnv": { "DISPLAY": "0" },

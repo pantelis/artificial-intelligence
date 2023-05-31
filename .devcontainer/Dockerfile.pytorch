@@ -39,11 +39,11 @@ RUN sudo apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && sudo apt-get -y install --no-install-recommends inkscape
 
 SHELL ["/bin/bash", "-c"]
-
+ENV PATH="/home/vscode/.local/bin:$PATH"
 ENV PYTHONPATH="/usr/local/lib/python3.8/dist-packages"
 
 WORKDIR /workspaces/artificial_intelligence
 
 RUN curl -sSL https://install.python-poetry.org | python3 - && poetry config virtualenvs.in-project true 
 
-ENV PATH="/home/vscode/.local/bin:$PATH"
+
