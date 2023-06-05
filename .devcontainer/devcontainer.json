@@ -10,7 +10,7 @@
 	},
 
 	"remoteEnv": {
-		"PATH": "${localEnv:PATH}:/home/vscode/.local/bin"
+		//"PATH": "/home/vscode/.local/bin:$PATH"
 	},
 	
 	"runArgs": [
@@ -26,7 +26,7 @@
 	"containerEnv": { "DISPLAY": "0" },
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [8000],
+	//"forwardPorts": [8000],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	//"postCreateCommand": "",
@@ -53,5 +53,5 @@
 			}
 		}
 	},
-	"postStartCommand": "poetry update && poetry run sphinx-autobuild artificial_intelligence _build/html"
+	"postStartCommand": "poetry update && poetry run sphinx-autobuild --port=10000 artificial_intelligence _build/html"
 }

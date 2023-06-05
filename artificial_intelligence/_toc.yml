@@ -51,6 +51,7 @@ parts:
   - file: aiml-common/lectures/cnn/cnn-example-architectures/_index.md
   - file: aiml-common/lectures/cnn/cnn-example-architectures/using_convnets_with_small_datasets.ipynb
   - file: aiml-common/lectures/cnn/cnn-example-architectures/visualizing-what-convnets-learn.ipynb
+  - file: aiml-common/lectures/scene-understanding/feature-extraction-resnet/index.md
   #- file: aiml-common/lectures/cnn/cnn-explainers/gradcam.ipynb
   
 - caption:  Transfer Learning
@@ -62,7 +63,6 @@ parts:
 - caption: Scene Understanding
   chapters:    
   - file: aiml-common/lectures/scene-understanding/scene-understanding-intro/index.md
-  - file: aiml-common/lectures/scene-understanding/feature-extraction-resnet/index.md
   - file: aiml-common/lectures/scene-understanding/object-detection/object-detection-intro/index.md
     title: Object Detection
     sections:  
