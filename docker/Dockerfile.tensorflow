@@ -38,26 +38,20 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.d
 RUN sudo apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && sudo apt-get -y install --no-install-recommends inkscape
 
+
 SHELL ["/bin/bash", "-c"]
 ENV PATH="/home/vscode/.local/bin:$PATH"
-ENV PYTHONPATH="/usr/local/lib/python3.8/dist-packages"
+
+WORKDIR /workspaces/data-mining
+
+# RUN python -m pip install pip-tools
+# https://github.com/jazzband/pip-tools/issues/1596
+#RUN --mount=type=cache,target=/root/.cache/pip python3 -m piptools compile -v 
 
 
-RUN curl -sSL https://install.python-poetry.org | python3 -
+# Install dependencies:
+COPY . . 
+RUN pip install -r requirements.txt
 
-ENV POETRY_NO_INTERACTION=1 \
-    POETRY_VIRTUALENVS_IN_PROJECT=1 \
-    POETRY_VIRTUALENVS_CREATE=1 \
-    POETRY_CACHE_DIR=/tmp/poetry_cache
-
-WORKDIR /workspaces/artificial_intelligence
-
-COPY pyproject.toml poetry.lock ./
-
-RUN poetry install --no-root && rm -rf $POETRY_CACHE_DIR
-
-COPY . .
-
-CMD ["poetry", "shell"]
-
+USER vscode
 
