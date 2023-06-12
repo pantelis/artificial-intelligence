@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>LSTM Language Model from scratch &#8212; Introduction to Artificial Intelligence</title>
   
@@ -35,8 +35,6 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -46,11 +44,11 @@
     <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/jquery.js"></script>
     <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../_static/doctools.js"></script>
     <script src="../../../../../_static/clipboard.min.js"></script>
     <script src="../../../../../_static/copybutton.js"></script>
     <script src="../../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script src="../../../../../_static/tabs.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -63,8 +61,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../../_static/sphinx-thebe.js"></script>
-    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/nlp/language-models/lstm-language-model/index';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/nlp/language-models/lstm-language-model/index.html" />
     <link rel="shortcut icon" href="../../../../../_static/logo.ico"/>
@@ -331,6 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../assignments/probability/probability-assignment-6/index.html">Probability Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../assignments/mle/mle-gaussian.html">Gaussian Maximum Likelihood</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../projects/nlp/finetuning-language-models-patents/index.html">Finetuning Language Models - Can I Patent This?</a></li>
 </ul></li></ul>
@@ -625,11 +622,11 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lstm-language-model-from-scratch">
-<h1>LSTM Language Model from scratch<a class="headerlink" href="#lstm-language-model-from-scratch" title="Permalink to this headline">#</a></h1>
+<h1>LSTM Language Model from scratch<a class="headerlink" href="#lstm-language-model-from-scratch" title="Permalink to this heading">#</a></h1>
 <p>This notebook was borrowed from <a class="reference external" href="https://github.com/christinakouridi/scratchML/tree/master/LSTM">Christina Kouridis’ github</a>. The notation is different than the notation used in the LTSM section of the notes and will be changed in a next version of this page.</p>
 <p><img alt="title" src="../../../../../_images/LSTMForward_diagram.png" /></p>
 <section id="imports">
-<h2>1. Imports<a class="headerlink" href="#imports" title="Permalink to this headline">#</a></h2>
+<h2>1. Imports<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -639,7 +636,7 @@ document.write(`
 </div>
 </section>
 <section id="data-preparation">
-<h2>2. Data Preparation<a class="headerlink" href="#data-preparation" title="Permalink to this headline">#</a></h2>
+<h2>2. Data Preparation<a class="headerlink" href="#data-preparation" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;HP1.txt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
@@ -673,7 +670,7 @@ document.write(`
 </div>
 </section>
 <section id="load-and-run-model">
-<h2>3. Load and run model<a class="headerlink" href="#load-and-run-model" title="Permalink to this headline">#</a></h2>
+<h2>3. Load and run model<a class="headerlink" href="#load-and-run-model" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> model.py
@@ -863,7 +860,7 @@ asenfor and hermione into the trallow you a like and pastnice.
 </div>
 </section>
 <section id="plot-results">
-<h2>4. Plot results<a class="headerlink" href="#plot-results" title="Permalink to this headline">#</a></h2>
+<h2>4. Plot results<a class="headerlink" href="#plot-results" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">J</span><span class="p">))],</span> <span class="n">J</span><span class="p">)</span>

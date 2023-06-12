@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Visualizing what convnets learn &#8212; Introduction to Artificial Intelligence</title>
   
@@ -35,8 +35,6 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -46,11 +44,11 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script src="../../../../_static/tabs.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -63,8 +61,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
-    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/cnn/cnn-example-architectures/visualizing-what-convnets-learn';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/cnn/cnn-example-architectures/visualizing-what-convnets-learn.html" />
     <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
@@ -331,6 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/probability/probability-assignment-6/index.html">Probability Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/mle/mle-gaussian.html">Gaussian Maximum Likelihood</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../projects/nlp/finetuning-language-models-patents/index.html">Finetuning Language Models - Can I Patent This?</a></li>
 </ul></li></ul>
@@ -638,7 +635,7 @@ document.write(`
 </div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="visualizing-what-convnets-learn">
-<h1>Visualizing what convnets learn<a class="headerlink" href="#visualizing-what-convnets-learn" title="Permalink to this headline">#</a></h1>
+<h1>Visualizing what convnets learn<a class="headerlink" href="#visualizing-what-convnets-learn" title="Permalink to this heading">#</a></h1>
 <p>This notebook contains the code sample found in Chapter 5, Section 4 of <a class="reference external" href="https://www.manning.com/books/deep-learning-with-python?a_aid=keras&amp;a_bid=76564dff">Deep Learning with Python</a>. Note that the original text features far more content, in particular further explanations and figures: in this notebook, you will only find source code and related comments.</p>
 <hr class="docutils" />
 <p>It is often said that deep learning models are “black boxes”, learning representations that are difficult to extract and present in a
@@ -657,7 +654,7 @@ to a given class, and thus allows to localize objects in images.</p></li>
 <p>For the first method – activation visualization – we will use the small convnet that we trained from scratch on the cat vs. dog
 classification problem two sections ago. For the next two methods, we will use the VGG16 model that we introduced in the previous section.</p>
 <section id="visualizing-intermediate-activations">
-<h2>Visualizing intermediate activations<a class="headerlink" href="#visualizing-intermediate-activations" title="Permalink to this headline">#</a></h2>
+<h2>Visualizing intermediate activations<a class="headerlink" href="#visualizing-intermediate-activations" title="Permalink to this heading">#</a></h2>
 <p>Visualizing intermediate activations consists in displaying the feature maps that are output by various convolution and pooling layers in a
 network, given a certain input (the output of a layer is often called its “activation”, the output of the activation function). This gives
 a view into how an input is decomposed unto the different filters learned by the network. These feature maps we want to visualize have 3
@@ -927,7 +924,7 @@ visual input, to transform it into high-level visual concepts while completely f
 tremendously difficult to remember how things around us actually look.</p>
 </section>
 <section id="visualizing-convnet-filters">
-<h2>Visualizing convnet filters<a class="headerlink" href="#visualizing-convnet-filters" title="Permalink to this headline">#</a></h2>
+<h2>Visualizing convnet filters<a class="headerlink" href="#visualizing-convnet-filters" title="Permalink to this heading">#</a></h2>
 <p>Another easy thing to do to inspect the filters learned by convnets is to display the visual pattern that each filter is meant to respond
 to. This can be done with <strong>gradient ascent in input space</strong>: applying <strong>gradient descent</strong> to the value of the input image of a convnet so
 as to maximize the response of a specific filter, starting from a blank input image. The resulting input image would be one that the chosen
@@ -1128,7 +1125,7 @@ cases).</p></li>
 </ul>
 </section>
 <section id="visualizing-heatmaps-of-class-activation">
-<h2>Visualizing heatmaps of class activation<a class="headerlink" href="#visualizing-heatmaps-of-class-activation" title="Permalink to this headline">#</a></h2>
+<h2>Visualizing heatmaps of class activation<a class="headerlink" href="#visualizing-heatmaps-of-class-activation" title="Permalink to this heading">#</a></h2>
 <p>We will introduce one more visualization technique, one that is useful for understanding which parts of a given image led a convnet to its
 final classification decision. This is helpful for “debugging” the decision process of a convnet, in particular in case of a classification
 mistake. It also allows you to locate specific objects in an image.</p>

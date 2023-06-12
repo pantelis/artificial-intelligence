@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Monte-Carlo Prediction &#8212; Introduction to Artificial Intelligence</title>
   
@@ -35,8 +35,6 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -46,11 +44,11 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script src="../../../../_static/tabs.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -65,8 +63,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/reinforcement-learning/prediction/monte-carlo';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/reinforcement-learning/prediction/monte-carlo.html" />
     <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
@@ -333,6 +329,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/probability/probability-assignment-6/index.html">Probability Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/mle/mle-gaussian.html">Gaussian Maximum Likelihood</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../projects/nlp/finetuning-language-models-patents/index.html">Finetuning Language Models - Can I Patent This?</a></li>
 </ul></li></ul>
@@ -557,7 +554,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="monte-carlo-prediction">
-<h1>Monte-Carlo Prediction<a class="headerlink" href="#monte-carlo-prediction" title="Permalink to this headline">#</a></h1>
+<h1>Monte-Carlo Prediction<a class="headerlink" href="#monte-carlo-prediction" title="Permalink to this heading">#</a></h1>
 <p>In this chapter we find optimal policy solutions when the MDP is <em>unknown</em> and we need to <em>learn</em> its underlying value functions - also known as the  <em>model free</em> prediction problem.  The main idea here is to learn value functions via sampling. These methods are in fact also applicable when the MDP is known but its models are simply too large to use the approaches outlined in the MDP section. The two sampling approaches we will cover here are</p>
 <ol class="arabic simple">
 <li><p>(incremental) Monte-Carlo (MC) and</p></li>
@@ -565,7 +562,7 @@ document.write(`
 </ol>
 <p><strong>Notice that we use capital letters for the <em>estimates</em> of the value functions.</strong></p>
 <section id="monte-carlo-mc-state-value-prediction">
-<h2>Monte-Carlo (MC) State Value Prediction<a class="headerlink" href="#monte-carlo-mc-state-value-prediction" title="Permalink to this headline">#</a></h2>
+<h2>Monte-Carlo (MC) State Value Prediction<a class="headerlink" href="#monte-carlo-mc-state-value-prediction" title="Permalink to this heading">#</a></h2>
 <p>The value functions <span class="math notranslate nohighlight">\(v_π\)</span> and <span class="math notranslate nohighlight">\(q_π\)</span> can be estimated from experience.</p>
 <p>For example, if an agent follows policy <span class="math notranslate nohighlight">\(\pi\)</span> and maintains an average, for each state encountered, of the actual returns that have followed that state, then the average will converge to the state’s value,<span class="math notranslate nohighlight">\(v_π(s)\)</span>, as the number of times that state is encountered approaches infinity.  If separate averages are kept for each action taken in each state, then these averages will similarly converge to the action values,<span class="math notranslate nohighlight">\(q_π(s,a)\)</span>.</p>
 <p>We call estimation methods of this kind <em>Monte Carlo</em> methods because they involve averaging over many random samples of returns. In MC prediction more specifically, for every state at time <span class="math notranslate nohighlight">\(t\)</span> we sample one complete trajectory (episode) as shown below.</p>

@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Introduction to Scene Understanding &#8212; Introduction to Artificial Intelligence</title>
   
@@ -35,8 +35,6 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -46,11 +44,11 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script src="../../../../_static/tabs.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -65,8 +63,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/scene-understanding/scene-understanding-intro/index';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/scene-understanding/scene-understanding-intro/index.html" />
     <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
@@ -333,6 +329,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/probability/probability-assignment-6/index.html">Probability Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/mle/mle-gaussian.html">Gaussian Maximum Likelihood</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../projects/nlp/finetuning-language-models-patents/index.html">Finetuning Language Models - Can I Patent This?</a></li>
 </ul></li></ul>
@@ -563,10 +560,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-scene-understanding">
-<h1>Introduction to Scene Understanding<a class="headerlink" href="#introduction-to-scene-understanding" title="Permalink to this headline">#</a></h1>
+<h1>Introduction to Scene Understanding<a class="headerlink" href="#introduction-to-scene-understanding" title="Permalink to this heading">#</a></h1>
 <p>In the previous chapters we have treated the perception subsystem mainly from starting the first principles that govern supervised learning to the deep learning architectures that can be used in computer vision. Now we are synthesizing these algorithms to pipelines that can potentially allow us to decompose the scene into objects. As discussed in the  <a class="reference internal" href="../../cnn/cnn-intro/_index.html#content-cnn-intro"><span class="std std-ref">Introduction to Convolutional Neural Networks</span></a>, humans has a unique to interpret scenes based on their ability to infer (reason) what they <em>dont</em> see. This is the reason why scene understanding involves far more than just perception. In this chapter we will cover algorithms that allow us to, detect and segment objects in the scene.</p>
 <section id="detect-objects-in-an-image">
-<h2>Detect objects in an image.<a class="headerlink" href="#detect-objects-in-an-image" title="Permalink to this headline">#</a></h2>
+<h2>Detect objects in an image.<a class="headerlink" href="#detect-objects-in-an-image" title="Permalink to this heading">#</a></h2>
 <p>Object detection is demonstrated in this short video clip that shows the end result - placing bounding boxes around classes of interest.</p>
 <div class="video_wrapper" style="">
 <iframe allowfullscreen="true" src="https://www.youtube.com/embed/WZmSMkK9VuA" style="border: 0; height: 345px; width: 560px">
@@ -581,22 +578,22 @@ document.write(`
 <p>However, the regression approach does not work well in practice and has been superceded by the algorithms described later in this chapter.</p>
 </section>
 <section id="semantic-segmentation">
-<h2>Semantic segmentation<a class="headerlink" href="#semantic-segmentation" title="Permalink to this headline">#</a></h2>
+<h2>Semantic segmentation<a class="headerlink" href="#semantic-segmentation" title="Permalink to this heading">#</a></h2>
 <p><img alt="semantic-segmentation" src="../../../../_images/semantic-segmentation.png" />
 <em>Sementic Segmentation in medical, robotic and sports analytics applications</em></p>
 <p>Both of these abilities enable the <em>reflexive</em> part of perception where the inference ends up being a classification or regression or search problem and in practice, depending on the algorithm, it can range from few ms to 100s of ms. Both of these reflexive inferences are essential parts of many mission critical almost real time applications such as robotics e.g. self driving cars.</p>
 <p>There are other abilities that we need for scene understanding that don’t cover until later in this book. Our ability to recognize the attribute of <em>uniqueness</em> in an object and assign a <em>symbol</em> to it, is fundamental to our ability to reason very quickly at the symbolic level. At that level we can use a whole portfolio of symbolic inference algorithms developed over the last few decades.  But before we reach this level we need to solve the supervised learning problem for the relatively narrow task of bounding and coloring objects. This needs annotated data and knowing what kind of data we have at our disposal is an essential skill.</p>
 </section>
 <section id="instance-segmentation">
-<h2>Instance Segmentation<a class="headerlink" href="#instance-segmentation" title="Permalink to this headline">#</a></h2>
+<h2>Instance Segmentation<a class="headerlink" href="#instance-segmentation" title="Permalink to this heading">#</a></h2>
 <p><img alt="instance-segmentation" src="../../../../_images/instance-segmentation.png" />
 <em>Instance Segmentation vs semantic segmentation</em></p>
 <p>This is an even more complex problem that semantic segmentation that in addition to need to  color differently the different instances of the <em>same</em> class in the image.</p>
 </section>
 <section id="datasets-for-computer-vision-tasks">
-<h2>Datasets for computer vision tasks<a class="headerlink" href="#datasets-for-computer-vision-tasks" title="Permalink to this headline">#</a></h2>
+<h2>Datasets for computer vision tasks<a class="headerlink" href="#datasets-for-computer-vision-tasks" title="Permalink to this heading">#</a></h2>
 <section id="coco">
-<h3>COCO<a class="headerlink" href="#coco" title="Permalink to this headline">#</a></h3>
+<h3>COCO<a class="headerlink" href="#coco" title="Permalink to this heading">#</a></h3>
 <p><img alt="coco-example" src="../../../../_images/coco-example.png" />
 <em>Typical example for Detection, Semantic Segmentation, and Image Captioning Tasks</em></p>
 <p>After its <a class="reference external" href="https://arxiv.org/abs/1405.0312">publication</a> by Microsoft, the COCO dataset has become the reference <a class="reference external" href="http://cocodataset.org/#home">dataset</a> to train models in perception tasks and it is constantly evolving through yearly competitions. The competitions are challenging as compared to earlier ones (e.g. <a class="reference external" href="https://link.springer.com/article/10.1007%2Fs11263-009-0275-4">VOC</a>) (see performance section) since many objects are small. COCO’s 330K images are annotated with</p>

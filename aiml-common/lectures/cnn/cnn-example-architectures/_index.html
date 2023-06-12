@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>CNN Example Architectures &#8212; Introduction to Artificial Intelligence</title>
   
@@ -35,8 +35,6 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -46,11 +44,11 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script src="../../../../_static/tabs.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -63,8 +61,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
-    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/cnn/cnn-example-architectures/_index';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/cnn/cnn-example-architectures/_index.html" />
     <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
@@ -331,6 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/probability/probability-assignment-6/index.html">Probability Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/mle/mle-gaussian.html">Gaussian Maximum Likelihood</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../projects/nlp/finetuning-language-models-patents/index.html">Finetuning Language Models - Can I Patent This?</a></li>
 </ul></li></ul>
@@ -556,10 +553,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="cnn-example-architectures">
-<h1>CNN Example Architectures<a class="headerlink" href="#cnn-example-architectures" title="Permalink to this headline">#</a></h1>
+<h1>CNN Example Architectures<a class="headerlink" href="#cnn-example-architectures" title="Permalink to this heading">#</a></h1>
 <p>This is a very high level view of practical structures of CNNs before the advent of more innovative architectures such as ResNets.</p>
 <section id="toy-cnn-network">
-<h2>Toy CNN Network<a class="headerlink" href="#toy-cnn-network" title="Permalink to this headline">#</a></h2>
+<h2>Toy CNN Network<a class="headerlink" href="#toy-cnn-network" title="Permalink to this heading">#</a></h2>
 <p><img alt="convnet" src="../../../../_images/simple-cnn.jpeg" /></p>
 <p>The example CNN architecture above has the following layers:</p>
 <ul class="simple">
@@ -571,7 +568,7 @@ document.write(`
 </ul>
 </section>
 <section id="vgg-networks">
-<h2><a class="reference external" href="https://arxiv.org/pdf/1409.1556.pdf">VGG</a> Networks<a class="headerlink" href="#vgg-networks" title="Permalink to this headline">#</a></h2>
+<h2><a class="reference external" href="https://arxiv.org/pdf/1409.1556.pdf">VGG</a> Networks<a class="headerlink" href="#vgg-networks" title="Permalink to this heading">#</a></h2>
 <p>The VGG networks from Oxford were the first to use much smaller 3×3 filters in each convolutional layers. They have shown that multiple 3×3 convolution in sequence can emulate the effect of larger receptive fields, for examples 5×5 and 7×7. The VGG configuration is shown below:</p>
 <p><img alt="vgg-configuration" src="../../../../_images/vgg-configurations.png" />
 <em>VGG Configurations: Different columns represent different depths</em></p>

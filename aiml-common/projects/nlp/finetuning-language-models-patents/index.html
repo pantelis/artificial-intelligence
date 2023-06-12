@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Finetuning Language Models - Can I Patent This? &#8212; Introduction to Artificial Intelligence</title>
   
@@ -35,8 +35,6 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -46,11 +44,11 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script src="../../../../_static/tabs.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -63,14 +61,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
-    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/projects/nlp/finetuning-language-models-patents/index';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/projects/nlp/finetuning-language-models-patents/index.html" />
     <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="prev" title="Probability Assignment" href="../../../assignments/probability/probability-assignment-6/index.html" />
+    <link rel="prev" title="Gaussian Maximum Likelihood" href="../../../assignments/mle/mle-gaussian.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -330,6 +326,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/probability/probability-assignment-6/index.html">Probability Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/mle/mle-gaussian.html">Gaussian Maximum Likelihood</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Finetuning Language Models - Can I Patent This?</a></li>
 </ul></li></ul>
@@ -561,18 +558,18 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="finetuning-language-models-can-i-patent-this">
-<h1>Finetuning Language Models - Can I Patent This?<a class="headerlink" href="#finetuning-language-models-can-i-patent-this" title="Permalink to this headline">#</a></h1>
+<h1>Finetuning Language Models - Can I Patent This?<a class="headerlink" href="#finetuning-language-models-can-i-patent-this" title="Permalink to this heading">#</a></h1>
 <p><img alt="" src="../../../../_images/uspto.png" /></p>
 <p><strong>If you miss a milestone deadline you will be forfeited the corresponding points. Deadlines are quoted here as a week number - check your LMS about actual dates.</strong></p>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>The USPTO is the US Patent and Trademark Office. It is the agency that grants patents to inventors and businesses for their inventions.</p>
 <p>You are fired by USPTO to work on introducting AI into the organization. You are told that USPTO is facing patent examiner staff and budget shortages and to help the organization you are tasked to create an app that will accept an input patent application and will return its patentability score. The app will be made available to the public and will be used by patent applicants to determine the patentability of their inventions before they file their patent applications, therefore reducing the workload of the patent examiners.</p>
 </section>
 <section id="milestones">
-<h2>Milestones<a class="headerlink" href="#milestones" title="Permalink to this headline">#</a></h2>
+<h2>Milestones<a class="headerlink" href="#milestones" title="Permalink to this heading">#</a></h2>
 <section id="milestone-1-week-1-20-points">
-<h3>Milestone 1: (Week 1, 20 points)<a class="headerlink" href="#milestone-1-week-1-20-points" title="Permalink to this headline">#</a></h3>
+<h3>Milestone 1: (Week 1, 20 points)<a class="headerlink" href="#milestone-1-week-1-20-points" title="Permalink to this heading">#</a></h3>
 <p>In this milestone you will learn the basics of docker and create a development environment. All AI and data science projects are developed in containers. Learn the basics of docker (the most conmmon container format) by watching the following video:</p>
 <div class="video_wrapper" style="">
 <iframe allowfullscreen="true" src="https://www.youtube.com/embed/pTFZFxd4hOI" style="border: 0; height: 345px; width: 560px">
@@ -581,7 +578,7 @@ document.write(`
 <p>Submit the github repository URL with a branch titled ‘milestone-1’ with the <a class="reference external" href="http://README.md">README.md</a> file containing the installation instructions you followed and a screenshot of your docker container terminal prompt. Add as collaborator the TA.</p>
 </section>
 <section id="milestone-2-sentiment-analysis-app-week-3-20-points">
-<h3>Milestone 2: Sentiment Analysis App (Week 3, 20 points)<a class="headerlink" href="#milestone-2-sentiment-analysis-app-week-3-20-points" title="Permalink to this headline">#</a></h3>
+<h3>Milestone 2: Sentiment Analysis App (Week 3, 20 points)<a class="headerlink" href="#milestone-2-sentiment-analysis-app-week-3-20-points" title="Permalink to this heading">#</a></h3>
 <p>Merge the earlier branch into the main branch and create a new branch titled ‘milestone-2. Do not delete the milestone-1 branch.</p>
 <p>The purpose of this task is to take you through the process of creating a streamlit app. Streamlit is a python library that allows you to create web apps with minimal coding and deploy them in the cloud.  This is a necessary step before you can develop your app for the more complex USPTO use case.</p>
 <p>After watching this video, you will be able to create a sentiment analysis app using Streamlit and various pretrained models. The pretrained models are available in the <a class="reference external" href="https://huggingface.co/models">HuggingFace model hub</a>.</p>
@@ -592,7 +589,7 @@ document.write(`
 <p>Submit the github repository URL with a branch titled ‘milestone-3’ with the <a class="reference external" href="http://README.md">README.md</a> file containing the link to the deployed HF space where the app must be clearly prepopulated with a sample text and the TA will only have to press the submit button for the app to display the sentiment result.</p>
 </section>
 <section id="milestone-3-finetuning-language-models-week-5-40-points">
-<h3>Milestone 3: Finetuning Language Models (Week 5, 40 points)<a class="headerlink" href="#milestone-3-finetuning-language-models-week-5-40-points" title="Permalink to this headline">#</a></h3>
+<h3>Milestone 3: Finetuning Language Models (Week 5, 40 points)<a class="headerlink" href="#milestone-3-finetuning-language-models-week-5-40-points" title="Permalink to this heading">#</a></h3>
 <p>Merge the earlier branch into the main branch and create a new branch titled ‘milestone-3. Do not delete the milestone-2 branch.</p>
 <p>The following video will show you how to finetune a language model using the <a class="reference external" href="https://huggingface.co/transformers/">HuggingFace transformers</a> library. Consult the <a class="reference external" href="https://huggingface.co/docs/transformers/v4.27.1/en/training#finetune-a-pretrained-model">HuggingFace documentation</a> for more details.</p>
 <div class="video_wrapper" style="">
@@ -601,7 +598,7 @@ document.write(`
 <p>Submit the github repository URL with a branch titled ‘milestone-4’ with the <a class="reference external" href="http://README.md">README.md</a> file containing the link to the deployed HF space where the app must be clearly prepopulated with a drop down menu to select  the application filing number (or any unique identifier that will allow you to retreieve the patent sections you selected), the app must then show in minimally two text boxes the eg abstract and eg claims and the TA will only have to press the submit button for the app to display the patentability score.</p>
 </section>
 <section id="milestone-4-documentation-and-video-production-week-6-20-points">
-<h3>Milestone 4: Documentation and Video Production (Week 6, 20 points)<a class="headerlink" href="#milestone-4-documentation-and-video-production-week-6-20-points" title="Permalink to this headline">#</a></h3>
+<h3>Milestone 4: Documentation and Video Production (Week 6, 20 points)<a class="headerlink" href="#milestone-4-documentation-and-video-production-week-6-20-points" title="Permalink to this heading">#</a></h3>
 <p>Merge the earlier branch into the main branch and create a new branch titled ‘milestone-4’. Do not delete the milestone-3 branch.</p>
 <p>Document extensively both the code as well as the results (10 points). Use google sites to create a landing page for your USPTO app (5 points), create a video that will demonstrate the app. The video should be no longer than 5 minutes and should be either uploaded to your youtube channel or inlcuded in the github repository as an mp4 (5 points).</p>
 </section>
@@ -640,12 +637,12 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../../assignments/probability/probability-assignment-6/index.html"
+       href="../../../assignments/mle/mle-gaussian.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Probability Assignment</p>
+        <p class="prev-next-title">Gaussian Maximum Likelihood</p>
       </div>
     </a>
 </div></div>

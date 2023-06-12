@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>The REINFORCE Algorithm &#8212; Introduction to Artificial Intelligence</title>
   
@@ -35,8 +35,6 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -46,11 +44,11 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script src="../../../../_static/tabs.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -65,8 +63,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/reinforcement-learning/reinforce/_index';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/reinforcement-learning/reinforce/_index.html" />
     <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
@@ -333,6 +329,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/probability/probability-assignment-6/index.html">Probability Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/mle/mle-gaussian.html">Gaussian Maximum Likelihood</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../projects/nlp/finetuning-language-models-patents/index.html">Finetuning Language Models - Can I Patent This?</a></li>
 </ul></li></ul>
@@ -558,11 +555,11 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-reinforce-algorithm">
-<h1>The REINFORCE Algorithm<a class="headerlink" href="#the-reinforce-algorithm" title="Permalink to this headline">#</a></h1>
+<h1>The REINFORCE Algorithm<a class="headerlink" href="#the-reinforce-algorithm" title="Permalink to this heading">#</a></h1>
 <p>Given that RL can be posed as an MDP, in this section we continue with a policy-based algorithm that learns the policy <em>directly</em> by optimizing the objective function and can then map the states to actions.  The algorithm we treat here, called REINFORCE, is important although more modern algorithms do perform better.</p>
 <p>It took its name from the fact that during <em>training</em> actions that resulted in good outcomes should become more probable—these actions are positively <em>reinforced</em>. Conversely, actions which resulted in bad outcomes should become less probable. If learning is successful, over the course of many iterations, action probabilities produced by the policy, shift to a distribution that results in good performance in an environment. Action probabilities are changed by following the policy gradient, therefore REINFORCE is known as a <em>policy gradient</em> algorithm.</p>
 <p>The algorithm needs three components:</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Component</p></th>
 <th class="head"><p>Description</p></th>
@@ -572,7 +569,7 @@ document.write(`
 <tr class="row-even"><td><p>Parametrized policy <span class="math notranslate nohighlight">\(\pi_\theta (a|s)\)</span></p></td>
 <td><p>The key idea of the algorithm is to learn a good policy, and this means doing function approximation. Neural networks are powerful and flexible function approximators, so we can represent a policy using a deep neural network (DNN) consisting of learnable parameters <span class="math notranslate nohighlight">\(\mathbf \theta\)</span>. This is often referred to as a policy network <span class="math notranslate nohighlight">\(\pi_θ\)</span>. We say that the policy is parametrized by  <span class="math notranslate nohighlight">\(\theta\)</span>. Each specific set of values of the parameters of the policy network represents a particular policy. To see why, consider <span class="math notranslate nohighlight">\(θ_1 ≠ θ_2\)</span>. For any given state <span class="math notranslate nohighlight">\(s\)</span>, different policy networks may output different sets of action probabilities, that is, <span class="math notranslate nohighlight">\(\pi_{θ_1}(a | s) \neq \pi_{θ_2}(a | s)\)</span>. The mappings from states to action probabilities are different so we say that <span class="math notranslate nohighlight">\(π_{θ_1}\)</span> and <span class="math notranslate nohighlight">\(π_{θ_2}\)</span> are different policies. A single DNN is therefore capable of representing many different policies.</p></td>
 </tr>
-<tr class="row-odd"><td><p>The objective to be maximized <span class="math notranslate nohighlight">\(J(\pi_\theta)\)</span><a class="footnote-reference brackets" href="#id3" id="id1">1</a></p></td>
+<tr class="row-odd"><td><p>The objective to be maximized <span class="math notranslate nohighlight">\(J(\pi_\theta)\)</span><a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 <td><p>At this point is nothing else other than the expected discounted <em>return</em> over policy, just like in MDP.</p></td>
 </tr>
 <tr class="row-even"><td><p>Policy Gradient</p></td>
@@ -604,7 +601,7 @@ document.write(`
 <p>11: end for</p>
 <p>It is important that a trajectory is discarded after each parameter update—it cannot be reused. This is because REINFORCE is an <em>on-policy</em> algorithm just like the MC it “learns on the job”. This is evidently seen in line 10 where the parameter update equation uses the policy gradient that itself (line 8) directly depends on action probabilities <span class="math notranslate nohighlight">\(π_θ(a_t | s_t)\)</span> generated by the <em>current</em> policy <span class="math notranslate nohighlight">\(π_θ\)</span> only and not some past policy <span class="math notranslate nohighlight">\(π_{θ′}\)</span>. Correspondingly, the return <span class="math notranslate nohighlight">\(G_t(τ)\)</span> where <span class="math notranslate nohighlight">\(τ ~ π_θ\)</span> must also be generated from <span class="math notranslate nohighlight">\(π_θ\)</span>, otherwise the action probabilities will be adjusted based on returns that the policy wouldn’t have generated.</p>
 <section id="policy-network">
-<h2>Policy Network<a class="headerlink" href="#policy-network" title="Permalink to this headline">#</a></h2>
+<h2>Policy Network<a class="headerlink" href="#policy-network" title="Permalink to this heading">#</a></h2>
 <p>One of the key ingredients that REINFORCE introduces is the policy network that is approximated with a DNN eg. a fully connected neural network with a number of hidden layers that is hyper-parameter (e.g. 2 RELU layers).</p>
 <p>1: Given a policy network <code class="docutils literal notranslate"><span class="pre">net</span></code>, a <code class="docutils literal notranslate"><span class="pre">Categorical</span></code> (multinomial) distribution class, and a <code class="docutils literal notranslate"><span class="pre">state</span></code></p>
 <p>2: Compute the output <code class="docutils literal notranslate"><span class="pre">pdparams</span> <span class="pre">=</span> <span class="pre">net(state)</span></code></p>
@@ -614,8 +611,8 @@ document.write(`
 <p>Other discrete distributions can be used and many actual libraries parametrize continuous distributions such as Gaussians.</p>
 </section>
 <section id="applying-the-reinforce-algorithm">
-<h2>Applying the REINFORCE algorithm<a class="headerlink" href="#applying-the-reinforce-algorithm" title="Permalink to this headline">#</a></h2>
-<p>It is now instructive to see an stand-alone example in python for the so called <code class="docutils literal notranslate"><span class="pre">CartPole-v0</span></code> <a class="footnote-reference brackets" href="#id4" id="id2">2</a></p>
+<h2>Applying the REINFORCE algorithm<a class="headerlink" href="#applying-the-reinforce-algorithm" title="Permalink to this heading">#</a></h2>
+<p>It is now instructive to see an stand-alone example in python for the so called <code class="docutils literal notranslate"><span class="pre">CartPole-v0</span></code> <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
 <p><img alt="cartpole" src="../../../../_images/cartpole.png" /></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="mi">1</span>  <span class="kn">from</span> <span class="nn">torch.distributions</span> <span class="kn">import</span> <span class="n">Categorical</span>
  <span class="mi">2</span>  <span class="kn">import</span> <span class="nn">gym</span>
@@ -701,14 +698,14 @@ document.write(`
 </div>
 <p>The REINFORCE algorithm presented here can generally be applied to continuous and discreet problems but it has been shown to possess high variance and sample-inefficiency. Several improvements have been proposed and the interested reader can refer to section 2.5.1 of the suggested book.</p>
 <hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Notation wise, since we need to have a bit more flexibility in RL problems, we will use the symbol <span class="math notranslate nohighlight">\(J(\pi_\theta)\)</span> as the objective function.</p>
-</dd>
-<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>Please note that SLM-Lab, the library that accompanies the suggested in the syllabus book, is a mature library and probably a good example of how to develop ML/RL libraries in python. You will learn a lot by reviewing the implementations under the <code class="docutils literal notranslate"><span class="pre">agents/algorithms</span></code> directory to get a feel of how RL problems are abstracted .</p>
-</dd>
-</dl>
+<aside class="footnote brackets" id="id3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Notation wise, since we need to have a bit more flexibility in RL problems, we will use the symbol <span class="math notranslate nohighlight">\(J(\pi_\theta)\)</span> as the objective function.</p>
+</aside>
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Please note that SLM-Lab, the library that accompanies the suggested in the syllabus book, is a mature library and probably a good example of how to develop ML/RL libraries in python. You will learn a lot by reviewing the implementations under the <code class="docutils literal notranslate"><span class="pre">agents/algorithms</span></code> directory to get a feel of how RL problems are abstracted .</p>
+</aside>
 </section>
 </section>
 

@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Syllabus &#8212; Introduction to Artificial Intelligence</title>
   
@@ -35,8 +35,6 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -46,11 +44,11 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script src="../_static/tabs.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -63,8 +61,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'syllabus/_index';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/syllabus/_index.html" />
     <link rel="shortcut icon" href="../_static/logo.ico"/>
@@ -331,6 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../aiml-common/resources/environment/notebook-status.html">Notebook execution status</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../aiml-common/assignments/probability/probability-assignment-6/index.html">Probability Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aiml-common/assignments/mle/mle-gaussian.html">Gaussian Maximum Likelihood</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../aiml-common/projects/nlp/finetuning-language-models-patents/index.html">Finetuning Language Models - Can I Patent This?</a></li>
 </ul></li></ul>
@@ -562,9 +559,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="syllabus">
-<h1>Syllabus<a class="headerlink" href="#syllabus" title="Permalink to this headline">#</a></h1>
+<h1>Syllabus<a class="headerlink" href="#syllabus" title="Permalink to this heading">#</a></h1>
 <section id="books">
-<h2>Books<a class="headerlink" href="#books" title="Permalink to this headline">#</a></h2>
+<h2>Books<a class="headerlink" href="#books" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>AIMA - <a class="reference external" href="https://www.amazon.com/Artificial-Intelligence-A-Modern-Approach/dp/0134610997">Artificial Intelligence: A Modern Approach, by Stuart Russell, 4th edition, 2021</a> and also <a class="reference external" href="http://aima.cs.berkeley.edu/">here.</a></p></li>
 <li><p>GERON: “<a class="reference external" href="https://www.amazon.com/Hands-Machine-Learning-Scikit-Learn-TensorFlow-dp-1098125975/dp/1098125975/ref=dp_ob_title_bk">Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow”, 3rd Edition</a>, 2022. This is very useful if you aim in using TF2 but irrespectively of the framework essential for those new to Python to complete your projects.</p></li>
@@ -572,9 +569,9 @@ document.write(`
 </ol>
 </section>
 <section id="planned-schedule">
-<h2>Planned Schedule<a class="headerlink" href="#planned-schedule" title="Permalink to this headline">#</a></h2>
+<h2>Planned Schedule<a class="headerlink" href="#planned-schedule" title="Permalink to this heading">#</a></h2>
 <section id="part-i-perception-and-machine-learning">
-<h3>Part I:  Perception and Machine Learning<a class="headerlink" href="#part-i-perception-and-machine-learning" title="Permalink to this headline">#</a></h3>
+<h3>Part I:  Perception and Machine Learning<a class="headerlink" href="#part-i-perception-and-machine-learning" title="Permalink to this heading">#</a></h3>
 <p><strong>Lecture 1:</strong> We start with an introduction to AI and present a systems approach towards it. We develop a map that will guide us through the rest of the course as we deep dive into each component embedded into <em>AI agents</em>. Reading: AIMA Chapters 1 &amp; 2.</p>
 <p><strong>Lecture 2:</strong>  The perception subsystem is the first stage of many AI systems including our brain. Its function is to process and fuse multimodal sensory inputs. Perception is implemented via a number of reflexive agents that map directly perceived state to an primitive action such as regressing on the frame coordinates of an object in the scene. We present <em>the supervised learning problem</em> both for classification and regression, starting with classical ML algorithms. Reading: AIMA Chapter 19.</p>
 <p><strong>Lecture 3:</strong>  We expand into <em>Deep neural networks</em>. DNNs are developed bottom up from the Perceptron algorithm. MLPs learn via optimization approaches such as Stochastic Gradient Descent.  We deep-dive into back-propagation - a fundamental algorithm that efficiently trains DNNs. Reading: AIMA Chapter 21 and DL Chapter 6</p>
@@ -582,18 +579,18 @@ document.write(`
 <p><strong>Lecture 5:</strong> When agents move in the environment they need to abilities such as <em>scene understanding</em>.  We will go through few key perception building blocks such as Object Detection, Semantic and Instance Segmentation. Reading: AIMA Chapter 25 (in part).</p>
 </section>
 <section id="part-ii-reasoning">
-<h3>Part II: Reasoning<a class="headerlink" href="#part-ii-reasoning" title="Permalink to this headline">#</a></h3>
+<h3>Part II: Reasoning<a class="headerlink" href="#part-ii-reasoning" title="Permalink to this heading">#</a></h3>
 <p><strong>Lecture 6:</strong>  In this lecture we introduce probabilistic models that process the perceptive predictions over time and understand how the agent will track / update its time-varying belief about the state of the environment. This is achieved with recursive state estimation algorithms acting on dynamic bayesian networks. This lecture introduces Bayesian filters in descrete and continuous state spaces (Kalman filters).  All robots one way or another employ such filters.  Reading: AIMA Chapters 12, 13 &amp; 14.</p>
 <p><strong>Lecture 7:</strong> Our ability to track and and poredict the state of the environment is now supplemented by symbolic representations. Knowledge representation and reasoning is the core of the <em>symbolic subsystem</em> of AI agents. We will go through the basic building blocks of knowledge representation and reasoning such as propositional logic that allow the agent to evaluate using theorem proving the truth value of logical sentences using an incrementally growing Knowledge Base. Reading: AIMA Chapters 7.</p>
 </section>
 <section id="part-iii-planning-and-reinforcement-learning">
-<h3>Part III: Planning and Reinforcement Learning<a class="headerlink" href="#part-iii-planning-and-reinforcement-learning" title="Permalink to this headline">#</a></h3>
+<h3>Part III: Planning and Reinforcement Learning<a class="headerlink" href="#part-iii-planning-and-reinforcement-learning" title="Permalink to this heading">#</a></h3>
 <p><strong>Lecture 8:</strong> After the last lecture, the agent has a clear view of the environment state such as what and where the objects that surround it are, its able to track them as they potentially move. It needs to plan the best sequence of actions to reach its goal state and the approach we take here is that of <em>problem solving</em>. In fact planning and problem solving are inherently connected as concepts. If the goal state is feasible then the problem to solve  becomes that of  <em>search</em>. For instructive purposes we start from simple environmental conditions that are fully observed, known and deterministic. This is where the A* algorithm comes in. We then relax some of the assumptions and treat environments that are deterministic but the agent takes stochastic actions or when both the environment and agent actions are stochastic. We also investigate what happens when we do not just care about reaching our goal state, but when we, in addition, need to do so with optimality. Optimal planning under uncertainty is perhaps the cornerstone application today in robotics and other fields. Readings: Reading: AIMA Chapters 3 &amp; 4 (problem solving) and 11.</p>
 <p><strong>Lecture 9:</strong> We now make a considerable extension to our assumptions: the utility of the agent now depends on a sequence of decisions and, further, the stochastic environment offers a feedback signal to the agent called <em>reward</em>. We review how the agent’s policy, the sequence of actions, can be calculated when it fully observes its current state (MDP) and also when it can only partially do so (POMDP). We conclude with the basic taxonomy of the algorithmic space for RL problems.   Readings: AIMA Chapter 16 &amp; 17.</p>
 <p><strong>Lecture 10:</strong>  The algorithms that learn optimal policies in such settings are known as Reinforcement Learning (RL). In this lecture we establish the connection between MDP and RL, by introducing the Bellman expectation backup and Bellman optimality equations. We then use these equations to derive the policy iteration algorithm that is behind the policy-based REINFORCE algorithm that is empowered by approximating the policy function using the Deep Neural Networks that we met in the perception subsystem. AIMA Chapter 22.</p>
 </section>
 <section id="part-iv-natural-language-processing-and-representations">
-<h3>Part IV: Natural Language Processing and Representations<a class="headerlink" href="#part-iv-natural-language-processing-and-representations" title="Permalink to this headline">#</a></h3>
+<h3>Part IV: Natural Language Processing and Representations<a class="headerlink" href="#part-iv-natural-language-processing-and-representations" title="Permalink to this heading">#</a></h3>
 <p><strong>Lecture 11:</strong>  NLP is the pinnacle of applied AI in every day life - we are all using natural language as the prime means of communicate between us and increasingly between us and robots. In this lecture we pose the NLP problem, understand its components and their mechanics. AIMA Chapter 23.</p>
 <p><strong>Lecture 12:</strong>   We then talk extensively about <em>language modeling</em> and start with an approach based on the [RNN / LTSM architecture. The later is used far beyond language modeling and expands into every application that involves sequences. We introduce the concept of <em>attention</em> and go through the Transformer framework - perhaps the most successful architecture in NLP today. AIMA Chapter 24 and DL Chapter 10.</p>
 <p><strong>Lecture 13:</strong>: Review - last lecture before the final.</p>

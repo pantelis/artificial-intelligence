@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>RNN-based Neural Machine Translation &#8212; Introduction to Artificial Intelligence</title>
   
@@ -35,8 +35,6 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -46,11 +44,11 @@
     <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/jquery.js"></script>
     <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../_static/doctools.js"></script>
     <script src="../../../../../_static/clipboard.min.js"></script>
     <script src="../../../../../_static/copybutton.js"></script>
     <script src="../../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script src="../../../../../_static/tabs.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -65,8 +63,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/nlp/nmt/nmt-intro/index';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/nlp/nmt/nmt-intro/index.html" />
     <link rel="shortcut icon" href="../../../../../_static/logo.ico"/>
@@ -333,6 +329,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../assignments/probability/probability-assignment-6/index.html">Probability Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../assignments/mle/mle-gaussian.html">Gaussian Maximum Likelihood</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../projects/nlp/finetuning-language-models-patents/index.html">Finetuning Language Models - Can I Patent This?</a></li>
 </ul></li></ul>
@@ -561,7 +558,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="rnn-based-neural-machine-translation">
-<h1>RNN-based Neural Machine Translation<a class="headerlink" href="#rnn-based-neural-machine-translation" title="Permalink to this headline">#</a></h1>
+<h1>RNN-based Neural Machine Translation<a class="headerlink" href="#rnn-based-neural-machine-translation" title="Permalink to this heading">#</a></h1>
 <blockquote>
 <div><p>These notes heavily borrowing from <a class="reference external" href="https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1194/readings/cs224n-2019-notes06-NMT_seq2seq_attention.pdf">the CS229N 2019 set of notes on NMT</a>.</p>
 </div></blockquote>
@@ -577,7 +574,7 @@ document.write(`
 <p><img alt="ios-keyboard-translation" src="../../../../../_images/ios-keyboard-translation.png" />
 <em>Your smartphones translate the text you type in messaging applications to emojis and other symbols structured in such a way to convey the same meaning as the text</em>.</p>
 <section id="sequence-to-sequence-seq2seq">
-<h2>Sequence-to-Sequence (Seq2Seq)<a class="headerlink" href="#sequence-to-sequence-seq2seq" title="Permalink to this headline">#</a></h2>
+<h2>Sequence-to-Sequence (Seq2Seq)<a class="headerlink" href="#sequence-to-sequence-seq2seq" title="Permalink to this heading">#</a></h2>
 <p>Sequence-to-sequence, or “Seq2Seq”, was <a class="reference external" href="https://arxiv.org/abs/1409.3215">first published in 2014</a>. At a high level, a sequence-to-sequence model is an end-to-end model made up of two recurrent neural networks (LSTMs):</p>
 <ul class="simple">
 <li><p>an encoder, which takes the a source sequence as input and encodes it into a fixed-size “context vector” <span class="math notranslate nohighlight">\(\phi\)</span>, and</p></li>
@@ -587,7 +584,7 @@ document.write(`
 <p><img alt="encoder-decoder-high-level" src="../../../../../_images/encoder-decoder-high-level.png" />
 <em>Encoder-Decoder NMT Architecture <a class="reference external" href="https://www.amazon.com/Natural-Language-Processing-PyTorch-Applications/dp/1491978236">ref</a></em></p>
 <section id="encoder">
-<h3>Encoder<a class="headerlink" href="#encoder" title="Permalink to this headline">#</a></h3>
+<h3>Encoder<a class="headerlink" href="#encoder" title="Permalink to this heading">#</a></h3>
 <p>The encoder network <span class="math notranslate nohighlight">\(q\)</span> reads the input sequence and generates a fixed-dimensional context vector <span class="math notranslate nohighlight">\(\phi\)</span> for the sequence. To do that we use an RNN that mathematically, it evolves its hidden state as follows:</p>
 <div class="math notranslate nohighlight">
 \[\mathbf h_t = f(\mathbf x_t, \mathbf h_{t-1})\]</div>
@@ -604,7 +601,7 @@ document.write(`
 <p>In addition, Seq2Seq encoders will often do something that initially look strange: they will process the input sequence in reverse. This is actually done on purpose with the idea being that the last thing that the encoder “sees” will roughly corresponds to the first thing that the model outputs; this makes it easier for the decoder to “get started” on the output.</p>
 </section>
 <section id="decoder">
-<h3>Decoder<a class="headerlink" href="#decoder" title="Permalink to this headline">#</a></h3>
+<h3>Decoder<a class="headerlink" href="#decoder" title="Permalink to this heading">#</a></h3>
 <p>The decoder is “aware” of the target words that it’s generated so far and of the input. In fact it is an example of <em>conditional language model</em> because it conditions on the source sentence or its representation - the context <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
 <p>The decoder directly calculates,</p>
 <div class="math notranslate nohighlight">

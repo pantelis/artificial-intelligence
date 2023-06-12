@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Transfer Learning for Computer Vision Tutorial &#8212; Introduction to Artificial Intelligence</title>
   
@@ -35,8 +35,6 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -46,11 +44,11 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script src="../../../_static/tabs.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -63,8 +61,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/transfer-learning/transfer_learning_tutorial';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/transfer-learning/transfer_learning_tutorial.html" />
     <link rel="shortcut icon" href="../../../_static/logo.ico"/>
@@ -331,6 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../resources/environment/notebook-status.html">Notebook execution status</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../assignments/probability/probability-assignment-6/index.html">Probability Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/mle/mle-gaussian.html">Gaussian Maximum Likelihood</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../projects/nlp/finetuning-language-models-patents/index.html">Finetuning Language Models - Can I Patent This?</a></li>
 </ul></li></ul>
@@ -637,7 +634,7 @@ document.write(`
 </div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="transfer-learning-for-computer-vision-tutorial">
-<h1>Transfer Learning for Computer Vision Tutorial<a class="headerlink" href="#transfer-learning-for-computer-vision-tutorial" title="Permalink to this headline">#</a></h1>
+<h1>Transfer Learning for Computer Vision Tutorial<a class="headerlink" href="#transfer-learning-for-computer-vision-tutorial" title="Permalink to this heading">#</a></h1>
 <p><strong>Author</strong>: <code class="docutils literal notranslate"><span class="pre">Sasank</span> <span class="pre">Chilamkurthy</span> <span class="pre">&lt;https://chsasank.github.io&gt;</span></code>_</p>
 <p>In this tutorial, you will learn how to train a convolutional neural network for
 image classification using transfer learning. You can read more about the transfer
@@ -692,7 +689,7 @@ with random weights and only this layer is trained.</p></li>
 </div>
 </div>
 <section id="load-data">
-<h2>Load Data<a class="headerlink" href="#load-data" title="Permalink to this headline">#</a></h2>
+<h2>Load Data<a class="headerlink" href="#load-data" title="Permalink to this heading">#</a></h2>
 <p>We will use torchvision and torch.utils.data packages for loading the
 data.</p>
 <p>The problem we’re going to solve today is to train a model to classify
@@ -748,7 +745,7 @@ and extract it to the current directory.</p>
 </div>
 </section>
 <section id="visualize-a-few-images">
-<h2>Visualize a few images<a class="headerlink" href="#visualize-a-few-images" title="Permalink to this headline">#</a></h2>
+<h2>Visualize a few images<a class="headerlink" href="#visualize-a-few-images" title="Permalink to this heading">#</a></h2>
 <p>Let’s visualize a few training images so as to understand the data
 augmentations.</p>
 <div class="cell docutils container">
@@ -782,7 +779,7 @@ augmentations.</p>
 </div>
 </section>
 <section id="training-the-model">
-<h2>Training the model<a class="headerlink" href="#training-the-model" title="Permalink to this headline">#</a></h2>
+<h2>Training the model<a class="headerlink" href="#training-the-model" title="Permalink to this heading">#</a></h2>
 <p>Now, let’s write a general function to train a model. Here, we will
 illustrate:</p>
 <ul class="simple">
@@ -864,7 +861,7 @@ illustrate:</p>
 </div>
 </section>
 <section id="visualizing-the-model-predictions">
-<h2>Visualizing the model predictions<a class="headerlink" href="#visualizing-the-model-predictions" title="Permalink to this headline">#</a></h2>
+<h2>Visualizing the model predictions<a class="headerlink" href="#visualizing-the-model-predictions" title="Permalink to this heading">#</a></h2>
 <p>Generic function to display predictions for a few images</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -899,7 +896,7 @@ illustrate:</p>
 </div>
 </section>
 <section id="finetuning-the-convnet">
-<h2>Finetuning the convnet<a class="headerlink" href="#finetuning-the-convnet" title="Permalink to this headline">#</a></h2>
+<h2>Finetuning the convnet<a class="headerlink" href="#finetuning-the-convnet" title="Permalink to this heading">#</a></h2>
 <p>Load a pretrained model and reset final fully connected layer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -933,7 +930,7 @@ Downloading: &quot;https://download.pytorch.org/models/resnet18-f37072fd.pth&quo
 </div>
 </section>
 <section id="train-and-evaluate">
-<h2>Train and evaluate<a class="headerlink" href="#train-and-evaluate" title="Permalink to this headline">#</a></h2>
+<h2>Train and evaluate<a class="headerlink" href="#train-and-evaluate" title="Permalink to this heading">#</a></h2>
 <p>It should take around 15-25 min on CPU. On GPU though, it takes less than a
 minute.</p>
 <div class="cell docutils container">
@@ -1092,7 +1089,7 @@ Best val Acc: 0.928105
 </div>
 </section>
 <section id="convnet-as-fixed-feature-extractor">
-<h2>ConvNet as fixed feature extractor<a class="headerlink" href="#convnet-as-fixed-feature-extractor" title="Permalink to this headline">#</a></h2>
+<h2>ConvNet as fixed feature extractor<a class="headerlink" href="#convnet-as-fixed-feature-extractor" title="Permalink to this heading">#</a></h2>
 <p>Here, we need to freeze all the network except the final layer. We need
 to set <code class="docutils literal notranslate"><span class="pre">requires_grad</span> <span class="pre">=</span> <span class="pre">False</span></code> to freeze the parameters so that the
 gradients are not computed in <code class="docutils literal notranslate"><span class="pre">backward()</span></code>.</p>
@@ -1124,7 +1121,7 @@ gradients are not computed in <code class="docutils literal notranslate"><span c
 </div>
 </section>
 <section id="id1">
-<h2>Train and evaluate<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2>Train and evaluate<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>On CPU this will take about half the time compared to previous scenario.
 This is expected as gradients don’t need to be computed for most of the
 network. However, forward does need to be computed.</p>
@@ -1287,7 +1284,7 @@ Best val Acc: 0.954248
 </div>
 </section>
 <section id="further-learning">
-<h2>Further Learning<a class="headerlink" href="#further-learning" title="Permalink to this headline">#</a></h2>
+<h2>Further Learning<a class="headerlink" href="#further-learning" title="Permalink to this heading">#</a></h2>
 <p>If you would like to learn more about the applications of transfer learning,
 checkout our <code class="docutils literal notranslate"><span class="pre">Quantized</span> <span class="pre">Transfer</span> <span class="pre">Learning</span> <span class="pre">for</span> <span class="pre">Computer</span> <span class="pre">Vision</span> <span class="pre">Tutorial</span> <span class="pre">&lt;https://pytorch.org/tutorials/intermediate/quantized_transfer_learning_tutorial.html&gt;</span></code>_.</p>
 </section>

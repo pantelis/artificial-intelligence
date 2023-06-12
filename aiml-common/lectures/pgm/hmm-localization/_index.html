@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Localization and Tracking &#8212; Introduction to Artificial Intelligence</title>
   
@@ -35,8 +35,6 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -46,11 +44,11 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script src="../../../../_static/tabs.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -65,8 +63,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/pgm/hmm-localization/_index';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/pgm/hmm-localization/_index.html" />
     <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
@@ -333,6 +329,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/probability/probability-assignment-6/index.html">Probability Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/mle/mle-gaussian.html">Gaussian Maximum Likelihood</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../projects/nlp/finetuning-language-models-patents/index.html">Finetuning Language Models - Can I Patent This?</a></li>
 </ul></li></ul>
@@ -558,12 +555,12 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="localization-and-tracking">
-<h1>Localization and Tracking<a class="headerlink" href="#localization-and-tracking" title="Permalink to this headline">#</a></h1>
+<h1>Localization and Tracking<a class="headerlink" href="#localization-and-tracking" title="Permalink to this heading">#</a></h1>
 <p>In the recursive state estimation section we have seen the formulation of the Bayes filter and its application in a simple problem of trying to maintain a latent  (internal to the agent) <em>belief</em>  about the state of the environment <span class="math notranslate nohighlight">\(s\)</span> given measurements <span class="math notranslate nohighlight">\(z\)</span> and agent actions <span class="math notranslate nohighlight">\(a\)</span>. Here we are closing the loop: we started with the perception system giving us poses of objects it detects, effectively localizing the objects at the <em>pixel</em> coordinate system (within the image). Now we need to use the Bayes filter to localize the object globally as well as to be able to <em>track it</em>, since it can also move across space, so that we can recognize it over time as the same unique object and be able to assign a symbol to it.</p>
 <p>In order to localize the object globally we need to localize the agent globally and so we will focus here on a situation where the initial pose of the agent is unknown as it is initially placed somewhere in its environment, but it lacks knowledge of where it is. When we have the global pose of the sensor, for example a camera, we can use straightforward techniques for the global localization of objects e.g. <a class="reference external" href="http://www.computervisionmodels.com/">calibrated stereo reconstruction or triangulation, section 14.6</a>.</p>
 <p>Even without global localization we can <em>track</em> an object as it moves within the viewpoint of the agent for the sole purpose to predict its subsequent location within the image and assign a local instance identity to it. For example as an agent moves in the space surrounding the object, its perception subsystem makes a memoryless detection decision but its probabilistic reasoning subsystem should stitch such decisions together to reason as to the object’s identity over time: is it the same object that was seen a frame ago? By knowing the pose of the agents sensors (a camera) we should be able to make such inferences.</p>
 <section id="localization">
-<h2>Localization<a class="headerlink" href="#localization" title="Permalink to this headline">#</a></h2>
+<h2>Localization<a class="headerlink" href="#localization" title="Permalink to this heading">#</a></h2>
 <p><img alt="pgm-localization" src="../../../../_images/pgm-localization.png" />
 <em>GPM for localization of mobile agent - notice the map <span class="math notranslate nohighlight">\(m\)</span> is known.  In the text we use for states the letter <span class="math notranslate nohighlight">\(s\)</span> instead of <span class="math notranslate nohighlight">\(x\)</span> and for actions the letter <span class="math notranslate nohighlight">\(a\)</span> instead of <span class="math notranslate nohighlight">\(u\)</span>.</em></p>
 <p>For localization we are also given a map <span class="math notranslate nohighlight">\(m\)</span> that can take multiple shapes. Most common maps are as shown below:</p>
@@ -596,7 +593,7 @@ all poses, as illustrated in row 1.</p></li>
 </ul>
 </section>
 <section id="tracking">
-<h2>Tracking<a class="headerlink" href="#tracking" title="Permalink to this headline">#</a></h2>
+<h2>Tracking<a class="headerlink" href="#tracking" title="Permalink to this heading">#</a></h2>
 <p>Just like localization, tracking can refer to location prediction of the agent itself or the objects that the agents perceives in its environment. For tracking we are given the initial pose <span class="math notranslate nohighlight">\(s_0\)</span> that is approximately known. It is common to initialize the belief with a narrow Gaussian distribution around <span class="math notranslate nohighlight">\(\hat{s}_0\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\mathtt{bel}(s_0) = \mathcal{N}(s_0-\hat s_0, \Sigma)\]</div>

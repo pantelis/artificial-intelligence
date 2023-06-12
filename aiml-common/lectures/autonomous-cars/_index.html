@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Autonomous Agents &#8212; Introduction to Artificial Intelligence</title>
   
@@ -35,8 +35,6 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -46,11 +44,11 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script src="../../../_static/tabs.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -65,8 +63,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/autonomous-cars/_index';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/autonomous-cars/_index.html" />
     <link rel="shortcut icon" href="../../../_static/logo.ico"/>
@@ -333,6 +329,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../resources/environment/notebook-status.html">Notebook execution status</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../assignments/probability/probability-assignment-6/index.html">Probability Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/mle/mle-gaussian.html">Gaussian Maximum Likelihood</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../projects/nlp/finetuning-language-models-patents/index.html">Finetuning Language Models - Can I Patent This?</a></li>
 </ul></li></ul>
@@ -558,13 +555,13 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="autonomous-agents">
-<h1>Autonomous Agents<a class="headerlink" href="#autonomous-agents" title="Permalink to this headline">#</a></h1>
+<h1>Autonomous Agents<a class="headerlink" href="#autonomous-agents" title="Permalink to this heading">#</a></h1>
 <p>In this section we treat examples that combine deep learning based perceptive tasks and real-world motion planning. If you as an aspiring data scientist wonder which application theme to specialize on, look no further than  <strong>mission critical</strong> industries - they are the drivers of the economy of every country.  The <strong>robotics / self-driving cars</strong> domain requires the design of advanced agents that perceive the environment using noisy sensors, make decisions under uncertainty, actuate a host of electronics to execute decisions, all while communicate with humans in natural language or sense driver psychological / physiological state. A real world manifestation of the above architecture is shown below.</p>
 <p><img alt="carla-system" src="../../../_images/carla-system1.png" />
 <em>Example of an agent (Udacity’s CARLA serf-driving car) in the late 2010s</em></p>
 <p><img alt="carla-car" src="../../../_images/carla-car.png" /></p>
 <p>There are <a class="reference external" href="https://arxiv.org/pdf/2003.06404.pdf">two main schools of thought</a> in this subdomain.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Approach</p></th>
 <th class="head"><p>Description</p></th>
@@ -582,7 +579,7 @@ document.write(`
 <p><img alt="planning-approaches" src="../../../_images/planning-approaches.png" />
 <em>Modular vs End-to-End pipeline for real-world motion planning</em></p>
 <section id="modular-pipeline">
-<h2>Modular pipeline<a class="headerlink" href="#modular-pipeline" title="Permalink to this headline">#</a></h2>
+<h2>Modular pipeline<a class="headerlink" href="#modular-pipeline" title="Permalink to this heading">#</a></h2>
 <p>The modular pipeline as shown below, consists of four main modules:</p>
 <p>NOTE: In the description below the motion planning module mentioned in the figure is called trajectory generation.</p>
 <p><img alt="modular-pipeline" src="../../../_images/modular-pipeline.png" />
@@ -595,7 +592,7 @@ document.write(`
 </ol>
 </section>
 <section id="end-to-end-pipeline">
-<h2>End to end pipeline<a class="headerlink" href="#end-to-end-pipeline" title="Permalink to this headline">#</a></h2>
+<h2>End to end pipeline<a class="headerlink" href="#end-to-end-pipeline" title="Permalink to this heading">#</a></h2>
 <p>The modular approach allows for engineering teams to divide and conquer each module almost independently of the others, provided that the system architecture governed by the interfaces of the modules allows it. But advantages go beyond the clear separation of tasks and extend to <em>explainability</em>: each module is free to invent the representations that is best suited for its task and compartmentalize the final decision about the trajectory of the agent, allowing us humans to go back and understand how the decision was reached.</p>
 <p>Having said that, modular architectures are working fine as long as the representations, their transformations and the individual module decisions support the real world environment that the agent is to operate. The moment the environment deviates from the typically expected one, modular architectures require <em>retuning</em> to be able to accommodate more corner cases never thought during the initial design.</p>
 <p><img alt="ball-road" src="../../../_images/ball-road.jpg" />

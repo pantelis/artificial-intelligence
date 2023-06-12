@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Region-CNN (RCNN) Object Detection &#8212; Introduction to Artificial Intelligence</title>
   
@@ -35,8 +35,6 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -46,11 +44,11 @@
     <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/jquery.js"></script>
     <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../_static/doctools.js"></script>
     <script src="../../../../../_static/clipboard.min.js"></script>
     <script src="../../../../../_static/copybutton.js"></script>
     <script src="../../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script src="../../../../../_static/tabs.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -65,8 +63,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/scene-understanding/object-detection/rcnn-object-detection/index';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/scene-understanding/object-detection/rcnn-object-detection/index.html" />
     <link rel="shortcut icon" href="../../../../../_static/logo.ico"/>
@@ -333,6 +329,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../assignments/probability/probability-assignment-6/index.html">Probability Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../assignments/mle/mle-gaussian.html">Gaussian Maximum Likelihood</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../projects/nlp/finetuning-language-models-patents/index.html">Finetuning Language Models - Can I Patent This?</a></li>
 </ul></li></ul>
@@ -563,15 +560,15 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="region-cnn-rcnn-object-detection">
-<h1>Region-CNN (RCNN) Object Detection<a class="headerlink" href="#region-cnn-rcnn-object-detection" title="Permalink to this headline">#</a></h1>
+<h1>Region-CNN (RCNN) Object Detection<a class="headerlink" href="#region-cnn-rcnn-object-detection" title="Permalink to this heading">#</a></h1>
 <section id="region-proposals">
-<h2>Region Proposals<a class="headerlink" href="#region-proposals" title="Permalink to this headline">#</a></h2>
+<h2>Region Proposals<a class="headerlink" href="#region-proposals" title="Permalink to this heading">#</a></h2>
 <p>We can think about the detection problem as a classification problem of <em>all possible portions</em> (windows/masks) of the input image since an object can be located at any position and scale in the image. It is natural to search therefore everywhere and an obvious method to generate region proposals, is to slide various width-height ratio windows slide around the image and using a metric to declare that the window contains one or more blob of pixels. Obviously, such method is computationally infeasible and we need think of how to reduce this number by having some means of gauging where to look in the image.</p>
 <p>RCNN can accommodate a number of efficient algorithms that can produce region proposals. The baseline RCNN employs instead <a class="reference external" href="http://www.huppelen.nl/publications/selectiveSearchDraft.pdf"><em>selective search via hierarchical grouping</em></a>.</p>
 <p><img alt="hierarchical-grouping-alg" src="../../../../../_images/hierarchical-grouping-alg.png" /></p>
 <p>The algorithm contains another algorithm that segments the image into initial regions.</p>
 <section id="graph-based-segmentation">
-<h3>Graph-based segmentation<a class="headerlink" href="#graph-based-segmentation" title="Permalink to this headline">#</a></h3>
+<h3>Graph-based segmentation<a class="headerlink" href="#graph-based-segmentation" title="Permalink to this heading">#</a></h3>
 <p>We perform segmentation in the image using an <a class="reference external" href="http://cs.brown.edu/people/pfelzens/segment/">efficient graph-based algorithm</a> to obtain the set <span class="math notranslate nohighlight">\(R=\{r_1, \dots, r_n \}\)</span> of initial regions. The segmentation algorithm starts by formulating the image as a graph.</p>
 <p>Let G = (V, E) be an undirected graph with vertices <span class="math notranslate nohighlight">\(v_i \in V\)</span> , the set of elements to be segmented, and edges <span class="math notranslate nohighlight">\((v_i, v_j) ∈ E\)</span> corresponding to pairs of neighboring vertices. Each edge has a corresponding weight <span class="math notranslate nohighlight">\(w((v_i, v_j ))\)</span>, which is a non-negative measure of the <em>dissimilarity</em> between neighboring elements <span class="math notranslate nohighlight">\(v_i\)</span> and <span class="math notranslate nohighlight">\(v_j\)</span>. In the case of image segmentation, the elements in V are <em>pixels</em> and the weight of an edge is some measure of the dissimilarity between the two pixels connected by that edge (e.g., the difference in intensity, color, motion, location or some other local attribute).</p>
 <p>In the graph-based approach, a segmentation <span class="math notranslate nohighlight">\(S\)</span> is a partition of <span class="math notranslate nohighlight">\(V\)</span> into components such that each component (or region) <span class="math notranslate nohighlight">\(C ∈ S\)</span> corresponds to a connected component in a graph <span class="math notranslate nohighlight">\(G' = (V, E')\)</span>, where <span class="math notranslate nohighlight">\(E' ⊆ E\)</span>. In other words, any segmentation is induced by a subset of the edges in <span class="math notranslate nohighlight">\(E\)</span>. There are different ways to measure the quality of a segmentation but in general we want the elements in a component to be similar, and elements in different components to be dissimilar. This means that edges between two vertices in the same component should have relatively low weights, and edges
@@ -589,7 +586,7 @@ between vertices in different components should have higher weights.</p>
 <em>Result of the initial segments produced by the graph-based algorithm, <span class="math notranslate nohighlight">\(k=300\)</span></em></p>
 </section>
 <section id="grouping">
-<h3>Grouping<a class="headerlink" href="#grouping" title="Permalink to this headline">#</a></h3>
+<h3>Grouping<a class="headerlink" href="#grouping" title="Permalink to this heading">#</a></h3>
 <p>After the initial regions are produced, we use a greedy algorithm to iteratively group regions together. This is what gives the <em>hierarchical</em> in the name of the algorithm.</p>
 <p>First the similarities between all neighboring regions are calculated. The two most similar regions are grouped together, and new similarities are calculated between the resulting region and its neighbors. The process of grouping the most similar regions is repeated until the whole image becomes a single region.</p>
 <p>For the similarity <span class="math notranslate nohighlight">\(s(r_i ,r_j)\)</span> between region <span class="math notranslate nohighlight">\(r_i\)</span> and <span class="math notranslate nohighlight">\(r_j\)</span> we apply a variety of complementary measures under the constraint that they are
@@ -607,7 +604,7 @@ when merging region <span class="math notranslate nohighlight">\(r_i\)</span> an
 </section>
 </section>
 <section id="cnn-features-and-svm-classification">
-<h2>CNN Features  and SVM Classification<a class="headerlink" href="#cnn-features-and-svm-classification" title="Permalink to this headline">#</a></h2>
+<h2>CNN Features  and SVM Classification<a class="headerlink" href="#cnn-features-and-svm-classification" title="Permalink to this heading">#</a></h2>
 <p>Each of these proposals can be fed into a CNN (e.g. ResNet. Since regions are of various rectangular shapes, we warp the regions to a fixed size (CNNs can process fixed input tensors) of 227 x 227 pixels and the CNN produces a 4096-dim feature vector from each of the regions. Note that this representation of each region by 4096 elements is considered quite compact and more importantly the features are <em>shared</em> across classes.</p>
 <p>Using these features we use a binary SVM classifier that produces a positive or negative on whether this feature contains the class of interest or not. We train a separate binary SVM classifier per class (binary classification).</p>
 <p>The sharing of features allows us to practically aggregate into a matrix all features of all regions (2000 x 4096) we well as aggregate the SVM weights into another matrix (4096 x K), where K is the number of classes we have trained for, and do this combined operation via a matrix-matrix product.</p>
@@ -622,7 +619,7 @@ when merging region <span class="math notranslate nohighlight">\(r_i\)</span> an
 <em>RCNN detection result after processing multiple region proposals</em></p>
 </section>
 <section id="training">
-<h2>Training<a class="headerlink" href="#training" title="Permalink to this headline">#</a></h2>
+<h2>Training<a class="headerlink" href="#training" title="Permalink to this heading">#</a></h2>
 <p>RCNN training is complex as involves a multi-stage pipeline.</p>
 <ol class="arabic simple">
 <li><p>R-CNN first fine pretrains a CNN on a classification task without using any bounding box ground truth.</p></li>

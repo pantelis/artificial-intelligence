@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Mask R-CNN Semantic Segmentation &#8212; Introduction to Artificial Intelligence</title>
   
@@ -35,8 +35,6 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -46,11 +44,11 @@
     <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/jquery.js"></script>
     <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../_static/doctools.js"></script>
     <script src="../../../../../_static/clipboard.min.js"></script>
     <script src="../../../../../_static/copybutton.js"></script>
     <script src="../../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script src="../../../../../_static/tabs.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -63,8 +61,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../../_static/sphinx-thebe.js"></script>
-    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/index';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/index.html" />
     <link rel="shortcut icon" href="../../../../../_static/logo.ico"/>
@@ -331,6 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../assignments/probability/probability-assignment-6/index.html">Probability Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../assignments/mle/mle-gaussian.html">Gaussian Maximum Likelihood</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../projects/nlp/finetuning-language-models-patents/index.html">Finetuning Language Models - Can I Patent This?</a></li>
 </ul></li></ul>
@@ -555,12 +552,12 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="mask-r-cnn-semantic-segmentation">
-<h1>Mask R-CNN Semantic Segmentation<a class="headerlink" href="#mask-r-cnn-semantic-segmentation" title="Permalink to this headline">#</a></h1>
+<h1>Mask R-CNN Semantic Segmentation<a class="headerlink" href="#mask-r-cnn-semantic-segmentation" title="Permalink to this heading">#</a></h1>
 <p>The semantic segmentation approach described in this section is <a class="reference external" href="https://arxiv.org/abs/1703.06870">Mask R-CNN based on this paper</a> paper. <strong>Mask R-CNN</strong> is an extension of Faster R-CNN that adds a mask head to the detector. The mask head is a CNN that takes the feature map output by the RPN and the bounding box coordinates of the detected object and outputs a mask for each object. The mask is a binary image of the same size as the input image, where the pixels of the object are marked as 1 and the rest as 0.</p>
 <p>In the object detection section we saw R-CNN that simply cropped proposals, generated externally to the detector, from the input image and classifies  those proposals. Since the proposals were typically overlapping, CNN computations that extracted features per proposal were wasted and the detector was very slow. Fast R-CNN improved this by passing the whole input image once via a CNN feature extractor and used a feature map internally to this CNN to elect proposals, therefore avoiding the feature extraction per proposal. Faster R-CNN removed the external dependency on proposal generation and introduced a Region Proposal Network (RPN) internally to the detector. For the RPN to generate proposals, prior (or anchor)  boxes were defined uniformly across the input image and the RPN was trained to predict the class of each anchor and by <em>how much the anchor needs to shift</em> to match the ground truth bounding box.</p>
 <p><strong>The code is this section together with the visualizations is useful to understand both Faster RCNN and the mask head extension that ‘colors’ the pixels of the detected objects.</strong></p>
 <section id="notebooks">
-<h2>Notebooks<a class="headerlink" href="#notebooks" title="Permalink to this headline">#</a></h2>
+<h2>Notebooks<a class="headerlink" href="#notebooks" title="Permalink to this heading">#</a></h2>
 <p>For Tensorflow:</p>
 <p>The four notebooks in this section use MaskRCNN. For other models see <a class="reference external" href="https://github.com/tensorflow/tpu/tree/master/models/official/detection">the TF Model Garden</a>.</p>
 <ul class="simple">
