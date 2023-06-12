@@ -186,6 +186,7 @@ parts:
 - caption: Assignments
   chapters:
   - file: aiml-common/assignments/probability/probability-assignment-6/index.ipynb
+  - file: aiml-common/assignments/mle/mle-gaussian.ipynb
   
 # - caption:  Assignments CS-UY-4613
 #   chapters: 
