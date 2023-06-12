@@ -64,12 +64,15 @@ jobs:
       #----------------------------------------------
       #              Build the book 
       #----------------------------------------------      
+      # - name: Build the book
+      #   shell: bash -l {0}
+      #   run: |
+      #     source .venv/bin/activate
+      #     poetry run jupyter-book build --path-output standard artificial_intelligence
       - name: Build the book
         shell: bash -l {0}
         run: |
-          source .venv/bin/activate
-          poetry run jupyter-book build --path-output standard artificial_intelligence
-
+          jupyter-book build --path-output standard artificial_intelligence
       # #----------------------------------------------
       # #              Build the book for LMS
       # #----------------------------------------------      
