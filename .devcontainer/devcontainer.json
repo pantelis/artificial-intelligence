@@ -3,18 +3,13 @@
 	"name": "ai-course-devcontainer",
 	"build": { 
 		"context": "..",
-		"dockerfile": "../docker/Dockerfile.tensorflow"
+		"dockerfile": "../docker/Dockerfile.pytorch"
 	},
-
-	"remoteEnv": {
-		//"PATH": "/home/vscode/.local/bin:$PATH"
-	},
-	
 	"runArgs": [
 		"--gpus", "all",
 		"--shm-size=1g",
 		"--ipc=host",
-		"--ulimit stack=67108864",
+		"--ulimit=stack=67108864",
 		"--network=host",
 		"--security-opt=seccomp:unconfined",
 		"--security-opt=apparmor:unconfined",
@@ -51,5 +46,5 @@
 			}
 		}
 	},
-	"postStartCommand": "sphinx-autobuild --host 0.0.0.0 --port 8000 artificial_intelligence _build/html"
+	"postStartCommand": "jb config sphinx artificial_intelligence && sphinx-autobuild artificial_intelligence _build/html"
 }
