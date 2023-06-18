@@ -12,8 +12,9 @@
 	
 	"runArgs": [
 		"--gpus", "all",
-		"--shm-size=16G",
+		"--shm-size=1g",
 		"--ipc=host",
+		"--ulimit stack=67108864",
 		"--network=host",
 		"--security-opt=seccomp:unconfined",
 		"--security-opt=apparmor:unconfined",
