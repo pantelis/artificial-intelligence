@@ -150,15 +150,19 @@ $$\mathtt{bel}(s_1=open) = 0.75$$
 
 $$\mathtt{bel}(s_1=closed) = 0.25$$
 
+#### Recursive State Estimation at $t=2$ - Step 1: Prediction
+
 In the next time step lets assume that the agent pushes the door and senses that its open. Its easy to verify that 
 
 $$\mathtt{\hat{bel}}(s_2 = open) = 1 \times 0.75 + 0.8 \times 0.25 = 0.95$$
 $$\mathtt{\hat{bel}}(s_2 = closed) =0 \times 0.75 + 0.2 \times 0.25 = 0.05$$
 
-$$\mathtt{bel}(s_2 = open) = \eta 0.6 \times 0.95 = 0.57$$
-$$\mathtt{bel}(s_2 = closed) = \eta 0.2 \times 0.05 = 0.01$$
+#### Recursive State Estimation at $t=2$ - Step 2: Measurement Update
 
-where $\eta = (0.01 + 0.57)^{-1}$
+$$\mathtt{bel}(s_2 = open) = \eta 0.6 \times 0.95 = \eta 0.57$$
+$$\mathtt{bel}(s_2 = closed) = \eta 0.2 \times 0.05 =\eta  0.01$$
+
+and with $\eta = (0.01 + 0.57)^{-1}=1.724$ we can estimate the posterior belief for $t=2$.
 
 This example, although simplistic is indicative of the ability of the Bayes filter to incorporate perception and action into one framework. Although the example was for an embodied agent with a manipulator, the notion of action is optional. Beliefs can be recursively updated even if the action is not taken explicitly by the agent. Your cell phones have the ability to localize themselves using exactly the same Bayesian filter with different sensing (RF signals) despite the fact that they don't move by themselves but are carried by you in their environment.
 

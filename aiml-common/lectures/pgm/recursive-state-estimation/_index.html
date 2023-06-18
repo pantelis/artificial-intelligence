@@ -547,6 +547,8 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-model">Transition Model</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-state-estimation-at-t-1-step-1-prediction">Recursive State Estimation at <span class="math notranslate nohighlight">\(t=1\)</span> - Step 1: Prediction</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-state-estimation-at-t-1-step-2-measurement-update">Recursive State Estimation at <span class="math notranslate nohighlight">\(t=1\)</span> - Step 2: Measurement Update</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-state-estimation-at-t-2-step-1-prediction">Recursive State Estimation at <span class="math notranslate nohighlight">\(t=2\)</span> - Step 1: Prediction</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-state-estimation-at-t-2-step-2-measurement-update">Recursive State Estimation at <span class="math notranslate nohighlight">\(t=2\)</span> - Step 2: Measurement Update</a></li>
 </ul>
 </li>
 </ul>
@@ -711,16 +713,22 @@ document.write(`
 \[\mathtt{bel}(s_1=open) = 0.75\]</div>
 <div class="math notranslate nohighlight">
 \[\mathtt{bel}(s_1=closed) = 0.25\]</div>
+</section>
+<section id="recursive-state-estimation-at-t-2-step-1-prediction">
+<h4>Recursive State Estimation at <span class="math notranslate nohighlight">\(t=2\)</span> - Step 1: Prediction<a class="headerlink" href="#recursive-state-estimation-at-t-2-step-1-prediction" title="Permalink to this heading">#</a></h4>
 <p>In the next time step lets assume that the agent pushes the door and senses that its open. Its easy to verify that</p>
 <div class="math notranslate nohighlight">
 \[\mathtt{\hat{bel}}(s_2 = open) = 1 \times 0.75 + 0.8 \times 0.25 = 0.95\]</div>
 <div class="math notranslate nohighlight">
 \[\mathtt{\hat{bel}}(s_2 = closed) =0 \times 0.75 + 0.2 \times 0.25 = 0.05\]</div>
+</section>
+<section id="recursive-state-estimation-at-t-2-step-2-measurement-update">
+<h4>Recursive State Estimation at <span class="math notranslate nohighlight">\(t=2\)</span> - Step 2: Measurement Update<a class="headerlink" href="#recursive-state-estimation-at-t-2-step-2-measurement-update" title="Permalink to this heading">#</a></h4>
 <div class="math notranslate nohighlight">
-\[\mathtt{bel}(s_2 = open) = \eta 0.6 \times 0.95 = 0.57\]</div>
+\[\mathtt{bel}(s_2 = open) = \eta 0.6 \times 0.95 = \eta 0.57\]</div>
 <div class="math notranslate nohighlight">
-\[\mathtt{bel}(s_2 = closed) = \eta 0.2 \times 0.05 = 0.01\]</div>
-<p>where <span class="math notranslate nohighlight">\(\eta = (0.01 + 0.57)^{-1}\)</span></p>
+\[\mathtt{bel}(s_2 = closed) = \eta 0.2 \times 0.05 =\eta  0.01\]</div>
+<p>and with <span class="math notranslate nohighlight">\(\eta = (0.01 + 0.57)^{-1}=1.724\)</span> we can estimate the posterior belief for <span class="math notranslate nohighlight">\(t=2\)</span>.</p>
 <p>This example, although simplistic is indicative of the ability of the Bayes filter to incorporate perception and action into one framework. Although the example was for an embodied agent with a manipulator, the notion of action is optional. Beliefs can be recursively updated even if the action is not taken explicitly by the agent. Your cell phones have the ability to localize themselves using exactly the same Bayesian filter with different sensing (RF signals) despite the fact that they don’t move by themselves but are carried by you in their environment.</p>
 </section>
 </section>
@@ -800,6 +808,8 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-model">Transition Model</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-state-estimation-at-t-1-step-1-prediction">Recursive State Estimation at <span class="math notranslate nohighlight">\(t=1\)</span> - Step 1: Prediction</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-state-estimation-at-t-1-step-2-measurement-update">Recursive State Estimation at <span class="math notranslate nohighlight">\(t=1\)</span> - Step 2: Measurement Update</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-state-estimation-at-t-2-step-1-prediction">Recursive State Estimation at <span class="math notranslate nohighlight">\(t=2\)</span> - Step 1: Prediction</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-state-estimation-at-t-2-step-2-measurement-update">Recursive State Estimation at <span class="math notranslate nohighlight">\(t=2\)</span> - Step 2: Measurement Update</a></li>
 </ul>
 </li>
 </ul>
