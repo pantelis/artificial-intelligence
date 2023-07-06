@@ -187,6 +187,7 @@ parts:
   chapters:
   - file: aiml-common/assignments/probability/probability-assignment-6/index.ipynb
   - file: aiml-common/assignments/mle/mle-gaussian.ipynb
+  - file: aiml-common/assignments/object-tracking-kalman/balls.md
   
 # - caption:  Assignments CS-UY-4613
 #   chapters: 
