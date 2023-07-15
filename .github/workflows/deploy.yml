@@ -72,7 +72,7 @@ jobs:
       - name: Build the book
         shell: bash -l {0}
         run: |
-          jupyter-book build --path-output standard artificial_intelligence
+          jb config sphinx artificial_intelligence && jupyter-book build --path-output standard artificial_intelligence
       # #----------------------------------------------
       # #              Build the book for LMS
       # #----------------------------------------------      

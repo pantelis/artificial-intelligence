@@ -46,5 +46,5 @@
 			}
 		}
 	},
-	"postStartCommand": "jb config sphinx artificial_intelligence && sphinx-autobuild artificial_intelligence _build/html"
+	"postStartCommand": "jb config sphinx artificial_intelligence && sphinx-autobuild --port 10000 artificial_intelligence _build/html"
 }
