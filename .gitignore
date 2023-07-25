@@ -296,6 +296,7 @@ _build/
 *.pb
 *.h5
 s2s
+*.pt
 
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
@@ -303,3 +304,5 @@ s2s
 # IPython
 profile_default/
 ipython_config.py
+
+

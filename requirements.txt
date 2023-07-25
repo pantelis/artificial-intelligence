@@ -6,7 +6,10 @@ sphinxcontrib-bibtex
 diagrams
 filterpy
 sphinxcontrib-svg2pdfconverter
-ipywidgets
+transformers
+accelerate
+datasets
+# ipywidgets
 # sphinx-proof
 # sphinx-inline-tabs
 # sphinxext-rediraffe

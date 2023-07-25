@@ -6,6 +6,8 @@
 		"dockerfile": "../docker/Dockerfile.pytorch"
 	},
 	"runArgs": [
+		"--rm",
+		"--privileged",
 		"--gpus", "all",
 		"--shm-size=1g",
 		"--ipc=host",
@@ -16,8 +18,9 @@
 		"--volume=/tmp/.X11-unix:/tmp/.X11-unix",
 		"--env-file=.devcontainer/devcontainer.env"
 	],
-	"containerEnv": { "DISPLAY": "0" },
-
+	"containerEnv": { 
+		"DISPLAY": "${localEnv:DISPLAY}"
+ 	},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	//"forwardPorts": [8000],
 
@@ -34,7 +37,8 @@
 				"GitHub.copilot",
 				"njpwerner.autodocstring",
 				"ms-toolsai.jupyter",
-				"ms-toolsai.vscode-jupyter-powertoys"
+				"ms-toolsai.vscode-jupyter-powertoys",
+				"eamodio.gitlens"
 			],
 			"settings": {
 				"terminal.integrated.profiles.linux": {
