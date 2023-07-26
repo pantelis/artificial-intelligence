@@ -7,8 +7,13 @@ diagrams
 filterpy
 sphinxcontrib-svg2pdfconverter
 transformers
-accelerate
 datasets
+accelerate
+nvidia-ml-py3
+
+https://raw.githubusercontent.com/ultralytics/yolov5/master/requirements.txt
+
+
 # ipywidgets
 # sphinx-proof
 # sphinx-inline-tabs
