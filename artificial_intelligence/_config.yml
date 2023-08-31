@@ -18,8 +18,7 @@ execute:
   allow_errors: false
   # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
   exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
-  # exclude_patterns: 
-  #   - data_mining/aiml-common/lectures/transfer-learning/quantized_transfer_learning.ipynb
+  
 
 
 # Define the name of the latex output file for PDF builds
@@ -67,8 +66,8 @@ sphinx:
       repository_url: https://github.com/pantelis/artificial-intelligence
       use_issues_button: true
       use_repository_button: true
-      use_edit_page_button: true
-      show_navbar_depth: 0
+      use_edit_page_button: false
+      show_navbar_depth: 1
     intersphinx_mapping:
       python:
         - "https://docs.python.org/3/"
