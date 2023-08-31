@@ -2,15 +2,15 @@
 
 ```{only} html
 
-<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+<!-- <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="pantelis" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/pantelis?trk=profile-badge">Pantelis Monogioudis</a></div>
-              
+               -->
 <a href="https://twitter.com/monogioudis?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @monogioudis</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ```
 
 ![national-library-greece](national-library-greece.jpg)
-*AI and knowledge representation are closely related (pict: Historic National Library of Greece.)*
+*(pict: Historic National Library of Greece.)*
 
 ## What this course is all about
 
@@ -27,7 +27,13 @@ Artificial Intelligence (AI) is an important topic in computer science and offer
 **Logistics** {octicon}`organization;1em;sd-text-info`
 ^^^
 
-CS670 Course Dates: 5/24/2023 - 8/2/2023
+NYU CS-GY-6613
+
+NJIT CS370 
+
+Course Dates: 9/5/2023 - 12/19/2023 (approx.)
+
+**Mandatory in-person attendance**
 
 :::
 
@@ -74,7 +80,9 @@ Assignments (30%)
 **Staff (TAs)** {octicon}`person;1em;sd-text-info`
 ^^^
 
-Pritam Shen (find him in our Discord class channel)
+NJIT: TBD
+
+NYU: TBD
 
 :::
 
