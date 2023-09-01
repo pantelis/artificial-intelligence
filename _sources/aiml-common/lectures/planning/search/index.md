@@ -1,7 +1,3 @@
----
-title: Planning with Search 
----
-
 # Planning with Search 
 
 In the logical agents section we have seen that symbolic representations enriched with propositional logic in the Knowledge Base allow us to reason and come up with a sequence of actions that the agent needs to execute to reach the goal. This section provides the background that _connects_ the domain-independent planner that solves the planning problem to _search_. To do so, it is instructive to look initially to problems that are simpler in terms of state and action representation. We effectively zoom out from the  _factored_ representation of the environment's state and treat it as _atomic_ i.e. not broken down into its individual variables. 

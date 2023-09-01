@@ -15,6 +15,7 @@ If $h(s)$ is an underestimate of the $G^*(s)$ the Astar algorithm is guaranteed 
 For an example of a heuristic consider this problem:
 
 ![astar-example](images/astar-simple-example.png)
+
 *A simple example showcasing a modified to what is described above priority metric. What we use is a modification of the edge cost $l'(e)=l(e) + [h(s^\prime)-h(s)]$. Is there a difference?*
 
 In this example all $l(e)=1$ and the heuristic is a penalty from how much a transition to another node (an action) takes us away from the end state (adopted from [CS221](https://stanford-cs221.github.io/)). 
@@ -22,13 +23,13 @@ In this example all $l(e)=1$ and the heuristic is a penalty from how much a tran
 Using the interactive demo page below, repeating the same example wall-world, we can clearly see the substantial difference in search speed and the beamforming effect as soon as the wave (frontier) evaluates nodes where the heuristic (the Manhattan distance from the goal node) becomes dominant. Notice the difference with the UCS / Dijkstra's algorithm in the number of nodes that needed to be evaluated. 
 
 ![astar-demo](images/astar-demo.png)
+
 *$A^*$ algorithm demo*
 
 
-### A* Implementation
+## A* Implementation
 
 A stand-alone A* planner in python is shown next. Its instructive to go through the code to understand how it works. 
-
 
 
 ```python
@@ -302,6 +303,7 @@ if __name__ == '__main__':
 Executing the code above results in the animation:
 
 ![astar-probabilistic-robotics](images/astar-prob-robotics.gif)
+
 *Animation of the A\* algorithm  - from [here](https://github.com/AtsushiSakai/PythonRobotics)*
  
 This is [excellent overview](https://arxiv.org/abs/1504.05140) on how the principles of shortest path algorithms are applied in everyday applications such as Google maps directions. Practical implementation considerations are discussed for  multi-modal route finding capabilities where the agent needs to find optimal routes while traversing multiple modes of transportation.

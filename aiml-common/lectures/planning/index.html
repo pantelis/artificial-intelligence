@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Autonomous Agents &#8212; Introduction to Artificial Intelligence</title>
+    <title>Automated Planning &#8212; Introduction to Artificial Intelligence</title>
   
   
   
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -61,15 +62,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/autonomous-cars/_index';</script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/autonomous-cars/_index.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/planning/index';</script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/planning/index.html" />
     <link rel="shortcut icon" href="../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Imitation Learning" href="imitation-learning/_index.html" />
-    <link rel="prev" title="Planning" href="../planning/_index.html" />
+    <link rel="next" title="Planning Domain Definition Language (PDDL)" href="pddl/index.html" />
+    <link rel="prev" title="Logical Agents" href="../logical-reasoning/logical-agents/_index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -152,12 +151,9 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
-<ul class="nav bd-sidenav">
+        <ul class="list-caption"><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="label-parts" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../syllabus/_index.html">Syllabus</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to AI</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to AI</span></p><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="label-parts" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ai-intro/course-introduction/_index.html">Course Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai-intro/systems-approach/_index.html">The four approaches towards AI</a></li>
 
@@ -165,9 +161,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-1</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-1</span></p><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="label-parts" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../learning-problem/_index.html">The Learning Problem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../regression/linear-regression/linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimization/sgd/_index.html">Stochastic Gradient Descent</a></li>
@@ -175,14 +169,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../optimization/maximum-likelihood/marginal_maximum_likelihood.html">Maximum Likelihood Estimation of a marginal model</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../optimization/maximum-likelihood/conditional_maximum_likelihood.html">Maximum Likelihood (ML) Estimation of conditional models</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-2</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-2</span></p><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="label-parts" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../classification/classification-intro/_index.html">Introduction to Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../classification/logistic-regression/_index.html">Logistic Regression</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Neural Networks</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Neural Networks</span></p><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="label-parts" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../classification/perceptron/_index.html">The Neuron (Perceptron)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dnn/dnn-intro/_index.html">Deep Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dnn/backprop-intro/_index.html">Introduction to Backpropagation</a></li>
@@ -191,31 +181,25 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../dnn/fashion-mnist-case-study.html">Fashion MNIST Case Study</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimization/regularization/_index.html">Regularization in Deep Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimization/regularization/regularization-workshop-1.html">Regularization Workshop</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Convolutional Neural Networks</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Convolutional Neural Networks</span></p><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="label-parts" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../cnn/cnn-intro/_index.html">Introduction to Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cnn/cnn-layers/_index.html">CNN Architectures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cnn/cnn-example-architectures/_index.html">CNN Example Architectures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">Using convnets with small datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cnn/cnn-example-architectures/visualizing-what-convnets-learn.html">Visualizing what convnets learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scene-understanding/feature-extraction-resnet/index.html">Feature Extraction via Residual Networks</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="label-parts" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../transfer-learning/transfer-learning-introduction.html">Introduction to Transfer Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../transfer-learning/transfer_learning_tutorial.html">Transfer Learning for Computer Vision Tutorial</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Scene Understanding</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Scene Understanding</span></p><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="label-parts" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../scene-understanding/scene-understanding-intro/index.html">Introduction to Scene Understanding</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../scene-understanding/object-detection/object-detection-intro/index.html">Object Detection</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../scene-understanding/object-detection/object-detection-intro/index.html">Object Detection</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../scene-understanding/object-detection/detection-metrics/index.html">Object Detection and Semantic Segmentation Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../scene-understanding/object-detection/rcnn-object-detection/index.html">Region-CNN (RCNN) Object Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../scene-understanding/object-detection/faster-rcnn-object-detection/index.html">Fast and Faster RCNN Object Detection</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../scene-understanding/semantic-segmentation/index.html">Object Det. &amp; Semantic Segm. Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../scene-understanding/semantic-segmentation/index.html">Object Det. &amp; Semantic Segm. Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/index.html">Mask R-CNN Semantic Segmentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/demo.html">Mask R-CNN Demo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_data.html">Mask R-CNN - Inspect Training Data</a></li>
@@ -244,38 +228,31 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Probabilistic Reasoning</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Probabilistic Reasoning</span></p><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="label-parts" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../pgm/pgm-intro/_index.html">Introduction to Probabilistic Reasoning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pgm/recursive-state-estimation/_index.html">Recursive State Estimation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pgm/discrete-bayesian-filter/discrete-bayesian-filter.html">Discrete Bayes Filter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pgm/hmm-localization/_index.html">Localization and Tracking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pgm/kalman-filters/one-dimensional-kalman-filters.html">One Dimensional Kalman Filters</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logical Reasoning</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Logical Reasoning</span></p><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="label-parts" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../logical-reasoning/automated-reasoning/_index.html">Automated Reasoning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../logical-reasoning/propositional-logic/_index.html">World Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../logical-reasoning/logical-agents/_index.html">Logical Agents</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning without Interactions</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../planning/_index.html">Planning</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Autonomous Agents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="imitation-learning/_index.html">Imitation Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../planning/classical-planning/_index.html">Classical Planning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../planning/search/_index.html">Planning with Search</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../planning/search/forward-search/_index.html">Forward Search Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../planning/search/a-star/_index.html">The A* Algorithm</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Markov Decision Processes</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning without Interactions</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="label-parts" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Automated Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pddl/index.html">Planning Domain Definition Language (PDDL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pddl/logistics.html">Logistics Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pddl/manufacturing.html">Manufacrturing Robot Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search/index.html">Planning with Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search/forward-search/index.html">Forward Search Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search/a-star/index.html">The A* Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../motion-planning-cars/index.html">Motion Planning for Autonomous Cars</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Markov Decision Processes</span></p><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="label-parts" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../mdp/_index.html">Markov Decision Processes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mdp/mdp-intro/mdp_intro.html">Introduction to MDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mdp/bellman-expectation-backup/_index.html">Bellman Expectation Backup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mdp/bellman-optimality-backup/_index.html">Bellman Optimality Backup</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../mdp/mdp-dp-algorithms/index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mdp/mdp-dp-algorithms/index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mdp/mdp-dp-algorithms/policy-iteration/_index.html">Policy Iteration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mdp/mdp-dp-algorithms/policy-evaluation/_index.html">Policy Evaluation (Prediction)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mdp/mdp-dp-algorithms/policy-improvement/_index.html">Policy Improvement (Control)</a></li>
@@ -283,9 +260,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../mdp/mdp-lab/recycling-robot/_index.html">Finding the optimal policy of a recycling robot.</a></li>
 </ul>
 </li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="label-parts" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../reinforcement-learning/_index.html">Reinforcement Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reinforcement-learning/prediction/monte-carlo.html">Monte-Carlo Prediction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reinforcement-learning/prediction/temporal-difference.html">Temporal Difference (TD) Prediction</a></li>
@@ -293,9 +268,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../reinforcement-learning/generalized-policy-iteration/_index.html">Generalized Policy Iteration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reinforcement-learning/control/sarsa/_index.html">The SARSA Algorithm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reinforcement-learning/reinforce/_index.html">The REINFORCE Algorithm</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="label-parts" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../rnn/introduction/_index.html">Introduction to Recurrent Neural Networks (RNN)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rnn/simple-rnn/_index.html">Simple RNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rnn/lstm/_index.html">The Long Short-Term Memory (LSTM) Architecture</a></li>
@@ -305,23 +278,21 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="label-parts" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../nlp/nlp-introduction/nlp-pipelines/_index.html">Introduction to NLP Pipelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nlp/nlp-introduction/tokenization/index.html">Tokenization</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../nlp/nlp-introduction/word2vec/_index.html">Embeddings</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nlp/nlp-introduction/word2vec/_index.html">Embeddings</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../nlp/nlp-introduction/word2vec/word2vec_from_scratch.html">Word2Vec from scratch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../nlp/nlp-introduction/word2vec/word2vec_tensorflow_tutorial.html">Word2Vec Tensorflow Tutorial</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../nlp/language-models/_index.html">Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nlp/language-models/_index.html">Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../nlp/language-models/cnn-language-model/index.html">CNN Language Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../nlp/language-models/simple-rnn-language-model/index.html">Simple RNN Language Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../nlp/language-models/lstm-language-model/index.html">LSTM Language Model from scratch</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../nlp/nmt/nmt-intro/index.html">Neural Machine Translation</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nlp/nmt/nmt-intro/index.html">Neural Machine Translation</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../nlp/nmt/nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../nlp/nmt/rnn-nmt-attention/index.html">Attention in RNN-based NMT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../nlp/nmt/rnn-attention-workshop/seq2seq_and_attention.html">Attention in RNN NMT Workshop</a></li>
@@ -331,7 +302,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../nlp/transformers/transformers-intro.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nlp/transformers/transformers-intro.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../nlp/transformers/annotated_transformer.html">The Annotated Transformer</a></li>
 
 
@@ -346,22 +317,17 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="label-parts" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ml-math/index.html">Math for ML Textbook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ml-math/probability/index.html">Probability Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ml-math/linear-algebra/index.html">Linear Algebra for Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ml-math/calculus/index.html">Calculus</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="label-parts" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../resources/environment/index.html">Your Programming Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/index.html">Learn Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resources/environment/notebook-status.html">Notebook execution status</a></li>
-</ul>
-
+</ul></li></ul>
     </div>
 </nav></div>
     </div>
@@ -431,7 +397,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/autonomous-cars/_index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/planning/index.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -461,7 +427,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../../_sources/aiml-common/lectures/autonomous-cars/_index.md" target="_blank"
+      <li><a href="../../../_sources/aiml-common/lectures/planning/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -530,9 +496,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -543,20 +507,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Autonomous Agents</h1>
+    <h1>Automated Planning</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular-pipeline">Modular pipeline</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#end-to-end-pipeline">End to end pipeline</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -566,51 +521,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="autonomous-agents">
-<h1>Autonomous Agents<a class="headerlink" href="#autonomous-agents" title="Permalink to this heading">#</a></h1>
-<p>In this section we treat examples that combine deep learning based perceptive tasks and real-world motion planning. If you as an aspiring data scientist wonder which application theme to specialize on, look no further than  <strong>mission critical</strong> industries - they are the drivers of the economy of every country.  The <strong>robotics / self-driving cars</strong> domain requires the design of advanced agents that perceive the environment using noisy sensors, make decisions under uncertainty, actuate a host of electronics to execute decisions, all while communicate with humans in natural language or sense driver psychological / physiological state. A real world manifestation of the above architecture is shown below.</p>
-<p><img alt="carla-system" src="../../../_images/carla-system1.png" />
-<em>Example of an agent (Udacity’s CARLA serf-driving car) in the late 2010s</em></p>
-<p><img alt="carla-car" src="../../../_images/carla-car.png" /></p>
-<p>There are <a class="reference external" href="https://arxiv.org/pdf/2003.06404.pdf">two main schools of thought</a> in this subdomain.</p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Approach</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Modular Pipeline</p></td>
-<td><p>In the modular architecture in here sensors, perception, planning and control subsystems that work together to achieve the task at hand.</p></td>
-</tr>
-<tr class="row-odd"><td><p>End-to-End Pipeline</p></td>
-<td><p>In end-to-end approach the entire pipeline of transforming sensory inputs to driving commands is treated as a single learning task. This is what we also call Imitation Learning (IL) and is used to determine from only pixel input the steering and acceleration controls of a vehicle. Apart from IL, Reinforcement Learning (RL) can also be used in a simulator setting to transfer the learned optimal policy in the real-world.</p></td>
-</tr>
-</tbody>
-</table>
-<p><img alt="planning-approaches" src="../../../_images/planning-approaches.png" />
-<em>Modular vs End-to-End pipeline for real-world motion planning</em></p>
-<section id="modular-pipeline">
-<h2>Modular pipeline<a class="headerlink" href="#modular-pipeline" title="Permalink to this heading">#</a></h2>
-<p>The modular pipeline as shown below, consists of four main modules:</p>
-<p>NOTE: In the description below the motion planning module mentioned in the figure is called trajectory generation.</p>
-<p><img alt="modular-pipeline" src="../../../_images/modular-pipeline.png" />
-<em>Modular pipeline functional flow -from <a class="reference external" href="https://arxiv.org/pdf/1604.07446.pdf">here</a>.</em></p>
-<ol class="arabic simple">
-<li><p><strong>Global (Route) planning</strong>. In global route planning we are given a graph <span class="math notranslate nohighlight">\(G=(V, E)\)</span> and the agent must solve the problem of finding a shortest path (cost) route from the source vertex <span class="math notranslate nohighlight">\(s\)</span> to a destination or goal <span class="math notranslate nohighlight">\(g\)</span>.  The route planning scenarios can be fairly complicated involving a mixture of  road network restricted and unrestricted (eg. parking lot) modes. Route planning is usually decoupled from the other latency-sensitive subsystems of planning - it is being very infrequently executed.</p></li>
-<li><p><strong>Prediction</strong>. This involves estimations of what other agents active in the same locale as the agent of interest will do next.</p></li>
-<li><p><strong>Behavioral decision making</strong>. Makes a decision of the best action that the agent should make given the predictions of the other agents perceived intentions, signal and traffic sign detections.</p></li>
-<li><p><strong>Trajectory generation</strong>. The action decided by the behavioral planning module, is translated to a trajectory the control subsystem will attempt to follow as close as possible.</p></li>
-</ol>
-</section>
-<section id="end-to-end-pipeline">
-<h2>End to end pipeline<a class="headerlink" href="#end-to-end-pipeline" title="Permalink to this heading">#</a></h2>
-<p>The modular approach allows for engineering teams to divide and conquer each module almost independently of the others, provided that the system architecture governed by the interfaces of the modules allows it. But advantages go beyond the clear separation of tasks and extend to <em>explainability</em>: each module is free to invent the representations that is best suited for its task and compartmentalize the final decision about the trajectory of the agent, allowing us humans to go back and understand how the decision was reached.</p>
-<p>Having said that, modular architectures are working fine as long as the representations, their transformations and the individual module decisions support the real world environment that the agent is to operate. The moment the environment deviates from the typically expected one, modular architectures require <em>retuning</em> to be able to accommodate more corner cases never thought during the initial design.</p>
-<p><img alt="ball-road" src="../../../_images/ball-road.jpg" />
-<em>There are potentially tens of scenarios each with a different decision making process (reasoning) involving kids playing with balls</em></p>
-<p>Take for example, the case where the perception system detects children playing on the side of the road and a ball suddenly rolling onto the road - a decision to slam the brakes would have been prudent in a residential street but very risky in a higher speed road where e.g. changing the lane would be more prudent to avoid a rear end collision. The context of decision making is complex and the end to end pipeline approach if there are enough data (supervised or reinforcing) can <em>generalize</em> to cover cases that were not designed in. As there is a single task, the degrees of freedom of the end to end pipeline are spent in <em>learning</em> the right attentional representations and the right decisions at the expense of interpretability.</p>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="automated-planning">
+<h1>Automated Planning<a class="headerlink" href="#automated-planning" title="Permalink to this heading">#</a></h1>
+<p>Planning combines two major areas of AI: logic and search.</p>
+<p>If we are able to express the domain and problem at hand in a suitably expressive language, with  logical reasoning we are able to infer if predicates are satisfied or not and in this chapter can use domain-independent solvers to find solutions (e.g. via search algorithms) of the best sequence of actions to reach our goal state.</p>
+<p>Lets take a closer look to an example of a planning application where robots have to transport containers and store them. We can cover every possibility of the system operation and every event and action that could be taken by the robot and we will soon face a combinatory explosion of the possible scenarios, vulnerability to failures from unexpected events. Automated planning (and re-planning) avoids this problem by allowing the system to compute a plan to achieve a goal from the current state of the system.</p>
+<p><img alt="" src="../../../_images/dock-plan-example.png" /></p>
+<p><em>The goal is to stack container c2 on container c1 at location p2. Automated planning allows to compute a sequence of actions (plan) that will allow the autonomous robots r1, crane1, crane2 to achieve this task from the initial state (c1 is on c2 at p1). If the initial state were different (due to an unexpected event), the system would still be able to compute another plan to fulfill the task (from PDDL4j).</em></p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -626,7 +543,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./aiml-common/lectures/autonomous-cars"
+            path: "./aiml-common/lectures/planning"
         },
         predefinedOutput: true
     }
@@ -645,20 +562,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../planning/_index.html"
+       href="../logical-reasoning/logical-agents/_index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Planning</p>
+        <p class="prev-next-title">Logical Agents</p>
       </div>
     </a>
     <a class="right-next"
-       href="imitation-learning/_index.html"
+       href="pddl/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Imitation Learning</p>
+        <p class="prev-next-title">Planning Domain Definition Language (PDDL)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -671,21 +588,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular-pipeline">Modular pipeline</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#end-to-end-pipeline">End to end pipeline</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -63,13 +64,13 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/planning/search/forward-search/_index';</script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/planning/search/forward-search/_index.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/planning/search/forward-search/index';</script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/planning/search/forward-search/index.html" />
     <link rel="shortcut icon" href="../../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="The A* Algorithm" href="../a-star/_index.html" />
-    <link rel="prev" title="Planning with Search" href="../_index.html" />
+    <link rel="next" title="The A* Algorithm" href="../a-star/index.html" />
+    <link rel="prev" title="Planning with Search" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -152,12 +153,9 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
-<ul class="nav bd-sidenav">
+        <ul class="list-caption"><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="label-parts" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../../syllabus/_index.html">Syllabus</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to AI</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to AI</span></p><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="label-parts" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../ai-intro/course-introduction/_index.html">Course Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../ai-intro/systems-approach/_index.html">The four approaches towards AI</a></li>
 
@@ -165,9 +163,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-1</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-1</span></p><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="label-parts" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../learning-problem/_index.html">The Learning Problem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../regression/linear-regression/linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../optimization/sgd/_index.html">Stochastic Gradient Descent</a></li>
@@ -175,14 +171,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../optimization/maximum-likelihood/marginal_maximum_likelihood.html">Maximum Likelihood Estimation of a marginal model</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../../../optimization/maximum-likelihood/conditional_maximum_likelihood.html">Maximum Likelihood (ML) Estimation of conditional models</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-2</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-2</span></p><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="label-parts" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../classification/classification-intro/_index.html">Introduction to Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../classification/logistic-regression/_index.html">Logistic Regression</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Neural Networks</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Neural Networks</span></p><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="label-parts" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../classification/perceptron/_index.html">The Neuron (Perceptron)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../dnn/dnn-intro/_index.html">Deep Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../dnn/backprop-intro/_index.html">Introduction to Backpropagation</a></li>
@@ -191,31 +183,25 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../dnn/fashion-mnist-case-study.html">Fashion MNIST Case Study</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../optimization/regularization/_index.html">Regularization in Deep Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../optimization/regularization/regularization-workshop-1.html">Regularization Workshop</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Convolutional Neural Networks</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Convolutional Neural Networks</span></p><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="label-parts" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../cnn/cnn-intro/_index.html">Introduction to Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../cnn/cnn-layers/_index.html">CNN Architectures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../cnn/cnn-example-architectures/_index.html">CNN Example Architectures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">Using convnets with small datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../cnn/cnn-example-architectures/visualizing-what-convnets-learn.html">Visualizing what convnets learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../scene-understanding/feature-extraction-resnet/index.html">Feature Extraction via Residual Networks</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="label-parts" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../transfer-learning/transfer-learning-introduction.html">Introduction to Transfer Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../transfer-learning/transfer_learning_tutorial.html">Transfer Learning for Computer Vision Tutorial</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Scene Understanding</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Scene Understanding</span></p><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="label-parts" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../scene-understanding/scene-understanding-intro/index.html">Introduction to Scene Understanding</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../scene-understanding/object-detection/object-detection-intro/index.html">Object Detection</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../scene-understanding/object-detection/object-detection-intro/index.html">Object Detection</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../scene-understanding/object-detection/detection-metrics/index.html">Object Detection and Semantic Segmentation Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../scene-understanding/object-detection/rcnn-object-detection/index.html">Region-CNN (RCNN) Object Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../scene-understanding/object-detection/faster-rcnn-object-detection/index.html">Fast and Faster RCNN Object Detection</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../scene-understanding/semantic-segmentation/index.html">Object Det. &amp; Semantic Segm. Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../scene-understanding/semantic-segmentation/index.html">Object Det. &amp; Semantic Segm. Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/index.html">Mask R-CNN Semantic Segmentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/demo.html">Mask R-CNN Demo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_data.html">Mask R-CNN - Inspect Training Data</a></li>
@@ -244,38 +230,31 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Probabilistic Reasoning</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Probabilistic Reasoning</span></p><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="label-parts" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../pgm/pgm-intro/_index.html">Introduction to Probabilistic Reasoning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../pgm/recursive-state-estimation/_index.html">Recursive State Estimation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../pgm/discrete-bayesian-filter/discrete-bayesian-filter.html">Discrete Bayes Filter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../pgm/hmm-localization/_index.html">Localization and Tracking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../pgm/kalman-filters/one-dimensional-kalman-filters.html">One Dimensional Kalman Filters</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logical Reasoning</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Logical Reasoning</span></p><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="label-parts" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../logical-reasoning/automated-reasoning/_index.html">Automated Reasoning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../logical-reasoning/propositional-logic/_index.html">World Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../logical-reasoning/logical-agents/_index.html">Logical Agents</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning without Interactions</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../_index.html">Planning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../autonomous-cars/_index.html">Autonomous Agents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../autonomous-cars/imitation-learning/_index.html">Imitation Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../classical-planning/_index.html">Classical Planning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../_index.html">Planning with Search</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning without Interactions</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="label-parts" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Automated Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pddl/index.html">Planning Domain Definition Language (PDDL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pddl/logistics.html">Logistics Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pddl/manufacturing.html">Manufacrturing Robot Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Planning with Search</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Forward Search Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../a-star/_index.html">The A* Algorithm</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Markov Decision Processes</span></p>
-<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../a-star/index.html">The A* Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../motion-planning-cars/index.html">Motion Planning for Autonomous Cars</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Markov Decision Processes</span></p><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="label-parts" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../mdp/_index.html">Markov Decision Processes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mdp/mdp-intro/mdp_intro.html">Introduction to MDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mdp/bellman-expectation-backup/_index.html">Bellman Expectation Backup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mdp/bellman-optimality-backup/_index.html">Bellman Optimality Backup</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/policy-iteration/_index.html">Policy Iteration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/policy-evaluation/_index.html">Policy Evaluation (Prediction)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/policy-improvement/_index.html">Policy Improvement (Control)</a></li>
@@ -283,9 +262,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-lab/recycling-robot/_index.html">Finding the optimal policy of a recycling robot.</a></li>
 </ul>
 </li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="label-parts" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/_index.html">Reinforcement Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/prediction/monte-carlo.html">Monte-Carlo Prediction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/prediction/temporal-difference.html">Temporal Difference (TD) Prediction</a></li>
@@ -293,9 +270,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/generalized-policy-iteration/_index.html">Generalized Policy Iteration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/control/sarsa/_index.html">The SARSA Algorithm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/reinforce/_index.html">The REINFORCE Algorithm</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="label-parts" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../rnn/introduction/_index.html">Introduction to Recurrent Neural Networks (RNN)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../rnn/simple-rnn/_index.html">Simple RNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../rnn/lstm/_index.html">The Long Short-Term Memory (LSTM) Architecture</a></li>
@@ -305,23 +280,21 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="label-parts" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../nlp/nlp-introduction/nlp-pipelines/_index.html">Introduction to NLP Pipelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../nlp/nlp-introduction/tokenization/index.html">Tokenization</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/nlp-introduction/word2vec/_index.html">Embeddings</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/nlp-introduction/word2vec/_index.html">Embeddings</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../nlp/nlp-introduction/word2vec/word2vec_from_scratch.html">Word2Vec from scratch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../nlp/nlp-introduction/word2vec/word2vec_tensorflow_tutorial.html">Word2Vec Tensorflow Tutorial</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/language-models/_index.html">Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/language-models/_index.html">Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../nlp/language-models/cnn-language-model/index.html">CNN Language Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../nlp/language-models/simple-rnn-language-model/index.html">Simple RNN Language Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../nlp/language-models/lstm-language-model/index.html">LSTM Language Model from scratch</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/nmt/nmt-intro/index.html">Neural Machine Translation</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/nmt/nmt-intro/index.html">Neural Machine Translation</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../nlp/nmt/nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../nlp/nmt/rnn-nmt-attention/index.html">Attention in RNN-based NMT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../nlp/nmt/rnn-attention-workshop/seq2seq_and_attention.html">Attention in RNN NMT Workshop</a></li>
@@ -331,7 +304,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/transformers/transformers-intro.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/transformers/transformers-intro.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../nlp/transformers/annotated_transformer.html">The Annotated Transformer</a></li>
 
 
@@ -346,22 +319,17 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="label-parts" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../ml-math/index.html">Math for ML Textbook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../ml-math/probability/index.html">Probability Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../ml-math/linear-algebra/index.html">Linear Algebra for Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../ml-math/calculus/index.html">Calculus</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="label-parts" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/index.html">Your Programming Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../python/index.html">Learn Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
-</ul>
-
+</ul></li></ul>
     </div>
 </nav></div>
     </div>
@@ -431,7 +399,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/planning/search/forward-search/_index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/planning/search/forward-search/index.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -461,7 +429,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../../../../_sources/aiml-common/lectures/planning/search/forward-search/_index.md" target="_blank"
+      <li><a href="../../../../../_sources/aiml-common/lectures/planning/search/forward-search/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -573,39 +541,38 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="forward-search-algorithms">
 <h1>Forward Search Algorithms<a class="headerlink" href="#forward-search-algorithms" title="Permalink to this heading">#</a></h1>
 <p>Given an initial state <span class="math notranslate nohighlight">\(s_I\)</span> (that can be represented in a graph by an initial node) and the goal state <span class="math notranslate nohighlight">\(s_G\)</span> (represented by a destination node) that is reached after potentially a finite number of actions (if a solution exist), we develop here a forward search algorithm whose pseudo-code is from <a class="reference external" href="http://planning.cs.uiuc.edu/">Steven LaValle’s book - Chapter 2</a></p>
-<pre id="forward-search" style="display:hidden;">
-    \begin{algorithm}
-    \caption{Forward Search}
-    \begin{algorithmic}
-    \INPUT $s_I$, $s_G$
-    \STATE Q.Insert($s_I$), mark $s_I$ as explored.
-    \WHILE{Q not empty} 
-        \STATE $s \leftarrow Q.GetFirst()$
-        \IF{$s \in S_G$}
-            \RETURN SUCCESS
-        \ENDIF
-        \FOR{$a \in A(s)$}
-            \STATE $s' \leftarrow f(s,a)$
-            \IF{$s'$ not visited}
-               \STATE mark $s'$ as explored 
-               \STATE Q.Insert($s'$)
-            \ELSE 
-                \STATE Resolve duplicate $s'$
-            \ENDIF
-        \ENDFOR
-    \ENDWHILE
-    \end{algorithmic}
-    \end{algorithm}
-</pre>
-<p>The forward search uses two data structures, a priority queue (Q) and a list and proceeds as follows:</p>
+<div class="proof algorithm admonition" id="forward_search_algorithm">
+<p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Forward Search)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong> <span class="math notranslate nohighlight">\(s_I\)</span>, <span class="math notranslate nohighlight">\(s_G\)</span></p>
+<ol class="arabic">
+<li><p>Q.Insert(<span class="math notranslate nohighlight">\(s_I\)</span>), “mark <span class="math notranslate nohighlight">\(s_I\)</span> as explored.</p></li>
+<li><p>While Q not empty:</p>
+<ol class="arabic">
+<li><p><span class="math notranslate nohighlight">\(s \leftarrow Q.GetFirst()\)</span></p></li>
+<li><p>if <span class="math notranslate nohighlight">\(s \in S_G\)</span>:
+return SUCCESS</p></li>
+<li><p>for <span class="math notranslate nohighlight">\(a \in A(s)\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(s' \leftarrow f(s,a)\)</span></p>
+<p>if <span class="math notranslate nohighlight">\(s'\)</span> not visited:</p>
+<p>mark <span class="math notranslate nohighlight">\(s'\)</span> as explored</p>
+<p>Q.Insert(<span class="math notranslate nohighlight">\(s'\)</span>)</p>
+<p>else:</p>
+<p>Resolve duplicate <span class="math notranslate nohighlight">\(s'\)</span></p>
+</li>
+</ol>
+</li>
+</ol>
+</section>
+</div><p>The forward search uses two data structures, a priority queue (Q) and a list and proceeds as follows:</p>
 <ol class="arabic simple">
-<li><p>Provided that the starting state is not the goal state, we add it to a priority queue called the  <em>frontier</em> (also known as <em>open list</em> in the literature but we avoid using this term as its implemented is a queue). The name frontier is synonymous to <em>unexplored</em>.</p></li>
-<li><p>We <em>expand</em> each state in our frontier, by applying the finite set of actions, generating a new list of states. We use a list that we call the <em>explored set</em> or <em>closed list</em> to remember each node (state) that we expanded.  This is the list data structured we mentioned.</p></li>
-<li><p>We then go over each newly generated state and before adding it to the frontier we check whether it has been expanded before and in that case we discard it.</p></li>
+<li><p>Provided that the starting state is not the goal state, we add it to a priority queue called the  <em>frontier</em> (also known as <em>open list</em> in the literature but we avoid using this term as it is implemented as a queue). The name frontier is synonymous to <em>unexplored</em>.</p></li>
+<li><p>We <em>expand</em> each state in our frontier, by applying the finite set of actions, generating a new list of states. We use a list that we call the <em>explored set</em> or <em>closed list</em> to remember each node (state) that we expanded.</p></li>
+<li><p>We then go over each newly generated state and before adding it to the frontier we check whether it has been explored before and in that case we discard it.</p></li>
 </ol>
 <section id="forward-search-approaches">
 <h2>Forward-search approaches<a class="headerlink" href="#forward-search-approaches" title="Permalink to this heading">#</a></h2>
-<p>The only significant difference between various search algorithms is the specific priority function that implements line 3: <span class="math notranslate nohighlight">\(s \leftarrow Q.GetFirst()\)</span> in other words retrieves a state held in the priority queue for expansion.</p>
+<p>The only significant difference between various search algorithms is the specific priority function that implements <span class="math notranslate nohighlight">\(s \leftarrow Q.GetFirst()\)</span> in other words the function that retrieves a state from the list of states held in the priority queue for expansion.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Search</p></th>
@@ -651,17 +618,17 @@ shows a path of length 3. On the right the DFS search tree is shown assuming alp
 </section>
 <section id="dijkstras-algorithm">
 <h3>Dijkstra’s Algorithm<a class="headerlink" href="#dijkstras-algorithm" title="Permalink to this heading">#</a></h3>
-<p>Breadth-first search finds shortest paths in any graph whose edges have unit length. Can we adapt it to a more general graph G = (V, E) whose edge lengths <span class="math notranslate nohighlight">\(l(e)\)</span> are positive integers? These lengths effectively represent the cost of traversing the edge. fHere is a simple trick for converting G into something BFS can handle: break G’s long edges into unit-length pieces, by introducing “dummy” nodes as shown next.</p>
-<p><img alt="dijkstras-graph" src="../../../../../_images/dijkstras-graph.png" />
-<em>To construct the new graph <span class="math notranslate nohighlight">\(G'\)</span> for any edge <span class="math notranslate nohighlight">\(e = (s, s^\prime)\)</span> of <span class="math notranslate nohighlight">\(E\)</span>, replace it by <span class="math notranslate nohighlight">\(l(e)\)</span> edges of length 1, by adding <span class="math notranslate nohighlight">\(l(e) − 1\)</span>
+<p>Breadth-first search finds shortest paths in any graph whose edges have unit length. Can we adapt it to a more general graph G = (V, E) whose edge lengths <span class="math notranslate nohighlight">\(l(e)\)</span> are positive integers? These lengths effectively represent the cost of traversing the edge. Here is a simple trick for converting G into something BFS can handle: break G’s long edges into unit-length pieces, by introducing “dummy” nodes as shown next.</p>
+<p><img alt="dijkstras-graph" src="../../../../../_images/dijkstras-graph.png" /></p>
+<p><em>To construct the new graph <span class="math notranslate nohighlight">\(G'\)</span> for any edge <span class="math notranslate nohighlight">\(e = (s, s^\prime)\)</span> of <span class="math notranslate nohighlight">\(E\)</span>, replace it by <span class="math notranslate nohighlight">\(l(e)\)</span> edges of length 1, by adding <span class="math notranslate nohighlight">\(l(e) − 1\)</span>
 dummy nodes between nodes <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(s^\prime\)</span></em>.</p>
 <p>With the shown transformation, we can now run BFS on <span class="math notranslate nohighlight">\(G'\)</span> and the search tree will reveal the shortest path of each goal node from the starting point.</p>
-<p>The transformation allows us to solve the problem but it did result in an inefficient search where most of the nodes involved are searched but definitely will never be goal nodes. To look for more efficient ways to absorb the edge length <span class="math notranslate nohighlight">\(l(e)\)</span> we use the following of cost.</p>
-<p><img alt="search-cost-definitions" src="../../../../../_images/search-cost-defintions.png" />
-<em>Cost-to-come(<span class="math notranslate nohighlight">\(s\)</span>) or PastCost(<span class="math notranslate nohighlight">\(s\)</span>) vs. Cost-to-Go(<span class="math notranslate nohighlight">\(s\)</span>) or FutureCost(<span class="math notranslate nohighlight">\(s\)</span>). PastCost(<span class="math notranslate nohighlight">\(s\)</span>) is the minimum cost from the start state <span class="math notranslate nohighlight">\(s_I\)</span> to state <span class="math notranslate nohighlight">\(s\)</span>. FutureCost(<span class="math notranslate nohighlight">\(s\)</span>) is the minimum cost from the state <span class="math notranslate nohighlight">\(s\)</span> to the goal state <span class="math notranslate nohighlight">\(s_G\)</span>. The PastCost is used as the prioritization metric of the queue in Dijkstra’s algorithm. The addition of the PastCost with an estimate of the FutureCost, the heuristic <span class="math notranslate nohighlight">\(h(s)\)</span>, i.e. <span class="math notranslate nohighlight">\(G(s) =\)</span> PastCost(<span class="math notranslate nohighlight">\(s\)</span>)+<span class="math notranslate nohighlight">\(h(s)\)</span>, is used as the corresponding metric in the A* algorithm. What would be the ideal metric?</em></p>
+<p>The transformation allows us to solve the problem but it did result in an inefficient search where most of the nodes involved are searched but definitely will never be goal nodes. To look for more efficient ways to absorb the edge length <span class="math notranslate nohighlight">\(l(e)\)</span> we use the following as cost.</p>
+<p><img alt="search-cost-definitions" src="../../../../../_images/search-cost-defintions.png" /></p>
+<p><em>Cost-to-come(<span class="math notranslate nohighlight">\(s\)</span>) or PastCost(<span class="math notranslate nohighlight">\(s\)</span>) vs. Cost-to-Go(<span class="math notranslate nohighlight">\(s\)</span>) or FutureCost(<span class="math notranslate nohighlight">\(s\)</span>). PastCost(<span class="math notranslate nohighlight">\(s\)</span>) is the minimum cost from the start state <span class="math notranslate nohighlight">\(s_I\)</span> to state <span class="math notranslate nohighlight">\(s\)</span>. FutureCost(<span class="math notranslate nohighlight">\(s\)</span>) is the minimum cost from the state <span class="math notranslate nohighlight">\(s\)</span> to the goal state <span class="math notranslate nohighlight">\(s_G\)</span>. The PastCost is used as the prioritization metric of the queue in Dijkstra’s algorithm. The addition of the PastCost with an estimate of the FutureCost, the heuristic <span class="math notranslate nohighlight">\(h(s)\)</span>, i.e. <span class="math notranslate nohighlight">\(G(s) =\)</span> PastCost(<span class="math notranslate nohighlight">\(s\)</span>)+<span class="math notranslate nohighlight">\(h(s)\)</span>, is used as the corresponding metric in the A* algorithm. What would be the ideal metric?</em></p>
 <p>The following example is instructive of the execution steps of the algorithm.</p>
-<p><img alt="dijkstras-example" src="../../../../../_images/dijkstras-example.png" />
-<em>Example of Dijkstra’s algorithm execution steps and with <span class="math notranslate nohighlight">\(s_I=A\)</span></em></p>
+<p><img alt="dijkstras-example" src="../../../../../_images/dijkstras-example.png" /></p>
+<p><em>Example of Dijkstra’s algorithm execution steps and with <span class="math notranslate nohighlight">\(s_I=A\)</span></em></p>
 <p>The exact same pseudo-code is executed as before but the priority metric <span class="math notranslate nohighlight">\(C(s^\prime)=C^*(s) + l(e)\)</span> now accounts for costs as they are calculated causing the queue to be reordered accordingly.</p>
 <p>Here, <span class="math notranslate nohighlight">\(C(s^\prime)\)</span> represents the best cost-to-come that is known so far, but we do not write <span class="math notranslate nohighlight">\(C^*\)</span> because it is not yet known whether <span class="math notranslate nohighlight">\(s^\prime\)</span> was reached optimally.</p>
 <p>Due to this, some work is required in line: <span class="math notranslate nohighlight">\(\texttt{Resolve duplicate}\)</span> <span class="math notranslate nohighlight">\(s^\prime\)</span>. If <span class="math notranslate nohighlight">\(s^\prime\)</span> already exists in <span class="math notranslate nohighlight">\(Q\)</span>, then it is possible that the newly discovered path to <span class="math notranslate nohighlight">\(s^\prime\)</span> is more efficient. If so, then the cost-to-come value <span class="math notranslate nohighlight">\(C(s^\prime)\)</span> must be lowered for <span class="math notranslate nohighlight">\(s^\prime\)</span>, and <span class="math notranslate nohighlight">\(Q\)</span> must be reordered accordingly. When does <span class="math notranslate nohighlight">\(C(s)\)</span> finally become <span class="math notranslate nohighlight">\(C^*(x)\)</span> for some state <span class="math notranslate nohighlight">\(s\)</span>? Once <span class="math notranslate nohighlight">\(s\)</span> is removed from <span class="math notranslate nohighlight">\(Q\)</span> using <span class="math notranslate nohighlight">\(Q.GetFirst()\)</span>, the state becomes dead, and it is known that <span class="math notranslate nohighlight">\(x\)</span> cannot be reached with a lower cost.</p>
@@ -701,7 +668,7 @@ dummy nodes between nodes <span class="math notranslate nohighlight">\(s\)</span
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../_index.html"
+       href="../index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -710,7 +677,7 @@ dummy nodes between nodes <span class="math notranslate nohighlight">\(s\)</span
       </div>
     </a>
     <a class="right-next"
-       href="../a-star/_index.html"
+       href="../a-star/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>

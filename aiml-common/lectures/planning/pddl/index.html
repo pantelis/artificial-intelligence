@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Classical Planning &#8212; Introduction to Artificial Intelligence</title>
+    <title>Planning Domain Definition Language (PDDL) &#8212; Introduction to Artificial Intelligence</title>
   
   
   
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -63,13 +64,13 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/planning/classical-planning/_index';</script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/planning/classical-planning/_index.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/planning/pddl/index';</script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/planning/pddl/index.html" />
     <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Planning with Search" href="../search/_index.html" />
-    <link rel="prev" title="Imitation Learning" href="../../autonomous-cars/imitation-learning/_index.html" />
+    <link rel="next" title="Logistics Planning" href="logistics.html" />
+    <link rel="prev" title="Automated Planning" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -152,12 +153,9 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
-<ul class="nav bd-sidenav">
+        <ul class="list-caption"><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="label-parts" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../syllabus/_index.html">Syllabus</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to AI</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to AI</span></p><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="label-parts" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../ai-intro/course-introduction/_index.html">Course Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ai-intro/systems-approach/_index.html">The four approaches towards AI</a></li>
 
@@ -165,9 +163,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-1</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-1</span></p><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="label-parts" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../learning-problem/_index.html">The Learning Problem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../regression/linear-regression/linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../optimization/sgd/_index.html">Stochastic Gradient Descent</a></li>
@@ -175,14 +171,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../optimization/maximum-likelihood/marginal_maximum_likelihood.html">Maximum Likelihood Estimation of a marginal model</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../../optimization/maximum-likelihood/conditional_maximum_likelihood.html">Maximum Likelihood (ML) Estimation of conditional models</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-2</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-2</span></p><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="label-parts" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../classification/classification-intro/_index.html">Introduction to Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../classification/logistic-regression/_index.html">Logistic Regression</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Neural Networks</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Neural Networks</span></p><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="label-parts" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../classification/perceptron/_index.html">The Neuron (Perceptron)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dnn/dnn-intro/_index.html">Deep Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dnn/backprop-intro/_index.html">Introduction to Backpropagation</a></li>
@@ -191,31 +183,25 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../dnn/fashion-mnist-case-study.html">Fashion MNIST Case Study</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../optimization/regularization/_index.html">Regularization in Deep Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../optimization/regularization/regularization-workshop-1.html">Regularization Workshop</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Convolutional Neural Networks</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Convolutional Neural Networks</span></p><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="label-parts" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-intro/_index.html">Introduction to Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-layers/_index.html">CNN Architectures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/_index.html">CNN Example Architectures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">Using convnets with small datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/visualizing-what-convnets-learn.html">Visualizing what convnets learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../scene-understanding/feature-extraction-resnet/index.html">Feature Extraction via Residual Networks</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="label-parts" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../transfer-learning/transfer-learning-introduction.html">Introduction to Transfer Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../transfer-learning/transfer_learning_tutorial.html">Transfer Learning for Computer Vision Tutorial</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Scene Understanding</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Scene Understanding</span></p><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="label-parts" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../scene-understanding/scene-understanding-intro/index.html">Introduction to Scene Understanding</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../scene-understanding/object-detection/object-detection-intro/index.html">Object Detection</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../scene-understanding/object-detection/object-detection-intro/index.html">Object Detection</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/detection-metrics/index.html">Object Detection and Semantic Segmentation Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/rcnn-object-detection/index.html">Region-CNN (RCNN) Object Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/faster-rcnn-object-detection/index.html">Fast and Faster RCNN Object Detection</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/index.html">Object Det. &amp; Semantic Segm. Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/index.html">Object Det. &amp; Semantic Segm. Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/index.html">Mask R-CNN Semantic Segmentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/demo.html">Mask R-CNN Demo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_data.html">Mask R-CNN - Inspect Training Data</a></li>
@@ -244,38 +230,31 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Probabilistic Reasoning</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Probabilistic Reasoning</span></p><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="label-parts" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../pgm/pgm-intro/_index.html">Introduction to Probabilistic Reasoning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../pgm/recursive-state-estimation/_index.html">Recursive State Estimation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../pgm/discrete-bayesian-filter/discrete-bayesian-filter.html">Discrete Bayes Filter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../pgm/hmm-localization/_index.html">Localization and Tracking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../pgm/kalman-filters/one-dimensional-kalman-filters.html">One Dimensional Kalman Filters</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logical Reasoning</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Logical Reasoning</span></p><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="label-parts" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/automated-reasoning/_index.html">Automated Reasoning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/propositional-logic/_index.html">World Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/logical-agents/_index.html">Logical Agents</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning without Interactions</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../_index.html">Planning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../autonomous-cars/_index.html">Autonomous Agents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../autonomous-cars/imitation-learning/_index.html">Imitation Learning</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Classical Planning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../search/_index.html">Planning with Search</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../search/forward-search/_index.html">Forward Search Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../search/a-star/_index.html">The A* Algorithm</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Markov Decision Processes</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning without Interactions</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="label-parts" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Automated Planning</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Planning Domain Definition Language (PDDL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logistics.html">Logistics Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manufacturing.html">Manufacrturing Robot Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../search/index.html">Planning with Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../search/forward-search/index.html">Forward Search Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../search/a-star/index.html">The A* Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../motion-planning-cars/index.html">Motion Planning for Autonomous Cars</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Markov Decision Processes</span></p><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="label-parts" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../mdp/_index.html">Markov Decision Processes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../mdp/mdp-intro/mdp_intro.html">Introduction to MDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../mdp/bellman-expectation-backup/_index.html">Bellman Expectation Backup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../mdp/bellman-optimality-backup/_index.html">Bellman Optimality Backup</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../mdp/mdp-dp-algorithms/index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../mdp/mdp-dp-algorithms/index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-dp-algorithms/policy-iteration/_index.html">Policy Iteration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-dp-algorithms/policy-evaluation/_index.html">Policy Evaluation (Prediction)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-dp-algorithms/policy-improvement/_index.html">Policy Improvement (Control)</a></li>
@@ -283,9 +262,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-lab/recycling-robot/_index.html">Finding the optimal policy of a recycling robot.</a></li>
 </ul>
 </li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="label-parts" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/_index.html">Reinforcement Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/prediction/monte-carlo.html">Monte-Carlo Prediction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/prediction/temporal-difference.html">Temporal Difference (TD) Prediction</a></li>
@@ -293,9 +270,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/generalized-policy-iteration/_index.html">Generalized Policy Iteration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/control/sarsa/_index.html">The SARSA Algorithm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/reinforce/_index.html">The REINFORCE Algorithm</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="label-parts" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../rnn/introduction/_index.html">Introduction to Recurrent Neural Networks (RNN)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rnn/simple-rnn/_index.html">Simple RNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rnn/lstm/_index.html">The Long Short-Term Memory (LSTM) Architecture</a></li>
@@ -305,23 +280,21 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="label-parts" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../nlp/nlp-introduction/nlp-pipelines/_index.html">Introduction to NLP Pipelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../nlp/nlp-introduction/tokenization/index.html">Tokenization</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/nlp-introduction/word2vec/_index.html">Embeddings</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/nlp-introduction/word2vec/_index.html">Embeddings</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../nlp/nlp-introduction/word2vec/word2vec_from_scratch.html">Word2Vec from scratch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../nlp/nlp-introduction/word2vec/word2vec_tensorflow_tutorial.html">Word2Vec Tensorflow Tutorial</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/language-models/_index.html">Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/language-models/_index.html">Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../nlp/language-models/cnn-language-model/index.html">CNN Language Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../nlp/language-models/simple-rnn-language-model/index.html">Simple RNN Language Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../nlp/language-models/lstm-language-model/index.html">LSTM Language Model from scratch</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/nmt/nmt-intro/index.html">Neural Machine Translation</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/nmt/nmt-intro/index.html">Neural Machine Translation</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../nlp/nmt/nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../nlp/nmt/rnn-nmt-attention/index.html">Attention in RNN-based NMT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../nlp/nmt/rnn-attention-workshop/seq2seq_and_attention.html">Attention in RNN NMT Workshop</a></li>
@@ -331,7 +304,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/transformers/transformers-intro.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/transformers/transformers-intro.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../nlp/transformers/annotated_transformer.html">The Annotated Transformer</a></li>
 
 
@@ -346,22 +319,17 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="label-parts" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/index.html">Math for ML Textbook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/probability/index.html">Probability Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/linear-algebra/index.html">Linear Algebra for Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/calculus/index.html">Calculus</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
-<ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="label-parts" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/index.html">Your Programming Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Learn Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
-</ul>
-
+</ul></li></ul>
     </div>
 </nav></div>
     </div>
@@ -431,7 +399,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/planning/classical-planning/_index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/planning/pddl/index.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -461,7 +429,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../../../_sources/aiml-common/lectures/planning/classical-planning/_index.md" target="_blank"
+      <li><a href="../../../../_sources/aiml-common/lectures/planning/pddl/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -543,7 +511,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Classical Planning</h1>
+    <h1>Planning Domain Definition Language (PDDL)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -553,7 +521,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planning-domain-definition-language-pddl">Planning Domain Definition Language (PDDL)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pddl-language-constructs">PDDL Language Constructs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pddl-domain-file">PDDL Domain File</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pddl-tools">PDDL Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pddl-solvers-planners">PDDL Solvers (Planners)</a></li>
 </ul>
             </nav>
         </div>
@@ -565,16 +538,22 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="classical-planning">
-<h1>Classical Planning<a class="headerlink" href="#classical-planning" title="Permalink to this heading">#</a></h1>
-<section id="planning-domain-definition-language-pddl">
-<h2>Planning Domain Definition Language (PDDL)<a class="headerlink" href="#planning-domain-definition-language-pddl" title="Permalink to this heading">#</a></h2>
-<p>In propositional logic-based planning we have seen the combinatorial explosion problem that results from the need to include in the reasoning / inference step all possible states and actions combinations over time. To avoid such explosion, with obvious benefits to the planning efficiency, we introduce a language called Planning Domain Definition Language (PDDL) that allows for compressive expressiveness at the action space via <em>action schemas</em> as we will see shortly. PDDL is positioned at the input of the <em>domain independent</em> planner as shown in the figure below.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="planning-domain-definition-language-pddl">
+<h1>Planning Domain Definition Language (PDDL)<a class="headerlink" href="#planning-domain-definition-language-pddl" title="Permalink to this heading">#</a></h1>
+<p>In the chapter of propositional logic we have seen the combinatorial explosion problem that results from the need to include in the reasoning / inference step all possible states and actions combinations over time (the KB was growing substantially over time).</p>
+<p>To avoid such explosion, with obvious benefits to the planning efficiency, we</p>
+<ol class="arabic simple">
+<li><p>Introduce a factored representation language called Planning Domain Definition Language (PDDL) that allows for compressive expressiveness of the planning domain (general application space such as logistics) and problem (the specific logistics task we face).</p></li>
+<li><p>Solve the planning problem by using <em>domain-independent</em> solvers that are able to reason over the PDDL expressed domain and problem. The domain independence is probably not the most efficient way to solve a planning problem but it is the most general and flexible way to do so and the associated tradeoff is worth making.</p></li>
+</ol>
+<p>As show in the figure below, a domain-independent solver or planner takes two inputs: 1) the domain model written in a planning language and in the so called domain file and 2) a problem definition that describes the initial state <span class="math notranslate nohighlight">\(i\)</span> and the desired goal state <span class="math notranslate nohighlight">\(g\)</span> using the domain model’s terminology; and produces as output a plan, that is, a sequence of actions
+that takes the agent from the initial state to the goal state.</p>
 <p><img alt="automated-planning" src="../../../../_images/automated-planning.png" />
-<em>Planning System: A domain-independent solver or planner takes two inputs: 1) the domain
-model written in a planning language and 2) a problem definition that describes the initial state <span class="math notranslate nohighlight">\(i\)</span> and the desired
-goal state <span class="math notranslate nohighlight">\(g\)</span> using the domain model’s terminology; and produces as output a plan, that is, a sequence of actions
-that takes the agent from the initial state to the goal state. From <a class="reference external" href="https://repository.tudelft.nl/islandora/object/uuid%3A1727bc3f-c0ca-4439-9590-914339678723">here</a></em></p>
+<em>Automated Planning System (from <a class="reference external" href="https://repository.tudelft.nl/islandora/object/uuid%3A1727bc3f-c0ca-4439-9590-914339678723">here</a>)</em></p>
+<section id="pddl-language-constructs">
+<h2>PDDL Language Constructs<a class="headerlink" href="#pddl-language-constructs" title="Permalink to this heading">#</a></h2>
+<section id="pddl-domain-file">
+<h3>PDDL Domain File<a class="headerlink" href="#pddl-domain-file" title="Permalink to this heading">#</a></h3>
 <p>PDDL expresses the four things we need to plan a sequence of actions. The set of all predicates and action schemas are defined in the <strong>domain</strong> file (<span class="math notranslate nohighlight">\(\mathtt{domain.pddl}\)</span>) as shown next.</p>
 <table class="table">
 <thead>
@@ -596,14 +575,18 @@ that takes the agent from the initial state to the goal state. From <a class="re
 <td><p>Actions are described by action schemas that effectively define the functions needed to do problem-solving search. The schema consist of the <em>name</em>, the signature or the list of all the boolean <em>variables</em> that are <em>ground</em> and functionless, a <em>precondition</em> and <em>effect</em>. The signature is now an ordered list of named parameters, each with a type.</p></td>
 </tr>
 <tr class="row-even"><td><p></p></td>
-<td><p>The <strong>precondition</strong> is a logical formula, whose basic building blocks are the above mentioned predicates, combined using the standard first order logic logical connectives. The predicates can only be parametrized by the operator parameters, the domain constraints, or, if they appear within the scope of a forall or exists statement, by the variable introduced by the quantifier.</p></td>
+<td><p>The <strong>precondition</strong> is a logical formula, whose basic building blocks are the above mentioned predicates, combined using the standard first-order logic logical connectives. The predicates can only be parametrized by the operator parameters, the domain constraints, or, if they appear within the scope of a forall or exists statement, by the variable introduced by the quantifier.</p></td>
 </tr>
 <tr class="row-odd"><td><p></p></td>
 <td><p>The <strong>effect</strong> is similar, except that it described a partial assignment, rather than a formula, and thus can not contain any disjunctions.</p></td>
 </tr>
+<tr class="row-even"><td><p>In PDDL a state is a conjunction of ground boolean predicates which means that if the predicate has any arguments they are constants (grounded) without any variables. For example,  $<span class="math notranslate nohighlight">\(\mathtt{On(Box_1, Table_2) \land On(Box_2, Table_2)}\)</span><span class="math notranslate nohighlight">\(  is a state expression. \)</span>\mathtt{Box_1}<span class="math notranslate nohighlight">\( is distinct than \)</span>\mathtt{Box_2}$. All fluents that are not specified are assumed to be FALSE - the so-called <em>closed world</em> assumption.</p></td>
+<td><p></p></td>
+</tr>
 </tbody>
 </table>
-<p>For the famous Blocks world shown below where a robotic arm must reason to stack blocks according what the goal is, we list the corresponding domain PDDL specification.</p>
+<p>Note that the specification via <em>action schemas</em> rather than via an enumeration of all possible actions for all possible states is compressive via the usage of variables.</p>
+<p>For the famous Blocksworld domain shown below where a robotic arm must reason to stack blocks according what the goal is, we list the corresponding domain PDDL specification.</p>
 <p><img alt="blocks-world" src="../../../../_images/blocks-world.png" />
 <em>Blocks planning problem</em></p>
 <p>In natural language, the rules are:</p>
@@ -616,6 +599,7 @@ if it is not holding another block, i.e., the arm can be pick
 up only one block at a time</p></li>
 <li><p>The arm can put down blocks on blocks or on the table</p></li>
 </ul>
+<p>Noteworthy is that these rules can be automatically translated into PDDL via <a class="reference external" href="https://repository.tudelft.nl/islandora/object/uuid:1727bc3f-c0ca-4439-9590-914339678723">ad-hoc</a> or via <a class="reference external" href="https://icaps23.icaps-conference.org/demos/papers/6374_paper.pdf">foundational Large Language Models (LLMs)</a>.</p>
 <p>In PDDL these rules are expressed as:</p>
 <div class="highlight-pddl notranslate"><div class="highlight"><pre><span></span>
 
@@ -720,8 +704,18 @@ special ontable predicate
 )
 </pre></div>
 </div>
-<p>You need to experiment with <a class="reference external" href="http://editor.planning.domains/">this planning tool</a> to make sure you understand <em>what</em> PDDL does and be familiar with the <a class="reference external" href="https://www.youtube.com/watch?v=XW0z8Oik6G8&amp;feature=youtu.be">workflow</a> of generating a plan.  The blocks word problem is a classic problem employed in the International Planning Competition (IPC) 2000. For non-trivial examples where PDDL is used in e.g. robotics see <a class="reference external" href="https://kcl-planning.github.io/ROSPlan/">ROSPlan</a>.</p>
+</section>
+</section>
+<section id="pddl-tools">
+<h2>PDDL Tools<a class="headerlink" href="#pddl-tools" title="Permalink to this heading">#</a></h2>
+<p>Use the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=jan-dolejsi.pddl">PDDL VSCode extension</a> as described here</p>
+<p>to invoke <a class="reference external" href="http://editor.planning.domains/">this planning server</a> and ensure you understand the ropes of using PDDL planners. The blocks word problem is a classic problem employed in the International Planning Competition (IPC) 2000. For non-trivial examples in robotics see <a class="reference external" href="https://github.com/PlanSys2/ros2_planning_system">Plansys2</a> - any AI engineer must know and understand the ROS2 platform.</p>
+</section>
+<section id="pddl-solvers-planners">
+<h2>PDDL Solvers (Planners)<a class="headerlink" href="#pddl-solvers-planners" title="Permalink to this heading">#</a></h2>
 <p>Now we need to look how the planners solve the PDDL expressed problems. As it turns out many use the Forward (state-space) Search algorithms where despite the factored representation assumed here, we can treat states and actions as atomic and use forward search algorithms with heuristics such as A*.</p>
+<p>The <a class="reference external" href="http://www.fast-downward.org/">Fast Downward</a> planner is a state-of-the-art planner that uses the <a class="reference external" href="https://www.aaai.org/Papers/ICAPS/2003/ICAPS03-019.pdf">FF heuristic</a> and the <a class="reference external" href="https://www.aaai.org/ocs/index.php/ICAPS/ICAPS10/paper/view/1441">LAMA heuristic</a> to solve PDDL problems. The VSCode PDDL extension <a class="reference external" href="https://youtu.be/_NOVa4i7Us8?list=PL1Q0jeuU6XppS_r2Sa9fzVanpbXKqLsYS&amp;t=384">allows for visualizing the search tree</a> so make sure you understand how the search tree is constructed and how the search algorithm works.</p>
+<p>PDDL as a representational language is <a class="reference external" href="https://planning.wiki/ref">evolving</a> and new solvers are regularly appearing to allow us to relax the contraints such as determinism, full observability, etc. and apply planning to more realistic problems.</p>
 </section>
 </section>
 
@@ -738,7 +732,7 @@ special ontable predicate
         },
         kernelOptions: {
             name: "python3",
-            path: "./aiml-common/lectures/planning/classical-planning"
+            path: "./aiml-common/lectures/planning/pddl"
         },
         predefinedOutput: true
     }
@@ -757,20 +751,20 @@ special ontable predicate
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../autonomous-cars/imitation-learning/_index.html"
+       href="../index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Imitation Learning</p>
+        <p class="prev-next-title">Automated Planning</p>
       </div>
     </a>
     <a class="right-next"
-       href="../search/_index.html"
+       href="logistics.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Planning with Search</p>
+        <p class="prev-next-title">Logistics Planning</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -792,7 +786,12 @@ special ontable predicate
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planning-domain-definition-language-pddl">Planning Domain Definition Language (PDDL)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pddl-language-constructs">PDDL Language Constructs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pddl-domain-file">PDDL Domain File</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pddl-tools">PDDL Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pddl-solvers-planners">PDDL Solvers (Planners)</a></li>
 </ul>
   </nav></div>
 

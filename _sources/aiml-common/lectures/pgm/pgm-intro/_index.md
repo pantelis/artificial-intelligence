@@ -1,9 +1,3 @@
----
-title: Introduction to Probabilistic Reasoning
-weight: 81
-draft: false
----
-
 # Introduction to Probabilistic Reasoning
 
 In the scene understanding chapter we started putting together the perception pipelines that resulted in us knowing where are the objects of interest in the image coordinate frame but we stopped short of any advanced methods that can lead to what we humans call _understanding_. We hinted that assigning an object an symbolic identity is an essential ability that allows an embodied AI agent to reason about the scene using symbolic reasoning approaches researched by the AI community over many decades. 

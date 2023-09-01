@@ -1,17 +1,13 @@
----
-title: Autonomous Agents
----
+# Motion Planning for Autonomous Cars
 
-# Autonomous Agents
-
-In this section we treat examples that combine deep learning based perceptive tasks and real-world motion planning. If you as an aspiring data scientist wonder which application theme to specialize on, look no further than  **mission critical** industries - they are the drivers of the economy of every country.  The **robotics / self-driving cars** domain requires the design of advanced agents that perceive the environment using noisy sensors, make decisions under uncertainty, actuate a host of electronics to execute decisions, all while communicate with humans in natural language or sense driver psychological / physiological state. A real world manifestation of the above architecture is shown below. 
+In this section we provide examples of a realistic planning application that deviates significantly from the assumptions of the PDDL-based planning - its geared towards supporting motion planning in environments which are stochastic and partially observed.  
 
 ![carla-system](images/carla-system.png)
 _Example of an agent (Udacity's CARLA serf-driving car) in the late 2010s_
 
 ![carla-car](images/carla-car.png)
 
-There are [two main schools of thought](https://arxiv.org/pdf/2003.06404.pdf) in this subdomain. 
+There are [two main schools of thought](https://arxiv.org/pdf/2003.06404.pdf) in designing motion planning systems for autonomous cars:
 
 | Approach            | Description                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
