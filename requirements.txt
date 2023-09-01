@@ -3,6 +3,7 @@ jupyter-book==0.15.1
 sphinx-autobuild
 sphinxcontrib-youtube
 sphinxcontrib-bibtex
+sphinx-proof
 diagrams
 filterpy
 sphinxcontrib-svg2pdfconverter
@@ -15,7 +16,7 @@ nvidia-ml-py3
 
 
 # ipywidgets
-# sphinx-proof
+# 
 # sphinx-inline-tabs
 # sphinxext-rediraffe
 # sphinx-panels

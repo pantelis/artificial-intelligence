@@ -67,7 +67,7 @@ sphinx:
       use_issues_button: true
       use_repository_button: true
       use_edit_page_button: false
-      show_navbar_depth: 1
+      show_navbar_depth: 0
     intersphinx_mapping:
       python:
         - "https://docs.python.org/3/"
@@ -114,7 +114,7 @@ sphinx:
     #- sphinx_click.ext
     # - sphinx_inline_tabs
     # - sphinxext.rediraffe
-    # - sphinx_proof
+    - sphinx_proof
     # - sphinxcontrib.mermaid
     # - sphinxcontrib.seqdiag
     #- sphinx_examples
