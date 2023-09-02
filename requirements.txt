@@ -11,7 +11,7 @@ transformers
 datasets
 accelerate
 nvidia-ml-py3
-
+unified-planning[enghines, plot]
 # https://raw.githubusercontent.com/ultralytics/yolov5/master/requirements.txt
 
 

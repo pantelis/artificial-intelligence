@@ -98,12 +98,18 @@ parts:
   chapters:        
   - file: aiml-common/lectures/planning/index.md  
   - file: aiml-common/lectures/planning/pddl/index.md
-  - file: aiml-common/lectures/planning/pddl/logistics.md
-  - file: aiml-common/lectures/planning/pddl/manufacturing.md     
-  - file: aiml-common/lectures/planning/search/index.md     
-  - file: aiml-common/lectures/planning/search/forward-search/index.md     
-  - file: aiml-common/lectures/planning/search/a-star/index.md     
-  - file: aiml-common/lectures/motion-planning-cars/index.md  
+    title: PDDL
+    sections:  
+    - file: aiml-common/lectures/planning/pddl/blocksworld/up_blocksworld_demo.ipynb
+    - file: aiml-common/lectures/planning/pddl/logistics/index.md
+    - file: aiml-common/lectures/planning/pddl/manufacturing/index.md     
+  - file: aiml-common/lectures/planning/search/index.md
+    title: Search Algorithms
+    sections:  
+    - file: aiml-common/lectures/planning/search/forward-search/index.md     
+    - file: aiml-common/lectures/planning/search/search-alg-demo/index.md
+    - file: aiml-common/lectures/planning/search/a-star/index.md     
+    - file: aiml-common/lectures/motion-planning-cars/index.md  
   #- file: aiml-common/lectures/autonomous-cars/imitation-learning/_index.md       
 
 - caption: Markov Decision Processes

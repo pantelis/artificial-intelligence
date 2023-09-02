@@ -38,7 +38,9 @@
 				"njpwerner.autodocstring",
 				"ms-toolsai.jupyter",
 				"ms-toolsai.vscode-jupyter-powertoys",
-				"eamodio.gitlens"
+				"eamodio.gitlens",
+				"github.vscode-github-actions",
+				"jan-dolejsi.pddl"
 			],
 			"settings": {
 				"terminal.integrated.profiles.linux": {
