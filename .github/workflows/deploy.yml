@@ -18,7 +18,11 @@ jobs:
         with:
           submodules: recursive
           token: ${{ secrets.AIML_COMMON_CICD_TOKEN }}
-      
+      - name: Cache apt packages
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+            packages: curl git-lfs ffmpeg libsm6 libxext6 graphviz libgraphviz-dev xdg-utils swig gringo
+            version: 1.0
       - name: Set up python
         id: setup-python
         uses: actions/setup-python@v4
