@@ -10,3 +10,4 @@ Lets take a closer look to an example of a planning application where robots hav
 
 *The goal is to stack container c2 on container c1 at location p2. Automated planning allows to compute a sequence of actions (plan) that will allow the autonomous robots r1, crane1, crane2 to achieve this task from the initial state (c1 is on c2 at p1). If the initial state were different (due to an unexpected event), the system would still be able to compute another plan to fulfill the task (from PDDL4j).*
 
+In the following sections we present techniques for a limited subset of automated planning 

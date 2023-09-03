@@ -1,0 +1,1345 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>The Unified Planning Library &#8212; Introduction to Artificial Intelligence</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/planning/pddl/blocksworld/up_blocksworld_demo';</script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/planning/pddl/blocksworld/up_blocksworld_demo.html" />
+    <link rel="shortcut icon" href="../../../../../_static/logo.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Logistics Planning in PDDL" href="../logistics/index.html" />
+    <link rel="prev" title="Planning Domain Definition Language (PDDL)" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="list-caption"><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="label-parts" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../syllabus/_index.html">Syllabus</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to AI</span></p><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="label-parts" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../ai-intro/course-introduction/_index.html">Course Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ai-intro/systems-approach/_index.html">The four approaches towards AI</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../../ai-intro/agents/_index.html">Agent-Environment Interface</a></li>
+
+
+
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-1</span></p><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="label-parts" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../learning-problem/_index.html">The Learning Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../regression/linear-regression/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../optimization/sgd/_index.html">Stochastic Gradient Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../entropy/_index.html">Entropy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../optimization/maximum-likelihood/marginal_maximum_likelihood.html">Maximum Likelihood Estimation of a marginal model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../../optimization/maximum-likelihood/conditional_maximum_likelihood.html">Maximum Likelihood (ML) Estimation of conditional models</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-2</span></p><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="label-parts" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../classification/classification-intro/_index.html">Introduction to Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../classification/logistic-regression/_index.html">Logistic Regression</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Neural Networks</span></p><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="label-parts" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../classification/perceptron/_index.html">The Neuron (Perceptron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dnn/dnn-intro/_index.html">Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dnn/backprop-intro/_index.html">Introduction to Backpropagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dnn/backprop-dnn/_index.html">Backpropagation in Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dnn/backprop-dnn-exercises/_index.html">Backpropagation DNN exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dnn/fashion-mnist-case-study.html">Fashion MNIST Case Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../optimization/regularization/_index.html">Regularization in Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../optimization/regularization/regularization-workshop-1.html">Regularization Workshop</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Convolutional Neural Networks</span></p><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="label-parts" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../cnn/cnn-intro/_index.html">Introduction to Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cnn/cnn-layers/_index.html">CNN Architectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cnn/cnn-example-architectures/_index.html">CNN Example Architectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">Using convnets with small datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cnn/cnn-example-architectures/visualizing-what-convnets-learn.html">Visualizing what convnets learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../scene-understanding/feature-extraction-resnet/index.html">Feature Extraction via Residual Networks</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="label-parts" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../transfer-learning/transfer-learning-introduction.html">Introduction to Transfer Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../transfer-learning/transfer_learning_tutorial.html">Transfer Learning for Computer Vision Tutorial</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Scene Understanding</span></p><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="label-parts" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../scene-understanding/scene-understanding-intro/index.html">Introduction to Scene Understanding</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../scene-understanding/object-detection/object-detection-intro/index.html">Object Detection</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../scene-understanding/object-detection/detection-metrics/index.html">Object Detection and Semantic Segmentation Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../scene-understanding/object-detection/rcnn-object-detection/index.html">Region-CNN (RCNN) Object Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../scene-understanding/object-detection/faster-rcnn-object-detection/index.html">Fast and Faster RCNN Object Detection</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../scene-understanding/semantic-segmentation/index.html">Object Det. &amp; Semantic Segm. Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/index.html">Mask R-CNN Semantic Segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/demo.html">Mask R-CNN Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_data.html">Mask R-CNN - Inspect Training Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_model.html">Mask R-CNN - Inspect Trained Model</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_weights.html">Mask R-CNN - Inspect Weights of a Trained Model</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.html">Detectron2 Beginner’s Tutorial</a></li>
+
+
+
+
+
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Probabilistic Reasoning</span></p><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="label-parts" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../pgm/pgm-intro/_index.html">Introduction to Probabilistic Reasoning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pgm/recursive-state-estimation/_index.html">Recursive State Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pgm/discrete-bayesian-filter/discrete-bayesian-filter.html">Discrete Bayes Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pgm/hmm-localization/_index.html">Localization and Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pgm/kalman-filters/one-dimensional-kalman-filters.html">One Dimensional Kalman Filters</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Logical Reasoning</span></p><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="label-parts" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../logical-reasoning/automated-reasoning/_index.html">Automated Reasoning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../logical-reasoning/propositional-logic/_index.html">World Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../logical-reasoning/logical-agents/_index.html">Logical Agents</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning without Interactions</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="label-parts" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Automated Planning</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">PDDL</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">The Unified Planning Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logistics/index.html">Logistics Planning in PDDL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manufacturing/index.html">Manufacrturing Robot Planning in PDDL</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../search/index.html">Search Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../search/forward-search/index.html">Forward Search Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../search/a-star/index.html">The A* Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../motion-planning-cars/index.html">Motion Planning for Autonomous Cars</a></li>
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Markov Decision Processes</span></p><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="label-parts" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../mdp/_index.html">Markov Decision Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mdp/mdp-intro/mdp_intro.html">Introduction to MDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mdp/bellman-expectation-backup/_index.html">Bellman Expectation Backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mdp/bellman-optimality-backup/_index.html">Bellman Optimality Backup</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/index.html">MDP Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/policy-iteration/_index.html">Policy Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/policy-evaluation/_index.html">Policy Evaluation (Prediction)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/policy-improvement/_index.html">Policy Improvement (Control)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-dp-algorithms/value-iteration/_index.html">Value Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mdp/mdp-lab/recycling-robot/_index.html">Finding the optimal policy of a recycling robot.</a></li>
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="label-parts" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/_index.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/prediction/monte-carlo.html">Monte-Carlo Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/prediction/temporal-difference.html">Temporal Difference (TD) Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/control/_index.html">Model-free Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/generalized-policy-iteration/_index.html">Generalized Policy Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/control/sarsa/_index.html">The SARSA Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reinforcement-learning/reinforce/_index.html">The REINFORCE Algorithm</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="label-parts" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../rnn/introduction/_index.html">Introduction to Recurrent Neural Networks (RNN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rnn/simple-rnn/_index.html">Simple RNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rnn/lstm/_index.html">The Long Short-Term Memory (LSTM) Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rnn/time_series_using_simple_rnn_lstm.html">Time Series Prediction using RNNs</a></li>
+
+
+
+
+
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="label-parts" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../nlp/nlp-introduction/nlp-pipelines/_index.html">Introduction to NLP Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nlp/nlp-introduction/tokenization/index.html">Tokenization</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/nlp-introduction/word2vec/_index.html">Embeddings</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../nlp/nlp-introduction/word2vec/word2vec_from_scratch.html">Word2Vec from scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../nlp/nlp-introduction/word2vec/word2vec_tensorflow_tutorial.html">Word2Vec Tensorflow Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/language-models/_index.html">Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../nlp/language-models/cnn-language-model/index.html">CNN Language Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../nlp/language-models/simple-rnn-language-model/index.html">Simple RNN Language Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../nlp/language-models/lstm-language-model/index.html">LSTM Language Model from scratch</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/nmt/nmt-intro/index.html">Neural Machine Translation</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../nlp/nmt/nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../nlp/nmt/rnn-nmt-attention/index.html">Attention in RNN-based NMT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../nlp/nmt/rnn-attention-workshop/seq2seq_and_attention.html">Attention in RNN NMT Workshop</a></li>
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/transformers/transformers-intro.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../nlp/transformers/annotated_transformer.html">The Annotated Transformer</a></li>
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="label-parts" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../ml-math/index.html">Math for ML Textbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ml-math/probability/index.html">Probability Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ml-math/linear-algebra/index.html">Linear Algebra for Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ml-math/calculus/index.html">Calculus</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/index.html">Your Programming Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/index.html">Learn Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
+</ul></li></ul>
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/pantelis/artificial-intelligence/master?urlpath=tree/artificial_intelligence/aiml-common/lectures/planning/pddl/blocksworld/up_blocksworld_demo.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/pantelis/artificial-intelligence/blob/master/artificial_intelligence/aiml-common/lectures/planning/pddl/blocksworld/up_blocksworld_demo.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pantelis/artificial-intelligence" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/planning/pddl/blocksworld/up_blocksworld_demo.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../../_sources/aiml-common/lectures/planning/pddl/blocksworld/up_blocksworld_demo.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Unified Planning Library</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-of-the-library">Setup of the library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-the-blocksworld-domain">Modeling the Blocksworld domain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-a-simple-problem">Modeling a simple problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oneshotplanner-operation-mode">OneshotPlanner Operation Mode</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-problem-with-any-engine">Solving the problem with any engine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-the-engine-name">Specifying the engine name</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-solving">Parallel solving</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-interface-is-the-same">The interface is the same!</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-unified-planning-library">
+<h1>The Unified Planning Library<a class="headerlink" href="#the-unified-planning-library" title="Permalink to this heading">#</a></h1>
+<p>In this demo we will scratch the surface of the UP: we will set it up, we manually create the blocksworld domain using the UP API, we create a problem using a bit of python and we solve the problem using different engines and a parallel composition of engines.</p>
+<section id="setup-of-the-library">
+<h2>Setup of the library<a class="headerlink" href="#setup-of-the-library" title="Permalink to this heading">#</a></h2>
+<p>For this demo, we only need the following two shell commands. The first installs <code class="docutils literal notranslate"><span class="pre">libgraphviz</span></code> used for the plotting of graphs, the second installs the UP library, the set of default planning engines (namely: aries, enhsp, fast-downward, fmap, lpg, pyperplan, symk and tamer) and the optional python library dependecies for plotting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Please note that these are included in the course container - uncomment if you want to run on colab</span>
+
+<span class="c1"># !apt install graphviz graphviz-dev</span>
+<span class="c1"># !pip install unified-planning[engines,plot]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="modeling-the-blocksworld-domain">
+<h2>Modeling the Blocksworld domain<a class="headerlink" href="#modeling-the-blocksworld-domain" title="Permalink to this heading">#</a></h2>
+<p>We will give a more in-detail description of the API later, here we just show a basic blocksworld domain encoded in Python using the UP API.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">unified_planning.model.types</span> <span class="kn">import</span> <span class="n">BOOL</span>
+<span class="kn">from</span> <span class="nn">unified_planning.shortcuts</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Create a new type (without parent)</span>
+<span class="n">Block</span> <span class="o">=</span> <span class="n">UserType</span><span class="p">(</span><span class="s2">&quot;Block&quot;</span><span class="p">)</span>
+
+<span class="c1"># The UP calls &quot;fluents&quot; both predicates and functions</span>
+<span class="c1"># Each fluent has a type (BOOL for all fluents in this case) and might have parameters</span>
+<span class="n">clear</span> <span class="o">=</span> <span class="n">Fluent</span><span class="p">(</span><span class="s2">&quot;clear&quot;</span><span class="p">,</span> <span class="n">BOOL</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="n">Block</span><span class="p">)</span> <span class="c1"># in PDDL this would be (clear ?obj - Block)</span>
+<span class="n">on_table</span> <span class="o">=</span> <span class="n">Fluent</span><span class="p">(</span><span class="s2">&quot;on-table&quot;</span><span class="p">,</span> <span class="n">BOOL</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="n">Block</span><span class="p">)</span>
+<span class="n">arm_empty</span> <span class="o">=</span> <span class="n">Fluent</span><span class="p">(</span><span class="s2">&quot;arm-empty&quot;</span><span class="p">,</span> <span class="n">BOOL</span><span class="p">)</span>
+<span class="n">holding</span> <span class="o">=</span> <span class="n">Fluent</span><span class="p">(</span><span class="s2">&quot;holding&quot;</span><span class="p">,</span> <span class="n">BOOL</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="n">Block</span><span class="p">)</span>
+<span class="n">on</span> <span class="o">=</span> <span class="n">Fluent</span><span class="p">(</span><span class="s2">&quot;on&quot;</span><span class="p">,</span> <span class="n">BOOL</span><span class="p">,</span> <span class="n">above</span><span class="o">=</span><span class="n">Block</span><span class="p">,</span> <span class="n">below</span><span class="o">=</span><span class="n">Block</span><span class="p">)</span>
+
+<span class="c1"># Pickup action with one parameter a precondition formula and some effects</span>
+<span class="n">pickup</span> <span class="o">=</span> <span class="n">InstantaneousAction</span><span class="p">(</span><span class="s2">&quot;pickup&quot;</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="n">Block</span><span class="p">)</span>
+<span class="n">pickup</span><span class="o">.</span><span class="n">add_precondition</span><span class="p">(</span><span class="n">clear</span><span class="p">(</span><span class="n">pickup</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">on_table</span><span class="p">(</span><span class="n">pickup</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">arm_empty</span><span class="p">)</span>
+<span class="n">pickup</span><span class="o">.</span><span class="n">add_effect</span><span class="p">(</span><span class="n">holding</span><span class="p">(</span><span class="n">pickup</span><span class="o">.</span><span class="n">obj</span><span class="p">),</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">pickup</span><span class="o">.</span><span class="n">add_effect</span><span class="p">(</span><span class="n">clear</span><span class="p">(</span><span class="n">pickup</span><span class="o">.</span><span class="n">obj</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">pickup</span><span class="o">.</span><span class="n">add_effect</span><span class="p">(</span><span class="n">on_table</span><span class="p">(</span><span class="n">pickup</span><span class="o">.</span><span class="n">obj</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">pickup</span><span class="o">.</span><span class="n">add_effect</span><span class="p">(</span><span class="n">arm_empty</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># More actions...</span>
+<span class="n">putdown</span> <span class="o">=</span> <span class="n">InstantaneousAction</span><span class="p">(</span><span class="s2">&quot;putdown&quot;</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="n">Block</span><span class="p">)</span>
+<span class="n">putdown</span><span class="o">.</span><span class="n">add_precondition</span><span class="p">(</span><span class="n">holding</span><span class="p">(</span><span class="n">putdown</span><span class="o">.</span><span class="n">obj</span><span class="p">))</span>
+<span class="n">putdown</span><span class="o">.</span><span class="n">add_effect</span><span class="p">(</span><span class="n">holding</span><span class="p">(</span><span class="n">putdown</span><span class="o">.</span><span class="n">obj</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">putdown</span><span class="o">.</span><span class="n">add_effect</span><span class="p">(</span><span class="n">clear</span><span class="p">(</span><span class="n">putdown</span><span class="o">.</span><span class="n">obj</span><span class="p">),</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">putdown</span><span class="o">.</span><span class="n">add_effect</span><span class="p">(</span><span class="n">on_table</span><span class="p">(</span><span class="n">putdown</span><span class="o">.</span><span class="n">obj</span><span class="p">),</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">putdown</span><span class="o">.</span><span class="n">add_effect</span><span class="p">(</span><span class="n">arm_empty</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="n">stack</span> <span class="o">=</span> <span class="n">InstantaneousAction</span><span class="p">(</span><span class="s2">&quot;stack&quot;</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="n">Block</span><span class="p">,</span> <span class="n">underobj</span><span class="o">=</span><span class="n">Block</span><span class="p">)</span>
+<span class="c1"># More than one precondition can be set (implicit conjunction)</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">add_precondition</span><span class="p">(</span><span class="n">clear</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">underobj</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">holding</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">obj</span><span class="p">))</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">add_precondition</span><span class="p">(</span><span class="n">Not</span><span class="p">(</span><span class="n">Equals</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span> <span class="n">stack</span><span class="o">.</span><span class="n">underobj</span><span class="p">)))</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">add_effect</span><span class="p">(</span><span class="n">arm_empty</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">add_effect</span><span class="p">(</span><span class="n">clear</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">obj</span><span class="p">),</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">add_effect</span><span class="p">(</span><span class="n">on</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span> <span class="n">stack</span><span class="o">.</span><span class="n">underobj</span><span class="p">),</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">add_effect</span><span class="p">(</span><span class="n">clear</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">underobj</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">add_effect</span><span class="p">(</span><span class="n">holding</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">obj</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="n">unstack</span> <span class="o">=</span> <span class="n">InstantaneousAction</span><span class="p">(</span><span class="s2">&quot;unstack&quot;</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="n">Block</span><span class="p">,</span> <span class="n">underobj</span><span class="o">=</span><span class="n">Block</span><span class="p">)</span>
+<span class="n">unstack</span><span class="o">.</span><span class="n">add_precondition</span><span class="p">(</span><span class="n">on</span><span class="p">(</span><span class="n">unstack</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span> <span class="n">unstack</span><span class="o">.</span><span class="n">underobj</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">clear</span><span class="p">(</span><span class="n">unstack</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">arm_empty</span><span class="p">)</span>
+<span class="n">unstack</span><span class="o">.</span><span class="n">add_effect</span><span class="p">(</span><span class="n">holding</span><span class="p">(</span><span class="n">unstack</span><span class="o">.</span><span class="n">obj</span><span class="p">),</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">unstack</span><span class="o">.</span><span class="n">add_effect</span><span class="p">(</span><span class="n">clear</span><span class="p">(</span><span class="n">unstack</span><span class="o">.</span><span class="n">underobj</span><span class="p">),</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">unstack</span><span class="o">.</span><span class="n">add_effect</span><span class="p">(</span><span class="n">on</span><span class="p">(</span><span class="n">unstack</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span> <span class="n">unstack</span><span class="o">.</span><span class="n">underobj</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">unstack</span><span class="o">.</span><span class="n">add_effect</span><span class="p">(</span><span class="n">clear</span><span class="p">(</span><span class="n">unstack</span><span class="o">.</span><span class="n">obj</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">unstack</span><span class="o">.</span><span class="n">add_effect</span><span class="p">(</span><span class="n">arm_empty</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># So far we just created objects in memory, we have not yet declared a problem</span>
+<span class="c1"># A `Problem` is a planning instance, but as a mutable object it can be partially specified</span>
+<span class="c1"># Here we just add fluents and actions, so we represent the &quot;domain&quot;</span>
+<span class="n">problem</span> <span class="o">=</span> <span class="n">Problem</span><span class="p">(</span><span class="s2">&quot;blocksworld&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="p">[</span><span class="n">clear</span><span class="p">,</span> <span class="n">on_table</span><span class="p">,</span> <span class="n">arm_empty</span><span class="p">,</span> <span class="n">holding</span><span class="p">,</span> <span class="n">on</span><span class="p">]:</span>
+  <span class="c1"># We can specify arbitrary default initial values (particularly useful for numeric fluents)</span>
+  <span class="n">problem</span><span class="o">.</span><span class="n">add_fluent</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">default_initial_value</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">problem</span><span class="o">.</span><span class="n">add_actions</span><span class="p">([</span><span class="n">pickup</span><span class="p">,</span> <span class="n">putdown</span><span class="p">,</span> <span class="n">stack</span><span class="p">,</span> <span class="n">unstack</span><span class="p">])</span>
+
+<span class="c1"># We can meaningfully print most UP objects for debug purposes</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>problem name = blocksworld
+
+types = [Block]
+
+fluents = [
+  bool clear[obj=Block]
+  bool on-table[obj=Block]
+  bool arm-empty
+  bool holding[obj=Block]
+  bool on[above=Block, below=Block]
+]
+
+actions = [
+  action pickup(Block obj) {
+    preconditions = [
+      ((clear(obj) and on-table(obj)) and arm-empty)
+    ]
+    effects = [
+      holding(obj) := true
+      clear(obj) := false
+      on-table(obj) := false
+      arm-empty := false
+    ]
+  }
+  action putdown(Block obj) {
+    preconditions = [
+      holding(obj)
+    ]
+    effects = [
+      holding(obj) := false
+      clear(obj) := true
+      on-table(obj) := true
+      arm-empty := true
+    ]
+  }
+  action stack(Block obj, Block underobj) {
+    preconditions = [
+      (clear(underobj) and holding(obj))
+      (not (obj == underobj))
+    ]
+    effects = [
+      arm-empty := true
+      clear(obj) := true
+      on(obj, underobj) := true
+      clear(underobj) := false
+      holding(obj) := false
+    ]
+  }
+  action unstack(Block obj, Block underobj) {
+    preconditions = [
+      ((on(obj, underobj) and clear(obj)) and arm-empty)
+    ]
+    effects = [
+      holding(obj) := true
+      clear(underobj) := true
+      on(obj, underobj) := false
+      clear(obj) := false
+      arm-empty := false
+    ]
+  }
+]
+
+objects = [
+  Block: []
+]
+
+initial fluents default = [
+  bool clear[obj=Block] := false
+  bool on-table[obj=Block] := false
+  bool arm-empty := false
+  bool holding[obj=Block] := false
+  bool on[above=Block, below=Block] := false
+]
+
+initial values = [
+]
+
+goals = [
+]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="modeling-a-simple-problem">
+<h2>Modeling a simple problem<a class="headerlink" href="#modeling-a-simple-problem" title="Permalink to this heading">#</a></h2>
+<p>We create a simple problem showing how to use python “data”.
+We create a problem where the goal is to stack 6 blocks labeled “m”, “e”, “d”, “o” to form the word “demo” (where “d” is on top and “o” is on the table).</p>
+<p><img alt="Unified Planning.png" src="data:image/png;base64,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YmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA0LjQuMC1FeGl2MiI+CiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIKICAgIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiCiAgICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgICB4bWxuczpHSU1QPSJodHRwOi8vd3d3LmdpbXAub3JnL3htcC8iCiAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgeG1wTU06RG9jdW1lbnRJRD0iZ2ltcDpkb2NpZDpnaW1wOjZhNTNjNGM4LWI1YTgtNDQxNi1iYjlmLTYyY2Q2OTcwOTJmZSIKICAgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpiYTg0MjA1ZC0zNDllLTRmY2EtYjBlYi0zY2Y4MWJiMTNmOWYiCiAgIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDphZWU1ODRmNC05ZjVmLTRjMjUtYTkxOS04NTg0ZmUxZDdlZjgiCiAgIGRjOkZvcm1hdD0iaW1hZ2UvcG5nIgogICBHSU1QOkFQST0iMi4wIgogICBHSU1QOlBsYXRmb3JtPSJMaW51eCIKICAgR0lNUDpUaW1lU3RhbXA9IjE2ODg4MDY2NjQyNDM4MzUiCiAgIEdJTVA6VmVyc2lvbj0iMi4xMC4zMCIKICAgdGlmZjpPcmllbnRhdGlvbj0iMSIKICAgeG1wOkNyZWF0b3JUb29sPSJHSU1QIDIuMTAiPgogICA8eG1wTU06SGlzdG9yeT4KICAgIDxyZGY6U2VxPgogICAgIDxyZGY6bGkKICAgICAgc3RFdnQ6YWN0aW9uPSJzYXZlZCIKICAgICAgc3RFdnQ6Y2hhbmdlZD0iLyIKICAgICAgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDozOTM2YTg3OS1iMDg2LTQ0NzUtOTg0NS1hNGI1ODA4N2I0MTYiCiAgICAgIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkdpbXAgMi4xMCAoTGludXgpIgogICAgICBzdEV2dDp3aGVuPSIyMDIzLTA3LTA4VDEwOjU3OjQ0KzAyOjAwIi8+CiAgICA8L3JkZjpTZXE+CiAgIDwveG1wTU06SGlzdG9yeT4KICA8L3JkZjpEZXNjcmlwdGlvbj4KIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAKPD94cGFja2V0IGVuZD0idyI/PgRGfRQAAAAGYktHRAD/AP8A/6C9p5MAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfnBwgIOSyCTsWEAAAdeklEQVR42u3daXxU9dk38CtkTwgEgiAIgoiCC4si7lqUgiKKuGutVVt5tNbeVq222kXtoq2tqO2tra1aW72tiCuKFOtWW5dWwQWq4IaIggthCwmBLPO8iAyJQE2gkTDn+301M5xz+JxrzuTMb87//K+sVCqVCgAAABKtnRIAAAAgHAIAACAcAgAAIBwCAAAgHAIAACAcAgAAIBwCAAAgHAIAACAcAgAAIBwCAAAgHAIAACAcAgAAIBwCAAAgHAIA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" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">str_goal</span> <span class="o">=</span> <span class="s2">&quot;demo&quot;</span> <span class="c1"># this is the &quot;python data&quot;</span>
+
+<span class="c1"># we create the 6 objects programmatically</span>
+<span class="n">objects</span> <span class="o">=</span> <span class="p">[</span><span class="n">Object</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Block</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">str_goal</span><span class="p">]</span>
+<span class="n">problem</span><span class="o">.</span><span class="n">add_objects</span><span class="p">(</span><span class="n">objects</span><span class="p">)</span>
+
+<span class="c1"># Set the initial state (all fluents are false by default because of the domain specification)</span>
+<span class="n">problem</span><span class="o">.</span><span class="n">set_initial_value</span><span class="p">(</span><span class="n">arm_empty</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">:</span>
+  <span class="n">problem</span><span class="o">.</span><span class="n">set_initial_value</span><span class="p">(</span><span class="n">on_table</span><span class="p">(</span><span class="n">o</span><span class="p">),</span> <span class="kc">True</span><span class="p">)</span>
+  <span class="n">problem</span><span class="o">.</span><span class="n">set_initial_value</span><span class="p">(</span><span class="n">clear</span><span class="p">(</span><span class="n">o</span><span class="p">),</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Set the goal</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">objects</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+  <span class="n">problem</span><span class="o">.</span><span class="n">add_goal</span><span class="p">(</span><span class="n">on</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">o</span><span class="p">))</span>
+  <span class="n">base</span> <span class="o">=</span> <span class="n">o</span>
+
+<span class="c1"># Print the full planning instance</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>problem name = blocksworld
+
+types = [Block]
+
+fluents = [
+  bool clear[obj=Block]
+  bool on-table[obj=Block]
+  bool arm-empty
+  bool holding[obj=Block]
+  bool on[above=Block, below=Block]
+]
+
+actions = [
+  action pickup(Block obj) {
+    preconditions = [
+      ((clear(obj) and on-table(obj)) and arm-empty)
+    ]
+    effects = [
+      holding(obj) := true
+      clear(obj) := false
+      on-table(obj) := false
+      arm-empty := false
+    ]
+  }
+  action putdown(Block obj) {
+    preconditions = [
+      holding(obj)
+    ]
+    effects = [
+      holding(obj) := false
+      clear(obj) := true
+      on-table(obj) := true
+      arm-empty := true
+    ]
+  }
+  action stack(Block obj, Block underobj) {
+    preconditions = [
+      (clear(underobj) and holding(obj))
+      (not (obj == underobj))
+    ]
+    effects = [
+      arm-empty := true
+      clear(obj) := true
+      on(obj, underobj) := true
+      clear(underobj) := false
+      holding(obj) := false
+    ]
+  }
+  action unstack(Block obj, Block underobj) {
+    preconditions = [
+      ((on(obj, underobj) and clear(obj)) and arm-empty)
+    ]
+    effects = [
+      holding(obj) := true
+      clear(underobj) := true
+      on(obj, underobj) := false
+      clear(obj) := false
+      arm-empty := false
+    ]
+  }
+]
+
+objects = [
+  Block: [d, e, m, o]
+]
+
+initial fluents default = [
+  bool clear[obj=Block] := false
+  bool on-table[obj=Block] := false
+  bool arm-empty := false
+  bool holding[obj=Block] := false
+  bool on[above=Block, below=Block] := false
+]
+
+initial values = [
+  arm-empty := true
+  on-table(d) := true
+  clear(d) := true
+  on-table(e) := true
+  clear(e) := true
+  on-table(m) := true
+  clear(m) := true
+  on-table(o) := true
+  clear(o) := true
+]
+
+goals = [
+  on(d, e)
+  on(e, m)
+  on(m, o)
+]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="oneshotplanner-operation-mode">
+<h2>OneshotPlanner Operation Mode<a class="headerlink" href="#oneshotplanner-operation-mode" title="Permalink to this heading">#</a></h2>
+<section id="solving-the-problem-with-any-engine">
+<h3>Solving the problem with any engine<a class="headerlink" href="#solving-the-problem-with-any-engine" title="Permalink to this heading">#</a></h3>
+<p>The UP can analyze a problem specification and filter the engines that can solve a certain problem. It does so by a data structure called <code class="docutils literal notranslate"><span class="pre">ProblemKind</span></code> (more on this later).</p>
+<p>We can inspect the <code class="docutils literal notranslate"><span class="pre">ProblemKind</span></code> of a problem by using the <code class="docutils literal notranslate"><span class="pre">kind</span></code> property.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">kind</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PROBLEM_CLASS: [&#39;ACTION_BASED&#39;]
+CONDITIONS_KIND: [&#39;NEGATIVE_CONDITIONS&#39;, &#39;EQUALITIES&#39;]
+TYPING: [&#39;FLAT_TYPING&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can ask the UP to solve the problem using any suitable engine (a preference list is provided, a user can edit it programmatically or provide a custom configuation file: <a class="reference external" href="https://unified-planning.readthedocs.io/en/latest/engines.html#engine-selection-and-preference-list">https://unified-planning.readthedocs.io/en/latest/engines.html#engine-selection-and-preference-list</a>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">OneshotPlanner</span></code> is the basic planning operation mode: given a problem find a plan</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ask the UP to instantiate for us a &quot;oneshot&quot; planner supporting our problem kind</span>
+<span class="k">with</span> <span class="n">OneshotPlanner</span><span class="p">(</span><span class="n">problem_kind</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">kind</span><span class="p">)</span> <span class="k">as</span> <span class="n">planner</span><span class="p">:</span>
+  <span class="n">res</span> <span class="o">=</span> <span class="n">planner</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">NOTE: To disable printing of planning engine credits, add this line to your code: `up.shortcuts.get_environment().credits_stream = None`</span>
+  *** Credits ***
+  * In operation mode `OneshotPlanner` at line 2 of `/tmp/ipykernel_998726/4034772928.py`, you are using the following planning engine:
+  * Engine name: Fast Downward
+  * Developers:  Uni Basel team and contributors (cf. https://github.com/aibasel/downward/blob/main/README.md)
+  * Description: Fast Downward is a domain-independent classical planning system.
+
+status: SOLVED_SATISFICING
+engine: Fast Downward
+plan: SequentialPlan:
+    pickup(m)
+    stack(m, o)
+    pickup(e)
+    stack(e, m)
+    pickup(d)
+    stack(d, e)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">unified_planning.plot</span></code> package provides useful functions to visually plot many objects</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unified_planning.plot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot_causal_graph</span><span class="p">(</span><span class="n">problem</span><span class="o">=</span><span class="n">problem</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="mi">40</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot_plan</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">plan</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  *** Credits ***
+  * In operation mode `Compiler` at line 136 of `/home/vscode/.local/lib/python3.8/site-packages/unified_planning/plot/causal_graph_plot.py`, you are using the following planning engine:
+  * Engine name: Tarski grounder
+  * Developers:  Artificial Intelligence and Machine Learning Group - Universitat Pompeu Fabra
+  * Description: Tarski grounder, more information available on the given website.
+
+
+</pre></div>
+</div>
+<img alt="../../../../../_images/44b7a01dd2717b06c47942fb84754e020acd8a6f0563ed9449db37f624fd2435.png" src="../../../../../_images/44b7a01dd2717b06c47942fb84754e020acd8a6f0563ed9449db37f624fd2435.png" />
+<img alt="../../../../../_images/60bd4b00f45d61f0f7cd08b244d0af64cf5c8b233a9b74d0370498281d1e5f78.png" src="../../../../../_images/60bd4b00f45d61f0f7cd08b244d0af64cf5c8b233a9b74d0370498281d1e5f78.png" />
+</div>
+</div>
+</section>
+<section id="specifying-the-engine-name">
+<h3>Specifying the engine name<a class="headerlink" href="#specifying-the-engine-name" title="Permalink to this heading">#</a></h3>
+<p>We can also explicitly specify the name of the engine we want to use (and optionally custom parameters). The interface, after the openation mode is identical.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">OneshotPlanner</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;lpg&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">planner</span><span class="p">:</span>
+  <span class="n">res</span> <span class="o">=</span> <span class="n">planner</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  *** Credits ***
+  * In operation mode `OneshotPlanner` at line 1 of `/tmp/ipykernel_998726/719035379.py`, you are using the following planning engine:
+  * Engine name: LPG
+  * Developers:  UNIBS Team
+  * Description: LPG is a planner based on local search and planning graphs.
+
+status: SOLVED_SATISFICING
+engine: lpg
+plan: SequentialPlan:
+    pickup(d)
+    stack(d, e)
+    pickup(m)
+    stack(m, o)
+    unstack(d, e)
+    putdown(d)
+    pickup(e)
+    stack(e, m)
+    pickup(d)
+    stack(d, e)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/vscode/.local/lib/python3.8/site-packages/unified_planning/engines/mixins/oneshot_planner.py:76: UserWarning: We cannot establish whether lpg can solve this problem!
+  warn(msg)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="parallel-solving">
+<h3>Parallel solving<a class="headerlink" href="#parallel-solving" title="Permalink to this heading">#</a></h3>
+<p>We can even execute more than one planner in parallel and use this “parallel portfolio” as a normal planner.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">OneshotPlanner</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tamer&quot;</span><span class="p">,</span> <span class="s2">&quot;fast-downward&quot;</span><span class="p">])</span> <span class="k">as</span> <span class="n">planner</span><span class="p">:</span>
+  <span class="n">res</span> <span class="o">=</span> <span class="n">planner</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  *** Credits ***
+  * In operation mode `OneshotPlanner` at line 1 of `/tmp/ipykernel_998726/1972089550.py`, you are using a parallel planning engine with the following components:
+  * Engine name: Tamer
+  * Developers:  FBK Tamer Development Team
+  * Description: Tamer offers the capability to generate a plan for classical, numerical and temporal problems.
+  *              For those kind of problems tamer also offers the possibility of validating a submitted plan.
+  * Engine name: Fast Downward
+  * Developers:  Uni Basel team and contributors (cf. https://github.com/aibasel/downward/blob/main/README.md)
+  * Description: Fast Downward is a domain-independent classical planning system.
+
+status: SOLVED_SATISFICING
+engine: Tamer
+plan: SequentialPlan:
+    pickup(m)
+    stack(m, o)
+    pickup(e)
+    stack(e, m)
+    pickup(d)
+    stack(d, e)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-interface-is-the-same">
+<h3>The interface is the same!<a class="headerlink" href="#the-interface-is-the-same" title="Permalink to this heading">#</a></h3>
+<p>All engines supporting an OperationMode are required to support the same interface and being interchangeable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_applicable_planners</span> <span class="o">=</span> <span class="n">get_all_applicable_engines</span><span class="p">(</span><span class="n">problem_kind</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">kind</span><span class="p">,</span> <span class="n">operation_mode</span><span class="o">=</span><span class="n">OperationMode</span><span class="o">.</span><span class="n">ONESHOT_PLANNER</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">all_applicable_planners</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;fast-downward&#39;, &#39;fast-downward-opt&#39;, &#39;symk&#39;, &#39;symk-opt&#39;, &#39;enhsp&#39;, &#39;enhsp-opt&#39;, &#39;enhsp-any&#39;, &#39;tamer&#39;, &#39;aries&#39;, &#39;oversubscription[fast-downward]&#39;, &#39;oversubscription[fast-downward-opt]&#39;, &#39;oversubscription[symk]&#39;, &#39;oversubscription[symk-opt]&#39;, &#39;oversubscription[enhsp]&#39;, &#39;oversubscription[enhsp-opt]&#39;, &#39;oversubscription[enhsp-any]&#39;, &#39;oversubscription[tamer]&#39;, &#39;oversubscription[aries]&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">pname</span> <span class="ow">in</span> <span class="n">all_applicable_planners</span><span class="p">:</span>
+  <span class="k">with</span> <span class="n">OneshotPlanner</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">pname</span><span class="p">)</span> <span class="k">as</span> <span class="n">planner</span><span class="p">:</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">planner</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  *** Credits ***
+  * In operation mode `OneshotPlanner` at line 2 of `/tmp/ipykernel_998726/3657586449.py`, you are using the following planning engine:
+  * Engine name: Fast Downward
+  * Developers:  Uni Basel team and contributors (cf. https://github.com/aibasel/downward/blob/main/README.md)
+  * Description: Fast Downward is a domain-independent classical planning system.
+
+status: SOLVED_SATISFICING
+engine: Fast Downward
+plan: SequentialPlan:
+    pickup(m)
+    stack(m, o)
+    pickup(e)
+    stack(e, m)
+    pickup(d)
+    stack(d, e)
+  *** Credits ***
+  * In operation mode `OneshotPlanner` at line 2 of `/tmp/ipykernel_998726/3657586449.py`, you are using the following planning engine:
+  * Engine name: Fast Downward
+  * Developers:  Uni Basel team and contributors (cf. https://github.com/aibasel/downward/blob/main/README.md)
+  * Description: Fast Downward is a domain-independent classical planning system.
+
+status: SOLVED_SATISFICING
+engine: Fast Downward (with optimality guarantee)
+plan: SequentialPlan:
+    pickup(m)
+    stack(m, o)
+    pickup(e)
+    stack(e, m)
+    pickup(d)
+    stack(d, e)
+  *** Credits ***
+  * In operation mode `OneshotPlanner` at line 2 of `/tmp/ipykernel_998726/3657586449.py`, you are using the following planning engine:
+  * Engine name: SymK
+  * Developers:  David Speck (cf. https://github.com/speckdavid/symk/blob/master/README.md )
+  * Description: SymK is a state-of-the-art domain-independent optimal and top-k planner.
+
+status: SOLVED_SATISFICING
+engine: SymK
+plan: SequentialPlan:
+    pickup(m)
+    stack(m, o)
+    pickup(e)
+    stack(e, m)
+    pickup(d)
+    stack(d, e)
+  *** Credits ***
+  * In operation mode `OneshotPlanner` at line 2 of `/tmp/ipykernel_998726/3657586449.py`, you are using the following planning engine:
+  * Engine name: SymK
+  * Developers:  David Speck (cf. https://github.com/speckdavid/symk/blob/master/README.md )
+  * Description: SymK is a state-of-the-art domain-independent optimal and top-k planner.
+
+status: SOLVED_SATISFICING
+engine: SymK (with optimality guarantee)
+plan: SequentialPlan:
+    pickup(m)
+    stack(m, o)
+    pickup(e)
+    stack(e, m)
+    pickup(d)
+    stack(d, e)
+  *** Credits ***
+  * In operation mode `OneshotPlanner` at line 2 of `/tmp/ipykernel_998726/3657586449.py`, you are using the following planning engine:
+  * Engine name: ENHSP
+  * Developers:  Enrico Scala
+  * Description: Expressive Numeric Heuristic Search Planner.
+
+
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">for</span> <span class="n">pname</span> <span class="ow">in</span> <span class="n">all_applicable_planners</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>   <span class="k">with</span> <span class="n">OneshotPlanner</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">pname</span><span class="p">)</span> <span class="k">as</span> <span class="n">planner</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">res</span> <span class="o">=</span> <span class="n">planner</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
+<span class="nn">File ~/.local/lib/python3.8/site-packages/unified_planning/engines/mixins/oneshot_planner.py:80,</span> in <span class="ni">OneshotPlannerMixin.solve</span><span class="nt">(self, problem, heuristic, timeout, output_stream)</span>
+<span class="g g-Whitespace">     </span><span class="mi">78</span>     <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;The problem has no quality metrics but the engine is required to be optimal!&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">79</span>     <span class="k">raise</span> <span class="n">up</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">UPUsageError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">80</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solve</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">heuristic</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">output_stream</span><span class="p">)</span>
+
+<span class="nn">File ~/.local/lib/python3.8/site-packages/unified_planning/engines/pddl_planner.py:193,</span> in <span class="ni">PDDLPlanner._solve</span><span class="nt">(self, problem, heuristic, timeout, output_stream)</span>
+<span class="g g-Whitespace">    </span><span class="mi">187</span>     <span class="n">cmd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_anytime_cmd</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span>         <span class="n">domain_filename</span><span class="p">,</span> <span class="n">problem_filename</span><span class="p">,</span> <span class="n">plan_filename</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">190</span> <span class="k">if</span> <span class="n">output_stream</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">191</span>     <span class="c1"># If we do not have an output stream to write to, we simply call</span>
+<span class="g g-Whitespace">    </span><span class="mi">192</span>     <span class="c1"># a subprocess and retrieve the final output and error with communicate</span>
+<span class="ne">--&gt; </span><span class="mi">193</span>     <span class="n">process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">194</span>         <span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span>     <span class="n">timeout_occurred</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span>     <span class="n">proc_out</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="nn">File /usr/lib/python3.8/subprocess.py:858,</span> in <span class="ni">Popen.__init__</span><span class="nt">(self, args, bufsize, executable, stdin, stdout, stderr, preexec_fn, close_fds, shell, cwd, env, universal_newlines, startupinfo, creationflags, restore_signals, start_new_session, pass_fds, encoding, errors, text)</span>
+<span class="g g-Whitespace">    </span><span class="mi">854</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">855</span>             <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">TextIOWrapper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">856</span>                     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">858</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_execute_child</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">executable</span><span class="p">,</span> <span class="n">preexec_fn</span><span class="p">,</span> <span class="n">close_fds</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">859</span>                         <span class="n">pass_fds</span><span class="p">,</span> <span class="n">cwd</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">860</span>                         <span class="n">startupinfo</span><span class="p">,</span> <span class="n">creationflags</span><span class="p">,</span> <span class="n">shell</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">861</span>                         <span class="n">p2cread</span><span class="p">,</span> <span class="n">p2cwrite</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">862</span>                         <span class="n">c2pread</span><span class="p">,</span> <span class="n">c2pwrite</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">863</span>                         <span class="n">errread</span><span class="p">,</span> <span class="n">errwrite</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">864</span>                         <span class="n">restore_signals</span><span class="p">,</span> <span class="n">start_new_session</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">865</span> <span class="k">except</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">866</span>     <span class="c1"># Cleanup if the child failed starting.</span>
+<span class="g g-Whitespace">    </span><span class="mi">867</span>     <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stdin</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span><span class="p">)):</span>
+
+<span class="nn">File /usr/lib/python3.8/subprocess.py:1704,</span> in <span class="ni">Popen._execute_child</span><span class="nt">(self, args, executable, preexec_fn, close_fds, pass_fds, cwd, env, startupinfo, creationflags, shell, p2cread, p2cwrite, c2pread, c2pwrite, errread, errwrite, restore_signals, start_new_session)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1702</span>     <span class="k">if</span> <span class="n">errno_num</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1703</span>         <span class="n">err_msg</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">strerror</span><span class="p">(</span><span class="n">errno_num</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1704</span>     <span class="k">raise</span> <span class="n">child_exception_type</span><span class="p">(</span><span class="n">errno_num</span><span class="p">,</span> <span class="n">err_msg</span><span class="p">,</span> <span class="n">err_filename</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1705</span> <span class="k">raise</span> <span class="n">child_exception_type</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;java&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "pantelis/artificial-intelligence",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./aiml-common/lectures/planning/pddl/blocksworld"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Planning Domain Definition Language (PDDL)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../logistics/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Logistics Planning in PDDL</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-of-the-library">Setup of the library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-the-blocksworld-domain">Modeling the Blocksworld domain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-a-simple-problem">Modeling a simple problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oneshotplanner-operation-mode">OneshotPlanner Operation Mode</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-problem-with-any-engine">Solving the problem with any engine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-the-engine-name">Specifying the engine name</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-solving">Parallel solving</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-interface-is-the-same">The interface is the same!</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Pantelis Monogioudis, Ph.D
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

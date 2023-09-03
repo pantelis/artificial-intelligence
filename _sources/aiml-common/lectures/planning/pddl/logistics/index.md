@@ -1,4 +1,4 @@
-# Logistics Planning 
+# Logistics Planning in PDDL
 
 We will use the Logistics domain to illustrate how to represent a
 planning task in PDDL.

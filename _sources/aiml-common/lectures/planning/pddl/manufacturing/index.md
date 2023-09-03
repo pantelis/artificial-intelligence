@@ -1,4 +1,4 @@
-# Manufacrturing Robot Planning
+# Manufacrturing Robot Planning in PDDL
 
 This is a real case that we tackled for a manufacturing company. This
 company devises supply chains to make pieces of medical equipments. A

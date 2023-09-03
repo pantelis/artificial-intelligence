@@ -173,6 +173,5 @@ Now we need to look how the planners solve the PDDL expressed problems. As it tu
 
 The [Fast Downward](http://www.fast-downward.org/) planner is a state-of-the-art planner that uses the [FF heuristic](https://www.aaai.org/Papers/ICAPS/2003/ICAPS03-019.pdf) and the [LAMA heuristic](https://www.aaai.org/ocs/index.php/ICAPS/ICAPS10/paper/view/1441) to solve PDDL problems. The VSCode PDDL extension [allows for visualizing the search tree](https://youtu.be/_NOVa4i7Us8?list=PL1Q0jeuU6XppS_r2Sa9fzVanpbXKqLsYS&t=384) so make sure you understand how the search tree is constructed and how the search algorithm works. 
 
-PDDL as a representational language is [evolving](https://planning.wiki/ref) and new solvers are regularly appearing to allow us to relax the contraints such as determinism, full observability, etc. and apply planning to more realistic problems.
-
+PDDL as a representational language is [evolving](https://planning.wiki/ref) and new solvers are regularly appearing to allow us to relax the contraints such as determinism, full observability, etc. and apply planning to more realistic problems. The International Planning Competition (IPC) is a biennial event that evaluates the state-of-the-art in automated planning - see [IPC 2023](https://icaps23.icaps-conference.org/competitions/) for the latest ICAPS conference and competition. 
 

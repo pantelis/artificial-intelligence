@@ -20,7 +20,7 @@ For an example of a heuristic consider this problem:
 
 In this example all $l(e)=1$ and the heuristic is a penalty from how much a transition to another node (an action) takes us away from the end state (adopted from [CS221](https://stanford-cs221.github.io/)). 
 
-Using the interactive demo page below, repeating the same example wall-world, we can clearly see the substantial difference in search speed and the beamforming effect as soon as the wave (frontier) evaluates nodes where the heuristic (the Manhattan distance from the goal node) becomes dominant. Notice the difference with the UCS / Dijkstra's algorithm in the number of nodes that needed to be evaluated. 
+Using [the interactive demo page](https://qiao.github.io/PathFinding.js/visual/), repeating the same example wall-world we have seen in other algorithms, we can clearly see the substantial difference in search speed and the beamforming effect as soon as the wave (frontier) evaluates nodes where the heuristic (the Manhattan distance from the goal node) becomes dominant. Notice the difference with the UCS / Dijkstra's algorithm in the number of nodes that needed to be evaluated. 
 
 ![astar-demo](images/astar-demo.png)
 

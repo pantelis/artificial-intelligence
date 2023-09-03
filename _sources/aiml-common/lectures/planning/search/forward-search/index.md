@@ -1,5 +1,9 @@
 # Forward Search Algorithms
 
+```{note}
+If you are missing some algorithmic background, afraid not. There is a free and [excellent book](http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf) to help you with the background behind this chapter. Read Chapters 3 and 4 for the relevant background. 
+```
+
 Given an initial state $s_I$ (that can be represented in a graph by an initial node) and the goal state $s_G$ (represented by a destination node) that is reached after potentially a finite number of actions (if a solution exist), we develop here a forward search algorithm whose pseudo-code is from [Steven LaValle's book - Chapter 2](http://planning.cs.uiuc.edu/)
 
 ```{prf:algorithm} Forward Search
