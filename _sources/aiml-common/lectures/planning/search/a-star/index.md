@@ -1,33 +1,30 @@
----
-title: The A* Algorithm
----
-
 # The A* Algorithm
 
-Dijkstra's algorithm is very much related to the _Uniform Cost Search_ algorithm and in fact logically they are equivalent as the algorithm explores uniformly all nodes that have the same PastCost. In the Astar algorithm, we start using the fact that we _know_ the end state and therefore attempt to find methods that bias the exploration towards it. 
+Dijkstra's algorithm is very much related to the _Uniform Cost Search_ algorithm and in fact logically they are equivalent as the algorithm explores uniformly all nodes that have the same PastCost. 
 
-As mentioned in the cost definition figure above, A* uses both $C^*(s)$  and an estimate of the optimal Cost-to-go or FutureCost $G^*(s)$ because obviously to know exactly $G^*(s)$ is equivalent to solving the original search problem.  Therefore the metric for prioritizing the Q queue is: 
+In the A* algorithm, we start using the fact that we _know_ the end state and therefore attempt to find methods that bias the exploration towards it.  A* uses both $C^*(s)$  and an estimate of the optimal Cost-to-go or FutureCost $G^*(s)$ because obviously to know exactly $G^*(s)$ is equivalent to solving the original search problem.  Therefore the metric for prioritizing the Q queue is: 
 
 $$C^*(s) + h(s)$$
 
 If $h(s)$ is an underestimate of the $G^*(s)$ the Astar algorithm is guaranteed to fine optimal plans. 
 
-For an example of a heuristic consider this problem:
+## Route planner example
 
-![astar-example](images/astar-simple-example.png)
+![](images/romanian-road-network.png)
 
-*A simple example showcasing a modified to what is described above priority metric. What we use is a modification of the edge cost $l'(e)=l(e) + [h(s^\prime)-h(s)]$. Is there a difference?*
+In the figure above we are given the graph of the romanian roadnetwork and asked to find the best route from Arad to Bucharest. Note that for applying A* to more realistic example,  you can use the [Open Street Maps](https://www.openstreetmap.org/) project and associated python libraries to produce much larger networks where the nodes may be cities or intersectionr or any other OSM tag (attribute). 
 
-In this example all $l(e)=1$ and the heuristic is a penalty from how much a transition to another node (an action) takes us away from the end state (adopted from [CS221](https://stanford-cs221.github.io/)). 
+For $h(s)$ we use the straightline distance heuristic, which we will call hSLD . If the goal is Bucharest, we need to 
+know the straight-line distances to Bucharest, which are shown below for all nodes in the graph. 
 
-Using [the interactive demo page](https://qiao.github.io/PathFinding.js/visual/), repeating the same example wall-world we have seen in other algorithms, we can clearly see the substantial difference in search speed and the beamforming effect as soon as the wave (frontier) evaluates nodes where the heuristic (the Manhattan distance from the goal node) becomes dominant. Notice the difference with the UCS / Dijkstra's algorithm in the number of nodes that needed to be evaluated. 
+![](images/astar-heauristic-road-network.png)
 
-![astar-demo](images/astar-demo.png)
+Notice that the values of $h(s)$ cannot be computed from the problem description itself. Moreover, it takes a certain amount of experience to know that $h(s)$ is correlated with actual road distances and is, therefore, a useful heuristic. Observe how the A* algorithm behaves when using the heuristic $h(s)$ in the following figure.
 
-*$A^*$ algorithm demo*
+![](images/astar-route-planning.png)
 
 
-## A* Implementation
+## Robotics example
 
 A stand-alone A* planner in python is shown next. Its instructive to go through the code to understand how it works. 
 

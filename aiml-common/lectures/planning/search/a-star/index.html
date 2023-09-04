@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="Motion Planning for Autonomous Cars" href="../../../motion-planning-cars/index.html" />
+    <link rel="next" title="Interactive Demo" href="../search-alg-demo/index.html" />
     <link rel="prev" title="Forward Search Algorithms" href="../forward-search/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -251,6 +251,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Search Algorithms</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../forward-search/index.html">Forward Search Algorithms</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">The A* Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../search-alg-demo/index.html">Interactive Demo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../motion-planning-cars/index.html">Motion Planning for Autonomous Cars</a></li>
 </ul>
 </li>
@@ -526,7 +527,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-implementation">A* Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#route-planner-example">Route planner example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robotics-example">Robotics example</a></li>
 </ul>
             </nav>
         </div>
@@ -540,20 +542,23 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-a-algorithm">
 <h1>The A* Algorithm<a class="headerlink" href="#the-a-algorithm" title="Permalink to this heading">#</a></h1>
-<p>Dijkstra’s algorithm is very much related to the <em>Uniform Cost Search</em> algorithm and in fact logically they are equivalent as the algorithm explores uniformly all nodes that have the same PastCost. In the Astar algorithm, we start using the fact that we <em>know</em> the end state and therefore attempt to find methods that bias the exploration towards it.</p>
-<p>As mentioned in the cost definition figure above, A* uses both <span class="math notranslate nohighlight">\(C^*(s)\)</span>  and an estimate of the optimal Cost-to-go or FutureCost <span class="math notranslate nohighlight">\(G^*(s)\)</span> because obviously to know exactly <span class="math notranslate nohighlight">\(G^*(s)\)</span> is equivalent to solving the original search problem.  Therefore the metric for prioritizing the Q queue is:</p>
+<p>Dijkstra’s algorithm is very much related to the <em>Uniform Cost Search</em> algorithm and in fact logically they are equivalent as the algorithm explores uniformly all nodes that have the same PastCost.</p>
+<p>In the A* algorithm, we start using the fact that we <em>know</em> the end state and therefore attempt to find methods that bias the exploration towards it.  A* uses both <span class="math notranslate nohighlight">\(C^*(s)\)</span>  and an estimate of the optimal Cost-to-go or FutureCost <span class="math notranslate nohighlight">\(G^*(s)\)</span> because obviously to know exactly <span class="math notranslate nohighlight">\(G^*(s)\)</span> is equivalent to solving the original search problem.  Therefore the metric for prioritizing the Q queue is:</p>
 <div class="math notranslate nohighlight">
 \[C^*(s) + h(s)\]</div>
 <p>If <span class="math notranslate nohighlight">\(h(s)\)</span> is an underestimate of the <span class="math notranslate nohighlight">\(G^*(s)\)</span> the Astar algorithm is guaranteed to fine optimal plans.</p>
-<p>For an example of a heuristic consider this problem:</p>
-<p><img alt="astar-example" src="../../../../../_images/astar-simple-example.png" /></p>
-<p><em>A simple example showcasing a modified to what is described above priority metric. What we use is a modification of the edge cost <span class="math notranslate nohighlight">\(l'(e)=l(e) + [h(s^\prime)-h(s)]\)</span>. Is there a difference?</em></p>
-<p>In this example all <span class="math notranslate nohighlight">\(l(e)=1\)</span> and the heuristic is a penalty from how much a transition to another node (an action) takes us away from the end state (adopted from <a class="reference external" href="https://stanford-cs221.github.io/">CS221</a>).</p>
-<p>Using <a class="reference external" href="https://qiao.github.io/PathFinding.js/visual/">the interactive demo page</a>, repeating the same example wall-world we have seen in other algorithms, we can clearly see the substantial difference in search speed and the beamforming effect as soon as the wave (frontier) evaluates nodes where the heuristic (the Manhattan distance from the goal node) becomes dominant. Notice the difference with the UCS / Dijkstra’s algorithm in the number of nodes that needed to be evaluated.</p>
-<p><img alt="astar-demo" src="../../../../../_images/astar-demo.png" /></p>
-<p><em><span class="math notranslate nohighlight">\(A^*\)</span> algorithm demo</em></p>
-<section id="a-implementation">
-<h2>A* Implementation<a class="headerlink" href="#a-implementation" title="Permalink to this heading">#</a></h2>
+<section id="route-planner-example">
+<h2>Route planner example<a class="headerlink" href="#route-planner-example" title="Permalink to this heading">#</a></h2>
+<p><img alt="" src="../../../../../_images/romanian-road-network.png" /></p>
+<p>In the figure above we are given the graph of the romanian roadnetwork and asked to find the best route from Arad to Bucharest. Note that for applying A* to more realistic example,  you can use the <a class="reference external" href="https://www.openstreetmap.org/">Open Street Maps</a> project and associated python libraries to produce much larger networks where the nodes may be cities or intersectionr or any other OSM tag (attribute).</p>
+<p>For <span class="math notranslate nohighlight">\(h(s)\)</span> we use the straightline distance heuristic, which we will call hSLD . If the goal is Bucharest, we need to
+know the straight-line distances to Bucharest, which are shown below for all nodes in the graph.</p>
+<p><img alt="" src="../../../../../_images/astar-heauristic-road-network.png" /></p>
+<p>Notice that the values of <span class="math notranslate nohighlight">\(h(s)\)</span> cannot be computed from the problem description itself. Moreover, it takes a certain amount of experience to know that <span class="math notranslate nohighlight">\(h(s)\)</span> is correlated with actual road distances and is, therefore, a useful heuristic. Observe how the A* algorithm behaves when using the heuristic <span class="math notranslate nohighlight">\(h(s)\)</span> in the following figure.</p>
+<p><img alt="" src="../../../../../_images/astar-route-planning.png" /></p>
+</section>
+<section id="robotics-example">
+<h2>Robotics example<a class="headerlink" href="#robotics-example" title="Permalink to this heading">#</a></h2>
 <p>A stand-alone A* planner in python is shown next. Its instructive to go through the code to understand how it works.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -869,11 +874,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../../../motion-planning-cars/index.html"
+       href="../search-alg-demo/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Motion Planning for Autonomous Cars</p>
+        <p class="prev-next-title">Interactive Demo</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -895,7 +900,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-implementation">A* Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#route-planner-example">Route planner example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robotics-example">Robotics example</a></li>
 </ul>
   </nav></div>
 

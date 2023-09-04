@@ -1,6 +1,6 @@
 # Planning with Search 
 
-In the PDDL section we saw that a sequence of actions that the agent needs to execute to reach the goal can be obtained using domain-idependent planners. This section provides the background that _connects_ such planner to _search_. To do so, it is instructive to look initially to problems that are simpler in terms of state and action representation. We zoom out from the  _factored_ representation that PDDL assumes and treat the state of the environment as _atomic_ i.e. not decomposable. 
+In the PDDL section we saw that a sequence of actions that the agent needs to execute to reach the goal can be obtained using domain-independent planners. This section provides the background that _connects_ such planner to _search_. To do so, it is instructive to look  to problems that are simpler in terms of state and action representation. We zoom out from the  _factored_ representation that PDDL assumes and treat the state of the environment as _atomic_ i.e. not decomposable. 
 
 Atomic state representations of an environment are adequate for a a variety of global planning tasks such as path planning. There, the scene or environment takes the form of a global map and the goal is to move the embodied agent from a starting state to a goal state. If we assume that the global map takes the form of a grid with a suitable resolution, each grid tile (or cell) represents a different atomic state than any other cell. Similar considerations can be made for other forms of the map e.g. a graph form. 
 
