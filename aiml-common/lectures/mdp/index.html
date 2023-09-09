@@ -62,8 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/mdp/_index';</script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/mdp/_index.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/mdp/index';</script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/mdp/index.html" />
     <link rel="shortcut icon" href="../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -333,6 +333,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/index.html">Learn Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resources/environment/notebook-status.html">Notebook execution status</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="label-parts" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/probability/probability-assignment-7/index.html">Probability Assignment</a></li>
 </ul></li></ul>
     </div>
 </nav></div>
@@ -403,7 +405,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/mdp/_index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/mdp/index.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -433,7 +435,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../../_sources/aiml-common/lectures/mdp/_index.md" target="_blank"
+      <li><a href="../../../_sources/aiml-common/lectures/mdp/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -536,11 +538,10 @@ document.write(`
 <p>We started looking at different agent behavior architectures starting from the planning agents where the <em>model</em> of the environment is known and with <em>no interaction</em> with it, the agent improves its policy, using this model as well as problem solving and logical reasoning skills.</p>
 <p>We now look at agents that can plan by:</p>
 <ol class="arabic simple">
-<li><p><em>Interacting</em> with the environment still knowing the model (dynamics) of the environment.</p></li>
-<li><p>Receive <em>reward</em> signals after each interaction.</p></li>
-<li><p>Have an internal <em>objective</em> function that they try to optimize based on the <em>experience</em> they accumulate.</p></li>
+<li><p><em>Interacting</em> with the environment by receiving <em>reward</em> signals from it during each interaction.</p></li>
+<li><p>Knowing the model (dynamics) of the environment, they have an internal <em>objective</em> function that they try to optimize based on the <em>experience</em> they accumulate.</p></li>
 </ol>
-<p>The problem as will see, will be described via a set of four equations called Bellman expectation and Bellman optimality equations that connect the values (utility) with each state or action with the policy (strategy). These equations can be solved by Dynamic Programming algorithms to produce the optimal policy  that the agent must adopt.</p>
+<p>The problem as will see, will be described via a set of four equations called Bellman expectation and Bellman optimality equations that connect the values (utility) with each state or action with the policy (strategy) of the agent. These equations can be solved by Dynamic Programming algorithms to produce the optimal policy  that the agent must adopt.</p>
 <p>Computationally we will go through approaches that solve the MDP as efficiently as possible - namely, the value and policy iteration algorithms.</p>
 <p><img alt="solving-mpd" src="../../../_images/solving-mdp.png" /></p>
 <p><em><a class="reference external" href="https://raw.githubusercontent.com/pantelis/aiml-common/25b7bb61d967ac418eeffb1f87ee771386da590a/lectures/mdp/images/solving-mdp.png">Solving MDP Problems</a> - click this link to display a larger image</em></p>

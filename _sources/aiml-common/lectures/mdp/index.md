@@ -8,11 +8,10 @@ We started looking at different agent behavior architectures starting from the p
 
 We now look at agents that can plan by:
 
-1. _Interacting_ with the environment still knowing the model (dynamics) of the environment.
-2. Receive _reward_ signals after each interaction. 
-3. Have an internal _objective_ function that they try to optimize based on the _experience_ they accumulate.
+1. _Interacting_ with the environment by receiving _reward_ signals from it during each interaction. 
+2. Knowing the model (dynamics) of the environment, they have an internal _objective_ function that they try to optimize based on the _experience_ they accumulate.
 
-The problem as will see, will be described via a set of four equations called Bellman expectation and Bellman optimality equations that connect the values (utility) with each state or action with the policy (strategy). These equations can be solved by Dynamic Programming algorithms to produce the optimal policy  that the agent must adopt. 
+The problem as will see, will be described via a set of four equations called Bellman expectation and Bellman optimality equations that connect the values (utility) with each state or action with the policy (strategy) of the agent. These equations can be solved by Dynamic Programming algorithms to produce the optimal policy  that the agent must adopt. 
 
 Computationally we will go through approaches that solve the MDP as efficiently as possible - namely, the value and policy iteration algorithms.
 
