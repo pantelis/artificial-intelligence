@@ -117,15 +117,20 @@ parts:
   - file: aiml-common/lectures/mdp/index.md      
   - file: aiml-common/lectures/mdp/mdp-intro/mdp_intro.ipynb
   - file: aiml-common/lectures/mdp/bellman-expectation-backup/_index.md      
-  - file: aiml-common/lectures/mdp/bellman-optimality-backup/_index.md      
-  - file: aiml-common/lectures/mdp/mdp-dp-algorithms/index.md
-    title: MDP Dynamic Programming Algorithms
+  - file: aiml-common/lectures/mdp/policy-evaluation/_index.md
+  - file: aiml-common/lectures/mdp/bellman-optimality-backup/_index.md 
+  - file: aiml-common/lectures/mdp/policy-improvement/_index.md 
+  - file: aiml-common/lectures/mdp/dynamic-programming-algorithms/index.md
+    title: Dynamic Programming Algorithms
     sections:  
-      - file: aiml-common/lectures/mdp/mdp-dp-algorithms/policy-iteration/_index.md          
-      - file: aiml-common/lectures/mdp/mdp-dp-algorithms/policy-evaluation/_index.md        
-      - file: aiml-common/lectures/mdp/mdp-dp-algorithms/policy-improvement/_index.md        
-      - file: aiml-common/lectures/mdp/mdp-dp-algorithms/value-iteration/_index.md           
-      - file: aiml-common/lectures/mdp/mdp-lab/recycling-robot/_index.md      
+      - file: aiml-common/lectures/mdp/dynamic-programming-algorithms/policy-iteration/_index.md          
+      - file: aiml-common/lectures/mdp/dynamic-programming-algorithms/value-iteration/_index.md           
+  - file: aiml-common/lectures/mdp/mdp-workshop/index.md
+    title: MDP Workshop
+    sections:
+      - file: aiml-common/lectures/mdp/mdp-workshop/cleaning-robot/deterministic_mdp.ipynb
+      - file: aiml-common/lectures/mdp/mdp-workshop/cleaning-robot/stochastic_mdp.ipynb      
+      - file: aiml-common/lectures/mdp/mdp-workshop/recycling-robot/_index.md      
       #- file: aiml-common/lectures/mdp/mdp-lab/yield-management-capacity-control/_index.md      
   
 - caption: Reinforcement Learning
