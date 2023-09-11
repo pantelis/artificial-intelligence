@@ -124,7 +124,7 @@ parts:
     title: Dynamic Programming Algorithms
     sections:  
       - file: aiml-common/lectures/mdp/dynamic-programming-algorithms/policy-iteration/_index.md          
-      - file: aiml-common/lectures/mdp/dynamic-programming-algorithms/value-iteration/_index.md           
+      - file: aiml-common/lectures/mdp/dynamic-programming-algorithms/value-iteration/index.ipynb           
   - file: aiml-common/lectures/mdp/mdp-workshop/index.md
     title: MDP Workshop
     sections:
