@@ -1,7 +1,3 @@
----
-title: Policy Evaluation (Prediction)
----
-
 # Policy Evaluation (Prediction)
 
 The policy $\pi$ is evaluated when we have produced the state-value function $v_\pi(s)$ for all states. In other words when we know the expected discounted returns that each state can offer us. To do so we apply the Bellman expectation backup equations repeatedly in an iterative fashion. 
@@ -21,7 +17,6 @@ $$\mathbf{v}^{k+1} = \mathbf{\mathcal R}^\pi + \gamma \mathbf{\mathcal P}^\pi \m
 
 The [following source code](https://becomesentient.com/mdp-dynamic-programming/) is instructive and standalone. It executes the policy evaluation for the Gridworld environment from the many that are part of the Gym RL python library. 
  
-
 
 ```python
 # this code is from https://becomesentient.com/mdp-dynamic-programming/
@@ -99,4 +94,3 @@ np.testing.assert_array_almost_equal(v, expected_v, decimal=2)
 print(v)
 print(expected_v)
 ```
-

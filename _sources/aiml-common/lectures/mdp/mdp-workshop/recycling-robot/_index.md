@@ -1,8 +1,4 @@
----
-title: Finding the optimal policy of a recycling robot.
----
-
-#  Finding the optimal policy of a recycling robot.
+#  The recycling robot.
 
 ## Problem statement
 

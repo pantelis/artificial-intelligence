@@ -1,6 +1,3 @@
----
-title: Bellman Expectation Backup 
----
 # Bellman Expectation Backup
 
 ## Computing the value functions given a policy
@@ -32,7 +29,7 @@ The parts of the value function above are:
 
 Similarly to the state-value function we can decompose the action-value function as,
 
-$$q_\pi(s,a) = \mathop{\mathbb{E}_\pi} \left[ R_{t+1} + \gamma ~ q_\pi(S_{t+1}=s^\prime, A_{t+1}) | S_t=s, A_t=a \right]$$
+$$q_\pi(s,a) = \mathop{\mathbb{E}_\pi} \left[ R_{t+1} + \gamma ~ v_\pi(S_{t+1}=s^\prime) | S_t=s, A_t=a \right] $$
 
 We now face the problem that we need to compute these two value functions and we start by considering what is happening at each time step. At each time step while in state $S_t=s$ we have a number of actions we can choose, the probabilities of which depend on the policy $\pi(a|s)$. What value we can reap from each action is given to us by $q_\pi(s,a)$.  This is depicted below. 
 
