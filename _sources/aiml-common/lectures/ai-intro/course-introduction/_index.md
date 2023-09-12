@@ -48,7 +48,7 @@ Further, we will see a fusion of disciplines such as physical modeling and simul
 
 For example in the picture above a CFD simulation is used to augment ML algorithms that predict **and explain** those predictions.  I mission critical systems (such as medical diagnostic systems) everything must be  **explainable**.
 
-Simulation is also used to create synthetic worlds and in fact one of the most fascinating uses of simulation is to [construct scenarios for self-driving car system design](https://arxiv.org/pdf/1910.06075.pdf). [This](https://blogs.unity3d.com/2020/09/17/training-a-performant-object-detection-ml-model-on-synthetic-data-using-unity-computer-vision-tools/) is a primitive example on object detection using Unity.  
+Simulation is also used to create synthetic worlds and in fact one of the most fascinating uses of simulation is to [construct scenarios for self-driving car system design](https://arxiv.org/pdf/1910.06075.pdf). [This](https://github.com/pantelis-classes/omniverse-ai) is a demonstration of object detection using Omniverse - a photorealistic 3D creation and simulation environment.  
 
 
 

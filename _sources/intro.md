@@ -80,9 +80,9 @@ Assignments (30%)
 **Staff (TAs)** {octicon}`person;1em;sd-text-info`
 ^^^
 
-NJIT: TBD
+NJIT: Kamil Arif, Yash Ashish Parte
 
-NYU: TBD
+NYU: Himanshu Payal
 
 :::
 
