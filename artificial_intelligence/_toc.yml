@@ -92,6 +92,7 @@ parts:
   chapters:        
   - file: aiml-common/lectures/logical-reasoning/automated-reasoning/_index.md
   - file: aiml-common/lectures/logical-reasoning/propositional-logic/_index.md
+  - file: aiml-common/lectures/logical-reasoning/logical-inference/index.md
   - file: aiml-common/lectures/logical-reasoning/logical-agents/_index.md
 
 - caption: Planning without Interactions
