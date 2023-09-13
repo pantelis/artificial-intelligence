@@ -1,8 +1,3 @@
----
-title: Logical Agents
-draft: false
----
-
 # Logical Agents
 
 In this chapter we see how agents equipped with the ability to represent internally the state of the environment and reason about the effectiveness of possible actions using propositional logic, can construct plans that are guaranteed to achieve their goals. We start with the KB we developed in wumpus world and enhance it by introducing representations that avoid looking back at the whole percept history to make an inference about the state of the environment currently. 

@@ -62,14 +62,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/logical-reasoning/propositional-logic/_index';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/logical-reasoning/propositional-logic/_index.html" />
     <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Logical Agents" href="../logical-agents/_index.html" />
+    <link rel="next" title="Logical Inference" href="../logical-inference/index.html" />
     <link rel="prev" title="Automated Reasoning" href="../automated-reasoning/_index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -235,10 +233,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../pgm/recursive-state-estimation/_index.html">Recursive State Estimation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../pgm/discrete-bayesian-filter/discrete-bayesian-filter.html">Discrete Bayes Filter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../pgm/hmm-localization/_index.html">Localization and Tracking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../pgm/kalman-filters/one-dimensional-kalman-filters.html">One Dimensional Kalman Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/kalman-filters/one-dimensional-kalman-filters.html">Kalman Filters</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Logical Reasoning</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="label-parts" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../automated-reasoning/_index.html">Automated Reasoning</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">World Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../logical-inference/index.html">Logical Inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../logical-agents/_index.html">Logical Agents</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning without Interactions</span></p><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="label-parts" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../planning/index.html">Automated Planning</a></li>
@@ -535,14 +534,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wumpus-world">Wumpus World</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-inference">Logical Inference</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-more-general-reasoning-case">A more general reasoning case</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-checking-algorithm">Model-Checking Algorithm</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#propositional-logic-syntax">Propositional Logic Syntax</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#propositional-logic-semantics">Propositional Logic Semantics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-example">Inference Example</a></li>
 </ul>
             </nav>
         </div>
@@ -684,120 +675,6 @@ document.write(`
 </tbody>
 </table>
 </section>
-<section id="logical-inference">
-<h2>Logical Inference<a class="headerlink" href="#logical-inference" title="Permalink to this heading">#</a></h2>
-<section id="a-more-general-reasoning-case">
-<h3>A more general reasoning case<a class="headerlink" href="#a-more-general-reasoning-case" title="Permalink to this heading">#</a></h3>
-<p>The wumpus world despite its triviality, contains some deeper abstractions that are worth summarizing.</p>
-<ol class="arabic simple">
-<li><p>Logical inference can be done via an internal representation that are sentences - their syntax and semantics we will examined next.</p></li>
-<li><p>Sentences may be expressed in <em>natural</em> language. Together with the perception and probabilistic reasoning subsystems that can generate symbols associated with a task, the natural language can be <em>grounded</em> and inferences can be drawn in a ‘soft’ or probabilistic way at the symbolic level.</p></li>
-</ol>
-<p>To return to the backpack problem, for the sentence <span class="math notranslate nohighlight">\(\beta\)</span> that declares that the backpack was abandoned, we need to entail a sentence <span class="math notranslate nohighlight">\(\alpha\)</span> (and we denote it as <span class="math notranslate nohighlight">\(\alpha \models \beta\)</span>) that the backpack was handed over to <span class="math notranslate nohighlight">\(\mathtt{nobody}\)</span> and therefore justify an action to sound the security alarm. Note the direction in notation: <span class="math notranslate nohighlight">\(\alpha\)</span> is a stronger assertion that <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
-<p>The specific world model <span class="math notranslate nohighlight">\(m\)</span> is a mathematical abstraction that fixes as TRUE or FALSE each of the sentences it contains and as you understand, depending on the sentences, it may or may not correspond to reality. We denote the set of models that <em>satisfy</em> sentence <span class="math notranslate nohighlight">\(\alpha\)</span> as <span class="math notranslate nohighlight">\(M(\alpha)\)</span>. We also say that <span class="math notranslate nohighlight">\(m\)</span> is a model of <span class="math notranslate nohighlight">\(\alpha\)</span>. Now that we have defined the world model we can go back to the definition of entailment in the earlier example and write:</p>
-<div class="math notranslate nohighlight">
-\[ \alpha \models \beta  \iff M(\alpha) ⊆ M(\beta)\]</div>
-</section>
-<section id="model-checking-algorithm">
-<h3>Model-Checking Algorithm<a class="headerlink" href="#model-checking-algorithm" title="Permalink to this heading">#</a></h3>
-<p>The reasoning algorithm regarding the possible state of the environment in surrounding cells that the agent performed informally above, is called <em>model checking</em> because it enumerates <em>all possible</em> models to check that a sentence <span class="math notranslate nohighlight">\(a\)</span> is supported by the KB i.e. <span class="math notranslate nohighlight">\(M(KB) ⊆ M(\alpha)\)</span>.</p>
-<p><img alt="wumpus-entailment" src="../../../../_images/wumpus-entailment.png" />
-<em>Possible Models in the presence of pits in cells [1,2],[2,2] and [3,1]. There are <span class="math notranslate nohighlight">\(2^3=8\)</span> possible models. The KB when the percepts indicate nothing in cell [1,1] and a breeze in [2,1] is shown as a solid line. With dotted line we show all models of <span class="math notranslate nohighlight">\(a_1=\text{&quot;not have a pit in [1,2]&quot;}\)</span> sentence</em>.</p>
-<p><img alt="wumpus-noentailment" src="../../../../_images/wumpus-nonentailment.png" />
-<em>Same situation as the figure above but we indicate with dot circle a different sentence <span class="math notranslate nohighlight">\(a_2\)</span>. What is this sentence?</em></p>
-</section>
-</section>
-<section id="propositional-logic-syntax">
-<h2>Propositional Logic Syntax<a class="headerlink" href="#propositional-logic-syntax" title="Permalink to this heading">#</a></h2>
-<p>The PL syntax defines the allowable sentences that can be complex. Each <em>atomic</em> sentence consists of a single (propositional) symbol and the fixed symbols TRUE &amp; FALSE. In BNF the atomic sentences or formulas are also called terminal elements. Complex sentences can be constructed from sentences using logical <em>operators</em> (connectives that connect two or more sentences). In evaluating complex sentences the operator precedence shown in the figure below must be followed.</p>
-<p><img alt="BNF-grammar-prop-logic" src="../../../../_images/BNF-grammar-prop-logic.png" />
-<em>BNF grammar of propositional logic</em></p>
-<p>Out of all the operators, two are worthy of further explanation.</p>
-<ol class="arabic simple">
-<li><p>imply (⇒) operator: the left hand side is the <em>premise</em> and the  right hand side is the implication or conclusion or consequent. This is an operator of key importance known as <strong>rule</strong>. Its an if-then statement.</p></li>
-<li><p>if and only if (⇔) operator: its expressing an equivalence (≡) or a biconditional.</p></li>
-</ol>
-</section>
-<section id="propositional-logic-semantics">
-<h2>Propositional Logic Semantics<a class="headerlink" href="#propositional-logic-semantics" title="Permalink to this heading">#</a></h2>
-<p>The semantics for propositional logic specify how to compute the value of <em>any</em> sentence given a model. To do so we use the following truth table.</p>
-<p><img alt="truth-table" src="../../../../_images/truth-table.png" />
-<em>Truth tables for three primary and five derived logical operators. Note the presence of the XOR connective.</em></p>
-<p>Given a world model in the KB</p>
-<div class="math notranslate nohighlight">
-\[m_1 = \left[ P_{1,2}=FALSE, P_{2,2}=FALSE, P_{3,1}=TRUE \right]\]</div>
-<p>a sentence can be assigned a truth value (FALSE/TRUE) using the semantics above. For example the sentence,</p>
-<div class="math notranslate nohighlight">
-\[\neg P_{1,2} \land (P_{2,2} \lor P_{3,1}) = TRUE \]</div>
-</section>
-<section id="inference-example">
-<h2>Inference Example<a class="headerlink" href="#inference-example" title="Permalink to this heading">#</a></h2>
-<p>Using the operators and their semantics we can now construct an KB as an example for the wumpus world. We will use the following symbols to describe atomic and complex sentences in this world.</p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Symbols</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P_{x,y}\)</span></p></td>
-<td><p>Pit in cel [x,y]</p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(W_{x,y}\)</span></p></td>
-<td><p>Wumpus (dead or alive) in cel [x,y]</p></td>
-</tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(B_{x,y}\)</span></p></td>
-<td><p>Perception of a breeze while in cel [x,y]</p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(S_{x,y}\)</span></p></td>
-<td><p>Perception of a stench while in cel [x,y]</p></td>
-</tr>
-</tbody>
-</table>
-<p>Using these symbols we can convert the natural language assertions into logical sentences and populate the KB. The sentences <span class="math notranslate nohighlight">\(R_1\)</span> and <span class="math notranslate nohighlight">\(R_2/R_3\)</span> are general rules of the wumpus world. <span class="math notranslate nohighlight">\(R_4\)</span> and <span class="math notranslate nohighlight">\(R_5\)</span> are specific to the specific world instance and moves of the agent.</p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Sentence</p></th>
-<th class="head"><p>Description</p></th>
-<th class="head"><p>KB</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(R_1\)</span></p></td>
-<td><p>There is no pit in cel [1,1]</p></td>
-<td><p><span class="math notranslate nohighlight">\(\neg P_{1,1}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(R_2\)</span></p></td>
-<td><p>The cell [1,1] is breezy if and only if there is a pit in the neighboring cell.</p></td>
-<td><p><span class="math notranslate nohighlight">\(B_{1,1} ⇔ (P_{1,2} \lor P_{2,1})\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(R_3\)</span></p></td>
-<td><p>The cell [2,1] is breezy if and only if there is a pit in the neighboring cell.</p></td>
-<td><p><span class="math notranslate nohighlight">\(B_{2,1} ⇔ (P_{1,1} \lor P_{2,2} \lor P_{3,1})\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(R_4\)</span></p></td>
-<td><p>Agent while in cell [1,1] perceives [Stench, Breeze, Glitter, Bump, Scream]=[None, None, None, None, None]</p></td>
-<td><p><span class="math notranslate nohighlight">\(\neg B_{1,1}\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(R_5\)</span></p></td>
-<td><p>Agent while in cell [2,1] perceives [Stench, Breeze, Glitter, Bump, Scream]=[None, Breeze, None, None, None]</p></td>
-<td><p><span class="math notranslate nohighlight">\(B_{2,1}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-<p>As the agent moves, it uses the KB to decide whether a sentence is entailed by the the KB or not. For example can we infer that there is no pit at cell [1,2] ? The sentence of interest is <span class="math notranslate nohighlight">\( \alpha = \neg P_{1,2}\)</span> and we need to prove that:</p>
-<div class="math notranslate nohighlight">
-\[ KB \models \alpha \]</div>
-<p>To answer such question we will use the model checking algorithm outlined in this chapter: enumerate all models and check that <span class="math notranslate nohighlight">\(\alpha\)</span> is true for in every model where the KB is true. We construct the truth table that involves the symbols and sentences present in the KB:</p>
-<p><img alt="truth-table-kb" src="../../../../_images/truth-table-kb.png" /></p>
-<p>As described in the figure caption, 3 models out of the <span class="math notranslate nohighlight">\(2^7=128\)</span> models make the KB true and in these rows the <span class="math notranslate nohighlight">\(P_{1,2}\)</span> is false.</p>
-<p>Although the model checking approach was instructive, there is an issue with its complexity. Notice that if there are <span class="math notranslate nohighlight">\(n\)</span> symbols in the KB there will be <span class="math notranslate nohighlight">\(2^n\)</span> models, the time complexity is <span class="math notranslate nohighlight">\(O(2^n)\)</span>.</p>
-<p>The symbolic representation together with the explosive increase in the number of sentences in the KB as time goes by, cant scale. Another approach to do entailment, potentially more efficient, is  <em>theorem proving</em> where we are applying <em>inference rules</em> directly to the sentences of the KB to construct a proof of the desired sentence/query. Even better, we can invest in new representations as described in the PDDL chapter to develop planning approaches that combine search and logic and do not suffer necessarily from the combinatorial explosion problem.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you need to review the BNF expressed grammar for propositional logic (as shown in the syntax above) review <a class="reference external" href="https://www.youtube.com/watch?v=MMxMeX5emUA">part 1</a> and <a class="reference external" href="https://www.youtube.com/watch?v=DiOxbYTLXX8">part 2</a> video tutorials.</p>
-</div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -841,11 +718,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../logical-agents/_index.html"
+       href="../logical-inference/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Logical Agents</p>
+        <p class="prev-next-title">Logical Inference</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -868,14 +745,6 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wumpus-world">Wumpus World</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-inference">Logical Inference</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-more-general-reasoning-case">A more general reasoning case</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-checking-algorithm">Model-Checking Algorithm</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#propositional-logic-syntax">Propositional Logic Syntax</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#propositional-logic-semantics">Propositional Logic Semantics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-example">Inference Example</a></li>
 </ul>
   </nav></div>
 
