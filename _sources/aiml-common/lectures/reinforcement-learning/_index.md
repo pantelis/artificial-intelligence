@@ -1,16 +1,18 @@
 # Reinforcement Learning
 
 ![unified-view-rl](images/unified-view-rl.png)
+
 *Different Approaches to solve known and unknown MDPs*
 
-We started looking at different agent behavior architectures starting from the planning agents where the _model_ of the environment is known and with _no interaction_ with it the agent improves its policy, using this model as well as problem solving and logical reasoning skills. 
+We started looking at different agent behavior architectures starting from the planning agents where the _model_ of the environment is known and with _no interaction_ with it, the agent improves its policy, using this model as well as using problem solving and logical reasoning skills. 
 
-We then looked at agents that can plan by interacting with the environment still knowing the model - this was covered in the MDP chapter.  We have seen that DP uses _full width_ backups.  For example, in the tree representation of the value iteration algorithm shown below: 
+We then looked at agents that can plan by interacting with the environment still knowing the model - this was covered in the MDP chapter.  We have seen that DP uses _full width_ backups.  For example, in the tree representation of the value iteration algorithm shown below, every successor state and action is considered and evaluated using the known transition (environment dynamics) and reward functions. 
 
 ![dp-value-iteration-tree](images/dp-value-iteration-tree.png)
-_Backup tree with the DP value iteration algorithm_
 
-every successor state and action is considered and evaluated using the known transition (environment dynamics) and reward functions. This can be dealt with for moderate size problems but even a single backup cant be feasible when we have very large state spaces. So we definitely need to develop approaches that allow agents to 
+_DP bootstraps the v and q function estimation from full-width backups_
+
+This can be feasible for moderate size problems but even a single backup cant be feasible when we have very large state spaces. So we definitely need to develop approaches that allow agents to 
 
 * optimally act in very large _known_ MDPs or 
 * optimally act when we don't know the MDP functions. 

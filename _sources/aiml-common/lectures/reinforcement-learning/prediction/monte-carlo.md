@@ -5,15 +5,17 @@ In this chapter we find optimal policy solutions when the MDP is _unknown_ and w
 1. (incremental) Monte-Carlo (MC) and 
 2. Temporal Difference (TD). 
 
-**Notice that we use capital letters for the _estimates_ of the value functions.**  
+```{note}
+We use capital letters for the _estimates_ of the $v_\pi$ and $q_\pi$ value functions we met in MDP.
+```
 
 ## Monte-Carlo (MC) State Value Prediction
 
-The value functions $v_π$ and $q_π$ can be estimated from experience.  
+In MC prediction, value functions $v_π$ and $q_π$ are estimated purely from the experience of the agent across multiple episodes.  
 
-For example, if an agent follows policy $\pi$ and maintains an average, for each state encountered, of the actual returns that have followed that state, then the average will converge to the state’s value,$v_π(s)$, as the number of times that state is encountered approaches infinity.  If separate averages are kept for each action taken in each state, then these averages will similarly converge to the action values,$q_π(s,a)$.  
+For example, if an agent follows policy $\pi$ and maintains an average, for each state encountered, the actual return that have followed that state (retrievable at the end of each episode), then the average will converge to the state’s value,$v_π(s)$, as the number of times that state is encountered approaches infinity.  If separate averages are kept for each action taken in each state, then these averages will similarly converge to the action values,$q_π(s,a)$.  
 
-We call estimation methods of this kind _Monte Carlo_ methods because they involve averaging over many random samples of returns. In MC prediction more specifically, for every state at time $t$ we sample one complete trajectory (episode) as shown below.  
+We call estimation methods of this kind _Monte Carlo_ methods because they involve averaging over many _random samples_ of returns. In MC prediction, more specifically, for every state at time $t$ we sample one complete trajectory (episode) as shown below.  
 
 ![mc-value-iteration-tree](images/mc-value-iteration-tree.png)
 _Backup tree with value iteration based on the MC approach. MC samples a complete trajectory to the terminating node T shown with red._
@@ -55,5 +57,5 @@ $\alpha$ can also be any number $< 1$ to get into a more flexible sample mean - 
 ```{note} An important fact about Monte Carlo methods is that the estimates for each state are independent.  The estimate for one state does not build upon the estimate of any other state, as is the case in DP. In other words, **Monte Carlo methods do not bootstrap**. In particular, note that the computational expense of estimating the value of a single state is independent of the number of states.  This can make Monte Carlo methods particularly attractive when one requires the value of only one or a subset of states. 
 ```
 
-The policy evaluation problem for action values is to estimate $q_π(s,a)$, the expected return when starting in states, taking action $a$, and thereafter following policy $π$.  The Monte Carlo methods for this are essentially the same as just presented for state values. 
+The policy evaluation problem for action values is to estimate $q_π(s,a)$, the expected return when starting in states, taking action $a$, and thereafter following policy $π$.  The Monte Carlo methods for this are essentially the same as just presented for state values and in fact the estmated $Q(s,a)$ function is the only one that allows us to apply model-free control via the a generalized version of the policy iteration algorithm. This is because the policy improvement step for $V(s)$, does require the knowledge of MDP dynamics while the equivalent step for $Q(s,a)$ does not.  
 

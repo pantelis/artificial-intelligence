@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>The SARSA Algorithm &#8212; Introduction to Artificial Intelligence</title>
+    <title>SARSA Gridworld Example &#8212; Introduction to Artificial Intelligence</title>
   
   
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
 
   
-  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,8 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
+  <script src="../../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
 
     <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/jquery.js"></script>
@@ -62,15 +63,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/reinforcement-learning/control/sarsa/_index';</script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/reinforcement-learning/control/sarsa/_index.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/reinforcement-learning/control/sarsa/sarsa_gridworld';</script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/reinforcement-learning/control/sarsa/sarsa_gridworld.html" />
     <link rel="shortcut icon" href="../../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="The REINFORCE Algorithm" href="../../reinforce/_index.html" />
-    <link rel="prev" title="Generalized Policy Iteration" href="../../generalized-policy-iteration/_index.html" />
+    <link rel="next" title="Policy Gradient Algorithms - REINFORCE" href="../../reinforce/_index.html" />
+    <link rel="prev" title="The SARSA Algorithm" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -81,6 +80,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -278,11 +286,15 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../_index.html">Reinforcement Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../prediction/monte-carlo.html">Monte-Carlo Prediction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../prediction/temporal-difference.html">Temporal Difference (TD) Prediction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../_index.html">Model-free Control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../generalized-policy-iteration/_index.html">Generalized Policy Iteration</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">The SARSA Algorithm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../reinforce/_index.html">The REINFORCE Algorithm</a></li>
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="label-parts" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../prediction/prediction-example.html">Example of <span class="math notranslate nohighlight">\(Q(s,a)\)</span> Prediction</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../generalized-policy-iteration/index.html">Model-Free Control and Generalized Policy Iteration</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html"><span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy Monte-Carlo Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html">The SARSA Algorithm</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">SARSA Gridworld Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforce/_index.html">Policy Gradient Algorithms - REINFORCE</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="label-parts" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../rnn/introduction/_index.html">Introduction to Recurrent Neural Networks (RNN)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../rnn/simple-rnn/_index.html">Simple RNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../rnn/lstm/_index.html">The Long Short-Term Memory (LSTM) Architecture</a></li>
@@ -292,21 +304,21 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="label-parts" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="label-parts" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../nlp/nlp-introduction/nlp-pipelines/_index.html">Introduction to NLP Pipelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../nlp/nlp-introduction/tokenization/index.html">Tokenization</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/nlp-introduction/word2vec/_index.html">Embeddings</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/nlp-introduction/word2vec/_index.html">Embeddings</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../nlp/nlp-introduction/word2vec/word2vec_from_scratch.html">Word2Vec from scratch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../nlp/nlp-introduction/word2vec/word2vec_tensorflow_tutorial.html">Word2Vec Tensorflow Tutorial</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/language-models/_index.html">Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/language-models/_index.html">Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../nlp/language-models/cnn-language-model/index.html">CNN Language Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../nlp/language-models/simple-rnn-language-model/index.html">Simple RNN Language Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../nlp/language-models/lstm-language-model/index.html">LSTM Language Model from scratch</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/nmt/nmt-intro/index.html">Neural Machine Translation</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/nmt/nmt-intro/index.html">Neural Machine Translation</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../nlp/nmt/nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../nlp/nmt/rnn-nmt-attention/index.html">Attention in RNN-based NMT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../nlp/nmt/rnn-attention-workshop/seq2seq_and_attention.html">Attention in RNN NMT Workshop</a></li>
@@ -316,7 +328,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/transformers/transformers-intro.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/transformers/transformers-intro.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../nlp/transformers/annotated_transformer.html">The Annotated Transformer</a></li>
 
 
@@ -331,17 +343,17 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="label-parts" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../ml-math/index.html">Math for ML Textbook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../ml-math/probability/index.html">Probability Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../ml-math/linear-algebra/index.html">Linear Algebra for Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../ml-math/calculus/index.html">Calculus</a></li>
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="label-parts" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="label-parts" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/index.html">Your Programming Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../python/index.html">Learn Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
-</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="label-parts" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/><label class="label-parts" for="toctree-checkbox-29"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../assignments/probability/probability-assignment-7/index.html">Probability Assignment</a></li>
 </ul></li></ul>
     </div>
@@ -388,6 +400,73 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/pantelis/artificial-intelligence/master?urlpath=tree/artificial_intelligence/aiml-common/lectures/reinforcement-learning/control/sarsa/sarsa_gridworld.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/pantelis/artificial-intelligence/blob/master/artificial_intelligence/aiml-common/lectures/reinforcement-learning/control/sarsa/sarsa_gridworld.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -413,7 +492,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/reinforcement-learning/control/sarsa/_index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/reinforcement-learning/control/sarsa/sarsa_gridworld.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -443,7 +522,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../../../../_sources/aiml-common/lectures/reinforcement-learning/control/sarsa/_index.md" target="_blank"
+      <li><a href="../../../../../_sources/aiml-common/lectures/reinforcement-learning/control/sarsa/sarsa_gridworld.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -453,7 +532,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -497,10 +576,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -508,13 +587,11 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -525,19 +602,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>The SARSA Algorithm</h1>
+    <h1>SARSA Gridworld Example</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q-s-a-estimation-example"><span class="math notranslate nohighlight">\(Q(s,a)\)</span> estimation Example</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -547,59 +616,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="the-sarsa-algorithm">
-<h1>The SARSA Algorithm<a class="headerlink" href="#the-sarsa-algorithm" title="Permalink to this heading">#</a></h1>
-<p>As we discussed in the model-free control section, SARSA implements a <span class="math notranslate nohighlight">\(Q(s,a)\)</span> value-based GPI. SARSA is one of the best known RL algorithms and is very practical as compared to pure policy-based algorithms. It tends to be more sample efficient - a general trait of many value-based algorithms despite the algorithmic hybridization that is usually applicable today. Its name is attributed to the fact that we need to know the State-Action-Reward-State-Action before performing an update. The tree for SARSA is shown below:</p>
-<p><img alt="sarsa-update-tree" src="../../../../../_images/sarsa-update-tree.png" />
-<em>SARSA action-value backup update tree. The name SARSA is written as you read from the top to the bottom of the tree :)</em></p>
-<p>There are two concepts that we need to grasp:</p>
-<ol class="arabic simple">
-<li><p>The first is a technique for learning the Q-function via TD-learning that we have seen in the prediction section.</p></li>
-<li><p>The second is a method for evolving the policy using the learned Q-function.</p></li>
-</ol>
-<p>Using the tree and following the value estimate of <em>temporal difference (TD) learning</em>, we can write the value update equation as:</p>
-<div class="math notranslate nohighlight">
-\[Q(S,A) = Q(S,A) + \alpha (R + \gamma Q(S^\prime, A^\prime)-Q(S,A))\]</div>
-<p>Effectively the equation above updates the Q function by <span class="math notranslate nohighlight">\(\alpha\)</span> times the direction of the TD-error. What SARSA does is basically the policy iteration diagram we have seen in the control above but with a twist. Instead of trying to evaluate the policy all the way using the DP, or over an episode using MC,  SARSA does policy improvement <strong>over each time step</strong> significantly increasing the iteration rate - this is figuratively shown below:</p>
-<p><img alt="sarsa-policy-iteration" src="../../../../../_images/sarsa-policy-iteration.png" />
-<em>SARSA on-policy control</em></p>
-<p>The idea is to increase the frequency of the so called <span class="math notranslate nohighlight">\(\epsilon\)</span>-Greedy policy improvement step where we select with probability <span class="math notranslate nohighlight">\(\epsilon\)</span> a random action instead of the action that maximizes the <span class="math notranslate nohighlight">\(Q(s,a)\)</span> function (greedy). We do so, in order to “hit” new states that we havent seen before (exploration).</p>
-<p>The SARSA algorithm is summarized below:</p>
-<p><img alt="sarsa-on-policy-control-algorithm" src="../../../../../_images/sarsa-on-policy-control-algorithm.png" />
-<em>SARSA algorithm for on-policy control</em></p>
-<p><span class="math notranslate nohighlight">\(Q(s,a)\)</span> in practice is a table (matrix) stored in memory. Every step that we take an action we flip a “bent coin” and if “heads” comes up we take the maximum of the <span class="math notranslate nohighlight">\(Q(s,a)\)</span> values and this will be the policy improvement for the subsequent step. If it comes up as “tails” we just pick a random action and update the policy accordingly.</p>
-<section id="q-s-a-estimation-example">
-<h2><span class="math notranslate nohighlight">\(Q(s,a)\)</span> estimation Example<a class="headerlink" href="#q-s-a-estimation-example" title="Permalink to this heading">#</a></h2>
-<p><img alt="td-environment" src="../../../../../_images/td-environment.jpg" /></p>
-<p>Suppose an agent is learning to play the toy environment shown above. This is a essentially a corridor and the agent has to learn to navigate to the end of the corridor to the good terminal state <span class="math notranslate nohighlight">\(s_{T2}\)</span>, denoted with a star.</p>
-<ul class="simple">
-<li><p>There are five states in total.   The agent always starts the game in state <span class="math notranslate nohighlight">\(s_1\)</span>, denoted <span class="math notranslate nohighlight">\(S\)</span>, and the game ends if the agent reaches either of the terminal states. <span class="math notranslate nohighlight">\(s_{T2}\)</span> is the goal state—the agent receives a reward of 1 if it reaches this state.</p></li>
-<li><p>There are only two actions, <span class="math notranslate nohighlight">\(a_{UP}\)</span> and <span class="math notranslate nohighlight">\(a_{DOWN}\)</span>.</p></li>
-<li><p>The agent receives rewards of 0 in all other states.</p></li>
-<li><p>The agent’s discount rate γ is 0.9.</p></li>
-<li><p>The game is  optimally solved by a policy which reaches <span class="math notranslate nohighlight">\(s_{T2}\)</span> in the smallest number of steps because an agent values rewards received sooner more than rewards received later in time. In this case, the smallest number of steps an agent can take to optimally solve the environment is 3.</p></li>
-</ul>
-<p>How can we learn the optimal Q function?</p>
-<p>The diagram is split into five blocks from top to bottom. Each block corresponds to a single episode of experiences in the environment; the first block corresponds to the first episode, the second block the second episode, and so on. Each block contains a number of columns. They are interpreted from left to right as follows:</p>
-<ul class="simple">
-<li><p><strong>Q-function episode start</strong>: The value of the Q-function at the start of the episode. At the beginning of episode 1, all of the values are initialized to 0 since we have no information yet about the function.</p></li>
-<li><p><strong>Episode</strong>: The episode number.</p></li>
-<li><p><strong>Time step</strong>: Each block contains a variable number of experiences. For example, there are three experiences in episode 2 and seven experiences in episode 4. The time index of each experience within the block is indicated by the time step.</p></li>
-<li><p><strong>Action:</strong> The action the agent took at each time step.</p></li>
-<li><p><span class="math notranslate nohighlight">\((s, a, r, s′)\)</span>: The agent’s experience at each time step. This consists of the current state s, the action the agent took a, the reward received r, and the next state the environment transitioned into s′.</p></li>
-<li><p><span class="math notranslate nohighlight">\(r + γQ*(s′, a)\)</span>: The target value (i.e., the right-hand side of the equation) to use in the Bellman update:</p>
-<ul>
-<li><p>$<span class="math notranslate nohighlight">\(Q*(s, a) = r + γQ*(s^\prime, a^\prime)\)</span>$.</p></li>
-</ul>
-</li>
-<li><p><strong>Q-function episode end</strong>: The value of Q-function at the end of the episode. The Bellman update has been applied for each experience of the episode in time step order. This means that the Bellman update was applied first for the experience corresponding to time step 1, then time step 2, and so on. The table shows the final result after all of the Bellman updates have been applied for the episode.</p></li>
-</ul>
-<p><img alt="td-q-function-learning" src="../../../../../_images/td-q-function-learning.jpg" />
-<em>TD Q-function learning</em></p>
-<p>Obviously this is a trivial example to show in detail the calculations that are being done at every episode and time step. For a more elaborate gridworld, the python code that follows shows how SARSA would work in the environment below.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="sarsa-gridworld-example">
+<h1>SARSA Gridworld Example<a class="headerlink" href="#sarsa-gridworld-example" title="Permalink to this heading">#</a></h1>
+<p>For a more elaborate gridworld, the python code that follows shows how SARSA would work in the environment below.</p>
 <p><img alt="sarsa-gridworld" src="../../../../../_images/sarsa-gridworld.png" />
 <em>SARSA Gridworld</em></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># code is from https://github.com/rlcode/reinforcement-learning/tree/master/1-grid-world</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code is from https://github.com/rlcode/reinforcement-learning/tree/master/1-grid-world</span>
 
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -745,10 +769,28 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">workspaces</span><span class="o">/</span><span class="n">artificial_intelligence</span><span class="o">/</span><span class="n">artificial_intelligence</span><span class="o">/</span><span class="n">aiml</span><span class="o">-</span><span class="n">common</span><span class="o">/</span><span class="n">lectures</span><span class="o">/</span><span class="n">reinforcement</span><span class="o">-</span><span class="n">learning</span><span class="o">/</span><span class="n">control</span><span class="o">/</span><span class="n">sarsa</span><span class="o">/</span><span class="n">sarsa_gridworld</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">1</span> <span class="n">line</span> <span class="mi">5</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B7b22686f737450617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e6365222c226c6f63616c446f636b6572223a66616c73652c2273657474696e6773223a7b22686f7374223a22756e69783a2f2f2f7661722f72756e2f646f636b65722e736f636b227d2c22636f6e66696746696c65223a7b22246d6964223a312c22667350617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2265787465726e616c223a2266696c653a2f2f2f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2270617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c22736368656d65223a2266696c65227d7d/workspaces/artificial_intelligence/artificial_intelligence/aiml-common/lectures/reinforcement-learning/control/sarsa/sarsa_gridworld.ipynb#W0sdnNjb2RlLXJlbW90ZQ%3D%3D?line=2&#39;</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">time</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B7b22686f737450617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e6365222c226c6f63616c446f636b6572223a66616c73652c2273657474696e6773223a7b22686f7374223a22756e69783a2f2f2f7661722f72756e2f646f636b65722e736f636b227d2c22636f6e66696746696c65223a7b22246d6964223a312c22667350617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2265787465726e616c223a2266696c653a2f2f2f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2270617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c22736368656d65223a2266696c65227d7d/workspaces/artificial_intelligence/artificial_intelligence/aiml-common/lectures/reinforcement-learning/control/sarsa/sarsa_gridworld.ipynb#W0sdnNjb2RlLXJlbW90ZQ%3D%3D?line=3&#39;</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B7b22686f737450617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e6365222c226c6f63616c446f636b6572223a66616c73652c2273657474696e6773223a7b22686f7374223a22756e69783a2f2f2f7661722f72756e2f646f636b65722e736f636b227d2c22636f6e66696746696c65223a7b22246d6964223a312c22667350617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2265787465726e616c223a2266696c653a2f2f2f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2270617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c22736368656d65223a2266696c65227d7d/workspaces/artificial_intelligence/artificial_intelligence/aiml-common/lectures/reinforcement-learning/control/sarsa/sarsa_gridworld.ipynb#W0sdnNjb2RlLXJlbW90ZQ%3D%3D?line=4&#39;</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B7b22686f737450617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e6365222c226c6f63616c446f636b6572223a66616c73652c2273657474696e6773223a7b22686f7374223a22756e69783a2f2f2f7661722f72756e2f646f636b65722e736f636b227d2c22636f6e66696746696c65223a7b22246d6964223a312c22667350617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2265787465726e616c223a2266696c653a2f2f2f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2270617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c22736368656d65223a2266696c65227d7d/workspaces/artificial_intelligence/artificial_intelligence/aiml-common/lectures/reinforcement-learning/control/sarsa/sarsa_gridworld.ipynb#W0sdnNjb2RlLXJlbW90ZQ%3D%3D?line=5&#39;</span><span class="o">&gt;</span><span class="mi">6</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">ImageTk</span><span class="p">,</span> <span class="n">Image</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B7b22686f737450617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e6365222c226c6f63616c446f636b6572223a66616c73652c2273657474696e6773223a7b22686f7374223a22756e69783a2f2f2f7661722f72756e2f646f636b65722e736f636b227d2c22636f6e66696746696c65223a7b22246d6964223a312c22667350617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2265787465726e616c223a2266696c653a2f2f2f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2270617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c22736368656d65223a2266696c65227d7d/workspaces/artificial_intelligence/artificial_intelligence/aiml-common/lectures/reinforcement-learning/control/sarsa/sarsa_gridworld.ipynb#W0sdnNjb2RlLXJlbW90ZQ%3D%3D?line=7&#39;</span><span class="o">&gt;</span><span class="mi">8</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;tkinter&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
-<span class="kn">from</span> <span class="nn">environment</span> <span class="kn">import</span> <span class="n">Env</span>
+<span class="c1">#from environment import Env</span>
 
 
 <span class="c1"># SARSA agent learns every time step from the sample &lt;s, a, r, s&#39;, a&#39;&gt;</span>
@@ -825,7 +867,8 @@ document.write(`
                 <span class="k">break</span>
 </pre></div>
 </div>
-</section>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -853,19 +896,18 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../generalized-policy-iteration/_index.html"
+       href="index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Generalized Policy Iteration</p>
+        <p class="prev-next-title">The SARSA Algorithm</p>
       </div>
     </a>
     <a class="right-next"
@@ -873,33 +915,16 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The REINFORCE Algorithm</p>
+        <p class="prev-next-title">Policy Gradient Algorithms - REINFORCE</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q-s-a-estimation-example"><span class="math notranslate nohighlight">\(Q(s,a)\)</span> estimation Example</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
@@ -943,8 +968,8 @@ By Pantelis Monogioudis, Ph.D
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
 
   <footer class="bd-footer">
   </footer>
