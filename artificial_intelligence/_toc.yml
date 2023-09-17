@@ -138,10 +138,14 @@ parts:
   chapters:
   - file: aiml-common/lectures/reinforcement-learning/_index.md        
   - file: aiml-common/lectures/reinforcement-learning/prediction/monte-carlo.md      
-  - file: aiml-common/lectures/reinforcement-learning/prediction/temporal-difference.md      
-  - file: aiml-common/lectures/reinforcement-learning/control/_index.md      
-  - file: aiml-common/lectures/reinforcement-learning/generalized-policy-iteration/_index.md      
-  - file: aiml-common/lectures/reinforcement-learning/control/sarsa/_index.md      
+  - file: aiml-common/lectures/reinforcement-learning/prediction/temporal-difference.md
+  - file: aiml-common/lectures/reinforcement-learning/prediction/prediction-example.md
+  - file: aiml-common/lectures/reinforcement-learning/generalized-policy-iteration/index.md
+    title: Model-Free Control and Generalized Policy Iteration
+    sections:
+      - file: aiml-common/lectures/reinforcement-learning/control/index.md           
+      - file: aiml-common/lectures/reinforcement-learning/control/sarsa/index.md      
+      - file: aiml-common/lectures/reinforcement-learning/control/sarsa/sarsa_gridworld.ipynb
   - file: aiml-common/lectures/reinforcement-learning/reinforce/_index.md      
 
 - caption:  Sequences and RNNs
