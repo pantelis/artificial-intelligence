@@ -1,8 +1,12 @@
-# $\epsilon$-greedy Monte-Carlo Control 
+# $\epsilon$-greedy Monte-Carlo (MC) Control 
 
-In this section we outline methods that can result in optimal policies when the MDP is _unknown_ and we need to _learn_ its underlying functions / models - also known as the  _model free_ control problem. Learning in this chapter, follows the _on-policy_ approach where the agent learns these models "on the job", so to speak. 
+In this section we outline methods that can result in optimal policies when the MDP is _unknown_ and we need to _learn_ its underlying functions / models - also known as the  _model free_ control problem. Learning in this section, follows the _on-policy_ approach where the agent learns to act optimally by using the same policy $\pi$ that transitions the environment (generating experiences). 
 
-In the model-free prediction section we have seen that it is in fact possible to get to estimate the state value function without any MDP model dependencies. However, when we try to do do greedy policy improvement 
+```{note}
+Contrast this with the _off-policy_ approach where the agent learns to act optimally by observing experiences from a different  policy (called behaviour policy $\mu$) than the one that tries to learn ($\pi$).   
+```
+
+In the model-free prediction section we have seen that it is in fact possible, with MC, to get to estimate the state value function without any MDP model dependencies. However, when we try to do do greedy policy improvement 
 
 $$\pi^\prime(s) = \arg \max_{a \in \mathcal A} (\mathcal R_s^a + \mathcal P_{ss^\prime}^a V(s^\prime))$$
 

@@ -21,7 +21,7 @@ Thus, both processes stabilize only when a policy has been found that is greedy 
 
 ![gpi](images/gpi.png)
 
-_We have seen this diagram in policy iteration where the arrows takes the system all the way to achieving one of the two goals completely.  In GPI one could also take smaller, incomplete steps toward each goal (not shown).  In either case, the two processes together achieve the overall goal of optimality even though neither is attempting to achieve it directly._
+_We have seen this diagram in policy iteration where the arrows takes the system all the way to achieving one of the two goals completely.  **In GPI one could also take smaller, incomplete steps toward each goal (not shown)**.  In either case, the two processes together achieve the overall goal of optimality even though neither is attempting to achieve it directly._
 
 ## GPI Algorithms
 

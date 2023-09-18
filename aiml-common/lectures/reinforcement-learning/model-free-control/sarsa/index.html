@@ -65,13 +65,13 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/reinforcement-learning/control/sarsa/index';</script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/reinforcement-learning/control/sarsa/index.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/reinforcement-learning/model-free-control/sarsa/index';</script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/reinforcement-learning/model-free-control/sarsa/index.html" />
     <link rel="shortcut icon" href="../../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="SARSA Gridworld Example" href="sarsa_gridworld.html" />
-    <link rel="prev" title="\(\epsilon\)-greedy Monte-Carlo Control" href="../index.html" />
+    <link rel="next" title="SARSA Gridworld Example" href="gridworld/sarsa_gridworld.html" />
+    <link rel="prev" title="\(\epsilon\)-greedy Monte-Carlo (MC) Control" href="../greedy-monte-carlo/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -288,14 +288,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../_index.html">Reinforcement Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../prediction/monte-carlo.html">Monte-Carlo Prediction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../prediction/temporal-difference.html">Temporal Difference (TD) Prediction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../prediction/prediction-example.html">Example of <span class="math notranslate nohighlight">\(Q(s,a)\)</span> Prediction</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../generalized-policy-iteration/index.html">Model-Free Control and Generalized Policy Iteration</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../index.html"><span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy Monte-Carlo Control</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Model-free Control</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../generalized-policy-iteration/index.html">Generalized Policy Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../greedy-monte-carlo/index.html"><span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy Monte-Carlo (MC) Control</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">The SARSA Algorithm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sarsa_gridworld.html">SARSA Gridworld Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gridworld/sarsa_gridworld.html">SARSA Gridworld Example</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../reinforce/_index.html">Policy Gradient Algorithms - REINFORCE</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="label-parts" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../rnn/introduction/_index.html">Introduction to Recurrent Neural Networks (RNN)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../rnn/simple-rnn/_index.html">Simple RNN</a></li>
@@ -427,7 +426,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/reinforcement-learning/control/sarsa/index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/reinforcement-learning/model-free-control/sarsa/index.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -457,7 +456,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../../../../_sources/aiml-common/lectures/reinforcement-learning/control/sarsa/index.md" target="_blank"
+      <li><a href="../../../../../_sources/aiml-common/lectures/reinforcement-learning/model-free-control/sarsa/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -526,7 +525,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -542,6 +543,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sarsa-td-learning">SARSA - TD Learning</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -553,25 +562,29 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-sarsa-algorithm">
 <h1>The SARSA Algorithm<a class="headerlink" href="#the-sarsa-algorithm" title="Permalink to this heading">#</a></h1>
-<p>As we discussed in the model-free control section, SARSA implements a <span class="math notranslate nohighlight">\(Q(s,a)\)</span> value-based GPI. Its name is attributed to the fact that we need to know the State-Action-Reward-State-Action before performing an update. The tree for SARSA is shown below:</p>
-<p><img alt="sarsa-update-tree" src="../../../../../_images/sarsa-update-tree.png" /></p>
-<p><em>SARSA action-value backup update tree. The name SARSA is written as you read from the top to the bottom of the tree :)</em></p>
-<p>There are two concepts that we need to grasp:</p>
+<p>SARSA implements a <span class="math notranslate nohighlight">\(Q(s,a)\)</span> value-based GPI and naturally follows as an enhancement from the <span class="math notranslate nohighlight">\(\epsilon-greedy\)</span> policy improvement step of MC control.</p>
+<p>We meet also here the familiar two steps:</p>
 <ol class="arabic simple">
 <li><p>The first is a technique for learning the Q-function via TD-learning that we have seen in the prediction section.</p></li>
 <li><p>The second is a method for evolving the policy using the learned Q-function.</p></li>
 </ol>
-<p>Using the tree and following the value estimate of <em>temporal difference (TD) learning</em>, we can write the value update equation as:</p>
+<section id="sarsa-td-learning">
+<h2>SARSA - TD Learning<a class="headerlink" href="#sarsa-td-learning" title="Permalink to this heading">#</a></h2>
+<p>In the TD prediction section, we have met the TD prediction step for <span class="math notranslate nohighlight">\(V(s)\)</span> but for control we need to predict the <span class="math notranslate nohighlight">\(Q(s,a)\)</span>.</p>
+<p>The TD(0), also known as single-step TD, tree for SARSA is shown below:</p>
+<p><img alt="sarsa-update-tree" src="../../../../../_images/sarsa-update-tree.png" /></p>
+<p><em>SARSA action-value backup update tree. Its name is attributed to the fact that we need to know the State-Action-Reward-State-Action before performing an update.</em></p>
+<p>Following the value estimate of <em>temporal difference (TD) learning</em>, we can write the value update equation as:</p>
 <div class="math notranslate nohighlight">
 \[Q(S,A) = Q(S,A) + \alpha (R + \gamma Q(S^\prime, A^\prime)-Q(S,A))\]</div>
-<p>Effectively the equation above updates the Q function by <span class="math notranslate nohighlight">\(\alpha\)</span> times the direction of the TD-error. What SARSA does is basically the policy iteration diagram we have seen in the control above but with a twist. Instead of trying to evaluate the policy all the way using the DP, or over an episode using MC,  SARSA does policy improvement <strong>over each time step</strong> significantly increasing the iteration rate - this is figuratively shown below:</p>
+<p>Effectively the equation above updates the Q function by <span class="math notranslate nohighlight">\(\alpha\)</span> times the direction of the TD error. What SARSA does is basically the policy iteration diagram we have seen in the control above but with a twist. Instead of trying to evaluate the policy using episodes as in MC,  SARSA does policy improvement on an estimate obtained <strong>over each time step</strong> significantly increasing the iteration rate - this is figuratively shown below:</p>
 <p><img alt="sarsa-policy-iteration" src="../../../../../_images/sarsa-policy-iteration.png" /></p>
 <p><em>SARSA on-policy control</em></p>
-<p>The idea is to increase the frequency of the so called <span class="math notranslate nohighlight">\(\epsilon\)</span>-Greedy policy improvement step where we select with probability <span class="math notranslate nohighlight">\(\epsilon\)</span> a random action instead of the action that maximizes the <span class="math notranslate nohighlight">\(Q(s,a)\)</span> function (greedy). We do so, in order to “hit” new states that we havent seen before (exploration).</p>
+<p>The idea is to increase the frequency of the so called <span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy policy improvement step where we select with probability <span class="math notranslate nohighlight">\(\epsilon\)</span> a random action instead of the action that maximizes the <span class="math notranslate nohighlight">\(Q(s,a)\)</span> function (greedy). We do so, in order to “hit” new states and therefore improve on the degree of exploration of our agent and as a result giving opportunities to the agent to reduce its variance <em>and</em> its bias.</p>
 <p>The SARSA algorithm is summarized below:</p>
-<p><img alt="sarsa-on-policy-control-algorithm" src="../../../../../_images/sarsa-on-policy-control-algorithm.png" />
-<em>SARSA algorithm for on-policy control</em></p>
-<p><span class="math notranslate nohighlight">\(Q(s,a)\)</span> in practice is a table (matrix) stored in memory. Every step that we take an action we flip a “bent coin” and if “heads” comes up we take the maximum of the <span class="math notranslate nohighlight">\(Q(s,a)\)</span> values and this will be the policy improvement for the subsequent step. If it comes up as “tails” we just pick a random action and update the policy accordingly.</p>
+<p><img alt="sarsa-on-policy-control-algorithm" src="../../../../../_images/sarsa-on-policy-control-algorithm.png" /></p>
+<p><em>SARSA algorithm for on-policy control</em></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -587,7 +600,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./aiml-common/lectures/reinforcement-learning/control/sarsa"
+            path: "./aiml-common/lectures/reinforcement-learning/model-free-control/sarsa"
         },
         predefinedOutput: true
     }
@@ -605,16 +618,16 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../index.html"
+       href="../greedy-monte-carlo/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy Monte-Carlo Control</p>
+        <p class="prev-next-title"><span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy Monte-Carlo (MC) Control</p>
       </div>
     </a>
     <a class="right-next"
-       href="sarsa_gridworld.html"
+       href="gridworld/sarsa_gridworld.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
@@ -628,6 +641,20 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sarsa-td-learning">SARSA - TD Learning</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

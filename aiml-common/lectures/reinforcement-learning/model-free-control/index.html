@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Example of \(Q(s,a)\) Prediction &#8212; Introduction to Artificial Intelligence</title>
+    <title>Model-free control &#8212; Introduction to Artificial Intelligence</title>
   
   
   
@@ -63,15 +63,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/reinforcement-learning/prediction/prediction-example';</script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/reinforcement-learning/prediction/prediction-example.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/reinforcement-learning/model-free-control/index';</script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/reinforcement-learning/model-free-control/index.html" />
     <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Generalized Policy Iteration" href="../generalized-policy-iteration/index.html" />
-    <link rel="prev" title="Temporal Difference (TD) Prediction" href="temporal-difference.html" />
+    <link rel="next" title="Generalized Policy Iteration" href="generalized-policy-iteration/index.html" />
+    <link rel="prev" title="Temporal Difference (TD) Prediction" href="../prediction/temporal-difference.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -286,16 +284,15 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="label-parts" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../_index.html">Reinforcement Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="monte-carlo.html">Monte-Carlo Prediction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="temporal-difference.html">Temporal Difference (TD) Prediction</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Example of <span class="math notranslate nohighlight">\(Q(s,a)\)</span> Prediction</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../generalized-policy-iteration/index.html">Model-Free Control and Generalized Policy Iteration</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../control/index.html"><span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy Monte-Carlo Control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../control/sarsa/index.html">The SARSA Algorithm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../control/sarsa/sarsa_gridworld.html">SARSA Gridworld Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prediction/monte-carlo.html">Monte-Carlo Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prediction/temporal-difference.html">Temporal Difference (TD) Prediction</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Model-free Control</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="generalized-policy-iteration/index.html">Generalized Policy Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="greedy-monte-carlo/index.html"><span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy Monte-Carlo (MC) Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sarsa/index.html">The SARSA Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sarsa/gridworld/sarsa_gridworld.html">SARSA Gridworld Example</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../reinforce/_index.html">Policy Gradient Algorithms - REINFORCE</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="label-parts" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../rnn/introduction/_index.html">Introduction to Recurrent Neural Networks (RNN)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rnn/simple-rnn/_index.html">Simple RNN</a></li>
@@ -427,7 +424,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/reinforcement-learning/prediction/prediction-example.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/reinforcement-learning/model-free-control/index.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -457,7 +454,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../../../_sources/aiml-common/lectures/reinforcement-learning/prediction/prediction-example.md" target="_blank"
+      <li><a href="../../../../_sources/aiml-common/lectures/reinforcement-learning/model-free-control/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -537,7 +534,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Example of Q(s,a) Prediction</h1>
+    <h1>Model-free control</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -551,34 +548,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="example-of-q-s-a-prediction">
-<h1>Example of <span class="math notranslate nohighlight">\(Q(s,a)\)</span> Prediction<a class="headerlink" href="#example-of-q-s-a-prediction" title="Permalink to this heading">#</a></h1>
-<p><img alt="td-environment" src="../../../../_images/td-environment.jpg" /></p>
-<p>Suppose an agent is learning to play the toy environment shown above. This is a essentially a corridor and the agent has to learn to navigate to the end of the corridor to the good terminal state <span class="math notranslate nohighlight">\(s_{T2}\)</span>, denoted with a star.</p>
-<ul class="simple">
-<li><p>There are five states in total.   The agent always starts the game in state <span class="math notranslate nohighlight">\(s_1\)</span>, denoted <span class="math notranslate nohighlight">\(S\)</span>, and the game ends if the agent reaches either of the terminal states. <span class="math notranslate nohighlight">\(s_{T2}\)</span> is the goal state—the agent receives a reward of 1 if it reaches this state.</p></li>
-<li><p>There are only two actions, <span class="math notranslate nohighlight">\(a_{UP}\)</span> and <span class="math notranslate nohighlight">\(a_{DOWN}\)</span>.</p></li>
-<li><p>The agent receives rewards of 0 in all other states.</p></li>
-<li><p>The agent’s discount rate γ is 0.9.</p></li>
-<li><p>The game is  optimally solved by a policy which reaches <span class="math notranslate nohighlight">\(s_{T2}\)</span> in the smallest number of steps because an agent values rewards received sooner more than rewards received later in time. In this case, the smallest number of steps an agent can take to optimally solve the environment is 3.</p></li>
-</ul>
-<p>How can we learn the optimal Q function?</p>
-<p>The diagram is split into five blocks from top to bottom. Each block corresponds to a single episode of experiences in the environment; the first block corresponds to the first episode, the second block the second episode, and so on. Each block contains a number of columns. They are interpreted from left to right as follows:</p>
-<ul class="simple">
-<li><p><strong>Q-function episode start</strong>: The value of the Q-function at the start of the episode. At the beginning of episode 1, all of the values are initialized to 0 since we have no information yet about the function.</p></li>
-<li><p><strong>Episode</strong>: The episode number.</p></li>
-<li><p><strong>Time step</strong>: Each block contains a variable number of experiences. For example, there are three experiences in episode 2 and seven experiences in episode 4. The time index of each experience within the block is indicated by the time step.</p></li>
-<li><p><strong>Action:</strong> The action the agent took at each time step.</p></li>
-<li><p><span class="math notranslate nohighlight">\((s, a, r, s′)\)</span>: The agent’s experience at each time step. This consists of the current state s, the action the agent took a, the reward received r, and the next state the environment transitioned into s′.</p></li>
-<li><p><span class="math notranslate nohighlight">\(r + γQ*(s′, a)\)</span>: The target value (i.e., the right-hand side of the equation) to use in the Bellman update:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[Q*(s, a) = r + γQ*(s^\prime, a^\prime)\]</div>
-<ul class="simple">
-<li><p><strong>Q-function episode end</strong>: The value of Q-function at the end of the episode. The Bellman update has been applied for each experience of the episode in time step order. This means that the Bellman update was applied first for the experience corresponding to time step 1, then time step 2, and so on. The table shows the final result after all of the Bellman updates have been applied for the episode.</p></li>
-</ul>
-<p><img alt="td-q-function-learning" src="../../../../_images/td-q-function-learning.jpg" />
-<em>TD Q-function learning</em></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="model-free-control">
+<h1>Model-free control<a class="headerlink" href="#model-free-control" title="Permalink to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -594,7 +567,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./aiml-common/lectures/reinforcement-learning/prediction"
+            path: "./aiml-common/lectures/reinforcement-learning/model-free-control"
         },
         predefinedOutput: true
     }
@@ -612,7 +585,7 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="temporal-difference.html"
+       href="../prediction/temporal-difference.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -621,7 +594,7 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../generalized-policy-iteration/index.html"
+       href="generalized-policy-iteration/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
