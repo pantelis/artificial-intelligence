@@ -2,6 +2,15 @@
 
 In this assignment you are asked to study the behavior of Adam and compare with SGD. You will be replicating the results of section 6 from the paper [Adam: A Method for Stochastic Optimization](https://arxiv.org/abs/1412.6980) by Diederik P. Kingma and Jimmy Ba.
 
+You can watch this video to learn about the variations of SGD and Adam. 
+
+```{eval-rst}
+.. youtube:: jDkePF7nUWk
+   :width: 560
+   :height: 315
+   :align: center
+```
+
 
 ## Datasets
 
