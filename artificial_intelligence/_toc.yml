@@ -20,6 +20,7 @@ parts:
   - file: aiml-common/lectures/optimization/sgd/_index.md
   - file: aiml-common/lectures/entropy/_index.md
   - file: aiml-common/lectures/optimization/maximum-likelihood/marginal_maximum_likelihood.ipynb
+  - file: aiml-common/lectures/optimization/maximum-likelihood/mle-gaussian-parameters.md
   - file: aiml-common/lectures/optimization/maximum-likelihood/conditional_maximum_likelihood.ipynb
 
 - caption: Supervised Learning-2
@@ -205,6 +206,12 @@ parts:
 - caption: Assignments
   chapters:
   - file: aiml-common/assignments/probability/probability-assignment-7/index.ipynb
+  - file: aiml-common/assignments/mle/linear-regression/cars.ipynb
+  - file: aiml-common/assignments/cnn-rare-events/rare_events.ipynb  
+  - file: aiml-common/assignments/optimization/adam/index.md
+    
+    
+    
 #   - file: aiml-common/assignments/mle/mle-gaussian.ipynb
 #   - file: aiml-common/assignments/object-tracking-kalman/balls.md
   

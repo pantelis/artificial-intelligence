@@ -40,7 +40,9 @@
 				"ms-toolsai.vscode-jupyter-powertoys",
 				"eamodio.gitlens",
 				"github.vscode-github-actions",
-				"jan-dolejsi.pddl"
+				"jan-dolejsi.pddl",
+				"mechatroner.rainbow-csv",
+				"atlassian.atlascode"
 			],
 			"settings": {
 				"terminal.integrated.profiles.linux": {
