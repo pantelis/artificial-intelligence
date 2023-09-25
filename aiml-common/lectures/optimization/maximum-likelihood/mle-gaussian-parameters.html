@@ -1,0 +1,1034 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Maximum Likelihood Estimation of Gaussian Parameters &#8212; Introduction to Artificial Intelligence</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/optimization/maximum-likelihood/mle-gaussian-parameters';</script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/optimization/maximum-likelihood/mle-gaussian-parameters.html" />
+    <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Maximum Likelihood (ML) Estimation of conditional models" href="conditional_maximum_likelihood.html" />
+    <link rel="prev" title="Maximum Likelihood Estimation of a marginal model" href="marginal_maximum_likelihood.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="list-caption"><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="label-parts" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../syllabus/_index.html">Syllabus</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to AI</span></p><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="label-parts" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ai-intro/course-introduction/_index.html">Course Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ai-intro/systems-approach/_index.html">The four approaches towards AI</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../ai-intro/agents/_index.html">Agent-Environment Interface</a></li>
+
+
+
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-1</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="label-parts" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../learning-problem/_index.html">The Learning Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../regression/linear-regression/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sgd/_index.html">Stochastic Gradient Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../entropy/_index.html">Entropy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="marginal_maximum_likelihood.html">Maximum Likelihood Estimation of a marginal model</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Maximum Likelihood Estimation of Gaussian Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditional_maximum_likelihood.html">Maximum Likelihood (ML) Estimation of conditional models</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-2</span></p><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="label-parts" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../classification/classification-intro/_index.html">Introduction to Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../classification/logistic-regression/_index.html">Logistic Regression</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Neural Networks</span></p><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="label-parts" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../classification/perceptron/_index.html">The Neuron (Perceptron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/dnn-intro/_index.html">Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/backprop-intro/_index.html">Introduction to Backpropagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/backprop-dnn/_index.html">Backpropagation in Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/backprop-dnn-exercises/_index.html">Backpropagation DNN exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/fashion-mnist-case-study.html">Fashion MNIST Case Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../regularization/_index.html">Regularization in Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../regularization/regularization-workshop-1.html">Regularization Workshop</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Convolutional Neural Networks</span></p><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="label-parts" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-intro/_index.html">Introduction to Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-layers/_index.html">CNN Architectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/_index.html">CNN Example Architectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">Using convnets with small datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/visualizing-what-convnets-learn.html">Visualizing what convnets learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scene-understanding/feature-extraction-resnet/index.html">Feature Extraction via Residual Networks</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="label-parts" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../transfer-learning/transfer-learning-introduction.html">Introduction to Transfer Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../transfer-learning/transfer_learning_tutorial.html">Transfer Learning for Computer Vision Tutorial</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Scene Understanding</span></p><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="label-parts" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../scene-understanding/scene-understanding-intro/index.html">Introduction to Scene Understanding</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../scene-understanding/object-detection/object-detection-intro/index.html">Object Detection</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/detection-metrics/index.html">Object Detection and Semantic Segmentation Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/rcnn-object-detection/index.html">Region-CNN (RCNN) Object Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/faster-rcnn-object-detection/index.html">Fast and Faster RCNN Object Detection</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/index.html">Object Det. &amp; Semantic Segm. Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/index.html">Mask R-CNN Semantic Segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/demo.html">Mask R-CNN Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_data.html">Mask R-CNN - Inspect Training Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_model.html">Mask R-CNN - Inspect Trained Model</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_weights.html">Mask R-CNN - Inspect Weights of a Trained Model</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.html">Detectron2 Beginner’s Tutorial</a></li>
+
+
+
+
+
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Probabilistic Reasoning</span></p><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="label-parts" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/pgm-intro/_index.html">Introduction to Probabilistic Reasoning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/recursive-state-estimation/_index.html">Recursive State Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/discrete-bayesian-filter/discrete-bayesian-filter.html">Discrete Bayes Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/hmm-localization/_index.html">Localization and Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pgm/kalman-filters/one-dimensional-kalman-filters.html">Kalman Filters</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Logical Reasoning</span></p><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="label-parts" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/automated-reasoning/_index.html">Automated Reasoning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/propositional-logic/_index.html">World Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/logical-inference/index.html">Logical Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/logical-agents/_index.html">Logical Agents</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning without Interactions</span></p><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="label-parts" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../planning/index.html">Automated Planning</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../planning/pddl/index.html">PDDL</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../planning/pddl/blocksworld/up_blocksworld_demo.html">The Unified Planning Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../planning/pddl/logistics/index.html">Logistics Planning in PDDL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../planning/pddl/manufacturing/index.html">Manufacrturing Robot Planning in PDDL</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../planning/search/index.html">Search Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../planning/search/forward-search/index.html">Forward Search Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../planning/search/a-star/index.html">The A* Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../planning/search/search-alg-demo/index.html">Interactive Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../motion-planning-cars/index.html">Motion Planning for Autonomous Cars</a></li>
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Markov Decision Processes</span></p><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="label-parts" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/index.html">Markov Decision Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/mdp-intro/mdp_intro.html">Introduction to MDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/bellman-expectation-backup/_index.html">Bellman Expectation Backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/policy-evaluation/_index.html">Policy Evaluation (Prediction)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/bellman-optimality-backup/_index.html">Bellman Optimality Backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/policy-improvement/_index.html">Policy Improvement (Control)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../mdp/dynamic-programming-algorithms/index.html">Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/dynamic-programming-algorithms/policy-iteration/_index.html">Policy Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/dynamic-programming-algorithms/value-iteration/index.html">Value Iteration</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../mdp/mdp-workshop/index.html">MDP Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-workshop/cleaning-robot/deterministic_mdp.html">Cleaning Robot - Deterministic MDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-workshop/cleaning-robot/stochastic_mdp.html">Cleaning Robot - Stochastic MDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-workshop/recycling-robot/_index.html">The recycling robot.</a></li>
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="label-parts" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/_index.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/prediction/monte-carlo.html">Monte-Carlo Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/prediction/temporal-difference.html">Temporal Difference (TD) Prediction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../reinforcement-learning/model-free-control/index.html">Model-free Control</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../reinforcement-learning/model-free-control/generalized-policy-iteration/index.html">Generalized Policy Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reinforcement-learning/model-free-control/greedy-monte-carlo/index.html"><span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy Monte-Carlo (MC) Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reinforcement-learning/model-free-control/sarsa/index.html">The SARSA Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reinforcement-learning/model-free-control/sarsa/gridworld/sarsa_gridworld.html">SARSA Gridworld Example</a></li>
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="label-parts" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/introduction/_index.html">Introduction to Recurrent Neural Networks (RNN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/simple-rnn/_index.html">Simple RNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/lstm/_index.html">The Long Short-Term Memory (LSTM) Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/time_series_using_simple_rnn_lstm.html">Time Series Prediction using RNNs</a></li>
+
+
+
+
+
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="label-parts" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../nlp/nlp-introduction/nlp-pipelines/_index.html">Introduction to NLP Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nlp/nlp-introduction/tokenization/index.html">Tokenization</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/nlp-introduction/word2vec/_index.html">Embeddings</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nlp-introduction/word2vec/word2vec_from_scratch.html">Word2Vec from scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nlp-introduction/word2vec/word2vec_tensorflow_tutorial.html">Word2Vec Tensorflow Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/language-models/_index.html">Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/language-models/cnn-language-model/index.html">CNN Language Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/language-models/simple-rnn-language-model/index.html">Simple RNN Language Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/language-models/lstm-language-model/index.html">LSTM Language Model from scratch</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/nmt/nmt-intro/index.html">Neural Machine Translation</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nmt/nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nmt/rnn-nmt-attention/index.html">Attention in RNN-based NMT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nmt/rnn-attention-workshop/seq2seq_and_attention.html">Attention in RNN NMT Workshop</a></li>
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/transformers/transformers-intro.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/transformers/annotated_transformer.html">The Annotated Transformer</a></li>
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="label-parts" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/index.html">Math for ML Textbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/probability/index.html">Probability Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/linear-algebra/index.html">Linear Algebra for Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/calculus/index.html">Calculus</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="label-parts" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/index.html">Your Programming Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Learn Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/><label class="label-parts" for="toctree-checkbox-29"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/probability/probability-assignment-7/index.html">Probability Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/mle/linear-regression/cars.html">Stochastic Gradient Descent for Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/cnn-rare-events/rare_events.html">Classifying rare events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/optimization/adam/index.html">Neural Network optimization with SGD and Adam</a></li>
+</ul></li></ul>
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pantelis/artificial-intelligence" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/optimization/maximum-likelihood/mle-gaussian-parameters.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/aiml-common/lectures/optimization/maximum-likelihood/mle-gaussian-parameters.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Maximum Likelihood Estimation of Gaussian Parameters</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-big-picture">The Big Picture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mle-as-parameter-estimation">MLE as Parameter Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-for-a-gaussian">Likelihood for a Gaussian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mle-of-mu">MLE of <span class="math notranslate nohighlight">\(\mu\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mle-of-sigma-2">MLE of <span class="math notranslate nohighlight">\(\sigma^{2}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="maximum-likelihood-estimation-of-gaussian-parameters">
+<h1>Maximum Likelihood Estimation of Gaussian Parameters<a class="headerlink" href="#maximum-likelihood-estimation-of-gaussian-parameters" title="Permalink to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This text appearred in <a class="reference external" href="https://jrmeyer.github.io/machinelearning/2017/08/18/mle.html">this post</a> but because the math formatting disappeared from the original site,  it is shamelessly copied here. Please note that in our notation <span class="math notranslate nohighlight">\(N\)</span> is <span class="math notranslate nohighlight">\(m\)</span> (number of examples / samples) and <span class="math notranslate nohighlight">\(n\)</span> is <span class="math notranslate nohighlight">\(i\)</span> (index of each example / sample).</p>
+</div>
+<section id="the-big-picture">
+<h2>The Big Picture<a class="headerlink" href="#the-big-picture" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Maximum_likelihood_estimation">Maximum Likelihood Estimation</a> (MLE) is a tool we use in machine learning to acheive a <em>very</em> common goal. The goal is to create a statistical model, which is able to perform some task on <em>yet unseen data</em>.</p>
+<p>The task might be <a class="reference external" href="https://en.wikipedia.org/wiki/Statistical_classification">classification</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Regression_analysis">regression</a>, or something else, so the nature of the task does not define MLE. The defining characteristic of MLE is that it uses <em>only existing data</em> to estimate parameters of the model. This is in contrast to approaches which exploit <em>prior knowledge</em> in addition to existing data.<a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p>Today, we’re talking about MLE for <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">Gaussians</a>, so this is going to be a classification task. That is, we have data with labels, and we want to take some new data, and classify it <em>using the labels from the old data</em>. In the below images, we see data with labels (left), and new, unlabeled data (right). We want to be able to categorize each point from the <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">data</span></code> as belonging to either the <code class="docutils literal notranslate"><span class="pre">purple</span></code> group or the <code class="docutils literal notranslate"><span class="pre">yellow</span></code> group.</p>
+<p><img alt="" src="../../../../_images/mle_1.png" />
+<img alt="" src="../../../../_images/mle_2.png" /></p>
+<p>Labeling dots as either <code class="docutils literal notranslate"><span class="pre">purple</span></code> or <code class="docutils literal notranslate"><span class="pre">yellow</span></code> sounds pretty boring, but the same idea applies to <a class="reference external" href="http://jrmeyer.github.io/tutorial/2016/02/01/TensorFlow-Tutorial.html">labeling emails</a> as <code class="docutils literal notranslate"><span class="pre">spam</span></code> or <code class="docutils literal notranslate"><span class="pre">ham</span></code> or classifying audio clips as the vowel <code class="docutils literal notranslate"><span class="pre">[a]</span></code> or the vowel <code class="docutils literal notranslate"><span class="pre">[o]</span></code>.</p>
+<p>To make this post more tasty, let’s pretend we’re classifying <code class="docutils literal notranslate"><span class="pre">skittles</span></code> as <code class="docutils literal notranslate"><span class="pre">purple</span></code> or <code class="docutils literal notranslate"><span class="pre">yellow</span></code>.<a class="footnote-reference brackets" href="#id5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> We’re classifying these skittles based on two dimensions <code class="docutils literal notranslate"><span class="pre">[x,y]</span></code>. Let’s say the skittles have been rated by expert skittle-sommeliers on two traits: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">aromatic</span> <span class="pre">lift</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">elegance</span></code>.</p>
+<p>As you can see, <code class="docutils literal notranslate"><span class="pre">purple</span> <span class="pre">skittles</span></code> have bad ratings on both aromatic lift and elegance, whereas <code class="docutils literal notranslate"><span class="pre">yellow</span> <span class="pre">skittles</span></code> have been highly rated on both traits. Since these ratings are from expert skittle-sommeliers, they must be true.</p>
+<p>To get our new, unlabeled data, we’ve given some new skittles to our expert sommeliers in a blind taste test. That is, the experts don’t know what they ate, and neither do we. The only information available for each skittle is its rating on <code class="docutils literal notranslate"><span class="pre">aromatic</span> <span class="pre">lift</span></code> and <code class="docutils literal notranslate"><span class="pre">elegance</span></code>.</p>
+<p>Now, we want to take ratings for each <code class="docutils literal notranslate"><span class="pre">mystery</span> <span class="pre">skittle</span></code> and figure out if it was a <code class="docutils literal notranslate"><span class="pre">purple</span> <span class="pre">skittle</span></code> or <code class="docutils literal notranslate"><span class="pre">yellow</span> <span class="pre">skittle</span></code>. To accomplish this task, we build a statistical model, learning its shape from the old ratings (i.e. the labeled data).</p>
+<p>For the above data we can build two models (i.e. 2-D Gaussians), a <code class="docutils literal notranslate"><span class="pre">purple</span> <span class="pre">skittle</span> <span class="pre">model</span></code> and a <code class="docutils literal notranslate"><span class="pre">yellow</span> <span class="pre">skittle</span> <span class="pre">model</span></code>, and then see which model is more similar to a new rating on a <code class="docutils literal notranslate"><span class="pre">mystery</span> <span class="pre">skittle</span></code>. Another approach would be to build a single model (eg. a neural net) that distinguishes <code class="docutils literal notranslate"><span class="pre">purple</span> <span class="pre">skittles</span></code> from <code class="docutils literal notranslate"><span class="pre">yellow</span> <span class="pre">skittles</span></code>, and then see how it categorizes each <code class="docutils literal notranslate"><span class="pre">mystery</span> <span class="pre">skittle</span></code>.<a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> Here, we’re working with the former approach (build two models and see which one fits better).</p>
+<p><img alt="" src="../../../../_images/mle_model_1.png" />
+<img alt="" src="../../../../_images/mle_model_2.png" /></p>
+<p>We assume the data was in a sense <em>generated</em> by some process, and we’re trying to model what that process was. This is called the <a class="reference external" href="https://en.wikipedia.org/wiki/Generative_model">generative approach</a>. The model we’re trying to learn is an approximation of the underlying process that created the data in the first place. So our data is just a sample from a process, and we want to learn the process.</p>
+<p>At the end of the day, once we have our two models, we will use them to find which model was more likely to have <em>generated</em> the new data point. To take the leap from data <span class="math notranslate nohighlight">\(\rightarrow\)</span> model, we need to not only estimate possible parameters of the model (eg. for Gaussians we need <span class="math notranslate nohighlight">\([\mu, \Sigma]\)</span>), but we want the <em>best</em> model possible for our data. That’s where MLE comes into play.</p>
+</section>
+<section id="mle-as-parameter-estimation">
+<h2>MLE as Parameter Estimation<a class="headerlink" href="#mle-as-parameter-estimation" title="Permalink to this heading">#</a></h2>
+<p>MLE is one flavor of <a class="reference external" href="https://en.wikipedia.org/wiki/Estimation_theory">parameter estimation</a> in machine learning, and in order to perform parameter estimation, we need:</p>
+<ol class="arabic simple">
+<li><p>some data <span class="math notranslate nohighlight">\(\mathbf{X}\)</span></p></li>
+<li><p>some hypothesized generating function of the data <span class="math notranslate nohighlight">\(f(\mathbf{X},\theta)\)</span></p></li>
+<li><p>a set of parameters from that function <span class="math notranslate nohighlight">\(\theta\)</span></p></li>
+<li><p>some evaluation of the goodness of our parameters (an objective function)</p></li>
+</ol>
+<p>In MLE, the objective function (evaluation) we chose is the <em>likelihood</em> of the data given our model. This intuitively makes sense if you keep in mind that we don’t get to change our data, and we have to make some assumption about the form of our model, but we <em>can</em> adjust the parameterization of our model. So, we are limited to adjusting <span class="math notranslate nohighlight">\(\theta\)</span>, and we might as well choose the best <span class="math notranslate nohighlight">\(\theta\)</span> for our data. To find the best <span class="math notranslate nohighlight">\(\theta\)</span> then, we need to find the <span class="math notranslate nohighlight">\(\theta\)</span> which maximizes our evaluation function (the likelihood). Therefore, in its general form the MLE is:</p>
+<div class="math notranslate nohighlight">
+\[\theta_{MLE} = \underset{\theta}{\operatorname{argmax}} p(\mathbf{X}|\theta)\]</div>
+</section>
+<section id="likelihood-for-a-gaussian">
+<h2>Likelihood for a Gaussian<a class="headerlink" href="#likelihood-for-a-gaussian" title="Permalink to this heading">#</a></h2>
+<p>We assume the data we’re working with was generated by an underlying Gaussian process in the real world. As such, the likelihood function (<span class="math notranslate nohighlight">\(\mathcal{L}\)</span>) is the Gaussian itself.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\mathcal{L} = p(\mathbf{X}|\theta) &amp;= \mathcal{N}(\mathbf{X}|\theta)\\
+              &amp;= \mathcal{N}(\mathbf{X}|\mu, \Sigma)\\
+\end{align}\end{split}\]</div>
+<p>Therefore, for MLE of a Gaussian model, we will need to find good estimates of both parameters: <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\Sigma\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \mu_{MLE} = \underset{\mu}{\operatorname{argmax}} \mathcal{N}(\mathbf{X}|\mu, \Sigma)\\
+  \Sigma_{MLE} = \underset{\Sigma}{\operatorname{argmax}} \mathcal{N}(\mathbf{X}|\mu, \Sigma)
+\end{align}\end{split}\]</div>
+<p>Solving these two above equations to find the best <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\Sigma\)</span> is a job for our good old friends from calculus… partial derivatives!</p>
+<p>Before we can get to the point where we can find our best <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\Sigma\)</span>, we need to do some algebra, and to make that algebra easier, instead of just using the likelihood function as our evaluation function, we’re going to use the log likelihood. This makes the math easier and it doesn’t run any risks of giving us worse results. That’s because the <span class="math notranslate nohighlight">\(\log()\)</span> function is monotonically increasing, and therefore</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+  \underset{\theta}{\operatorname{argmax}} \log(f(\theta)) == \underset{\theta}{\operatorname{argmax}} f(\theta)
+\end{align}\]</div>
+<p>So now, we know that we want to get the best parameters <span class="math notranslate nohighlight">\(\theta = [\mu, \Sigma]\)</span> for a dataset <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> evaluating on a normal, Gaussian distribution.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \theta_{MLE} &amp;= \underset{\theta}{\operatorname{argmax}} \log(\mathcal{N}(\mathbf{X}|\theta)) \\
+\end{align}\end{split}\]</div>
+<p>Since in reality our dataset <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> is a set of labeled data <span class="math notranslate nohighlight">\(\mathbf{X} = [\mathbf{x}_{1}, \mathbf{x}_{2}, \mathbf{x}_{3} \ldots \mathbf{x}_{n}]\)</span>, to evaluate our parameters on the entire dataset, we need to sum up the log likelihood for each data point.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \log(\mathcal{N}(\mathbf{X}|\theta)) &amp;= \sum\limits_{n=1}^{N} \log(\mathcal{N}(\mathbf{x}_{n}|\theta)) \\
+\end{align}\end{split}\]</div>
+<p>Remember how that <span class="math notranslate nohighlight">\(\theta\)</span> is a general catch-all for any set of parameters? Let’s be more explicit with our Gaussian parameters <span class="math notranslate nohighlight">\([\mu, \Sigma]\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \sum\limits_{n=1}^{N} \log(\mathcal{N}(\mathbf{x}_{n}|\theta)) &amp;= \sum\limits_{n=1}^{N} \log(\mathcal{N}(\mathbf{x}_{n}|\mu, \Sigma))\\
+\end{align}\end{split}\]</div>
+<p>Here we’re going to make a big simplfying assumption (and in reality a pretty common one). We’re going to assume that our Gaussians have diagonal covariance matrices. So the full covariance matrix <span class="math notranslate nohighlight">\(\mathbf{\Sigma}\)</span> gets replaced by a diagonal variance vector <span class="math notranslate nohighlight">\(\sigma^{2}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+  \sum\limits_{n=1}^{N} \log(\mathcal{N}(\mathbf{x}_{n}|\mu, \Sigma)) &amp;= \sum\limits_{n=1}^{N} \log(\mathcal{N}(\mathbf{x}_{n}|\mu, \sigma^{2}))
+\end{align}\]</div>
+<p>Now, with this simplification, we can take a look at our fully specified log likelihood function that we’ll be working with from here on out.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \sum\limits_{n=1}^{N} \log(\mathcal{N}(\mathbf{x}_{n}|\mu, \sigma^{2})) &amp;= \sum\limits_{n=1}^{N} \log \Big( \frac{1}{\sqrt{2\pi\sigma^{2}}} \cdot \exp^{-\frac{1}{2} \big(\frac{(x_{n} - \mu)^{2}}{\sigma^{2}}\big)}  \Big) \\
+\end{align}\end{split}\]</div>
+<p>Now we have the likelihood as we want it (Gaussian, logged, diagonal covariance matrix). Let’s not forget what our main goal is! We want to find the best parameters for our model given our data, so we’re going to find the <span class="math notranslate nohighlight">\(\underset{\mu}{\operatorname{argmax}}\)</span> and <span class="math notranslate nohighlight">\(\underset{\sigma^{2}}{\operatorname{argmax}}\)</span>. Before we can get to that point, we need to do some simplifications to the log likelihood to make it easier to work with (that is, since we will soon be doing some partial derivatives, the log likelihood in its current form it will lead to some messy math). In the following, <span class="math notranslate nohighlight">\(\mathcal{LL}\)</span> means <em>log likelihood</em>.</p>
+<p>The next first steps take advantage of our choice to use the log likelihood instead of the plain likelihood. Our first step will be to use the log product rule:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \mathcal{LL} &amp;= \sum\limits_{n=1}^{N} \log \Big( \frac{1}{\sqrt{2\pi\sigma^{2}}} \cdot \exp^{-\frac{1}{2} \big(\frac{(x_{n} - \mu)^{2}}{\sigma^{2}}\big)}  \Big) \\
+  &amp;= \sum\limits_{n=1}^{N} \Big( \log \Big( \frac{1}{\sqrt{2\pi\sigma^{2}}} \Big) + \log \Big( \exp^{-\frac{1}{2} \big(\frac{(x_{n} - \mu)^{2}}{\sigma^{2}}\big)}  \Big) \Big) \\
+\end{align}\end{split}\]</div>
+<p>Now we will use the log quotient rule:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \mathcal{LL} &amp;= \sum\limits_{n=1}^{N} \Big( \log \Big( \frac{1}{\sqrt{2\pi\sigma^{2}}} \Big) + \log \Big( \exp^{-\frac{1}{2} \big(\frac{(x_{n} - \mu)^{2}}{\sigma^{2}}\big)}  \Big) \Big) \\
+               &amp;= \sum\limits_{n=1}^{N} \Big( \log(1) - \log \big( \sqrt{2\pi\sigma^{2}} \big) + \log \Big( \exp^{-\frac{1}{2} \big(\frac{(x_{n} - \mu)^{2}}{\sigma^{2}}\big)}  \Big) \Big)\\
+\end{align}\end{split}\]</div>
+<p>Now, we’ll use the log power rule:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \mathcal{LL} &amp;=  \sum\limits_{n=1}^{N} \Big( \log(1) - \log \big( \sqrt{2\pi\sigma^{2}} \big) + \log \Big( \exp^{-\frac{1}{2} \big(\frac{(x_{n} - \mu)^{2}}{\sigma^{2}}\big)}  \Big) \Big)\\
+               &amp;= \sum\limits_{n=1}^{N} \Big( \log(1) - \log \big( \sqrt{2\pi\sigma^{2}} \big) +
+                  \Big(-\frac{1}{2} \big(\frac{(x_{n} - \mu)^{2}}{\sigma^{2}} \big) \cdot \log(e) \Big) \Big)\\
+\end{align}\end{split}\]</div>
+<p>We’re now going to be explicit that the <span class="math notranslate nohighlight">\(\log()\)</span> function we used was base <span class="math notranslate nohighlight">\(e\)</span>. This allows us to simplify <span class="math notranslate nohighlight">\(\log_{e}(e) = 1\)</span> as well as <span class="math notranslate nohighlight">\(\log(1) = 0\)</span> (regardless of base).</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \mathcal{LL} &amp;= \sum\limits_{n=1}^{N} \Big( \log(1) - \log \big( \sqrt{2\pi\sigma^{2}} \big) +
+  \Big(-\frac{1}{2} \big(\frac{(x_{n} - \mu)^{2}}{\sigma^{2}} \big) \cdot \log(e) \Big) \Big) \\
+  &amp;= \sum\limits_{n=1}^{N} \Big( - \log \big( \sqrt{2\pi\sigma^{2}} \big) +
+  \Big(-\frac{1}{2} \big(\frac{(x_{n} - \mu)^{2}}{\sigma^{2}} \big) \Big) \Big)\\
+\end{align}\end{split}\]</div>
+<p>We can apply the power rule one more time (remember that <span class="math notranslate nohighlight">\(\sqrt{x} = x^{1/2}\)</span>).</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \mathcal{LL} &amp;= \sum\limits_{n=1}^{N} \Big( - \log \big( \sqrt{2\pi\sigma^{2}} \big) +
+  \Big(-\frac{1}{2} \big(\frac{(x_{n} - \mu)^{2}}{\sigma^{2}} \big) \Big) \Big)\\
+  &amp;= \sum\limits_{n=1}^{N} \Big(- \frac{1}{2} \cdot \log ( 2\pi\sigma^{2} )  -\frac{1}{2} \Big(\frac{(x_{n} - \mu)^{2}}{\sigma^{2}} \Big) \Big) \\
+\end{align}\end{split}\]</div>
+<p>Now for some basic algebra simplification:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \mathcal{LL} &amp;= \sum\limits_{n=1}^{N}  \Big( - \frac{1}{2} \log ( 2\pi\sigma^{2} )  -\frac{1}{2} \Big(\frac{(x_{n} - \mu)^{2}}{\sigma^{2}} \Big) \Big)\\
+  &amp;= - \frac{N}{2} \log ( 2\pi\sigma^{2} )  + \sum\limits_{n=1}^{N} -\frac{1}{2} \Big(\frac{(x_{n} - \mu)^{2}}{\sigma^{2}} \Big) \\
+  &amp;= - \frac{N}{2} \log ( 2\pi\sigma^{2} )  -\frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \\
+\end{align}\end{split}\]</div>
+<p>Now we have our log likelihood function (<span class="math notranslate nohighlight">\(\mathcal{LL}\)</span>) in a nice, easy to work with form. Now we need to take the (<span class="math notranslate nohighlight">\(\mathcal{LL}\)</span>) and <em>estimate</em> it’s <em>maximum</em> for our parameters. We’ve got the <span class="math notranslate nohighlight">\(\mathcal{LL}\)</span> ready for <span class="math notranslate nohighlight">\(\underset{\theta}{\operatorname{argmax}}(\mathcal{LL})\)</span>, now we need to do the <span class="math notranslate nohighlight">\(\underset{\theta}{\operatorname{argmax}}\)</span> part. This is where we get a little help from our friends, partial derivatives. We need <em>partial</em> derivatives because our <span class="math notranslate nohighlight">\(\theta\)</span> is really two variables <span class="math notranslate nohighlight">\([\mu, \sigma^{2}]\)</span>, and we need the best value for each.</p>
+<p>So, now we’re going to solve the problem for each variable one-by-one:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \underset{\mu}{\operatorname{argmax}} \mathcal{LL}(X|\mu, \sigma^{2})\\
+  \underset{\sigma^{2}}{\operatorname{argmax}} \mathcal{LL}(X|\mu, \sigma^{2})
+\end{align}\end{split}\]</div>
+<p>To get the <span class="math notranslate nohighlight">\({\operatorname{argmax}}\)</span> for each parameter we have to do two things. First, we must:</p>
+<ol class="arabic simple">
+<li><p>derive the partial derivative of the function with respect to that parameter, and then</p></li>
+<li><p>set that partial derivative to zero, and solve for our parameter</p></li>
+</ol>
+<p>By doing step (1), we get an equation for the change of the function, and we know that if the function isn’t changing at a certain point, that point is a maximum or a minimum (or a <a class="reference external" href="https://en.wikipedia.org/wiki/Saddle_point">saddle point</a>).</p>
+<p>In our case, our log-likelihood function is concave, so we know that at <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{LL}}{\partial \mu}=0\)</span> we get a maximum.</p>
+</section>
+<section id="mle-of-mu">
+<h2>MLE of <span class="math notranslate nohighlight">\(\mu\)</span><a class="headerlink" href="#mle-of-mu" title="Permalink to this heading">#</a></h2>
+<p>First we’ll work to solve for the mean of our Gaussian, <span class="math notranslate nohighlight">\(\mu\)</span>. Remember we’ve got our likelihood function in a simple form:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \mathcal{LL} = - \frac{N}{2} \log ( 2\pi\sigma^{2} )  - \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \\
+\end{align}\end{split}\]</div>
+<p>and now we want to get the best <span class="math notranslate nohighlight">\(\mu\)</span> for that function:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+  \underset{\mu}{\operatorname{argmax}} \mathcal{LL}(X|\mu, \sigma^{2}) := \frac{\partial \mathcal{LL}}{\partial \mu} = 0
+\end{align}\]</div>
+<p>So, to get to the point where we can set the partial derivative to zero and solve, we need to first find the partial derivative with respect to <span class="math notranslate nohighlight">\(\mu\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \frac{\partial \mathcal{LL}}{\partial \mu} = \frac{\partial}{\partial \mu} \Big( -\frac{N}{2} \log ( 2\pi\sigma^{2} )  - \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \Big)\\
+\end{align}\end{split}\]</div>
+<p>Now let’s start simplifying! First we can right off the bat get rid of the first term since it doesn’t contain <span class="math notranslate nohighlight">\(\mu\)</span>, and therefore is practically speaking a constant:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \frac{\partial \mathcal{LL}}{\partial \mu} &amp;= \frac{\partial}{\partial \mu} \Big( -\frac{N}{2} \log ( 2\pi\sigma^{2} )  - \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \Big)\\
+  &amp;= \frac{\partial}{\partial \mu} \Big( -\frac{N}{2} \log ( 2\pi\sigma^{2} ) \Big)  + \frac{\partial}{\partial \mu} \Big( - \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \Big)\\
+  &amp;= 0 + \frac{\partial}{\partial \mu} \Big(- \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \Big)\\
+  &amp;= \frac{\partial}{\partial \mu} \Big(- \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \Big)\\
+\end{align}\end{split}\]</div>
+<p>Next, remember that the summation expression is just a convenient way to write a longer expression:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\sum\limits_{n=1}^{N} f(x_{n}) &amp;= f(x_{1}) + f(x_{2}) + \ldots + f(x_{N})
+\end{align}\]</div>
+<p>Also, We know from the summation rule that :</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{\partial}{\partial x}  \big( f(x) + g(x) \big) &amp;= \frac{\partial}{\partial x}f(x) + \frac{\partial}{\partial x}g(x)
+\end{align}\]</div>
+<p>Therefore, when we take the derivative of a sum, we can reformulate it as a sum of derivatives:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{\partial}{\partial x} \sum\limits_{n=1}^{N} f(x_{n}) &amp;= \sum\limits_{n=1}^{N} \frac{\partial}{\partial x} f(x_{n}) 
+\end{align}\]</div>
+<p>Now, getting back to the problem at hand, we can move the derivative operator inside the summation term:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \frac{\partial \mathcal{LL}}{\partial \mu} &amp;= \frac{\partial}{\partial \mu} \Big(- \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \Big)\\
+  &amp;= \frac{\partial}{\partial \mu} \Big( \sum\limits_{n=1}^{N} - \frac{1}{2\sigma^{2}} (x_{n} - \mu)^{2} \Big)\\
+  &amp;= \sum\limits_{n=1}^{N} \frac{\partial}{\partial \mu} \Big(- \frac{1}{2\sigma^{2}} (x_{n} - \mu)^{2} \Big)\\
+\end{align}\end{split}\]</div>
+<p>Now we can use the product rule:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \frac{\partial \mathcal{LL}}{\partial \mu} &amp;= \sum\limits_{n=1}^{N} \frac{\partial}{\partial \mu} \Big(- \frac{1}{2\sigma^{2}} \cdot (x_{n} - \mu)^{2} \Big)\\
+  &amp;= \sum\limits_{n=1}^{N}\Big( \frac{\partial}{\partial \mu} \big(- \frac{1}{2\sigma^{2}} \big) \cdot (x_{n} - \mu)^{2} + \big(- \frac{1}{2\sigma^{2}} \big) \cdot \frac{\partial}{\partial \mu} (x_{n} - \mu)^{2} \Big)\\
+\end{align}\end{split}\]</div>
+<p>Now some terms will nicely drop out:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \frac{\partial \mathcal{LL}}{\partial \mu} &amp;= \sum\limits_{n=1}^{N}\Big( \frac{\partial}{\partial \mu} \big(- \frac{1}{2\sigma^{2}} \big) \cdot (x_{n} - \mu)^{2} + \big(- \frac{1}{2\sigma^{2}} \big) \cdot \frac{\partial}{\partial \mu} (x_{n} - \mu)^{2} \Big)\\
+  &amp;= \sum\limits_{n=1}^{N}\Big( 0 + \big(- \frac{1}{2\sigma^{2}} \big) \cdot \frac{\partial}{\partial \mu} (x_{n} - \mu)^{2} \Big)\\
+  &amp;= - \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} \frac{\partial}{\partial \mu} (x_{n} - \mu)^{2}\\
+\end{align}\end{split}\]</div>
+<p>At this point we can use the chain rule, <span class="math notranslate nohighlight">\(\frac{\partial}{\partial x}\big(f(g(x))\big) = \frac{\partial}{\partial x}f(g(x)) \cdot \frac{\partial}{\partial x}g(x)\)</span>, with <span class="math notranslate nohighlight">\(g(x) = (x - \mu)\)</span> and <span class="math notranslate nohighlight">\(f(x) = x^{2}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \frac{\partial \mathcal{LL}}{\partial \mu} &amp;= - \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} \frac{\partial}{\partial \mu} (x_{n} - \mu)^{2}\\
+  &amp;= - \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} 2 (x_{n} - \mu) \cdot -1 \\
+  &amp;=  \frac{1}{\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu) \\
+\end{align}\end{split}\]</div>
+<p>Yay! We’ve done as much simplifying as we can at this point, and gotten rid of all of our <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{LL}}{\partial \mu}\)</span> terms!</p>
+<p>Now what we have is the simplest form of the partial derivative of our likelihood function with respect to <span class="math notranslate nohighlight">\(\mu\)</span>. Now we want to use this equation to find the best <span class="math notranslate nohighlight">\(\mu\)</span>, so we set it equal to zero, and solve for <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \frac{\partial \mathcal{LL}}{\partial \mu} &amp;=  \frac{1}{\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu) \\
+  0 &amp;=  \frac{1}{\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu) \\
+  0 &amp;=  \sum\limits_{n=1}^{N} (x_{n} - \mu) \\
+  0 &amp;=  \sum\limits_{n=1}^{N} x_{n} - \sum\limits_{n=1}^{N} \mu \\
+  0 &amp;=  \sum\limits_{n=1}^{N} x_{n} - N \cdot \mu \\
+  N \cdot \mu &amp;= \sum\limits_{n=1}^{N} x_{n} \\
+  \mu &amp;= \frac{1}{N}\sum\limits_{n=1}^{N} x_{n} \\
+\end{align}\end{split}\]</div>
+<p>Huzzah! We’ve reached the promised land! We now have a formula we can use to estimate one model parameter (<span class="math notranslate nohighlight">\(\mu\)</span>) from our data (<span class="math notranslate nohighlight">\(\mathbf{X}\)</span>). Let’s take a second to think about what this formula means. Remember that we started with a bunch of data points:</p>
+<p><img alt="" src="../../../../_images/mle_1.png" /></p>
+<p>We want to take that data and make some models which we think represent that data well. In our case we are learning two Gaussian models, one for the <code class="docutils literal notranslate"><span class="pre">yellow</span> <span class="pre">skittle</span></code> data and one for the <code class="docutils literal notranslate"><span class="pre">purple</span> <span class="pre">skittle</span></code> data:</p>
+<p><img alt="" src="../../../../_images/mle_model_1.png" />
+<img alt="" src="../../../../_images/mle_model_2.png" /></p>
+<p>To make our Gaussians fit the data as well as we can, we can do two things: (1) move the center of the curve or (2) adjust the width of the peak. Right now, with <span class="math notranslate nohighlight">\(\mu\)</span> we’re only talking about the placement of the center of the curve, we’re not talking at all about its width.</p>
+<p>Where is the best place to put a bell curve to cover all our data? Well, how about the center of our data! Dead-center, bull’s eye, whatever you call it, we’re putting our Gaussian right in the middle of it all (the mean). We’re taking all our points, summing them up, and dividing by the number of data points. This is the <em>average</em>, and it is (for the likelihood function) the best place to put the mean of our model.</p>
+<p>Getting back to the skittles, the center of the curve <span class="math notranslate nohighlight">\([\mu_{x},\mu_{y}]\)</span> for our <code class="docutils literal notranslate"><span class="pre">yellow</span> <span class="pre">skittle</span> <span class="pre">model</span></code> comes directly from our sommeliers’ ratings (i.e. <span class="math notranslate nohighlight">\([\mu_{x}]\)</span> =  average rating for <code class="docutils literal notranslate"><span class="pre">aromatic</span> <span class="pre">lift</span></code> and <span class="math notranslate nohighlight">\([\mu_{y}]\)</span> = average rating for <code class="docutils literal notranslate"><span class="pre">elegance</span></code>). Our <code class="docutils literal notranslate"><span class="pre">purple</span> <span class="pre">skittle</span> <span class="pre">model</span></code> was centered in the exact same way.</p>
+<p>Sure enough, if you take a look at the data, you’ll see that the <code class="docutils literal notranslate"><span class="pre">yellow</span> <span class="pre">skittle</span></code> data is grouped around the point <code class="docutils literal notranslate"><span class="pre">[-1,-1]</span></code> and that the <code class="docutils literal notranslate"><span class="pre">purple</span> <span class="pre">skittle</span></code> data points are all clustered around <code class="docutils literal notranslate"><span class="pre">[1,1]</span></code>. Now take a look at the models we’ve made. You’ll see that the center of the peak for the <code class="docutils literal notranslate"><span class="pre">purple</span> <span class="pre">skittle</span> <span class="pre">model</span></code> is somewhere near  <code class="docutils literal notranslate"><span class="pre">[-1,-1]</span></code> and that the peak of the <code class="docutils literal notranslate"><span class="pre">yellow</span> <span class="pre">skittle</span> <span class="pre">model</span></code> is around <code class="docutils literal notranslate"><span class="pre">[1,1]</span></code>.</p>
+</section>
+<section id="mle-of-sigma-2">
+<h2>MLE of <span class="math notranslate nohighlight">\(\sigma^{2}\)</span><a class="headerlink" href="#mle-of-sigma-2" title="Permalink to this heading">#</a></h2>
+<p>Now let’s tackle the second parameter of our Gaussian model, the variance <span class="math notranslate nohighlight">\(\sigma^{2}\)</span>!</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \frac{\partial \mathcal{LL}}{\partial \sigma^{2}} &amp;= \frac{\partial}{\partial \sigma^{2}} \Big( -\frac{N}{2} \log ( 2\pi\sigma^{2} )  - \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \Big)\\
+  &amp;=  \frac{\partial}{\partial \sigma^{2}} \Big( -\frac{N}{2} \log ( 2\pi\sigma^{2} )\Big)  + \frac{\partial}{\partial \sigma^{2}} \Big( - \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \Big)\\
+\end{align}\end{split}\]</div>
+<p>Let’s start with the product rule for the lefthand term:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \frac{\partial \mathcal{LL}}{\partial \sigma^{2}} &amp;=  \frac{\partial}{\partial \sigma^{2}} \Big( -\frac{N}{2} \log ( 2\pi\sigma^{2} )\Big)  + \frac{\partial}{\partial \sigma^{2}} \Big( - \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \Big)\\
+  &amp;=  \frac{\partial}{\partial \sigma^{2}} \big( -\frac{N}{2} \big) \cdot \log ( 2\pi\sigma^{2} ) +
+  \big( -\frac{N}{2} \big) \cdot \frac{\partial}{\partial \sigma^{2}} \big( \log ( 2\pi\sigma^{2}) \big)
+  + \frac{\partial}{\partial \sigma^{2}} \Big( - \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \Big)\\
+  &amp;=  0 +
+  \big( -\frac{N}{2} \big) \cdot \frac{\partial}{\partial \sigma^{2}} \big( \log ( 2\pi\sigma^{2}) \big)
+  + \frac{\partial}{\partial \sigma^{2}} \Big( - \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \Big)\\
+  &amp;= -\frac{N}{2} \cdot \frac{\partial}{\partial \sigma^{2}} \big( \log ( 2\pi\sigma^{2}) \big)
+  + \frac{\partial}{\partial \sigma^{2}} \Big( - \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \Big)\\
+\end{align}\end{split}\]</div>
+<p>Now we can use the chain rule for our term with the <span class="math notranslate nohighlight">\(\log\)</span> operator, <span class="math notranslate nohighlight">\(\frac{\partial}{\partial x}\big(f(g(x))\big) = \frac{\partial}{\partial x}f(g(x)) \cdot \frac{\partial}{\partial x}g(x)\)</span>, with <span class="math notranslate nohighlight">\(g(x) = 2 \pi x\)</span> and <span class="math notranslate nohighlight">\(f(x) = log(x)\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \frac{\partial \mathcal{LL}}{\partial \sigma^{2}} &amp;= -\frac{N}{2} \cdot \frac{\partial}{\partial \sigma^{2}} \big( \log ( 2\pi\sigma^{2}) \big) + \frac{\partial}{\partial \sigma^{2}} \Big( - \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \Big)\\
+  &amp;= -\frac{N}{2} \cdot \frac{1}{2\pi\sigma^{2}} \cdot 2\pi + \frac{\partial}{\partial \sigma^{2}} \Big( - \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \Big)\\
+  &amp;= -\frac{N}{2} \cdot \frac{1}{\sigma^{2}}+ \frac{\partial}{\partial \sigma^{2}} \Big( - \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \Big)\\
+  &amp;= -\frac{N}{2\sigma^{2}} + \frac{\partial}{\partial \sigma^{2}} \Big( - \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \Big)\\
+\end{align}\end{split}\]</div>
+<p>Now, using the same logic as above with <span class="math notranslate nohighlight">\(\mu\)</span>, we can move the derivative operator inside the summation operator:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \frac{\partial \mathcal{LL}}{\partial \sigma^{2}} &amp;= -\frac{N}{2\sigma^{2}} + \frac{\partial}{\partial \sigma^{2}} \Big( - \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \Big)\\
+  &amp;= -\frac{N}{2\sigma^{2}} + \sum\limits_{n=1}^{N} \Big( \frac{\partial}{\partial \sigma^{2}} \big( - \frac{1}{2\sigma^{2}} (x_{n} - \mu)^{2} \big) \Big)\\
+\end{align}\end{split}\]</div>
+<p>And again, the product rule:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \frac{\partial \mathcal{LL}}{\partial \sigma^{2}} &amp;= -\frac{N}{2\sigma^{2}} + \sum\limits_{n=1}^{N} \Big( \frac{\partial}{\partial \sigma^{2}} \big( - \frac{1}{2\sigma^{2}} (x_{n} - \mu)^{2} \big) \Big)\\
+  &amp;= -\frac{N}{2\sigma^{2}} + \sum\limits_{n=1}^{N} \Big( \frac{\partial}{\partial \sigma^{2}} \big( - \frac{1}{2\sigma^{2}} \big) \cdot (x_{n} - \mu)^{2} \big) + \big( - \frac{1}{2\sigma^{2}} \big) \cdot \frac{\partial}{\partial \sigma^{2}} (x_{n} - \mu)^{2} \big) \Big)\\
+  &amp;= -\frac{N}{2\sigma^{2}} + \sum\limits_{n=1}^{N} \Big( \frac{\partial}{\partial \sigma^{2}} \big( - \frac{1}{2\sigma^{2}} \big) \cdot (x_{n} - \mu)^{2} \big) + 0 \Big)\\
+  &amp;= -\frac{N}{2\sigma^{2}} + \sum\limits_{n=1}^{N} \Big( \frac{\partial}{\partial \sigma^{2}} \big( - \frac{1}{2\sigma^{2}} \big) \cdot (x_{n} - \mu)^{2} \big) \Big)\\
+\end{align}\end{split}\]</div>
+<p>Now let’s be careful with our exponents, since we’re taking the derivative of the function with respect to a squared variable <span class="math notranslate nohighlight">\(\sigma^2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \frac{\partial \mathcal{LL}}{\partial \sigma^{2}} &amp;= -\frac{N}{2\sigma^{2}} + \sum\limits_{n=1}^{N} \Big( \frac{\partial}{\partial \sigma^{2}} \big( - \frac{1}{2\sigma^{2}} \big) \cdot (x_{n} - \mu)^{2} \big) \Big)\\
+  &amp;= -\frac{N}{2\sigma^{2}} + \sum\limits_{n=1}^{N} \Big( \frac{\partial}{\partial \sigma^{2}} \big( - \frac{1}{2} \cdot \sigma^{-2} \big) \cdot (x_{n} - \mu)^{2} \big) \Big)\\
+\end{align}\end{split}\]</div>
+<p>Now it’s obvious that we need the product rule:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \frac{\partial \mathcal{LL}}{\partial \sigma^{2}} &amp;= -\frac{N}{2\sigma^{2}} + \sum\limits_{n=1}^{N} \Big( \frac{\partial}{\partial \sigma^{2}} \big( - \frac{1}{2} \cdot \sigma^{-2} \big) \cdot (x_{n} - \mu)^{2} \big) \Big)\\
+  &amp;= -\frac{N}{2\sigma^{2}} + \sum\limits_{n=1}^{N} \Big( \frac{\partial}{\partial \sigma^{2}} \big( - \frac{1}{2} \big) \cdot \sigma^{-2} + \big( - \frac{1}{2} \cdot \frac{\partial}{\partial \sigma^{2}} \sigma^{-2} \big) \cdot (x_{n} - \mu)^{2} \big) \Big)\\
+  &amp;= -\frac{N}{2\sigma^{2}} + \sum\limits_{n=1}^{N} \Big( 0 + \big( - \frac{1}{2} \cdot \frac{\partial}{\partial \sigma^{2}} \sigma^{-2} \big) \cdot (x_{n} - \mu)^{2} \big) \Big)\\
+  &amp;= -\frac{N}{2\sigma^{2}} + \sum\limits_{n=1}^{N} \Big( - \frac{1}{2} \cdot \frac{\partial}{\partial \sigma^{2}} \sigma^{-2} \cdot (x_{n} - \mu)^{2} \big) \Big)\\
+\end{align}\end{split}\]</div>
+<p>Now, we’re going to use the chain rule again, by first treating <span class="math notranslate nohighlight">\(\sigma^{-2} = (\sigma^{2})^{-1}\)</span>, then we can see <span class="math notranslate nohighlight">\(f(g(x))\)</span> with <span class="math notranslate nohighlight">\(f(x) = x^{-1}\)</span> and then <span class="math notranslate nohighlight">\(g(x) = x^2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \frac{\partial \mathcal{LL}}{\partial \sigma^{2}} &amp;= -\frac{N}{2\sigma^{2}} + \sum\limits_{n=1}^{N} \Big( - \frac{1}{2} \cdot \frac{\partial}{\partial \sigma^{2}} \sigma^{-2} \cdot (x_{n} - \mu)^{2} \big) \Big)\\
+  &amp;= -\frac{N}{2\sigma^{2}} + \sum\limits_{n=1}^{N} \Big( - \frac{1}{2} \cdot \frac{\partial}{\partial \sigma^{2}} \big( (\sigma^{2})^{-1} \big) \cdot (x_{n} - \mu)^{2} \big) \Big)\\
+  &amp;= -\frac{N}{2\sigma^{2}} + \sum\limits_{n=1}^{N} \Big( - \frac{1}{2} \cdot -1 \cdot (\sigma^2)^{-2} \cdot 1 \cdot (x_{n} - \mu)^{2} \big) \Big)\\
+  &amp;= -\frac{N}{2\sigma^{2}} + \sum\limits_{n=1}^{N} \Big( \frac{1}{2} \cdot (\sigma^2)^{-2} \cdot (x_{n} - \mu)^{2} \big) \Big)\\
+  &amp;= -\frac{N}{2\sigma^{2}} + \sum\limits_{n=1}^{N} \Big( \frac{1}{2\sigma^4} \cdot (x_{n} - \mu)^{2} \big) \Big)\\
+  &amp;= -\frac{N}{2\sigma^{2}} + \frac{1}{2\sigma^4} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2}\\
+  &amp;= \frac{1}{2\sigma^2} \Big( -N + \frac{1}{\sigma^2} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \Big)\\
+\end{align}\end{split}\]</div>
+<p>Huzzah! We’ve gotten our partial derivative for <span class="math notranslate nohighlight">\(\mathcal{LL}\)</span> with respect to <span class="math notranslate nohighlight">\(\sigma^2\)</span>as simplified as we can. Now let’s find the best <span class="math notranslate nohighlight">\(\sigma^2\)</span>for our data by setting the equation equal to zero and solving for <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  0 &amp;= \frac{1}{2\sigma^2} \Big( -N + \frac{1}{\sigma^2} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2} \Big)\\
+  0 &amp;= -N + \frac{1}{\sigma^2} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2}\\
+  N\sigma^2 &amp;= \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2}\\
+  \sigma^2 &amp;= \frac{1}{N}\sum\limits_{n=1}^{N} (x_{n} - \mu)^{2}\\
+\end{align}\end{split}\]</div>
+<p>And there we have it! All that work has boiled down to a simple equation do get the best <span class="math notranslate nohighlight">\(\sigma^2\)</span> for our Gaussian given our data. Just like with <span class="math notranslate nohighlight">\(\mu\)</span> if we take a second to look at the equation, we find it has a very intuitive interpretation.</p>
+<p>We’re iterating over each data point (<span class="math notranslate nohighlight">\(x_{n}\)</span>) and finding its particular deviation from the mean of all the data points <span class="math notranslate nohighlight">\(\mu\)</span>. We sum up all the deviations, and then take the average!</p>
+<p>Just as when we were finding the best <span class="math notranslate nohighlight">\(\mu\)</span> for our Gaussian by setting it to the average (<span class="math notranslate nohighlight">\(\mu\)</span>) of the data, we’re now setting our standard deviation to be, well, the <em>standard</em> deviation of the data! Think of <em>standard</em> as being a synonym to <em>average</em>, and it becomes pretty clear.</p>
+<p>Thinking back to the <code class="docutils literal notranslate"><span class="pre">skittles</span></code>, what we’ve done here is taken each skittle, one-by-one, and figured out how far it deviates from the mean on a certain rating. For example, we know that on average, our expert sommeliers rated <code class="docutils literal notranslate"><span class="pre">purple</span></code> skittles to have a <code class="docutils literal notranslate"><span class="pre">[-1]</span></code> score for <code class="docutils literal notranslate"><span class="pre">elegance</span></code>. However, not every <code class="docutils literal notranslate"><span class="pre">purple</span> <span class="pre">skittle</span></code> got a score of <code class="docutils literal notranslate"><span class="pre">[-1]</span></code>. Each skittle deviated from that average, and if we add up how much each skittle deviated (after squaring), we with the average deviation. Take a look again at our skittle data:</p>
+<p><img alt="" src="../../../../_images/mle_1.png" /></p>
+<p>Specifically, look at the <code class="docutils literal notranslate"><span class="pre">purple</span> <span class="pre">skittles</span></code>. You see the purple skittle that got a rating of about <code class="docutils literal notranslate"><span class="pre">[0,-2]</span></code>? That skittle had pretty horrible <code class="docutils literal notranslate"><span class="pre">elegance</span></code> and better-than-average <code class="docutils literal notranslate"><span class="pre">aromatic</span> <span class="pre">lift</span></code>. This skittle obviously <em>deviated</em> from the normal rating. We take this skittle along with every other, calculate that deviation, and get our <span class="math notranslate nohighlight">\(\sigma^2\)</span>for our model.</p>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>We did a lot of algebra, some calculus, and used some tricks with <span class="math notranslate nohighlight">\(\log_{e}\)</span> to get to this point.</p>
+<p>Along the way it’s easy to get lost in the weeds, but if we keep in mind that all these equations have some interpretation, we can catch the big picture. In our case, the big picture is very clear:</p>
+<blockquote>
+<div><p>When using Maximum Likelihood Estimation to estimate parameters of a Gaussian, set the mean of the Gaussian to be the mean of the data, and set the standard deviation of the Gaussian to be the standard deviation of the data.</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+  \mu_{MLE} &amp;= \frac{1}{N}\sum\limits_{n=1}^{N} x_{n} \\    
+  \sigma^{2}_{MLE} &amp;= \frac{1}{N}\sum\limits_{n=1}^{N} (x_{n} - \mu)^{2}\\
+\end{align}\end{split}\]</div>
+<p>I hope this was helpful or interesting! If you find errors or have comments, let me know!</p>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>For another approach to parameter estimation using not only information from the data, but a prior bias, see <a class="reference external" href="https://en.wikipedia.org/wiki/Maximum_a_posteriori_estimation">Maximum A Posteriori estimation</a>.</p>
+</aside>
+<aside class="footnote brackets" id="id5" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>I have no sponsorship from Skittles, the Wrigley Company, or Mars, Inc. All the views expressed in this post are my own. However, if they would like to throw some cash my way, I would not be upset.</p>
+</aside>
+<aside class="footnote brackets" id="id6" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>This is an example of a <a class="reference external" href="https://en.wikipedia.org/wiki/Discriminative_model">discriminative</a> model, as opposed to a <a class="reference external" href="https://en.wikipedia.org/wiki/Generative_model">generative</a> model. The classification approach described here is the latter approach.</p>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "pantelis/artificial-intelligence",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./aiml-common/lectures/optimization/maximum-likelihood"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="marginal_maximum_likelihood.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Maximum Likelihood Estimation of a marginal model</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="conditional_maximum_likelihood.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Maximum Likelihood (ML) Estimation of conditional models</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-big-picture">The Big Picture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mle-as-parameter-estimation">MLE as Parameter Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-for-a-gaussian">Likelihood for a Gaussian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mle-of-mu">MLE of <span class="math notranslate nohighlight">\(\mu\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mle-of-sigma-2">MLE of <span class="math notranslate nohighlight">\(\sigma^{2}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Pantelis Monogioudis, Ph.D
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
