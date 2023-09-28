@@ -583,7 +583,9 @@ document.write(`
 <p>As you can see the maximum entropy is when the outcome is most unpredictable i.e. when a 1 can show up with uniform probability (in this case equal probability to a 0). Entropy has widespread implications as it measures our uncertainty in terms of the length of the message/code that we need to communicate the outcome across. Taking to the limit if we were certain about an event (deterministic outcome) we would need 0 bits or require to send any message at all.</p>
 <section id="relative-entropy-or-kl-divergence">
 <h2>Relative entropy or KL divergence<a class="headerlink" href="#relative-entropy-or-kl-divergence" title="Permalink to this heading">#</a></h2>
-<p>In many settings we need to have a metric that compares two probability distributions <span class="math notranslate nohighlight">\(\{P(x),Q(x)\}\)</span> in terms of their “distance” from each other (the quotes will be explained shortly). This is given by the quantity known as <em>relative entropy</em> or <em>KL divergence</em>.</p>
+<div class="video_wrapper align-center" style="text-align: center">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/SxGYPqCgJWM" style="border: 0; height: 345px; width: 560px">
+</iframe></div><p>In many settings we need to have a metric that compares two probability distributions <span class="math notranslate nohighlight">\(\{P(x),Q(x)\}\)</span> in terms of their “distance” from each other (the quotes will be explained shortly). This is given by the quantity known as <em>relative entropy</em> or <em>KL divergence</em>.</p>
 <div class="math notranslate nohighlight">
 \[KL(P||Q)= \mathbb{E}[\ln P(x) - \ln Q(x)]\]</div>
 <p>If the two distributions are identical, <span class="math notranslate nohighlight">\(KL=0\)</span> - in general however <span class="math notranslate nohighlight">\(KL(P||Q) \ge 0\)</span>. One key element to understand is that <span class="math notranslate nohighlight">\(KL\)</span> is not a true distance metric as its asymmetric.</p>
