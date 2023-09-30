@@ -1,12 +1,15 @@
 ---
-title: Intelligent Agents and Representations 
-weight: 5
-draft: false
+title: A systems approach to AI
+nextjs:
+  metadata:
+    title: A systems approach to AI
+    description: 
 ---
+# A systems approach to AI
 
 ## Agent-Environment Interface
 
-> An agent is a computer system that is situated in some environment, and that is capable of autonomous action in this environment in order to meet its design objectives.
+An agent is a computer system that is situated in some environment, and that is capable of autonomous action in this environment in order to meet its design objectives.
 
 In general sensor data are converted via the agent function (that is implemented via a _program_) into actions as shown below. 
 
