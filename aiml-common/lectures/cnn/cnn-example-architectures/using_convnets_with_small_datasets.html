@@ -355,6 +355,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/mle/linear-regression/cars.html">Stochastic Gradient Descent for Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/cnn-rare-events/rare_events.html">Classifying rare events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/optimization/adam/index.html">Neural Network optimization with SGD and Adam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/object-tracking-kalman/balls.html">Multiple Object Tracking</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Project CS-GY-4613</span></p><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/><label class="label-parts" for="toctree-checkbox-30"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../projects/nlp/finetuning-language-models-tweets/index.html">Finetuning Language Models - Toxic Tweets</a></li>
 </ul></li></ul>
     </div>
 </nav></div>
@@ -694,9 +697,11 @@ to bootstrap powerful vision models out of very little data. That’s what we wi
 <section id="downloading-the-data">
 <h2>Downloading the data<a class="headerlink" href="#downloading-the-data" title="Permalink to this heading">#</a></h2>
 <p>The cats vs. dogs dataset that we will use isn’t packaged with Keras. It was made available by <a class="reference external" href="http://Kaggle.com">Kaggle.com</a> as part of a computer vision
-competition in late 2013, back when convnets weren’t quite mainstream. You can download the original dataset at:
-<code class="docutils literal notranslate"><span class="pre">https://www.kaggle.com/c/dogs-vs-cats/data</span></code> (you will need to create a Kaggle account if you don’t already have one – don’t worry, the
-process is painless).</p>
+competition in late 2013, back when convnets weren’t quite mainstream. The data in the form of a zip file is stored in your course repo under the path</p>
+<p><code class="docutils literal notranslate"><span class="pre">lectures/cnn/cnn-example-architectures/dogs-vs-cats-subset.zip</span></code></p>
+<!-- You can download the original dataset at: 
+`https://www.kaggle.com/c/dogs-vs-cats/data` (you will need to create a Kaggle account if you don't already have one -- don't worry, the 
+process is painless). -->
 <p>The pictures are medium-resolution color JPEGs. They look like this:</p>
 <p><img alt="cats_vs_dogs_samples" src="https://s3.amazonaws.com/book.keras.io/img/ch5/cats_vs_dogs_samples.jpg" /></p>
 <p>Unsurprisingly, the cats vs. dogs Kaggle competition in 2013 was won by entrants who used convnets. The best entries could achieve up to
