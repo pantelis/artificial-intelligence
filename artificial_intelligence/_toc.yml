@@ -209,7 +209,7 @@ parts:
   - file: aiml-common/assignments/mle/linear-regression/cars.ipynb
   - file: aiml-common/assignments/cnn-rare-events/rare_events.ipynb  
   - file: aiml-common/assignments/optimization/adam/index.md
-  - file: aiml-common/assignments/object-tracking-kalman/balls.md   
+  # - file: aiml-common/assignments/object-tracking-kalman/balls.md   
     
     
 #   - file: aiml-common/assignments/mle/mle-gaussian.ipynb
@@ -221,9 +221,9 @@ parts:
 #   - file: aiml-common/assignments/mle/poisson-regression-1/index.ipynb
 #   - file: aiml-common/assignments/object-tracking-kalman/balls.md
   
-- caption:  Project CS-GY-4613
-  chapters: 
-  - file: aiml-common/projects/nlp/finetuning-language-models-tweets/index.md
+# - caption:  Project CS-GY-4613
+#   chapters: 
+#   - file: aiml-common/projects/nlp/finetuning-language-models-tweets/index.md
 
 # - caption:  Assignments CS-GY-6613
 #   chapters: 
