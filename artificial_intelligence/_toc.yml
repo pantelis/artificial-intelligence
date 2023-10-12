@@ -230,6 +230,7 @@ parts:
 #   - file: aiml-common/assignments/logistic-regression-1/index.md
 #   - file: aiml-common/assignments/object-tracking-kalman/soccer.md
 
-# - caption:  Project
-#   chapters: 
-#   - file: aiml-common/projects/nlp/finetuning-language-models-patents/index.md
+- caption:  Projects
+  chapters: 
+  - file: aiml-common/projects/nlp/foreign-whispers/index.md
+  - file: aiml-common/projects/nl-guided-robotics/index.md
