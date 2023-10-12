@@ -355,6 +355,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/mle/linear-regression/cars.html">Stochastic Gradient Descent for Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/cnn-rare-events/rare_events.html">Classifying rare events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../assignments/optimization/adam/index.html">Neural Network optimization with SGD and Adam</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Projects</span></p><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/><label class="label-parts" for="toctree-checkbox-30"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../projects/nlp/foreign-whispers/index.html">Foreign Whispers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../projects/nl-guided-robotics/index.html">Natual Language Guided Robotics</a></li>
 </ul></li></ul>
     </div>
 </nav></div>
@@ -637,6 +640,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-10-12 14:55:34.307312: I tensorflow/core/platform/cpu_feature_guard.cc:194] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE3 SSE4.1 SSE4.2 AVX
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-10-12 14:55:34.407246: I tensorflow/core/util/port.cc:104] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.11.0&#39;
 </pre></div>
 </div>
@@ -718,8 +726,18 @@ Non-trainable params: 0
 _________________________________________________________________
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-03-20 16:34:33.851910: W tensorflow/c/c_api.cc:291] Operation &#39;{name:&#39;dense_3/kernel/Assign&#39; id:718 op device:{requested: &#39;&#39;, assigned: &#39;&#39;} def:{{{node dense_3/kernel/Assign}} = AssignVariableOp[_has_manual_control_dependencies=true, dtype=DT_FLOAT, validate_shape=false](dense_3/kernel, dense_3/kernel/Initializer/stateless_random_uniform)}}&#39; was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don&#39;t modify nodes after running them or create a new session.
-2023-03-20 16:34:34.011597: W tensorflow/c/c_api.cc:291] Operation &#39;{name:&#39;conv2d_4/kernel/rms/Assign&#39; id:864 op device:{requested: &#39;&#39;, assigned: &#39;&#39;} def:{{{node conv2d_4/kernel/rms/Assign}} = AssignVariableOp[_has_manual_control_dependencies=true, dtype=DT_FLOAT, validate_shape=false](conv2d_4/kernel/rms, conv2d_4/kernel/rms/Initializer/zeros)}}&#39; was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don&#39;t modify nodes after running them or create a new session.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-10-12 14:55:35.660142: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-10-12 14:55:35.716937: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-10-12 14:55:35.717085: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-10-12 14:55:35.717496: I tensorflow/core/platform/cpu_feature_guard.cc:194] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE3 SSE4.1 SSE4.2 AVX
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-10-12 14:55:35.718858: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-10-12 14:55:35.718994: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-10-12 14:55:35.719061: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-10-12 14:55:35.773521: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-10-12 14:55:35.773649: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-10-12 14:55:35.773719: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-10-12 14:55:35.773791: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1621] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 1415 MB memory:  -&gt; device: 0, name: NVIDIA RTX A4500 Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.6
 </pre></div>
 </div>
 </div>
@@ -762,7 +780,7 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../../_images/9cf2500ebdb0b23708a316a59d59d9cdd3df32ef3c76dd9b9d2475146f07bb64.png" src="../../../../_images/9cf2500ebdb0b23708a316a59d59d9cdd3df32ef3c76dd9b9d2475146f07bb64.png" />
+<img alt="../../../../_images/abb80ae679311805d2fe6ec00fa0c48aaa71f5e8a38065f2975c01e7b8010eec.png" src="../../../../_images/abb80ae679311805d2fe6ec00fa0c48aaa71f5e8a38065f2975c01e7b8010eec.png" />
 </div>
 </div>
 <p>In order to extract the feature maps we want to look at, we will create a Keras model that takes batches of images as input, and outputs
@@ -793,7 +811,10 @@ model could have any number of inputs and outputs. This one has one input and 8 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-03-20 16:34:34.533717: W tensorflow/c/c_api.cc:291] Operation &#39;{name:&#39;conv2d_4/Relu&#39; id:594 op device:{requested: &#39;&#39;, assigned: &#39;&#39;} def:{{{node conv2d_4/Relu}} = Relu[T=DT_FLOAT, _has_manual_control_dependencies=true](conv2d_4/BiasAdd)}}&#39; was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don&#39;t modify nodes after running them or create a new session.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 0s 277ms/step
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-10-12 14:55:36.615951: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8700
 </pre></div>
 </div>
 </div>
@@ -823,7 +844,7 @@ model could have any number of inputs and outputs. This one has one input and 8 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../../_images/72eea32fa9b1694093e565f5ca5f2993205debd5874878b44bca4af45e3e68b0.png" src="../../../../_images/72eea32fa9b1694093e565f5ca5f2993205debd5874878b44bca4af45e3e68b0.png" />
+<img alt="../../../../_images/965b535aebb2da7488ccf75e2848e50c0ababd3b13f82cabb9e55b4f3786f3c9.png" src="../../../../_images/965b535aebb2da7488ccf75e2848e50c0ababd3b13f82cabb9e55b4f3786f3c9.png" />
 </div>
 </div>
 <p>This channel appears to encode a diagonal edge detector. Let’s try the 30th channel – but note that your own channels may vary, since the
@@ -836,7 +857,7 @@ specific filters learned by convolution layers are not deterministic.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../../_images/8a2c14184c2f62dcfc807fedf763f666e13a8574b36ae44430e3ff31c49244f4.png" src="../../../../_images/8a2c14184c2f62dcfc807fedf763f666e13a8574b36ae44430e3ff31c49244f4.png" />
+<img alt="../../../../_images/4240667503b80ac8e29753fddca5829f4ec9a226d9c2e24ffecdb174951b27b6.png" src="../../../../_images/4240667503b80ac8e29753fddca5829f4ec9a226d9c2e24ffecdb174951b27b6.png" />
 </div>
 </div>
 <p>This one looks like a “bright green dot” detector, useful to encode cat eyes. At this point, let’s go and plot a complete visualization of
@@ -891,20 +912,18 @@ one big image tensor, with channels stacked side by side.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_15431/3924288684.py:28: RuntimeWarning: invalid value encountered in divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_38466/3924288684.py:28: RuntimeWarning: invalid value encountered in true_divide
   channel_image /= channel_image.std()
-/tmp/ipykernel_15431/3924288684.py:31: RuntimeWarning: invalid value encountered in cast
-  channel_image = np.clip(channel_image, 0, 255).astype(&#39;uint8&#39;)
 </pre></div>
 </div>
-<img alt="../../../../_images/83bfa6d93a41674c8b25a3b911fa26c5870691ce1c8d387c04e18fe4ecc82114.png" src="../../../../_images/83bfa6d93a41674c8b25a3b911fa26c5870691ce1c8d387c04e18fe4ecc82114.png" />
-<img alt="../../../../_images/165d8910c64a86887f9d63948e68782c1f1c31ee1da687345730be5448090fc8.png" src="../../../../_images/165d8910c64a86887f9d63948e68782c1f1c31ee1da687345730be5448090fc8.png" />
-<img alt="../../../../_images/216f738e92fc5c589b5dcba158dc464bc924941eb4c949de2a9805fea515a156.png" src="../../../../_images/216f738e92fc5c589b5dcba158dc464bc924941eb4c949de2a9805fea515a156.png" />
-<img alt="../../../../_images/067bdddc9c3d7aa6d117d588e94af0cb52509946e3025b45f6058cc6aacd9494.png" src="../../../../_images/067bdddc9c3d7aa6d117d588e94af0cb52509946e3025b45f6058cc6aacd9494.png" />
-<img alt="../../../../_images/b574ca787ab54cd351eef55586b8484a1a4b61949bb0fcd60a0821e2cc159edd.png" src="../../../../_images/b574ca787ab54cd351eef55586b8484a1a4b61949bb0fcd60a0821e2cc159edd.png" />
-<img alt="../../../../_images/4534dfda778d340c848391af4c89d7fb1c3b18f7aa7e47349c83497e178fd195.png" src="../../../../_images/4534dfda778d340c848391af4c89d7fb1c3b18f7aa7e47349c83497e178fd195.png" />
-<img alt="../../../../_images/2b2b1a583082d80999a93e6983a4cc1212a4589cc25a1415ca6eb6280b40bf83.png" src="../../../../_images/2b2b1a583082d80999a93e6983a4cc1212a4589cc25a1415ca6eb6280b40bf83.png" />
-<img alt="../../../../_images/2ac2f21fe4ec4f14478787dd1b1888ac0da4ebde4351f7dc28d2606b42b34cd7.png" src="../../../../_images/2ac2f21fe4ec4f14478787dd1b1888ac0da4ebde4351f7dc28d2606b42b34cd7.png" />
+<img alt="../../../../_images/a509b218932960250b622d4b8449270133e1c0fce368f505da9d51256cebc215.png" src="../../../../_images/a509b218932960250b622d4b8449270133e1c0fce368f505da9d51256cebc215.png" />
+<img alt="../../../../_images/953ea34bda4ca406cbc96ade60180ddd863554af71d794a081a8abadc5da263c.png" src="../../../../_images/953ea34bda4ca406cbc96ade60180ddd863554af71d794a081a8abadc5da263c.png" />
+<img alt="../../../../_images/57161db12c71b01bcfa89ff817452a5ff0df9904cbaf247db40b5ed04b7484ed.png" src="../../../../_images/57161db12c71b01bcfa89ff817452a5ff0df9904cbaf247db40b5ed04b7484ed.png" />
+<img alt="../../../../_images/5819cff623bdb0398929fb53c2a3cd0b4567b856c5b07bbd2d5f063f629333a6.png" src="../../../../_images/5819cff623bdb0398929fb53c2a3cd0b4567b856c5b07bbd2d5f063f629333a6.png" />
+<img alt="../../../../_images/61dd8bd696447212a56b85754e80fc34148b91217ffc8d5437c59ad67402c272.png" src="../../../../_images/61dd8bd696447212a56b85754e80fc34148b91217ffc8d5437c59ad67402c272.png" />
+<img alt="../../../../_images/0dac3a6a9a01baad7af5547ca8d27fc39fe2c8b1fbcfa741a519a3f89436acca.png" src="../../../../_images/0dac3a6a9a01baad7af5547ca8d27fc39fe2c8b1fbcfa741a519a3f89436acca.png" />
+<img alt="../../../../_images/d5cef097d0e187840c84e5b24c7b853dcf9133314c1c3338526bee2d6255f436.png" src="../../../../_images/d5cef097d0e187840c84e5b24c7b853dcf9133314c1c3338526bee2d6255f436.png" />
+<img alt="../../../../_images/2bc9cb160a57f5dc8e804b717db7b41ed3742debb2650505a618477e71f22363.png" src="../../../../_images/2bc9cb160a57f5dc8e804b717db7b41ed3742debb2650505a618477e71f22363.png" />
 </div>
 </div>
 <p>A few remarkable things to note here:</p>
@@ -952,7 +971,18 @@ a loss for the activation of filter 0 in the layer “block3_conv1” of the VGG
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-03-20 16:34:36.765847: W tensorflow/c/c_api.cc:291] Operation &#39;{name:&#39;block4_conv2_1/bias/Assign&#39; id:1202 op device:{requested: &#39;&#39;, assigned: &#39;&#39;} def:{{{node block4_conv2_1/bias/Assign}} = AssignVariableOp[_has_manual_control_dependencies=true, dtype=DT_FLOAT, validate_shape=false](block4_conv2_1/bias, block4_conv2_1/bias/Initializer/zeros)}}&#39; was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don&#39;t modify nodes after running them or create a new session.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading data from https://storage.googleapis.com/tensorflow/keras-applications/vgg16/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5
+58889256/58889256 [==============================] - 1s 0us/step
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-10-12 14:55:39.315120: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-10-12 14:55:39.315290: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-10-12 14:55:39.315360: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-10-12 14:55:39.315460: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-10-12 14:55:39.315532: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-10-12 14:55:39.315595: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1621] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 1415 MB memory:  -&gt; device: 0, name: NVIDIA RTX A4500 Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.6
+2023-10-12 14:55:39.322210: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:357] MLIR V1 optimization pass is not enabled
+2023-10-12 14:55:39.349496: W tensorflow/c/c_api.cc:291] Operation &#39;{name:&#39;block4_conv1/bias/Assign&#39; id:191 op device:{requested: &#39;&#39;, assigned: &#39;&#39;} def:{{{node block4_conv1/bias/Assign}} = AssignVariableOp[_has_manual_control_dependencies=true, dtype=DT_FLOAT, validate_shape=false](block4_conv1/bias, block4_conv1/bias/Initializer/zeros)}}&#39; was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don&#39;t modify nodes after running them or create a new session.
 </pre></div>
 </div>
 </div>
@@ -1079,7 +1109,7 @@ returns a valid image tensor representing the pattern that maximizes the activat
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../../_images/eaa5e2f0851f200f65ecdf2f7266c9ba08c2cfd8e174785cf76da99286466c84.png" src="../../../../_images/eaa5e2f0851f200f65ecdf2f7266c9ba08c2cfd8e174785cf76da99286466c84.png" />
+<img alt="../../../../_images/d221c5094363b80026e3bf885be13e629abd1ad37c1c561ee7661ff34accf686.png" src="../../../../_images/d221c5094363b80026e3bf885be13e629abd1ad37c1c561ee7661ff34accf686.png" />
 </div>
 </div>
 <p>It seems that filter 0 in layer <code class="docutils literal notranslate"><span class="pre">block3_conv1</span></code> is responsive to a polka dot pattern.</p>
@@ -1115,10 +1145,10 @@ block5_conv1). We will arrange the outputs on a 8x8 grid of 64x64 filter pattern
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../../_images/b3ddaf73acd0cd4b81c8f231467ba36b3114c3ef20750655fc5de19d7fd9a4f6.png" src="../../../../_images/b3ddaf73acd0cd4b81c8f231467ba36b3114c3ef20750655fc5de19d7fd9a4f6.png" />
-<img alt="../../../../_images/8a1f1e4edd8bfb400c3b0a1a867b45a9aa63360658597ade8f7c15c0ce245c6a.png" src="../../../../_images/8a1f1e4edd8bfb400c3b0a1a867b45a9aa63360658597ade8f7c15c0ce245c6a.png" />
-<img alt="../../../../_images/690d45ed64382e6578d5805488b19d1aa051e2ca390998621c01911ee434d078.png" src="../../../../_images/690d45ed64382e6578d5805488b19d1aa051e2ca390998621c01911ee434d078.png" />
-<img alt="../../../../_images/8ce29277a8de3dae702cdc8b87d336e18dfe54dd379d282d72c4aac82aea56b2.png" src="../../../../_images/8ce29277a8de3dae702cdc8b87d336e18dfe54dd379d282d72c4aac82aea56b2.png" />
+<img alt="../../../../_images/4e02ad3b609a172f659b498b83af5065dda12fead0dec7973900c320bbf6e1df.png" src="../../../../_images/4e02ad3b609a172f659b498b83af5065dda12fead0dec7973900c320bbf6e1df.png" />
+<img alt="../../../../_images/1b31b359751ef052435f79dc08d0a6d1dcff676987c55e593fa9b2eb865fb181.png" src="../../../../_images/1b31b359751ef052435f79dc08d0a6d1dcff676987c55e593fa9b2eb865fb181.png" />
+<img alt="../../../../_images/03c944cce6f935f8232156b323949d8e4a85834703b59f180f2f2781c1c1feb8.png" src="../../../../_images/03c944cce6f935f8232156b323949d8e4a85834703b59f180f2f2781c1c1feb8.png" />
+<img alt="../../../../_images/280e2f456559e75a114d352c408707276eab1bd2a9c97fa4601d41f33664bd11.png" src="../../../../_images/280e2f456559e75a114d352c408707276eab1bd2a9c97fa4601d41f33664bd11.png" />
 </div>
 </div>
 <p>These filter visualizations tell us a lot about how convnet layers see the world: each layer in a convnet simply learns a collection of
@@ -1163,13 +1193,17 @@ image activates the class”.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-03-20 16:36:00.704437: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:981] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2023-03-20 16:36:00.704605: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:981] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2023-03-20 16:36:00.704677: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:981] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2023-03-20 16:36:00.704782: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:981] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2023-03-20 16:36:00.704848: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:981] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2023-03-20 16:36:00.704904: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 10009 MB memory:  -&gt; device: 0, name: NVIDIA RTX A4500 Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.6
-2023-03-20 16:36:00.732640: W tensorflow/c/c_api.cc:291] Operation &#39;{name:&#39;predictions/bias/Assign&#39; id:395 op device:{requested: &#39;&#39;, assigned: &#39;&#39;} def:{{{node predictions/bias/Assign}} = AssignVariableOp[_has_manual_control_dependencies=true, dtype=DT_FLOAT, validate_shape=false](predictions/bias, predictions/bias/Initializer/zeros)}}&#39; was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don&#39;t modify nodes after running them or create a new session.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading data from https://storage.googleapis.com/tensorflow/keras-applications/vgg16/vgg16_weights_tf_dim_ordering_tf_kernels.h5
+ 50692096/553467096 [=&gt;............................] - ETA: 5s553467096/553467096 [==============================] - 5s 0us/step
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-10-12 14:56:58.439856: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-10-12 14:56:58.439989: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-10-12 14:56:58.440054: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-10-12 14:56:58.440150: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-10-12 14:56:58.440211: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-10-12 14:56:58.440266: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1621] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 1415 MB memory:  -&gt; device: 0, name: NVIDIA RTX A4500 Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.6
+2023-10-12 14:56:58.469183: W tensorflow/c/c_api.cc:291] Operation &#39;{name:&#39;block5_conv2/bias/Assign&#39; id:290 op device:{requested: &#39;&#39;, assigned: &#39;&#39;} def:{{{node block5_conv2/bias/Assign}} = AssignVariableOp[_has_manual_control_dependencies=true, dtype=DT_FLOAT, validate_shape=false](block5_conv2/bias, block5_conv2/bias/Initializer/zeros)}}&#39; was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don&#39;t modify nodes after running them or create a new session.
 </pre></div>
 </div>
 </div>
@@ -1206,6 +1240,12 @@ it to 224x224, convert it to a Numpy float32 tensor, and apply these pre-process
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading data from https://img-datasets.s3.amazonaws.com/elephant.jpg
+733657/733657 [==============================] - 1s 1us/step
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1215,10 +1255,15 @@ it to 224x224, convert it to a Numpy float32 tensor, and apply these pre-process
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted: [(&#39;n02504458&#39;, &#39;African_elephant&#39;, 0.9268021), (&#39;n01871265&#39;, &#39;tusker&#39;, 0.05897034), (&#39;n02408429&#39;, &#39;water_buffalo&#39;, 0.009489533)]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading data from https://storage.googleapis.com/download.tensorflow.org/data/imagenet_class_index.json
+35363/35363 [==============================] - 0s 0us/step
+Predicted: [(&#39;n02504458&#39;, &#39;African_elephant&#39;, 0.92680186), (&#39;n01871265&#39;, &#39;tusker&#39;, 0.058964364), (&#39;n02408429&#39;, &#39;water_buffalo&#39;, 0.009496593)]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-03-20 16:36:02.653166: W tensorflow/c/c_api.cc:291] Operation &#39;{name:&#39;predictions/Softmax&#39; id:401 op device:{requested: &#39;&#39;, assigned: &#39;&#39;} def:{{{node predictions/Softmax}} = Softmax[T=DT_FLOAT, _has_manual_control_dependencies=true](predictions/BiasAdd)}}&#39; was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don&#39;t modify nodes after running them or create a new session.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.8/dist-packages/keras/engine/training_v1.py:2357: UserWarning: `Model.state_updates` will be removed in a future version. This property should not be used in TensorFlow 2.0, as `updates` are applied automatically.
+  updates=self.state_updates,
+2023-10-12 14:57:01.338651: W tensorflow/c/c_api.cc:291] Operation &#39;{name:&#39;predictions/Softmax&#39; id:401 op device:{requested: &#39;&#39;, assigned: &#39;&#39;} def:{{{node predictions/Softmax}} = Softmax[T=DT_FLOAT, _has_manual_control_dependencies=true](predictions/BiasAdd)}}&#39; was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don&#39;t modify nodes after running them or create a new session.
+2023-10-12 14:57:01.447291: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:648] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
 </pre></div>
 </div>
 </div>
@@ -1293,7 +1338,7 @@ that was maximally activated is the one corresponding to the “African elephant
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../../_images/aa451495ec07cc262017a45326987d3692ae0e5af5f062acedc35c830284c7e2.png" src="../../../../_images/aa451495ec07cc262017a45326987d3692ae0e5af5f062acedc35c830284c7e2.png" />
+<img alt="../../../../_images/425e6ce76460e10c85300c664d05a23ec4b905213ad79983105f1c7f38565b55.png" src="../../../../_images/425e6ce76460e10c85300c664d05a23ec4b905213ad79983105f1c7f38565b55.png" />
 </div>
 </div>
 <p>Finally, we will use OpenCV to generate an image that superimposes the original image with the heatmap we just obtained:</p>
@@ -1322,7 +1367,14 @@ that was maximally activated is the one corresponding to the “African elephant
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">workspaces</span><span class="o">/</span><span class="n">artificial_intelligence</span><span class="o">/</span><span class="n">artificial_intelligence</span><span class="o">/</span><span class="n">aiml</span><span class="o">-</span><span class="n">common</span><span class="o">/</span><span class="n">lectures</span><span class="o">/</span><span class="n">cnn</span><span class="o">/</span><span class="n">cnn</span><span class="o">-</span><span class="n">example</span><span class="o">-</span><span class="n">architectures</span><span class="o">/</span><span class="n">visualizing</span><span class="o">-</span><span class="n">what</span><span class="o">-</span><span class="n">convnets</span><span class="o">-</span><span class="n">learn</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">55</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B7b22686f737450617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e6365222c226c6f63616c446f636b6572223a66616c73652c2273657474696e6773223a7b22686f7374223a22756e69783a2f2f2f7661722f72756e2f646f636b65722e736f636b227d2c22636f6e66696746696c65223a7b22246d6964223a312c22667350617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2265787465726e616c223a2266696c653a2f2f2f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2270617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c22736368656d65223a2266696c65227d7d/workspaces/artificial_intelligence/artificial_intelligence/aiml-common/lectures/cnn/cnn-example-architectures/visualizing-what-convnets-learn.ipynb#Y105sdnNjb2RlLXJlbW90ZQ%3D%3D?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">cv2</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B7b22686f737450617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e6365222c226c6f63616c446f636b6572223a66616c73652c2273657474696e6773223a7b22686f7374223a22756e69783a2f2f2f7661722f72756e2f646f636b65722e736f636b227d2c22636f6e66696746696c65223a7b22246d6964223a312c22667350617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2265787465726e616c223a2266696c653a2f2f2f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2270617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c22736368656d65223a2266696c65227d7d/workspaces/artificial_intelligence/artificial_intelligence/aiml-common/lectures/cnn/cnn-example-architectures/visualizing-what-convnets-learn.ipynb#Y105sdnNjb2RlLXJlbW90ZQ%3D%3D?line=2&#39;</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="c1"># We use cv2 to load the original image</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B7b22686f737450617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e6365222c226c6f63616c446f636b6572223a66616c73652c2273657474696e6773223a7b22686f7374223a22756e69783a2f2f2f7661722f72756e2f646f636b65722e736f636b227d2c22636f6e66696746696c65223a7b22246d6964223a312c22667350617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2265787465726e616c223a2266696c653a2f2f2f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2270617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c22736368656d65223a2266696c65227d7d/workspaces/artificial_intelligence/artificial_intelligence/aiml-common/lectures/cnn/cnn-example-architectures/visualizing-what-convnets-learn.ipynb#Y105sdnNjb2RlLXJlbW90ZQ%3D%3D?line=3&#39;</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;cv2&#39;
 </pre></div>
 </div>
 </div>
