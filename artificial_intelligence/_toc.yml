@@ -54,12 +54,7 @@ parts:
   - file: aiml-common/lectures/cnn/cnn-example-architectures/visualizing-what-convnets-learn.ipynb
   - file: aiml-common/lectures/scene-understanding/feature-extraction-resnet/index.md
   #- file: aiml-common/lectures/cnn/cnn-explainers/gradcam.ipynb
-  
-- caption:  Transfer Learning
-  chapters:  
-  - file: aiml-common/lectures/transfer-learning/transfer-learning-introduction.md  
-  - file: aiml-common/lectures/transfer-learning/transfer_learning_tutorial.ipynb
-    #- file: aiml-common/lectures/transfer-learning/quantized_transfer_learning.ipynb  
+
 
 - caption: Scene Understanding
   chapters:    
@@ -80,7 +75,13 @@ parts:
     - file: aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_model.ipynb        
     - file: aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_weights.ipynb      
     - file: aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.ipynb            
-      
+
+- caption:  Transfer Learning
+  chapters:  
+  - file: aiml-common/lectures/transfer-learning/transfer-learning-introduction.md  
+  - file: aiml-common/lectures/transfer-learning/transfer_learning_tutorial.ipynb
+    #- file: aiml-common/lectures/transfer-learning/quantized_transfer_learning.ipynb  
+
 - caption: Probabilistic Reasoning
   chapters:    
   - file: aiml-common/lectures/pgm/pgm-intro/_index.md
@@ -209,6 +210,7 @@ parts:
   - file: aiml-common/assignments/mle/linear-regression/cars.ipynb
   - file: aiml-common/assignments/cnn-rare-events/rare_events.ipynb  
   - file: aiml-common/assignments/optimization/adam/index.md
+  - file: aiml-common/assignments/object-detection-kalman/drone.md  
   # - file: aiml-common/assignments/object-tracking-kalman/balls.md   
     
     
