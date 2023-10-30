@@ -2,7 +2,7 @@
 
 Multi-Object Tracking (MOT) is a core visual ability that humans poses to perform kinetic tasks and coordinate other tasks. The AI community has recognized the importance of MOT via a series of [competitions](https://motchallenge.net). 
 
-In this assignment, the object class is `drone` and the ability to track this object  will be demonstrated using [Kalman Filters](https://en.wikipedia.org/wiki/Kalman_filter). The assignment will give you also the opportunity to apply probabilistic reasoning in physical security application space. 
+In this assignment, the object class is `drone` and the ability to track this object  will be demonstrated using [Kalman Filters](https://en.wikipedia.org/wiki/Kalman_filter). The assignment will give you the opportunity to apply probabilistic reasoning in the physical security application space. 
 
 
 ## Task 1: Setup your development environment and store the test videos locally (10 points)

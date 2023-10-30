@@ -18,8 +18,6 @@ Object detection, involves three main stages: the feature extraction stage, the 
 
 We also need to insert an additional requirement: to be able to detect objects in almost real time (20 frames per second) - a significant subset of what we call mission critical applications require it. Therefore will focus a specific family that is considered to be the canonical CNN architecture for detection - the family of region-based detectors.  
 
-## Face Detection Demo
+## Demo
 
-Before we continue, you can try out [a face detection demo](https://colab.research.google.com/drive/1QnC7lV7oVFk5OZCm75fqbLAfD9qBy9bw?usp=sharing
-) - the notebook will use your webcam to detect your face in real time.
-
+Before we continue, you can try out [a demo](https://mediapipe-studio.webapps.google.com/studio/demo/object_detector) using your webcam and nothing else other than your browser.
