@@ -3,7 +3,7 @@
 	"name": "ai-course-devcontainer",
 	"build": { 
 		"context": "..",
-		"dockerfile": "../docker/Dockerfile.tensorflow"
+		"dockerfile": "../docker/Dockerfile.pytorch"
 	},
 	"runArgs": [
 		"--rm",

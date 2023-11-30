@@ -1,27 +1,30 @@
 # --------- docs --------- #
-jupyter-book==0.15.1
+jupyter-book
 sphinx-autobuild
-sphinxcontrib-youtube==1.2.0
+sphinxcontrib-youtube
 sphinxcontrib-bibtex
-sphinx-proof
 diagrams
-filterpy
 sphinxcontrib-svg2pdfconverter
-transformers
-datasets
-accelerate
-nvidia-ml-py3
-unified-planning[enghines, plot]
-# https://raw.githubusercontent.com/ultralytics/yolov5/master/requirements.txt
-
-
-# ipywidgets
-# 
-# sphinx-inline-tabs
-# sphinxext-rediraffe
-# sphinx-panels
-# sphinxcontrib-mermaid
-# sphinxcontrib-seqdiag
-
+ipywidgets
+optuna
+sphinx-proof
+sphinx-inline-tabs
+sphinxext-rediraffe
+sphinx-panels
+sphinxcontrib-mermaid
+sphinxcontrib-seqdiag
+sphinx_click
+sphinx_examples
+sphinxcontrib-svg2pdfconverter==0.1.0
 # --------- docs --------- #
+#diagrams==0.20.0 # 0.20.0 has a bug and is causing the jupyter book to crash
+filterpy==1.4.5
+transformers==4.34.1
+datasets==2.14.6
+accelerate==0.24.1
+nvidia-ml-py3==7.352.0
+unified-planning[enghines, plot]
+# # https://raw.githubusercontent.com/ultralytics/yolov5/master/requirements.txt
+PyGObject==3.40.1
+
 
