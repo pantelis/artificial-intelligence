@@ -16,15 +16,16 @@ sphinxcontrib-seqdiag
 sphinx_click
 sphinx_examples
 sphinxcontrib-svg2pdfconverter==0.1.0
-# --------- docs --------- #
 #diagrams==0.20.0 # 0.20.0 has a bug and is causing the jupyter book to crash
+# --------- docs --------- #
+pydantic
 filterpy==1.4.5
-transformers==4.34.1
+transformers==4.35.1
 datasets==2.14.6
 accelerate==0.24.1
 nvidia-ml-py3==7.352.0
 unified-planning[enghines, plot]
 # # https://raw.githubusercontent.com/ultralytics/yolov5/master/requirements.txt
 PyGObject==3.40.1
-
+pytest==6.2.5
 
