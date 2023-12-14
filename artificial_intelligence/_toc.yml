@@ -184,8 +184,9 @@ parts:
     - file: aiml-common/lectures/nlp/nmt/rnn-attention-workshop/seq2seq_and_attention.ipynb  
   
   - file: aiml-common/lectures/nlp/transformers/transformers-intro.md
-    title: Transformers
+    title: Transformers and Self-attention
     sections:
+    - file: aiml-common/lectures/nlp/transformers/multihead-attention.md
     - file: aiml-common/lectures/nlp/transformers/annotated_transformer.ipynb         
 
 - caption: Math Background
