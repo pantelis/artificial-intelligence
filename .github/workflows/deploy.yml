@@ -21,7 +21,7 @@ jobs:
       - name: Cache apt packages
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-            packages: curl git-lfs ffmpeg libsm6 libxext6 graphviz libgraphviz-dev xdg-utils swig gringo
+            packages: curl git-lfs ffmpeg libsm6 libxext6 graphviz libgraphviz-dev xdg-utils swig gringo  libgraphviz-dev libsndfile1-dev xdg-utils swig gringo gobject-introspection libcairo2-dev libgirepository1.0-dev pkg-config python3-dev python3-gi
             version: 1.0
       - name: Set up python
         id: setup-python
