@@ -28,4 +28,4 @@ unified-planning[enghines, plot]
 # # https://raw.githubusercontent.com/ultralytics/yolov5/master/requirements.txt
 PyGObject==3.40.1
 pytest==6.2.5
-bertviz==1.1.2
+bertviz
