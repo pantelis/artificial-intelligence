@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Mask R-CNN - Inspect Trained Model &#8212; Introduction to Artificial Intelligence</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../../_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
-<link href="../../../../../_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
-<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link href="../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,14 +39,12 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
-<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
-  <script src="../../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/jquery.js"></script>
     <script src="../../../../../_static/underscore.js"></script>
-    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../_static/doctools.js"></script>
     <script src="../../../../../_static/clipboard.min.js"></script>
     <script src="../../../../../_static/copybutton.js"></script>
@@ -80,15 +78,6 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -149,14 +138,13 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-  
     
     
       
     
     
-    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt="Introduction to Artificial Intelligence - Home"/>
-    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Artificial Intelligence - Home"/>`);</script>
+    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
@@ -326,19 +314,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/transformers/transformers-intro.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../nlp/transformers/annotated_transformer.html">The Annotated Transformer</a></li>
-
-
-
-
-
-
-
-
-
-
-
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/transformers/transformers-intro.html">Transformers and Self-attention</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../nlp/transformers/singlehead-self-attention.html">Single-head self-attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../nlp/transformers/multihead-self-attention.html">Multi-head attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../nlp/transformers/positional_embeddings.html">Positional Embeddings</a></li>
 </ul>
 </li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="label-parts" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
@@ -581,10 +560,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
@@ -592,7 +571,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -664,7 +643,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section id="mask-r-cnn-inspect-trained-model">
-<h1>Mask R-CNN - Inspect Trained Model<a class="headerlink" href="#mask-r-cnn-inspect-trained-model" title="Permalink to this heading">#</a></h1>
+<h1>Mask R-CNN - Inspect Trained Model<a class="headerlink" href="#mask-r-cnn-inspect-trained-model" title="Permalink to this headline">#</a></h1>
 <p>Code and visualizations to test, debug, and evaluate the Mask R-CNN model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -715,7 +694,7 @@ document.write(`
 </div>
 </section>
 <section id="configurations">
-<h1>Configurations<a class="headerlink" href="#configurations" title="Permalink to this heading">#</a></h1>
+<h1>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run one of the code blocks</span>
@@ -795,7 +774,7 @@ WEIGHT_DECAY                   0.0001
 </div>
 </section>
 <section id="notebook-preferences">
-<h1>Notebook Preferences<a class="headerlink" href="#notebook-preferences" title="Permalink to this heading">#</a></h1>
+<h1>Notebook Preferences<a class="headerlink" href="#notebook-preferences" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Device to load the neural network on.</span>
@@ -829,7 +808,7 @@ WEIGHT_DECAY                   0.0001
 </div>
 </section>
 <section id="load-validation-dataset">
-<h1>Load Validation Dataset<a class="headerlink" href="#load-validation-dataset" title="Permalink to this heading">#</a></h1>
+<h1>Load Validation Dataset<a class="headerlink" href="#load-validation-dataset" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build validation dataset</span>
@@ -860,7 +839,7 @@ Classes: [&#39;BG&#39;, &#39;person&#39;, &#39;bicycle&#39;, &#39;car&#39;, &#39
 </div>
 </section>
 <section id="load-model">
-<h1>Load Model<a class="headerlink" href="#load-model" title="Permalink to this heading">#</a></h1>
+<h1>Load Model<a class="headerlink" href="#load-model" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create model in inference mode</span>
@@ -885,7 +864,7 @@ Classes: [&#39;BG&#39;, &#39;person&#39;, &#39;bicycle&#39;, &#39;car&#39;, &#39
 </div>
 </section>
 <section id="run-detection">
-<h1>Run Detection<a class="headerlink" href="#run-detection" title="Permalink to this heading">#</a></h1>
+<h1>Run Detection<a class="headerlink" href="#run-detection" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_id</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">image_ids</span><span class="p">)</span>
@@ -924,7 +903,7 @@ gt_mask                  shape: (1024, 1024, 10)      min:    0.00000  max:    1
 </div>
 </div>
 <section id="precision-recall">
-<h2>Precision-Recall<a class="headerlink" href="#precision-recall" title="Permalink to this heading">#</a></h2>
+<h2>Precision-Recall<a class="headerlink" href="#precision-recall" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Draw precision-recall curve</span>
@@ -952,7 +931,7 @@ gt_mask                  shape: (1024, 1024, 10)      min:    0.00000  max:    1
 </div>
 </section>
 <section id="compute-map-iou-50-on-batch-of-images">
-<h2>Compute mAP &#64; IoU=50 on Batch of Images<a class="headerlink" href="#compute-map-iou-50-on-batch-of-images" title="Permalink to this heading">#</a></h2>
+<h2>Compute mAP &#64; IoU=50 on Batch of Images<a class="headerlink" href="#compute-map-iou-50-on-batch-of-images" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute VOC-style Average Precision</span>
@@ -993,14 +972,14 @@ gt_mask                  shape: (1024, 1024, 10)      min:    0.00000  max:    1
 </section>
 </section>
 <section id="step-by-step-prediction">
-<h1>Step by Step Prediction<a class="headerlink" href="#step-by-step-prediction" title="Permalink to this heading">#</a></h1>
+<h1>Step by Step Prediction<a class="headerlink" href="#step-by-step-prediction" title="Permalink to this headline">#</a></h1>
 </section>
 <section id="stage-1-region-proposal-network">
-<h1>Stage 1: Region Proposal Network<a class="headerlink" href="#stage-1-region-proposal-network" title="Permalink to this heading">#</a></h1>
+<h1>Stage 1: Region Proposal Network<a class="headerlink" href="#stage-1-region-proposal-network" title="Permalink to this headline">#</a></h1>
 <p>The Region Proposal Network (RPN) runs a lightweight binary classifier on a lot of boxes (anchors) over the image and returns object/no-object scores. Anchors with high <em>objectness</em> score (positive anchors) are passed to the stage two to be classified.</p>
 <p>Often, even positive anchors don’t cover objects fully. So the RPN also regresses a refinement (a delta in location and size) to be applied to the anchors to shift it and resize it a bit to the correct boundaries of the object.</p>
 <section id="a-rpn-targets">
-<h2>1.a RPN Targets<a class="headerlink" href="#a-rpn-targets" title="Permalink to this heading">#</a></h2>
+<h2>1.a RPN Targets<a class="headerlink" href="#a-rpn-targets" title="Permalink to this headline">#</a></h2>
 <p>The RPN targets are the training values for the RPN. To generate the targets, we start with a grid of anchors that cover the full image at different scales, and then we compute the IoU of the anchors with ground truth object. Positive anchors are those that have an IoU &gt;= 0.7 with any ground truth object, and negative anchors are those that don’t cover any object by more than 0.3 IoU. Anchors in between (i.e. cover an object by IoU &gt;= 0.3 but &lt; 0.7) are considered neutral and excluded from training.</p>
 <p>To train the RPN regressor, we also compute the shift and resizing needed to make the anchor cover the ground truth object completely.</p>
 <div class="cell docutils container">
@@ -1056,7 +1035,7 @@ refined_anchors          shape: (14, 4)               min:    0.00000  max: 1023
 </div>
 </section>
 <section id="b-rpn-predictions">
-<h2>1.b RPN Predictions<a class="headerlink" href="#b-rpn-predictions" title="Permalink to this heading">#</a></h2>
+<h2>1.b RPN Predictions<a class="headerlink" href="#b-rpn-predictions" title="Permalink to this headline">#</a></h2>
 <p>Here we run the RPN graph and display its predictions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1187,10 +1166,10 @@ Post NMS Anchors (   50)  Recall: 0.800  Positive anchors: 9
 </section>
 </section>
 <section id="stage-2-proposal-classification">
-<h1>Stage 2: Proposal Classification<a class="headerlink" href="#stage-2-proposal-classification" title="Permalink to this heading">#</a></h1>
+<h1>Stage 2: Proposal Classification<a class="headerlink" href="#stage-2-proposal-classification" title="Permalink to this headline">#</a></h1>
 <p>This stage takes the region proposals from the RPN and classifies them.</p>
 <section id="a-proposal-classification">
-<h2>2.a Proposal Classification<a class="headerlink" href="#a-proposal-classification" title="Permalink to this heading">#</a></h2>
+<h2>2.a Proposal Classification<a class="headerlink" href="#a-proposal-classification" title="Permalink to this headline">#</a></h2>
 <p>Run the classifier heads on proposals to generate class propbabilities and bounding box regressions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1246,7 +1225,7 @@ detections               shape: (1, 100, 6)           min:    0.00000  max:  844
 </div>
 </section>
 <section id="c-step-by-step-detection">
-<h2>2.c Step by Step Detection<a class="headerlink" href="#c-step-by-step-detection" title="Permalink to this heading">#</a></h2>
+<h2>2.c Step by Step Detection<a class="headerlink" href="#c-step-by-step-detection" title="Permalink to this headline">#</a></h2>
 <p>Here we dive deeper into the process of processing the detections.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1299,7 +1278,7 @@ detections               shape: (1, 100, 6)           min:    0.00000  max:  844
 </div>
 </div>
 <section id="apply-bounding-box-refinement">
-<h3>Apply Bounding Box Refinement<a class="headerlink" href="#apply-bounding-box-refinement" title="Permalink to this heading">#</a></h3>
+<h3>Apply Bounding Box Refinement<a class="headerlink" href="#apply-bounding-box-refinement" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Class-specific bounding box shifts.</span>
@@ -1336,7 +1315,7 @@ refined_proposals        shape: (1000, 4)             min:   -8.00000  max: 1028
 </div>
 </section>
 <section id="filter-low-confidence-detections">
-<h3>Filter Low Confidence Detections<a class="headerlink" href="#filter-low-confidence-detections" title="Permalink to this heading">#</a></h3>
+<h3>Filter Low Confidence Detections<a class="headerlink" href="#filter-low-confidence-detections" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove boxes classified as background</span>
@@ -1376,7 +1355,7 @@ refined_proposals        shape: (1000, 4)             min:   -8.00000  max: 1028
 </div>
 </section>
 <section id="per-class-non-max-suppression">
-<h3>Per-Class Non-Max Suppression<a class="headerlink" href="#per-class-non-max-suppression" title="Permalink to this heading">#</a></h3>
+<h3>Per-Class Non-Max Suppression<a class="headerlink" href="#per-class-non-max-suppression" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apply per-class non-max suppression</span>
@@ -1441,10 +1420,10 @@ Kept after per-class NMS: 8
 </section>
 </section>
 <section id="stage-3-generating-masks">
-<h1>Stage 3: Generating Masks<a class="headerlink" href="#stage-3-generating-masks" title="Permalink to this heading">#</a></h1>
+<h1>Stage 3: Generating Masks<a class="headerlink" href="#stage-3-generating-masks" title="Permalink to this headline">#</a></h1>
 <p>This stage takes the detections (refined bounding boxes and class IDs) from the previous layer and runs the mask head to generate segmentation masks for every instance.</p>
 <section id="a-mask-targets">
-<h2>3.a Mask Targets<a class="headerlink" href="#a-mask-targets" title="Permalink to this heading">#</a></h2>
+<h2>3.a Mask Targets<a class="headerlink" href="#a-mask-targets" title="Permalink to this headline">#</a></h2>
 <p>These are the training targets for the mask branch</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1458,7 +1437,7 @@ Kept after per-class NMS: 8
 </div>
 </section>
 <section id="b-predicted-masks">
-<h2>3.b Predicted Masks<a class="headerlink" href="#b-predicted-masks" title="Permalink to this heading">#</a></h2>
+<h2>3.b Predicted Masks<a class="headerlink" href="#b-predicted-masks" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get predictions of mask head</span>
@@ -1528,7 +1507,7 @@ det_masks                shape: (8, 1024, 1024)       min:    0.00000  max:    1
 </section>
 </section>
 <section id="visualize-activations">
-<h1>Visualize Activations<a class="headerlink" href="#visualize-activations" title="Permalink to this heading">#</a></h1>
+<h1>Visualize Activations<a class="headerlink" href="#visualize-activations" title="Permalink to this headline">#</a></h1>
 <p>In some cases it helps to look at the output from different layers and visualize them to catch issues and odd patterns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1641,10 +1620,11 @@ roi                      shape: (1, 1000, 4)          min:    0.00000  max:    1
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="inspect_data.html"
@@ -1664,7 +1644,10 @@ roi                      shape: (1, 1000, 4)          min:    0.00000  max:    1
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -1759,8 +1742,8 @@ By Pantelis Monogioudis, Ph.D
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
-<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

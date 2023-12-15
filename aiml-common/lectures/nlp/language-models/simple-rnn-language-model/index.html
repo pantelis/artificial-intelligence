@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Simple RNN Language Model &#8212; Introduction to Artificial Intelligence</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../../_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
-<link href="../../../../../_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
-<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link href="../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,14 +39,12 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
-<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
-  <script src="../../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/jquery.js"></script>
     <script src="../../../../../_static/underscore.js"></script>
-    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../_static/doctools.js"></script>
     <script src="../../../../../_static/clipboard.min.js"></script>
     <script src="../../../../../_static/copybutton.js"></script>
@@ -82,15 +80,6 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -151,14 +140,13 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-  
     
     
       
     
     
-    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt="Introduction to Artificial Intelligence - Home"/>
-    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Artificial Intelligence - Home"/>`);</script>
+    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
@@ -328,19 +316,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../transformers/transformers-intro.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../transformers/annotated_transformer.html">The Annotated Transformer</a></li>
-
-
-
-
-
-
-
-
-
-
-
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../transformers/transformers-intro.html">Transformers and Self-attention</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../transformers/singlehead-self-attention.html">Single-head self-attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../transformers/multihead-self-attention.html">Multi-head attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../transformers/positional_embeddings.html">Positional Embeddings</a></li>
 </ul>
 </li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="label-parts" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
@@ -583,10 +562,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
@@ -594,7 +573,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -625,13 +604,14 @@ document.write(`
                   
   <p><a class="reference external" href="https://colab.research.google.com/github/pantelis-nlp/tutorial-nlp-notebooks/blob/main/rnn_language_model.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="simple-rnn-language-model">
-<h1>Simple RNN Language Model<a class="headerlink" href="#simple-rnn-language-model" title="Permalink to this heading">#</a></h1>
+<h1>Simple RNN Language Model<a class="headerlink" href="#simple-rnn-language-model" title="Permalink to this headline">#</a></h1>
 <p>Our aim is to predict the next character given a set of previous characters from our data string. For our RNN  implementation, we would take a sequence of length 25 characters as inputs to predict the next character.</p>
 <p>The notation used here was introduced first <a class="reference external" href="http://cs231n.stanford.edu/slides/2018/cs231n_2018_lecture10.pdf">here</a>. This minimal character-level Vanilla RNN model was first written by Andrej Karpathy (&#64;karpathy) and was decorated with the forward and backprop equations by students of the CS-GY-6613 course as part of an asignment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;Chios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and arid, with a ridge of mountains running the length of the island. The two largest of these mountains, Pelineon (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are situated in the north of the island. The center of the island is divided between east and west by a range of smaller peaks, known as Provatas.&#39;</span>
-<span class="c1"># data I/O</span>
+
+<span class="c1"># you can also replace the data with any other txt file you want to use</span>
 <span class="c1"># data = open(&#39;input.txt&#39;, &#39;r&#39;).read() # should be simple plain text file - you can use any (small) file in txt format from the web or type your own. </span>
 </pre></div>
 </div>
@@ -671,8 +651,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;4&#39;: 0, &#39;m&#39;: 1, &#39;l&#39;: 2, &#39;y&#39;: 3, &#39;,&#39;: 4, &#39;w&#39;: 5, &#39;r&#39;: 6, &#39;8&#39;: 7, &#39;.&#39;: 8, &#39;g&#39;: 9, &#39;o&#39;: 10, &#39;d&#39;: 11, &#39;]&#39;: 12, &#39;1&#39;: 13, &#39;P&#39;: 14, &#39;n&#39;: 15, &#39;(&#39;: 16, &#39;a&#39;: 17, &#39;0&#39;: 18, &#39;2&#39;: 19, &#39;f&#39;: 20, &#39;7&#39;: 21, &#39;9&#39;: 22, &#39;p&#39;: 23, &#39; &#39;: 24, &#39;e&#39;: 25, &#39;C&#39;: 26, &#39;c&#39;: 27, &#39;)&#39;: 28, &#39;[&#39;: 29, &#39;s&#39;: 30, &#39;T&#39;: 31, &#39;q&#39;: 32, &#39;h&#39;: 33, &#39;i&#39;: 34, &#39;3&#39;: 35, &#39;E&#39;: 36, &#39;5&#39;: 37, &#39;b&#39;: 38, &#39;u&#39;: 39, &#39;v&#39;: 40, &#39;k&#39;: 41, &#39;t&#39;: 42}
-{0: &#39;4&#39;, 1: &#39;m&#39;, 2: &#39;l&#39;, 3: &#39;y&#39;, 4: &#39;,&#39;, 5: &#39;w&#39;, 6: &#39;r&#39;, 7: &#39;8&#39;, 8: &#39;.&#39;, 9: &#39;g&#39;, 10: &#39;o&#39;, 11: &#39;d&#39;, 12: &#39;]&#39;, 13: &#39;1&#39;, 14: &#39;P&#39;, 15: &#39;n&#39;, 16: &#39;(&#39;, 17: &#39;a&#39;, 18: &#39;0&#39;, 19: &#39;2&#39;, 20: &#39;f&#39;, 21: &#39;7&#39;, 22: &#39;9&#39;, 23: &#39;p&#39;, 24: &#39; &#39;, 25: &#39;e&#39;, 26: &#39;C&#39;, 27: &#39;c&#39;, 28: &#39;)&#39;, 29: &#39;[&#39;, 30: &#39;s&#39;, 31: &#39;T&#39;, 32: &#39;q&#39;, 33: &#39;h&#39;, 34: &#39;i&#39;, 35: &#39;3&#39;, 36: &#39;E&#39;, 37: &#39;5&#39;, 38: &#39;b&#39;, 39: &#39;u&#39;, 40: &#39;v&#39;, 41: &#39;k&#39;, 42: &#39;t&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;9&#39;: 0, &#39;(&#39;: 1, &#39;)&#39;: 2, &#39;q&#39;: 3, &#39;s&#39;: 4, &#39;,&#39;: 5, &#39;a&#39;: 6, &#39;d&#39;: 7, &#39;P&#39;: 8, &#39;E&#39;: 9, &#39;c&#39;: 10, &#39;e&#39;: 11, &#39;4&#39;: 12, &#39;0&#39;: 13, &#39;.&#39;: 14, &#39; &#39;: 15, &#39;p&#39;: 16, &#39;m&#39;: 17, &#39;f&#39;: 18, &#39;k&#39;: 19, &#39;o&#39;: 20, &#39;l&#39;: 21, &#39;b&#39;: 22, &#39;2&#39;: 23, &#39;3&#39;: 24, &#39;v&#39;: 25, &#39;y&#39;: 26, &#39;n&#39;: 27, &#39;u&#39;: 28, &#39;5&#39;: 29, &#39;h&#39;: 30, &#39;t&#39;: 31, &#39;7&#39;: 32, &#39;r&#39;: 33, &#39;i&#39;: 34, &#39;T&#39;: 35, &#39;C&#39;: 36, &#39;w&#39;: 37, &#39;[&#39;: 38, &#39;]&#39;: 39, &#39;8&#39;: 40, &#39;g&#39;: 41, &#39;1&#39;: 42}
+{0: &#39;9&#39;, 1: &#39;(&#39;, 2: &#39;)&#39;, 3: &#39;q&#39;, 4: &#39;s&#39;, 5: &#39;,&#39;, 6: &#39;a&#39;, 7: &#39;d&#39;, 8: &#39;P&#39;, 9: &#39;E&#39;, 10: &#39;c&#39;, 11: &#39;e&#39;, 12: &#39;4&#39;, 13: &#39;0&#39;, 14: &#39;.&#39;, 15: &#39; &#39;, 16: &#39;p&#39;, 17: &#39;m&#39;, 18: &#39;f&#39;, 19: &#39;k&#39;, 20: &#39;o&#39;, 21: &#39;l&#39;, 22: &#39;b&#39;, 23: &#39;2&#39;, 24: &#39;3&#39;, 25: &#39;v&#39;, 26: &#39;y&#39;, 27: &#39;n&#39;, 28: &#39;u&#39;, 29: &#39;5&#39;, 30: &#39;h&#39;, 31: &#39;t&#39;, 32: &#39;7&#39;, 33: &#39;r&#39;, 34: &#39;i&#39;, 35: &#39;T&#39;, 36: &#39;C&#39;, 37: &#39;w&#39;, 38: &#39;[&#39;, 39: &#39;]&#39;, 40: &#39;8&#39;, 41: &#39;g&#39;, 42: &#39;1&#39;}
 </pre></div>
 </div>
 </div>
@@ -974,325 +954,234 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----
- hiys island. The center of the islandt to south, and 29 km (18 mi) at covering an area of 842.289 km2)wid and  roun is mountainor ridn250 north to south, and 29 km (18 mi) at arrarrer of the island. T 
+ 0yhE4P39uyheem T2lv)gkr2b 2h)2 Pcye]C)uea,mh2b(cd(Ct3qgnP[mibm5wi.(fenaw.8e7b5r5li1P2l]ctEu3i1h( Tt8EdPrE12107Tvwd[)((fPk1]g )om[n 3t37prpl5qg8h 3d)tbgdkt3)e ]PP9Pm3u7ar9[[Cboug7q4v11ss)eg45P8uEp0geqk 
 ----
-iter 0, loss: 93.937900
+iter 0, loss: 94.030002
 ----
- hiys m ft)), um898 ite kiot th fi) kmorrori),18 vi210 of (3t)d veripesd Pr (1,284 5owslang ri(shestheeslasge ma,d shee th theain cor ited ineast is m (3,255 fped Pr oo th of shevislahd, isP twe pea ba 
+ hios isntwd antwees, (4,297m seth aed 2.8 (1,.8 ind ang, kmiund celon thes, anlsn and.leng cos ind om rar aad lade aed, Teea nin ite miunlinesce and mThe mannd cind be ong cot, andverrl (3E(1,29t8 e n 
 ----
-iter 1000, loss: 57.382420
+iter 1000, loss: 67.914614
 ----
- hiys ) (18m wo) two lari) co ofrthg (8, (5.289 kaslant is dwest Th cen of the isease f )) anthg 59 known as Pr cov afv f a range of smalles and th,d. The celand. The isnain the 10 no kiring an atd wes 
+ hios is and in ast andaleng the ted aridge orth of the islane lest staa nt rrted or (4219t t r of owe ist or the onof thest ty anda nd as krheEnof 89  br is aid  untat, artais, (18.[29 Theed leng phes 
 ----
-iter 2000, loss: 26.734174
+iter 2000, loss: 37.206784
 ----
- hiys island is kithe north of the island. The two large peaks, known ast anta bednt Pr co The two largest of thed ar mouth, and 29 km (18 mi) at ilonges (1, kmome isuntung a ohe is atea sq m0 Pesn wid 
+ hios island and Epos (1,25uth  fovering ff moestaiss, Peling and. (31898 m (3,295 m (3,898 ft)), and. The cende or moftts a ridge of mountaits won (4255 th, and 29 km (18 mi).[2] The sorrennd is ast b 
 ----
-iter 3000, loss: 12.473084
+iter 3000, loss: 18.941566
 ----
- hiys island arginnrain of the island is din is we peand mountainant a Epos (1,188 m (3,898 ft)), are sitves Pelineos (1,188 m (3,898 ft)), are situated in the north of the island0 Pelineang an area of 
+ hios island is crescent or (4,.289 The terrain east are witust, the long fromin the irleng covernd is st, wid in the is knd(4,298 fthe orlan ain ridge of movnnous mgestaiseng the ling and wunt is divi 
 ----
-iter 4000, loss: 6.580357
+iter 4000, loss: 14.128117
 ----
- hiys island sh of the island. The center ountains running the length of the cr thesw are the terrind west by a range of smaller peaks, known as Pr kid.[2] The terrain situated in, wnd Eiscoves a2898 f 
+ hios island is crescent or kidney shaped, 50 km (325.210 sq mi).[2] The terrain is mountainounta f Peleng sheperain is mof Pean ist, aro sides wituasesislaid (1 theg area or kndeseas, are wor kinland  
 ----
-iter 5000, loss: 3.257143
+iter 5000, loss: 6.929551
 ----
- hiys island is ast isn aitlandise nt insand 29 norid, 5erterri south, and verei)eco between east and west by a of the island. The minteano rped ant the length of the island. The center of the island i 
+ hios island is cred, 50 km (31 mT) long the length of the island. The center of the island is divided between east and. kndad aris ledeated in the norta of the islath wist by a range of smaller peaks, 
 ----
-iter 6000, loss: 1.823397
+iter 6000, loss: 4.229557
 ----
- hiys island is crescent or kidney shaped, 50 km (3,898 ft)), are situated in the north of the island. The twe id, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an a 
+ hios islaing and west by a range of sma dib and between east and west ty  length of the innd s, The center of the island is divided between east and west by a f west by a range of smaller peaks, known 
 ----
-iter 7000, loss: 1.167439
+iter 7000, loss: 2.343361
 ----
- hiys island is cresces wi langth of the island. The center of the islan between east and west bela range of smaller peaks, known as Pr kreeiy d or (1,297 m (4,255 ft)) ast the length of the island. Th 
+ hios island is and Efom s, (m,.2k ft)) and ftresnd rertn is th, and 29 km (1, mi) at itn enof mountaend w9 km (18 m (18 mi) at its wnorth of the island. The two largest of these mountains, Pelineon (1 
 ----
-iter 8000, loss: 3.007568
+iter 8000, loss: 1.702504
 ----
- hiyn i5, known as Pr kme)ta m (3,898 ft)), are situated in, is crescent or kidney shaped, 50 km (31 mi) longes (1,188 m (3,255 ft)) and Epos (1,188 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are sit 
+ hios islann or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq moustlis the island. The center of the istcerrain is  
 ----
-iter 9000, loss: 1.598038
+iter 9000, loss: 1.119716
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mountains running the length of the island. The center aidest, cre por (1,188 m (3,898 ft)), are situated in the north of the island. The center of  
+ hios islan eisland is divided between east and west by a range of smaller peaks, known as Pr The center of the of the island. The two laets an nd, mi).[2] The terrinna (m,99 mi) at its widest, coverin 
 ----
-iter 10000, loss: 0.966774
+iter 10000, loss: 0.826397
 ----
- hiyst and,d and Eit er situated in the north of the island. The two largest of these mountains, Pelineon (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are situated in the north of the island. Th 
+ hios island is crescent of the island. The two largest of these mountains, Pelineon and Epos (1,188 m (3,898 ft)), anda frtween enouth rof two  (4,255 ft)) and Efte rorth of the cent or kidney c Perin 
 ----
-iter 11000, loss: 0.730126
+iter 11000, loss: 0.664560
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north norran are situated in the north of the island. The center ountains running the length of the island. The center of the island i 
+ hisos known as2 28a of the island Epos (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are side ridge of mountains runnon mi) 8t bt a d, 50 km (31 mi) long from north to south, and 29 km (18 mi) a 
 ----
-iter 12000, loss: 0.554884
+iter 12000, loss: 0.565176
 ----
- hiyst and Epos (1,1(1 m (3,898 ft)), are situated in the north of the island. The center of the island is divided between east and west by a range of smaller peaks, known as Prid, with a ridge of moun 
+ hion ino mi) at island. The center of the island is divided between east and west by a range of smaller peaks, known as Pr douthe con getuth te south, and 29 km (18 mi) at its widest, covering an arra 
 ----
-iter 13000, loss: 0.456565
+iter 13000, loss: 0.497673
 ----
- hiys island is crescest or kidner th covering an area of 842.289 km2 (325.210 sq 8425 29 Ped arees (1,188 m (3,8me)d ountainous and arid, with a ridge of mountaiksq mouth of the island. The two larges 
+ hios island is crescent of 842.289 km2 (325.210 sq mi).[2] The  mountains, Pelineon (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are situated in the north of the island. The center of the islan 
 ----
-iter 14000, loss: 0.397573
+iter 14000, loss: 0.447981
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The tount(ountain is mountainous  
+ hios island is crescent or kndeEpraino the island. The two largest of these mountains, Pelineon (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are situated in the north of the island. The two lar 
 ----
-iter 15000, loss: 0.358886
+iter 15000, loss: 0.409268
 ----
- hiys island is crescent or kidney shaped, 50 km (3f mountains running the length of the island. The two largest of these mountains, Pelineon (1,297 m (4,255 ft)) and Eh f om (31 mi)dlong from north to 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long feof sorth of the island. The two largest of these mountains, Pelineon (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are situated in  
 ----
-iter 16000, loss: 0.331059
+iter 16000, loss: 0.377955
 ----
- hiys island is crescent o4 cekscents mountains, Pelineon (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are situated in the north of the island. The center of the island is divided between east a 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
 ----
-iter 17000, loss: 0.309466
+iter 17000, loss: 0.351873
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north The island. The center of the island is divided between east and west by a range of smaller peaks, known as Pr kne from north to 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area island island. The two largest of these mountains, Pelineon (1,297 m 
 ----
-iter 18000, loss: 0.292409
+iter 18000, loss: 0.329921
 ----
- hiys island is crescent of 842.889 km2 (325.210 sq mi).[2] The terrain is mountaithe redge sount its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and arid, wi 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
 ----
-iter 19000, loss: 0.277755
+iter 19000, loss: 0.310971
 ----
- hiys island is crescent or kidney shang anosg an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and arid, with a ridge of mountains running the length of the island. The two larges 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long f of touthe center of the island is divided between east and west by a range or kinleresh ft of thereathe ente covering an area of 842.289  
 ----
-iter 20000, loss: 0.264833
+iter 20000, loss: 0.294932
 ----
- hiys island sh of th  ries (1,188 m (3,898 ft)), are situated in the north of the island. The center of the island is divided between east and west by a range of smaller peaks, known as Pr cor cove sq 
+ hios i(4,.289 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and arreng an area of 842.289 km2 (325. 10 sq mi).[2] The terrain is mountainous  
 ----
-iter 21000, loss: 0.253981
+iter 21000, loss: 0.280158
 ----
- hiys island is crescent or kidneind arid, with a ridge of mountains running the length of the island. The center of the island is divided between east and west by a range of smaller peaks, known as Pr 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long the length of the island. The center of the island is di) ling from north to south, and 29 km (18 mi) at its widest, covering an area of 84 
 ----
-iter 22000, loss: 0.244011
+iter 22000, loss: 0.267610
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north tu north of the island. The two largespength of smaller peaks, known as Pr (1,5.210 mi) at its widest, covering an area of 842.2 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 8425. m4,.[2] The terrain is mountainous and arid, with a ridge o 
 ----
-iter 23000, loss: 0.235539
+iter 23000, loss: 0.256335
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq ma Peline fr me fm mi) as e nountains, Pe 
+ hios island is crescent or kidney shaped, kmountains runteins, Pelineon (1,297 m (4,255 ft)) and Eposh at ape lang the length of the island. The center of the island is divided between tast and west b 
 ----
-iter 24000, loss: 0.227563
+iter 24000, loss: 0.246315
 ----
- hiys island is kid.289 km (10 (3,898 ft)), are situated in the north of the island. The two largest of these mountains, Pelineo2eand asn widest or kidney shaped, 50 km (31 mi) long from north to south 
+ hios island is crescent or kidney shaped, 50 km (31 mi) lonn ridge of mountains running the length of the island. The twitunon shunt is ftthe conlerarea of 842.289 km2 (325.210 sq mi).[2] The terrain  
 ----
-iter 25000, loss: 0.220807
+iter 25000, loss: 0.237299
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainouth of th 
+ hios island is crescent or kidney shaped, .42.289 km2e ft by a range of smaller peaks, known as Pr ind of mountains running the length of the island. The two largest of these mountains, Pelineon (1,29 
 ----
-iter 26000, loss: 0.214157
+iter 26000, loss: 0.229051
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+ hios ithe island. The two largest of these mountains, Pelineon (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are situated in the north of the island. The two laridge of mountains running the len 
 ----
-iter 27000, loss: 0.207951
+iter 27000, loss: 0.221695
 ----
- hiys island is crescent or kidney shaped, 50 km (3,898 ft)), are situated in the north of the island. The two largest of these mountains, Pelineon (1,297 m (4,255 ft)) and Epos (1,188(3,.289 km2 (325. 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
 ----
-iter 28000, loss: 0.203003
+iter 28000, loss: 0.214969
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] km2 (325.210 sq mi).[2] The terra 
+ hios island is Pe inland is divided between east and west by a range of smaller peaks, known as Prlanin mist its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous  
 ----
-iter 29000, loss: 0.197475
+iter 29000, loss: 0.208756
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] the om (4,255 ft)) and Epos (m,18 
 ----
-iter 30000, loss: 0.192071
+iter 30000, loss: 0.203045
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+ hios island is crescent or The co1[t its wist by a range of smaller peaks, known as Prinnd sfthe island. The two largest of these mountains, Perineon (1,297 m slano the island. The two largest of thes 
 ----
-iter 31000, loss: 0.187713
+iter 31000, loss: 0.197785
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
 ----
-iter 32000, loss: 0.184434
+iter 32000, loss: 0.192925
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+ hios island is crescent of the island. The center of the island is divided between east and west by a o 25 long frof Pelineon (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are situated in the no 
 ----
-iter 33000, loss: 0.180032
+iter 33000, loss: 0.188420
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sound ihe island. The center of the island i 
+ hios island is creslent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
 ----
-iter 34000, loss: 0.175579
+iter 34000, loss: 0.184230
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
 ----
-iter 35000, loss: 0.171835
+iter 35000, loss: 0.180323
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainouth of th 
+ hios island is Perth of the island. The center of the island is dividwd a of t)), are situated in the north of the island. The center of the island is divided between east and west by a range of small 
 ----
-iter 36000, loss: 0.168542
+iter 36000, loss: 0.176668
 ----
- hiys island is creing the length of the island. The center of the island is divided th of the island. The center of the island is divided between east and west by a range of smaller peaks, known as Pr 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
 ----
-iter 37000, loss: 6.387221
+iter 37000, loss: 0.173240
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
 ----
-iter 38000, loss: 2.814015
+iter 38000, loss: 0.170019
 ----
- hiys island is crescovidis (1,188 m (3,898 ft)), are situated in the north of the island. The center of the island is divided between east and west by a range of smaller peaks, known as Pr kidney shap 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.589 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
 ----
-iter 39000, loss: 1.325806
+iter 39000, loss: 0.166985
 ----
- hiys island is crescent or kidney shant ithe north of the island. The center of the island is divided between east and west by a range of smaller peaks, knofnt(1,10210 sq mi).[2] The terrain is mounta 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
 ----
-iter 40000, loss: 0.717604
+iter 40000, loss: 0.164122
 ----
- hiys island is crescent or kidney shaped, 50 teendest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and arid, with a rid, arg tw  rainistated in the north of the isla 
+ hios island isl rfathese ft)), are situated in the north of the island. The center of the island is divided between east and west by a range of smaller peaks, known as Pr Toe cown is,crescent os (1,29 
 ----
-iter 41000, loss: 0.460328
+iter 41000, loss: 0.161418
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
 ----
-iter 42000, loss: 0.346036
+iter 42000, loss: 0.158860
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from norof smaller peaks, known as Pr kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an a 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
 ----
-iter 43000, loss: 0.490187
+iter 43000, loss: 0.156438
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, ces wi lend is divided between east ist an east and west by a range of smaller peaks, 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terea north row area nouth ro 
 ----
-iter 44000, loss: 0.345052
+iter 44000, loss: 0.154141
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long frof Pelineon (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are situated in the north of the island. The two largest iy  rea indaind. 
 ----
-iter 45000, loss: 0.274964
+iter 45000, loss: 0.151962
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from wilondas ce the island. The center of the island is divided between east annand 29 km (18 mi) at its widest, covering an area of 842.2 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area risland. The two largest of these mountains running the length of th 
 ----
-iter 46000, loss: 0.240069
+iter 46000, loss: 0.149890
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
 ----
-iter 47000, loss: 0.220421
+iter 47000, loss: 0.147919
 ----
- hiys island is crescent of 842.289 km2 (325.210 sq mi).[2] The terrain is, mi).[2] The south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mounta 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
 ----
-iter 48000, loss: 0.207621
+iter 48000, loss: 0.146039
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 84knq mi).[2] The terrain is mountainous and arid, with a ridge o 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
 ----
-iter 49000, loss: 0.198178
+iter 49000, loss: 0.144243
 ----
- hiys island in (1,297 m (4,255 ft)) and Epos (1,188 m (3,898 ft)), are situated in the north of the island. The center of the island is divided between east and west by a range of smaller peaks, known 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
 ----
-iter 50000, loss: 0.190609
+iter 50000, loss: 0.142517
 ----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
+ hios island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
 ----
-iter 51000, loss: 0.184245
-----
- hiys island is crescent or kidney shaped, 50 km arid, with a ridge of mountains running the length of the island. The center of the island is divided between eang from north to south, and 29 km (18 mi 
-----
-iter 52000, loss: 0.178749
-----
- hiys island is ine from sq mi).[2] The terrain is mountainous and arid, with a ridge of mountains running the length of the island. The center of the island is divided between east and west by a range 
-----
-iter 53000, loss: 0.173909
-----
- hiys islan e ma d and Epos (1,188 m (3,898 ft)), are situated in the north of the84te2araes, known as Pr kidea oange of smaller peaks, known as Pr kne ridge of mountains running the length of the isla 
-----
-iter 54000, loss: 0.169596
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering a or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi 
-----
-iter 55000, loss: 0.165723
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (3253284, rreng indd or kidney shaped, 50 km (31 mi)  
-----
-iter 56000, loss: 0.162224
-----
- hiys island is cresceno sor ais and arid, with a ridge of mountains running the length of the island. The center of the island is divided between east and west by a range of smaller peaks, known as Pr 
-----
-iter 57000, loss: 0.159060
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
-----
-iter 58000, loss: 0.156217
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.218 mot of these mountains, Pelineon as Pr (1,,9 
-----
-iter 59000, loss: 0.153774
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) ans m9 km2 (325.210 sq mi).[2] The terrain is mountainous and arid, with a ridge of mountains runnin 
-----
-iter 60000, loss: 0.151875
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) divided between east and west by a range of smaller peaks, known as Pr kmed in the north of the isla 
-----
-iter 61000, loss: 0.150220
-----
- hiys islandes and is crescent ope center of the island is divided between east and west by a range of smaller peaks, known as Pr (1,g[2onnis as Pr kid.[2] The terrain is mountainous and arid, with a r 
-----
-iter 62000, loss: 0.148586
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km ) mountains running the lengeaid, 50 km (31 mi) long moege are situated in the north of the island. The cent 
-----
-iter 63000, loss: 0.596505
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to souteathescent arid, with a ridge of mountains t)) arid, with a ridge of mountains running the length of the island. The cent 
-----
-iter 64000, loss: 0.345530
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
-----
-iter 65000, loss: 0.231475
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
-----
-iter 66000, loss: 0.182829
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 kmid deing the length of the island. The two largest of t 
-----
-iter 67000, loss: 0.161038
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
-----
-iter 68000, loss: 0.150198
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
-----
-iter 69000, loss: 0.144052
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, ces widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mounta 
-----
-iter 70000, loss: 0.140060
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
-----
-iter 71000, loss: 0.137140
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
-----
-iter 72000, loss: 0.134810
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
-----
-iter 73000, loss: 0.132852
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 kmith wiey shaped, with a ridge of mountains running the  
-----
-iter 74000, loss: 0.131156
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
-----
-iter 75000, loss: 0.129685
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to of scrn ni i) km2 (3,188 m (3,898 ft)), are situage asd in end is crescent or kidney shaped, 50 km (31 mi) long from north to 
-----
-iter 76000, loss: 0.128520
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
-----
-iter 77000, loss: 0.127387
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sq mi).[2] The terrain is mountainous and ar 
-----
-iter 78000, loss: 0.126192
-----
- hiys island is crescent or kidney shaped, 50 km (31 mi) long from north to south, and 29 km (18 mi) at its widest, covering an area of 842.289 km2 (325.210 sm lorth of the island. The center of the is 
-----
-iter 79000, loss: 0.124999
+iter 51000, loss: 0.140829
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">workspaces</span><span class="o">/</span><span class="n">artificial_intelligence</span><span class="o">/</span><span class="n">artificial_intelligence</span><span class="o">/</span><span class="n">aiml</span><span class="o">-</span><span class="n">common</span><span class="o">/</span><span class="n">lectures</span><span class="o">/</span><span class="n">nlp</span><span class="o">/</span><span class="n">language</span><span class="o">-</span><span class="n">models</span><span class="o">/</span><span class="n">simple</span><span class="o">-</span><span class="n">rnn</span><span class="o">-</span><span class="n">language</span><span class="o">-</span><span class="n">model</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">17</span> <span class="n">line</span> <span class="mi">2</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B7b22686f737450617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e6365222c226c6f63616c446f636b6572223a66616c73652c2273657474696e6773223a7b22686f7374223a22756e69783a2f2f2f7661722f72756e2f646f636b65722e736f636b227d2c22636f6e66696746696c65223a7b22246d6964223a312c22667350617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2265787465726e616c223a2266696c653a2f2f2f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2270617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c22736368656d65223a2266696c65227d7d/workspaces/artificial_intelligence/artificial_intelligence/aiml-common/lectures/nlp/language-models/simple-rnn-language-model/index.ipynb#X22sdnNjb2RlLXJlbW90ZQ%3D%3D?line=25&#39;</span><span class="o">&gt;</span><span class="mi">26</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----</span><span class="se">\n</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">----&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="p">))</span>                         <span class="c1"># print model predictions</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B7b22686f737450617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e6365222c226c6f63616c446f636b6572223a66616c73652c2273657474696e6773223a7b22686f7374223a22756e69783a2f2f2f7661722f72756e2f646f636b65722e736f636b227d2c22636f6e66696746696c65223a7b22246d6964223a312c22667350617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2265787465726e616c223a2266696c653a2f2f2f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2270617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c22736368656d65223a2266696c65227d7d/workspaces/artificial_intelligence/artificial_intelligence/aiml-common/lectures/nlp/language-models/simple-rnn-language-model/index.ipynb#X22sdnNjb2RlLXJlbW90ZQ%3D%3D?line=27&#39;</span><span class="o">&gt;</span><span class="mi">28</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="c1"># Model training</span>
+<span class="o">---&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B7b22686f737450617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e6365222c226c6f63616c446f636b6572223a66616c73652c2273657474696e6773223a7b22686f7374223a22756e69783a2f2f2f7661722f72756e2f646f636b65722e736f636b227d2c22636f6e66696746696c65223a7b22246d6964223a312c22667350617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2265787465726e616c223a2266696c653a2f2f2f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2270617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c22736368656d65223a2266696c65227d7d/workspaces/artificial_intelligence/artificial_intelligence/aiml-common/lectures/nlp/language-models/simple-rnn-language-model/index.ipynb#X22sdnNjb2RlLXJlbW90ZQ%3D%3D?line=28&#39;</span><span class="o">&gt;</span><span class="mi">29</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">loss</span><span class="p">,</span> <span class="n">dWxh</span><span class="p">,</span> <span class="n">dWhh</span><span class="p">,</span> <span class="n">dWhy</span><span class="p">,</span> <span class="n">dbh</span><span class="p">,</span> <span class="n">dby</span><span class="p">,</span> <span class="n">hprev</span> <span class="o">=</span> <span class="n">lossFun</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">hprev</span><span class="p">)</span>   <span class="c1"># forward seq_length characters through the net and fetch gradient</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B7b22686f737450617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e6365222c226c6f63616c446f636b6572223a66616c73652c2273657474696e6773223a7b22686f7374223a22756e69783a2f2f2f7661722f72756e2f646f636b65722e736f636b227d2c22636f6e66696746696c65223a7b22246d6964223a312c22667350617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2265787465726e616c223a2266696c653a2f2f2f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2270617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c22736368656d65223a2266696c65227d7d/workspaces/artificial_intelligence/artificial_intelligence/aiml-common/lectures/nlp/language-models/simple-rnn-language-model/index.ipynb#X22sdnNjb2RlLXJlbW90ZQ%3D%3D?line=29&#39;</span><span class="o">&gt;</span><span class="mi">30</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">smooth_loss</span> <span class="o">=</span> <span class="n">smooth_loss</span> <span class="o">*</span> <span class="mf">0.999</span> <span class="o">+</span> <span class="n">loss</span> <span class="o">*</span> <span class="mf">0.001</span>                            <span class="c1"># RNN adds all the losses from the previously unrolled steps</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B7b22686f737450617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e6365222c226c6f63616c446f636b6572223a66616c73652c2273657474696e6773223a7b22686f7374223a22756e69783a2f2f2f7661722f72756e2f646f636b65722e736f636b227d2c22636f6e66696746696c65223a7b22246d6964223a312c22667350617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2265787465726e616c223a2266696c653a2f2f2f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2270617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c22736368656d65223a2266696c65227d7d/workspaces/artificial_intelligence/artificial_intelligence/aiml-common/lectures/nlp/language-models/simple-rnn-language-model/index.ipynb#X22sdnNjb2RlLXJlbW90ZQ%3D%3D?line=30&#39;</span><span class="o">&gt;</span><span class="mi">31</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;iter </span><span class="si">%d</span><span class="s1">, loss: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">smooth_loss</span><span class="p">))</span>             <span class="c1"># print progress</span>
+
+<span class="o">/</span><span class="n">workspaces</span><span class="o">/</span><span class="n">artificial_intelligence</span><span class="o">/</span><span class="n">artificial_intelligence</span><span class="o">/</span><span class="n">aiml</span><span class="o">-</span><span class="n">common</span><span class="o">/</span><span class="n">lectures</span><span class="o">/</span><span class="n">nlp</span><span class="o">/</span><span class="n">language</span><span class="o">-</span><span class="n">models</span><span class="o">/</span><span class="n">simple</span><span class="o">-</span><span class="n">rnn</span><span class="o">-</span><span class="n">language</span><span class="o">-</span><span class="n">model</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">17</span> <span class="n">line</span> <span class="mi">3</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B7b22686f737450617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e6365222c226c6f63616c446f636b6572223a66616c73652c2273657474696e6773223a7b22686f7374223a22756e69783a2f2f2f7661722f72756e2f646f636b65722e736f636b227d2c22636f6e66696746696c65223a7b22246d6964223a312c22667350617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2265787465726e616c223a2266696c653a2f2f2f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2270617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c22736368656d65223a2266696c65227d7d/workspaces/artificial_intelligence/artificial_intelligence/aiml-common/lectures/nlp/language-models/simple-rnn-language-model/index.ipynb#X22sdnNjb2RlLXJlbW90ZQ%3D%3D?line=33&#39;</span><span class="o">&gt;</span><span class="mi">34</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>   <span class="n">dWxh</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">dhraw</span><span class="p">,</span> <span class="n">xs</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>           <span class="c1"># gradient for Wxh</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B7b22686f737450617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e6365222c226c6f63616c446f636b6572223a66616c73652c2273657474696e6773223a7b22686f7374223a22756e69783a2f2f2f7661722f72756e2f646f636b65722e736f636b227d2c22636f6e66696746696c65223a7b22246d6964223a312c22667350617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2265787465726e616c223a2266696c653a2f2f2f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2270617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c22736368656d65223a2266696c65227d7d/workspaces/artificial_intelligence/artificial_intelligence/aiml-common/lectures/nlp/language-models/simple-rnn-language-model/index.ipynb#X22sdnNjb2RlLXJlbW90ZQ%3D%3D?line=34&#39;</span><span class="o">&gt;</span><span class="mi">35</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>   <span class="n">dWhh</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">dhraw</span><span class="p">,</span> <span class="n">hs</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>         <span class="c1"># gradient for Whh</span>
+<span class="o">---&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B7b22686f737450617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e6365222c226c6f63616c446f636b6572223a66616c73652c2273657474696e6773223a7b22686f7374223a22756e69783a2f2f2f7661722f72756e2f646f636b65722e736f636b227d2c22636f6e66696746696c65223a7b22246d6964223a312c22667350617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2265787465726e616c223a2266696c653a2f2f2f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2270617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c22736368656d65223a2266696c65227d7d/workspaces/artificial_intelligence/artificial_intelligence/aiml-common/lectures/nlp/language-models/simple-rnn-language-model/index.ipynb#X22sdnNjb2RlLXJlbW90ZQ%3D%3D?line=35&#39;</span><span class="o">&gt;</span><span class="mi">36</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>   <span class="n">dhnext</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Whh</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">dhraw</span><span class="p">)</span>            <span class="c1"># calculate h_t-1 for the next iteration</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B7b22686f737450617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e6365222c226c6f63616c446f636b6572223a66616c73652c2273657474696e6773223a7b22686f7374223a22756e69783a2f2f2f7661722f72756e2f646f636b65722e736f636b227d2c22636f6e66696746696c65223a7b22246d6964223a312c22667350617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2265787465726e616c223a2266696c653a2f2f2f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2270617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c22736368656d65223a2266696c65227d7d/workspaces/artificial_intelligence/artificial_intelligence/aiml-common/lectures/nlp/language-models/simple-rnn-language-model/index.ipynb#X22sdnNjb2RlLXJlbW90ZQ%3D%3D?line=36&#39;</span><span class="o">&gt;</span><span class="mi">37</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">dparam</span> <span class="ow">in</span> <span class="p">[</span><span class="n">dWxh</span><span class="p">,</span> <span class="n">dWhh</span><span class="p">,</span> <span class="n">dWhy</span><span class="p">,</span> <span class="n">dbh</span><span class="p">,</span> <span class="n">dby</span><span class="p">]:</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B7b22686f737450617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e6365222c226c6f63616c446f636b6572223a66616c73652c2273657474696e6773223a7b22686f7374223a22756e69783a2f2f2f7661722f72756e2f646f636b65722e736f636b227d2c22636f6e66696746696c65223a7b22246d6964223a312c22667350617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2265787465726e616c223a2266696c653a2f2f2f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2270617468223a222f686f6d652f70616e74656c69732e6d6f6e6f67696f756469732f6c6f63616c2f7765622f73697465732f636f75727365732f6172746966696369616c5f696e74656c6c6967656e63652f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c22736368656d65223a2266696c65227d7d/workspaces/artificial_intelligence/artificial_intelligence/aiml-common/lectures/nlp/language-models/simple-rnn-language-model/index.ipynb#X22sdnNjb2RlLXJlbW90ZQ%3D%3D?line=37&#39;</span><span class="o">&gt;</span><span class="mi">38</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>   <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">dparam</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">dparam</span><span class="p">)</span>                              <span class="c1"># clip gradients to mitigate exploding gradients</span>
+
+<span class="nn">File &lt;__array_function__ internals&gt;:180,</span> in <span class="ni">dot</span><span class="nt">(*args, **kwargs)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -1324,10 +1213,11 @@ iter 79000, loss: 0.124999
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../cnn-language-model/index.html"
@@ -1347,7 +1237,10 @@ iter 79000, loss: 0.124999
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -1396,8 +1289,8 @@ By Pantelis Monogioudis, Ph.D
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
-<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

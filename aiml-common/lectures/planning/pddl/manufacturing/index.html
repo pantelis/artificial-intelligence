@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Manufacrturing Robot Planning in PDDL &#8212; Introduction to Artificial Intelligence</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../../_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
-<link href="../../../../../_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
-<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link href="../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,14 +39,12 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
-<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
-  <script src="../../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/jquery.js"></script>
     <script src="../../../../../_static/underscore.js"></script>
-    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../_static/doctools.js"></script>
     <script src="../../../../../_static/clipboard.min.js"></script>
     <script src="../../../../../_static/copybutton.js"></script>
@@ -80,15 +78,6 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -149,14 +138,13 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-  
     
     
       
     
     
-    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt="Introduction to Artificial Intelligence - Home"/>
-    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Artificial Intelligence - Home"/>`);</script>
+    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
@@ -326,19 +314,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/transformers/transformers-intro.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../nlp/transformers/annotated_transformer.html">The Annotated Transformer</a></li>
-
-
-
-
-
-
-
-
-
-
-
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/transformers/transformers-intro.html">Transformers and Self-attention</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../nlp/transformers/singlehead-self-attention.html">Single-head self-attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../nlp/transformers/multihead-self-attention.html">Multi-head attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../nlp/transformers/positional_embeddings.html">Positional Embeddings</a></li>
 </ul>
 </li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="label-parts" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
@@ -514,10 +493,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
@@ -525,7 +504,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -578,7 +557,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="manufacrturing-robot-planning-in-pddl">
-<h1>Manufacrturing Robot Planning in PDDL<a class="headerlink" href="#manufacrturing-robot-planning-in-pddl" title="Permalink to this heading">#</a></h1>
+<h1>Manufacrturing Robot Planning in PDDL<a class="headerlink" href="#manufacrturing-robot-planning-in-pddl" title="Permalink to this headline">#</a></h1>
 <p>This is a real case that we tackled for a manufacturing company. This
 company devises supply chains to make pieces of medical equipments. A
 supply chain consists of independent robotized units/cells, which
@@ -600,9 +579,9 @@ etc.) was hard-coded in a database by human operators. Automated
 planning is now used to optimize unit/robot scheduling and to increase
 production efficiency.</p>
 <section id="defining-the-domain">
-<h2>Defining the Domain<a class="headerlink" href="#defining-the-domain" title="Permalink to this heading">#</a></h2>
+<h2>Defining the Domain<a class="headerlink" href="#defining-the-domain" title="Permalink to this headline">#</a></h2>
 <section id="requirements">
-<h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h3>
+<h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">#</a></h3>
 <p>Let start by creating the domain file. For instance, <code class="docutils literal notranslate"><span class="pre">rsc-domain.pddl</span></code>
 write the following PDDL to give a name to this domain and specify the
 requirements of the domain.</p>
@@ -612,7 +591,7 @@ requirements of the domain.</p>
 </div>
 </section>
 <section id="types">
-<h3>Types<a class="headerlink" href="#types" title="Permalink to this heading">#</a></h3>
+<h3>Types<a class="headerlink" href="#types" title="Permalink to this headline">#</a></h3>
 <p>Then, define the set of objects (types) that will be used in this
 domain. Quite obviously, we will have the types <em>robot</em> (mobile robots),
 <em>conveyor</em>, <em>unit</em>, <em>piece</em>, etc.</p>
@@ -625,7 +604,7 @@ domain. Quite obviously, we will have the types <em>robot</em> (mobile robots),
 </div>
 </section>
 <section id="constants">
-<h3>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">#</a></h3>
+<h3>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">#</a></h3>
 <p>We also declare a dummy operation called <em>stop</em> as a constant of the
 domain which will be used in one action:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>(:constants
@@ -635,7 +614,7 @@ stop - operation
 </div>
 </section>
 <section id="predicates">
-<h3>Predicates<a class="headerlink" href="#predicates" title="Permalink to this heading">#</a></h3>
+<h3>Predicates<a class="headerlink" href="#predicates" title="Permalink to this headline">#</a></h3>
 <p>Now it is time to think to a model for the domain. It is based on the
 following ideas: * <em>Producer/consumer:</em> the trays are resources
 consumed by the conveyors and produced by the units. A “one-to-many”
@@ -715,7 +694,7 @@ scheduled on <em>tray32</em>.</p>
 <p>means that <em>unit1</em> has two inputs <em>conv1</em> and <em>conv2</em>.</p>
 </section>
 <section id="operators">
-<h3>Operators<a class="headerlink" href="#operators" title="Permalink to this heading">#</a></h3>
+<h3>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">#</a></h3>
 <p>The new step is to define all the actions. For this domain, we will need
 6 actions:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>(:action pickup_tray_on_unit
@@ -830,7 +809,7 @@ the unit becomes available to process another tray.</p>
 </section>
 </section>
 <section id="defining-the-problem">
-<h2>Defining the problem<a class="headerlink" href="#defining-the-problem" title="Permalink to this heading">#</a></h2>
+<h2>Defining the problem<a class="headerlink" href="#defining-the-problem" title="Permalink to this headline">#</a></h2>
 <p>Let start by creating the problem file, e.g., <code class="docutils literal notranslate"><span class="pre">rsc_problem_easy.pddl</span></code>.
 The problem we wish to define is a simple problem with one type of
 pieces, a single tray, robot and conveyor; two units, a stocker storing
@@ -838,7 +817,7 @@ this tray at the initial state and a processing unit. The goal is for
 the unit to perform three operations (<em>op10</em> &gt; <em>op20</em> &gt; <em>op30</em>) on the
 tray.</p>
 <section id="objects">
-<h3>Objects<a class="headerlink" href="#objects" title="Permalink to this heading">#</a></h3>
+<h3>Objects<a class="headerlink" href="#objects" title="Permalink to this headline">#</a></h3>
 <p>Hence, the types and objects are as follows:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>(:objects
     unit1 stocker - unit
@@ -854,7 +833,7 @@ tray.</p>
 </div>
 </section>
 <section id="initial-state">
-<h3>Initial State<a class="headerlink" href="#initial-state" title="Permalink to this heading">#</a></h3>
+<h3>Initial State<a class="headerlink" href="#initial-state" title="Permalink to this headline">#</a></h3>
 <p>This snippet of code is the initial state:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>(:init
     ;; Operation schedule
@@ -895,7 +874,7 @@ tray.</p>
 </div>
 </section>
 <section id="goal-description">
-<h3>Goal Description<a class="headerlink" href="#goal-description" title="Permalink to this heading">#</a></h3>
+<h3>Goal Description<a class="headerlink" href="#goal-description" title="Permalink to this headline">#</a></h3>
 <p>The goal is simply the completion of <em>tray1</em>:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>(:goal
     (and (tray_completed tray1))
@@ -931,10 +910,11 @@ tray.</p>
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../logistics/index.html"
@@ -954,7 +934,10 @@ tray.</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -1030,8 +1013,8 @@ By Pantelis Monogioudis, Ph.D
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
-<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

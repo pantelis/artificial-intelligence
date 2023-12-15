@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Logistics Planning in PDDL &#8212; Introduction to Artificial Intelligence</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../../_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
-<link href="../../../../../_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
-<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link href="../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,14 +39,12 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
-<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
-  <script src="../../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/jquery.js"></script>
     <script src="../../../../../_static/underscore.js"></script>
-    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../_static/doctools.js"></script>
     <script src="../../../../../_static/clipboard.min.js"></script>
     <script src="../../../../../_static/copybutton.js"></script>
@@ -80,15 +78,6 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -149,14 +138,13 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-  
     
     
       
     
     
-    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt="Introduction to Artificial Intelligence - Home"/>
-    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Artificial Intelligence - Home"/>`);</script>
+    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
@@ -326,19 +314,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/transformers/transformers-intro.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../nlp/transformers/annotated_transformer.html">The Annotated Transformer</a></li>
-
-
-
-
-
-
-
-
-
-
-
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nlp/transformers/transformers-intro.html">Transformers and Self-attention</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../nlp/transformers/singlehead-self-attention.html">Single-head self-attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../nlp/transformers/multihead-self-attention.html">Multi-head attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../nlp/transformers/positional_embeddings.html">Positional Embeddings</a></li>
 </ul>
 </li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="label-parts" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
@@ -514,10 +493,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
@@ -525,7 +504,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -577,7 +556,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="logistics-planning-in-pddl">
-<h1>Logistics Planning in PDDL<a class="headerlink" href="#logistics-planning-in-pddl" title="Permalink to this heading">#</a></h1>
+<h1>Logistics Planning in PDDL<a class="headerlink" href="#logistics-planning-in-pddl" title="Permalink to this headline">#</a></h1>
 <p>We will use the Logistics domain to illustrate how to represent a
 planning task in PDDL.</p>
 <p>In logistics, there are trucks and airplanes that can move packages
@@ -587,7 +566,7 @@ are in London airport. Paris has two places : south and north. The goal
 is to have one package in the north location and the other one in the
 south location.</p>
 <section id="defining-the-domain">
-<h2>Defining the Domain<a class="headerlink" href="#defining-the-domain" title="Permalink to this heading">#</a></h2>
+<h2>Defining the Domain<a class="headerlink" href="#defining-the-domain" title="Permalink to this headline">#</a></h2>
 <dl class="simple myst">
 <dt>Let start by defining in the file <code class="docutils literal notranslate"><span class="pre">logistics.pddl</span></code> the domain and its components :</dt><dd><ul class="simple">
 <li><p>the requirements,</p></li>
@@ -603,7 +582,7 @@ south location.</p>
 </pre></div>
 </div>
 <section id="requirements">
-<h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h3>
+<h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">#</a></h3>
 <dl class="simple myst">
 <dt>The requirements for this logistics example are:</dt><dd><ul class="simple">
 <li><p><strong>strips</strong> : the actions will only use positive preconditions
@@ -621,7 +600,7 @@ represent sets of objects in the world.</p></li>
 </div>
 </section>
 <section id="types">
-<h3>Types<a class="headerlink" href="#types" title="Permalink to this heading">#</a></h3>
+<h3>Types<a class="headerlink" href="#types" title="Permalink to this headline">#</a></h3>
 <dl class="simple myst">
 <dt>We will use the following types:</dt><dd><ul class="simple">
 <li><p>Places, cities and physical objects are considered as objects,</p></li>
@@ -641,7 +620,7 @@ represent sets of objects in the world.</p></li>
 </div>
 </section>
 <section id="predicates">
-<h3>Predicates<a class="headerlink" href="#predicates" title="Permalink to this heading">#</a></h3>
+<h3>Predicates<a class="headerlink" href="#predicates" title="Permalink to this headline">#</a></h3>
 <dl class="simple myst">
 <dt>We will use the following predicates:</dt><dd><ul class="simple">
 <li><p><em>in-city(loc, city)</em> - true iff a place <em>loc</em> is in the city
@@ -662,7 +641,7 @@ represent sets of objects in the world.</p></li>
 </div>
 </section>
 <section id="operators">
-<h3>Operators<a class="headerlink" href="#operators" title="Permalink to this heading">#</a></h3>
+<h3>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">#</a></h3>
 <p>We are going to define the operators of the actions of the logistics
 domain, i.e., the means to change the states of the world. The domains
 has 5 operators: <em>load-truck</em>, <em>load-airplaine</em>, <em>unload-truck</em>,
@@ -793,7 +772,7 @@ that case, specific requirements must be used, for instance <code class="docutil
 </section>
 </section>
 <section id="defining-the-problem">
-<h2>Defining the Problem<a class="headerlink" href="#defining-the-problem" title="Permalink to this heading">#</a></h2>
+<h2>Defining the Problem<a class="headerlink" href="#defining-the-problem" title="Permalink to this headline">#</a></h2>
 <dl class="simple myst">
 <dt>Now, let define in the file <code class="docutils literal notranslate"><span class="pre">problem.pddl</span></code> a simple problem and its components :</dt><dd><ul class="simple">
 <li><p>the objects,</p></li>
@@ -810,7 +789,7 @@ associated with this problem:</p>
 </pre></div>
 </div>
 <section id="objects">
-<h3>Objects<a class="headerlink" href="#objects" title="Permalink to this heading">#</a></h3>
+<h3>Objects<a class="headerlink" href="#objects" title="Permalink to this headline">#</a></h3>
 <dl class="simple myst">
 <dt>In this example, we use the following objects:</dt><dd><ul class="simple">
 <li><p>A Truck : <em>truck</em></p></li>
@@ -836,7 +815,7 @@ associated with this problem:</p>
 the type <code class="docutils literal notranslate"><span class="pre">object</span></code>.</p>
 </section>
 <section id="initial-state">
-<h3>Initial State<a class="headerlink" href="#initial-state" title="Permalink to this heading">#</a></h3>
+<h3>Initial State<a class="headerlink" href="#initial-state" title="Permalink to this headline">#</a></h3>
 <p>The initial state is a set of ground predicates. A predicate is ground
 iff all the variables are bound to objects. The ground predicates in the
 initial state represent true facts in this state. Any fact that is not
@@ -854,7 +833,7 @@ represented in a state is false: In our case:</p>
 </div>
 </section>
 <section id="goal-description">
-<h3>Goal Description<a class="headerlink" href="#goal-description" title="Permalink to this heading">#</a></h3>
+<h3>Goal Description<a class="headerlink" href="#goal-description" title="Permalink to this headline">#</a></h3>
 <p>The goal is to have <em>at(p1, north)</em> and <em>at(p2, south)</em> in the final
 state (no matter the truth value of the other predicates). In PDDL, we
 write:</p>
@@ -914,10 +893,11 @@ write:</p>
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../blocksworld/up_blocksworld_demo.html"
@@ -937,7 +917,10 @@ write:</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -1012,8 +995,8 @@ By Pantelis Monogioudis, Ph.D
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
-<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>
