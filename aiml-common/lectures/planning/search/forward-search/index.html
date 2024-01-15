@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Forward Search Algorithms &#8212; Introduction to Artificial Intelligence</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../../../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
   
-  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
     <link rel="stylesheet" href="../../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,12 +39,14 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
     <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/jquery.js"></script>
     <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../_static/doctools.js"></script>
     <script src="../../../../../_static/clipboard.min.js"></script>
     <script src="../../../../../_static/copybutton.js"></script>
@@ -79,7 +81,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,12 +124,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <header>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
   
+  </header>
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -133,9 +152,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../../../../../intro.html">
+  
   
   
   
@@ -145,8 +166,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt="Introduction to Artificial Intelligence - Home"/>
+    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Artificial Intelligence - Home"/>`);</script>
   
   
 </a></div>
@@ -493,20 +514,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -548,10 +571,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="forward-search-algorithms">
-<h1>Forward Search Algorithms<a class="headerlink" href="#forward-search-algorithms" title="Permalink to this headline">#</a></h1>
+<h1>Forward Search Algorithms<a class="headerlink" href="#forward-search-algorithms" title="Permalink to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you are missing some algorithmic background, afraid not. There is a free and <a class="reference external" href="http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf">excellent book</a> to help you with the background behind this chapter. Read Chapters 3 and 4 for the relevant background.</p>
@@ -587,9 +610,9 @@ return SUCCESS</p></li>
 <li><p>We then go over each newly generated state and before adding it to the frontier we check whether it has been explored before and in that case we discard it.</p></li>
 </ol>
 <section id="forward-search-approaches">
-<h2>Forward-search approaches<a class="headerlink" href="#forward-search-approaches" title="Permalink to this headline">#</a></h2>
+<h2>Forward-search approaches<a class="headerlink" href="#forward-search-approaches" title="Permalink to this heading">#</a></h2>
 <p>The only significant difference between various search algorithms is the specific priority function that implements <span class="math notranslate nohighlight">\(s \leftarrow Q.GetFirst()\)</span> in other words the function that retrieves a state from the list of states held in the priority queue for expansion.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Search</p></th>
 <th class="head"><p>Queue Policy</p></th>
@@ -616,7 +639,7 @@ return SUCCESS</p></li>
 </tbody>
 </table>
 <section id="depth-first-search-dfs">
-<h3>Depth-first search (DFS)<a class="headerlink" href="#depth-first-search-dfs" title="Permalink to this headline">#</a></h3>
+<h3>Depth-first search (DFS)<a class="headerlink" href="#depth-first-search-dfs" title="Permalink to this heading">#</a></h3>
 <p>In undirected graphs, depth-first search answers the question: What parts of the graph are reachable from a given vertex.
 It also finds explicit paths to these vertices, summarized in its search tree as shown below.</p>
 <p><img alt="depth-first" src="../../../../../_images/depth-first.png" />
@@ -625,7 +648,7 @@ shows a path of length 3. On the right the DFS search tree is shown assuming alp
 <p>DFS can be run verbatim on directed graphs, taking care to traverse edges only in their prescribed directions.</p>
 </section>
 <section id="breadth-first-search-bfs">
-<h3>Breadth-first search (BFS)<a class="headerlink" href="#breadth-first-search-bfs" title="Permalink to this headline">#</a></h3>
+<h3>Breadth-first search (BFS)<a class="headerlink" href="#breadth-first-search-bfs" title="Permalink to this heading">#</a></h3>
 <p>In BFS the lifting of the starting state <span class="math notranslate nohighlight">\(s\)</span>, partitions the graph into layers: <span class="math notranslate nohighlight">\(s\)</span> itself (vertex at distance 0), the vertices at distance 1 from it, the vertices at distance 2 from it etc.</p>
 <p><img alt="breadth-first" src="../../../../../_images/breadth-first.png" />
 <em>BFS expansion in terms of layers of vertices - each layer at increasing distance from the layer that follows</em>.</p>
@@ -633,7 +656,7 @@ shows a path of length 3. On the right the DFS search tree is shown assuming alp
 <em>Queue contents during BFS and the BFS search tree assuming alphabetical order. Can you explain the BFS search tree? Is the BFS search tree a shortest-path tree?</em></p>
 </section>
 <section id="dijkstras-algorithm">
-<h3>Dijkstra’s Algorithm<a class="headerlink" href="#dijkstras-algorithm" title="Permalink to this headline">#</a></h3>
+<h3>Dijkstra’s Algorithm<a class="headerlink" href="#dijkstras-algorithm" title="Permalink to this heading">#</a></h3>
 <p>Breadth-first search finds shortest paths in any graph whose edges have unit length. Can we adapt it to a more general graph G = (V, E) whose edge lengths <span class="math notranslate nohighlight">\(l(e)\)</span> are positive integers? These lengths effectively represent the cost of traversing the edge. Here is a simple trick for converting G into something BFS can handle: break G’s long edges into unit-length pieces, by introducing “dummy” nodes as shown next.</p>
 <p><img alt="dijkstras-graph" src="../../../../../_images/dijkstras-graph.png" /></p>
 <p><em>To construct the new graph <span class="math notranslate nohighlight">\(G'\)</span> for any edge <span class="math notranslate nohighlight">\(e = (s, s^\prime)\)</span> of <span class="math notranslate nohighlight">\(E\)</span>, replace it by <span class="math notranslate nohighlight">\(l(e)\)</span> edges of length 1, by adding <span class="math notranslate nohighlight">\(l(e) − 1\)</span>
@@ -677,11 +700,10 @@ dummy nodes between nodes <span class="math notranslate nohighlight">\(s\)</span
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../index.html"
@@ -701,10 +723,7 @@ dummy nodes between nodes <span class="math notranslate nohighlight">\(s\)</span
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -712,6 +731,7 @@ dummy nodes between nodes <span class="math notranslate nohighlight">\(s\)</span
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -746,6 +766,7 @@ By Pantelis Monogioudis, Ph.D
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -772,8 +793,8 @@ By Pantelis Monogioudis, Ph.D
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
   <footer class="bd-footer">
   </footer>

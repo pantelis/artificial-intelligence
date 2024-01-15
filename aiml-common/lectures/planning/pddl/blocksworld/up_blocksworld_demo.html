@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>The Unified Planning Library &#8212; Introduction to Artificial Intelligence</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../../../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
   
-  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
     <link rel="stylesheet" href="../../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,12 +39,14 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
     <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/jquery.js"></script>
     <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../_static/doctools.js"></script>
     <script src="../../../../../_static/clipboard.min.js"></script>
     <script src="../../../../../_static/copybutton.js"></script>
@@ -77,7 +79,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -111,12 +122,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <header>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
   
+  </header>
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -131,9 +150,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../../../../../intro.html">
+  
   
   
   
@@ -143,8 +164,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt="Introduction to Artificial Intelligence - Home"/>
+    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Artificial Intelligence - Home"/>`);</script>
   
   
 </a></div>
@@ -558,20 +579,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -617,13 +640,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-unified-planning-library">
-<h1>The Unified Planning Library<a class="headerlink" href="#the-unified-planning-library" title="Permalink to this headline">#</a></h1>
+<h1>The Unified Planning Library<a class="headerlink" href="#the-unified-planning-library" title="Permalink to this heading">#</a></h1>
 <p>In this demo we will scratch the surface of the UP: we will set it up, we manually create the blocksworld domain using the UP API, we create a problem using a bit of python and we solve the problem using different engines and a parallel composition of engines.</p>
 <section id="setup-of-the-library">
-<h2>Setup of the library<a class="headerlink" href="#setup-of-the-library" title="Permalink to this headline">#</a></h2>
+<h2>Setup of the library<a class="headerlink" href="#setup-of-the-library" title="Permalink to this heading">#</a></h2>
 <p>For this demo, we only need the following two shell commands. The first installs <code class="docutils literal notranslate"><span class="pre">libgraphviz</span></code> used for the plotting of graphs, the second installs the UP library, the set of default planning engines (namely: aries, enhsp, fast-downward, fmap, lpg, pyperplan, symk and tamer) and the optional python library dependecies for plotting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -637,7 +660,7 @@ document.write(`
 </div>
 </section>
 <section id="modeling-the-blocksworld-domain">
-<h2>Modeling the Blocksworld domain<a class="headerlink" href="#modeling-the-blocksworld-domain" title="Permalink to this headline">#</a></h2>
+<h2>Modeling the Blocksworld domain<a class="headerlink" href="#modeling-the-blocksworld-domain" title="Permalink to this heading">#</a></h2>
 <p>We will give a more in-detail description of the API later, here we just show a basic blocksworld domain encoded in Python using the UP API.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -789,7 +812,7 @@ goals = [
 </div>
 </section>
 <section id="modeling-a-simple-problem">
-<h2>Modeling a simple problem<a class="headerlink" href="#modeling-a-simple-problem" title="Permalink to this headline">#</a></h2>
+<h2>Modeling a simple problem<a class="headerlink" href="#modeling-a-simple-problem" title="Permalink to this heading">#</a></h2>
 <p>We create a simple problem showing how to use python “data”.
 We create a problem where the goal is to stack 6 blocks labeled “m”, “e”, “d”, “o” to form the word “demo” (where “d” is on top and “o” is on the table).</p>
 <p><img alt="Unified Planning.png" src="data:image/png;base64,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YmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA0LjQuMC1FeGl2MiI+CiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIKICAgIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiCiAgICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgICB4bWxuczpHSU1QPSJodHRwOi8vd3d3LmdpbXAub3JnL3htcC8iCiAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgeG1wTU06RG9jdW1lbnRJRD0iZ2ltcDpkb2NpZDpnaW1wOjZhNTNjNGM4LWI1YTgtNDQxNi1iYjlmLTYyY2Q2OTcwOTJmZSIKICAgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpiYTg0MjA1ZC0zNDllLTRmY2EtYjBlYi0zY2Y4MWJiMTNmOWYiCiAgIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDphZWU1ODRmNC05ZjVmLTRjMjUtYTkxOS04NTg0ZmUxZDdlZjgiCiAgIGRjOkZvcm1hdD0iaW1hZ2UvcG5nIgogICBHSU1QOkFQST0iMi4wIgogICBHSU1QOlBsYXRmb3JtPSJMaW51eCIKICAgR0lNUDpUaW1lU3RhbXA9IjE2ODg4MDY2NjQyNDM4MzUiCiAgIEdJTVA6VmVyc2lvbj0iMi4xMC4zMCIKICAgdGlmZjpPcmllbnRhdGlvbj0iMSIKICAgeG1wOkNyZWF0b3JUb29sPSJHSU1QIDIuMTAiPgogICA8eG1wTU06SGlzdG9yeT4KICAgIDxyZGY6U2VxPgogICAgIDxyZGY6bGkKICAgICAgc3RFdnQ6YWN0aW9uPSJzYXZlZCIKICAgICAgc3RFdnQ6Y2hhbmdlZD0iLyIKICAgICAgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDozOTM2YTg3OS1iMDg2LTQ0NzUtOTg0NS1hNGI1ODA4N2I0MTYiCiAgICAgIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkdpbXAgMi4xMCAoTGludXgpIgogICAgICBzdEV2dDp3aGVuPSIyMDIzLTA3LTA4VDEwOjU3OjQ0KzAyOjAwIi8+CiAgICA8L3JkZjpTZXE+CiAgIDwveG1wTU06SGlzdG9yeT4KICA8L3JkZjpEZXNjcmlwdGlvbj4KIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAKPD94cGFja2V0IGVuZD0idyI/PgRGfRQAAAAGYktHRAD/AP8A/6C9p5MAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfnBwgIOSyCTsWEAAAdeklEQVR42u3daXxU9dk38CtkTwgEgiAIgoiCC4si7lqUgiKKuGutVVt5tNbeVq222kXtoq2tqO2tra1aW72tiCuKFOtWW5dWwQWq4IaIggthCwmBLPO8iAyJQE2gkTDn+301M5xz+JxrzuTMb87//K+sVCqVCgAAABKtnRIAAAAgHAIAACAcAgAAIBwCAAAgHAIAACAcAgAAIBwCAAAgHAIAACAcAgAAIBwCAAAgHAIAACAcAgAAIBwCAAAgHAIA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" /></p>
@@ -916,9 +939,9 @@ goals = [
 </div>
 </section>
 <section id="oneshotplanner-operation-mode">
-<h2>OneshotPlanner Operation Mode<a class="headerlink" href="#oneshotplanner-operation-mode" title="Permalink to this headline">#</a></h2>
+<h2>OneshotPlanner Operation Mode<a class="headerlink" href="#oneshotplanner-operation-mode" title="Permalink to this heading">#</a></h2>
 <section id="solving-the-problem-with-any-engine">
-<h3>Solving the problem with any engine<a class="headerlink" href="#solving-the-problem-with-any-engine" title="Permalink to this headline">#</a></h3>
+<h3>Solving the problem with any engine<a class="headerlink" href="#solving-the-problem-with-any-engine" title="Permalink to this heading">#</a></h3>
 <p>The UP can analyze a problem specification and filter the engines that can solve a certain problem. It does so by a data structure called <code class="docutils literal notranslate"><span class="pre">ProblemKind</span></code> (more on this later).</p>
 <p>We can inspect the <code class="docutils literal notranslate"><span class="pre">ProblemKind</span></code> of a problem by using the <code class="docutils literal notranslate"><span class="pre">kind</span></code> property.</p>
 <div class="cell docutils container">
@@ -993,7 +1016,7 @@ plan: SequentialPlan:
 </div>
 </section>
 <section id="specifying-the-engine-name">
-<h3>Specifying the engine name<a class="headerlink" href="#specifying-the-engine-name" title="Permalink to this headline">#</a></h3>
+<h3>Specifying the engine name<a class="headerlink" href="#specifying-the-engine-name" title="Permalink to this heading">#</a></h3>
 <p>We can also explicitly specify the name of the engine we want to use (and optionally custom parameters). The interface, after the openation mode is identical.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1033,7 +1056,7 @@ plan: SequentialPlan:
 </div>
 </section>
 <section id="parallel-solving">
-<h3>Parallel solving<a class="headerlink" href="#parallel-solving" title="Permalink to this headline">#</a></h3>
+<h3>Parallel solving<a class="headerlink" href="#parallel-solving" title="Permalink to this heading">#</a></h3>
 <p>We can even execute more than one planner in parallel and use this “parallel portfolio” as a normal planner.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1069,7 +1092,7 @@ plan: SequentialPlan:
 </div>
 </section>
 <section id="the-interface-is-the-same">
-<h3>The interface is the same!<a class="headerlink" href="#the-interface-is-the-same" title="Permalink to this headline">#</a></h3>
+<h3>The interface is the same!<a class="headerlink" href="#the-interface-is-the-same" title="Permalink to this heading">#</a></h3>
 <p>All engines supporting an OperationMode are required to support the same interface and being interchangeable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1244,11 +1267,10 @@ plan: SequentialPlan:
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../index.html"
@@ -1268,10 +1290,7 @@ plan: SequentialPlan:
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1279,6 +1298,7 @@ plan: SequentialPlan:
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1317,6 +1337,7 @@ By Pantelis Monogioudis, Ph.D
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -1343,8 +1364,8 @@ By Pantelis Monogioudis, Ph.D
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
   <footer class="bd-footer">
   </footer>

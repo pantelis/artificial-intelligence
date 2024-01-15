@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Transfer Learning for Computer Vision Tutorial &#8212; Introduction to Artificial Intelligence</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,12 +39,14 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
@@ -77,7 +79,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -111,12 +122,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <header>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
   
+  </header>
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -131,9 +150,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../../../intro.html">
+  
   
   
   
@@ -143,8 +164,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Introduction to Artificial Intelligence - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Artificial Intelligence - Home"/>`);</script>
   
   
 </a></div>
@@ -558,20 +579,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -616,7 +639,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -626,7 +649,7 @@ document.write(`
 </div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="transfer-learning-for-computer-vision-tutorial">
-<h1>Transfer Learning for Computer Vision Tutorial<a class="headerlink" href="#transfer-learning-for-computer-vision-tutorial" title="Permalink to this headline">#</a></h1>
+<h1>Transfer Learning for Computer Vision Tutorial<a class="headerlink" href="#transfer-learning-for-computer-vision-tutorial" title="Permalink to this heading">#</a></h1>
 <p><strong>Author</strong>: <code class="docutils literal notranslate"><span class="pre">Sasank</span> <span class="pre">Chilamkurthy</span> <span class="pre">&lt;https://chsasank.github.io&gt;</span></code>_</p>
 <p>In this tutorial, you will learn how to train a convolutional neural network for
 image classification using transfer learning. You can read more about the transfer
@@ -681,7 +704,7 @@ with random weights and only this layer is trained.</p></li>
 </div>
 </div>
 <section id="load-data">
-<h2>Load Data<a class="headerlink" href="#load-data" title="Permalink to this headline">#</a></h2>
+<h2>Load Data<a class="headerlink" href="#load-data" title="Permalink to this heading">#</a></h2>
 <p>We will use torchvision and torch.utils.data packages for loading the
 data.</p>
 <p>The problem we’re going to solve today is to train a model to classify
@@ -737,7 +760,7 @@ and extract it to the current directory.</p>
 </div>
 </section>
 <section id="visualize-a-few-images">
-<h2>Visualize a few images<a class="headerlink" href="#visualize-a-few-images" title="Permalink to this headline">#</a></h2>
+<h2>Visualize a few images<a class="headerlink" href="#visualize-a-few-images" title="Permalink to this heading">#</a></h2>
 <p>Let’s visualize a few training images so as to understand the data
 augmentations.</p>
 <div class="cell docutils container">
@@ -771,7 +794,7 @@ augmentations.</p>
 </div>
 </section>
 <section id="training-the-model">
-<h2>Training the model<a class="headerlink" href="#training-the-model" title="Permalink to this headline">#</a></h2>
+<h2>Training the model<a class="headerlink" href="#training-the-model" title="Permalink to this heading">#</a></h2>
 <p>Now, let’s write a general function to train a model. Here, we will
 illustrate:</p>
 <ul class="simple">
@@ -853,7 +876,7 @@ illustrate:</p>
 </div>
 </section>
 <section id="visualizing-the-model-predictions">
-<h2>Visualizing the model predictions<a class="headerlink" href="#visualizing-the-model-predictions" title="Permalink to this headline">#</a></h2>
+<h2>Visualizing the model predictions<a class="headerlink" href="#visualizing-the-model-predictions" title="Permalink to this heading">#</a></h2>
 <p>Generic function to display predictions for a few images</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -888,7 +911,7 @@ illustrate:</p>
 </div>
 </section>
 <section id="finetuning-the-convnet">
-<h2>Finetuning the convnet<a class="headerlink" href="#finetuning-the-convnet" title="Permalink to this headline">#</a></h2>
+<h2>Finetuning the convnet<a class="headerlink" href="#finetuning-the-convnet" title="Permalink to this heading">#</a></h2>
 <p>Load a pretrained model and reset final fully connected layer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -922,7 +945,7 @@ Downloading: &quot;https://download.pytorch.org/models/resnet18-f37072fd.pth&quo
 </div>
 </section>
 <section id="train-and-evaluate">
-<h2>Train and evaluate<a class="headerlink" href="#train-and-evaluate" title="Permalink to this headline">#</a></h2>
+<h2>Train and evaluate<a class="headerlink" href="#train-and-evaluate" title="Permalink to this heading">#</a></h2>
 <p>It should take around 15-25 min on CPU. On GPU though, it takes less than a
 minute.</p>
 <div class="cell docutils container">
@@ -1081,7 +1104,7 @@ Best val Acc: 0.928105
 </div>
 </section>
 <section id="convnet-as-fixed-feature-extractor">
-<h2>ConvNet as fixed feature extractor<a class="headerlink" href="#convnet-as-fixed-feature-extractor" title="Permalink to this headline">#</a></h2>
+<h2>ConvNet as fixed feature extractor<a class="headerlink" href="#convnet-as-fixed-feature-extractor" title="Permalink to this heading">#</a></h2>
 <p>Here, we need to freeze all the network except the final layer. We need
 to set <code class="docutils literal notranslate"><span class="pre">requires_grad</span> <span class="pre">=</span> <span class="pre">False</span></code> to freeze the parameters so that the
 gradients are not computed in <code class="docutils literal notranslate"><span class="pre">backward()</span></code>.</p>
@@ -1113,7 +1136,7 @@ gradients are not computed in <code class="docutils literal notranslate"><span c
 </div>
 </section>
 <section id="id1">
-<h2>Train and evaluate<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2>Train and evaluate<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>On CPU this will take about half the time compared to previous scenario.
 This is expected as gradients don’t need to be computed for most of the
 network. However, forward does need to be computed.</p>
@@ -1276,7 +1299,7 @@ Best val Acc: 0.954248
 </div>
 </section>
 <section id="further-learning">
-<h2>Further Learning<a class="headerlink" href="#further-learning" title="Permalink to this headline">#</a></h2>
+<h2>Further Learning<a class="headerlink" href="#further-learning" title="Permalink to this heading">#</a></h2>
 <p>If you would like to learn more about the applications of transfer learning,
 checkout our <code class="docutils literal notranslate"><span class="pre">Quantized</span> <span class="pre">Transfer</span> <span class="pre">Learning</span> <span class="pre">for</span> <span class="pre">Computer</span> <span class="pre">Vision</span> <span class="pre">Tutorial</span> <span class="pre">&lt;https://pytorch.org/tutorials/intermediate/quantized_transfer_learning_tutorial.html&gt;</span></code>_.</p>
 </section>
@@ -1307,11 +1330,10 @@ checkout our <code class="docutils literal notranslate"><span class="pre">Quanti
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="transfer-learning-introduction.html"
@@ -1331,10 +1353,7 @@ checkout our <code class="docutils literal notranslate"><span class="pre">Quanti
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1342,6 +1361,7 @@ checkout our <code class="docutils literal notranslate"><span class="pre">Quanti
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1379,6 +1399,7 @@ By Pantelis Monogioudis, Ph.D
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -1405,8 +1426,8 @@ By Pantelis Monogioudis, Ph.D
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
   <footer class="bd-footer">
   </footer>

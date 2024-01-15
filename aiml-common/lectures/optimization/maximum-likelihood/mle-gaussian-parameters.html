@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Maximum Likelihood Estimation of Gaussian Parameters &#8212; Introduction to Artificial Intelligence</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
   
-  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
     <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,12 +39,14 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
@@ -79,7 +81,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,12 +124,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <header>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
   
+  </header>
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -133,9 +152,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../../../../intro.html">
+  
   
   
   
@@ -145,8 +166,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt="Introduction to Artificial Intelligence - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Artificial Intelligence - Home"/>`);</script>
   
   
 </a></div>
@@ -493,20 +514,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -548,34 +571,34 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="maximum-likelihood-estimation-of-gaussian-parameters">
-<h1>Maximum Likelihood Estimation of Gaussian Parameters<a class="headerlink" href="#maximum-likelihood-estimation-of-gaussian-parameters" title="Permalink to this headline">#</a></h1>
+<h1>Maximum Likelihood Estimation of Gaussian Parameters<a class="headerlink" href="#maximum-likelihood-estimation-of-gaussian-parameters" title="Permalink to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This text appearred in <a class="reference external" href="https://jrmeyer.github.io/machinelearning/2017/08/18/mle.html">this post</a> but because the math formatting disappeared from the original site,  it is shamelessly copied here. Please note that in our notation <span class="math notranslate nohighlight">\(N\)</span> is <span class="math notranslate nohighlight">\(m\)</span> (number of examples / samples) and <span class="math notranslate nohighlight">\(n\)</span> is <span class="math notranslate nohighlight">\(i\)</span> (index of each example / sample).</p>
 </div>
 <section id="the-big-picture">
-<h2>The Big Picture<a class="headerlink" href="#the-big-picture" title="Permalink to this headline">#</a></h2>
+<h2>The Big Picture<a class="headerlink" href="#the-big-picture" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Maximum_likelihood_estimation">Maximum Likelihood Estimation</a> (MLE) is a tool we use in machine learning to acheive a <em>very</em> common goal. The goal is to create a statistical model, which is able to perform some task on <em>yet unseen data</em>.</p>
-<p>The task might be <a class="reference external" href="https://en.wikipedia.org/wiki/Statistical_classification">classification</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Regression_analysis">regression</a>, or something else, so the nature of the task does not define MLE. The defining characteristic of MLE is that it uses <em>only existing data</em> to estimate parameters of the model. This is in contrast to approaches which exploit <em>prior knowledge</em> in addition to existing data.<a class="footnote-reference brackets" href="#id4" id="id1">1</a></p>
+<p>The task might be <a class="reference external" href="https://en.wikipedia.org/wiki/Statistical_classification">classification</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Regression_analysis">regression</a>, or something else, so the nature of the task does not define MLE. The defining characteristic of MLE is that it uses <em>only existing data</em> to estimate parameters of the model. This is in contrast to approaches which exploit <em>prior knowledge</em> in addition to existing data.<a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>Today, we’re talking about MLE for <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">Gaussians</a>, so this is going to be a classification task. That is, we have data with labels, and we want to take some new data, and classify it <em>using the labels from the old data</em>. In the below images, we see data with labels (left), and new, unlabeled data (right). We want to be able to categorize each point from the <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">data</span></code> as belonging to either the <code class="docutils literal notranslate"><span class="pre">purple</span></code> group or the <code class="docutils literal notranslate"><span class="pre">yellow</span></code> group.</p>
 <p><img alt="" src="../../../../_images/mle_1.png" />
 <img alt="" src="../../../../_images/mle_2.png" /></p>
 <p>Labeling dots as either <code class="docutils literal notranslate"><span class="pre">purple</span></code> or <code class="docutils literal notranslate"><span class="pre">yellow</span></code> sounds pretty boring, but the same idea applies to <a class="reference external" href="http://jrmeyer.github.io/tutorial/2016/02/01/TensorFlow-Tutorial.html">labeling emails</a> as <code class="docutils literal notranslate"><span class="pre">spam</span></code> or <code class="docutils literal notranslate"><span class="pre">ham</span></code> or classifying audio clips as the vowel <code class="docutils literal notranslate"><span class="pre">[a]</span></code> or the vowel <code class="docutils literal notranslate"><span class="pre">[o]</span></code>.</p>
-<p>To make this post more tasty, let’s pretend we’re classifying <code class="docutils literal notranslate"><span class="pre">skittles</span></code> as <code class="docutils literal notranslate"><span class="pre">purple</span></code> or <code class="docutils literal notranslate"><span class="pre">yellow</span></code>.<a class="footnote-reference brackets" href="#id5" id="id2">2</a> We’re classifying these skittles based on two dimensions <code class="docutils literal notranslate"><span class="pre">[x,y]</span></code>. Let’s say the skittles have been rated by expert skittle-sommeliers on two traits: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">aromatic</span> <span class="pre">lift</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">elegance</span></code>.</p>
+<p>To make this post more tasty, let’s pretend we’re classifying <code class="docutils literal notranslate"><span class="pre">skittles</span></code> as <code class="docutils literal notranslate"><span class="pre">purple</span></code> or <code class="docutils literal notranslate"><span class="pre">yellow</span></code>.<a class="footnote-reference brackets" href="#id5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> We’re classifying these skittles based on two dimensions <code class="docutils literal notranslate"><span class="pre">[x,y]</span></code>. Let’s say the skittles have been rated by expert skittle-sommeliers on two traits: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">aromatic</span> <span class="pre">lift</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">elegance</span></code>.</p>
 <p>As you can see, <code class="docutils literal notranslate"><span class="pre">purple</span> <span class="pre">skittles</span></code> have bad ratings on both aromatic lift and elegance, whereas <code class="docutils literal notranslate"><span class="pre">yellow</span> <span class="pre">skittles</span></code> have been highly rated on both traits. Since these ratings are from expert skittle-sommeliers, they must be true.</p>
 <p>To get our new, unlabeled data, we’ve given some new skittles to our expert sommeliers in a blind taste test. That is, the experts don’t know what they ate, and neither do we. The only information available for each skittle is its rating on <code class="docutils literal notranslate"><span class="pre">aromatic</span> <span class="pre">lift</span></code> and <code class="docutils literal notranslate"><span class="pre">elegance</span></code>.</p>
 <p>Now, we want to take ratings for each <code class="docutils literal notranslate"><span class="pre">mystery</span> <span class="pre">skittle</span></code> and figure out if it was a <code class="docutils literal notranslate"><span class="pre">purple</span> <span class="pre">skittle</span></code> or <code class="docutils literal notranslate"><span class="pre">yellow</span> <span class="pre">skittle</span></code>. To accomplish this task, we build a statistical model, learning its shape from the old ratings (i.e. the labeled data).</p>
-<p>For the above data we can build two models (i.e. 2-D Gaussians), a <code class="docutils literal notranslate"><span class="pre">purple</span> <span class="pre">skittle</span> <span class="pre">model</span></code> and a <code class="docutils literal notranslate"><span class="pre">yellow</span> <span class="pre">skittle</span> <span class="pre">model</span></code>, and then see which model is more similar to a new rating on a <code class="docutils literal notranslate"><span class="pre">mystery</span> <span class="pre">skittle</span></code>. Another approach would be to build a single model (eg. a neural net) that distinguishes <code class="docutils literal notranslate"><span class="pre">purple</span> <span class="pre">skittles</span></code> from <code class="docutils literal notranslate"><span class="pre">yellow</span> <span class="pre">skittles</span></code>, and then see how it categorizes each <code class="docutils literal notranslate"><span class="pre">mystery</span> <span class="pre">skittle</span></code>.<a class="footnote-reference brackets" href="#id6" id="id3">3</a> Here, we’re working with the former approach (build two models and see which one fits better).</p>
+<p>For the above data we can build two models (i.e. 2-D Gaussians), a <code class="docutils literal notranslate"><span class="pre">purple</span> <span class="pre">skittle</span> <span class="pre">model</span></code> and a <code class="docutils literal notranslate"><span class="pre">yellow</span> <span class="pre">skittle</span> <span class="pre">model</span></code>, and then see which model is more similar to a new rating on a <code class="docutils literal notranslate"><span class="pre">mystery</span> <span class="pre">skittle</span></code>. Another approach would be to build a single model (eg. a neural net) that distinguishes <code class="docutils literal notranslate"><span class="pre">purple</span> <span class="pre">skittles</span></code> from <code class="docutils literal notranslate"><span class="pre">yellow</span> <span class="pre">skittles</span></code>, and then see how it categorizes each <code class="docutils literal notranslate"><span class="pre">mystery</span> <span class="pre">skittle</span></code>.<a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> Here, we’re working with the former approach (build two models and see which one fits better).</p>
 <p><img alt="" src="../../../../_images/mle_model_1.png" />
 <img alt="" src="../../../../_images/mle_model_2.png" /></p>
 <p>We assume the data was in a sense <em>generated</em> by some process, and we’re trying to model what that process was. This is called the <a class="reference external" href="https://en.wikipedia.org/wiki/Generative_model">generative approach</a>. The model we’re trying to learn is an approximation of the underlying process that created the data in the first place. So our data is just a sample from a process, and we want to learn the process.</p>
 <p>At the end of the day, once we have our two models, we will use them to find which model was more likely to have <em>generated</em> the new data point. To take the leap from data <span class="math notranslate nohighlight">\(\rightarrow\)</span> model, we need to not only estimate possible parameters of the model (eg. for Gaussians we need <span class="math notranslate nohighlight">\([\mu, \Sigma]\)</span>), but we want the <em>best</em> model possible for our data. That’s where MLE comes into play.</p>
 </section>
 <section id="mle-as-parameter-estimation">
-<h2>MLE as Parameter Estimation<a class="headerlink" href="#mle-as-parameter-estimation" title="Permalink to this headline">#</a></h2>
+<h2>MLE as Parameter Estimation<a class="headerlink" href="#mle-as-parameter-estimation" title="Permalink to this heading">#</a></h2>
 <p>MLE is one flavor of <a class="reference external" href="https://en.wikipedia.org/wiki/Estimation_theory">parameter estimation</a> in machine learning, and in order to perform parameter estimation, we need:</p>
 <ol class="arabic simple">
 <li><p>some data <span class="math notranslate nohighlight">\(\mathbf{X}\)</span></p></li>
@@ -588,7 +611,7 @@ document.write(`
 \[\theta_{MLE} = \underset{\theta}{\operatorname{argmax}} p(\mathbf{X}|\theta)\]</div>
 </section>
 <section id="likelihood-for-a-gaussian">
-<h2>Likelihood for a Gaussian<a class="headerlink" href="#likelihood-for-a-gaussian" title="Permalink to this headline">#</a></h2>
+<h2>Likelihood for a Gaussian<a class="headerlink" href="#likelihood-for-a-gaussian" title="Permalink to this heading">#</a></h2>
 <p>We assume the data we’re working with was generated by an underlying Gaussian process in the real world. As such, the likelihood function (<span class="math notranslate nohighlight">\(\mathcal{L}\)</span>) is the Gaussian itself.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
@@ -690,7 +713,7 @@ document.write(`
 <p>In our case, our log-likelihood function is concave, so we know that at <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{LL}}{\partial \mu}=0\)</span> we get a maximum.</p>
 </section>
 <section id="mle-of-mu">
-<h2>MLE of <span class="math notranslate nohighlight">\(\mu\)</span><a class="headerlink" href="#mle-of-mu" title="Permalink to this headline">#</a></h2>
+<h2>MLE of <span class="math notranslate nohighlight">\(\mu\)</span><a class="headerlink" href="#mle-of-mu" title="Permalink to this heading">#</a></h2>
 <p>First we’ll work to solve for the mean of our Gaussian, <span class="math notranslate nohighlight">\(\mu\)</span>. Remember we’ve got our likelihood function in a simple form:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
@@ -779,7 +802,7 @@ document.write(`
 <p>Sure enough, if you take a look at the data, you’ll see that the <code class="docutils literal notranslate"><span class="pre">yellow</span> <span class="pre">skittle</span></code> data is grouped around the point <code class="docutils literal notranslate"><span class="pre">[-1,-1]</span></code> and that the <code class="docutils literal notranslate"><span class="pre">purple</span> <span class="pre">skittle</span></code> data points are all clustered around <code class="docutils literal notranslate"><span class="pre">[1,1]</span></code>. Now take a look at the models we’ve made. You’ll see that the center of the peak for the <code class="docutils literal notranslate"><span class="pre">purple</span> <span class="pre">skittle</span> <span class="pre">model</span></code> is somewhere near  <code class="docutils literal notranslate"><span class="pre">[-1,-1]</span></code> and that the peak of the <code class="docutils literal notranslate"><span class="pre">yellow</span> <span class="pre">skittle</span> <span class="pre">model</span></code> is around <code class="docutils literal notranslate"><span class="pre">[1,1]</span></code>.</p>
 </section>
 <section id="mle-of-sigma-2">
-<h2>MLE of <span class="math notranslate nohighlight">\(\sigma^{2}\)</span><a class="headerlink" href="#mle-of-sigma-2" title="Permalink to this headline">#</a></h2>
+<h2>MLE of <span class="math notranslate nohighlight">\(\sigma^{2}\)</span><a class="headerlink" href="#mle-of-sigma-2" title="Permalink to this heading">#</a></h2>
 <p>Now let’s tackle the second parameter of our Gaussian model, the variance <span class="math notranslate nohighlight">\(\sigma^{2}\)</span>!</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
@@ -862,7 +885,7 @@ document.write(`
 <p>Specifically, look at the <code class="docutils literal notranslate"><span class="pre">purple</span> <span class="pre">skittles</span></code>. You see the purple skittle that got a rating of about <code class="docutils literal notranslate"><span class="pre">[0,-2]</span></code>? That skittle had pretty horrible <code class="docutils literal notranslate"><span class="pre">elegance</span></code> and better-than-average <code class="docutils literal notranslate"><span class="pre">aromatic</span> <span class="pre">lift</span></code>. This skittle obviously <em>deviated</em> from the normal rating. We take this skittle along with every other, calculate that deviation, and get our <span class="math notranslate nohighlight">\(\sigma^2\)</span>for our model.</p>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
 <p>We did a lot of algebra, some calculus, and used some tricks with <span class="math notranslate nohighlight">\(\log_{e}\)</span> to get to this point.</p>
 <p>Along the way it’s easy to get lost in the weeds, but if we keep in mind that all these equations have some interpretation, we can catch the big picture. In our case, the big picture is very clear:</p>
 <blockquote>
@@ -875,17 +898,18 @@ document.write(`
 \end{align}\end{split}\]</div>
 <p>I hope this was helpful or interesting! If you find errors or have comments, let me know!</p>
 <hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>For another approach to parameter estimation using not only information from the data, but a prior bias, see <a class="reference external" href="https://en.wikipedia.org/wiki/Maximum_a_posteriori_estimation">Maximum A Posteriori estimation</a>.</p>
-</dd>
-<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>I have no sponsorship from Skittles, the Wrigley Company, or Mars, Inc. All the views expressed in this post are my own. However, if they would like to throw some cash my way, I would not be upset.</p>
-</dd>
-<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
-<dd><p>This is an example of a <a class="reference external" href="https://en.wikipedia.org/wiki/Discriminative_model">discriminative</a> model, as opposed to a <a class="reference external" href="https://en.wikipedia.org/wiki/Generative_model">generative</a> model. The classification approach described here is the latter approach.</p>
-</dd>
-</dl>
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>For another approach to parameter estimation using not only information from the data, but a prior bias, see <a class="reference external" href="https://en.wikipedia.org/wiki/Maximum_a_posteriori_estimation">Maximum A Posteriori estimation</a>.</p>
+</aside>
+<aside class="footnote brackets" id="id5" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>I have no sponsorship from Skittles, the Wrigley Company, or Mars, Inc. All the views expressed in this post are my own. However, if they would like to throw some cash my way, I would not be upset.</p>
+</aside>
+<aside class="footnote brackets" id="id6" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>This is an example of a <a class="reference external" href="https://en.wikipedia.org/wiki/Discriminative_model">discriminative</a> model, as opposed to a <a class="reference external" href="https://en.wikipedia.org/wiki/Generative_model">generative</a> model. The classification approach described here is the latter approach.</p>
+</aside>
 </section>
 </section>
 
@@ -914,11 +938,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="marginal_maximum_likelihood.html"
@@ -938,10 +961,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -949,6 +969,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -983,6 +1004,7 @@ By Pantelis Monogioudis, Ph.D
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -1009,8 +1031,8 @@ By Pantelis Monogioudis, Ph.D
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
   <footer class="bd-footer">
   </footer>

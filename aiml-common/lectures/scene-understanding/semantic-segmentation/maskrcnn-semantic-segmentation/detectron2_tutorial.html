@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Detectron2 Beginner’s Tutorial &#8212; Introduction to Artificial Intelligence</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../../../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
   
-  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
     <link rel="stylesheet" href="../../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,12 +39,14 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
     <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/jquery.js"></script>
     <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../_static/doctools.js"></script>
     <script src="../../../../../_static/clipboard.min.js"></script>
     <script src="../../../../../_static/copybutton.js"></script>
@@ -77,7 +79,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -111,12 +122,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <header>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
   
+  </header>
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -131,9 +150,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../../../../../intro.html">
+  
   
   
   
@@ -143,8 +164,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt="Introduction to Artificial Intelligence - Home"/>
+    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Artificial Intelligence - Home"/>`);</script>
   
   
 </a></div>
@@ -558,20 +579,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -619,10 +642,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="detectron2-beginners-tutorial">
-<h1>Detectron2 Beginner’s Tutorial<a class="headerlink" href="#detectron2-beginners-tutorial" title="Permalink to this headline">#</a></h1>
+<h1>Detectron2 Beginner’s Tutorial<a class="headerlink" href="#detectron2-beginners-tutorial" title="Permalink to this heading">#</a></h1>
 <a class="reference internal image-reference" href="https://dl.fbaipublicfiles.com/detectron2/Detectron2-Logo-Horz.png"><img alt="https://dl.fbaipublicfiles.com/detectron2/Detectron2-Logo-Horz.png" src="https://dl.fbaipublicfiles.com/detectron2/Detectron2-Logo-Horz.png" style="width: 500px;" /></a>
 <p>Welcome to detectron2! This is the official colab tutorial of detectron2. Here, we will go through some basics usage of detectron2, including the following:</p>
 <ul class="simple">
@@ -632,7 +655,7 @@ document.write(`
 <p>You can make a copy of this tutorial by “File -&gt; Open in playground mode” and make changes there. <strong>DO NOT</strong> request access to this tutorial.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="install-detectron2">
-<h1>Install detectron2<a class="headerlink" href="#install-detectron2" title="Permalink to this headline">#</a></h1>
+<h1>Install detectron2<a class="headerlink" href="#install-detectron2" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install detectron2@git+https://github.com/facebookresearch/detectron2@7c2c8fb
@@ -829,7 +852,7 @@ torchvision:  0.13
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="run-a-pre-trained-detectron2-model">
-<h1>Run a pre-trained detectron2 model<a class="headerlink" href="#run-a-pre-trained-detectron2-model" title="Permalink to this headline">#</a></h1>
+<h1>Run a pre-trained detectron2 model<a class="headerlink" href="#run-a-pre-trained-detectron2-model" title="Permalink to this heading">#</a></h1>
 <p>We first download an image from the COCO dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -909,14 +932,14 @@ Boxes(tensor([[126.5927, 244.9072, 459.8221, 480.0000],
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="train-on-a-custom-dataset">
-<h1>Train on a custom dataset<a class="headerlink" href="#train-on-a-custom-dataset" title="Permalink to this headline">#</a></h1>
+<h1>Train on a custom dataset<a class="headerlink" href="#train-on-a-custom-dataset" title="Permalink to this heading">#</a></h1>
 <p>In this section, we show how to train an existing detectron2 model on a custom dataset in a new format.</p>
 <p>We use <a class="reference external" href="https://github.com/matterport/Mask_RCNN/tree/master/samples/balloon">the balloon segmentation dataset</a>
 which only has one class: balloon.
 We’ll train a balloon segmentation model from an existing model pre-trained on COCO dataset, available in detectron2’s model zoo.</p>
 <p>Note that COCO dataset does not have the “balloon” category. We’ll be able to recognize this new class in a few minutes.</p>
 <section id="prepare-the-dataset">
-<h2>Prepare the dataset<a class="headerlink" href="#prepare-the-dataset" title="Permalink to this headline">#</a></h2>
+<h2>Prepare the dataset<a class="headerlink" href="#prepare-the-dataset" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span># download, decompress the data
@@ -1028,7 +1051,7 @@ Here, the dataset is in its custom format, therefore we write a function to pars
 </div>
 </section>
 <section id="train">
-<h2>Train!<a class="headerlink" href="#train" title="Permalink to this headline">#</a></h2>
+<h2>Train!<a class="headerlink" href="#train" title="Permalink to this heading">#</a></h2>
 <p>Now, let’s fine-tune a COCO-pretrained R50-FPN Mask R-CNN model on the balloon dataset. It takes ~2 minutes to train 300 iterations on a P100 GPU.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1457,7 +1480,7 @@ WARNING:fvcore.common.checkpoint:Some model parameters or buffers are not found 
 </div>
 </section>
 <section id="inference-evaluation-using-the-trained-model">
-<h2>Inference &amp; evaluation using the trained model<a class="headerlink" href="#inference-evaluation-using-the-trained-model" title="Permalink to this headline">#</a></h2>
+<h2>Inference &amp; evaluation using the trained model<a class="headerlink" href="#inference-evaluation-using-the-trained-model" title="Permalink to this heading">#</a></h2>
 <p>Now, let’s run inference with the trained model on the balloon validation dataset. First, let’s create a predictor using the model we just trained:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1662,7 +1685,7 @@ OrderedDict([(&#39;bbox&#39;, {&#39;AP&#39;: 73.54345467878944, &#39;AP50&#39;: 
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="other-types-of-builtin-models">
-<h1>Other types of builtin models<a class="headerlink" href="#other-types-of-builtin-models" title="Permalink to this headline">#</a></h1>
+<h1>Other types of builtin models<a class="headerlink" href="#other-types-of-builtin-models" title="Permalink to this heading">#</a></h1>
 <p>We showcase simple demos of other types of models below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1707,7 +1730,7 @@ OrderedDict([(&#39;bbox&#39;, {&#39;AP&#39;: 73.54345467878944, &#39;AP50&#39;: 
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="run-panoptic-segmentation-on-a-video">
-<h1>Run panoptic segmentation on a video<a class="headerlink" href="#run-panoptic-segmentation-on-a-video" title="Permalink to this headline">#</a></h1>
+<h1>Run panoptic segmentation on a video<a class="headerlink" href="#run-panoptic-segmentation-on-a-video" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is the video we&#39;re going to process</span>
@@ -1822,11 +1845,10 @@ File &#39;video-clip.mp4&#39; already exists. Overwrite ? [y/N]
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="inspect_weights.html"
@@ -1846,10 +1868,7 @@ File &#39;video-clip.mp4&#39; already exists. Overwrite ? [y/N]
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1857,6 +1876,7 @@ File &#39;video-clip.mp4&#39; already exists. Overwrite ? [y/N]
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1897,6 +1917,7 @@ By Pantelis Monogioudis, Ph.D
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -1923,8 +1944,8 @@ By Pantelis Monogioudis, Ph.D
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
   <footer class="bd-footer">
   </footer>

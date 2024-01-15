@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Kalman Filters &#8212; Introduction to Artificial Intelligence</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
   
-  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
     <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,12 +39,14 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
@@ -82,7 +84,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -116,12 +127,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <header>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
   
+  </header>
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -136,9 +155,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../../../../intro.html">
+  
   
   
   
@@ -148,8 +169,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt="Introduction to Artificial Intelligence - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Artificial Intelligence - Home"/>`);</script>
   
   
 </a></div>
@@ -563,20 +584,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -650,10 +673,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="kalman-filters">
-<h1>Kalman Filters<a class="headerlink" href="#kalman-filters" title="Permalink to this headline">#</a></h1>
+<h1>Kalman Filters<a class="headerlink" href="#kalman-filters" title="Permalink to this heading">#</a></h1>
 <p>This notebook was copied from the excellent book <a class="github reference external" href="https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python">rlabbe/Kalman-and-Bayesian-Filters-in-Python</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -689,13 +712,13 @@ document.write(`
 <p>So why not just jump into the multidimensional form of the filter? To be honest, the math is difficult, and my intuitive approach to developing the filter starts to break down. This math obscures the rather simple principles that allow the Kalman filter to work.</p>
 <p>So, in this chapter we learn how to use Gaussians to implement a Bayesian filter. That’s all the Kalman filter is - a Bayesian filter that uses Gaussians. In the next chapter we will switch to a multidimensional form and the full power of the Kalman filter will be unleashed!</p>
 <section id="problem-description">
-<h2>Problem Description<a class="headerlink" href="#problem-description" title="Permalink to this headline">#</a></h2>
+<h2>Problem Description<a class="headerlink" href="#problem-description" title="Permalink to this heading">#</a></h2>
 <p>As in the <strong>Discrete Bayes Filter</strong> chapter we will be tracking a moving object in a long hallway at work. Assume that in our latest hackathon someone created an RFID tracker that provides a reasonably accurate position of the dog. The sensor returns the distance of the dog from the left end of the hallway in meters. So, 23.4 would mean the dog is 23.4 meters from the left end of the hallway.</p>
 <p>The sensor is not perfect. A reading of 23.4 could correspond to the dog being at 23.7, or 23.0. However, it is very unlikely to correspond to a position of 47.6. Testing during the hackathon confirmed this result - the sensor is ‘reasonably’ accurate, and while it had errors, the errors are small. Furthermore, the errors seemed to be evenly distributed on both sides of the true position; a position of 23 m would equally likely be measured as 22.9 or 23.1. Perhaps we can model this with a Gaussian.</p>
 <p>We predict that the dog is moving. This prediction is not perfect. Sometimes our prediction will overshoot, sometimes it will undershoot. We are more likely to undershoot or overshoot by a little than a lot. Perhaps we can also model this with a Gaussian.</p>
 </section>
 <section id="beliefs-as-gaussians">
-<h2>Beliefs as Gaussians<a class="headerlink" href="#beliefs-as-gaussians" title="Permalink to this headline">#</a></h2>
+<h2>Beliefs as Gaussians<a class="headerlink" href="#beliefs-as-gaussians" title="Permalink to this heading">#</a></h2>
 <p>We can express our belief in the dog’s position with a Gaussian. Say we believe that our dog is at 10 meters, and the variance in that belief is 1 m<span class="math notranslate nohighlight">\(^2\)</span>, or <span class="math notranslate nohighlight">\(\mathcal{N}(10,\, 1)\)</span>. A plot of the pdf follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -734,7 +757,7 @@ document.write(`
 <p>Eyeballing this confirms our intuition - no dog moves like this. However, noisy sensor data certainly looks this way.  The computed mean of the readings is almost exactly 10. Assuming the dog is standing still, we say the dog is at position 10 with a variance of 1.</p>
 </section>
 <section id="tracking-with-gaussian-probabilities">
-<h2>Tracking with Gaussian Probabilities<a class="headerlink" href="#tracking-with-gaussian-probabilities" title="Permalink to this headline">#</a></h2>
+<h2>Tracking with Gaussian Probabilities<a class="headerlink" href="#tracking-with-gaussian-probabilities" title="Permalink to this heading">#</a></h2>
 <p>The discrete Bayes filter used a histogram of probabilities to track the dog. Each bin in the histogram represents a position, and the value is the probability of the dog being in that position.</p>
 <p>Tracking was performed with a cycle of predictions and updates. We used the equations</p>
 <div class="math notranslate nohighlight">
@@ -778,7 +801,7 @@ x &amp;\stackrel{?}{=} \mathcal L \cdot \bar x
 <p>This will only work if the sum and product of two Gaussians is another Gaussian. Otherwise after the first epoch <span class="math notranslate nohighlight">\(x\)</span> would not be Gaussian, and this scheme falls apart.</p>
 </section>
 <section id="predictions-with-gaussians">
-<h2>Predictions with Gaussians<a class="headerlink" href="#predictions-with-gaussians" title="Permalink to this headline">#</a></h2>
+<h2>Predictions with Gaussians<a class="headerlink" href="#predictions-with-gaussians" title="Permalink to this heading">#</a></h2>
 <p>We use Newton’s equation of motion to compute current position based on the current velocity and previous position:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{aligned}\bar{x}_k &amp;= x_{k-1} + v_k \Delta t \\
@@ -880,7 +903,7 @@ f_x = \mathcal N (15, 0.7^2)
 <p>The prior states that the dog is at 25 m with a variance of 0.53 m<span class="math notranslate nohighlight">\(^2\)</span>, which is what we computed by hand.</p>
 </section>
 <section id="updates-with-gaussians">
-<h2>Updates with Gaussians<a class="headerlink" href="#updates-with-gaussians" title="Permalink to this headline">#</a></h2>
+<h2>Updates with Gaussians<a class="headerlink" href="#updates-with-gaussians" title="Permalink to this heading">#</a></h2>
 <p>The discrete Bayes filter encodes our belief about the position of our dog in a histogram of probabilities. The distribution is discrete and multimodal. It can express strong belief that the dog is in two positions at once, and the positions are discrete.</p>
 <p>We are proposing that we replace the histogram with a Gaussian. The discrete Bayes filter used this code to compute the posterior:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">likelihood</span><span class="p">,</span> <span class="n">prior</span><span class="p">):</span>
@@ -942,7 +965,7 @@ f_x = \mathcal N (15, 0.7^2)
 <p>That is less abstract, which perhaps helps with comprehension, but it is poor coding practice. We are writing a Kalman filter that works for any problem, not just tracking dogs in a hallway, so we won’t use variable names with ‘dog’ in them. Also, this form obscures the fact that we are multiplying the likelihood by the prior.</p>
 <p>We have the majority of our filter implemented, but I fear this step is still a bit confusing. I’ve asserted that we can multiply Gaussians and that it correctly performs the update step, but why is this true? Let’s take a detour and spend some time multiplying Gaussians.</p>
 <section id="understanding-gaussian-multiplication">
-<h3>Understanding Gaussian Multiplication<a class="headerlink" href="#understanding-gaussian-multiplication" title="Permalink to this headline">#</a></h3>
+<h3>Understanding Gaussian Multiplication<a class="headerlink" href="#understanding-gaussian-multiplication" title="Permalink to this heading">#</a></h3>
 <p>Let’s plot the pdf of <span class="math notranslate nohighlight">\(\mathcal{N}(10,\, 1) \times \mathcal{N}(10,\, 1)\)</span>. Can you determine its shape without looking at the result? What should the new mean be? Will the curve be wider, narrower, or the same as <span class="math notranslate nohighlight">\(\mathcal{N}(10,\, 1)\)</span>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1024,7 +1047,7 @@ f_x = \mathcal N (15, 0.7^2)
 <p>It <em>seems</em> to work, but is it really correct? There is more to say about this, but I want to get a working filter going so you can it experience it in concrete terms. After that we will revisit Gaussian multiplication and determine why it is correct.</p>
 </section>
 <section id="interactive-example">
-<h3>Interactive Example<a class="headerlink" href="#interactive-example" title="Permalink to this headline">#</a></h3>
+<h3>Interactive Example<a class="headerlink" href="#interactive-example" title="Permalink to this heading">#</a></h3>
 <p>This interactive code provides sliders to alter the mean and variance of two Gaussians that are being multiplied together. As you move the sliders the plot is redrawn. Place your cursor inside the code cell and press CTRL+Enter to execute it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1048,7 +1071,7 @@ f_x = \mathcal N (15, 0.7^2)
 </section>
 </section>
 <section id="first-kalman-filter">
-<h2>First Kalman Filter<a class="headerlink" href="#first-kalman-filter" title="Permalink to this headline">#</a></h2>
+<h2>First Kalman Filter<a class="headerlink" href="#first-kalman-filter" title="Permalink to this heading">#</a></h2>
 <p>Let’s get back to concrete terms and implement a Kalman filter. We’ve implemented the <code class="docutils literal notranslate"><span class="pre">update()</span></code> and <code class="docutils literal notranslate"><span class="pre">predict()</span></code> functions. We just need to write some boilerplate code to simulate a dog and create the measurements. I’ve put a <code class="docutils literal notranslate"><span class="pre">DogSimulation</span></code> class in <code class="docutils literal notranslate"><span class="pre">kf_internal</span></code> to avoid getting distracted with that task.</p>
 <p>This boilerplate code sets up the problem by definine the means, variances, and generating the simulated dog movement.</p>
 <div class="cell docutils container">
@@ -1172,7 +1195,7 @@ actual final position:     14.838
 <p>If you look at the plot you can see that the filter estimate is always between the measurement and prediction. Recall that for the g-h filter we argued that the estimate must always be between the measurement and prior. It makes no sense to choose a value outside of the two values. If I predict I am at 10, but measure that I am at 9, it would be foolish to decide that I must be at 8, or 11.</p>
 </section>
 <section id="code-walkthrough">
-<h2>Code Walkthrough<a class="headerlink" href="#code-walkthrough" title="Permalink to this headline">#</a></h2>
+<h2>Code Walkthrough<a class="headerlink" href="#code-walkthrough" title="Permalink to this heading">#</a></h2>
 <p>Now let’s walk through the code.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">process_var</span> <span class="o">=</span> <span class="mf">1.</span>
 <span class="n">sensor_var</span> <span class="o">=</span> <span class="mf">2.</span>
@@ -1272,7 +1295,7 @@ actual final position:     14.838
 <p>Here we can see that the variance converges to 2.1623 in 9 steps. This means that we have become very confident in our position estimate. It is equal to <span class="math notranslate nohighlight">\(\sigma=1.47\)</span> meters. Contrast this to the sensor’s <span class="math notranslate nohighlight">\(\sigma=2.12\)</span> meters. The first few measurements are unsure due to our uncertainty of the initial position, but the filter quickly converges to an estimate with lower variance than the sensor!</p>
 <p>This code fully implements a Kalman filter. If you have tried to read the literature you are perhaps surprised, because this looks nothing like the endless pages of math in those books.  So long as we worry about <em>using</em> the equations rather than <em>deriving</em> them the topic is approachable. Moreover, I hope you’ll agree that you have a decent intuitive grasp of what is happening. We represent beliefs with Gaussians, and they get better over time because more measurements means we have more data to work with.</p>
 <section id="exercise-modify-variance-values">
-<h3>Exercise: Modify Variance Values<a class="headerlink" href="#exercise-modify-variance-values" title="Permalink to this headline">#</a></h3>
+<h3>Exercise: Modify Variance Values<a class="headerlink" href="#exercise-modify-variance-values" title="Permalink to this heading">#</a></h3>
 <p>Modify the values of <code class="docutils literal notranslate"><span class="pre">process_var</span></code> and <code class="docutils literal notranslate"><span class="pre">sensor_var</span></code> and note the effect on the filter and on the variance. Which has a larger effect on the variance convergence? For example, which results in a smaller variance:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">process_var</span> <span class="o">=</span> <span class="mi">40</span>
 <span class="n">sensor_var</span> <span class="o">=</span> <span class="mi">2</span>
@@ -1285,7 +1308,7 @@ actual final position:     14.838
 </div>
 </section>
 <section id="kf-animation">
-<h3>KF Animation<a class="headerlink" href="#kf-animation" title="Permalink to this headline">#</a></h3>
+<h3>KF Animation<a class="headerlink" href="#kf-animation" title="Permalink to this heading">#</a></h3>
 <p>If you are reading this in a browser you will be able to see an animation of the filter tracking the dog directly below this sentence.
 <img alt="aiml-common/lectures/pgm/kalman-filters/animations/05_dog_track.gif" src="aiml-common/lectures/pgm/kalman-filters/animations/05_dog_track.gif" /></p>
 <p>The top plot shows the output of the filter in green, and the measurements with a dashed red line. The bottom plot shows the Gaussian at each step.</p>
@@ -1293,7 +1316,7 @@ actual final position:     14.838
 </section>
 </section>
 <section id="kalman-gain">
-<h2>Kalman Gain<a class="headerlink" href="#kalman-gain" title="Permalink to this headline">#</a></h2>
+<h2>Kalman Gain<a class="headerlink" href="#kalman-gain" title="Permalink to this heading">#</a></h2>
 <p>We see that the filter works. Now let’s go back to the math to understand what is happening. The posterior <span class="math notranslate nohighlight">\(x\)</span> is computed as the likelihood times the prior (<span class="math notranslate nohighlight">\(\mathcal L \bar x\)</span>), where both are Gaussians.</p>
 <p>Therefore the mean of the posterior is given by:</p>
 <div class="math notranslate nohighlight">
@@ -1380,7 +1403,7 @@ actual final position:     14.838
 <p>The Bayesian aspect is obscured in this form, as is the fact that we are multiplying the likelihood by the prior. Both viewpoints are equivalent because the math is identical. I chose the Bayesian approach because I think it give a much more intuitive yet deep understanding of the probabilistic reasoning. This alternative form using <span class="math notranslate nohighlight">\(K\)</span> gives a deep understanding of what is known as the <em>orthogonal projection</em> approach. Dr. Kalman used that derivation, not Bayesian reasoning, when he invented this filter. You will understand more about this in the next few chapters.</p>
 </section>
 <section id="full-description-of-the-algorithm">
-<h2>Full Description of the Algorithm<a class="headerlink" href="#full-description-of-the-algorithm" title="Permalink to this headline">#</a></h2>
+<h2>Full Description of the Algorithm<a class="headerlink" href="#full-description-of-the-algorithm" title="Permalink to this heading">#</a></h2>
 <p>Recall the diagram we used for the g-h filter:
 <img alt="aiml-common/lectures/pgm/kalman-filters/figs/residual_chart.png" src="aiml-common/lectures/pgm/kalman-filters/figs/residual_chart.png" /></p>
 <p>We’ve been doing the same thing in this chapter. The Kalman filter makes a prediction, takes a measurement, and then forms a new estimate somewhere between the two.</p>
@@ -1432,7 +1455,7 @@ in the measurement
 \end{array}\)</span></p>
 </section>
 <section id="comparison-with-g-h-and-discrete-bayes-filters">
-<h2>Comparison with g-h and discrete Bayes Filters<a class="headerlink" href="#comparison-with-g-h-and-discrete-bayes-filters" title="Permalink to this headline">#</a></h2>
+<h2>Comparison with g-h and discrete Bayes Filters<a class="headerlink" href="#comparison-with-g-h-and-discrete-bayes-filters" title="Permalink to this heading">#</a></h2>
 <p>Now is a good time to understand the differences between these three filters in terms of how we model errors. For the g-h filter we modeled our measurements as shown in this graph:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1493,7 +1516,7 @@ in the measurement
 <p>For now we will ignore these matters and return to using Gaussians for the next several chapters. As we progress you will learn the strengths and limitations of using Gaussians in our mathematical models.</p>
 </section>
 <section id="introduction-to-designing-a-filter">
-<h2>Introduction to Designing a Filter<a class="headerlink" href="#introduction-to-designing-a-filter" title="Permalink to this headline">#</a></h2>
+<h2>Introduction to Designing a Filter<a class="headerlink" href="#introduction-to-designing-a-filter" title="Permalink to this heading">#</a></h2>
 <p>So far we have developed filters for a position sensor. We are used to this problem by now, and may feel ill-equipped to implement a Kalman filter for a different problem. To be honest, there is still quite a bit of information missing from this presentation. Following chapters will fill in the gaps. Still, let’s get a feel for it by designing and implementing a Kalman filter for a thermometer. The sensor for the thermometer outputs a voltage that corresponds to the temperature that is being measured. We have read the manufacturer’s specifications for the sensor, and it tells us that the sensor exhibits white noise with a standard deviation of 0.13 volts.</p>
 <p>We can simulate the temperature sensor measurement with this function:</p>
 <div class="cell docutils container">
@@ -1557,7 +1580,7 @@ in the measurement
 <p>For example, I am looking at a data sheet for an airflow sensor. There is a field <em>Repeatability</em>, with the value <span class="math notranslate nohighlight">\(\pm 0.50\%\)</span>. Is this a Gaussian? Is there a bias? For example, perhaps the repeatability is nearly <span class="math notranslate nohighlight">\(0.0\%\)</span> at low temperatures, and always nearly  <span class="math notranslate nohighlight">\(+0.50\%\)</span> at high temperatures. Data sheets for electrical components often contain a section of “Typical Performance Characteristics”. These are used to capture information that cannot be easily conveyed in a table. For example, I am looking at a chart showing output voltage vs current for a LM555 timer. There are three curves showing the performance at different temperatures. The response is ideally linear, but all three lines are curved. This clarifies that errors in voltage outputs are probably not Gaussian - in this chip’s case higher temperatures lead to lower voltage output, and the voltage output is quite nonlinear if the input current is very high.</p>
 <p>As you might guess, modeling the performance of your sensors is one of the harder parts of creating a Kalman filter that performs well.</p>
 <section id="animation">
-<h3>Animation<a class="headerlink" href="#animation" title="Permalink to this headline">#</a></h3>
+<h3>Animation<a class="headerlink" href="#animation" title="Permalink to this heading">#</a></h3>
 <p>For those reading this in a browser here is an animation showing the filter working. If you are not using a browser you can see this plot at <a class="github reference external" href="https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python/blob/master/animations/05_volt_animate.gif">rlabbe/Kalman-and-Bayesian-Filters-in-Python</a>.</p>
 <img alt="aiml-common/lectures/pgm/kalman-filters/animations/05_volt_animate.gif" src="aiml-common/lectures/pgm/kalman-filters/animations/05_volt_animate.gif" />
 <p>The top plot in the animation draws a green line for the predicted next voltage, then a red ‘+’ for the actual measurement, draws a light red line to show the residual, and then draws a blue line to the filter’s output. You can see that when the filter starts the corrections made are quite large, but after only a few updates the filter only adjusts its output by a small amount even when the measurement is far from it.</p>
@@ -1566,7 +1589,7 @@ in the measurement
 </section>
 </section>
 <section id="example-extreme-amounts-of-noise">
-<h2>Example: Extreme Amounts of Noise<a class="headerlink" href="#example-extreme-amounts-of-noise" title="Permalink to this headline">#</a></h2>
+<h2>Example: Extreme Amounts of Noise<a class="headerlink" href="#example-extreme-amounts-of-noise" title="Permalink to this heading">#</a></h2>
 <p>With the dog filter I didn’t put a lot of noise in the signal, and I ‘guessed’ that the dog was at position 0. How does the filter perform in real world conditions? I will start by injecting more noise in the RFID sensor while leaving the process variance at 2 m<span class="math notranslate nohighlight">\(^2\)</span>.  I will inject an extreme amount of noise - noise that apparently swamps the actual measurement. What does your intuition say about the filter’s performance if the sensor has a standard deviation of 300 meters? In other words, an actual position of 1.0 m might be reported as 287.9 m, or -589.6 m, or any other number in roughly that range. Think about it before you scroll down.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1598,7 +1621,7 @@ in the measurement
 <p>We get a nearly straight line because our process error is small. A small process error tells the filter that the prediction is very trustworthy, and the prediction is a straight line, so the filter outputs a nearly straight line.</p>
 </section>
 <section id="example-incorrect-process-variance">
-<h2>Example: Incorrect Process Variance<a class="headerlink" href="#example-incorrect-process-variance" title="Permalink to this headline">#</a></h2>
+<h2>Example: Incorrect Process Variance<a class="headerlink" href="#example-incorrect-process-variance" title="Permalink to this heading">#</a></h2>
 <p>That last filter looks fantastic! Why wouldn’t we set the process variance very low, as it guarantees the result will be straight and smooth?</p>
 <p>The process variance tells the filter how much the system is changing over time. If you lie to the filter by setting this number artificially low the filter will not be able to react to changes that are happening. Let’s have the dog increase his velocity by a small amount at each time step and see how the filter performs with a process variance of 0.001 m<span class="math notranslate nohighlight">\(^2\)</span>.</p>
 <div class="cell docutils container">
@@ -1632,7 +1655,7 @@ in the measurement
 <p>It is easy to see that the filter is not correctly responding to the measurements. The measurements  clearly indicate that the dog is changing speed but the filter has been told that it’s predictions are nearly perfect so it almost entirely ignores them. I encourage you to adjust the amount of movement in the dog vs process variance. We will also be studying this topic much more in the later chapters. The key point is to recognize that math requires that the variances correctly describe your system. The filter does not ‘notice’ that it is diverging from the measurements and correct itself. It computes the Kalman gain from the variance of the prior and the measurement, and forms the estimate depending on which is more accurate.</p>
 </section>
 <section id="example-bad-initial-estimate">
-<h2>Example: Bad Initial Estimate<a class="headerlink" href="#example-bad-initial-estimate" title="Permalink to this headline">#</a></h2>
+<h2>Example: Bad Initial Estimate<a class="headerlink" href="#example-bad-initial-estimate" title="Permalink to this heading">#</a></h2>
 <p>Now let’s look at the results when we make a bad initial estimate of position. To avoid obscuring the results I’ll reduce the sensor variance to 30, but set the initial position to 1000 meters. Can the filter recover from a 1000 meter error?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1663,7 +1686,7 @@ in the measurement
 <p>Again the answer is yes! Because we are relatively sure about our belief in the sensor (<span class="math notranslate nohighlight">\(\sigma^2=5^2\)</span>) after only the first step we have changed our position estimate from 1000 m to roughly 50 m. After another 5-10 measurements we have converged to the correct value. This is how we get around the chicken and egg problem of initial guesses. In practice we would likely assign the first measurement from the sensor as the initial value, but you can see it doesn’t matter much if we wildly guess at the initial conditions - the Kalman filter still converges so long as the filter variances are chosen to match the actual process and measurement variances.</p>
 </section>
 <section id="example-large-noise-and-bad-initial-estimate">
-<h2>Example: Large Noise and Bad Initial Estimate<a class="headerlink" href="#example-large-noise-and-bad-initial-estimate" title="Permalink to this headline">#</a></h2>
+<h2>Example: Large Noise and Bad Initial Estimate<a class="headerlink" href="#example-large-noise-and-bad-initial-estimate" title="Permalink to this heading">#</a></h2>
 <p>What about the worst of both worlds, large noise and a bad initial estimate?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1724,7 +1747,7 @@ in the measurement
 <p>200 iterations may seem like a lot, but the amount of noise we are injecting is truly huge. In the real world we use sensors like thermometers,  laser range finders, GPS satellites, computer vision, and so on. None have the enormous errors in these examples. A reasonable variance for a cheap thermometer might be 0.2 C<span class="math notranslate nohighlight">\(^{\circ 2}\)</span>, and our code is using 30,000 C<span class="math notranslate nohighlight">\(^{\circ 2}\)</span>.</p>
 </section>
 <section id="exercise-interactive-plots">
-<h2>Exercise: Interactive Plots<a class="headerlink" href="#exercise-interactive-plots" title="Permalink to this headline">#</a></h2>
+<h2>Exercise: Interactive Plots<a class="headerlink" href="#exercise-interactive-plots" title="Permalink to this heading">#</a></h2>
 <p>Implement the Kalman filter using Jupyter Notebook’s animation features to allow you to modify the various constants in real time using sliders. Refer to the section <strong>Interactive Gaussians</strong> in the <strong>Gaussians</strong> chapter to see how to do this. You will use the <code class="docutils literal notranslate"><span class="pre">interact()</span></code> function to call a calculation and plotting function. Each parameter passed into <code class="docutils literal notranslate"><span class="pre">interact()</span></code> automatically gets a slider created for it. I have written the boilerplate for this; you fill in the required code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1753,7 +1776,7 @@ in the measurement
 </div>
 </div>
 <section id="solution">
-<h3>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h3>
+<h3>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h3>
 <p>One possible solution follows. We have sliders for the start position, the amount of noise in the sensor, the amount we move in each time step, and how much movement error there is. Process noise is perhaps the least clear - it models how much the dog wanders off course at each time step, so we add that into the dog’s position at each step. I set the random number generator seed so that each redraw uses the same random numbers, allowing us to compare the graphs as we move the sliders.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1797,7 +1820,7 @@ in the measurement
 </section>
 </section>
 <section id="exercise-nonlinear-systems">
-<h2>Exercise - Nonlinear Systems<a class="headerlink" href="#exercise-nonlinear-systems" title="Permalink to this headline">#</a></h2>
+<h2>Exercise - Nonlinear Systems<a class="headerlink" href="#exercise-nonlinear-systems" title="Permalink to this heading">#</a></h2>
 <p>Our equations for the Kalman filter are linear:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
@@ -1819,7 +1842,7 @@ in the measurement
 </div>
 </div>
 <section id="id1">
-<h3>Solution<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<h3>Solution<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -1852,14 +1875,14 @@ in the measurement
 </div>
 </section>
 <section id="discussion">
-<h3>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">#</a></h3>
+<h3>Discussion<a class="headerlink" href="#discussion" title="Permalink to this heading">#</a></h3>
 <p>This is terrible! The output is not at all like a sin wave, except in the grossest way. With linear systems we could add extreme amounts of noise to our signal and still extract a very accurate result, but here even modest noise creates a very bad result.</p>
 <p>If we recall the <strong>g-h Filter</strong> chapter we can understand what is happening here. The structure of the g-h filter requires that the filter output chooses a value part way between the prediction and measurement. A varying signal like this one is always accelerating, whereas our process model assumes constant velocity, so the filter is mathematically guaranteed to always lag the input signal.</p>
 <p>Very shortly after practitioners began implementing Kalman filters they recognized the poor performance of them for nonlinear systems and began devising ways of dealing with it. Later chapters are devoted to this problem.</p>
 </section>
 </section>
 <section id="fixed-gain-filters">
-<h2>Fixed Gain Filters<a class="headerlink" href="#fixed-gain-filters" title="Permalink to this headline">#</a></h2>
+<h2>Fixed Gain Filters<a class="headerlink" href="#fixed-gain-filters" title="Permalink to this heading">#</a></h2>
 <p>Embedded computers usually have extremely limited processors. Many do not have floating point circuitry. These simple equations can impose a heavy burden on the chip. This is less true as technology advances, but do not underestimate the value of spending one dollar less on a processor when you will be buying millions of them.</p>
 <p>In the example above the variance of the filter converged to a fixed value. This will always happen if the variance of the measurement and process is a constant. You can take advantage of this fact by running simulations to determine what the variance converges to. Then you can hard code this value into your filter. So long as you initialize the filter to a good starting guess (I recommend using the first measurement as your initial value) the filter will perform very well. For example, the dog tracking filter can be reduced to this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
@@ -1875,7 +1898,7 @@ in the measurement
 <p>I used the Kalman gain form of the update function to emphasize that we do not need to consider the variances at all. If the variances converge to a single value so does the Kalman gain.</p>
 </section>
 <section id="filterpys-implementation">
-<h2>FilterPy’s Implementation<a class="headerlink" href="#filterpys-implementation" title="Permalink to this headline">#</a></h2>
+<h2>FilterPy’s Implementation<a class="headerlink" href="#filterpys-implementation" title="Permalink to this heading">#</a></h2>
 <p>FilterPy implements <code class="docutils literal notranslate"><span class="pre">predict()</span></code> and <code class="docutils literal notranslate"><span class="pre">update()</span></code>.  They work not only for the univariate case developed in this chapter, but the more general multivariate case that we learn in subsequent chapters. Because of this their interface is slightly different. They do not take Gaussians as tuples, but as two separately named variables.</p>
 <p><code class="docutils literal notranslate"><span class="pre">predict()</span></code> takes several arguments, but we will only need to use these four:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
@@ -1923,7 +1946,7 @@ in the measurement
 <p>One final point. I did not use the variable name <code class="docutils literal notranslate"><span class="pre">prior</span></code> for the output of the predict step. I will not use that variable name in the rest of the book. The Kalman filter equations just use <span class="math notranslate nohighlight">\(\mathbf x\)</span>. Both the prior and the posterior are the estimated state of the system, the former is the estimate before the measurement is incorporated, and the latter is after the measurement has been incorporated.</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>The Kalman filter that we describe in this chapter is a special, restricted case of the more general filter we will learn next. Most texts do not discuss this one dimensional form. However, I think it is a vital stepping stone. We started the book with the g-h filter, then implemented the discrete Bayes filter, and now implemented the one dimensional Kalman filter. I have tried to show you that each of these filters use the same algorithm and reasoning. The mathematics of the Kalman filter that we will learn shortly is fairly sophisticated, and it can be difficult to understand the underlying simplicity of the filter. That sophistication comes with significant benefits: the generalized filter will markedly outperform the filters in this chapter.</p>
 <p>This chapter takes time to assimilate. To truly understand it you will probably have to work through this chapter several times. I encourage you to change the various constants in the code and observe the results. Convince yourself that Gaussians are a good representation of a unimodal belief of  the position of a dog in a hallway, the position of an aircraft in the sky, or the temperature of a chemical reaction chamber. Then convince yourself that multiplying Gaussians truly does compute a new belief from your prior belief and the new measurement. Finally, convince yourself that if you are measuring movement, that adding the Gaussians together updates your belief.</p>
 <p>Most of all, spend enough time with the <strong>Full Description of the Algorithm</strong> section to ensure you understand the algorithm and how it relates to the g-h filter and discrete Bayes filter. There is just one ‘trick’ here - selecting a value somewhere between a prediction and a measurement. Each algorithm performs that trick with different math, but all use the same logic.</p>
@@ -1955,11 +1978,10 @@ in the measurement
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../hmm-localization/_index.html"
@@ -1979,10 +2001,7 @@ in the measurement
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1990,6 +2009,7 @@ in the measurement
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2056,6 +2076,7 @@ By Pantelis Monogioudis, Ph.D
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -2082,8 +2103,8 @@ By Pantelis Monogioudis, Ph.D
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
   <footer class="bd-footer">
   </footer>

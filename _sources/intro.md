@@ -31,9 +31,9 @@ NYU CS-GY-6613
 
 NJIT CS370 
 
-Course Dates: 9/5/2023 - 12/19/2023 (approx.)
+Course Dates: Jan 2024 - May 2024 
 
-**Mandatory in-person attendance**
+**Mandatory in-person attendance unless you are enrolled in CS-GY-6613-INET**
 
 :::
 
@@ -43,7 +43,7 @@ Course Dates: 9/5/2023 - 12/19/2023 (approx.)
 **Communication** {octicon}`megaphone;1em;sd-text-info`
 ^^^
 
-We use Discord for all communication and questions related to lectures and projects. Info has already been sent to you via Canvas. Please install Discord in your smartphones as well. 
+We use Discord for all communication and questions related to lectures and projects. Info has already been sent to you via Canvas and Brightspace. Please install Discord in your smartphones as well. 
 
 
 :::
@@ -53,7 +53,7 @@ We use Discord for all communication and questions related to lectures and proje
 
 **Office Hours** {octicon}`clock;1em;sd-text-info`
 ^^^
-Professor Office hours will be coordinated via Discord  - the process is simple: direct message and make arrangements for a 30min slot. After we agree on the slot, please send a **Google calendar** invitation to me and include Gmeet conference info (no Webex or Zoom). Please include in your invitation the questions / issues you face so that we can have a productive meeting. 
+Professor Office hours will be coordinated via Discord  - the process is simple: direct message the professor and make arrangements for a 30min slot. After we agree on the slot, please send a **Google calendar** invitation to me and include Gmeet conference info (no Webex or Zoom). Please include in your invitation the questions / issues you face so that we can have a productive meeting. 
 
 :::
 
@@ -80,9 +80,11 @@ Assignments (30%)
 **Staff (TAs)** {octicon}`person;1em;sd-text-info`
 ^^^
 
-NJIT: Kamil Arif, Yash Ashish Parte
+NJIT: Kamil Arif, Zhenduo Wang, Fatemeh Ramezani
 
-NYU: Himanshu Payal
+NYU CS-GY-6613: Himanshu Payal, Aditya Kumar
+
+NYU CS-GY-6613-INET: Sriharsha Gaddipati
 
 :::
 
@@ -93,7 +95,7 @@ NYU: Himanshu Payal
 **Support** {octicon}`person;1em;sd-text-info`
 ^^^
 
-See Discord ticketing system. Open a ticket to request an assignment deadline extension, address a grading issue and other issues that require a by Staff or Professor.  
+Discord ticketing system. Open a ticket to address a grading issue and other issues that require  a staff or professor response. All tickets are private between student and staff/professor.  
 
 
 

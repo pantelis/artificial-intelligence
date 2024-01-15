@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Single-head self-attention &#8212; Introduction to Artificial Intelligence</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
   
-  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
     <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,12 +39,14 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
@@ -79,7 +81,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,12 +124,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <header>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
   
+  </header>
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -133,9 +152,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../../../../intro.html">
+  
   
   
   
@@ -145,8 +166,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt="Introduction to Artificial Intelligence - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Artificial Intelligence - Home"/>`);</script>
   
   
 </a></div>
@@ -493,20 +514,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -552,17 +575,17 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="single-head-self-attention">
-<h1>Single-head self-attention<a class="headerlink" href="#single-head-self-attention" title="Permalink to this headline">#</a></h1>
+<h1>Single-head self-attention<a class="headerlink" href="#single-head-self-attention" title="Permalink to this heading">#</a></h1>
 <section id="scaled-dot-product-self-attention">
-<h2>Scaled dot-product self-attention<a class="headerlink" href="#scaled-dot-product-self-attention" title="Permalink to this headline">#</a></h2>
+<h2>Scaled dot-product self-attention<a class="headerlink" href="#scaled-dot-product-self-attention" title="Permalink to this heading">#</a></h2>
 <p>In the simple attention mechanism we have no trainable parameters, leaving the bulk of the effort in representation learning to the embedding layer.  The attention weights are computed derministically from these embeddings of each token of the input sequence. The way to introduce trainable parameters is via the reuse of the principles we have seen in RNN attention mechanisms.</p>
 <p>In RNN encoder-decoder architecture, the current decoder state served as a <em>query</em>  and the encoder states <span class="math notranslate nohighlight">\(h_i\)</span> serve as <em>keys</em> and the contents of the hidden state as <em>values</em>. The attention weights are computed by comparing the query against each of the keys and passing the results via a softmax. The values are then used to create a weighted sum of the encoder hidden states to obtain the new decoder state ie. a vector that incorporates all the encoder hidden states.</p>
 <p>In the transformer architecture we do something similar.</p>
 <section id="linear-transformation-of-the-input-embeddings">
-<h3>Linear transformation of the input embeddings<a class="headerlink" href="#linear-transformation-of-the-input-embeddings" title="Permalink to this headline">#</a></h3>
+<h3>Linear transformation of the input embeddings<a class="headerlink" href="#linear-transformation-of-the-input-embeddings" title="Permalink to this heading">#</a></h3>
 <p>This is done by multiplying the input embeddings with a corresponding matrix <span class="math notranslate nohighlight">\(W\)</span>. We have three such matrices <span class="math notranslate nohighlight">\(W^q, W^k, W^v\)</span> and their role is <em>essential</em>.</p>
 <div class="math notranslate nohighlight">
 \[Q = XW^q\]</div>
@@ -575,7 +598,7 @@ document.write(`
 <p>Let us now recall what we saw already during the <code class="docutils literal notranslate"><span class="pre">word2vec</span></code> construction: we trained a network that will take one-hot vectors of semantically similar tokens that were orthonormal and projected them to vectors that are close to each other in the embedding space.  So we have seen evidence that a projection matrix with proper weights can cause all sorts of interesting things to happen. By analogy, the multiplication of the matrix <span class="math notranslate nohighlight">\(W^q\)</span> with the input token will create a vector (a point) in the d_k dimensional space that will represent the query. Similarly the multiplication of the matrix <span class="math notranslate nohighlight">\(W^k\)</span> with each and every input tokens will create a vector (a point) in the d_k dimensional space that will represent the keys. <strong>After training the keys that can best respond to the query will end up close to it</strong>.</p>
 </section>
 <section id="computation-of-the-attention-scores">
-<h3>Computation of the attention scores<a class="headerlink" href="#computation-of-the-attention-scores" title="Permalink to this headline">#</a></h3>
+<h3>Computation of the attention scores<a class="headerlink" href="#computation-of-the-attention-scores" title="Permalink to this heading">#</a></h3>
 <p>Now that we have projected the tokens in their new space we can form the generalized dot product</p>
 <div class="math notranslate nohighlight">
 \[(W^qq)^TW^kk = q^T (W^q)^TW^kk=q^TWk\]</div>
@@ -586,7 +609,7 @@ document.write(`
 <p>The direct consequence of this positioning in the <span class="math notranslate nohighlight">\(W\)</span> vector space is that the dot product between the query and the nearby keys will be much larger than other far away keys.</p>
 </section>
 <section id="scaling">
-<h3>Scaling<a class="headerlink" href="#scaling" title="Permalink to this headline">#</a></h3>
+<h3>Scaling<a class="headerlink" href="#scaling" title="Permalink to this heading">#</a></h3>
 <p>We then divide the result by the square root of the dimension of the key vector (<span class="math notranslate nohighlight">\(d_k\)</span>). This is done in to prevent the softmax from saturating on the higher attention score elements and severely attenuating the attention weights that correspond to the lower attention scores.</p>
 <p>We can do an experiment to see the bahavior of softmax.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -619,17 +642,17 @@ document.write(`
 </div>
 </section>
 <section id="masking">
-<h3>Masking<a class="headerlink" href="#masking" title="Permalink to this headline">#</a></h3>
+<h3>Masking<a class="headerlink" href="#masking" title="Permalink to this heading">#</a></h3>
 <p>When we decode we do not want to use the attention scores of the future tokens since we dont want to train the tranformer using ground truth that will simply wont be available during inference since we need to preserve causality when we predict the next token during decoding.</p>
 <p>To prevent this from happening we mask the attention scores of the future tokens by setting them to <span class="math notranslate nohighlight">\(-\infty\)</span> before passing them through the softmax. This will cause the softmax to output a vector of values that are very close to 0 for the future tokens.</p>
 </section>
 <section id="softmax">
-<h3>Softmax<a class="headerlink" href="#softmax" title="Permalink to this headline">#</a></h3>
+<h3>Softmax<a class="headerlink" href="#softmax" title="Permalink to this heading">#</a></h3>
 <p>We then pass the attention scores through a softmax function to obtain the attention weights <span class="math notranslate nohighlight">\(\alpha_{ij}\)</span> for each of the <span class="math notranslate nohighlight">\(i\)</span> tokens.</p>
 </section>
 </section>
 <section id="weighting-the-values">
-<h2>Weighting the values<a class="headerlink" href="#weighting-the-values" title="Permalink to this headline">#</a></h2>
+<h2>Weighting the values<a class="headerlink" href="#weighting-the-values" title="Permalink to this heading">#</a></h2>
 <p>We then use the attention weights to create a weighted sum of each of the value to obtain the new input embedding.</p>
 <div class="math notranslate nohighlight">
 \[\hat v_i = \sum_{j=1}^T \alpha_{ij} v_j\]</div>
@@ -644,7 +667,7 @@ document.write(`
 <p>and the dimensions of the tensors can also be extended to accommodate the batch dimension.</p>
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h2>
 <p>An example of the output of the scaled dot-product self-attention is shown below using the <code class="docutils literal notranslate"><span class="pre">bertviz</span></code> library.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bertviz</span> <span class="kn">import</span> <span class="n">head_view</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModel</span>
@@ -694,11 +717,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="transformers-intro.html"
@@ -718,10 +740,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -729,6 +748,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -767,6 +787,7 @@ By Pantelis Monogioudis, Ph.D
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -793,8 +814,8 @@ By Pantelis Monogioudis, Ph.D
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
   <footer class="bd-footer">
   </footer>
