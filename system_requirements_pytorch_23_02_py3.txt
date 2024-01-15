@@ -54,7 +54,7 @@ gast==0.4.0
 google-auth==2.16.0
 google-auth-oauthlib==0.4.6
 graphsurgeon==0.4.6
-grpcio==1.51.1
+grpcio==1.53.0
 HeapDict==1.0.1
 hypothesis==5.35.1
 idna==3.4
