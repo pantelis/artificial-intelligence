@@ -1,12 +1,10 @@
 # --------- docs --------- #
+sphinx==5.0.2
 jupyter-book
 sphinx-autobuild
 sphinxcontrib-youtube
 sphinxcontrib-bibtex
-diagrams
 sphinxcontrib-svg2pdfconverter
-ipywidgets
-optuna
 sphinx-proof
 sphinx-inline-tabs
 sphinxext-rediraffe
@@ -16,8 +14,12 @@ sphinxcontrib-seqdiag
 sphinx_click
 sphinx_examples
 sphinxcontrib-svg2pdfconverter==0.1.0
-#diagrams==0.20.0 # 0.20.0 has a bug and is causing the jupyter book to crash
 # --------- docs --------- #
+
+#diagrams
+#diagrams==0.20.0 # 0.20.0 has a bug and is causing the jupyter book to crash
+ipywidgets
+optuna
 pydantic
 filterpy==1.4.5
 transformers==4.35.1

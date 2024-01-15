@@ -8,7 +8,7 @@ ARG USER_GID=$USER_UID
 
 # Create a non-root user
 RUN groupadd --gid $USER_GID $USERNAME \
-  && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \
+  && useradd -l -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \
   # [Optional] Add sudo support for the non-root user - this is ok for development dockers only
   && apt-get update \
   && apt-get install -y sudo \
