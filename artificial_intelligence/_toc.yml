@@ -207,9 +207,18 @@ parts:
   - file: aiml-common/resources/environment/notebook-status.md
   #- file: aiml-common/lectures/runbook.md  
 
-# - caption: Assignments
+- caption: CS370-Assignments
+  chapters:
+  - file: aiml-common/assignments/probability/probability-assignment-8/index.ipynb
+
+# - caption: CS-GY-6613-Assignments
 #   chapters:
-#   - file: aiml-common/assignments/probability/probability-assignment-7/index.ipynb
+#   - file: aiml-common/assignments/probability/probability-assignment-8/index.ipynb
+
+- caption: CS-GY-6613-INET-Assignments
+  chapters:
+  - file: aiml-common/assignments/probability/probability-assignment-3/index.ipynb
+
 #   - file: aiml-common/assignments/mle/linear-regression/cars.ipynb
 #   - file: aiml-common/assignments/cnn-rare-events/rare_events.ipynb  
 #   - file: aiml-common/assignments/optimization/adam/index.md
