@@ -207,13 +207,9 @@ parts:
   - file: aiml-common/resources/environment/notebook-status.md
   #- file: aiml-common/lectures/runbook.md  
 
-- caption: CS370-Assignments
+- caption: CS-GY-6613 / CS370 Common Assignments
   chapters:
   - file: aiml-common/assignments/probability/probability-assignment-8/index.ipynb
-
-# - caption: CS-GY-6613-Assignments
-#   chapters:
-#   - file: aiml-common/assignments/probability/probability-assignment-8/index.ipynb
 
 - caption: CS-GY-6613-INET-Assignments
   chapters:
