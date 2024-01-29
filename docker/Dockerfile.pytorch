@@ -55,11 +55,17 @@ ENV GI_TYPELIB_PATH="/usr/lib/x86_64-linux-gnu/girepository-1.0"
 
 
 # Install dependencies:
-COPY requirements.txt /tmp/requirements.txt
+# COPY requirements.txt /tmp/requirements.txt
+# RUN pip install -r /tmp/requirements.txt
 
-RUN pip install -r /tmp/requirements.txt
+RUN pip install --upgrade pip
+RUN pip install pipenv
+COPY Pipfile.lock Pipfile /tmp/
+WORKDIR /tmp
+RUN pipenv install --system --deploy --ignore-pipfile
+
+WORKDIR /workspaces/artificial_intelligence
 
 COPY . . 
 
-USER vscode
 
