@@ -662,7 +662,7 @@ document.write(`
 <section id="problem-2-projection-20-points">
 <h2>Problem 2: Projection (20 points)<a class="headerlink" href="#problem-2-projection-20-points" title="Permalink to this heading">#</a></h2>
 <p>You may want to review these <a class="reference external" href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">linear algebra</a> videos or the <a class="reference external" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/ml-math/linear-algebra/index.html">other linear algebra links</a> provided in your course site.</p>
-<p>Simulate a 3-dimensional (3d) Gaussian random vector with the following covariance matrix.</p>
+<p>Simulate a 3-dimensional (3d) Gaussian random vector with the following covariance matrix by sampling m = 1000 3D vectors from this distribution.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{bmatrix}
@@ -671,18 +671,18 @@ document.write(`
 1 &amp; 1.5 &amp; 2 \\
 \end{bmatrix}
 \end{split}\]</div>
-<p>Using the Singular Value Decomposition (SVD) compute the projection of the simulated vectors onto the subspace spanned by the first two principal components.</p>
+<p>Using the Singular Value Decomposition (SVD) of the covariance matrix compute the projection of the m simulated vectors onto the subspace spanned by the first two principal components (or left singular vectors of the covariance matrix).</p>
 <section id="problem-2a-5-points">
 <h3>Problem 2A (5 points)<a class="headerlink" href="#problem-2a-5-points" title="Permalink to this heading">#</a></h3>
-<p>What determines the principal components ?</p>
+<p>What determines the principal components ? Show the vectors which denote the first 2 principal components.</p>
 </section>
 <section id="problem-2b-5-points">
 <h3>Problem 2B (5 points)<a class="headerlink" href="#problem-2b-5-points" title="Permalink to this heading">#</a></h3>
-<p>What determines the positive or negative correlations between the components ?</p>
+<p>Plot the projected vectors in the subspace of first 2 principal components.</p>
 </section>
 <section id="problem-2c-10-points">
 <h3>Problem 2C (10 points)<a class="headerlink" href="#problem-2c-10-points" title="Permalink to this heading">#</a></h3>
-<p>Plot the projected vectors and show whether or not the projection agrees with the positive or negative correlations of the original matrix.</p>
+<p>Reverse the projection to map back to the original 3D space and create a scatter plot to show the reconstructed points. Do the reconstructed points have identical/similar but not identical/different correlations in respective components as the original matrix?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Insert your answer here and fee free to add markdown cells as needed</span>
