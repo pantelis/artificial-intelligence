@@ -214,6 +214,7 @@ parts:
 - caption: CS-GY-6613-INET-Assignments
   chapters:
   - file: aiml-common/assignments/probability/probability-assignment-3/index.ipynb
+  - file: aiml-common/assignments/optimization/sgd-linear-regression/index.ipynb
 
 #   - file: aiml-common/assignments/mle/linear-regression/cars.ipynb
 #   - file: aiml-common/assignments/cnn-rare-events/rare_events.ipynb  
