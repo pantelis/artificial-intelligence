@@ -210,12 +210,12 @@ parts:
 - caption: CS-GY-6613 / CS370 Common Assignments
   chapters:
   - file: aiml-common/assignments/probability/probability-assignment-8/index.ipynb
-
+  - file: aiml-common/assignments/object-detection/video-search.ipynb
 - caption: CS-GY-6613-INET-Assignments
   chapters:
   - file: aiml-common/assignments/probability/probability-assignment-3/index.ipynb
   - file: aiml-common/assignments/optimization/sgd-linear-regression/index.ipynb
-
+  - file: aiml-common/assignments/object-detection/video-search.ipynb
 #   - file: aiml-common/assignments/mle/linear-regression/cars.ipynb
 #   - file: aiml-common/assignments/cnn-rare-events/rare_events.ipynb  
 #   - file: aiml-common/assignments/optimization/adam/index.md
