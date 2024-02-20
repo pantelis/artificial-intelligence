@@ -30,6 +30,7 @@ unified-planning = {extras = ["plot", "enghines"], version = "*"}
 pygobject = "==3.40.1"
 pytest = "==6.2.5"
 bertviz = "*"
+marimo = "*"
 
 [dev-packages]
 
