@@ -31,6 +31,8 @@ pygobject = "==3.40.1"
 pytest = "==6.2.5"
 bertviz = "*"
 marimo = "*"
+prml = {git = "git+https://github.com/pantelis-classes/PRML.git#egg=prml"}
+seaborn = "*"
 
 [dev-packages]
 

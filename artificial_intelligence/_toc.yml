@@ -84,11 +84,10 @@ parts:
 
 - caption: Probabilistic Reasoning
   chapters:    
-  - file: aiml-common/lectures/pgm/pgm-intro/_index.md
-  - file: aiml-common/lectures/pgm/recursive-state-estimation/_index.md
-  - file: aiml-common/lectures/pgm/discrete-bayesian-filter/discrete-bayesian-filter.ipynb
-  - file: aiml-common/lectures/pgm/hmm-localization/_index.md   
-  - file: aiml-common/lectures/pgm/kalman-filters/one-dimensional-kalman-filters.ipynb
+  - file: aiml-common/lectures/rse/recursive-state-estimation/index.md
+  - file: aiml-common/lectures/rse/discrete-bayesian-filter/discrete-bayesian-filter.ipynb
+  - file: aiml-common/lectures/rse/hmm-localization/_index.md   
+  - file: aiml-common/lectures/rse/kalman-filters/one-dimensional-kalman-filters.ipynb
 
 - caption: Logical Reasoning
   chapters:        

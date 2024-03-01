@@ -42,7 +42,8 @@
 				"github.vscode-github-actions",
 				"jan-dolejsi.pddl",
 				"mechatroner.rainbow-csv",
-				"atlassian.atlascode"
+				"atlassian.atlascode",
+				"marimo-team.vscode-marimo"
 			],
 			"settings": {
 				"terminal.integrated.profiles.linux": {
