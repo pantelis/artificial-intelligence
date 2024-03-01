@@ -65,13 +65,13 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/pgm/recursive-state-estimation/_index';</script>
-    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/pgm/recursive-state-estimation/_index.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/rse/recursive-state-estimation/index';</script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/rse/recursive-state-estimation/index.html" />
     <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="Discrete Bayes Filter" href="../discrete-bayesian-filter/discrete-bayesian-filter.html" />
-    <link rel="prev" title="Introduction to Probabilistic Reasoning" href="../pgm-intro/_index.html" />
+    <link rel="prev" title="Transfer Learning for Computer Vision Tutorial" href="../../transfer-learning/transfer_learning_tutorial.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -243,7 +243,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../transfer-learning/transfer-learning-introduction.html">Introduction to Transfer Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../transfer-learning/transfer_learning_tutorial.html">Transfer Learning for Computer Vision Tutorial</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Probabilistic Reasoning</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="label-parts" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../pgm-intro/_index.html">Introduction to Probabilistic Reasoning</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Recursive State Estimation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../discrete-bayesian-filter/discrete-bayesian-filter.html">Discrete Bayes Filter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hmm-localization/_index.html">Localization and Tracking</a></li>
@@ -425,7 +424,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/pgm/recursive-state-estimation/_index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/rse/recursive-state-estimation/index.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -455,7 +454,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../../../_sources/aiml-common/lectures/pgm/recursive-state-estimation/_index.md" target="_blank"
+      <li><a href="../../../../_sources/aiml-common/lectures/rse/recursive-state-estimation/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -574,6 +573,9 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="recursive-state-estimation">
 <h1>Recursive State Estimation<a class="headerlink" href="#recursive-state-estimation" title="Permalink to this heading">#</a></h1>
+<p>In the scene understanding chapter we started putting together the perception pipelines that resulted in us knowing where are the objects of interest in the image coordinate frame but we stopped short of any advanced methods that can lead to what we humans call <em>understanding</em>. We hinted that assigning an object an symbolic identity is an essential ability that allows an embodied AI agent to reason about the scene using symbolic reasoning approaches researched by the AI community over many decades.</p>
+<p><img alt="prob-reasoning-agent" src="../../../../_images/prob-reasoning-agent.png" />
+<em>Positioning of probabilistic reasoning subsystem</em></p>
 <p>In the Bayesian Inference section we have seen how sequential data belonging to just two evidential variables (captured via <span class="math notranslate nohighlight">\(p(x,y)\)</span>) can be treated by probabilistic models to infer (reason) about values of the posterior. Now we will expand on two fronts:</p>
 <ul class="simple">
 <li><p>Introduce the concept of <em>state</em> <span class="math notranslate nohighlight">\(s\)</span> that encapsulates multiple random variables and consider <em>dynamical systems</em> with non-trivial non-linear dynamics (state transition models) common in robotics and many other fields.</p></li>
@@ -581,6 +583,7 @@ document.write(`
 </ul>
 <p>The perception subsystem, that processes sensor data produces noisy estimates (object detections etc.) - these can be attributed to the algorithmic elements of the subsystem or to imperfections in the sensors themselves. The model that captures the perception pipeline from sensors to estimates will be called <em>measurement model</em> or <em>sensor model</em>. So in summary we have two abstractions / models that we need to be concerned about: the transition model of the environment state and the sensor model.</p>
 <p>Such expansion, will allow us to form using the Bayes rule, perhaps one of the most important contributions to the probabilistic modeling of dynamical systems: the recursive state estimator also known as <em>Bayes filter</em> that affords the agent the ability to maintain an internal <em>belief</em> of the current state of the environment.</p>
+<p>In a subsequent chapter we will enhance the model to include past <em>actions</em> rather than just past percepts.</p>
 <section id="bayes-filter">
 <h2>Bayes Filter<a class="headerlink" href="#bayes-filter" title="Permalink to this heading">#</a></h2>
 <p>We are introducing this algorithm, by considering a embodied agent (a robot) that moves in an environment.</p>
@@ -588,7 +591,7 @@ document.write(`
 <em>Agent belief and environment interactions</em></p>
 <p>The state of such environment contain variables that capture dynamics such as pose (6D) that includes location and orientation, agent velocity, other objects poses, etc., as well as static state variables such as location of obstacles, walls etc. Most practical algorithms for state estimation assume that the stochastically evolving environment is not affected from state variables prior to <span class="math notranslate nohighlight">\(s_t\)</span>.</p>
 <p>This is the <em>Markovian</em> assumption and is key in making such algorithms tractable. Note that the assumption does not constraint the actual time internal that it is impactful for the future as we are free to define anyway we want the state <span class="math notranslate nohighlight">\(s_t\)</span>. It may for example use a super-state that consists of two states in corresponding time intervals <span class="math notranslate nohighlight">\(s_t=[s_{t-1}, s_t]\)</span>.  We call this the Markov order - in this case the order is two. In the figure below you can see the PGM that corresponds to the Markov assumption.</p>
-<p><img alt="dynamic-bayesin-network" src="../../../../_images/dynamic-bayes-network.png" />
+<p><img alt="dynamic-bayesian-network" src="../../../../_images/dynamic-bayes-network.png" />
 <em>Dynamic Bayesian Network that characterizes the Markov evolution of states, measurements and controls  - in the text we use for states the letter <span class="math notranslate nohighlight">\(s\)</span> instead of <span class="math notranslate nohighlight">\(x\)</span> and for actions the letter <span class="math notranslate nohighlight">\(a\)</span> instead of <span class="math notranslate nohighlight">\(u\)</span>.</em></p>
 <p>The above graph decomposes as follows:</p>
 <div class="math notranslate nohighlight">
@@ -615,9 +618,9 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(→ \mathtt{bel}(s_t) = \eta p(z_t | s_t) \mathtt{\hat{bel}}(s_t)\)</span> (measurement update)</p>
 <p>endfor</p>
 <hr class="docutils" />
-<p>To illustrate how the Bayes filter is useful, lets look at a practical example. This example was borrowed from Sebastian Thrun’s book, “Probabilistic Robotics”, MIT Press, 2006.</p>
 <section id="door-state-estimation">
 <h3>Door state estimation<a class="headerlink" href="#door-state-estimation" title="Permalink to this heading">#</a></h3>
+<p>To illustrate how the Bayes filter is useful, lets look at a practical example. This example was borrowed from Sebastian Thrun’s book, “Probabilistic Robotics”, MIT Press, 2006.</p>
 <p>The problem we are considering is estimating the state of a door using an agent (robot) equipped with a monocular camera.</p>
 <p><img alt="robot-door" src="../../../../_images/robot-door.jpg" /></p>
 <p>For simplicity lets assume that the door can be in any of two possible states (open or closed) and that the agent does not know the initial state of the door. Therefore initially, its beliefs are:</p>
@@ -756,7 +759,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./aiml-common/lectures/pgm/recursive-state-estimation"
+            path: "./aiml-common/lectures/rse/recursive-state-estimation"
         },
         predefinedOutput: true
     }
@@ -774,12 +777,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../pgm-intro/_index.html"
+       href="../../transfer-learning/transfer_learning_tutorial.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction to Probabilistic Reasoning</p>
+        <p class="prev-next-title">Transfer Learning for Computer Vision Tutorial</p>
       </div>
     </a>
     <a class="right-next"

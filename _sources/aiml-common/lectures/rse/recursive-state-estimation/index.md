@@ -1,10 +1,9 @@
----
-title: Recursive State Estimation
-draft: false
-weight: 85
----
-
 # Recursive State Estimation
+
+In the scene understanding chapter we started putting together the perception pipelines that resulted in us knowing where are the objects of interest in the image coordinate frame but we stopped short of any advanced methods that can lead to what we humans call _understanding_. We hinted that assigning an object an symbolic identity is an essential ability that allows an embodied AI agent to reason about the scene using symbolic reasoning approaches researched by the AI community over many decades. 
+
+![prob-reasoning-agent](images/prob-reasoning-agent.png)
+*Positioning of probabilistic reasoning subsystem*
 
 In the Bayesian Inference section we have seen how sequential data belonging to just two evidential variables (captured via $p(x,y)$) can be treated by probabilistic models to infer (reason) about values of the posterior. Now we will expand on two fronts:
 
@@ -13,8 +12,10 @@ In the Bayesian Inference section we have seen how sequential data belonging to 
 * Introduce the time index $t$ explicitly in the aforementioned state evolution as represented via a graphical model. 
 
 The perception subsystem, that processes sensor data produces noisy estimates (object detections etc.) - these can be attributed to the algorithmic elements of the subsystem or to imperfections in the sensors themselves. The model that captures the perception pipeline from sensors to estimates will be called _measurement model_ or _sensor model_. So in summary we have two abstractions / models that we need to be concerned about: the transition model of the environment state and the sensor model. 
-
+  
 Such expansion, will allow us to form using the Bayes rule, perhaps one of the most important contributions to the probabilistic modeling of dynamical systems: the recursive state estimator also known as _Bayes filter_ that affords the agent the ability to maintain an internal _belief_ of the current state of the environment.  
+
+In a subsequent chapter we will enhance the model to include past _actions_ rather than just past percepts. 
 
 ## Bayes Filter
 
@@ -27,7 +28,7 @@ The state of such environment contain variables that capture dynamics such as po
 
 This is the _Markovian_ assumption and is key in making such algorithms tractable. Note that the assumption does not constraint the actual time internal that it is impactful for the future as we are free to define anyway we want the state $s_t$. It may for example use a super-state that consists of two states in corresponding time intervals $s_t=[s_{t-1}, s_t]$.  We call this the Markov order - in this case the order is two. In the figure below you can see the PGM that corresponds to the Markov assumption. 
 
-![dynamic-bayesin-network](images/dynamic-bayes-network.png)
+![dynamic-bayesian-network](images/dynamic-bayes-network.png)
 *Dynamic Bayesian Network that characterizes the Markov evolution of states, measurements and controls  - in the text we use for states the letter $s$ instead of $x$ and for actions the letter $a$ instead of $u$.* 
 
 The above graph decomposes as follows: 
@@ -71,9 +72,10 @@ endfor
 
 ---
 
-To illustrate how the Bayes filter is useful, lets look at a practical example. This example was borrowed from Sebastian Thrun's book, "Probabilistic Robotics", MIT Press, 2006.  
 
 ### Door state estimation
+
+To illustrate how the Bayes filter is useful, lets look at a practical example. This example was borrowed from Sebastian Thrun's book, "Probabilistic Robotics", MIT Press, 2006.  
 
 The problem we are considering is estimating the state of a door using an agent (robot) equipped with a monocular camera. 
 

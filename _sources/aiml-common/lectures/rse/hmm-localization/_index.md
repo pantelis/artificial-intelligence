@@ -1,9 +1,3 @@
----
-title: Localization and Tracking
-weight: 88
-draft: false
----
-
 # Localization and Tracking
 
 In the recursive state estimation section we have seen the formulation of the Bayes filter and its application in a simple problem of trying to maintain a latent  (internal to the agent) _belief_  about the state of the environment $s$ given measurements $z$ and agent actions $a$. Here we are closing the loop: we started with the perception system giving us poses of objects it detects, effectively localizing the objects at the _pixel_ coordinate system (within the image). Now we need to use the Bayes filter to localize the object globally as well as to be able to _track it_, since it can also move across space, so that we can recognize it over time as the same unique object and be able to assign a symbol to it.  
