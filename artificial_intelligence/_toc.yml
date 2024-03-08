@@ -44,6 +44,7 @@ parts:
   - file: aiml-common/lectures/dnn/fashion-mnist-case-study.md
   - file: aiml-common/lectures/optimization/regularization/_index.md
   - file: aiml-common/lectures/optimization/regularization/regularization-workshop-1.md
+  - file: aiml-common/lectures/information-theory-dnn/index.md
       
 - caption: Convolutional Neural Networks
   chapters:    
