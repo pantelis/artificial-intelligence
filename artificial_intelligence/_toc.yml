@@ -37,7 +37,7 @@ parts:
 - caption: Deep Neural Networks
   chapters:    
   - file: aiml-common/lectures/classification/perceptron/_index.md
-  - file: aiml-common/lectures/dnn/dnn-intro/_index.md
+  - file: aiml-common/lectures/dnn/dnn-intro/index.md
   - file: aiml-common/lectures/dnn/backprop-intro/_index.md
   - file: aiml-common/lectures/dnn/backprop-dnn/_index.md
   - file: aiml-common/lectures/dnn/backprop-dnn-exercises/_index.md
@@ -210,12 +210,15 @@ parts:
 - caption: CS-GY-6613 / CS370 Common Assignments
   chapters:
   - file: aiml-common/assignments/probability/probability-assignment-8/index.ipynb
+  - file: aiml-common/assignments/optimization/sgd.ipynb  
   - file: aiml-common/assignments/object-detection/video-search.ipynb
+  - file: aiml-common/assignments/object-tracking-kalman/drone-follow-me.md
 - caption: CS-GY-6613-INET-Assignments
   chapters:
   - file: aiml-common/assignments/probability/probability-assignment-3/index.ipynb
   - file: aiml-common/assignments/optimization/sgd-linear-regression/index.ipynb
   - file: aiml-common/assignments/object-detection/video-search2.ipynb
+  - file: aiml-common/assignments/object-tracking-kalman/drone-follow-me2.md
 #   - file: aiml-common/assignments/mle/linear-regression/cars.ipynb
 #   - file: aiml-common/assignments/cnn-rare-events/rare_events.ipynb  
 #   - file: aiml-common/assignments/optimization/adam/index.md
