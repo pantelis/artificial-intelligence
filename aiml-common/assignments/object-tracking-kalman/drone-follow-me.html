@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Cyclist Detection and Tracking &#8212; Introduction to Artificial Intelligence</title>
+    <title>Drone follow me using Kalman Filters &#8212; Introduction to Artificial Intelligence</title>
   
   
   
@@ -348,13 +348,18 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../probability/probability-assignment-8/index.html">Probability &amp; Linear Algebra</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimization/sgd.html">Stochastic Optimization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-detection/video-search.html">Video Search</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Cyclist Detection and Tracking</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Drone follow me using Kalman Filters</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">CS-GY-6613-INET-Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/><label class="label-parts" for="toctree-checkbox-30"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../probability/probability-assignment-3/index.html">Probability Assignment</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../optimization/sgd-linear-regression/index.html">Optimization algorithms for linear regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-detection/video-search2.html">Video Search</a></li>
 <li class="toctree-l1"><a class="reference internal" href="drone-follow-me2.html">Drone follow me using Kalman Filters</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Undergraduate Project</span></p><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/><label class="label-parts" for="toctree-checkbox-31"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../projects/robotics/learning-in-simulated-worlds/index.html">Learning in Simulated Worlds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/cv/wasm-pipelines/index.html">Webassembly (WASM) media pipelines</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Graduate Projects</span></p><input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/><label class="label-parts" for="toctree-checkbox-32"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../projects/robotics/nl-guided-robotics/index.html">Natual Language Guided Robotics</a></li>
 </ul></li></ul>
     </div>
 </nav></div>
@@ -539,7 +544,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Cyclist Detection and Tracking</h1>
+    <h1>Drone follow me using Kalman Filters</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -563,8 +568,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="cyclist-detection-and-tracking">
-<h1>Cyclist Detection and Tracking<a class="headerlink" href="#cyclist-detection-and-tracking" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="drone-follow-me-using-kalman-filters">
+<h1>Drone follow me using Kalman Filters<a class="headerlink" href="#drone-follow-me-using-kalman-filters" title="Permalink to this heading">#</a></h1>
 <p>Multi-Object Tracking (MOT) is a core visual ability that humans poses to perform kinetic tasks and coordinate other tasks. The AI community has recognized the importance of MOT via a series of <a class="reference external" href="https://motchallenge.net">competitions</a>.</p>
 <p>In this assignment, the object class is <code class="docutils literal notranslate"><span class="pre">bicycle</span></code> and the ability to track this object  will be demonstrated using <a class="reference external" href="https://en.wikipedia.org/wiki/Kalman_filter">Kalman Filters</a>.</p>
 <section id="task-1-setup-your-development-environment-and-store-the-test-video-locally-10-points">
