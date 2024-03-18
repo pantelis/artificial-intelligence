@@ -205,7 +205,7 @@ parts:
   - file: aiml-common/lectures/python/index.md
   
   - file: aiml-common/resources/environment/notebook-status.md
-  #- file: aiml-common/lectures/runbook.md  
+  # - file: aiml-common/lectures/runbook.md  
 
 - caption: CS-GY-6613 / CS370 Common Assignments
   chapters:
@@ -213,6 +213,7 @@ parts:
   - file: aiml-common/assignments/optimization/sgd.ipynb  
   - file: aiml-common/assignments/object-detection/video-search.ipynb
   - file: aiml-common/assignments/object-tracking-kalman/drone-follow-me.md
+
 - caption: CS-GY-6613-INET-Assignments
   chapters:
   - file: aiml-common/assignments/probability/probability-assignment-3/index.ipynb
@@ -224,7 +225,11 @@ parts:
 #   - file: aiml-common/assignments/optimization/adam/index.md
 #   - file: aiml-common/assignments/object-tracking-kalman/drone.md  
  
-# - caption:  Projects
-#   chapters: 
-#   - file: aiml-common/projects/nlp/foreign-whispers/index.md
-#   - file: aiml-common/projects/nl-guided-robotics/index.md
+- caption:  Undergraduate Project
+  chapters: 
+  - file: aiml-common/projects/robotics/learning-in-simulated-worlds/index.md
+  - file: aiml-common/projects/cv/wasm-pipelines/index.md
+  
+- caption:  Graduate Projects
+  chapters: 
+  - file: aiml-common/projects/robotics/nl-guided-robotics/index.md
