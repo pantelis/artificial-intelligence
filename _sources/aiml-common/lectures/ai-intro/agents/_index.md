@@ -1,10 +1,3 @@
----
-title: A systems approach to AI
-nextjs:
-  metadata:
-    title: A systems approach to AI
-    description: 
----
 # A systems approach to AI
 
 ## Agent-Environment Interface
