@@ -227,9 +227,11 @@ parts:
  
 - caption:  Undergraduate Project
   chapters: 
+  - file: aiml-common/projects/cv/sam-finetuning-remote-sensing/index.md
   - file: aiml-common/projects/robotics/learning-in-simulated-worlds/index.md
   - file: aiml-common/projects/cv/wasm-pipelines/index.md
   
 - caption:  Graduate Projects
   chapters: 
+  - file: aiml-common/projects/cv/sam-advanced-remote-sensing/index.md
   - file: aiml-common/projects/robotics/nl-guided-robotics/index.md
