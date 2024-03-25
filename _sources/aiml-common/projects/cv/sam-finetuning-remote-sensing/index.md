@@ -10,7 +10,7 @@ Lately, we have observed the advent of very large foundational models in NLP app
 
 ![](images/sam.png)
 
-Read and experiment with [the SAM implementation](https://segment-anything.com/) and [the SAM paper](https://arxiv.org/abs/2101.04703).
+Read and experiment with [the SAM implementation](https://segment-anything.com/) and [the SAM paper](https://arxiv.org/abs/2304.02643).
 
 
 ## Milestone 1: Get to know Geographical Information Systems (GIS) and set up your development environment
