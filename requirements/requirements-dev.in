@@ -1,0 +1,5 @@
+pytest
+pytest-cov
+pytest-xdist
+pytest-mock
+# -e git+https://github.com/pantelis-classes/PRML.git#egg=prml
