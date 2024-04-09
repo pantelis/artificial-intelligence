@@ -1,7 +1,3 @@
----
-title: A systems approach to AI
----
-
 # The four approaches towards AI
 
 ![AI-approaches](images/AI-approaches.png)

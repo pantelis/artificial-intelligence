@@ -8,17 +8,20 @@ The project will be graded bearing in mind the amount of work you will be able t
 
 ![](images/wasm.png)
 
-This is a project for those that want to work on infrastructure / framework level code and have strong background in C. The goal is to create a framework for running perception pipelines using webassembly components. This will allow us to run perception tasks **in the browser or in the cloud without tight coupling with specific language runtimes**. 
+This is a project for those that want to work on infrastructure / framework level code and have strong background in C. It is also open to those that want to use this opportunity to learn Rust. The goal is to create a framework for running perception pipelines using webassembly components. This will allow us to run perception tasks **in the browser or in the cloud without tight coupling with specific language runtimes**. 
 
 The value proposition of this project: 
 
 * pipelines can run in the client browser preserving privacy when applications cannot transmit user data to the cloud. 
+
 * WASM runtimes are secure by design as they run in a sandbox. 
+
 * pipelines can run in the cloud using webassembly runtimes such as [wasmtime](https://wasmtime.dev/) and can support a variety of languages and environments including optionally GPU acceleration. 
+
 * Ease of use: pipelines can be built using a visual editor and can be deployed to the cloud or to the browser.
 
 ```{note}
-Please [note the relationship between MediaPipe and this project](https://www.it-jim.com/blog/mediapipe-intro/). Both projects are working on similar problems, having said that the gstreamer basis caters to strong real-time media processing and inherits the NVIDIA Deepstream nodes and plugins that accelerate media processing on NVIDIA GPUs.
+Please [note the relationship between MediaPipe and this project](https://www.it-jim.com/blog/mediapipe-intro/). Both projects are working on similar problems, having said that the gstreamer basis caters to strong real-time media processing and can inherit the NVIDIA Deepstream nodes and plugins that accelerate media processing on NVIDIA GPUs. Other potential acceleration plugins can be added such as Intel's OpenVINO and  AMD's ROCm. 
 ```
 
 ## Project Goals

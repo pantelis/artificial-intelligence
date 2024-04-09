@@ -171,11 +171,15 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../ai-intro/course-introduction/_index.html">Course Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../ai-intro/systems-approach/_index.html">The four approaches towards AI</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../../../ai-intro/agents/_index.html">A systems approach to AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ai-intro/agents/_index.html">Agent-Environment Interface</a></li>
+
+
+
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-1</span></p><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="label-parts" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../learning-problem/_index.html">The Learning Problem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../regression/linear-regression/linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../optimization/sgd/_index.html">Stochastic Gradient Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../entropy/index.html">Entropy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../optimization/maximum-likelihood/marginal_maximum_likelihood.html">Maximum Likelihood Estimation of a marginal model</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../../../optimization/maximum-likelihood/mle-gaussian-parameters.html">Maximum Likelihood Estimation of Gaussian Parameters</a></li>
@@ -654,8 +658,62 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Please note that these are included in the course container - uncomment if you want to run on colab</span>
 
-<span class="c1"># !apt install graphviz graphviz-dev</span>
-<span class="c1"># !pip install unified-planning[engines,plot]</span>
+<span class="c1">#!apt install graphviz graphviz-dev</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>unified-planning<span class="o">[</span>engines,plot<span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Defaulting to user installation because normal site-packages is not writeable
+Looking in indexes: https://pypi.org/simple, https://pypi.ngc.nvidia.com
+Requirement already satisfied: unified-planning[engines,plot] in /usr/local/lib/python3.10/dist-packages (1.1.0)
+Requirement already satisfied: pyparsing in /usr/local/lib/python3.10/dist-packages (from unified-planning[engines,plot]) (3.0.9)
+Requirement already satisfied: networkx in /usr/local/lib/python3.10/dist-packages (from unified-planning[engines,plot]) (2.6.3)
+Requirement already satisfied: ConfigSpace in /usr/local/lib/python3.10/dist-packages (from unified-planning[engines,plot]) (0.7.1)
+Requirement already satisfied: tarski[arithmetic] in /home/vscode/.local/lib/python3.10/site-packages (from unified-planning[engines,plot]) (0.8.2)
+Requirement already satisfied: up-pyperplan~=1.1.0 in /home/vscode/.local/lib/python3.10/site-packages (from unified-planning[engines,plot]) (1.1.0)
+Requirement already satisfied: up-tamer~=1.1.0 in /home/vscode/.local/lib/python3.10/site-packages (from unified-planning[engines,plot]) (1.1.2)
+Requirement already satisfied: up-enhsp~=0.0.24 in /home/vscode/.local/lib/python3.10/site-packages (from unified-planning[engines,plot]) (0.0.25)
+Requirement already satisfied: up-fast-downward==0.4.1 in /home/vscode/.local/lib/python3.10/site-packages (from unified-planning[engines,plot]) (0.4.1)
+Requirement already satisfied: up-lpg==0.0.10 in /home/vscode/.local/lib/python3.10/site-packages (from unified-planning[engines,plot]) (0.0.10)
+Requirement already satisfied: up-fmap==0.0.13 in /home/vscode/.local/lib/python3.10/site-packages (from unified-planning[engines,plot]) (0.0.13)
+Requirement already satisfied: up-aries&gt;=0.3.3 in /home/vscode/.local/lib/python3.10/site-packages (from unified-planning[engines,plot]) (0.3.3)
+Requirement already satisfied: up-symk&gt;=1.3.0 in /home/vscode/.local/lib/python3.10/site-packages (from unified-planning[engines,plot]) (1.3.0)
+Requirement already satisfied: plotly in /home/vscode/.local/lib/python3.10/site-packages (from unified-planning[engines,plot]) (5.20.0)
+Requirement already satisfied: matplotlib==3.7.3 in /home/vscode/.local/lib/python3.10/site-packages (from unified-planning[engines,plot]) (3.7.3)
+Requirement already satisfied: kaleido in /home/vscode/.local/lib/python3.10/site-packages (from unified-planning[engines,plot]) (0.2.1)
+Requirement already satisfied: pygraphviz in /home/vscode/.local/lib/python3.10/site-packages (from unified-planning[engines,plot]) (1.12)
+Requirement already satisfied: graphviz in /home/vscode/.local/lib/python3.10/site-packages (from unified-planning[engines,plot]) (0.20.3)
+Requirement already satisfied: pandas in /usr/local/lib/python3.10/dist-packages (from unified-planning[engines,plot]) (1.5.2)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.7.3-&gt;unified-planning[engines,plot]) (1.0.7)
+Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.7.3-&gt;unified-planning[engines,plot]) (0.11.0)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.7.3-&gt;unified-planning[engines,plot]) (4.39.3)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.7.3-&gt;unified-planning[engines,plot]) (1.4.4)
+Requirement already satisfied: numpy&lt;2,&gt;=1.20 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.7.3-&gt;unified-planning[engines,plot]) (1.22.2)
+Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.7.3-&gt;unified-planning[engines,plot]) (23.1)
+Requirement already satisfied: pillow&gt;=6.2.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.7.3-&gt;unified-planning[engines,plot]) (9.2.0)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.7.3-&gt;unified-planning[engines,plot]) (2.8.2)
+Requirement already satisfied: grpcio in /home/vscode/.local/lib/python3.10/site-packages (from up-aries&gt;=0.3.3-&gt;unified-planning[engines,plot]) (1.62.1)
+Requirement already satisfied: grpcio-tools in /home/vscode/.local/lib/python3.10/site-packages (from up-aries&gt;=0.3.3-&gt;unified-planning[engines,plot]) (1.62.1)
+Requirement already satisfied: pytest in /usr/local/lib/python3.10/dist-packages (from up-aries&gt;=0.3.3-&gt;unified-planning[engines,plot]) (7.3.1)
+Requirement already satisfied: pyperplan==2.1 in /home/vscode/.local/lib/python3.10/site-packages (from up-pyperplan~=1.1.0-&gt;unified-planning[engines,plot]) (2.1)
+Requirement already satisfied: wheel in /usr/local/lib/python3.10/dist-packages (from pyperplan==2.1-&gt;up-pyperplan~=1.1.0-&gt;unified-planning[engines,plot]) (0.40.0)
+Requirement already satisfied: pytamer==0.1.19 in /home/vscode/.local/lib/python3.10/site-packages (from up-tamer~=1.1.0-&gt;unified-planning[engines,plot]) (0.1.19)
+Requirement already satisfied: scipy in /usr/local/lib/python3.10/dist-packages (from ConfigSpace-&gt;unified-planning[engines,plot]) (1.10.1)
+Requirement already satisfied: typing-extensions in /usr/local/lib/python3.10/dist-packages (from ConfigSpace-&gt;unified-planning[engines,plot]) (4.11.0)
+Requirement already satisfied: more-itertools in /usr/local/lib/python3.10/dist-packages (from ConfigSpace-&gt;unified-planning[engines,plot]) (10.2.0)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.10/dist-packages (from pandas-&gt;unified-planning[engines,plot]) (2023.3)
+Requirement already satisfied: tenacity&gt;=6.2.0 in /home/vscode/.local/lib/python3.10/site-packages (from plotly-&gt;unified-planning[engines,plot]) (8.2.3)
+Requirement already satisfied: multipledispatch in /home/vscode/.local/lib/python3.10/site-packages (from tarski[arithmetic]; extra == &quot;engines&quot;-&gt;unified-planning[engines,plot]) (1.0.0)
+Requirement already satisfied: antlr4-python3-runtime==4.7.2 in /home/vscode/.local/lib/python3.10/site-packages (from tarski[arithmetic]; extra == &quot;engines&quot;-&gt;unified-planning[engines,plot]) (4.7.2)
+Requirement already satisfied: psutil in /usr/local/lib/python3.10/dist-packages (from tarski[arithmetic]; extra == &quot;engines&quot;-&gt;unified-planning[engines,plot]) (5.9.4)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.7-&gt;matplotlib==3.7.3-&gt;unified-planning[engines,plot]) (1.16.0)
+Requirement already satisfied: protobuf&lt;5.0dev,&gt;=4.21.6 in /home/vscode/.local/lib/python3.10/site-packages (from grpcio-tools-&gt;up-aries&gt;=0.3.3-&gt;unified-planning[engines,plot]) (4.25.3)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.10/dist-packages (from grpcio-tools-&gt;up-aries&gt;=0.3.3-&gt;unified-planning[engines,plot]) (65.5.1)
+Requirement already satisfied: iniconfig in /usr/local/lib/python3.10/dist-packages (from pytest-&gt;up-aries&gt;=0.3.3-&gt;unified-planning[engines,plot]) (2.0.0)
+Requirement already satisfied: pluggy&lt;2.0,&gt;=0.12 in /usr/local/lib/python3.10/dist-packages (from pytest-&gt;up-aries&gt;=0.3.3-&gt;unified-planning[engines,plot]) (1.0.0)
+Requirement already satisfied: exceptiongroup&gt;=1.0.0rc8 in /usr/local/lib/python3.10/dist-packages (from pytest-&gt;up-aries&gt;=0.3.3-&gt;unified-planning[engines,plot]) (1.1.1)
+Requirement already satisfied: tomli&gt;=1.0.0 in /usr/local/lib/python3.10/dist-packages (from pytest-&gt;up-aries&gt;=0.3.3-&gt;unified-planning[engines,plot]) (2.0.1)
 </pre></div>
 </div>
 </div>
@@ -954,7 +1012,7 @@ goals = [
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PROBLEM_CLASS: [&#39;ACTION_BASED&#39;]
-CONDITIONS_KIND: [&#39;NEGATIVE_CONDITIONS&#39;, &#39;EQUALITIES&#39;]
+CONDITIONS_KIND: [&#39;EQUALITIES&#39;, &#39;NEGATIVE_CONDITIONS&#39;]
 TYPING: [&#39;FLAT_TYPING&#39;]
 </pre></div>
 </div>
@@ -964,7 +1022,8 @@ TYPING: [&#39;FLAT_TYPING&#39;]
 <p><code class="docutils literal notranslate"><span class="pre">OneshotPlanner</span></code> is the basic planning operation mode: given a problem find a plan</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ask the UP to instantiate for us a &quot;oneshot&quot; planner supporting our problem kind</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">unified_planning.shortcuts</span> <span class="kn">import</span> <span class="o">*</span>
+
 <span class="k">with</span> <span class="n">OneshotPlanner</span><span class="p">(</span><span class="n">problem_kind</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">kind</span><span class="p">)</span> <span class="k">as</span> <span class="n">planner</span><span class="p">:</span>
   <span class="n">res</span> <span class="o">=</span> <span class="n">planner</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
@@ -972,9 +1031,8 @@ TYPING: [&#39;FLAT_TYPING&#39;]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">NOTE: To disable printing of planning engine credits, add this line to your code: `up.shortcuts.get_environment().credits_stream = None`</span>
-  *** Credits ***
-  * In operation mode `OneshotPlanner` at line 2 of `/tmp/ipykernel_998726/4034772928.py`, you are using the following planning engine:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  *** Credits ***
+  * In operation mode `OneshotPlanner` at line 3 of `/tmp/ipykernel_719378/1120260661.py`, you are using the following planning engine:
   * Engine name: Fast Downward
   * Developers:  Uni Basel team and contributors (cf. https://github.com/aibasel/downward/blob/main/README.md)
   * Description: Fast Downward is a domain-independent classical planning system.
@@ -1004,7 +1062,7 @@ plan: SequentialPlan:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  *** Credits ***
-  * In operation mode `Compiler` at line 136 of `/home/vscode/.local/lib/python3.8/site-packages/unified_planning/plot/causal_graph_plot.py`, you are using the following planning engine:
+  * In operation mode `Compiler` at line 1157 of `/usr/local/lib/python3.10/dist-packages/unified_planning/model/problem.py`, you are using the following planning engine:
   * Engine name: Tarski grounder
   * Developers:  Artificial Intelligence and Machine Learning Group - Universitat Pompeu Fabra
   * Description: Tarski grounder, more information available on the given website.
@@ -1012,8 +1070,8 @@ plan: SequentialPlan:
 
 </pre></div>
 </div>
-<img alt="../../../../../_images/44b7a01dd2717b06c47942fb84754e020acd8a6f0563ed9449db37f624fd2435.png" src="../../../../../_images/44b7a01dd2717b06c47942fb84754e020acd8a6f0563ed9449db37f624fd2435.png" />
-<img alt="../../../../../_images/60bd4b00f45d61f0f7cd08b244d0af64cf5c8b233a9b74d0370498281d1e5f78.png" src="../../../../../_images/60bd4b00f45d61f0f7cd08b244d0af64cf5c8b233a9b74d0370498281d1e5f78.png" />
+<img alt="../../../../../_images/83bb0c985d8ff0d1d3dfdc1de05696b3c740a7afc4acc19dc31ebeac27652d2f.png" src="../../../../../_images/83bb0c985d8ff0d1d3dfdc1de05696b3c740a7afc4acc19dc31ebeac27652d2f.png" />
+<img alt="../../../../../_images/82bfabb153a7b83f2b93fed1953aafaec0d95678ea495404b81f1da40dcfbf46.png" src="../../../../../_images/82bfabb153a7b83f2b93fed1953aafaec0d95678ea495404b81f1da40dcfbf46.png" />
 </div>
 </div>
 </section>
@@ -1030,7 +1088,7 @@ plan: SequentialPlan:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  *** Credits ***
-  * In operation mode `OneshotPlanner` at line 1 of `/tmp/ipykernel_998726/719035379.py`, you are using the following planning engine:
+  * In operation mode `OneshotPlanner` at line 1 of `/tmp/ipykernel_719378/719035379.py`, you are using the following planning engine:
   * Engine name: LPG
   * Developers:  UNIBS Team
   * Description: LPG is a planner based on local search and planning graphs.
@@ -1050,7 +1108,7 @@ plan: SequentialPlan:
     stack(d, e)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/vscode/.local/lib/python3.8/site-packages/unified_planning/engines/mixins/oneshot_planner.py:76: UserWarning: We cannot establish whether lpg can solve this problem!
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.10/dist-packages/unified_planning/engines/mixins/oneshot_planner.py:76: UserWarning: We cannot establish whether lpg can solve this problem!
   warn(msg)
 </pre></div>
 </div>
@@ -1070,7 +1128,7 @@ plan: SequentialPlan:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  *** Credits ***
-  * In operation mode `OneshotPlanner` at line 1 of `/tmp/ipykernel_998726/1972089550.py`, you are using a parallel planning engine with the following components:
+  * In operation mode `OneshotPlanner` at line 1 of `/tmp/ipykernel_719378/1972089550.py`, you are using a parallel planning engine with the following components:
   * Engine name: Tamer
   * Developers:  FBK Tamer Development Team
   * Description: Tamer offers the capability to generate a plan for classical, numerical and temporal problems.
@@ -1120,7 +1178,7 @@ plan: SequentialPlan:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  *** Credits ***
-  * In operation mode `OneshotPlanner` at line 2 of `/tmp/ipykernel_998726/3657586449.py`, you are using the following planning engine:
+  * In operation mode `OneshotPlanner` at line 2 of `/tmp/ipykernel_719378/3657586449.py`, you are using the following planning engine:
   * Engine name: Fast Downward
   * Developers:  Uni Basel team and contributors (cf. https://github.com/aibasel/downward/blob/main/README.md)
   * Description: Fast Downward is a domain-independent classical planning system.
@@ -1135,7 +1193,7 @@ plan: SequentialPlan:
     pickup(d)
     stack(d, e)
   *** Credits ***
-  * In operation mode `OneshotPlanner` at line 2 of `/tmp/ipykernel_998726/3657586449.py`, you are using the following planning engine:
+  * In operation mode `OneshotPlanner` at line 2 of `/tmp/ipykernel_719378/3657586449.py`, you are using the following planning engine:
   * Engine name: Fast Downward
   * Developers:  Uni Basel team and contributors (cf. https://github.com/aibasel/downward/blob/main/README.md)
   * Description: Fast Downward is a domain-independent classical planning system.
@@ -1150,7 +1208,7 @@ plan: SequentialPlan:
     pickup(d)
     stack(d, e)
   *** Credits ***
-  * In operation mode `OneshotPlanner` at line 2 of `/tmp/ipykernel_998726/3657586449.py`, you are using the following planning engine:
+  * In operation mode `OneshotPlanner` at line 2 of `/tmp/ipykernel_719378/3657586449.py`, you are using the following planning engine:
   * Engine name: SymK
   * Developers:  David Speck (cf. https://github.com/speckdavid/symk/blob/master/README.md )
   * Description: SymK is a state-of-the-art domain-independent optimal and top-k planner.
@@ -1165,7 +1223,7 @@ plan: SequentialPlan:
     pickup(d)
     stack(d, e)
   *** Credits ***
-  * In operation mode `OneshotPlanner` at line 2 of `/tmp/ipykernel_998726/3657586449.py`, you are using the following planning engine:
+  * In operation mode `OneshotPlanner` at line 2 of `/tmp/ipykernel_719378/3657586449.py`, you are using the following planning engine:
   * Engine name: SymK
   * Developers:  David Speck (cf. https://github.com/speckdavid/symk/blob/master/README.md )
   * Description: SymK is a state-of-the-art domain-independent optimal and top-k planner.
@@ -1180,7 +1238,7 @@ plan: SequentialPlan:
     pickup(d)
     stack(d, e)
   *** Credits ***
-  * In operation mode `OneshotPlanner` at line 2 of `/tmp/ipykernel_998726/3657586449.py`, you are using the following planning engine:
+  * In operation mode `OneshotPlanner` at line 2 of `/tmp/ipykernel_719378/3657586449.py`, you are using the following planning engine:
   * Engine name: ENHSP
   * Developers:  Enrico Scala
   * Description: Expressive Numeric Heuristic Search Planner.
@@ -1190,50 +1248,50 @@ plan: SequentialPlan:
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">38</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">for</span> <span class="n">pname</span> <span class="ow">in</span> <span class="n">all_applicable_planners</span><span class="p">:</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span>   <span class="k">with</span> <span class="n">OneshotPlanner</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">pname</span><span class="p">)</span> <span class="k">as</span> <span class="n">planner</span><span class="p">:</span>
 <span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">res</span> <span class="o">=</span> <span class="n">planner</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 
-<span class="nn">File ~/.local/lib/python3.8/site-packages/unified_planning/engines/mixins/oneshot_planner.py:80,</span> in <span class="ni">OneshotPlannerMixin.solve</span><span class="nt">(self, problem, heuristic, timeout, output_stream)</span>
+<span class="nn">File /usr/local/lib/python3.10/dist-packages/unified_planning/engines/mixins/oneshot_planner.py:80,</span> in <span class="ni">OneshotPlannerMixin.solve</span><span class="nt">(self, problem, heuristic, timeout, output_stream)</span>
 <span class="g g-Whitespace">     </span><span class="mi">78</span>     <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;The problem has no quality metrics but the engine is required to be optimal!&quot;</span>
 <span class="g g-Whitespace">     </span><span class="mi">79</span>     <span class="k">raise</span> <span class="n">up</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">UPUsageError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 <span class="ne">---&gt; </span><span class="mi">80</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solve</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">heuristic</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">output_stream</span><span class="p">)</span>
 
-<span class="nn">File ~/.local/lib/python3.8/site-packages/unified_planning/engines/pddl_planner.py:193,</span> in <span class="ni">PDDLPlanner._solve</span><span class="nt">(self, problem, heuristic, timeout, output_stream)</span>
-<span class="g g-Whitespace">    </span><span class="mi">187</span>     <span class="n">cmd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_anytime_cmd</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">188</span>         <span class="n">domain_filename</span><span class="p">,</span> <span class="n">problem_filename</span><span class="p">,</span> <span class="n">plan_filename</span>
-<span class="g g-Whitespace">    </span><span class="mi">189</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">190</span> <span class="k">if</span> <span class="n">output_stream</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">191</span>     <span class="c1"># If we do not have an output stream to write to, we simply call</span>
-<span class="g g-Whitespace">    </span><span class="mi">192</span>     <span class="c1"># a subprocess and retrieve the final output and error with communicate</span>
-<span class="ne">--&gt; </span><span class="mi">193</span>     <span class="n">process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">194</span>         <span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span>
-<span class="g g-Whitespace">    </span><span class="mi">195</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">196</span>     <span class="n">timeout_occurred</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="g g-Whitespace">    </span><span class="mi">197</span>     <span class="n">proc_out</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nn">File /usr/local/lib/python3.10/dist-packages/unified_planning/engines/pddl_planner.py:194,</span> in <span class="ni">PDDLPlanner._solve</span><span class="nt">(self, problem, heuristic, timeout, output_stream)</span>
+<span class="g g-Whitespace">    </span><span class="mi">190</span> <span class="n">process_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">191</span> <span class="k">if</span> <span class="n">output_stream</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">192</span>     <span class="c1"># If we do not have an output stream to write to, we simply call</span>
+<span class="g g-Whitespace">    </span><span class="mi">193</span>     <span class="c1"># a subprocess and retrieve the final output and error with communicate</span>
+<span class="ne">--&gt; </span><span class="mi">194</span>     <span class="n">process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span>         <span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span>     <span class="n">timeout_occurred</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span>     <span class="n">proc_out</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="nn">File /usr/lib/python3.8/subprocess.py:858,</span> in <span class="ni">Popen.__init__</span><span class="nt">(self, args, bufsize, executable, stdin, stdout, stderr, preexec_fn, close_fds, shell, cwd, env, universal_newlines, startupinfo, creationflags, restore_signals, start_new_session, pass_fds, encoding, errors, text)</span>
-<span class="g g-Whitespace">    </span><span class="mi">854</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_mode</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">855</span>             <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">TextIOWrapper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">856</span>                     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">858</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_execute_child</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">executable</span><span class="p">,</span> <span class="n">preexec_fn</span><span class="p">,</span> <span class="n">close_fds</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">859</span>                         <span class="n">pass_fds</span><span class="p">,</span> <span class="n">cwd</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">860</span>                         <span class="n">startupinfo</span><span class="p">,</span> <span class="n">creationflags</span><span class="p">,</span> <span class="n">shell</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">861</span>                         <span class="n">p2cread</span><span class="p">,</span> <span class="n">p2cwrite</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">862</span>                         <span class="n">c2pread</span><span class="p">,</span> <span class="n">c2pwrite</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">863</span>                         <span class="n">errread</span><span class="p">,</span> <span class="n">errwrite</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">864</span>                         <span class="n">restore_signals</span><span class="p">,</span> <span class="n">start_new_session</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">865</span> <span class="k">except</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">866</span>     <span class="c1"># Cleanup if the child failed starting.</span>
-<span class="g g-Whitespace">    </span><span class="mi">867</span>     <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stdin</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span><span class="p">)):</span>
+<span class="nn">File /usr/lib/python3.10/subprocess.py:969,</span> in <span class="ni">Popen.__init__</span><span class="nt">(self, args, bufsize, executable, stdin, stdout, stderr, preexec_fn, close_fds, shell, cwd, env, universal_newlines, startupinfo, creationflags, restore_signals, start_new_session, pass_fds, user, group, extra_groups, encoding, errors, text, umask, pipesize)</span>
+<span class="g g-Whitespace">    </span><span class="mi">965</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">966</span>             <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">TextIOWrapper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">967</span>                     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">969</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_execute_child</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">executable</span><span class="p">,</span> <span class="n">preexec_fn</span><span class="p">,</span> <span class="n">close_fds</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">970</span>                         <span class="n">pass_fds</span><span class="p">,</span> <span class="n">cwd</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">971</span>                         <span class="n">startupinfo</span><span class="p">,</span> <span class="n">creationflags</span><span class="p">,</span> <span class="n">shell</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">972</span>                         <span class="n">p2cread</span><span class="p">,</span> <span class="n">p2cwrite</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">973</span>                         <span class="n">c2pread</span><span class="p">,</span> <span class="n">c2pwrite</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">974</span>                         <span class="n">errread</span><span class="p">,</span> <span class="n">errwrite</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">975</span>                         <span class="n">restore_signals</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">976</span>                         <span class="n">gid</span><span class="p">,</span> <span class="n">gids</span><span class="p">,</span> <span class="n">uid</span><span class="p">,</span> <span class="n">umask</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">977</span>                         <span class="n">start_new_session</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">978</span> <span class="k">except</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">979</span>     <span class="c1"># Cleanup if the child failed starting.</span>
+<span class="g g-Whitespace">    </span><span class="mi">980</span>     <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stdin</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span><span class="p">)):</span>
 
-<span class="nn">File /usr/lib/python3.8/subprocess.py:1704,</span> in <span class="ni">Popen._execute_child</span><span class="nt">(self, args, executable, preexec_fn, close_fds, pass_fds, cwd, env, startupinfo, creationflags, shell, p2cread, p2cwrite, c2pread, c2pwrite, errread, errwrite, restore_signals, start_new_session)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1702</span>     <span class="k">if</span> <span class="n">errno_num</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1703</span>         <span class="n">err_msg</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">strerror</span><span class="p">(</span><span class="n">errno_num</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1704</span>     <span class="k">raise</span> <span class="n">child_exception_type</span><span class="p">(</span><span class="n">errno_num</span><span class="p">,</span> <span class="n">err_msg</span><span class="p">,</span> <span class="n">err_filename</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1705</span> <span class="k">raise</span> <span class="n">child_exception_type</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
+<span class="nn">File /usr/lib/python3.10/subprocess.py:1845,</span> in <span class="ni">Popen._execute_child</span><span class="nt">(self, args, executable, preexec_fn, close_fds, pass_fds, cwd, env, startupinfo, creationflags, shell, p2cread, p2cwrite, c2pread, c2pwrite, errread, errwrite, restore_signals, gid, gids, uid, umask, start_new_session)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1843</span>     <span class="k">if</span> <span class="n">errno_num</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1844</span>         <span class="n">err_msg</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">strerror</span><span class="p">(</span><span class="n">errno_num</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1845</span>     <span class="k">raise</span> <span class="n">child_exception_type</span><span class="p">(</span><span class="n">errno_num</span><span class="p">,</span> <span class="n">err_msg</span><span class="p">,</span> <span class="n">err_filename</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1846</span> <span class="k">raise</span> <span class="n">child_exception_type</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
 
 <span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;java&#39;
 </pre></div>

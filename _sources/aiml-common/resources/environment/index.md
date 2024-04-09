@@ -36,6 +36,15 @@ An example environment is provided [here](https://github.com/pantelis/handson-ml
 
 We will be using the **free** CPU/GPU resources provided by [Google Colab](https://colab.research.google.com). The good news is that you have an account in Google Colab as most of you have your university gmail account. Please note if you login to colab with your university account you get to use the almost unlimited Gdrive storage facility. You will need Google Colab for all your projects so that you can demonstrate that your results can be replicated.  In addition Colab has many [features](https://colab.research.google.com/notebooks/basic_features_overview.ipynb) that come handy. Please note that even if you use Colab, you still need to submit your work via Github i.e. you need to [connect Github and Colab](https://bebi103a.github.io/lessons/02/git_with_colab.html). 
 
+### NJIT HPC (recommended)
+
+To be added. 
+
+
+### NYU JupyterHub (recommended)
+
+To be added. 
+
 ### On AWS  (recommended)
 
 Please note that the [AWS Deep Learning AMIs](https://docs.aws.amazon.com/dlami/latest/devguide/what-is-dlami.html) may not require installation or they may require update to the required version of TF/Pytorch. Choose this option if you can afford the hourly rate **and** you are disciplined to monitor the resources and terminate your instances.  
