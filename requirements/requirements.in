@@ -13,7 +13,7 @@ sphinxcontrib-seqdiag
 sphinx-click
 sphinx-examples
 unified-planning
-unified-planning[engines]
+unified-planning[engines, plot]
 bertviz
 marimo
 ipywidgets
