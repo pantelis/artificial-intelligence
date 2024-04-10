@@ -28,3 +28,7 @@ pygobject
 seaborn
 tabulate
 pre-commit
+segment-geospatial
+groundingdino-py 
+segment-anything-fast
+opencv-python==4.9.0.80
