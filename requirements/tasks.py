@@ -19,17 +19,17 @@ def update_dev_dependencies(ctx: Context, *, sync: bool = True) -> None:
 def compile_dependencies(
     ctx: Context, *, update: bool = False, sync: bool = False
 ) -> None:
-    common_args = "-q --allow-unsafe --resolver=backtracking"
+    common_args = "--allow-unsafe --resolver=backtracking"
     if update:
         common_args += " --upgrade"
     with ctx.cd(BASE_DIR):
         ctx.run(
-            f"pip-compile {common_args} --generate-hashes requirements.in",
+            f"pip-compile {common_args} --strip-extras --reuse-hashes --generate-hashes requirements.in",
             pty=True,
             echo=True,
         )
         ctx.run(
-            f"pip-compile {common_args} --strip-extras -o constraints.txt requirements.in",
+            f"pip-compile {common_args} --strip-extras --reuse-hashes -o constraints.txt requirements.in",
             pty=True,
             echo=True,
         )
@@ -41,12 +41,12 @@ def compile_dependencies(
 def compile_dev_dependencies(
     ctx: Context, *, update: bool = False, sync: bool = False
 ) -> None:
-    common_args = "-q --allow-unsafe --resolver=backtracking"
+    common_args = "--allow-unsafe --resolver=backtracking"
     if update:
         common_args += " --upgrade"
     with ctx.cd(BASE_DIR):
         ctx.run(
-            f"pip-compile {common_args} --generate-hashes requirements-dev.in",
+            f"pip-compile {common_args} --strip-extras --reuse-hashes --generate-hashes requirements-dev.in",
             pty=True,
             echo=True,
         )
