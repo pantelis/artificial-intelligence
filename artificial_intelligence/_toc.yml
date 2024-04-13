@@ -201,6 +201,8 @@ parts:
 - caption: Resources
   chapters:
   - file: aiml-common/resources/environment/index.md
+  - file: aiml-common/resources/environment/slurm-keras-example.ipynb
+  - file: aiml-common/resources/environment/nyu-jupyterhub-envs.md    
   - file: aiml-common/resources/environment/assignment-submission.md
   - file: aiml-common/lectures/python/index.md
   
