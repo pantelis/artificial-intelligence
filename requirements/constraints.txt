@@ -16,7 +16,7 @@ bleach==6.0.0
 blis==0.7.11
 cachetools==5.3.1
 catalogue==2.0.10
-certifi==2023.7.22
+certifi==2024.2.2
 cffi==1.16.0
 charset-normalizer @ file:///rapids/charset_normalizer-3.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl#sha256=193cbc708ea3aca45e7221ae58f0fd63f933753a9bfb498a3b474878f12caaad
 click @ file:///rapids/click-8.1.6-py3-none-any.whl#sha256=fa244bb30b3b5ee2cae3da8f55c9e5e0c0e86093306301fb418eb9dc40fbded5
