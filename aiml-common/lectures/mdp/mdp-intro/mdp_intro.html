@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Introduction to MDP &#8212; Introduction to Artificial Intelligence</title>
   
@@ -29,45 +28,41 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../../_static/doctools.js"></script>
-    <script src="../../../../_static/clipboard.min.js"></script>
-    <script src="../../../../_static/copybutton.js"></script>
-    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../../_static/togglebutton.js"></script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <script src="../../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/mdp/mdp-intro/mdp_intro';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/mdp/mdp-intro/mdp_intro.html" />
-    <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
+    <link rel="icon" href="../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="Bellman Expectation Backup" href="../bellman-expectation-backup/_index.html" />
@@ -165,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="list-caption"><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="label-parts" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../syllabus/_index.html">Syllabus</a></li>
@@ -347,6 +353,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/calculus/index.html">Calculus</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="label-parts" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/index.html">Your Programming Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/slurm-keras-example.html">Training Keras with the SLURM Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/nyu-jupyterhub-envs.html">NYU JupyrterHub Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Learn Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
@@ -658,9 +666,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-mdp">
-<h1>Introduction to MDP<a class="headerlink" href="#introduction-to-mdp" title="Permalink to this heading">#</a></h1>
+<h1>Introduction to MDP<a class="headerlink" href="#introduction-to-mdp" title="Link to this heading">#</a></h1>
 <section id="the-elements-of-the-agent-environment-interface">
-<h2>The elements of the Agent - Environment interface<a class="headerlink" href="#the-elements-of-the-agent-environment-interface" title="Permalink to this heading">#</a></h2>
+<h2>The elements of the Agent - Environment interface<a class="headerlink" href="#the-elements-of-the-agent-environment-interface" title="Link to this heading">#</a></h2>
 <p>We start by reviewing the agent-environment interface with this evolved notation and provide additional definitions that will help in grasping the concepts behind DRL. We treat MDP analytically effectively deriving the four Bellman equations.</p>
 <p><img alt="agent-env-interface" src="../../../../_images/agent-env-interface.png" />
 <em>Agent-Environment Interface</em></p>
@@ -703,7 +711,7 @@ document.write(`
 </table>
 <p>In fully observed MDP problems, the agent <em>perceives fully</em> the environment state <span class="math notranslate nohighlight">\(S_t\)</span>  - you can assume that there is a bank of sensors but they are ideal. In other words the agent knows which state the environment is in, perfectly.</p>
 <section id="a-note-on-the-state-definition-of-the-mdp-problem">
-<h3>A Note on the state definition of the MDP problem<a class="headerlink" href="#a-note-on-the-state-definition-of-the-mdp-problem" title="Permalink to this heading">#</a></h3>
+<h3>A Note on the state definition of the MDP problem<a class="headerlink" href="#a-note-on-the-state-definition-of-the-mdp-problem" title="Link to this heading">#</a></h3>
 <p>Note that Markov processes are sometimes erroneously called <em>memoryless</em> but in any MDP above we can incorporate memory aka dependence in more than one state over time by cleverly defining the state <span class="math notranslate nohighlight">\(S_t\)</span> as a container of a number of states. For example, <span class="math notranslate nohighlight">\(S_t = \left[ S_t=s, S_{t-1} = s^\prime \right]\)</span> can still define an Markov transition using <span class="math notranslate nohighlight">\(S\)</span> states. The transition model</p>
 <div class="math notranslate nohighlight">
 \[p(S_t | S_{t-1}) = p(s_t, s_{t-1} | s_{t-1}, s_{t-2}) = p(s_t|s_{t-1}, s_{t-2})\]</div>
@@ -712,7 +720,7 @@ document.write(`
 </section>
 </section>
 <section id="mdp-loop">
-<h2>MDP Loop<a class="headerlink" href="#mdp-loop" title="Permalink to this heading">#</a></h2>
+<h2>MDP Loop<a class="headerlink" href="#mdp-loop" title="Link to this heading">#</a></h2>
 <p>We define a Markov Decision Process as the 5-tuple <span class="math notranslate nohighlight">\(\mathcal M = &lt;\mathcal S, \mathcal P, \mathcal R, \mathcal A, \gamma&gt;\)</span> that produces a sequence of experiences <span class="math notranslate nohighlight">\((S_t, A_t, R_{t+1}), (S_{t+1}, A_{t+1}, R_{t+2}), ...\)</span>.  The MDP (event) loop is shown below:</p>
 <p><img alt="mdp-loop" src="../../../../_images/mdp-loop.png" />
 <em>This generic interface between the agent and the environment captures many problems outside of pure MDP including RL. The environment’s state in non-MDP problems can be experienced via sensor observations and the agent will build its own state estimate internally</em></p>
@@ -769,7 +777,7 @@ document.write(`
 <p>The docker container as of May 2023 seems to have a problem with the gymnaisum package in certain environments.  Sometimes the kernel in vscode will crash - we will  investigate this further when we rewrite these MDP pages during the summer of 2023 to make them more interactive.</p>
 </div>
 <section id="the-mdp-dynamics">
-<h3>The MDP dynamics<a class="headerlink" href="#the-mdp-dynamics" title="Permalink to this heading">#</a></h3>
+<h3>The MDP dynamics<a class="headerlink" href="#the-mdp-dynamics" title="Link to this heading">#</a></h3>
 <p>The four foundational ingredients of MDP are:</p>
 <ol class="arabic simple">
 <li><p>Policy,</p></li>
@@ -784,7 +792,7 @@ document.write(`
 <p>The dynamics probability density function maps <span class="math notranslate nohighlight">\(\mathcal{S} \times \mathcal{R} \times \mathcal{S} \times \mathcal{A} \rightarrow [0,1]\)</span> and by marginalizing over the appropriate random variables we can get the probability distributions and statistical quantities.</p>
 </section>
 <section id="state-transition">
-<h3>State transition<a class="headerlink" href="#state-transition" title="Permalink to this heading">#</a></h3>
+<h3>State transition<a class="headerlink" href="#state-transition" title="Link to this heading">#</a></h3>
 <p>The action that the agent takes change the environment state to some other state. This can be represented via the environment <em>state transition</em> probabilistic model that generically can be written as:</p>
 <div class="math notranslate nohighlight">
 \[ p(s'|s,a) = p[S_{t+1}=s^\prime | S_t=s, A_t=a ] = \sum_{r \in \mathcal{R}} p(s', r | s , a)\]</div>
@@ -794,7 +802,7 @@ document.write(`
 <p>where one dimension represents the action space and the other two constitute a state transition probability matrix.</p>
 </section>
 <section id="reward-function">
-<h3>Reward function<a class="headerlink" href="#reward-function" title="Permalink to this heading">#</a></h3>
+<h3>Reward function<a class="headerlink" href="#reward-function" title="Link to this heading">#</a></h3>
 <p>The action will also cause the environment to send the agent a signal called <em>instantaneous reward</em> <span class="math notranslate nohighlight">\(R_{t+1}\)</span>. The reward signal is effectively defining the goal of the agent and is the primary basis for altering a policy. The agent’s sole objective is to maximize the cumulative reward in the long run.</p>
 <p>Please note that in the literature the reward is also denoted as $R_{t}$ - this is a convention issue rather than something fundamental. The justification of the index $t+1$ is that the environment will take one step to respond to what action the agent took.</p>
 <p>The instantaneous reward is obtained by executing the reward function. the There are two broad cases for defining the reward function:</p>
@@ -867,7 +875,7 @@ document.write(`
 \[r(s,a, s^\prime) = \mathop{\mathbb{E}}[ R_{t+1} | S_t=s, A_t=a, S_{t+1}=s^\prime] = \sum_{r \in \mathcal{R}} r  \frac{p(s', r | s , a)}{p(s' | s , a)}\]</div>
 </section>
 <section id="return">
-<h3>Return<a class="headerlink" href="#return" title="Permalink to this heading">#</a></h3>
+<h3>Return<a class="headerlink" href="#return" title="Link to this heading">#</a></h3>
 <p>To capture the objective,  consider first the <em>return</em> defined as a function of the reward sequence after time step <span class="math notranslate nohighlight">\(t\)</span>. Note that the return is also called <em>utility</em> in some texts.  In the simplest case this function is the total discounted reward,</p>
 <div class="math notranslate nohighlight">
 \[G_t = R_{t+1} + \gamma R_{t+2} + ... = \sum_{k=0}^∞\gamma^k R_{t+1+k}\]</div>
@@ -892,7 +900,7 @@ document.write(`
 \[ = R_{t+1} + \gamma G_{t+1}\]</div>
 </section>
 <section id="policy-function">
-<h3>Policy function<a class="headerlink" href="#policy-function" title="Permalink to this heading">#</a></h3>
+<h3>Policy function<a class="headerlink" href="#policy-function" title="Link to this heading">#</a></h3>
 <p>The agent’s behavior is expressed via a <strong>policy function</strong> <span class="math notranslate nohighlight">\(\pi\)</span> - that tells the agent what <em>action</em> to take for every possible state. The policy is a function of the state and can be:</p>
 <ol class="arabic simple">
 <li><p>Deterministic functions of the state the environment is in and by extension, the state that the agent is or believes (think about <em>posterior belief</em>) it is in.</p></li>
@@ -908,10 +916,10 @@ document.write(`
 </section>
 </section>
 <section id="value-functions">
-<h2>Value Functions<a class="headerlink" href="#value-functions" title="Permalink to this heading">#</a></h2>
+<h2>Value Functions<a class="headerlink" href="#value-functions" title="Link to this heading">#</a></h2>
 <p>The value of a state is the total amount of reward an agent can expect to accumulate over the future, starting from that state.   Whereas rewards determine the immediate,  intrinsic desirability of environmental states, values indicate the long-term desirability of states after taking into account the states that are likely to follow, and the rewards available in those states.</p>
 <section id="state-value">
-<h3>State value<a class="headerlink" href="#state-value" title="Permalink to this heading">#</a></h3>
+<h3>State value<a class="headerlink" href="#state-value" title="Link to this heading">#</a></h3>
 <p>The <em>state-value function</em> <span class="math notranslate nohighlight">\(v_\pi(s)\)</span> provides a notion of the long-term value of state <span class="math notranslate nohighlight">\(s\)</span>. It is equivalent to what other literature calls <em>expected utility</em> . It is defined as the expected_ return starting at state <span class="math notranslate nohighlight">\(s\)</span> and following policy <span class="math notranslate nohighlight">\(\pi(a|s)\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[v_\pi(s) = \mathop{\mathbb{E}_\pi}(G_t | S_t=s)\]</div>
@@ -921,7 +929,7 @@ document.write(`
 <p>One corner case is interesting - if we make <span class="math notranslate nohighlight">\(\gamma=0\)</span> then <span class="math notranslate nohighlight">\(v_\pi(s)\)</span>  becomes the average of instantaneous rewards we can get from that state.</p>
 </section>
 <section id="action-value">
-<h3>Action value<a class="headerlink" href="#action-value" title="Permalink to this heading">#</a></h3>
+<h3>Action value<a class="headerlink" href="#action-value" title="Link to this heading">#</a></h3>
 <p>We also define the <em>action-value function</em> <span class="math notranslate nohighlight">\(q_\pi(s,a)\)</span> as the expected return starting from the state <span class="math notranslate nohighlight">\(s\)</span>, taking action <span class="math notranslate nohighlight">\(a\)</span> and following policy <span class="math notranslate nohighlight">\(\pi(a|s)\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[q_\pi(s,a) = \mathop{\mathbb{E}_\pi} (G_t | S_t=s, A_t=a)\]</div>

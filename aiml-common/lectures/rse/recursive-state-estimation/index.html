@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Recursive State Estimation &#8212; Introduction to Artificial Intelligence</title>
   
@@ -29,45 +28,41 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../../_static/doctools.js"></script>
-    <script src="../../../../_static/clipboard.min.js"></script>
-    <script src="../../../../_static/copybutton.js"></script>
-    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../../_static/togglebutton.js"></script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <script src="../../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/rse/recursive-state-estimation/index';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/rse/recursive-state-estimation/index.html" />
-    <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
+    <link rel="icon" href="../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="Discrete Bayes Filter" href="../discrete-bayesian-filter/discrete-bayesian-filter.html" />
@@ -165,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="list-caption"><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="label-parts" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../syllabus/_index.html">Syllabus</a></li>
@@ -347,6 +353,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/calculus/index.html">Calculus</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="label-parts" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/index.html">Your Programming Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/slurm-keras-example.html">Training Keras with the SLURM Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/nyu-jupyterhub-envs.html">NYU JupyrterHub Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Learn Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
@@ -586,7 +594,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="recursive-state-estimation">
-<h1>Recursive State Estimation<a class="headerlink" href="#recursive-state-estimation" title="Permalink to this heading">#</a></h1>
+<h1>Recursive State Estimation<a class="headerlink" href="#recursive-state-estimation" title="Link to this heading">#</a></h1>
 <p>In the scene understanding chapter we started putting together the perception pipelines that resulted in us knowing where are the objects of interest in the image coordinate frame but we stopped short of any advanced methods that can lead to what we humans call <em>understanding</em>. We hinted that assigning an object an symbolic identity is an essential ability that allows an embodied AI agent to reason about the scene using symbolic reasoning approaches researched by the AI community over many decades.</p>
 <p><img alt="prob-reasoning-agent" src="../../../../_images/prob-reasoning-agent.png" />
 <em>Positioning of probabilistic reasoning subsystem</em></p>
@@ -599,7 +607,7 @@ document.write(`
 <p>Such expansion, will allow us to form using the Bayes rule, perhaps one of the most important contributions to the probabilistic modeling of dynamical systems: the recursive state estimator also known as <em>Bayes filter</em> that affords the agent the ability to maintain an internal <em>belief</em> of the current state of the environment.</p>
 <p>In a subsequent chapter we will enhance the model to include past <em>actions</em> rather than just past percepts.</p>
 <section id="bayes-filter">
-<h2>Bayes Filter<a class="headerlink" href="#bayes-filter" title="Permalink to this heading">#</a></h2>
+<h2>Bayes Filter<a class="headerlink" href="#bayes-filter" title="Link to this heading">#</a></h2>
 <p>We are introducing this algorithm, by considering a embodied agent (a robot) that moves in an environment.</p>
 <p><img alt="belief" src="../../../../_images/belief.png" />
 <em>Agent belief and environment interactions</em></p>
@@ -633,7 +641,7 @@ document.write(`
 <p>endfor</p>
 <hr class="docutils" />
 <section id="door-state-estimation">
-<h3>Door state estimation<a class="headerlink" href="#door-state-estimation" title="Permalink to this heading">#</a></h3>
+<h3>Door state estimation<a class="headerlink" href="#door-state-estimation" title="Link to this heading">#</a></h3>
 <p>To illustrate how the Bayes filter is useful, lets look at a practical example. This example was borrowed from Sebastian Thrun’s book, “Probabilistic Robotics”, MIT Press, 2006.</p>
 <p>The problem we are considering is estimating the state of a door using an agent (robot) equipped with a monocular camera.</p>
 <p><img alt="robot-door" src="../../../../_images/robot-door.jpg" /></p>
@@ -643,7 +651,7 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\mathtt{bel}(s_0=closed) = 0.5\]</div>
 <section id="measurement-model">
-<h4>Measurement Model<a class="headerlink" href="#measurement-model" title="Permalink to this heading">#</a></h4>
+<h4>Measurement Model<a class="headerlink" href="#measurement-model" title="Link to this heading">#</a></h4>
 <p>No real agent has ideal sensing abilities so the sensor or measurement model is noisy and lets assume for simplicity that its given by:</p>
 <table class="table">
 <thead>
@@ -669,7 +677,7 @@ document.write(`
 <p>The values in the measurement model above are not necessarily chosen randomly as computer vision algorithms (or LIDAR) may find it easier to detect a closed door from an open door, since with an open door the camera sees the clutter inside the room and the LIDAR may confuse the clutter returns with a closed door.</p>
 </section>
 <section id="transition-model">
-<h4>Transition Model<a class="headerlink" href="#transition-model" title="Permalink to this heading">#</a></h4>
+<h4>Transition Model<a class="headerlink" href="#transition-model" title="Link to this heading">#</a></h4>
 <p>Lets also assume that the agent is using a arm manipulator to <em>push</em> the door open <em>if its closed</em>. Note So we have the following transition distribution:</p>
 <table class="table">
 <thead>
@@ -708,7 +716,7 @@ document.write(`
 <p>Lets assume that at <span class="math notranslate nohighlight">\(t=1\)</span>, the agent takes <em>no action</em> but <em>senses the door is open</em>. The two steps of RSE are as follows:</p>
 </section>
 <section id="recursive-state-estimation-at-t-1-step-1-prediction">
-<h4>Recursive State Estimation at <span class="math notranslate nohighlight">\(t=1\)</span> - Step 1: Prediction<a class="headerlink" href="#recursive-state-estimation-at-t-1-step-1-prediction" title="Permalink to this heading">#</a></h4>
+<h4>Recursive State Estimation at <span class="math notranslate nohighlight">\(t=1\)</span> - Step 1: Prediction<a class="headerlink" href="#recursive-state-estimation-at-t-1-step-1-prediction" title="Link to this heading">#</a></h4>
 <div class="math notranslate nohighlight">
 \[\mathtt{\hat{bel}}(s_1) = \int p(x_1 | a_1, s_0) ds_0 = \sum_{s_0} p(s_1 | a_1, s_0) \mathtt{bel}(s_0)\]</div>
 <div class="math notranslate nohighlight">
@@ -719,7 +727,7 @@ document.write(`
 <p>The fact that the belief at this point equals the <em>prior</em> belief (stored in the agent) is explained from the fact that inaction shouldn’t change the environment state and the environment state does not change itself over time in this specific case.</p>
 </section>
 <section id="recursive-state-estimation-at-t-1-step-2-measurement-update">
-<h4>Recursive State Estimation at <span class="math notranslate nohighlight">\(t=1\)</span> - Step 2: Measurement Update<a class="headerlink" href="#recursive-state-estimation-at-t-1-step-2-measurement-update" title="Permalink to this heading">#</a></h4>
+<h4>Recursive State Estimation at <span class="math notranslate nohighlight">\(t=1\)</span> - Step 2: Measurement Update<a class="headerlink" href="#recursive-state-estimation-at-t-1-step-2-measurement-update" title="Link to this heading">#</a></h4>
 <p>In this step we are using the perception subsystem to adjust the belief with what it is telling us:</p>
 <div class="math notranslate nohighlight">
 \[ \mathtt{bel}(s_1) = \eta p(z_1 = sense-open| s_1) \mathtt{\hat{bel}}(s_1) \]</div>
@@ -740,7 +748,7 @@ document.write(`
 \[\mathtt{bel}(s_1=closed) = 0.25\]</div>
 </section>
 <section id="recursive-state-estimation-at-t-2-step-1-prediction">
-<h4>Recursive State Estimation at <span class="math notranslate nohighlight">\(t=2\)</span> - Step 1: Prediction<a class="headerlink" href="#recursive-state-estimation-at-t-2-step-1-prediction" title="Permalink to this heading">#</a></h4>
+<h4>Recursive State Estimation at <span class="math notranslate nohighlight">\(t=2\)</span> - Step 1: Prediction<a class="headerlink" href="#recursive-state-estimation-at-t-2-step-1-prediction" title="Link to this heading">#</a></h4>
 <p>In the next time step lets assume that the agent pushes the door and senses that its open. Its easy to verify that</p>
 <div class="math notranslate nohighlight">
 \[\mathtt{\hat{bel}}(s_2 = open) = 1 \times 0.75 + 0.8 \times 0.25 = 0.95\]</div>
@@ -748,7 +756,7 @@ document.write(`
 \[\mathtt{\hat{bel}}(s_2 = closed) =0 \times 0.75 + 0.2 \times 0.25 = 0.05\]</div>
 </section>
 <section id="recursive-state-estimation-at-t-2-step-2-measurement-update">
-<h4>Recursive State Estimation at <span class="math notranslate nohighlight">\(t=2\)</span> - Step 2: Measurement Update<a class="headerlink" href="#recursive-state-estimation-at-t-2-step-2-measurement-update" title="Permalink to this heading">#</a></h4>
+<h4>Recursive State Estimation at <span class="math notranslate nohighlight">\(t=2\)</span> - Step 2: Measurement Update<a class="headerlink" href="#recursive-state-estimation-at-t-2-step-2-measurement-update" title="Link to this heading">#</a></h4>
 <div class="math notranslate nohighlight">
 \[\mathtt{bel}(s_2 = open) = \eta 0.6 \times 0.95 = \eta 0.57\]</div>
 <div class="math notranslate nohighlight">

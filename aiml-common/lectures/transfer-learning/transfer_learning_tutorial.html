@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Transfer Learning for Computer Vision Tutorial &#8212; Introduction to Artificial Intelligence</title>
   
@@ -29,43 +28,39 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/transfer-learning/transfer_learning_tutorial';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/transfer-learning/transfer_learning_tutorial.html" />
-    <link rel="shortcut icon" href="../../../_static/logo.ico"/>
+    <link rel="icon" href="../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Recursive State Estimation" href="../rse/recursive-state-estimation/index.html" />
@@ -163,7 +158,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="list-caption"><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="label-parts" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../syllabus/_index.html">Syllabus</a></li>
@@ -345,6 +351,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../ml-math/calculus/index.html">Calculus</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="label-parts" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../resources/environment/index.html">Your Programming Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/environment/slurm-keras-example.html">Training Keras with the SLURM Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/environment/nyu-jupyterhub-envs.html">NYU JupyrterHub Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/index.html">Learn Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resources/environment/notebook-status.html">Notebook execution status</a></li>
@@ -655,7 +663,7 @@ document.write(`
 </div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="transfer-learning-for-computer-vision-tutorial">
-<h1>Transfer Learning for Computer Vision Tutorial<a class="headerlink" href="#transfer-learning-for-computer-vision-tutorial" title="Permalink to this heading">#</a></h1>
+<h1>Transfer Learning for Computer Vision Tutorial<a class="headerlink" href="#transfer-learning-for-computer-vision-tutorial" title="Link to this heading">#</a></h1>
 <p><strong>Author</strong>: <code class="docutils literal notranslate"><span class="pre">Sasank</span> <span class="pre">Chilamkurthy</span> <span class="pre">&lt;https://chsasank.github.io&gt;</span></code>_</p>
 <p>In this tutorial, you will learn how to train a convolutional neural network for
 image classification using transfer learning. You can read more about the transfer
@@ -710,7 +718,7 @@ with random weights and only this layer is trained.</p></li>
 </div>
 </div>
 <section id="load-data">
-<h2>Load Data<a class="headerlink" href="#load-data" title="Permalink to this heading">#</a></h2>
+<h2>Load Data<a class="headerlink" href="#load-data" title="Link to this heading">#</a></h2>
 <p>We will use torchvision and torch.utils.data packages for loading the
 data.</p>
 <p>The problem we’re going to solve today is to train a model to classify
@@ -766,7 +774,7 @@ and extract it to the current directory.</p>
 </div>
 </section>
 <section id="visualize-a-few-images">
-<h2>Visualize a few images<a class="headerlink" href="#visualize-a-few-images" title="Permalink to this heading">#</a></h2>
+<h2>Visualize a few images<a class="headerlink" href="#visualize-a-few-images" title="Link to this heading">#</a></h2>
 <p>Let’s visualize a few training images so as to understand the data
 augmentations.</p>
 <div class="cell docutils container">
@@ -800,7 +808,7 @@ augmentations.</p>
 </div>
 </section>
 <section id="training-the-model">
-<h2>Training the model<a class="headerlink" href="#training-the-model" title="Permalink to this heading">#</a></h2>
+<h2>Training the model<a class="headerlink" href="#training-the-model" title="Link to this heading">#</a></h2>
 <p>Now, let’s write a general function to train a model. Here, we will
 illustrate:</p>
 <ul class="simple">
@@ -882,7 +890,7 @@ illustrate:</p>
 </div>
 </section>
 <section id="visualizing-the-model-predictions">
-<h2>Visualizing the model predictions<a class="headerlink" href="#visualizing-the-model-predictions" title="Permalink to this heading">#</a></h2>
+<h2>Visualizing the model predictions<a class="headerlink" href="#visualizing-the-model-predictions" title="Link to this heading">#</a></h2>
 <p>Generic function to display predictions for a few images</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -917,7 +925,7 @@ illustrate:</p>
 </div>
 </section>
 <section id="finetuning-the-convnet">
-<h2>Finetuning the convnet<a class="headerlink" href="#finetuning-the-convnet" title="Permalink to this heading">#</a></h2>
+<h2>Finetuning the convnet<a class="headerlink" href="#finetuning-the-convnet" title="Link to this heading">#</a></h2>
 <p>Load a pretrained model and reset final fully connected layer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -951,7 +959,7 @@ Downloading: &quot;https://download.pytorch.org/models/resnet18-f37072fd.pth&quo
 </div>
 </section>
 <section id="train-and-evaluate">
-<h2>Train and evaluate<a class="headerlink" href="#train-and-evaluate" title="Permalink to this heading">#</a></h2>
+<h2>Train and evaluate<a class="headerlink" href="#train-and-evaluate" title="Link to this heading">#</a></h2>
 <p>It should take around 15-25 min on CPU. On GPU though, it takes less than a
 minute.</p>
 <div class="cell docutils container">
@@ -1110,7 +1118,7 @@ Best val Acc: 0.928105
 </div>
 </section>
 <section id="convnet-as-fixed-feature-extractor">
-<h2>ConvNet as fixed feature extractor<a class="headerlink" href="#convnet-as-fixed-feature-extractor" title="Permalink to this heading">#</a></h2>
+<h2>ConvNet as fixed feature extractor<a class="headerlink" href="#convnet-as-fixed-feature-extractor" title="Link to this heading">#</a></h2>
 <p>Here, we need to freeze all the network except the final layer. We need
 to set <code class="docutils literal notranslate"><span class="pre">requires_grad</span> <span class="pre">=</span> <span class="pre">False</span></code> to freeze the parameters so that the
 gradients are not computed in <code class="docutils literal notranslate"><span class="pre">backward()</span></code>.</p>
@@ -1142,7 +1150,7 @@ gradients are not computed in <code class="docutils literal notranslate"><span c
 </div>
 </section>
 <section id="id1">
-<h2>Train and evaluate<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>Train and evaluate<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>On CPU this will take about half the time compared to previous scenario.
 This is expected as gradients don’t need to be computed for most of the
 network. However, forward does need to be computed.</p>
@@ -1305,7 +1313,7 @@ Best val Acc: 0.954248
 </div>
 </section>
 <section id="further-learning">
-<h2>Further Learning<a class="headerlink" href="#further-learning" title="Permalink to this heading">#</a></h2>
+<h2>Further Learning<a class="headerlink" href="#further-learning" title="Link to this heading">#</a></h2>
 <p>If you would like to learn more about the applications of transfer learning,
 checkout our <code class="docutils literal notranslate"><span class="pre">Quantized</span> <span class="pre">Transfer</span> <span class="pre">Learning</span> <span class="pre">for</span> <span class="pre">Computer</span> <span class="pre">Vision</span> <span class="pre">Tutorial</span> <span class="pre">&lt;https://pytorch.org/tutorials/intermediate/quantized_transfer_learning_tutorial.html&gt;</span></code>_.</p>
 </section>

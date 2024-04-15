@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Drone follow me using Kalman Filters &#8212; Introduction to Artificial Intelligence</title>
   
@@ -29,43 +28,39 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/assignments/object-tracking-kalman/drone-follow-me';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/assignments/object-tracking-kalman/drone-follow-me.html" />
-    <link rel="shortcut icon" href="../../../_static/logo.ico"/>
+    <link rel="icon" href="../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Probability Assignment" href="../probability/probability-assignment-3/index.html" />
@@ -163,7 +158,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="list-caption"><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="label-parts" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../syllabus/_index.html">Syllabus</a></li>
@@ -345,6 +351,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/ml-math/calculus/index.html">Calculus</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="label-parts" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../resources/environment/index.html">Your Programming Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/environment/slurm-keras-example.html">Training Keras with the SLURM Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/environment/nyu-jupyterhub-envs.html">NYU JupyrterHub Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/python/index.html">Learn Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resources/environment/notebook-status.html">Notebook execution status</a></li>
@@ -576,15 +584,15 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="drone-follow-me-using-kalman-filters">
-<h1>Drone follow me using Kalman Filters<a class="headerlink" href="#drone-follow-me-using-kalman-filters" title="Permalink to this heading">#</a></h1>
+<h1>Drone follow me using Kalman Filters<a class="headerlink" href="#drone-follow-me-using-kalman-filters" title="Link to this heading">#</a></h1>
 <p>Multi-Object Tracking (MOT) is a core visual ability that humans poses to perform kinetic tasks and coordinate other tasks. The AI community has recognized the importance of MOT via a series of <a class="reference external" href="https://motchallenge.net">competitions</a>.</p>
 <p>In this assignment, the object class is <code class="docutils literal notranslate"><span class="pre">bicycle</span></code> and <code class="docutils literal notranslate"><span class="pre">car</span></code> the ability to track these objects  will be demonstrated using <a class="reference external" href="https://en.wikipedia.org/wiki/Kalman_filter">Kalman Filters</a>.</p>
 <section id="task-1-setup-your-development-environment-and-store-the-test-video-locally-10-points">
-<h2>Task 1: Setup your development environment and store the test video locally (10 points)<a class="headerlink" href="#task-1-setup-your-development-environment-and-store-the-test-video-locally-10-points" title="Permalink to this heading">#</a></h2>
+<h2>Task 1: Setup your development environment and store the test video locally (10 points)<a class="headerlink" href="#task-1-setup-your-development-environment-and-store-the-test-video-locally-10-points" title="Link to this heading">#</a></h2>
 <p>Your environment must be docker based and you can use any TF2 or PT2 based docker container compatible with your environment. You can also use colab.</p>
 </section>
 <section id="task-2-object-detection-40-points">
-<h2>Task 2: Object Detection (40 points)<a class="headerlink" href="#task-2-object-detection-40-points" title="Permalink to this heading">#</a></h2>
+<h2>Task 2: Object Detection (40 points)<a class="headerlink" href="#task-2-object-detection-40-points" title="Link to this heading">#</a></h2>
 <p>Perform object detection on the following videos.</p>
 <div class="video_wrapper" style="">
 <iframe allowfullscreen="true" src="https://www.youtube.com/embed/WeF4wpw7w9k" style="border: 0; height: 345px; width: 560px">
@@ -595,14 +603,14 @@ document.write(`
 </iframe></div><p>Split the videos into frames and use an object detector of your choice, in a framework of your choice to detect the cyclists.</p>
 </section>
 <section id="task-3-kalman-filter-50-points">
-<h2>Task 3: Kalman Filter (50 points)<a class="headerlink" href="#task-3-kalman-filter-50-points" title="Permalink to this heading">#</a></h2>
+<h2>Task 3: Kalman Filter (50 points)<a class="headerlink" href="#task-3-kalman-filter-50-points" title="Link to this heading">#</a></h2>
 <p>Use the  <a class="reference external" href="https://filterpy.readthedocs.io/en/latest/kalman/KalmanFilter.html">filterpy</a> library to implement Kalman filters that will track the cyclist and the vehicle (if present) in the video. You will need to use the detections from the previous task to initialize and run the Kalman filter.</p>
 <p>You need to deliver a video that contains the trajectory of the objects as a line that connects the pixels that the tracker indicated. You can use the <code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code> command line tool and OpenCV to superpose the bounding box of the drone on the video as well as plot its trajectory.</p>
 <p>Suggest methods that you can use to address  false positives and how the tracker can help you in this regard.</p>
 <p>You will need to have one Kalman filter to track each of the required and present objects (cyclist and vehicle).</p>
 </section>
 <section id="extra-bonus-20-points">
-<h2>Extra Bonus (20 points)<a class="headerlink" href="#extra-bonus-20-points" title="Permalink to this heading">#</a></h2>
+<h2>Extra Bonus (20 points)<a class="headerlink" href="#extra-bonus-20-points" title="Link to this heading">#</a></h2>
 <div class="video_wrapper" style="">
 <iframe allowfullscreen="true" src="https://www.youtube.com/embed/2hQx48U1L-Y" style="border: 0; height: 345px; width: 560px">
 </iframe></div><p>The cyclist in the video goes in and out of occlusions. In addition the object is small making detections fairly problematic without finetuning and other optimizations.  Fintetuning involves using the pretrained model and training it further using images of cyclists from a training dataset such as <a class="reference external" href="https://github.com/VisDrone/VisDrone-Dataset">VisDrone</a>. At the same time,  reducing the number of classes to a much smaller number such as person &amp; bicycle may help.  Also some 2 stage detectors may need to be further optimized in terms of parameters for small objects. See <a class="reference external" href="https://www.mdpi.com/1424-8220/23/15/6887">this paper</a> for ideas around small object tracking.</p>

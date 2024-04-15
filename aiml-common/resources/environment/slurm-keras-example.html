@@ -1,0 +1,1132 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Training Keras with the SLURM Scheduler &#8212; Introduction to Artificial Intelligence</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/resources/environment/slurm-keras-example';</script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/resources/environment/slurm-keras-example.html" />
+    <link rel="icon" href="../../../_static/logo.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="NYU JupyrterHub Environments" href="nyu-jupyterhub-envs.html" />
+    <link rel="prev" title="Your Programming Environment" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Introduction to Artificial Intelligence - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Artificial Intelligence - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="list-caption"><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="label-parts" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../syllabus/_index.html">Syllabus</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to AI</span></p><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="label-parts" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/ai-intro/course-introduction/_index.html">Course Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/ai-intro/systems-approach/_index.html">The four approaches towards AI</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/ai-intro/agents/_index.html">Agent-Environment Interface</a></li>
+
+
+
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-1</span></p><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="label-parts" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/learning-problem/_index.html">The Learning Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/regression/linear-regression/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/optimization/sgd/_index.html">Stochastic Gradient Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/entropy/index.html">Entropy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/optimization/maximum-likelihood/marginal_maximum_likelihood.html">Maximum Likelihood Estimation of a marginal model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/optimization/maximum-likelihood/mle-gaussian-parameters.html">Maximum Likelihood Estimation of Gaussian Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/optimization/maximum-likelihood/conditional_maximum_likelihood.html">Maximum Likelihood (ML) Estimation of conditional models</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-2</span></p><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="label-parts" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/classification/classification-intro/_index.html">Introduction to Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/classification/logistic-regression/_index.html">Logistic Regression</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Neural Networks</span></p><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="label-parts" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/classification/perceptron/_index.html">The Neuron (Perceptron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/dnn/dnn-intro/index.html">Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/dnn/backprop-intro/_index.html">Introduction to Backpropagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/dnn/backprop-dnn/_index.html">Backpropagation in Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/dnn/backprop-dnn-exercises/_index.html">Backpropagation DNN exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/dnn/fashion-mnist-case-study.html">Fashion MNIST Case Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/optimization/regularization/_index.html">Regularization in Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/optimization/regularization/regularization-workshop-1.html">Regularization Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/information-theory-dnn/index.html">Fusion of Statistical Learning Theory, Information Theory and Stochastic Optimization</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Convolutional Neural Networks</span></p><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="label-parts" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/cnn/cnn-intro/_index.html">Introduction to Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/cnn/cnn-layers/_index.html">CNN Architectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/cnn/cnn-example-architectures/_index.html">CNN Example Architectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">Using convnets with small datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/cnn/cnn-example-architectures/visualizing-what-convnets-learn.html">Visualizing what convnets learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/scene-understanding/feature-extraction-resnet/index.html">Feature Extraction via Residual Networks</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Scene Understanding</span></p><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="label-parts" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/scene-understanding/scene-understanding-intro/index.html">Introduction to Scene Understanding</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../lectures/scene-understanding/object-detection/object-detection-intro/index.html">Object Detection</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/scene-understanding/object-detection/detection-metrics/index.html">Object Detection and Semantic Segmentation Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/scene-understanding/object-detection/rcnn-object-detection/index.html">Region-CNN (RCNN) Object Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/scene-understanding/object-detection/faster-rcnn-object-detection/index.html">Fast and Faster RCNN Object Detection</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../lectures/scene-understanding/semantic-segmentation/index.html">Object Det. &amp; Semantic Segm. Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/index.html">Mask R-CNN Semantic Segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/demo.html">Mask R-CNN Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_data.html">Mask R-CNN - Inspect Training Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_model.html">Mask R-CNN - Inspect Trained Model</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_weights.html">Mask R-CNN - Inspect Weights of a Trained Model</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.html">Detectron2 Beginner’s Tutorial</a></li>
+
+
+
+
+
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="label-parts" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/transfer-learning/transfer-learning-introduction.html">Introduction to Transfer Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/transfer-learning/transfer_learning_tutorial.html">Transfer Learning for Computer Vision Tutorial</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Probabilistic Reasoning</span></p><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="label-parts" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/rse/recursive-state-estimation/index.html">Recursive State Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/rse/discrete-bayesian-filter/discrete-bayesian-filter.html">Discrete Bayes Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/rse/hmm-localization/_index.html">Localization and Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/rse/kalman-filters/one-dimensional-kalman-filters.html">Kalman Filters</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Logical Reasoning</span></p><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="label-parts" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/logical-reasoning/automated-reasoning/_index.html">Automated Reasoning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/logical-reasoning/propositional-logic/_index.html">World Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/logical-reasoning/logical-inference/index.html">Logical Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/logical-reasoning/logical-agents/_index.html">Logical Agents</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning without Interactions</span></p><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="label-parts" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/planning/index.html">Automated Planning</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../lectures/planning/pddl/index.html">PDDL</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/planning/pddl/blocksworld/up_blocksworld_demo.html">The Unified Planning Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/planning/pddl/logistics/index.html">Logistics Planning in PDDL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/planning/pddl/manufacturing/index.html">Manufacrturing Robot Planning in PDDL</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../lectures/planning/search/index.html">Search Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/planning/search/forward-search/index.html">Forward Search Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/planning/search/a-star/index.html">The A* Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/planning/search/search-alg-demo/index.html">Interactive Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/motion-planning-cars/index.html">Motion Planning for Autonomous Cars</a></li>
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Markov Decision Processes</span></p><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="label-parts" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/mdp/index.html">Markov Decision Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/mdp/mdp-intro/mdp_intro.html">Introduction to MDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/mdp/bellman-expectation-backup/_index.html">Bellman Expectation Backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/mdp/policy-evaluation/_index.html">Policy Evaluation (Prediction)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/mdp/bellman-optimality-backup/_index.html">Bellman Optimality Backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/mdp/policy-improvement/_index.html">Policy Improvement (Control)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../lectures/mdp/dynamic-programming-algorithms/index.html">Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/mdp/dynamic-programming-algorithms/policy-iteration/_index.html">Policy Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/mdp/dynamic-programming-algorithms/value-iteration/index.html">Value Iteration</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../lectures/mdp/mdp-workshop/index.html">MDP Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/mdp/mdp-workshop/cleaning-robot/deterministic_mdp.html">Cleaning Robot - Deterministic MDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/mdp/mdp-workshop/cleaning-robot/stochastic_mdp.html">Cleaning Robot - Stochastic MDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/mdp/mdp-workshop/recycling-robot/_index.html">The recycling robot.</a></li>
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="label-parts" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/reinforcement-learning/_index.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/reinforcement-learning/prediction/monte-carlo.html">Monte-Carlo Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/reinforcement-learning/prediction/temporal-difference.html">Temporal Difference (TD) Prediction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../lectures/reinforcement-learning/model-free-control/index.html">Model-free Control</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/reinforcement-learning/model-free-control/generalized-policy-iteration/index.html">Generalized Policy Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/reinforcement-learning/model-free-control/greedy-monte-carlo/index.html"><span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy Monte-Carlo (MC) Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/reinforcement-learning/model-free-control/sarsa/index.html">The SARSA Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/reinforcement-learning/model-free-control/sarsa/gridworld/sarsa_gridworld.html">SARSA Gridworld Example</a></li>
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="label-parts" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/rnn/introduction/_index.html">Introduction to Recurrent Neural Networks (RNN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/rnn/simple-rnn/_index.html">Simple RNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/rnn/lstm/_index.html">The Long Short-Term Memory (LSTM) Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/rnn/time_series_using_simple_rnn_lstm.html">Time Series Prediction using RNNs</a></li>
+
+
+
+
+
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="label-parts" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/nlp/nlp-introduction/nlp-pipelines/_index.html">Introduction to NLP Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/nlp/nlp-introduction/tokenization/index.html">Tokenization</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../lectures/nlp/nlp-introduction/word2vec/_index.html">Embeddings</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/nlp/nlp-introduction/word2vec/word2vec_from_scratch.html">Word2Vec from scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/nlp/nlp-introduction/word2vec/word2vec_tensorflow_tutorial.html">Word2Vec Tensorflow Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../lectures/nlp/language-models/_index.html">Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/nlp/language-models/cnn-language-model/index.html">CNN Language Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/nlp/language-models/simple-rnn-language-model/index.html">Simple RNN Language Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/nlp/language-models/lstm-language-model/index.html">LSTM Language Model from scratch</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../lectures/nlp/nmt/nmt-intro/index.html">Neural Machine Translation</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/nlp/nmt/nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/nlp/nmt/rnn-nmt-attention/index.html">Attention in RNN-based NMT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/nlp/nmt/rnn-attention-workshop/seq2seq_and_attention.html">Attention in RNN NMT Workshop</a></li>
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../lectures/nlp/transformers/transformers-intro.html">Transformers and Self-attention</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/nlp/transformers/singlehead-self-attention.html">Single-head self-attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/nlp/transformers/multihead-self-attention.html">Multi-head attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lectures/nlp/transformers/positional_embeddings.html">Positional Embeddings</a></li>
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="label-parts" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/ml-math/index.html">Math for ML Textbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/ml-math/probability/index.html">Probability Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/ml-math/linear-algebra/index.html">Linear Algebra for Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/ml-math/calculus/index.html">Calculus</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="label-parts" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Your Programming Environment</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Training Keras with the SLURM Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nyu-jupyterhub-envs.html">NYU JupyrterHub Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-submission.html">Submitting Your Assignment / Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/python/index.html">Learn Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebook-status.html">Notebook execution status</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">CS-GY-6613 / CS370 Common Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/><label class="label-parts" for="toctree-checkbox-29"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/probability/probability-assignment-8/index.html">Probability &amp; Linear Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/optimization/sgd.html">Stochastic Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/object-detection/video-search.html">Video Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/object-tracking-kalman/drone-follow-me.html">Drone follow me using Kalman Filters</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">CS-GY-6613-INET-Assignments</span></p><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/><label class="label-parts" for="toctree-checkbox-30"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/probability/probability-assignment-3/index.html">Probability Assignment</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/optimization/sgd-linear-regression/index.html">Optimization algorithms for linear regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/object-detection/video-search2.html">Video Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/object-tracking-kalman/drone-follow-me2.html">Drone follow me using Kalman Filters</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Undergraduate Project</span></p><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/><label class="label-parts" for="toctree-checkbox-31"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../projects/cv/sam-finetuning-remote-sensing/index.html">Segment Anything Model Finetuning for Remote Sensing Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/robotics/learning-in-simulated-worlds/index.html">Learning in Simulated Worlds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/cv/wasm-pipelines/index.html">Webassembly (WASM) media pipelines</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Graduate Projects</span></p><input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/><label class="label-parts" for="toctree-checkbox-32"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../projects/cv/sam-advanced-remote-sensing/index.html">Visual Prompting and Oclusion Handling for Remote Sensing Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/robotics/nl-guided-robotics/index.html">Natual Language Guided Robotics</a></li>
+</ul></li></ul>
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/pantelis/artificial-intelligence/master?urlpath=tree/artificial_intelligence/aiml-common/resources/environment/slurm-keras-example.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/pantelis/artificial-intelligence/blob/master/artificial_intelligence/aiml-common/resources/environment/slurm-keras-example.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pantelis/artificial-intelligence" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/resources/environment/slurm-keras-example.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/aiml-common/resources/environment/slurm-keras-example.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Training Keras with the SLURM Scheduler</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-0-vpn-and-login">Set 0: VPN and Login</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-create-your-input-pipeline">Step 1: Create your input pipeline</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-a-dataset">Load a dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#upload-dataset-to-server">Upload dataset to server</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-a-training-pipeline">Build a training pipeline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-an-evaluation-pipeline">Build an evaluation pipeline</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-code-on-server">Run code on server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-create-and-train-the-model">Step 2: Create and train the model</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="training-keras-with-the-slurm-scheduler">
+<h1>Training Keras with the SLURM Scheduler<a class="headerlink" href="#training-keras-with-the-slurm-scheduler" title="Link to this heading">#</a></h1>
+<p>This simple example demonstrates how to plug TensorFlow Datasets (TFDS) into a Keras model and submit a training job in HPC environments. Although NJIT is quoted the approach must be the same for NYU.</p>
+<p>Copyright 2020 The TensorFlow Datasets Authors, Licensed under the Apache License, Version 2.0</p>
+<table class="tfo-notebook-buttons" align="left">
+  <td>
+    <a target="_blank" href="https://www.tensorflow.org/datasets/keras_example"><img src="https://www.tensorflow.org/images/tf_logo_32px.png" />View on TensorFlow.org</a>
+  </td>
+  <td>
+    <a target="_blank" href="https://colab.research.google.com/github/tensorflow/datasets/blob/master/docs/keras_example.ipynb"><img src="https://www.tensorflow.org/images/colab_logo_32px.png" />Run in Google Colab</a>
+  </td>
+  <td>
+    <a target="_blank" href="https://github.com/tensorflow/datasets/blob/master/docs/keras_example.ipynb"><img src="https://www.tensorflow.org/images/GitHub-Mark-32px.png" />View source on GitHub</a>
+  </td>
+  <td>
+    <a href="https://storage.googleapis.com/tensorflow_docs/datasets/docs/keras_example.ipynb"><img src="https://www.tensorflow.org/images/download_logo_32px.png" />Download notebook</a>
+  </td>
+</table><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">tensorflow_datasets</span> <span class="k">as</span> <span class="nn">tfds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-10-03 09:29:30.258272: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2023-10-03 09:29:30.258321: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2023-10-03 09:29:30.258358: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+</pre></div>
+</div>
+</div>
+</div>
+<section id="set-0-vpn-and-login">
+<h2>Set 0: VPN and Login<a class="headerlink" href="#set-0-vpn-and-login" title="Link to this heading">#</a></h2>
+<p>You need to install a VPN client and establish a VPN connection to NJIT data center. Consult <a class="reference external" href="https://ist.njit.edu/vpn">https://ist.njit.edu/vpn</a> for help in doing so.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># select from the two options below and ssh into the HPC server</span>
+ssh<span class="w"> </span>ucid@HPC_HOST.njit.edu<span class="w"> </span>
+ssh<span class="w"> </span>ucid@wulver.njit.edu
+</pre></div>
+</div>
+</section>
+<section id="step-1-create-your-input-pipeline">
+<h2>Step 1: Create your input pipeline<a class="headerlink" href="#step-1-create-your-input-pipeline" title="Link to this heading">#</a></h2>
+<p>Start by building an efficient input pipeline using advices from:</p>
+<ul class="simple">
+<li><p>The <a class="reference external" href="https://www.tensorflow.org/datasets/performances">Performance tips</a> guide</p></li>
+<li><p>The <a class="reference external" href="https://www.tensorflow.org/guide/data_performance#optimize_performance">Better performance with the <code class="docutils literal notranslate"><span class="pre">tf.data</span></code> API</a> guide</p></li>
+</ul>
+<section id="load-a-dataset">
+<h3>Load a dataset<a class="headerlink" href="#load-a-dataset" title="Link to this heading">#</a></h3>
+<p>Load the MNIST dataset with the following arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">shuffle_files=True</span></code>: The MNIST data is only stored in a single file, but for larger datasets with multiple files on disk, it’s good practice to shuffle them when training.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">as_supervised=True</span></code>: Returns a tuple <code class="docutils literal notranslate"><span class="pre">(img,</span> <span class="pre">label)</span></code> instead of a dictionary <code class="docutils literal notranslate"><span class="pre">{'image':</span> <span class="pre">img,</span> <span class="pre">'label':</span> <span class="pre">label}</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">ds_train</span><span class="p">,</span> <span class="n">ds_test</span><span class="p">),</span> <span class="n">ds_info</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+    <span class="s1">&#39;mnist&#39;</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">],</span>
+    <span class="n">shuffle_files</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">as_supervised</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">with_info</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-10-03 09:29:33.682941: E tensorflow/compiler/xla/stream_executor/cuda/cuda_driver.cc:268] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+</pre></div>
+</div>
+</div>
+</div>
+<section id="upload-dataset-to-server">
+<h4>Upload dataset to server<a class="headerlink" href="#upload-dataset-to-server" title="Link to this heading">#</a></h4>
+<p>command:
+scp -r /path_of_file_locally ucid&#64;HPC_HOST.njit.edu:/path_in_server
+or
+scp -r /path_of_file_locally <a class="reference external" href="mailto:ucid&#37;&#52;&#48;wulver&#46;njit&#46;edu">ucid<span>&#64;</span>wulver<span>&#46;</span>njit<span>&#46;</span>edu</a>:/path_in_server</p>
+</section>
+</section>
+<section id="build-a-training-pipeline">
+<h3>Build a training pipeline<a class="headerlink" href="#build-a-training-pipeline" title="Link to this heading">#</a></h3>
+<p>Apply the following transformations:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tf.data.Dataset.map</span></code>: TFDS provide images of type <code class="docutils literal notranslate"><span class="pre">tf.uint8</span></code>, while the model expects <code class="docutils literal notranslate"><span class="pre">tf.float32</span></code>. Therefore, you need to normalize images.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tf.data.Dataset.cache</span></code> As you fit the dataset in memory, cache it before shuffling for a better performance.<br/>
+<strong>Note:</strong> Random transformations should be applied after caching.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tf.data.Dataset.shuffle</span></code>: For true randomness, set the shuffle buffer to the full dataset size.<br/>
+<strong>Note:</strong> For large datasets that can’t fit in memory, use <code class="docutils literal notranslate"><span class="pre">buffer_size=1000</span></code> if your system allows it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tf.data.Dataset.batch</span></code>: Batch elements of the dataset after shuffling to get unique batches at each epoch.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tf.data.Dataset.prefetch</span></code>: It is good practice to end the pipeline by prefetching <a class="reference external" href="https://www.tensorflow.org/guide/data_performance#prefetching">for performance</a>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">normalize_img</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Normalizes images: `uint8` -&gt; `float32`.&quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.</span><span class="p">,</span> <span class="n">label</span>
+
+<span class="n">ds_train</span> <span class="o">=</span> <span class="n">ds_train</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+    <span class="n">normalize_img</span><span class="p">,</span> <span class="n">num_parallel_calls</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">AUTOTUNE</span><span class="p">)</span>
+<span class="n">ds_train</span> <span class="o">=</span> <span class="n">ds_train</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+<span class="n">ds_train</span> <span class="o">=</span> <span class="n">ds_train</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">ds_info</span><span class="o">.</span><span class="n">splits</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">num_examples</span><span class="p">)</span>
+<span class="n">ds_train</span> <span class="o">=</span> <span class="n">ds_train</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+<span class="n">ds_train</span> <span class="o">=</span> <span class="n">ds_train</span><span class="o">.</span><span class="n">prefetch</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">AUTOTUNE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="build-an-evaluation-pipeline">
+<h3>Build an evaluation pipeline<a class="headerlink" href="#build-an-evaluation-pipeline" title="Link to this heading">#</a></h3>
+<p>Your testing pipeline is similar to the training pipeline with small differences:</p>
+<ul class="simple">
+<li><p>You don’t need to call <code class="docutils literal notranslate"><span class="pre">tf.data.Dataset.shuffle</span></code>.</p></li>
+<li><p>Caching is done after batching because batches can be the same between epochs.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_test</span> <span class="o">=</span> <span class="n">ds_test</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+    <span class="n">normalize_img</span><span class="p">,</span> <span class="n">num_parallel_calls</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">AUTOTUNE</span><span class="p">)</span>
+<span class="n">ds_test</span> <span class="o">=</span> <span class="n">ds_test</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+<span class="n">ds_test</span> <span class="o">=</span> <span class="n">ds_test</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+<span class="n">ds_test</span> <span class="o">=</span> <span class="n">ds_test</span><span class="o">.</span><span class="n">prefetch</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">AUTOTUNE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="run-code-on-server">
+<h4>Run code on server<a class="headerlink" href="#run-code-on-server" title="Link to this heading">#</a></h4>
+<p>create a .sh file first and here is a sample .sh file which runs your_job_name in general partition, you might need to change nodelist,nodes,gres,mem in your .sh file. If you want to comment something in .sh file, use several # to make sure it is comment, such as #####your comment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -1</span>
+
+<span class="c1">#SBATCH --job-name=your_job_name</span>
+<span class="c1">#SBATCH --output=xxxx.out</span>
+<span class="c1">#SBATCH --partition=general</span>
+<span class="c1">#SBATCH --nodelist=node816</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+<span class="c1">#SBATCH --mem=16G</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use: sinfo on terminal to check if the job is run successful on the server</p>
+<p>Use: squeue -p gpu to check usage of gpu</p>
+<p>It is hard to visualize things in server so make sure you save the output of everything into a file in server and download into your local enviroment to visualize if needed.</p>
+<p>command:
+scp ucid&#64;HPC_HOST.njit.edu:/path_in_server /path_of_file_locally
+or
+scp <a class="reference external" href="mailto:ucid&#37;&#52;&#48;wulver&#46;njit&#46;edu">ucid<span>&#64;</span>wulver<span>&#46;</span>njit<span>&#46;</span>edu</a>:/path_in_server /path_of_file_locally</p>
+</section>
+</section>
+</section>
+<section id="step-2-create-and-train-the-model">
+<h2>Step 2: Create and train the model<a class="headerlink" href="#step-2-create-and-train-the-model" title="Link to this heading">#</a></h2>
+<p>Plug the TFDS input pipeline into a simple Keras model, compile the model, and train it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="mf">0.001</span><span class="p">),</span>
+    <span class="n">loss</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">SparseCategoricalCrossentropy</span><span class="p">(</span><span class="n">from_logits</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">SparseCategoricalAccuracy</span><span class="p">()],</span>
+<span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">ds_train</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">validation_data</span><span class="o">=</span><span class="n">ds_test</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/6
+
+  1/469 [..............................] - ETA: 16:54 - loss: 2.5053 - sparse_categorical_accuracy: 0.0703
+ 20/469 [&gt;.............................] - ETA: 1s - loss: 1.6709 - sparse_categorical_accuracy: 0.5254   
+ 41/469 [=&gt;............................] - ETA: 1s - loss: 1.1971 - sparse_categorical_accuracy: 0.6812
+ 62/469 [==&gt;...........................] - ETA: 1s - loss: 0.9548 - sparse_categorical_accuracy: 0.7452
+ 84/469 [====&gt;.........................] - ETA: 0s - loss: 0.8144 - sparse_categorical_accuracy: 0.7816
+106/469 [=====&gt;........................] - ETA: 0s - loss: 0.7238 - sparse_categorical_accuracy: 0.8053
+128/469 [=======&gt;......................] - ETA: 0s - loss: 0.6602 - sparse_categorical_accuracy: 0.8217
+150/469 [========&gt;.....................] - ETA: 0s - loss: 0.6103 - sparse_categorical_accuracy: 0.8352
+173/469 [==========&gt;...................] - ETA: 0s - loss: 0.5696 - sparse_categorical_accuracy: 0.8461
+196/469 [===========&gt;..................] - ETA: 0s - loss: 0.5361 - sparse_categorical_accuracy: 0.8550
+218/469 [============&gt;.................] - ETA: 0s - loss: 0.5094 - sparse_categorical_accuracy: 0.8617
+241/469 [==============&gt;...............] - ETA: 0s - loss: 0.4872 - sparse_categorical_accuracy: 0.8675
+264/469 [===============&gt;..............] - ETA: 0s - loss: 0.4659 - sparse_categorical_accuracy: 0.8735
+287/469 [=================&gt;............] - ETA: 0s - loss: 0.4483 - sparse_categorical_accuracy: 0.8782
+310/469 [==================&gt;...........] - ETA: 0s - loss: 0.4336 - sparse_categorical_accuracy: 0.8823
+332/469 [====================&gt;.........] - ETA: 0s - loss: 0.4211 - sparse_categorical_accuracy: 0.8856
+354/469 [=====================&gt;........] - ETA: 0s - loss: 0.4087 - sparse_categorical_accuracy: 0.8890
+376/469 [=======================&gt;......] - ETA: 0s - loss: 0.3992 - sparse_categorical_accuracy: 0.8914
+398/469 [========================&gt;.....] - ETA: 0s - loss: 0.3887 - sparse_categorical_accuracy: 0.8942
+421/469 [=========================&gt;....] - ETA: 0s - loss: 0.3791 - sparse_categorical_accuracy: 0.8966
+444/469 [===========================&gt;..] - ETA: 0s - loss: 0.3716 - sparse_categorical_accuracy: 0.8985
+467/469 [============================&gt;.] - ETA: 0s - loss: 0.3625 - sparse_categorical_accuracy: 0.9009
+469/469 [==============================] - 4s 4ms/step - loss: 0.3621 - sparse_categorical_accuracy: 0.9011 - val_loss: 0.1925 - val_sparse_categorical_accuracy: 0.9463
+Epoch 2/6
+
+  1/469 [..............................] - ETA: 35s - loss: 0.1062 - sparse_categorical_accuracy: 0.9766
+ 23/469 [&gt;.............................] - ETA: 1s - loss: 0.1855 - sparse_categorical_accuracy: 0.9467 
+ 45/469 [=&gt;............................] - ETA: 0s - loss: 0.1784 - sparse_categorical_accuracy: 0.9497
+ 67/469 [===&gt;..........................] - ETA: 0s - loss: 0.1805 - sparse_categorical_accuracy: 0.9488
+ 89/469 [====&gt;.........................] - ETA: 0s - loss: 0.1765 - sparse_categorical_accuracy: 0.9506
+111/469 [======&gt;.......................] - ETA: 0s - loss: 0.1760 - sparse_categorical_accuracy: 0.9505
+133/469 [=======&gt;......................] - ETA: 0s - loss: 0.1784 - sparse_categorical_accuracy: 0.9496
+155/469 [========&gt;.....................] - ETA: 0s - loss: 0.1765 - sparse_categorical_accuracy: 0.9494
+178/469 [==========&gt;...................] - ETA: 0s - loss: 0.1737 - sparse_categorical_accuracy: 0.9505
+200/469 [===========&gt;..................] - ETA: 0s - loss: 0.1710 - sparse_categorical_accuracy: 0.9512
+222/469 [=============&gt;................] - ETA: 0s - loss: 0.1716 - sparse_categorical_accuracy: 0.9512
+244/469 [==============&gt;...............] - ETA: 0s - loss: 0.1695 - sparse_categorical_accuracy: 0.9521
+266/469 [================&gt;.............] - ETA: 0s - loss: 0.1676 - sparse_categorical_accuracy: 0.9525
+288/469 [=================&gt;............] - ETA: 0s - loss: 0.1670 - sparse_categorical_accuracy: 0.9526
+310/469 [==================&gt;...........] - ETA: 0s - loss: 0.1657 - sparse_categorical_accuracy: 0.9528
+333/469 [====================&gt;.........] - ETA: 0s - loss: 0.1653 - sparse_categorical_accuracy: 0.9528
+355/469 [=====================&gt;........] - ETA: 0s - loss: 0.1644 - sparse_categorical_accuracy: 0.9529
+377/469 [=======================&gt;......] - ETA: 0s - loss: 0.1643 - sparse_categorical_accuracy: 0.9530
+400/469 [========================&gt;.....] - ETA: 0s - loss: 0.1633 - sparse_categorical_accuracy: 0.9532
+423/469 [==========================&gt;...] - ETA: 0s - loss: 0.1616 - sparse_categorical_accuracy: 0.9538
+446/469 [===========================&gt;..] - ETA: 0s - loss: 0.1606 - sparse_categorical_accuracy: 0.9542
+469/469 [==============================] - ETA: 0s - loss: 0.1602 - sparse_categorical_accuracy: 0.9543
+469/469 [==============================] - 1s 3ms/step - loss: 0.1602 - sparse_categorical_accuracy: 0.9543 - val_loss: 0.1392 - val_sparse_categorical_accuracy: 0.9588
+Epoch 3/6
+
+  1/469 [..............................] - ETA: 32s - loss: 0.1546 - sparse_categorical_accuracy: 0.9609
+ 23/469 [&gt;.............................] - ETA: 1s - loss: 0.1243 - sparse_categorical_accuracy: 0.9640 
+ 45/469 [=&gt;............................] - ETA: 0s - loss: 0.1216 - sparse_categorical_accuracy: 0.9648
+ 67/469 [===&gt;..........................] - ETA: 0s - loss: 0.1272 - sparse_categorical_accuracy: 0.9628
+ 90/469 [====&gt;.........................] - ETA: 0s - loss: 0.1230 - sparse_categorical_accuracy: 0.9653
+113/469 [======&gt;.......................] - ETA: 0s - loss: 0.1236 - sparse_categorical_accuracy: 0.9649
+136/469 [=======&gt;......................] - ETA: 0s - loss: 0.1238 - sparse_categorical_accuracy: 0.9649
+159/469 [=========&gt;....................] - ETA: 0s - loss: 0.1227 - sparse_categorical_accuracy: 0.9651
+182/469 [==========&gt;...................] - ETA: 0s - loss: 0.1205 - sparse_categorical_accuracy: 0.9658
+205/469 [============&gt;.................] - ETA: 0s - loss: 0.1186 - sparse_categorical_accuracy: 0.9664
+227/469 [=============&gt;................] - ETA: 0s - loss: 0.1192 - sparse_categorical_accuracy: 0.9661
+249/469 [==============&gt;...............] - ETA: 0s - loss: 0.1189 - sparse_categorical_accuracy: 0.9661
+271/469 [================&gt;.............] - ETA: 0s - loss: 0.1182 - sparse_categorical_accuracy: 0.9662
+293/469 [=================&gt;............] - ETA: 0s - loss: 0.1178 - sparse_categorical_accuracy: 0.9666
+316/469 [===================&gt;..........] - ETA: 0s - loss: 0.1185 - sparse_categorical_accuracy: 0.9662
+338/469 [====================&gt;.........] - ETA: 0s - loss: 0.1186 - sparse_categorical_accuracy: 0.9662
+361/469 [======================&gt;.......] - ETA: 0s - loss: 0.1185 - sparse_categorical_accuracy: 0.9660
+384/469 [=======================&gt;......] - ETA: 0s - loss: 0.1177 - sparse_categorical_accuracy: 0.9661
+407/469 [=========================&gt;....] - ETA: 0s - loss: 0.1178 - sparse_categorical_accuracy: 0.9663
+430/469 [==========================&gt;...] - ETA: 0s - loss: 0.1177 - sparse_categorical_accuracy: 0.9662
+453/469 [===========================&gt;..] - ETA: 0s - loss: 0.1173 - sparse_categorical_accuracy: 0.9664
+469/469 [==============================] - 1s 2ms/step - loss: 0.1174 - sparse_categorical_accuracy: 0.9664 - val_loss: 0.1084 - val_sparse_categorical_accuracy: 0.9693
+Epoch 4/6
+
+  1/469 [..............................] - ETA: 32s - loss: 0.0986 - sparse_categorical_accuracy: 0.9688
+ 24/469 [&gt;.............................] - ETA: 0s - loss: 0.1070 - sparse_categorical_accuracy: 0.9684 
+ 47/469 [==&gt;...........................] - ETA: 0s - loss: 0.1030 - sparse_categorical_accuracy: 0.9714
+ 70/469 [===&gt;..........................] - ETA: 0s - loss: 0.0953 - sparse_categorical_accuracy: 0.9733
+ 93/469 [====&gt;.........................] - ETA: 0s - loss: 0.0948 - sparse_categorical_accuracy: 0.9733
+116/469 [======&gt;.......................] - ETA: 0s - loss: 0.0920 - sparse_categorical_accuracy: 0.9744
+139/469 [=======&gt;......................] - ETA: 0s - loss: 0.0917 - sparse_categorical_accuracy: 0.9747
+161/469 [=========&gt;....................] - ETA: 0s - loss: 0.0920 - sparse_categorical_accuracy: 0.9746
+184/469 [==========&gt;...................] - ETA: 0s - loss: 0.0915 - sparse_categorical_accuracy: 0.9748
+206/469 [============&gt;.................] - ETA: 0s - loss: 0.0912 - sparse_categorical_accuracy: 0.9745
+228/469 [=============&gt;................] - ETA: 0s - loss: 0.0913 - sparse_categorical_accuracy: 0.9746
+251/469 [===============&gt;..............] - ETA: 0s - loss: 0.0923 - sparse_categorical_accuracy: 0.9744
+273/469 [================&gt;.............] - ETA: 0s - loss: 0.0920 - sparse_categorical_accuracy: 0.9746
+295/469 [=================&gt;............] - ETA: 0s - loss: 0.0923 - sparse_categorical_accuracy: 0.9742
+317/469 [===================&gt;..........] - ETA: 0s - loss: 0.0929 - sparse_categorical_accuracy: 0.9740
+339/469 [====================&gt;.........] - ETA: 0s - loss: 0.0931 - sparse_categorical_accuracy: 0.9738
+361/469 [======================&gt;.......] - ETA: 0s - loss: 0.0924 - sparse_categorical_accuracy: 0.9740
+383/469 [=======================&gt;......] - ETA: 0s - loss: 0.0923 - sparse_categorical_accuracy: 0.9741
+405/469 [========================&gt;.....] - ETA: 0s - loss: 0.0921 - sparse_categorical_accuracy: 0.9741
+428/469 [==========================&gt;...] - ETA: 0s - loss: 0.0917 - sparse_categorical_accuracy: 0.9742
+451/469 [===========================&gt;..] - ETA: 0s - loss: 0.0913 - sparse_categorical_accuracy: 0.9743
+469/469 [==============================] - 1s 3ms/step - loss: 0.0911 - sparse_categorical_accuracy: 0.9743 - val_loss: 0.0968 - val_sparse_categorical_accuracy: 0.9714
+Epoch 5/6
+
+  1/469 [..............................] - ETA: 32s - loss: 0.0625 - sparse_categorical_accuracy: 0.9922
+ 23/469 [&gt;.............................] - ETA: 1s - loss: 0.0698 - sparse_categorical_accuracy: 0.9820 
+ 45/469 [=&gt;............................] - ETA: 0s - loss: 0.0682 - sparse_categorical_accuracy: 0.9811
+ 68/469 [===&gt;..........................] - ETA: 0s - loss: 0.0707 - sparse_categorical_accuracy: 0.9805
+ 90/469 [====&gt;.........................] - ETA: 0s - loss: 0.0729 - sparse_categorical_accuracy: 0.9793
+112/469 [======&gt;.......................] - ETA: 0s - loss: 0.0734 - sparse_categorical_accuracy: 0.9794
+135/469 [=======&gt;......................] - ETA: 0s - loss: 0.0752 - sparse_categorical_accuracy: 0.9791
+158/469 [=========&gt;....................] - ETA: 0s - loss: 0.0742 - sparse_categorical_accuracy: 0.9794
+181/469 [==========&gt;...................] - ETA: 0s - loss: 0.0738 - sparse_categorical_accuracy: 0.9795
+204/469 [============&gt;.................] - ETA: 0s - loss: 0.0728 - sparse_categorical_accuracy: 0.9797
+227/469 [=============&gt;................] - ETA: 0s - loss: 0.0727 - sparse_categorical_accuracy: 0.9797
+249/469 [==============&gt;...............] - ETA: 0s - loss: 0.0715 - sparse_categorical_accuracy: 0.9802
+271/469 [================&gt;.............] - ETA: 0s - loss: 0.0704 - sparse_categorical_accuracy: 0.9806
+293/469 [=================&gt;............] - ETA: 0s - loss: 0.0705 - sparse_categorical_accuracy: 0.9805
+315/469 [===================&gt;..........] - ETA: 0s - loss: 0.0709 - sparse_categorical_accuracy: 0.9804
+337/469 [====================&gt;.........] - ETA: 0s - loss: 0.0708 - sparse_categorical_accuracy: 0.9802
+360/469 [======================&gt;.......] - ETA: 0s - loss: 0.0720 - sparse_categorical_accuracy: 0.9797
+383/469 [=======================&gt;......] - ETA: 0s - loss: 0.0729 - sparse_categorical_accuracy: 0.9791
+406/469 [========================&gt;.....] - ETA: 0s - loss: 0.0727 - sparse_categorical_accuracy: 0.9792
+429/469 [==========================&gt;...] - ETA: 0s - loss: 0.0731 - sparse_categorical_accuracy: 0.9791
+452/469 [===========================&gt;..] - ETA: 0s - loss: 0.0735 - sparse_categorical_accuracy: 0.9791
+469/469 [==============================] - 1s 2ms/step - loss: 0.0738 - sparse_categorical_accuracy: 0.9790 - val_loss: 0.0881 - val_sparse_categorical_accuracy: 0.9735
+Epoch 6/6
+
+  1/469 [..............................] - ETA: 32s - loss: 0.0219 - sparse_categorical_accuracy: 1.0000
+ 24/469 [&gt;.............................] - ETA: 1s - loss: 0.0620 - sparse_categorical_accuracy: 0.9821 
+ 47/469 [==&gt;...........................] - ETA: 0s - loss: 0.0629 - sparse_categorical_accuracy: 0.9830
+ 70/469 [===&gt;..........................] - ETA: 0s - loss: 0.0640 - sparse_categorical_accuracy: 0.9830
+ 93/469 [====&gt;.........................] - ETA: 0s - loss: 0.0619 - sparse_categorical_accuracy: 0.9830
+116/469 [======&gt;.......................] - ETA: 0s - loss: 0.0614 - sparse_categorical_accuracy: 0.9829
+139/469 [=======&gt;......................] - ETA: 0s - loss: 0.0620 - sparse_categorical_accuracy: 0.9823
+162/469 [=========&gt;....................] - ETA: 0s - loss: 0.0632 - sparse_categorical_accuracy: 0.9820
+185/469 [==========&gt;...................] - ETA: 0s - loss: 0.0630 - sparse_categorical_accuracy: 0.9821
+208/469 [============&gt;.................] - ETA: 0s - loss: 0.0624 - sparse_categorical_accuracy: 0.9823
+231/469 [=============&gt;................] - ETA: 0s - loss: 0.0634 - sparse_categorical_accuracy: 0.9821
+254/469 [===============&gt;..............] - ETA: 0s - loss: 0.0630 - sparse_categorical_accuracy: 0.9822
+277/469 [================&gt;.............] - ETA: 0s - loss: 0.0634 - sparse_categorical_accuracy: 0.9819
+300/469 [==================&gt;...........] - ETA: 0s - loss: 0.0633 - sparse_categorical_accuracy: 0.9821
+322/469 [===================&gt;..........] - ETA: 0s - loss: 0.0633 - sparse_categorical_accuracy: 0.9821
+345/469 [=====================&gt;........] - ETA: 0s - loss: 0.0627 - sparse_categorical_accuracy: 0.9821
+368/469 [======================&gt;.......] - ETA: 0s - loss: 0.0628 - sparse_categorical_accuracy: 0.9820
+390/469 [=======================&gt;......] - ETA: 0s - loss: 0.0625 - sparse_categorical_accuracy: 0.9822
+413/469 [=========================&gt;....] - ETA: 0s - loss: 0.0622 - sparse_categorical_accuracy: 0.9823
+435/469 [==========================&gt;...] - ETA: 0s - loss: 0.0618 - sparse_categorical_accuracy: 0.9823
+457/469 [============================&gt;.] - ETA: 0s - loss: 0.0618 - sparse_categorical_accuracy: 0.9823
+469/469 [==============================] - 1s 2ms/step - loss: 0.0617 - sparse_categorical_accuracy: 0.9823 - val_loss: 0.0793 - val_sparse_categorical_accuracy: 0.9749
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.History at 0x7fc41e0cb880&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "pantelis/artificial-intelligence",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./aiml-common/resources/environment"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Your Programming Environment</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="nyu-jupyterhub-envs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">NYU JupyrterHub Environments</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-0-vpn-and-login">Set 0: VPN and Login</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-create-your-input-pipeline">Step 1: Create your input pipeline</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-a-dataset">Load a dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#upload-dataset-to-server">Upload dataset to server</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-a-training-pipeline">Build a training pipeline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-an-evaluation-pipeline">Build an evaluation pipeline</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-code-on-server">Run code on server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-create-and-train-the-model">Step 2: Create and train the model</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Pantelis Monogioudis, Ph.D
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

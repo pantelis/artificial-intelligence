@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Logistics Planning in PDDL &#8212; Introduction to Artificial Intelligence</title>
   
@@ -29,43 +28,39 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
-    <script src="../../../../../_static/jquery.js"></script>
-    <script src="../../../../../_static/underscore.js"></script>
-    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../../../_static/doctools.js"></script>
-    <script src="../../../../../_static/clipboard.min.js"></script>
-    <script src="../../../../../_static/copybutton.js"></script>
-    <script src="../../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../../../_static/togglebutton.js"></script>
+    <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../../../_static/sphinx-thebe.js"></script>
+    <script src="../../../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/planning/pddl/logistics/index';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/planning/pddl/logistics/index.html" />
-    <link rel="shortcut icon" href="../../../../../_static/logo.ico"/>
+    <link rel="icon" href="../../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
     <link rel="next" title="Manufacrturing Robot Planning in PDDL" href="../manufacturing/index.html" />
@@ -163,7 +158,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="list-caption"><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="label-parts" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../../syllabus/_index.html">Syllabus</a></li>
@@ -345,6 +351,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../ml-math/calculus/index.html">Calculus</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="label-parts" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/index.html">Your Programming Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/slurm-keras-example.html">Training Keras with the SLURM Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/nyu-jupyterhub-envs.html">NYU JupyrterHub Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../python/index.html">Learn Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
@@ -585,7 +593,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="logistics-planning-in-pddl">
-<h1>Logistics Planning in PDDL<a class="headerlink" href="#logistics-planning-in-pddl" title="Permalink to this heading">#</a></h1>
+<h1>Logistics Planning in PDDL<a class="headerlink" href="#logistics-planning-in-pddl" title="Link to this heading">#</a></h1>
 <p>We will use the Logistics domain to illustrate how to represent a
 planning task in PDDL.</p>
 <p>In logistics, there are trucks and airplanes that can move packages
@@ -595,7 +603,7 @@ are in London airport. Paris has two places : south and north. The goal
 is to have one package in the north location and the other one in the
 south location.</p>
 <section id="defining-the-domain">
-<h2>Defining the Domain<a class="headerlink" href="#defining-the-domain" title="Permalink to this heading">#</a></h2>
+<h2>Defining the Domain<a class="headerlink" href="#defining-the-domain" title="Link to this heading">#</a></h2>
 <dl class="simple myst">
 <dt>Let start by defining in the file <code class="docutils literal notranslate"><span class="pre">logistics.pddl</span></code> the domain and its components :</dt><dd><ul class="simple">
 <li><p>the requirements,</p></li>
@@ -611,7 +619,7 @@ south location.</p>
 </pre></div>
 </div>
 <section id="requirements">
-<h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h3>
+<h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h3>
 <dl class="simple myst">
 <dt>The requirements for this logistics example are:</dt><dd><ul class="simple">
 <li><p><strong>strips</strong> : the actions will only use positive preconditions
@@ -629,7 +637,7 @@ represent sets of objects in the world.</p></li>
 </div>
 </section>
 <section id="types">
-<h3>Types<a class="headerlink" href="#types" title="Permalink to this heading">#</a></h3>
+<h3>Types<a class="headerlink" href="#types" title="Link to this heading">#</a></h3>
 <dl class="simple myst">
 <dt>We will use the following types:</dt><dd><ul class="simple">
 <li><p>Places, cities and physical objects are considered as objects,</p></li>
@@ -649,7 +657,7 @@ represent sets of objects in the world.</p></li>
 </div>
 </section>
 <section id="predicates">
-<h3>Predicates<a class="headerlink" href="#predicates" title="Permalink to this heading">#</a></h3>
+<h3>Predicates<a class="headerlink" href="#predicates" title="Link to this heading">#</a></h3>
 <dl class="simple myst">
 <dt>We will use the following predicates:</dt><dd><ul class="simple">
 <li><p><em>in-city(loc, city)</em> - true iff a place <em>loc</em> is in the city
@@ -670,7 +678,7 @@ represent sets of objects in the world.</p></li>
 </div>
 </section>
 <section id="operators">
-<h3>Operators<a class="headerlink" href="#operators" title="Permalink to this heading">#</a></h3>
+<h3>Operators<a class="headerlink" href="#operators" title="Link to this heading">#</a></h3>
 <p>We are going to define the operators of the actions of the logistics
 domain, i.e., the means to change the states of the world. The domains
 has 5 operators: <em>load-truck</em>, <em>load-airplaine</em>, <em>unload-truck</em>,
@@ -679,7 +687,7 @@ has 5 operators: <em>load-truck</em>, <em>load-airplaine</em>, <em>unload-truck<
 “operator” (though in planning community, actions are ground
 operators, i.e., operator where variables are replaced by constants).</p>
 <p><strong>Load Truck Operator</strong></p>
-<p>For instance, in the logistics domain, a truck can be loaded… And to
+<p>For instance, in the logistics domain, a truck can be loaded.… And to
 load a truck, we need a package <em>pkg</em> and a truck <em>truck</em> at a place
 <em>loc</em>. To load <em>pkg</em> in <em>truck</em>, these two objects must be at the same
 place <em>loc</em>. The effects of loading <em>pkg</em> in <em>truck</em> are that <em>in(pkg,
@@ -801,7 +809,7 @@ that case, specific requirements must be used, for instance <code class="docutil
 </section>
 </section>
 <section id="defining-the-problem">
-<h2>Defining the Problem<a class="headerlink" href="#defining-the-problem" title="Permalink to this heading">#</a></h2>
+<h2>Defining the Problem<a class="headerlink" href="#defining-the-problem" title="Link to this heading">#</a></h2>
 <dl class="simple myst">
 <dt>Now, let define in the file <code class="docutils literal notranslate"><span class="pre">problem.pddl</span></code> a simple problem and its components :</dt><dd><ul class="simple">
 <li><p>the objects,</p></li>
@@ -818,7 +826,7 @@ associated with this problem:</p>
 </pre></div>
 </div>
 <section id="objects">
-<h3>Objects<a class="headerlink" href="#objects" title="Permalink to this heading">#</a></h3>
+<h3>Objects<a class="headerlink" href="#objects" title="Link to this heading">#</a></h3>
 <dl class="simple myst">
 <dt>In this example, we use the following objects:</dt><dd><ul class="simple">
 <li><p>A Truck : <em>truck</em></p></li>
@@ -844,7 +852,7 @@ associated with this problem:</p>
 the type <code class="docutils literal notranslate"><span class="pre">object</span></code>.</p>
 </section>
 <section id="initial-state">
-<h3>Initial State<a class="headerlink" href="#initial-state" title="Permalink to this heading">#</a></h3>
+<h3>Initial State<a class="headerlink" href="#initial-state" title="Link to this heading">#</a></h3>
 <p>The initial state is a set of ground predicates. A predicate is ground
 iff all the variables are bound to objects. The ground predicates in the
 initial state represent true facts in this state. Any fact that is not
@@ -862,7 +870,7 @@ represented in a state is false: In our case:</p>
 </div>
 </section>
 <section id="goal-description">
-<h3>Goal Description<a class="headerlink" href="#goal-description" title="Permalink to this heading">#</a></h3>
+<h3>Goal Description<a class="headerlink" href="#goal-description" title="Link to this heading">#</a></h3>
 <p>The goal is to have <em>at(p1, north)</em> and <em>at(p2, south)</em> in the final
 state (no matter the truth value of the other predicates). In PDDL, we
 write:</p>

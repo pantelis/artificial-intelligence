@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Detectron2 Beginner’s Tutorial &#8212; Introduction to Artificial Intelligence</title>
   
@@ -29,43 +28,39 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
-    <script src="../../../../../_static/jquery.js"></script>
-    <script src="../../../../../_static/underscore.js"></script>
-    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../../../_static/doctools.js"></script>
-    <script src="../../../../../_static/clipboard.min.js"></script>
-    <script src="../../../../../_static/copybutton.js"></script>
-    <script src="../../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../../../_static/togglebutton.js"></script>
+    <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../../../_static/sphinx-thebe.js"></script>
+    <script src="../../../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.html" />
-    <link rel="shortcut icon" href="../../../../../_static/logo.ico"/>
+    <link rel="icon" href="../../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
     <link rel="next" title="Introduction to Transfer Learning" href="../../../transfer-learning/transfer-learning-introduction.html" />
@@ -163,7 +158,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="list-caption"><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="label-parts" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../../syllabus/_index.html">Syllabus</a></li>
@@ -345,6 +351,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../ml-math/calculus/index.html">Calculus</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="label-parts" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/index.html">Your Programming Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/slurm-keras-example.html">Training Keras with the SLURM Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/nyu-jupyterhub-envs.html">NYU JupyrterHub Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../python/index.html">Learn Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
@@ -651,7 +659,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="detectron2-beginners-tutorial">
-<h1>Detectron2 Beginner’s Tutorial<a class="headerlink" href="#detectron2-beginners-tutorial" title="Permalink to this heading">#</a></h1>
+<h1>Detectron2 Beginner’s Tutorial<a class="headerlink" href="#detectron2-beginners-tutorial" title="Link to this heading">#</a></h1>
 <a class="reference internal image-reference" href="https://dl.fbaipublicfiles.com/detectron2/Detectron2-Logo-Horz.png"><img alt="https://dl.fbaipublicfiles.com/detectron2/Detectron2-Logo-Horz.png" src="https://dl.fbaipublicfiles.com/detectron2/Detectron2-Logo-Horz.png" style="width: 500px;" /></a>
 <p>Welcome to detectron2! This is the official colab tutorial of detectron2. Here, we will go through some basics usage of detectron2, including the following:</p>
 <ul class="simple">
@@ -661,10 +669,10 @@ document.write(`
 <p>You can make a copy of this tutorial by “File -&gt; Open in playground mode” and make changes there. <strong>DO NOT</strong> request access to this tutorial.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="install-detectron2">
-<h1>Install detectron2<a class="headerlink" href="#install-detectron2" title="Permalink to this heading">#</a></h1>
+<h1>Install detectron2<a class="headerlink" href="#install-detectron2" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install detectron2@git+https://github.com/facebookresearch/detectron2@7c2c8fb
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">detectron2</span><span class="nd">@git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">facebookresearch</span><span class="o">/</span><span class="n">detectron2</span><span class="o">@</span><span class="mi">7</span><span class="n">c2c8fb</span>
 </pre></div>
 </div>
 </div>
@@ -797,14 +805,14 @@ Successfully installed antlr4-python3-runtime-4.9.3 black-22.3.0 click-8.1.3 det
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import torch, torchvision, detectron2
-!nvcc --version
-TORCH_VERSION = &quot;.&quot;.join(torch.__version__.split(&quot;.&quot;)[:2])
-TORCHVISION_VERSION = &quot;.&quot;.join(torchvision.__version__.split(&quot;.&quot;)[:2])
-CUDA_VERSION = torch.__version__.split(&quot;+&quot;)[-1]
-print(&quot;torch: &quot;, TORCH_VERSION, &quot;; cuda: &quot;, CUDA_VERSION)
-print(&quot;detectron2:&quot;, detectron2.__version__)
-print(&quot;torchvision: &quot;, TORCHVISION_VERSION)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span><span class="o">,</span> <span class="nn">torchvision</span><span class="o">,</span> <span class="nn">detectron2</span>
+<span class="err">!</span><span class="n">nvcc</span> <span class="o">--</span><span class="n">version</span>
+<span class="n">TORCH_VERSION</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">__version__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">TORCHVISION_VERSION</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">torchvision</span><span class="o">.</span><span class="n">__version__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">CUDA_VERSION</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">__version__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;+&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;torch: &quot;</span><span class="p">,</span> <span class="n">TORCH_VERSION</span><span class="p">,</span> <span class="s2">&quot;; cuda: &quot;</span><span class="p">,</span> <span class="n">CUDA_VERSION</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;detectron2:&quot;</span><span class="p">,</span> <span class="n">detectron2</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;torchvision: &quot;</span><span class="p">,</span> <span class="n">TORCHVISION_VERSION</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -823,7 +831,7 @@ torchvision:  0.13
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!nvidia-smi -L
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">nvidia</span><span class="o">-</span><span class="n">smi</span> <span class="o">-</span><span class="n">L</span>
 </pre></div>
 </div>
 </div>
@@ -858,13 +866,13 @@ torchvision:  0.13
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="run-a-pre-trained-detectron2-model">
-<h1>Run a pre-trained detectron2 model<a class="headerlink" href="#run-a-pre-trained-detectron2-model" title="Permalink to this heading">#</a></h1>
+<h1>Run a pre-trained detectron2 model<a class="headerlink" href="#run-a-pre-trained-detectron2-model" title="Link to this heading">#</a></h1>
 <p>We first download an image from the COCO dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!wget http://images.cocodataset.org/val2017/000000439715.jpg -q -O input.jpg
-im = cv2.imread(&quot;./input.jpg&quot;)
-cv2_imshow(im)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">images</span><span class="o">.</span><span class="n">cocodataset</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">val2017</span><span class="o">/</span><span class="mf">000000439715.</span><span class="n">jpg</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">O</span> <span class="nb">input</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;./input.jpg&quot;</span><span class="p">)</span>
+<span class="n">cv2_imshow</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -938,19 +946,19 @@ Boxes(tensor([[126.5927, 244.9072, 459.8221, 480.0000],
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="train-on-a-custom-dataset">
-<h1>Train on a custom dataset<a class="headerlink" href="#train-on-a-custom-dataset" title="Permalink to this heading">#</a></h1>
+<h1>Train on a custom dataset<a class="headerlink" href="#train-on-a-custom-dataset" title="Link to this heading">#</a></h1>
 <p>In this section, we show how to train an existing detectron2 model on a custom dataset in a new format.</p>
 <p>We use <a class="reference external" href="https://github.com/matterport/Mask_RCNN/tree/master/samples/balloon">the balloon segmentation dataset</a>
 which only has one class: balloon.
 We’ll train a balloon segmentation model from an existing model pre-trained on COCO dataset, available in detectron2’s model zoo.</p>
 <p>Note that COCO dataset does not have the “balloon” category. We’ll be able to recognize this new class in a few minutes.</p>
 <section id="prepare-the-dataset">
-<h2>Prepare the dataset<a class="headerlink" href="#prepare-the-dataset" title="Permalink to this heading">#</a></h2>
+<h2>Prepare the dataset<a class="headerlink" href="#prepare-the-dataset" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># download, decompress the data
-!wget https://github.com/matterport/Mask_RCNN/releases/download/v2.1/balloon_dataset.zip
-!unzip balloon_dataset.zip &gt; /dev/null
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># download, decompress the data</span>
+<span class="err">!</span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">matterport</span><span class="o">/</span><span class="n">Mask_RCNN</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">v2</span><span class="mf">.1</span><span class="o">/</span><span class="n">balloon_dataset</span><span class="o">.</span><span class="n">zip</span>
+<span class="err">!</span><span class="n">unzip</span> <span class="n">balloon_dataset</span><span class="o">.</span><span class="n">zip</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
 </pre></div>
 </div>
 </div>
@@ -1057,7 +1065,7 @@ Here, the dataset is in its custom format, therefore we write a function to pars
 </div>
 </section>
 <section id="train">
-<h2>Train!<a class="headerlink" href="#train" title="Permalink to this heading">#</a></h2>
+<h2>Train!<a class="headerlink" href="#train" title="Link to this heading">#</a></h2>
 <p>Now, let’s fine-tune a COCO-pretrained R50-FPN Mask R-CNN model on the balloon dataset. It takes ~2 minutes to train 300 iterations on a P100 GPU.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1486,7 +1494,7 @@ WARNING:fvcore.common.checkpoint:Some model parameters or buffers are not found 
 </div>
 </section>
 <section id="inference-evaluation-using-the-trained-model">
-<h2>Inference &amp; evaluation using the trained model<a class="headerlink" href="#inference-evaluation-using-the-trained-model" title="Permalink to this heading">#</a></h2>
+<h2>Inference &amp; evaluation using the trained model<a class="headerlink" href="#inference-evaluation-using-the-trained-model" title="Link to this heading">#</a></h2>
 <p>Now, let’s run inference with the trained model on the balloon validation dataset. First, let’s create a predictor using the model we just trained:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1691,7 +1699,7 @@ OrderedDict([(&#39;bbox&#39;, {&#39;AP&#39;: 73.54345467878944, &#39;AP50&#39;: 
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="other-types-of-builtin-models">
-<h1>Other types of builtin models<a class="headerlink" href="#other-types-of-builtin-models" title="Permalink to this heading">#</a></h1>
+<h1>Other types of builtin models<a class="headerlink" href="#other-types-of-builtin-models" title="Link to this heading">#</a></h1>
 <p>We showcase simple demos of other types of models below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1736,7 +1744,7 @@ OrderedDict([(&#39;bbox&#39;, {&#39;AP&#39;: 73.54345467878944, &#39;AP50&#39;: 
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="run-panoptic-segmentation-on-a-video">
-<h1>Run panoptic segmentation on a video<a class="headerlink" href="#run-panoptic-segmentation-on-a-video" title="Permalink to this heading">#</a></h1>
+<h1>Run panoptic segmentation on a video<a class="headerlink" href="#run-panoptic-segmentation-on-a-video" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is the video we&#39;re going to process</span>
@@ -1759,10 +1767,10 @@ OrderedDict([(&#39;bbox&#39;, {&#39;AP&#39;: 73.54345467878944, &#39;AP50&#39;: 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># Install dependencies, download the video, and crop 5 seconds for processing
-!pip install youtube-dl
-!youtube-dl https://www.youtube.com/watch?v=ll8TgCZ0plk -f 22 -o video.mp4
-!ffmpeg -i video.mp4 -t 00:00:06 -c:v copy video-clip.mp4
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install dependencies, download the video, and crop 5 seconds for processing</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">youtube</span><span class="o">-</span><span class="n">dl</span>
+<span class="err">!</span><span class="n">youtube</span><span class="o">-</span><span class="n">dl</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">youtube</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">watch</span><span class="err">?</span><span class="n">v</span><span class="o">=</span><span class="n">ll8TgCZ0plk</span> <span class="o">-</span><span class="n">f</span> <span class="mi">22</span> <span class="o">-</span><span class="n">o</span> <span class="n">video</span><span class="o">.</span><span class="n">mp4</span>
+<span class="err">!</span><span class="n">ffmpeg</span> <span class="o">-</span><span class="n">i</span> <span class="n">video</span><span class="o">.</span><span class="n">mp4</span> <span class="o">-</span><span class="n">t</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">06</span> <span class="o">-</span><span class="n">c</span><span class="p">:</span><span class="n">v</span> <span class="n">copy</span> <span class="n">video</span><span class="o">-</span><span class="n">clip</span><span class="o">.</span><span class="n">mp4</span>
 </pre></div>
 </div>
 </div>
@@ -1806,11 +1814,11 @@ File &#39;video-clip.mp4&#39; already exists. Overwrite ? [y/N]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># Run frame-by-frame inference demo on this video (takes 3-4 minutes) with the &quot;demo.py&quot; tool we provided in the repo.
-!git clone https://github.com/facebookresearch/detectron2
-# Note: this is currently BROKEN due to missing codec. See https://github.com/facebookresearch/detectron2/issues/2901 for workaround.
-%run detectron2/demo/demo.py --config-file detectron2/configs/COCO-PanopticSegmentation/panoptic_fpn_R_101_3x.yaml --video-input video-clip.mp4 --confidence-threshold 0.6 --output video-output.mkv \
-  --opts MODEL.WEIGHTS detectron2://COCO-PanopticSegmentation/panoptic_fpn_R_101_3x/139514519/model_final_cafdb1.pkl
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run frame-by-frame inference demo on this video (takes 3-4 minutes) with the &quot;demo.py&quot; tool we provided in the repo.</span>
+<span class="err">!</span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">facebookresearch</span><span class="o">/</span><span class="n">detectron2</span>
+<span class="c1"># Note: this is currently BROKEN due to missing codec. See https://github.com/facebookresearch/detectron2/issues/2901 for workaround.</span>
+<span class="o">%</span><span class="n">run</span> <span class="n">detectron2</span><span class="o">/</span><span class="n">demo</span><span class="o">/</span><span class="n">demo</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">config</span><span class="o">-</span><span class="n">file</span> <span class="n">detectron2</span><span class="o">/</span><span class="n">configs</span><span class="o">/</span><span class="n">COCO</span><span class="o">-</span><span class="n">PanopticSegmentation</span><span class="o">/</span><span class="n">panoptic_fpn_R_101_3x</span><span class="o">.</span><span class="n">yaml</span> <span class="o">--</span><span class="n">video</span><span class="o">-</span><span class="nb">input</span> <span class="n">video</span><span class="o">-</span><span class="n">clip</span><span class="o">.</span><span class="n">mp4</span> <span class="o">--</span><span class="n">confidence</span><span class="o">-</span><span class="n">threshold</span> <span class="mf">0.6</span> <span class="o">--</span><span class="n">output</span> <span class="n">video</span><span class="o">-</span><span class="n">output</span><span class="o">.</span><span class="n">mkv</span> \
+  <span class="o">--</span><span class="n">opts</span> <span class="n">MODEL</span><span class="o">.</span><span class="n">WEIGHTS</span> <span class="n">detectron2</span><span class="p">:</span><span class="o">//</span><span class="n">COCO</span><span class="o">-</span><span class="n">PanopticSegmentation</span><span class="o">/</span><span class="n">panoptic_fpn_R_101_3x</span><span class="o">/</span><span class="mi">139514519</span><span class="o">/</span><span class="n">model_final_cafdb1</span><span class="o">.</span><span class="n">pkl</span>
 </pre></div>
 </div>
 </div>

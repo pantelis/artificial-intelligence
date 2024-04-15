@@ -25,12 +25,31 @@ For those that do not have an existing NVIDIA-based GPU, please avoid **buying**
 If you do already have AMD or Intel GPUs you _may_ still be able to use them  or simply use Colab.
 
 ```{note}
-Avoid working with conda environments as they are not compatible with optimized NVIDIA containers and they also have issues with Colab. Always prefer pip-based tooling. For docker containers you dont need to create virtual environments as the container is isolated from the host but if you somehow want to, you can use [pipenv](https://pipenv.pypa.io/en/latest/) or simply the standard python module `venv`. 
+Avoid working with conda environments as they are not compatible with optimized NVIDIA containers and they also have issues with Colab. Always prefer pip-based tooling. For docker containers you dont need to create virtual environments as the container is isolated from the host but if you somehow want to, you can use the standard python module `venv'.
 ```
 
 #### Example Development Environment
 
 An example environment is provided [here](https://github.com/pantelis/handson-ml3). This is a slightly modified environment based on [this book's repo](https://github.com/ageron/handson-ml3). In this environment you can launch the container from VS Code using a single click on the prompt 'Reponen in Container" if you have installed the remote container and docker extension.
+
+For environments that start with an NVIDIA docker container published in NGC, **care muist be taken to not overwrite or upgrade the existing python environment.**. The solution is provided by `pip` and the use of a `constraints.txt` file as described next.  
+
+The `-c` flag in `pip install -c constraints.txt` allows you to specify a constraints file to enforce specific versions or version ranges for your dependencies during installation. 
+
+Here's how it works:
+
+1. **Constraints File (`constraints.txt`)**: This file contains version constraints for dependencies. Each line typically specifies a package name and version constraint. For example:
+
+    ```
+    requests==2.26.0
+    Django>=3.2,<4.0
+    ```
+
+2. **Using `-c` flag**: When you run `pip install -c constraints.txt`, you're telling `pip` to consider the constraints specified in `constraints.txt` when resolving dependencies and installing packages. 
+
+3. **Dependency Resolution**: `pip` will attempt to install the packages listed in your regular `requirements.txt` file while ensuring that the versions of those packages conform to the constraints specified in `constraints.txt`. If a package's version does not meet the constraints, `pip` will attempt to find a compatible version or fail if none is available.
+
+Using constraints is especially helpful in projects where specific versions of dependencies are critical for compatibility with the existing optimized by NVIDIA packages. In summary, starting with the NVVIDIA docker as the base image, we initially freeze the installed packages into a `constraints.txt` file and then we can use this file to constrain the version of the additional packages we need to install in the container.
 
 ### Google Colaboratory (recommended)
 

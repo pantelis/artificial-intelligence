@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Introduction to Scene Understanding &#8212; Introduction to Artificial Intelligence</title>
   
@@ -29,45 +28,41 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../../_static/doctools.js"></script>
-    <script src="../../../../_static/clipboard.min.js"></script>
-    <script src="../../../../_static/copybutton.js"></script>
-    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../../_static/togglebutton.js"></script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <script src="../../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/scene-understanding/scene-understanding-intro/index';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/scene-understanding/scene-understanding-intro/index.html" />
-    <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
+    <link rel="icon" href="../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="Object Detection" href="../object-detection/object-detection-intro/index.html" />
@@ -165,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="list-caption"><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="label-parts" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../syllabus/_index.html">Syllabus</a></li>
@@ -347,6 +353,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/calculus/index.html">Calculus</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="label-parts" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/index.html">Your Programming Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/slurm-keras-example.html">Training Keras with the SLURM Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/nyu-jupyterhub-envs.html">NYU JupyrterHub Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Learn Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
@@ -581,10 +589,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-scene-understanding">
-<h1>Introduction to Scene Understanding<a class="headerlink" href="#introduction-to-scene-understanding" title="Permalink to this heading">#</a></h1>
+<h1>Introduction to Scene Understanding<a class="headerlink" href="#introduction-to-scene-understanding" title="Link to this heading">#</a></h1>
 <p>In the previous chapters we have treated the perception subsystem mainly from starting the first principles that govern supervised learning to the deep learning architectures that can be used in computer vision. Now we are synthesizing these algorithms to pipelines that can potentially allow us to decompose the scene into objects. As discussed in the  <a class="reference internal" href="../../cnn/cnn-intro/_index.html#content-cnn-intro"><span class="std std-ref">Introduction to Convolutional Neural Networks</span></a>, humans has a unique to interpret scenes based on their ability to infer (reason) what they <em>dont</em> see. This is the reason why scene understanding involves far more than just perception. In this chapter we will cover algorithms that allow us to, detect and segment objects in the scene.</p>
 <section id="detect-objects-in-an-image">
-<h2>Detect objects in an image.<a class="headerlink" href="#detect-objects-in-an-image" title="Permalink to this heading">#</a></h2>
+<h2>Detect objects in an image.<a class="headerlink" href="#detect-objects-in-an-image" title="Link to this heading">#</a></h2>
 <p>Object detection is demonstrated in this short video clip that shows the end result - placing bounding boxes around classes of interest.</p>
 <div class="video_wrapper" style="">
 <iframe allowfullscreen="true" src="https://www.youtube.com/embed/WZmSMkK9VuA" style="border: 0; height: 345px; width: 560px">
@@ -599,22 +607,22 @@ document.write(`
 <p>However, the regression approach does not work well in practice and has been superceded by the algorithms described later in this chapter.</p>
 </section>
 <section id="semantic-segmentation">
-<h2>Semantic segmentation<a class="headerlink" href="#semantic-segmentation" title="Permalink to this heading">#</a></h2>
+<h2>Semantic segmentation<a class="headerlink" href="#semantic-segmentation" title="Link to this heading">#</a></h2>
 <p><img alt="semantic-segmentation" src="../../../../_images/semantic-segmentation.png" />
 <em>Sementic Segmentation in medical, robotic and sports analytics applications</em></p>
 <p>Both of these abilities enable the <em>reflexive</em> part of perception where the inference ends up being a classification or regression or search problem and in practice, depending on the algorithm, it can range from few ms to 100s of ms. Both of these reflexive inferences are essential parts of many mission critical almost real time applications such as robotics e.g. self driving cars.</p>
 <p>There are other abilities that we need for scene understanding that don’t cover until later in this book. Our ability to recognize the attribute of <em>uniqueness</em> in an object and assign a <em>symbol</em> to it, is fundamental to our ability to reason very quickly at the symbolic level. At that level we can use a whole portfolio of symbolic inference algorithms developed over the last few decades.  But before we reach this level we need to solve the supervised learning problem for the relatively narrow task of bounding and coloring objects. This needs annotated data and knowing what kind of data we have at our disposal is an essential skill.</p>
 </section>
 <section id="instance-segmentation">
-<h2>Instance Segmentation<a class="headerlink" href="#instance-segmentation" title="Permalink to this heading">#</a></h2>
+<h2>Instance Segmentation<a class="headerlink" href="#instance-segmentation" title="Link to this heading">#</a></h2>
 <p><img alt="instance-segmentation" src="../../../../_images/instance-segmentation.png" />
 <em>Instance Segmentation vs semantic segmentation</em></p>
 <p>This is an even more complex problem that semantic segmentation that in addition to need to  color differently the different instances of the <em>same</em> class in the image.</p>
 </section>
 <section id="datasets-for-computer-vision-tasks">
-<h2>Datasets for computer vision tasks<a class="headerlink" href="#datasets-for-computer-vision-tasks" title="Permalink to this heading">#</a></h2>
+<h2>Datasets for computer vision tasks<a class="headerlink" href="#datasets-for-computer-vision-tasks" title="Link to this heading">#</a></h2>
 <section id="coco">
-<h3>COCO<a class="headerlink" href="#coco" title="Permalink to this heading">#</a></h3>
+<h3>COCO<a class="headerlink" href="#coco" title="Link to this heading">#</a></h3>
 <p><img alt="coco-example" src="../../../../_images/coco-example.png" />
 <em>Typical example for Detection, Semantic Segmentation, and Image Captioning Tasks</em></p>
 <p>After its <a class="reference external" href="https://arxiv.org/abs/1405.0312">publication</a> by Microsoft, the COCO dataset has become the reference <a class="reference external" href="http://cocodataset.org/#home">dataset</a> to train models in perception tasks and it is constantly evolving through yearly competitions. The competitions are challenging as compared to earlier ones (e.g. <a class="reference external" href="https://link.springer.com/article/10.1007%2Fs11263-009-0275-4">VOC</a>) (see performance section) since many objects are small. COCO’s 330K images are annotated with</p>
@@ -635,7 +643,7 @@ document.write(`
 </ul>
 <p>Even in a world with so much data, the curated available datasets that can be used to train models are by no means enough to solve AI problems in any domain.</p>
 <p>Firstly, datasets are geared towards competitions that supposedly can advance the science but in many instances leader boards become “academic exercises” where 0.1% mean accuracy improvement can win the competition but definitely does not progress AI. The double digit improvements can and these discoveries create clusters of implementations and publications around them that fine tune them. One of these discoveries is the RCNN architecture that advanced the accuracy metric by almost 30%.</p>
-<p>Secondly, the scene understanding problems that AI engineers will face in the field, e.g. in industrial automation or drug discovery, involve <em>domain specific</em> classes of objects. Although we cant directly use curated datasets, engineers can  do transfer learning, as shown in <a class="reference internal" href="../../transfer-learning/transfer-learning-introduction.html"><span class="doc std std-doc">this section</span></a>, where a dataset is used to train a model for a given task whose weights can be reused to train a model for fairly similar task.</p>
+<p>Secondly, the scene understanding problems that AI engineers will face in the field, e.g. in industrial automation or drug discovery, involve <em>domain specific</em> classes of objects. Although we cant directly use curated datasets, engineers can  do transfer learning, as shown in <a class="reference internal" href="../../transfer-learning/transfer-learning-introduction.html"><span class="std std-doc">this section</span></a>, where a dataset is used to train a model for a given task whose weights can be reused to train a model for fairly similar task.</p>
 </section>
 </section>
 </section>

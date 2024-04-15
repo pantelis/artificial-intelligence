@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Single-head self-attention &#8212; Introduction to Artificial Intelligence</title>
   
@@ -29,45 +28,41 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../../_static/doctools.js"></script>
-    <script src="../../../../_static/clipboard.min.js"></script>
-    <script src="../../../../_static/copybutton.js"></script>
-    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../../_static/togglebutton.js"></script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <script src="../../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/nlp/transformers/singlehead-self-attention';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/nlp/transformers/singlehead-self-attention.html" />
-    <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
+    <link rel="icon" href="../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="Multi-head attention" href="multihead-self-attention.html" />
@@ -165,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="list-caption"><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="label-parts" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../syllabus/_index.html">Syllabus</a></li>
@@ -347,6 +353,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../ml-math/calculus/index.html">Calculus</a></li>
 </ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="label-parts" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/index.html">Your Programming Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/slurm-keras-example.html">Training Keras with the SLURM Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/nyu-jupyterhub-envs.html">NYU JupyrterHub Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Learn Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
@@ -584,14 +592,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="single-head-self-attention">
-<h1>Single-head self-attention<a class="headerlink" href="#single-head-self-attention" title="Permalink to this heading">#</a></h1>
+<h1>Single-head self-attention<a class="headerlink" href="#single-head-self-attention" title="Link to this heading">#</a></h1>
 <section id="scaled-dot-product-self-attention">
-<h2>Scaled dot-product self-attention<a class="headerlink" href="#scaled-dot-product-self-attention" title="Permalink to this heading">#</a></h2>
+<h2>Scaled dot-product self-attention<a class="headerlink" href="#scaled-dot-product-self-attention" title="Link to this heading">#</a></h2>
 <p>In the simple attention mechanism we have no trainable parameters, leaving the bulk of the effort in representation learning to the embedding layer.  The attention weights are computed derministically from these embeddings of each token of the input sequence. The way to introduce trainable parameters is via the reuse of the principles we have seen in RNN attention mechanisms.</p>
 <p>In RNN encoder-decoder architecture, the current decoder state served as a <em>query</em>  and the encoder states <span class="math notranslate nohighlight">\(h_i\)</span> serve as <em>keys</em> and the contents of the hidden state as <em>values</em>. The attention weights are computed by comparing the query against each of the keys and passing the results via a softmax. The values are then used to create a weighted sum of the encoder hidden states to obtain the new decoder state ie. a vector that incorporates all the encoder hidden states.</p>
 <p>In the transformer architecture we do something similar.</p>
 <section id="linear-transformation-of-the-input-embeddings">
-<h3>Linear transformation of the input embeddings<a class="headerlink" href="#linear-transformation-of-the-input-embeddings" title="Permalink to this heading">#</a></h3>
+<h3>Linear transformation of the input embeddings<a class="headerlink" href="#linear-transformation-of-the-input-embeddings" title="Link to this heading">#</a></h3>
 <p>This is done by multiplying the input embeddings with a corresponding matrix <span class="math notranslate nohighlight">\(W\)</span>. We have three such matrices <span class="math notranslate nohighlight">\(W^q, W^k, W^v\)</span> and their role is <em>essential</em>.</p>
 <div class="math notranslate nohighlight">
 \[Q = XW^q\]</div>
@@ -604,7 +612,7 @@ document.write(`
 <p>Let us now recall what we saw already during the <code class="docutils literal notranslate"><span class="pre">word2vec</span></code> construction: we trained a network that will take one-hot vectors of semantically similar tokens that were orthonormal and projected them to vectors that are close to each other in the embedding space.  So we have seen evidence that a projection matrix with proper weights can cause all sorts of interesting things to happen. By analogy, the multiplication of the matrix <span class="math notranslate nohighlight">\(W^q\)</span> with the input token will create a vector (a point) in the d_k dimensional space that will represent the query. Similarly the multiplication of the matrix <span class="math notranslate nohighlight">\(W^k\)</span> with each and every input tokens will create a vector (a point) in the d_k dimensional space that will represent the keys. <strong>After training the keys that can best respond to the query will end up close to it</strong>.</p>
 </section>
 <section id="computation-of-the-attention-scores">
-<h3>Computation of the attention scores<a class="headerlink" href="#computation-of-the-attention-scores" title="Permalink to this heading">#</a></h3>
+<h3>Computation of the attention scores<a class="headerlink" href="#computation-of-the-attention-scores" title="Link to this heading">#</a></h3>
 <p>Now that we have projected the tokens in their new space we can form the generalized dot product</p>
 <div class="math notranslate nohighlight">
 \[(W^qq)^TW^kk = q^T (W^q)^TW^kk=q^TWk\]</div>
@@ -615,7 +623,7 @@ document.write(`
 <p>The direct consequence of this positioning in the <span class="math notranslate nohighlight">\(W\)</span> vector space is that the dot product between the query and the nearby keys will be much larger than other far away keys.</p>
 </section>
 <section id="scaling">
-<h3>Scaling<a class="headerlink" href="#scaling" title="Permalink to this heading">#</a></h3>
+<h3>Scaling<a class="headerlink" href="#scaling" title="Link to this heading">#</a></h3>
 <p>We then divide the result by the square root of the dimension of the key vector (<span class="math notranslate nohighlight">\(d_k\)</span>). This is done in to prevent the softmax from saturating on the higher attention score elements and severely attenuating the attention weights that correspond to the lower attention scores.</p>
 <p>We can do an experiment to see the bahavior of softmax.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -648,17 +656,17 @@ document.write(`
 </div>
 </section>
 <section id="masking">
-<h3>Masking<a class="headerlink" href="#masking" title="Permalink to this heading">#</a></h3>
+<h3>Masking<a class="headerlink" href="#masking" title="Link to this heading">#</a></h3>
 <p>When we decode we do not want to use the attention scores of the future tokens since we dont want to train the tranformer using ground truth that will simply wont be available during inference since we need to preserve causality when we predict the next token during decoding.</p>
 <p>To prevent this from happening we mask the attention scores of the future tokens by setting them to <span class="math notranslate nohighlight">\(-\infty\)</span> before passing them through the softmax. This will cause the softmax to output a vector of values that are very close to 0 for the future tokens.</p>
 </section>
 <section id="softmax">
-<h3>Softmax<a class="headerlink" href="#softmax" title="Permalink to this heading">#</a></h3>
+<h3>Softmax<a class="headerlink" href="#softmax" title="Link to this heading">#</a></h3>
 <p>We then pass the attention scores through a softmax function to obtain the attention weights <span class="math notranslate nohighlight">\(\alpha_{ij}\)</span> for each of the <span class="math notranslate nohighlight">\(i\)</span> tokens.</p>
 </section>
 </section>
 <section id="weighting-the-values">
-<h2>Weighting the values<a class="headerlink" href="#weighting-the-values" title="Permalink to this heading">#</a></h2>
+<h2>Weighting the values<a class="headerlink" href="#weighting-the-values" title="Link to this heading">#</a></h2>
 <p>We then use the attention weights to create a weighted sum of each of the value to obtain the new input embedding.</p>
 <div class="math notranslate nohighlight">
 \[\hat v_i = \sum_{j=1}^T \alpha_{ij} v_j\]</div>
@@ -673,7 +681,7 @@ document.write(`
 <p>and the dimensions of the tensors can also be extended to accommodate the batch dimension.</p>
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
 <p>An example of the output of the scaled dot-product self-attention is shown below using the <code class="docutils literal notranslate"><span class="pre">bertviz</span></code> library.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bertviz</span> <span class="kn">import</span> <span class="n">head_view</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModel</span>
