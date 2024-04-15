@@ -76,10 +76,6 @@ COPY . .
 WORKDIR /workspaces/artificial_intelligence/requirements
 RUN invoke compile-dev-dependencies
 RUN pip install --ignore-installed -r requirements-dev.txt
-# copy the requirements.txt and constraints.txt over from the builder stage 
-# so we can commit them to the repo. 
-RUN cp /tmp/requirements.txt .
-RUN cp /tmp/constraints.txt .
 
 WORKDIR /workspaces/artificial_intelligence
 

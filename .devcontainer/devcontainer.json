@@ -43,7 +43,8 @@
 				"jan-dolejsi.pddl",
 				"mechatroner.rainbow-csv",
 				"atlassian.atlascode",
-				"marimo-team.vscode-marimo"
+				"marimo-team.vscode-marimo",
+				"tamasfe.even-better-toml"
 			],
 			"settings": {
 				"terminal.integrated.profiles.linux": {
@@ -55,5 +56,6 @@
 			}
 		}
 	},
+	
 	"postStartCommand": "jb config sphinx artificial_intelligence && sphinx-autobuild --port 10010 artificial_intelligence _build/html"
 }

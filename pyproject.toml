@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aicourse"
+version = "0.9"
+authors = [
+    { name = "Pantelis Monogioudis", email = "pantelis.monogioudis@aegeanai.com" },
+]
+requires-python = "==3.10"
+dynamic = ["dependencies", "optional-dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requiremnts/requirements.in"] }
+optional-dependencies = {file = ["requirements/docs.requirements.in"] }
+
+[tool.pip-tools]
+generate-hashes = false
+
+[tool.pytest.ini_options]
+addopts = "-v --mypy -p no:warnings --cov=artificial_intelligence --cov-report=html --doctest-modules"
+# --ignore=myproject/__main__.py"
+
+[tool.ruff.lint]
+select = ["D", "E", "F", "I"] # pydocstyle, pycodestyle, Pyflakes, isort
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D100", "D104"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.mypy]
+disallow_any_explicit = true
+disallow_any_generics = true
+warn_unreachable = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
+exclude = [".venv/"]
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+

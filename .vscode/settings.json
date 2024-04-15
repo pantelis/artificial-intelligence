@@ -1,8 +1,20 @@
 {
     "jupyter.jupyterServerType": "local",
-    "python.testing.pytestArgs": [
-        "artificial_intelligence"
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+    "editor.rulers": [
+        88
     ],
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    // --no-cov needed so that breakpoints work: https://github.com/microsoft/vscode-python/issues/693
+    "python.testing.pytestArgs": [
+        "artificial_intelligence --no-cov"
+    ],
 }

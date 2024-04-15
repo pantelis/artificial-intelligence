@@ -1,0 +1,41 @@
+name: Test
+
+on: [push, pull_request, workflow_call]
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.AIML_COMMON_CICD_TOKEN }}
+      - name: Cache apt packages
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+            packages: curl git-lfs ffmpeg libsm6 libxext6 graphviz libgraphviz-dev xdg-utils swig gringo  libgraphviz-dev libsndfile1-dev xdg-utils swig gringo gobject-introspection libcairo2-dev libgirepository1.0-dev pkg-config python3-dev python3-gi
+            version: 1.0
+      # - uses: actions/checkout@v4
+      - uses: pre-commit/action@v3.0.1
+
+  test:
+    needs: qa
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest ]
+        python-version: [ "3.10" ]
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: pip install -r dev-requirements.txt
+    - name: Run tests
+      run: pytest
+        
+
+       

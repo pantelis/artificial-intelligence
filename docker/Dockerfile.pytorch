@@ -1,5 +1,9 @@
 FROM nvcr.io/nvidia/pytorch:23.10-py3 as builder
 
+# store the existing installed packages in the NVIDIA docker container 
+# as constrains for the subsequent pip-tools compilation
+RUN pip freeze > /tmp/constraints.txt
+
 # Packages installation (eg git-lfs)
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
   && apt-get -y install --no-install-recommends curl git-lfs ffmpeg libsm6 libxext6 graphviz libsndfile1-dev libgraphviz-dev xdg-utils swig gringo gobject-introspection libcairo2-dev libgirepository1.0-dev pkg-config python3-dev python3-gi libgl1 \
@@ -49,16 +53,19 @@ RUN pip install pip-tools
 RUN pip install invoke
 WORKDIR /tmp
 COPY requirements/requirements.in .
+COPY requirements/docs.requirements.in .
 COPY requirements/tasks.py .
-# compile-dependencies to compile all the files without updating the existing 
-# dependencies. Do not use the pip-sync option in NVIDIA docker containers
-RUN invoke compile-dependencies 
-#TODO: Address the --ignore-installed flag in the requirements.txt file since with this flag 
-# the dependencies are not updated. It seems that the NVIDIA container requirements.txt must be
-# the input of requirements.in file.
-RUN pip install --ignore-installed -r requirements.txt
+# freeze the nvidia requirements.txt into two constraint files : local and other.  
+# The local constra
+RUN invoke split-dependency-constraints
+RUN invoke compile-dependencies
+
+RUN pip install --index-url https://pypi.nvidia.com/simple --extra-index-url https://pypi.org/simple --trusted-host pypi.nvidia.com --constraint other_constraints.txt  -r requirements.txt
 
 FROM builder as runtime
+
+COPY --from=builder /tmp/requirements.txt /tmp/requirements.txt
+COPY --from=builder /tmp/other_constraints.txt /tmp/other_constraints.txt
 
 # specify vscode as the user name in the docker
 # This user name should match that of the VS Code .devcontainer to allow seamless development inside the docker container via vscode 
@@ -79,23 +86,29 @@ RUN groupadd --gid $USER_GID $USERNAME \
   # Set up git completion.
   && echo "source /usr/share/bash-completion/completions/git" >> /home/$USERNAME/.bashrc 
 
-  
+
+# # Install python packages other than development dependencies
+RUN pip install --upgrade pip
+RUN pip install pre-commit
+RUN pip install pip-tools
+RUN pip install invoke
+WORKDIR /tmp
+COPY requirements/dev.requirements.in .
+COPY requirements/tasks.py .
+# compile-dependencies to compile all the files without updating the existing 
+# dependencies. Do not use the pip-sync option in NVIDIA docker containers
+RUN invoke compile-dev-dependencies
+RUN pip install --index-url https://pypi.nvidia.com/simple --extra-index-url https://pypi.org/simple --trusted-host pypi.nvidia.com -r dev.requirements.txt
+
 WORKDIR /workspaces/artificial_intelligence
 
 COPY . . 
 
-# Install the development python dependencies
-WORKDIR /workspaces/artificial_intelligence/requirements
-RUN invoke compile-dev-dependencies
-RUN pip install --ignore-installed -r requirements-dev.txt
-# copy the requirements.txt and constraints.txt over from the builder stage 
-# so we can commit them to the repo. 
-RUN cp /tmp/requirements.txt .
-RUN cp /tmp/constraints.txt .
+RUN pwd
+# COPY /tmp/requirements.txt requirements/requirements.txt
+# COPY /tmp/dev.requirements.txt requirements/dev.requirements.txt
+# COPY /tmp/constraints.txt requirements/constraints.txt
 
-WORKDIR /workspaces/artificial_intelligence
-
-# Install local packages or packages that cannot be installed via pip-tools due to hashing issues
-RUN pip install -e git+https://github.com/pantelis-classes/PRML.git#egg=prml
 
 USER vscode
+
