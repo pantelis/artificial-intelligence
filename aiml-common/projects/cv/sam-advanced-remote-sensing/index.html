@@ -568,9 +568,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#milestones-1-2-3">Milestones 1, 2 &amp; 3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#milestone-5a-visual-prompting">Milestone 5a: Visual Prompting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#milestone-5b-occlusions-and-shadows">Milestone 5b: Occlusions and Shadows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#milestones-1-4">Milestones 1-4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#milestone-5-occlusion-handling-with-visual-prompting">Milestone 5: Occlusion Handling with Visual Prompting</a></li>
 </ul>
             </nav>
         </div>
@@ -584,33 +583,23 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="visual-prompting-and-oclusion-handling-for-remote-sensing-applications">
 <h1>Visual Prompting and Oclusion Handling for Remote Sensing Applications<a class="headerlink" href="#visual-prompting-and-oclusion-handling-for-remote-sensing-applications" title="Link to this heading">#</a></h1>
-<section id="milestones-1-2-3">
-<h2>Milestones 1, 2 &amp; 3<a class="headerlink" href="#milestones-1-2-3" title="Link to this heading">#</a></h2>
+<section id="milestones-1-4">
+<h2>Milestones 1-4<a class="headerlink" href="#milestones-1-4" title="Link to this heading">#</a></h2>
 <p>These are described in the SAM Finetuning project.</p>
-<p>Do <strong>one</strong> of the two milestones below.</p>
 </section>
-<section id="milestone-5a-visual-prompting">
-<h2>Milestone 5a: Visual Prompting<a class="headerlink" href="#milestone-5a-visual-prompting" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://landing.ai/blog/what-is-visual-prompting/">Visual Prompting</a> has been shown to improve the performance of segmentation models.</p>
-<p><a class="reference external" href="https://kychen.me/RSPrompter/">This paper</a> implements visual prompting for the SAM model and remote sensing applications.</p>
+<section id="milestone-5-occlusion-handling-with-visual-prompting">
+<h2>Milestone 5: Occlusion Handling with Visual Prompting<a class="headerlink" href="#milestone-5-occlusion-handling-with-visual-prompting" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://landing.ai/blog/what-is-visual-prompting/">Visual Prompting</a> has been shown to improve the performance of segmentation models. SAM is able to accommodate multiple modalities for prompting, either visual or natural language text and <a class="reference external" href="https://kychen.me/RSPrompter/">this paper</a> shows that the right prompting can significantly outperform earlier schemes that used dedicated detectors as opposed to the more recent pretrained approaches.  Although the SAM model has been shown with finetuning to be able to do a reasonable job at segmenting features in remote sensing applications, it is still unable to handle occlusions. Occlusions create havoc in semantic segmentation of sidewalks and other small features.</p>
+<p>In this milestone you will address this problem through prompting. You will introduce a class called tree and use the visual prompting capability of SAM to prompt the model in such a way that you can segment the occluded sidewalk segments.</p>
+<p><strong>Effectively you need to use a prompt to encode the information that the sidewalk did not stop at the tree but continues under it.</strong></p>
+<p>Write the <code class="docutils literal notranslate"><span class="pre">SidewalkPrompter</span></code> that can automate the prompting into the SAM model for the sidewalk finetuning dataset. If you use a visual prompring only, given a set of points, two on each side of the tree segmentation and one or more centered on the tree(s) segmentation, the <code class="docutils literal notranslate"><span class="pre">SidewalkPrompter</span></code> should result into merging the two sidewalk segments as shown in the figure below.</p>
+<p><img alt="" src="../../../../_images/r3.png" /></p>
+<p>You are free also to use <a class="reference external" href="https://github.com/luca-medeiros/lang-segment-anything">LangSAM</a> as shown <a class="reference external" href="https://samgeo.gishub.org/examples/text_prompts_batch/">here</a> in combination with the visual prompting to address the occlusion problem.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">SidewalkPrompter</span></code> can include other than prompt logic, the end result being the  stitching of the separated sidewalks segments for all occlusion events in the dataset.</p>
+<p>You deliver how your implementation can correct 10 test dataset images that exhibit erroneous segmentations due to occlusion.  Showcase your woork showing the result before and after occlusion handling.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You can continue on this task after the course ends by rolling the visual prompting capability into the open source tool <a class="reference internal" href="#cvat.ai"><span class="xref myst">CVAT</span></a> allowing anyone to use the visual prompts for accelerating annotation work.</p>
-</div>
-</section>
-<section id="milestone-5b-occlusions-and-shadows">
-<h2>Milestone 5b: Occlusions and Shadows<a class="headerlink" href="#milestone-5b-occlusions-and-shadows" title="Link to this heading">#</a></h2>
-<p>Occlusions create havoc in semanatic segmentation of sidewalks and other small features.</p>
-<p><img alt="" src="../../../../_images/r3.png" /></p>
-<p>Provide experiental evidence and commentary that address <strong>one</strong> of the following research opportunities provided below without any particular order.</p>
-<ol class="arabic simple">
-<li><p>Consider the fact that sidewalk are 99.99% next to a road / street. How can we use this information, the segmentations of other features such as trees / vegetation and scene graphs to suggest that two segements interrupted by an occlusion can be connected ?</p></li>
-<li><p>Consider a hypothetical pedestrian with a simple mobility model walking on a sidewalk segment. Can we use a Hidden Markov Model (HMM) to predict their trajectory and connect the two sidewalk segments ?</p></li>
-<li><p>Consider that we have the segmentations of trees / folliage. Can we treat those as corruptions and use inpainting to fill in the occluded sidewalk segments, effectively creating a two step process for segmenting sidewalks ?</p></li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You can continue on this task after the course ends by considering additional ideas such as correspondence learning. Bringing in segmentations from streetview imagery at points of occlusion and reprojecting the lines.</p>
 </div>
 </section>
 </section>
@@ -679,9 +668,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#milestones-1-2-3">Milestones 1, 2 &amp; 3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#milestone-5a-visual-prompting">Milestone 5a: Visual Prompting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#milestone-5b-occlusions-and-shadows">Milestone 5b: Occlusions and Shadows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#milestones-1-4">Milestones 1-4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#milestone-5-occlusion-handling-with-visual-prompting">Milestone 5: Occlusion Handling with Visual Prompting</a></li>
 </ul>
   </nav></div>
 

@@ -1,6 +1,6 @@
 # Segment Anything Model Finetuning for Remote Sensing Applications
 
-![](images/impTile.png)
+![](images/impTile.jpg)
 
 In this project you will be asked to segment sidewalks from satellite imagery. The importance of remote sensing and its associated job market is growing rapidly. Remote sensing powers, weather prediction, agriculture, urban planning, defense and many other applications. 
 
