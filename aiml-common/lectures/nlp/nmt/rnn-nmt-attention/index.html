@@ -342,7 +342,7 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../transformers/transformers-intro.html">Transformers and Self-attention</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../transformers/singlehead-self-attention.html">Single-head self-attention</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../transformers/multihead-self-attention.html">Multi-head attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../transformers/multihead-self-attention.html">Multi-head self-attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../transformers/positional_embeddings.html">Positional Embeddings</a></li>
 </ul>
 </li>
@@ -586,12 +586,13 @@ document.write(`
 <h1>Attention in RNN-based NMT<a class="headerlink" href="#attention-in-rnn-based-nmt" title="Link to this heading">#</a></h1>
 <p>When you hear the sentence “the soccer ball is on the field,” you don’t assign the same importance to all 7 words. You primarily take note of the words “<em>ball</em>” “<em>on</em>,” and “<em>field</em>” since those are the words that are most descriptive to you.</p>
 <p>Using the <em>final</em> RNN hidden state as <em>the</em> single context vector  sequence-to-sequence models cannot differentiate between significant and less significant words. Moreover, different parts of the output need to consider different parts of the input as “important.”</p>
-<p>To address this issue we can simply introduce skip connections - similarly to the ResNet architecture - to the RNN decoder. We can decorate each skip connection with a weight that is learned during training. In the figure below you can see th encoder hidden states combined via a weighted sum with the decoder hidden states.</p>
+<p>To address this issue we can simply introduce skip connections - similarly to the ResNet architecture - to the RNN decoder. We can decorate each skip connection with a weight that is learned during training. In the figure below you can see the encoder hidden states combined via a weighted sum with the decoder hidden states.</p>
 <p><img alt="" src="../../../../../_images/simple-attention.png" /></p>
 <div class="admonition-important admonition">
 <p class="admonition-title">Important</p>
 <p>Notice that if the set of weights that the decoder uses to combine the encoder hidden states is the same for all decoder hidden states, this will not solve the problem as the decoder may need to focus on different parts of the input at different time steps. We therefore make the weights <em>dynamic and dependent on the decoder hidden state</em>.</p>
 <p>The attention mechanism will calculate these weights: it will  make use of this observation by providing the decoder network with a look at the <em>entire</em> input sequence at every decoding step <em>and</em> having the decoder decide what input words are important at any point in time and effectively making the context dependent on decoder time step.</p>
+<p>The current decoder state can be thought as a <em>query</em>  while the encoder states <span class="math notranslate nohighlight">\(h_i\)</span> can be thought as <em>keys</em> and the contents of such hidden state as <em>values</em>. The attention weights are computed by comparing the query against each of the keys and passing the results via a softmax. The values are then used to create a weighted sum of the encoder hidden states to obtain the new decoder state ie. a vector that incorporates all the encoder hidden states. Note that keys and values are the same in this description but they can also be different.</p>
 </div>
 <ol class="arabic simple">
 <li><p>During encoding the output of bidirectional LSTM encoder can provide the contextual representation of <em>each input word</em> <span class="math notranslate nohighlight">\(x_i\)</span>. Let the encoder hidden vectors be denoted as <span class="math notranslate nohighlight">\(h_1, ..., h_{Tx}\)</span> where <span class="math notranslate nohighlight">\(Tx\)</span> is the length of the input sentence.</p></li>
@@ -609,22 +610,18 @@ document.write(`
 </div>
 <p>More specifically the <span class="math notranslate nohighlight">\(\phi_t\)</span> is computed as follows:</p>
 <ol class="arabic simple">
-<li><p>For each hidden state from the source sentence <span class="math notranslate nohighlight">\(h_i\)</span>, <span class="math notranslate nohighlight">\(i\)</span> is the sequence index of the encoder hidden state, we compute a score</p></li>
+<li><p>For each hidden state from the source sentence <span class="math notranslate nohighlight">\(h_i\)</span> (key), <span class="math notranslate nohighlight">\(i\)</span> is the sequence index of the encoder hidden state, we compute a score</p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[e_{t,i} = \mathtt{scoring}(h_i, s_{t−1})\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathtt{scoring}\)</span> is any function with values in <span class="math notranslate nohighlight">\(\mathbb R\)</span> - see below for choices of scoring functions.</p>
-<div class="admonition-note admonition">
-<p class="admonition-title">Note</p>
-<p>We will be calling the encoder hidden state <span class="math notranslate nohighlight">\(i\)</span> the ‘keys’ of a dictionary that stores the values of all the encoder and the decoder hidden state the ‘query’.</p>
-</div>
+<p>where <span class="math notranslate nohighlight">\(\mathtt{scoring}\)</span> is any function with values in <span class="math notranslate nohighlight">\(\mathbb R\)</span> - see below for choices of scoring functions. The other argument in the scoring function is the previous decoder hidden state <span class="math notranslate nohighlight">\(s_{t-1}\)</span> (query).</p>
 <ol class="arabic simple" start="2">
 <li><p>The score values are normalized  using a softmax layer to produce the attention weight vector <span class="math notranslate nohighlight">\(\mathbf α_t\)</span>.  All the weights for a given decoder time step add up to 1.</p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[\mathbf a_t = \mathtt{softmax}(\mathbf e_{t})\]</div>
 <ol class="arabic simple" start="3">
-<li><p>The context vector <span class="math notranslate nohighlight">\(\phi_t\)</span> is then the attention weighted average (dot product) of the hidden vectors from the original sentence.</p></li>
+<li><p>The context vector <span class="math notranslate nohighlight">\(\phi_t\)</span> is then the attention weighted average of the hidden state vectors (values) from the original sentence.</p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[ \phi_t = \sum_i \alpha_{t,i}h_i\]</div>

@@ -4,7 +4,7 @@ When you hear the sentence "the soccer ball is on the field," you don’t assign
 
 Using the _final_ RNN hidden state as _the_ single context vector  sequence-to-sequence models cannot differentiate between significant and less significant words. Moreover, different parts of the output need to consider different parts of the input as "important." 
 
-To address this issue we can simply introduce skip connections - similarly to the ResNet architecture - to the RNN decoder. We can decorate each skip connection with a weight that is learned during training. In the figure below you can see th encoder hidden states combined via a weighted sum with the decoder hidden states.
+To address this issue we can simply introduce skip connections - similarly to the ResNet architecture - to the RNN decoder. We can decorate each skip connection with a weight that is learned during training. In the figure below you can see the encoder hidden states combined via a weighted sum with the decoder hidden states.
 
 ![](images/simple-attention.png)
 
@@ -12,6 +12,8 @@ To address this issue we can simply introduce skip connections - similarly to th
 Notice that if the set of weights that the decoder uses to combine the encoder hidden states is the same for all decoder hidden states, this will not solve the problem as the decoder may need to focus on different parts of the input at different time steps. We therefore make the weights _dynamic and dependent on the decoder hidden state_. 
 
 The attention mechanism will calculate these weights: it will  make use of this observation by providing the decoder network with a look at the _entire_ input sequence at every decoding step _and_ having the decoder decide what input words are important at any point in time and effectively making the context dependent on decoder time step.
+
+The current decoder state can be thought as a _query_  while the encoder states $h_i$ can be thought as _keys_ and the contents of such hidden state as _values_. The attention weights are computed by comparing the query against each of the keys and passing the results via a softmax. The values are then used to create a weighted sum of the encoder hidden states to obtain the new decoder state ie. a vector that incorporates all the encoder hidden states. Note that keys and values are the same in this description but they can also be different.
 
 ```
 
@@ -35,21 +37,17 @@ It starts with a time-distributed Dense layer with a single neuron, which receiv
 ```
 More specifically the $\phi_t$ is computed as follows:
 
-1. For each hidden state from the source sentence $h_i$, $i$ is the sequence index of the encoder hidden state, we compute a score
+1. For each hidden state from the source sentence $h_i$ (key), $i$ is the sequence index of the encoder hidden state, we compute a score
 
 $$e_{t,i} = \mathtt{scoring}(h_i, s_{t−1})$$
 
-where $\mathtt{scoring}$ is any function with values in $\mathbb R$ - see below for choices of scoring functions. 
-
-```{admonition} Note
-We will be calling the encoder hidden state $i$ the 'keys' of a dictionary that stores the values of all the encoder and the decoder hidden state the 'query'.
-```
+where $\mathtt{scoring}$ is any function with values in $\mathbb R$ - see below for choices of scoring functions. The other argument in the scoring function is the previous decoder hidden state $s_{t-1}$ (query).
 
 2. The score values are normalized  using a softmax layer to produce the attention weight vector $\mathbf α_t$.  All the weights for a given decoder time step add up to 1. 
 
 $$\mathbf a_t = \mathtt{softmax}(\mathbf e_{t})$$
 
-3. The context vector $\phi_t$ is then the attention weighted average (dot product) of the hidden vectors from the original sentence. 
+3. The context vector $\phi_t$ is then the attention weighted average of the hidden state vectors (values) from the original sentence. 
 
 $$ \phi_t = \sum_i \alpha_{t,i}h_i$$
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Multi-head attention &#8212; Introduction to Artificial Intelligence</title>
+    <title>Multi-head self-attention &#8212; Introduction to Artificial Intelligence</title>
   
   
   
@@ -58,6 +58,8 @@
     <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/nlp/transformers/multihead-self-attention';</script>
     <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/nlp/transformers/multihead-self-attention.html" />
     <link rel="icon" href="../../../../_static/logo.ico"/>
@@ -340,7 +342,7 @@
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="transformers-intro.html">Transformers and Self-attention</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="singlehead-self-attention.html">Single-head self-attention</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Multi-head attention</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Multi-head self-attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="positional_embeddings.html">Positional Embeddings</a></li>
 </ul>
 </li>
@@ -558,7 +560,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Multi-head attention</h1>
+    <h1>Multi-head self-attention</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -568,10 +570,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedforward-layer">Feedforward Layer</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layer-normalization-and-skip-connections">Layer Normalization and Skip Connections</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-blocks-with-skip-connections">Attention Blocks  with Skip Connections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multilayer-perceptron-mlp">Multilayer Perceptron (MLP)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
             </nav>
@@ -584,15 +584,28 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="multi-head-attention">
-<h1>Multi-head attention<a class="headerlink" href="#multi-head-attention" title="Link to this heading">#</a></h1>
-<p>For the input sentence</p>
-<p>“London, inhabited by more than 10 million people, is the capital of England.”</p>
-<p>we understand that multiple relationships must be understood with respect to “London”. For example, we need to understand that “London” is a place, is also an attribute (“capital”) and is also a populous area.</p>
-<p><img alt="" src="../../../../_images/multihead.excalidraw.svg" /></p>
-<p>To capture such multiplicity of higher order meanings, we can use multiple attention heads. Each attention head will learn a different domain between the input tokens and will do so at the same time (in parallel).</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="multi-head-self-attention">
+<h1>Multi-head self-attention<a class="headerlink" href="#multi-head-self-attention" title="Link to this heading">#</a></h1>
+<p>Earlier we have seen examples with the token <code class="docutils literal notranslate"><span class="pre">bear</span></code> being in multiple grammatical patterns that also influence its meaning. To capture such multiplicity we can use multiple attention heads where each attention head learns a different pattern such as the three shown in figure below.</p>
+<p><img alt="" src="../../../../_images/multihead.png" /></p>
+<p>Think of the multiple heads in transformer architectures to be analogous to the multiple filters we use in CNNs.</p>
+<p>if <span class="math notranslate nohighlight">\(H\)</span> is the number of heads, indexed by <span class="math notranslate nohighlight">\(h\)</span>, then each head delivers</p>
+<div class="math notranslate nohighlight">
+\[H_h = \mathtexttt{Attention}(Q_h, K_h, Vh)\]</div>
+<p>where <span class="math notranslate nohighlight">\(Q_h, K_h, V_h\)</span> are the query, key and value matrices of the <span class="math notranslate nohighlight">\(h-th\)</span> head.</p>
+<div class="math notranslate nohighlight">
+\[Q_h = X W_h^q\]</div>
+<div class="math notranslate nohighlight">
+\[K_h = X W_h^k\]</div>
+<div class="math notranslate nohighlight">
+\[V_h = X W_h^v\]</div>
+<p>where <span class="math notranslate nohighlight">\(W_h^q, W_h^k, W_h^v\)</span> are the weight matrices of the <span class="math notranslate nohighlight">\(h-th\)</span> head.</p>
+<p>The output of the multi-head attention is then given by</p>
+<div class="math notranslate nohighlight">
+\[\hat X = \mathtt{concat}(H_1, H_2, ..., H_H)W^o\]</div>
+<p>where <span class="math notranslate nohighlight">\(W^o\)</span> is the output weight matrix with dimensions <span class="math notranslate nohighlight">\(H d_v \times d\)</span> and typically  <span class="math notranslate nohighlight">\(d_v = d/H\)</span>.</p>
 <p><img alt="" src="../../../../_images/multi-head-attention.png" /></p>
-<p>The complexity of running multiple heads does not scale with the number of heads since as you can see in the code below we divide the earlier head size by the number of heads, avoiding a significant increase in the number of parameters.</p>
+<p>The W^o matrix and the <span class="math notranslate nohighlight">\(W_h^q, W_h^k, W_h^v\)</span> matrices are learned during training. The complexity of running multiple heads does not scale with the number of heads since as you can also see in the code below we divide the head-size by the number of heads, avoiding a corresponding  increase in the number of parameters.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MultiHeadAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -610,11 +623,27 @@ document.write(`
         <span class="k">return</span> <span class="n">x</span>
 </pre></div>
 </div>
-<section id="feedforward-layer">
-<h2>Feedforward Layer<a class="headerlink" href="#feedforward-layer" title="Link to this heading">#</a></h2>
-<p>The feedforward layer is a simple linear layer with a GELU activation function.</p>
+<section id="attention-blocks-with-skip-connections">
+<h2>Attention Blocks  with Skip Connections<a class="headerlink" href="#attention-blocks-with-skip-connections" title="Link to this heading">#</a></h2>
+<p><img alt="layer normalization" src="../../../../_images/layer-normalization.png" /></p>
+<p>Layer Normalization has been shown to improve training efficiency and therefore we apply layer normalization to the input of the multihead self attention (MHSA).</p>
+<div class="math notranslate nohighlight">
+\[Z  = \mathtt{LayerNorm}(\hat X)\]</div>
+<p>In addition we borrow the same idea we have seen from ResNet, and add a skip connection from the input to the output of the MHSA.</p>
+<div class="math notranslate nohighlight">
+\[\hat Z = \mathtt{MHSA}(Z) + \hat X\]</div>
+<p>We call the above block an <strong>attention block</strong>  and since we know that depth helps in representations learning, we therefore want to stack multiple attention blocks, but before we do so we apply a feedforward layer to the output of each attention block for the reasons we describe below.</p>
+</section>
+<section id="multilayer-perceptron-mlp">
+<h2>Multilayer Perceptron (MLP)<a class="headerlink" href="#multilayer-perceptron-mlp" title="Link to this heading">#</a></h2>
+<p>Notice that at its core the output of the multihead self attention is a weighted sum of the input tokens. This is a <strong>linear combination</strong> of the value vectors and the attention block does not have the capacity to learn non-linear relationships. One cat argue that the attention weights and softmax add some non-linearity but this is not enough and the model will not be able to learn complex dependencies. To address this we add an MLP to the output of the multihead self attention.</p>
+<div class="math notranslate nohighlight">
+\[Y  = \mathtt{LayerNorm}(\hat Z)\]</div>
+<div class="math notranslate nohighlight">
+\[\tilde X = \mathtt{MLP}(Y) + \hat Z\]</div>
+<p>where the MLP uses skip connection and for some implementations a RELU or GELU activation function shown below is used.</p>
 <p><img alt="GELU" src="../../../../_images/gelu.png" /></p>
-<p>One thing to note though is that each token is processed independently of the other tokens in the sequence.</p>
+<p>Notably, <strong>each token is processed by the MLP independently of the other tokens in the input</strong>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="k">class</span> <span class="nc">FeedForward</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
@@ -632,29 +661,26 @@ document.write(`
         <span class="k">return</span> <span class="n">x</span>
 </pre></div>
 </div>
-<section id="layer-normalization-and-skip-connections">
-<h3>Layer Normalization and Skip Connections<a class="headerlink" href="#layer-normalization-and-skip-connections" title="Link to this heading">#</a></h3>
-<p>We also apply layer normalization to the input of the multihead self attention and feedforward layer. Borrowing the same idea we have seen from ResNet, we also add a skip connection from the input to the output of both.</p>
-<p><img alt="layer normalization" src="../../../../_images/layer-normalization.png" /></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TransformerEncoderLayer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">layer_norm_1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">layer_norm_2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">attention</span> <span class="o">=</span> <span class="n">MultiHeadAttention</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">feed_forward</span> <span class="o">=</span> <span class="n">FeedForward</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<!-- Overall the transformer encoder layer can be implemented as shown below.
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="c1"># Apply layer normalization and then copy input into query, key, value</span>
-        <span class="n">hidden_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer_norm_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="c1"># Apply attention with a skip connection</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">attention</span><span class="p">(</span><span class="n">hidden_state</span><span class="p">)</span>
-        <span class="c1"># Apply feed-forward layer with a skip connection</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">feed_forward</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layer_norm_2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">x</span>
-</pre></div>
-</div>
-</section>
+```python
+class TransformerEncoderLayer(nn.Module):
+    def __init__(self, config):
+        super().__init__()
+        self.layer_norm_1 = nn.LayerNorm(config.hidden_size)
+        self.layer_norm_2 = nn.LayerNorm(config.hidden_size)
+        self.attention = MultiHeadAttention(config)
+        self.feed_forward = FeedForward(config)
+
+    def forward(self, x):
+        # Apply layer normalization and then copy input into query, key, value
+        hidden_state = self.layer_norm_1(x)
+        # Apply attention with a skip connection
+        x = x + self.attention(hidden_state)
+        # Apply feed-forward layer with a skip connection
+        x = x + self.feed_forward(self.layer_norm_2(x))
+        return x
+``` -->
 </section>
 <section id="resources">
 <h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
@@ -729,10 +755,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedforward-layer">Feedforward Layer</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layer-normalization-and-skip-connections">Layer Normalization and Skip Connections</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-blocks-with-skip-connections">Attention Blocks  with Skip Connections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multilayer-perceptron-mlp">Multilayer Perceptron (MLP)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
   </nav></div>

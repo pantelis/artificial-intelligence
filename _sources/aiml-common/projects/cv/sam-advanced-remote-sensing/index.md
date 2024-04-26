@@ -22,7 +22,6 @@ The `SidewalkPrompter` can include other than prompt logic, the end result being
 
 You deliver how your implementation can correct 10 test dataset images that exhibit erroneous segmentations due to occlusion.  Showcase your woork showing the result before and after occlusion handling. 
 
-
 ```{note}
 You can continue on this task after the course ends by rolling the visual prompting capability into the open source tool [CVAT](cvat.ai) allowing anyone to use the visual prompts for accelerating annotation work.  
 ```

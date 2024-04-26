@@ -65,7 +65,7 @@
     <link rel="icon" href="../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Multi-head attention" href="multihead-self-attention.html" />
+    <link rel="next" title="Multi-head self-attention" href="multihead-self-attention.html" />
     <link rel="prev" title="Transformers and Self-Attention" href="transformers-intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -342,7 +342,7 @@
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="transformers-intro.html">Transformers and Self-attention</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Single-head self-attention</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multihead-self-attention.html">Multi-head attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multihead-self-attention.html">Multi-head self-attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="positional_embeddings.html">Positional Embeddings</a></li>
 </ul>
 </li>
@@ -580,6 +580,8 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighting-the-values">Weighting the values</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensioning-the-attention-mechanism">Dimensioning the Attention Mechanism</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-attention-mechanisms">Other attention mechanisms</a></li>
 </ul>
             </nav>
         </div>
@@ -595,37 +597,118 @@ document.write(`
 <h1>Single-head self-attention<a class="headerlink" href="#single-head-self-attention" title="Link to this heading">#</a></h1>
 <section id="scaled-dot-product-self-attention">
 <h2>Scaled dot-product self-attention<a class="headerlink" href="#scaled-dot-product-self-attention" title="Link to this heading">#</a></h2>
-<p>In the simple attention mechanism we have no trainable parameters, leaving the bulk of the effort in representation learning to the embedding layer.  The attention weights are computed derministically from these embeddings of each token of the input sequence. The way to introduce trainable parameters is via the reuse of the principles we have seen in RNN attention mechanisms.</p>
-<p>In RNN encoder-decoder architecture, the current decoder state served as a <em>query</em>  and the encoder states <span class="math notranslate nohighlight">\(h_i\)</span> serve as <em>keys</em> and the contents of the hidden state as <em>values</em>. The attention weights are computed by comparing the query against each of the keys and passing the results via a softmax. The values are then used to create a weighted sum of the encoder hidden states to obtain the new decoder state ie. a vector that incorporates all the encoder hidden states.</p>
-<p>In the transformer architecture we do something similar.</p>
+<p>In the simple attention mechanism, the attention weights are computed <em>deterministically</em> from the input context. We call the combination of context-free embedding (eg word2vec) and positional embedding, the input embedding. What we would like to do is to Given the input embedding,  the output embedding has no information about the <em>data distribution</em> that the input token is part of outside the context.</p>
+<p>Lets look at the grammatical structure of the following sentences:</p>
+<ol class="arabic simple">
+<li><p>“I love <em>bears</em>”</p>
+<ul class="simple">
+<li><p>Subject: I</p></li>
+<li><p>Verb: love</p></li>
+<li><p>Object: bears</p></li>
+</ul>
+</li>
+<li><p>“She <em>bears</em> the pain”</p>
+<ul class="simple">
+<li><p>Subject: She</p></li>
+<li><p>Verb: bears</p></li>
+<li><p>Object: the pain</p></li>
+</ul>
+</li>
+<li><p>“<em>Bears</em> won the game”</p>
+<ul class="simple">
+<li><p>Subject: Bears</p></li>
+<li><p>Verb: won</p></li>
+<li><p>Object: the game</p></li>
+</ul>
+</li>
+</ol>
+<p>Each sentence above follows a subject-verb-object structure, where the subject performs the action expressed by the verb on the object. You can notice that <code class="docutils literal notranslate"><span class="pre">bears</span></code> plays a different function in each sentence: as an object, as a verb, and as a subject. In addition, we have other and more complicated language patterns, such as this:</p>
+<ol class="arabic simple" start="4">
+<li><p>“The hiking trail led us through <em>bear</em> country.”</p>
+<ul class="simple">
+<li><p><strong>Subject</strong>: “The hiking trail”</p></li>
+<li><p><strong>Verb</strong>: “led”</p></li>
+<li><p><strong>Object</strong>: “us”</p></li>
+<li><p><strong>Prepositional Phrase</strong>: “through bear country”</p></li>
+<li><p><strong>Preposition</strong>: “through”</p></li>
+<li><p><strong>Object of the Preposition</strong>: “bear country”</p>
+<ul>
+<li><p><strong>Noun</strong>: “country”</p></li>
+<li><p><strong>Adjective</strong>: “bear” (modifying “country”)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>Here, “bear” serves as an adjective describing the type of country.</p>
+<p>The central question that one can pose now is this: <strong>Since the location of the token seems highly correlated with its function, as captured by the language patterns above, how can we help the embedding mapping become location aware and function aware ?</strong></p>
+<!-- Can we encode the function of the token `bear` is playing?  
+
+As we will see such additional patterns can be captured by having multiple attention _heads_ each head broadly speaking responsible for modifying the input embedding from tokens that belong to different functions. Such modification is done at a space that is different than the input emdedding space.  -->
 <section id="linear-transformation-of-the-input-embeddings">
 <h3>Linear transformation of the input embeddings<a class="headerlink" href="#linear-transformation-of-the-input-embeddings" title="Link to this heading">#</a></h3>
-<p>This is done by multiplying the input embeddings with a corresponding matrix <span class="math notranslate nohighlight">\(W\)</span>. We have three such matrices <span class="math notranslate nohighlight">\(W^q, W^k, W^v\)</span> and their role is <em>essential</em>.</p>
+<p>This is done by projecting  the input embeddings using a projection matrix <span class="math notranslate nohighlight">\(W\)</span> obtaining a new coordinate system whose <code class="docutils literal notranslate"><span class="pre">axes</span></code> can be associated with object, verb, subject, adjective etc.  The semantic meaning of such new coordinate system is not necessary to be explicitly defined but it helps understand what this projection may achieve.</p>
+<p>We define three such trainable matrices <span class="math notranslate nohighlight">\(W^q, W^k, W^v\)</span> and ask each token (or equivalently the matrix <span class="math notranslate nohighlight">\(X\)</span>) to project itself to the three different spaces.</p>
 <div class="math notranslate nohighlight">
 \[Q = XW^q\]</div>
 <div class="math notranslate nohighlight">
 \[K = XW^k\]</div>
 <div class="math notranslate nohighlight">
 \[V = XW^v\]</div>
-<p>where <span class="math notranslate nohighlight">\(X\)</span> is the input embedding matrix of size <span class="math notranslate nohighlight">\(T \times d\)</span> where <span class="math notranslate nohighlight">\(T\)</span> is the input sequence length and <span class="math notranslate nohighlight">\(d\)</span> is the embedding dimension. <span class="math notranslate nohighlight">\(Q, K, V\)</span> are the query, keys and values respectively and the dimensions of the <span class="math notranslate nohighlight">\(W^q, W^k, W^v\)</span> matrices are <span class="math notranslate nohighlight">\(d \times d_k, d \times d_k, d \times d_v\)</span> respectively. There is a reason why the queries and keys are projected to the same dimension <span class="math notranslate nohighlight">\(d_k\)</span> and the values to a different dimension <span class="math notranslate nohighlight">\(d_v\)</span>.</p>
-<p>Think about the query as the representation of what the current token is seeking to find and the key as the representation of the token identity. Each token emmits these two vectors - for example ‘I am key=vowel and I am looking for a query=consonant’. The attention mechanism will be able after training to reveal the keys of the input sequence that can best respond to the query.</p>
-<p>Let us now recall what we saw already during the <code class="docutils literal notranslate"><span class="pre">word2vec</span></code> construction: we trained a network that will take one-hot vectors of semantically similar tokens that were orthonormal and projected them to vectors that are close to each other in the embedding space.  So we have seen evidence that a projection matrix with proper weights can cause all sorts of interesting things to happen. By analogy, the multiplication of the matrix <span class="math notranslate nohighlight">\(W^q\)</span> with the input token will create a vector (a point) in the d_k dimensional space that will represent the query. Similarly the multiplication of the matrix <span class="math notranslate nohighlight">\(W^k\)</span> with each and every input tokens will create a vector (a point) in the d_k dimensional space that will represent the keys. <strong>After training the keys that can best respond to the query will end up close to it</strong>.</p>
+<p>where <span class="math notranslate nohighlight">\(X\)</span> is the input embedding matrix of size <span class="math notranslate nohighlight">\(T \times d\)</span> where <span class="math notranslate nohighlight">\(T\)</span> is the input sequence length and <span class="math notranslate nohighlight">\(d\)</span> is the embedding dimension. <span class="math notranslate nohighlight">\(Q, K, V\)</span> are the query, keys and values respectively and the dimensions of the <span class="math notranslate nohighlight">\(W^q, W^k, W^v\)</span> matrices are <span class="math notranslate nohighlight">\(d \times d_q, d \times d_k, d \times d_v\)</span> respectively. Queries and keys occupy typically the same dimensional space (<span class="math notranslate nohighlight">\(d_k\)</span>).</p>
+<p>Each token is undertaking three roles, lets focus here on the first two:</p>
+<p>In a <strong>query role</strong> the current token effectively seeks to find other functions eg ‘adjective’
+In a <strong>key role</strong> the current token effectively expresses its own function eg ‘noun’.</p>
+<p>For example: <strong>‘I am key=noun’ and I am seeking for a earlier query=adjective’.</strong></p>
+<p>The premise that that <strong>after training, the attention mechanism will be able to reveal the keys of the input context that can best respond to the query.</strong>. Notice also something not obvious.</p>
+<p>Let us now recall what we saw already during the <code class="docutils literal notranslate"><span class="pre">word2vec</span></code> construction: we trained a network that will take one-hot vectors of semantically similar tokens that were orthonormal and projected them to vectors that are close to each other in the embedding space.  So we have seen evidence that a projection with proper weights can cause all sorts of interesting mappings to happen from a large dimensional space to a lower space. By analogy, the multiplication of the matrix <span class="math notranslate nohighlight">\(W^q\)</span> with the input token embedding will create a vector (a point) in the d_k dimensional space that will represent the query. Similarly the multiplication of the matrix <span class="math notranslate nohighlight">\(W^k\)</span> with each and every input token embedding will create vectors (a point) in the d_k dimensional space that will represent the keys. <strong>After training the keys that can best respond to the query will end up close to it</strong>.</p>
 </section>
 <section id="computation-of-the-attention-scores">
 <h3>Computation of the attention scores<a class="headerlink" href="#computation-of-the-attention-scores" title="Link to this heading">#</a></h3>
+<p>Lets see an example of the projection of the input embeddings to the query and key spaces for the input context.<br />
+Given matrices <span class="math notranslate nohighlight">\( X \)</span> and <span class="math notranslate nohighlight">\( W^{(q)} \)</span> (the key parameter matrix is analogous) where:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+X = \begin{bmatrix} x_{1,1} &amp; x_{1,2} &amp; x_{1,3} &amp; x_{1,4} &amp; x_{1,5} &amp; x_{1,6} &amp; x_{1,7} &amp; x_{1,8} \\ x_{2,1} &amp; x_{2,2} &amp; x_{2,3} &amp; x_{2,4} &amp; x_{2,5} &amp; x_{2,6} &amp; x_{2,7} &amp; x_{2,8} \\ \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\ x_{16,1} &amp; x_{16,2} &amp; x_{16,3} &amp; x_{16,4} &amp; x_{16,5} &amp; x_{16,6} &amp; x_{16,7} &amp; x_{16,8} \end{bmatrix} 
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+W^{(q)} = \begin{bmatrix} w_{1,1} &amp; w_{1,2} &amp; w_{1,3} &amp; w_{1,4} \\ w_{2,1} &amp; w_{2,2} &amp; w_{2,3} &amp; w_{2,4} \\ \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\ w_{8,1} &amp; w_{8,2} &amp; w_{8,3} &amp; w_{8,4} \end{bmatrix} 
+\end{split}\]</div>
+<p>The resulting matrix <span class="math notranslate nohighlight">\( Q \)</span>, where <span class="math notranslate nohighlight">\( Q = X \times W^{(q)} \)</span>, will have dimensions <span class="math notranslate nohighlight">\( 16 \times 8 \)</span>. Each element <span class="math notranslate nohighlight">\( q_{i,j} \)</span> of <span class="math notranslate nohighlight">\( Q \)</span> is computed as:</p>
+<div class="math notranslate nohighlight">
+\[ q_{i,j} = x_{i,1} \cdot w_{1,j} + x_{i,2} \cdot w_{2,j} + x_{i,3} \cdot w_{3,j} + x_{i,4} \cdot w_{4,j} \]</div>
+<p>Notice something not obvious earlier: <strong>the matrix <span class="math notranslate nohighlight">\(W^{(q)}\)</span> allows to weigh differently some features of the input embedding (across the <span class="math notranslate nohighlight">\(d\)</span> dimensions) than others when it calculates the query and key vectors.</strong></p>
+<p>Lets now proceed with the evolved dot product that now is done at the query-key <span class="math notranslate nohighlight">\(d_q = d_k\)</span> space.</p>
+<p>“The hiking trail led us through <em>bear</em> country.” where <span class="math notranslate nohighlight">\(T=8\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{cccccccc}
+ &amp; q_1 &amp; q_2 &amp; q_3 &amp; q_4 &amp; q_5 &amp; q_6 &amp; q_7 &amp; q_8 \\
+k_1 &amp; {q_1^T k_1} &amp; {q_2^T k_1} &amp; {q_3^T k_1} &amp; {q_4^T k_1} &amp; {q_5^T k_1} &amp; {q_6^T k_1} &amp; {q_7^T k_1} &amp; {q_8^T k_1} \\
+k_2 &amp; {q_1^T k_2} &amp; {q_2^T k_2} &amp; {q_3^T k_2} &amp; {q_4^T k_2} &amp; {q_5^T k_2} &amp; {q_6^T k_2} &amp; {q_7^T k_2} &amp; {q_8^T k_2} \\
+k_3 &amp; {q_1^T k_3} &amp; {q_2^T k_3} &amp; {q_3^T k_3} &amp; {q_4^T k_3} &amp; {q_5^T k_3} &amp; {q_6^T k_3} &amp; {q_7^T k_3} &amp; {q_8^T k_3} \\
+k_4 &amp; {q_1^T k_4} &amp; {q_2^T k_4} &amp; {q_3^T k_4} &amp; {q_4^T k_4} &amp; {q_5^T k_4} &amp; {q_6^T k_4} &amp; {q_7^T k_4} &amp; {q_8^T k_4} \\
+k_5 &amp; {q_1^T k_5} &amp; {q_2^T k_5} &amp; {q_3^T k_5} &amp; {q_4^T k_5} &amp; {q_5^T k_5} &amp; {q_6^T k_5} &amp; {q_7^T k_5} &amp; {q_8^T k_5} \\
+k_6 &amp; {q_1^T k_6} &amp; {q_2^T k_6} &amp; {q_3^T k_6} &amp; {q_4^T k_6} &amp; {q_5^T k_6} &amp; {q_6^T k_6} &amp; {q_7^T k_6} &amp; {q_8^T k_6} \\
+k_7 &amp; {q_1^T k_7} &amp; {q_2^T k_7} &amp; {q_3^T k_7} &amp; {q_4^T k_7} &amp; {q_5^T k_7} &amp; {q_6^T k_7} &amp; {q_7^T k_7} &amp; {q_8^T k_7} \\
+k_8 &amp; {q_1^T k_8} &amp; {q_2^T k_8} &amp; {q_3^T k_8} &amp; {q_4^T k_8} &amp; {q_5^T k_8} &amp; {q_6^T k_8} &amp; {q_7^T k_8} &amp; {q_8^T k_8} \\
+\end{array}
+\end{split}\]</div>
 <p>Now that we have projected the tokens in their new space we can form the generalized dot product</p>
 <div class="math notranslate nohighlight">
-\[(W^qq)^TW^kk = q^T (W^q)^TW^kk=q^TWk\]</div>
-<p>where q is the query vector and k is the key vector and <span class="math notranslate nohighlight">\(W\)</span> is the product of the two spaces <span class="math notranslate nohighlight">\(W^q\)</span> and <span class="math notranslate nohighlight">\(W^k\)</span>.</p>
+\[(W^qx_i)^TW^kx_j = x_i^T (W^q)^TW^kx_j=x_i^TWx_j\]</div>
 <p>Geometrically you can visualize this as shown below:</p>
 <p><img alt="" src="../../../../_images/self-attention-vectors.png" />
-<em>After training the keys that can best respond to the query will end up close to it</em>.</p>
-<p>The direct consequence of this positioning in the <span class="math notranslate nohighlight">\(W\)</span> vector space is that the dot product between the query and the nearby keys will be much larger than other far away keys.</p>
+<em>After training the keys that can the most to change the query will end up close to it</em>. The actual change of the query is done by the values.</p>
+<p>The scores are then given in matrix form by:</p>
+<div class="math notranslate nohighlight">
+\[S = QK^T\]</div>
 </section>
 <section id="scaling">
 <h3>Scaling<a class="headerlink" href="#scaling" title="Link to this heading">#</a></h3>
-<p>We then divide the result by the square root of the dimension of the key vector (<span class="math notranslate nohighlight">\(d_k\)</span>). This is done in to prevent the softmax from saturating on the higher attention score elements and severely attenuating the attention weights that correspond to the lower attention scores.</p>
-<p>We can do an experiment to see the bahavior of softmax.</p>
+<p>We divide the scores by the square root of the dimension of the key vector (<span class="math notranslate nohighlight">\(d_k\)</span>). This is done in to prevent the softmax from saturating on the higher attention score elements and severely attenuating the attention weights that correspond to the lower attention scores.</p>
+<p>We can do an experiment to see the behavior of softmax.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># Creating an 8-element numpy vector with random gaussian values</span>
@@ -641,7 +724,7 @@ document.write(`
 <span class="n">softmax_vector</span>
 </pre></div>
 </div>
-<p>Lets plot the two results - the first case is when for the original vector and the second case is when the original vector is elementwise multiplied by 100.</p>
+<p>Lets plot the two results - the first case is when for the original vector and the second case is when the original vector is element-wise multiplied by 100.</p>
 <p><img alt="" src="../../../../_images/scaling-1.png" /></p>
 <p><img alt="" src="../../../../_images/scaling-2.png" /></p>
 <p>Multiply the attention scores by 100 and then pass them through a softmax. You will see that the softmax will output a vector of values that are either very close to 0 or 1.</p>
@@ -657,28 +740,49 @@ document.write(`
 </section>
 <section id="masking">
 <h3>Masking<a class="headerlink" href="#masking" title="Link to this heading">#</a></h3>
-<p>When we decode we do not want to use the attention scores of the future tokens since we dont want to train the tranformer using ground truth that will simply wont be available during inference since we need to preserve causality when we predict the next token during decoding.</p>
-<p>To prevent this from happening we mask the attention scores of the future tokens by setting them to <span class="math notranslate nohighlight">\(-\infty\)</span> before passing them through the softmax. This will cause the softmax to output a vector of values that are very close to 0 for the future tokens.</p>
+<p>When we decode we do not want to use the attention scores of the future tokens since we dont want to train the tranformer using ground truth that will simply wont be available during inference.</p>
+<p>To prevent this from happening we <em>mask</em> the attention scores of the future tokens by setting them to <span class="math notranslate nohighlight">\(-\infty\)</span> before passing them through the softmax. This will cause the softmax to output a vector of values that are very close to 0 for the future tokens.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{cccccccc}
+ &amp; q_1 &amp; q_2 &amp; q_3 &amp; q_4 &amp; q_5 &amp; q_6 &amp; q_7 &amp; q_8 \\
+k_1 &amp; {q_1^T k_1} &amp; {q_2^T k_1} &amp; {q_3^T k_1} &amp; {q_4^T k_1} &amp; {q_5^T k_1} &amp; {q_6^T k_1} &amp; {q_7^T k_1} &amp; {q_8^T k_1} \\
+k_2 &amp; -\infty &amp; {q_2^T k_2} &amp; {q_3^T k_2} &amp; {q_4^T k_2} &amp; {q_5^T k_2} &amp; {q_6^T k_2} &amp; {q_7^T k_2} &amp; {q_8^T k_2} \\
+k_3 &amp; -\infty &amp; -\infty &amp; {q_3^T k_3} &amp; {q_4^T k_3} &amp; {q_5^T k_3} &amp; {q_6^T k_3} &amp; {q_7^T k_3} &amp; {q_8^T k_3} \\
+k_4 &amp; -\infty &amp; -\infty &amp; -\infty &amp; {q_4^T k_4} &amp; {q_5^T k_4} &amp; {q_6^T k_4} &amp; {q_7^T k_4} &amp; {q_8^T k_4} \\
+k_5 &amp; -\infty &amp; -\infty &amp; -\infty &amp; -\infty &amp; {q_5^T k_5} &amp; {q_6^T k_5} &amp; {q_7^T k_5} &amp; {q_8^T k_5} \\
+k_6 &amp; -\infty &amp; -\infty &amp; -\infty &amp; {q_4^T k_6} &amp; {q_5^T k_6} &amp; {q_6^T k_6} &amp; {q_7^T k_6} &amp; {q_8^T k_6} \\
+k_7 &amp; -\infty &amp; -\infty &amp; -\infty &amp; -\infty &amp; -\infty &amp; -\infty &amp; {q_7^T k_7} &amp; {q_8^T k_7} \\
+k_8 &amp; -\infty &amp; -\infty &amp; -\infty &amp; -\infty &amp; -\infty &amp; -\infty &amp; -\infty &amp; {q_8^T k_8} \\
+\end{array}
+\end{split}\]</div>
 </section>
 <section id="softmax">
 <h3>Softmax<a class="headerlink" href="#softmax" title="Link to this heading">#</a></h3>
-<p>We then pass the attention scores through a softmax function to obtain the attention weights <span class="math notranslate nohighlight">\(\alpha_{ij}\)</span> for each of the <span class="math notranslate nohighlight">\(i\)</span> tokens.</p>
+<p>The dot-product terms will be positive or negative numbers and as also in the case of the simpler version of the attention mechanism, we will pass them through a softmax function column-wise to obtain the attention weights <span class="math notranslate nohighlight">\(\alpha_{ij}\)</span> for each of the tokens.</p>
 </section>
 </section>
 <section id="weighting-the-values">
 <h2>Weighting the values<a class="headerlink" href="#weighting-the-values" title="Link to this heading">#</a></h2>
-<p>We then use the attention weights to create a weighted sum of each of the value to obtain the new input embedding.</p>
+<p>We then use the attention weights to create a weighted sum of each of the values to obtain the output embedding.</p>
 <div class="math notranslate nohighlight">
 \[\hat v_i = \sum_{j=1}^T \alpha_{ij} v_j\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha_{ij}\)</span> is the attention weight of the <span class="math notranslate nohighlight">\(j-th\)</span> token of the input sequence for the <span class="math notranslate nohighlight">\(i-th\)</span> value of the input sequence of length T.</p>
-<p>Why purpose the values play thouugh and why the <span class="math notranslate nohighlight">\(W^v\)</span> matrix ?</p>
-<p>The values are the actual information that the input token will use to update its embedding. The <span class="math notranslate nohighlight">\(W^v\)</span> matrix is used to project the input tokens to values (points) in a <span class="math notranslate nohighlight">\(d_v\)</span> dimensional space. As an example, if the key represented the consonantness of the input token that responded to a ‘vowel’ query, the value will represent the specific conconant. Its a way to separate the information that the input token will use to update its embedding from the information that the input token will use to update the embeddings of the <em>other</em> tokens. In addition, there is no reason to make the dimensionality of the value space the same as the dimensionality of the key space.</p>
+<p>Why purpose the values play though and why the <span class="math notranslate nohighlight">\(W^v\)</span> matrix ?</p>
+<p>The values are the actual information that the input token will use to update its embedding. The <span class="math notranslate nohighlight">\(W^v\)</span> matrix is used to project the input tokens to values (points) in a <span class="math notranslate nohighlight">\(d_v\)</span> dimensional space. There is no reason to make the dimensionality of the value space the same as the dimensionality of the key space but typically they are the same.  <strong>We use the value projection (<span class="math notranslate nohighlight">\(V\)</span>) as a way to decouple the determination of the attention weights from the actual adjustment of their specific embeddings.</strong></p>
+<p><img alt="" src="../../../../_images/bear-country.jpg" /></p>
+<p>As an example, in the context “The hiking trail led us through <em>bear</em> country”, if the key represents the adjective of an input token that responded to a noun query, the value will represent the specific adjective (<code class="docutils literal notranslate"><span class="pre">bear</span></code>) that adjusts the specific noun (<code class="docutils literal notranslate"><span class="pre">country</span></code>) and makes it a <code class="docutils literal notranslate"><span class="pre">bear</span> <span class="pre">country</span></code> vector.</p>
 <p><img alt="Single Attention Head" src="../../../../_images/scaled-dot-product-self-attention.png" />
 <em>Note that masking is not shown in this figure. Also vector subspaces maintain the same dimensions throughout.</em></p>
 <p>Closing, the overall equation for the scaled self-attention can be formulated as:</p>
 <div class="math notranslate nohighlight">
-\[Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d_k}})V\]</div>
-<p>and the dimensions of the tensors can also be extended to accommodate the batch dimension.</p>
+\[\hat X = \mathtt{Attention}(Q, K, V) = \mathtt{softmax}(\frac{QK^T}{\sqrt{d_k}})V\]</div>
+<p>and the output has dimension <span class="math notranslate nohighlight">\(c \times d_v\)</span> where <span class="math notranslate nohighlight">\(c\)</span> is the number of tokens in the input sequence and <span class="math notranslate nohighlight">\(d_v\)</span> is the dimension of the value vectors.</p>
+<p>The dimensions of the tensors can also be extended to accommodate the batch dimension.</p>
+<div class="admonition-dense-layers-and-self-attention admonition">
+<p class="admonition-title">Dense Layers and Self-Attention</p>
+<p>Its worthwhile highlighting the difference between a dense layer and the self-attention mechanism. In a dense layer, if the layer learns to apply eg a very small weight at the input, it does so for all data that are fed into the layer.  In the self-attention mechanism if one of the attention weights is for example very small, this is purely due to the specific data being present.</p>
+</div>
 </section>
 <section id="example">
 <h2>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
@@ -703,6 +807,13 @@ document.write(`
 <p>This visualization shows the attention weights as lines connecting the token whose embedding is getting updated (left) with every word that is being attended to (right). The intensity of the lines indicates the strength of the attention weights, with dark lines representing values close to 1, and faint lines representing values close to 0.</p>
 <p>The end result is that the token ‘flies’ will receive the context of ‘soars’ in one sentence and the context of ‘insect’ in the other sentence.</p>
 <p><img alt="contextual embeddings" src="../../../../_images/contextual-embeddings.png" /></p>
+</section>
+<section id="dimensioning-the-attention-mechanism">
+<h2>Dimensioning the Attention Mechanism<a class="headerlink" href="#dimensioning-the-attention-mechanism" title="Link to this heading">#</a></h2>
+</section>
+<section id="other-attention-mechanisms">
+<h2>Other attention mechanisms<a class="headerlink" href="#other-attention-mechanisms" title="Link to this heading">#</a></h2>
+<p>There are multiple more advanced attention mechanisms that try in addition to solve the scalability issues from having to manage a <span class="math notranslate nohighlight">\(T \times T\)</span> matrix of attention weights.</p>
 </section>
 </section>
 
@@ -750,7 +861,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Multi-head attention</p>
+        <p class="prev-next-title">Multi-head self-attention</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -780,6 +891,8 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighting-the-values">Weighting the values</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensioning-the-attention-mechanism">Dimensioning the Attention Mechanism</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-attention-mechanisms">Other attention mechanisms</a></li>
 </ul>
   </nav></div>
 

@@ -342,7 +342,7 @@
 </li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Transformers and Self-attention</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="singlehead-self-attention.html">Single-head self-attention</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multihead-self-attention.html">Multi-head attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multihead-self-attention.html">Multi-head self-attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="positional_embeddings.html">Positional Embeddings</a></li>
 </ul>
 </li>
@@ -591,29 +591,48 @@ document.write(`
 </div>
 <p><img alt="" src="../../../../_images/transformer-architecture.png" /></p>
 <p><em>This is the original encoder-decoder architecture</em></p>
-<p>As compared to the RNNs we have seen earlier, in the transformer architecture we</p>
+<p>As compared to the RNNs we have seen earlier, in the transformer architecture we:</p>
 <ol class="arabic simple">
-<li><p>Eliminate all recurrent connections present in earlier RNN architectures, therefore allowing the model to be trained as well as produce inference results much faster.</p></li>
-<li><p>Continue to use attention mechanisms to allow the model to focus on the most relevant parts of the input sequence. The attention mechanisms will be present in the encoder as well as the decoder part of the architecture if the transformer we are using has both of these parts obviously.</p>
-<ul class="simple">
-<li><p>This means that the encoder output for each input token will be a weighted sum of all other tokens, where the weights are computed by an attention mechanism called <em>self-attention</em>. The ‘self’ refers to the current token’s generalized dot product with each and every other token of the input sequence itself.</p></li>
-</ul>
-</li>
+<li><p>Eliminate all recurrent connections present in earlier RNN architectures, therefore allowing the model to be trained as well as produce inference results much faster since we dont need to wait for the previous token to be processed. Because we broke the sequential nature of processing the input we need to encode explicitly the order that the token show up in the input context. This is done by adding positional encodings to the input embeddings.</p></li>
+<li><p>Use attention mechanisms to allow the context-free embeddings, such as the word2vec embeddings, to be <em>adjusted</em> based on the context of the input sequence. These attention mechanisms will be present in the encoder or the decoder or in both encoder &amp; decoder. We call this mechanism attention, since effectively each token attends to the other tokens of the input sequence that adjust mostly its embedding.</p></li>
 </ol>
+<p>To understand the impact of self-attention, lets consider an example:</p>
+<ul class="simple">
+<li><p>I love <em>bears</em></p></li>
+<li><p>She <em>bears</em> the pain</p></li>
+<li><p><em>Bears</em> won the game</p></li>
+</ul>
+<p>The self-attention mechanism, will change the vector that represents the token <em>bears</em>, from a point of the vector space that corresponds to a context-free representation, to another point that corresponds to a contextual representation i.e. includes the contributions of the other tokens. Obviously the token <em>bears</em>, has three different meanings in each of the above sentences: animal, tolerance and sports team.  We should expect the vector mapping of the token to be different in each of the sentences to reflect that.</p>
 <section id="simple-self-attention-mechanism">
 <h2>Simple self-attention mechanism<a class="headerlink" href="#simple-self-attention-mechanism" title="Link to this heading">#</a></h2>
+<p>To achieve such mapping, we are enabling the other tokens to affect the initial coxtext-free representation via  a simple dot-product mechanism that involves the input token <span class="math notranslate nohighlight">\(x_i\)</span> and all other tokens in the context. Such attention mechanism is called simple <em>self-attention</em> and  the ‘self’ refers to the token’s dot product with itself and each and every other token of the input context.</p>
+<p>This is shown in the next figure where we have formed the input context matrix <span class="math notranslate nohighlight">\(X\)</span> with dimensions [T, d] where <span class="math notranslate nohighlight">\(T\)</span> is the length of the input context and <span class="math notranslate nohighlight">\(d\)</span> is the embedding dimension. In this example a token is [dx1] vector with <span class="math notranslate nohighlight">\(d=4\)</span> and we have <span class="math notranslate nohighlight">\(T=3\)</span> tokens.   Minimal realistic values for the size of such matrices are <span class="math notranslate nohighlight">\(d=5120\)</span> and <span class="math notranslate nohighlight">\(T=4096\)</span>  (Llama-2), although higher values are typically used.</p>
 <p><img alt="" src="../../../../_images/self-attention-simple.png" /></p>
-<p>In the figure above, a token is [dx1] vector with <span class="math notranslate nohighlight">\(d=4\)</span> and we have <span class="math notranslate nohighlight">\(T=3\)</span> tokens as the input sequence length (typically called block size).   Note on shown dimensions: We are in the process of modifying the figures to be inline with the nanoGPT (included in femtotransdformers) - the batch dimension is not shown here.</p>
-<p>The self-attention mechanism is a mechanism that allows the model to focus on the most relevant parts of the input sequence. <strong>Given the <span class="math notranslate nohighlight">\(i-th\)</span> input token</strong> having embedding <span class="math notranslate nohighlight">\(x_i\)</span>, we perform the following calculations:</p>
-<ol class="arabic simple">
-<li><p><strong>Attention scores of the input token</strong>: These are computed as dot products of the embedding of the input token and each of the embeddings of the tokens of the input sentence (including the input token itself). For example if the input sequence consists of 3 tokens, we will compute 3 attention scores for each token to obtain a 3x3 tensor.</p></li>
-<li><p><strong>Attention weights</strong>: The attention scores are then passed through a softmax function to obtain the corresponding <em>attention weights</em>.  Recall that the softmax function is a vector input - vector output function that maps the input vector to a vector of values between 0 and 1, where the sum of all values is 1. So we expect to get 3 attention weights.</p></li>
-<li><p><strong>Weighted embedding of the input token</strong> : We then use the  attention weights to create a weighted sum of the token embeddings of the input sequence to obtain the new input token embedding i.e. the embedding that now includes information from all other embeddings of the input sequence.</p></li>
-</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Typically the batch size <span class="math notranslate nohighlight">\(B\)</span> is also present, so we have <span class="math notranslate nohighlight">\(X\)</span> tensors with [B, T, d] dimensions but we will ignore batching in this initial treatment.</p>
+</div>
+<p>To implement the attention mechanism for example the <span class="math notranslate nohighlight">\(i-th\)</span> input token having embedding <span class="math notranslate nohighlight">\(x_i\)</span>, we perform the following calculations:</p>
+<p><strong>Attention scores <span class="math notranslate nohighlight">\(s_{ij}\)</span> of the input token</strong>: These are computed as dot products of the embedding of the input token and each of the embeddings of the tokens of the input sentence (including the input token itself) indexed by <span class="math notranslate nohighlight">\(j\)</span>. For example if the input sequence consists of 3 tokens, we will compute 3 attention scores for each token to finally obtain a 3x3 tensor.</p>
+<p><strong>Attention weights</strong>: The attention scores are then passed through a softmax function to obtain the corresponding <em>attention weights</em>.  Recall that the softmax function is a vector input - vector output function that maps the input vector to a vector of values between 0 and 1, where the sum of all values is 1. So we apply the softmax across tokens of the context and expect to get 3 attention weights for each input token since T=3. Note that the softmax output has no probablilistic interpretation as it has in the context of classification tasks. Its an elegant way to make all attention weights positive and create a ‘competition’ amonst the tokens of the context.</p>
+<div class="math notranslate nohighlight">
+\[a_{ij} \ge 0\]</div>
+<div class="math notranslate nohighlight">
+\[\sum_{j=1}^T a_{ij} = 1\]</div>
+<p>A large attention score from one token, comes at the expense of the attention scores from the other tokens. In the limiting case, when the context is such that the <span class="math notranslate nohighlight">\(i\)</span> token attends 100% to itself, the input embedding vector remains unchanged since the attention weights of the other tokens towards this token are all zeros.</p>
+<p><strong>Output embedding</strong> : We then use the  attention weights to create a weighted sum of the token embeddings of the input sequence to obtain the new input token embedding i.e. the embedding that now includes information from all other embeddings of the input sequence.</p>
 <div class="math notranslate nohighlight">
 \[\hat x_i = \sum_{j=1}^T \alpha_{ij} x_j\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha_{ij}\)</span> is the attention weight of the <span class="math notranslate nohighlight">\(j-th\)</span> token of the input sequence for the <span class="math notranslate nohighlight">\(i-th\)</span> token of the input sequence of length T.</p>
-<p>Self-attention layers can be stacked on top of each other to create a multi-layer self-attention mechanism.</p>
+<p>We can lump all the above steps into a single equation as shown below:</p>
+<div class="math notranslate nohighlight">
+\[\hat X = \mathtt{softmax}(XX^T)X\]</div>
+<p>At this point it may be beneficial to use an analogy to explain the self-attention mechanism.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Imagine you want to paint your room and you go to a retailer to buy the paint. At the store you consult a broshure and select the color of each room.  Then you go to the kiosk ask (<strong>query</strong>) the attendant for this color. The attendant punches the code (<strong>key</strong>) written next to your desired color choice and the machine dispenses specific ammounts of black, red, green, blue, into a white can of paint that finally after spinning for few minutes, results into the color (<strong>value</strong>).</p>
+</div>
+<p>In this analogy the colors that fall into the white paint are the tokens that must be mixed while the ammounts correspond to the attention weights. We quoted some terms in bold that are the terms used in the more elaborate version of self-attention mechanism that we will address next.</p>
 </section>
 <section id="resources">
 <h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
@@ -621,9 +640,9 @@ document.write(`
 <li><p>An interesting video for the many attention mechanisms that are the roots of self-attention found in transformers.</p></li>
 </ol>
 <div class="video_wrapper" style="">
-<iframe allowfullscreen="true" src="https://www.youtube.com/embed/AIiwuClvH6k" style="border: 0; height: 345px; width: 560px">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/eMlx5fFNoYc" style="border: 0; height: 345px; width: 560px">
 </iframe></div><ol class="arabic simple" start="2">
-<li><p>Perhaps one of the best overviews of Transformers around with an implementation in TF.</p></li>
+<li><p>Perhaps one of the best from scratch implementation of Transformers in Tensorflow.</p></li>
 </ol>
 <div class="video_wrapper" style="">
 <iframe allowfullscreen="true" src="https://www.youtube.com/embed/acxqoltilME" style="border: 0; height: 345px; width: 560px">
