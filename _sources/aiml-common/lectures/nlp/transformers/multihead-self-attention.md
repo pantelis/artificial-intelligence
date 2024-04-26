@@ -8,7 +8,7 @@ Think of the multiple heads in transformer architectures to be analogous to the 
 
 if $H$ is the number of heads, indexed by $h$, then each head delivers
 
-$$H_h = \mathtexttt{Attention}(Q_h, K_h, Vh)$$
+$$H_h = \mathtt{Attention}(Q_h, K_h, Vh)$$
     
 where $Q_h, K_h, V_h$ are the query, key and value matrices of the $h-th$ head.
 
