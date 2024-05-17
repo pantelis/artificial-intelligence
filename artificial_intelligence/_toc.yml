@@ -5,19 +5,19 @@ root: intro
 parts:
 - caption: Syllabus
   chapters:
-  -   file: syllabus/_index
+  -   file: syllabus/index
 
 - caption: Introduction to AI
   chapters:
-  - file: aiml-common/lectures/ai-intro/course-introduction/_index.md
-  - file: aiml-common/lectures/ai-intro/systems-approach/_index.md
-  - file: aiml-common/lectures/ai-intro/agents/_index.md
+  - file: aiml-common/lectures/ai-intro/course-introduction/index.md
+  - file: aiml-common/lectures/ai-intro/systems-approach/index.md
+  - file: aiml-common/lectures/ai-intro/agents/index.md
 
 - caption: Supervised Learning-1
   chapters:
-  - file: aiml-common/lectures/learning-problem/_index.md
+  - file: aiml-common/lectures/learning-problem/index.md
   - file: aiml-common/lectures/regression/linear-regression/linear_regression.ipynb 
-  - file: aiml-common/lectures/optimization/sgd/_index.md
+  - file: aiml-common/lectures/optimization/sgd/index.md
   - file: aiml-common/lectures/entropy/index.md
   - file: aiml-common/lectures/optimization/maximum-likelihood/marginal_maximum_likelihood.ipynb
   - file: aiml-common/lectures/optimization/maximum-likelihood/mle-gaussian-parameters.md
@@ -25,32 +25,32 @@ parts:
 
 - caption: Supervised Learning-2
   chapters:
-  - file: aiml-common/lectures/classification/classification-intro/_index.md
-  - file: aiml-common/lectures/classification/logistic-regression/_index.md
+  - file: aiml-common/lectures/classification/classification-intro/index.md
+  - file: aiml-common/lectures/classification/logistic-regression/index.md
   
 # - caption: Bayesian Inference
 #   chapters:
-#   - file: aiml-common/lectures/pgm/bayesian-inference/_index.md
+#   - file: aiml-common/lectures/pgm/bayesian-inference/index.md
 #   - file: aiml-common/lectures/pgm/bayesian-inference/bayesian_regression.ipynb
 #   - file: aiml-common/lectures/pgm/bayesian-coin/bayesian_update_coin_flip.ipynb
             
 - caption: Deep Neural Networks
   chapters:    
-  - file: aiml-common/lectures/classification/perceptron/_index.md
+  - file: aiml-common/lectures/classification/perceptron/index.md
   - file: aiml-common/lectures/dnn/dnn-intro/index.md
-  - file: aiml-common/lectures/dnn/backprop-intro/_index.md
-  - file: aiml-common/lectures/dnn/backprop-dnn/_index.md
-  - file: aiml-common/lectures/dnn/backprop-dnn-exercises/_index.md
+  - file: aiml-common/lectures/dnn/backprop-intro/index.md
+  - file: aiml-common/lectures/dnn/backprop-dnn/index.md
+  - file: aiml-common/lectures/dnn/backprop-dnn-exercises/index.md
   - file: aiml-common/lectures/dnn/fashion-mnist-case-study.md
-  - file: aiml-common/lectures/optimization/regularization/_index.md
+  - file: aiml-common/lectures/optimization/regularization/index.md
   - file: aiml-common/lectures/optimization/regularization/regularization-workshop-1.md
   - file: aiml-common/lectures/information-theory-dnn/index.md
       
 - caption: Convolutional Neural Networks
   chapters:    
-  - file: aiml-common/lectures/cnn/cnn-intro/_index.md
-  - file: aiml-common/lectures/cnn/cnn-layers/_index.md
-  - file: aiml-common/lectures/cnn/cnn-example-architectures/_index.md
+  - file: aiml-common/lectures/cnn/cnn-intro/index.md
+  - file: aiml-common/lectures/cnn/cnn-layers/index.md
+  - file: aiml-common/lectures/cnn/cnn-example-architectures/index.md
   - file: aiml-common/lectures/cnn/cnn-example-architectures/using_convnets_with_small_datasets.ipynb
   - file: aiml-common/lectures/cnn/cnn-example-architectures/visualizing-what-convnets-learn.ipynb
   - file: aiml-common/lectures/scene-understanding/feature-extraction-resnet/index.md
@@ -87,15 +87,15 @@ parts:
   chapters:    
   - file: aiml-common/lectures/rse/recursive-state-estimation/index.md
   - file: aiml-common/lectures/rse/discrete-bayesian-filter/discrete-bayesian-filter.ipynb
-  - file: aiml-common/lectures/rse/hmm-localization/_index.md   
+  - file: aiml-common/lectures/rse/hmm-localization/index.md   
   - file: aiml-common/lectures/rse/kalman-filters/one-dimensional-kalman-filters.ipynb
 
 - caption: Logical Reasoning
   chapters:        
-  - file: aiml-common/lectures/logical-reasoning/automated-reasoning/_index.md
-  - file: aiml-common/lectures/logical-reasoning/propositional-logic/_index.md
+  - file: aiml-common/lectures/logical-reasoning/automated-reasoning/index.md
+  - file: aiml-common/lectures/logical-reasoning/propositional-logic/index.md
   - file: aiml-common/lectures/logical-reasoning/logical-inference/index.md
-  - file: aiml-common/lectures/logical-reasoning/logical-agents/_index.md
+  - file: aiml-common/lectures/logical-reasoning/logical-agents/index.md
 
 - caption: Planning without Interactions
   chapters:        
@@ -113,32 +113,32 @@ parts:
     - file: aiml-common/lectures/planning/search/a-star/index.md     
     - file: aiml-common/lectures/planning/search/search-alg-demo/index.md
     - file: aiml-common/lectures/motion-planning-cars/index.md  
-  #- file: aiml-common/lectures/autonomous-cars/imitation-learning/_index.md       
+  #- file: aiml-common/lectures/autonomous-cars/imitation-learning/index.md       
 
 - caption: Markov Decision Processes
   chapters:          
   - file: aiml-common/lectures/mdp/index.md      
   - file: aiml-common/lectures/mdp/mdp-intro/mdp_intro.ipynb
-  - file: aiml-common/lectures/mdp/bellman-expectation-backup/_index.md      
-  - file: aiml-common/lectures/mdp/policy-evaluation/_index.md
-  - file: aiml-common/lectures/mdp/bellman-optimality-backup/_index.md 
-  - file: aiml-common/lectures/mdp/policy-improvement/_index.md 
+  - file: aiml-common/lectures/mdp/bellman-expectation-backup/index.md      
+  - file: aiml-common/lectures/mdp/policy-evaluation/index.md
+  - file: aiml-common/lectures/mdp/bellman-optimality-backup/index.md 
+  - file: aiml-common/lectures/mdp/policy-improvement/index.md 
   - file: aiml-common/lectures/mdp/dynamic-programming-algorithms/index.md
     title: Dynamic Programming Algorithms
     sections:  
-      - file: aiml-common/lectures/mdp/dynamic-programming-algorithms/policy-iteration/_index.md          
+      - file: aiml-common/lectures/mdp/dynamic-programming-algorithms/policy-iteration/index.md          
       - file: aiml-common/lectures/mdp/dynamic-programming-algorithms/value-iteration/index.ipynb           
   - file: aiml-common/lectures/mdp/mdp-workshop/index.md
     title: MDP Workshop
     sections:
       - file: aiml-common/lectures/mdp/mdp-workshop/cleaning-robot/deterministic_mdp.ipynb
       - file: aiml-common/lectures/mdp/mdp-workshop/cleaning-robot/stochastic_mdp.ipynb      
-      - file: aiml-common/lectures/mdp/mdp-workshop/recycling-robot/_index.md      
-      #- file: aiml-common/lectures/mdp/mdp-lab/yield-management-capacity-control/_index.md      
+      - file: aiml-common/lectures/mdp/mdp-workshop/recycling-robot/index.md      
+      #- file: aiml-common/lectures/mdp/mdp-lab/yield-management-capacity-control/index.md      
   
 - caption: Reinforcement Learning
   chapters:
-  - file: aiml-common/lectures/reinforcement-learning/_index.md        
+  - file: aiml-common/lectures/reinforcement-learning/index.md        
   - file: aiml-common/lectures/reinforcement-learning/prediction/monte-carlo.md      
   - file: aiml-common/lectures/reinforcement-learning/prediction/temporal-difference.md
   # - file: aiml-common/lectures/reinforcement-learning/prediction/prediction-example.md
@@ -149,26 +149,26 @@ parts:
       - file: aiml-common/lectures/reinforcement-learning/model-free-control/greedy-monte-carlo/index.md
       - file: aiml-common/lectures/reinforcement-learning/model-free-control/sarsa/index.md
       - file: aiml-common/lectures/reinforcement-learning/model-free-control/sarsa/gridworld/sarsa_gridworld.ipynb
-  #- file: aiml-common/lectures/reinforcement-learning/policy-based-algorithms/reinforce/_index.md
+  #- file: aiml-common/lectures/reinforcement-learning/policy-based-algorithms/reinforce/index.md
 
 - caption:  Sequences and RNNs
   chapters:    
-  - file: aiml-common/lectures/rnn/introduction/_index.md 
-  - file: aiml-common/lectures/rnn/simple-rnn/_index.md 
-  - file: aiml-common/lectures/rnn/lstm/_index.md
+  - file: aiml-common/lectures/rnn/introduction/index.md 
+  - file: aiml-common/lectures/rnn/simple-rnn/index.md 
+  - file: aiml-common/lectures/rnn/lstm/index.md
   - file: aiml-common/lectures/rnn/time_series_using_simple_rnn_lstm.ipynb     
 
 - caption:  Natural Language Processing 
   chapters:
-  - file: aiml-common/lectures/nlp/nlp-introduction/nlp-pipelines/_index.md 
+  - file: aiml-common/lectures/nlp/nlp-introduction/nlp-pipelines/index.md 
   - file: aiml-common/lectures/nlp/nlp-introduction/tokenization/index.ipynb
-  - file: aiml-common/lectures/nlp/nlp-introduction/word2vec/_index.md 
+  - file: aiml-common/lectures/nlp/nlp-introduction/word2vec/index.md 
     title: Embeddings
     sections:
     - file: aiml-common/lectures/nlp/nlp-introduction/word2vec/word2vec_from_scratch.ipynb 
     - file: aiml-common/lectures/nlp/nlp-introduction/word2vec/word2vec_tensorflow_tutorial.ipynb 
   
-  - file: aiml-common/lectures/nlp/language-models/_index.md   
+  - file: aiml-common/lectures/nlp/language-models/index.md   
     title: Language Models 
     sections:  
     - file: aiml-common/lectures/nlp/language-models/cnn-language-model/index.ipynb
