@@ -61,7 +61,7 @@ In a **key role** the current token effectively expresses its own function eg 'n
 
 For example: **'I am key=noun' and I am seeking for a earlier query=adjective'.**
 
-The premise that that **after training, the attention mechanism will be able to reveal the keys of the input context that can best respond to the query.**. Notice also something not obvious. 
+The premise that that **after training, the attention mechanism will be able to reveal the keys of the input context that can best respond to the query.** 
 
 Let us now recall what we saw already during the `word2vec` construction: we trained a network that will take one-hot vectors of semantically similar tokens that were orthonormal and projected them to vectors that are close to each other in the embedding space.  So we have seen evidence that a projection with proper weights can cause all sorts of interesting mappings to happen from a large dimensional space to a lower space. By analogy, the multiplication of the matrix $W^q$ with the input token embedding will create a vector (a point) in the d_k dimensional space that will represent the query. Similarly the multiplication of the matrix $W^k$ with each and every input token embedding will create vectors (a point) in the d_k dimensional space that will represent the keys. **After training the keys that can best respond to the query will end up close to it**. 
 
@@ -189,7 +189,7 @@ $$\hat v_i = \sum_{j=1}^T \alpha_{ij} v_j$$
 
 where $\alpha_{ij}$ is the attention weight of the $j-th$ token of the input sequence for the $i-th$ value of the input sequence of length T.
 
-Why purpose the values play though and why the $W^v$ matrix ?
+What purpose the values play though and why the $W^v$ matrix ?
 
 The values are the actual information that the input token will use to update its embedding. The $W^v$ matrix is used to project the input tokens to values (points) in a $d_v$ dimensional space. There is no reason to make the dimensionality of the value space the same as the dimensionality of the key space but typically they are the same.  **We use the value projection ($V$) as a way to decouple the determination of the attention weights from the actual adjustment of their specific embeddings.** 
 
