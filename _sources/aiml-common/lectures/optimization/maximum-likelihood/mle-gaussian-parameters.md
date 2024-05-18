@@ -1,8 +1,7 @@
 # Maximum Likelihood Estimation of Gaussian Parameters
 
-```{note}
+
 This text appearred in [this post](https://jrmeyer.github.io/machinelearning/2017/08/18/mle.html) but because the math formatting disappeared from the original site,  it is shamelessly copied here. Please note that in our notation $N$ is $m$ (number of examples / samples) and $n$ is $i$ (index of each example / sample).
-```
 
 ## The Big Picture
   

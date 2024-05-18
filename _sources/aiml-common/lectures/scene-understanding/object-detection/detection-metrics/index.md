@@ -13,8 +13,7 @@ The above figure is dated but its indicative of the relative effort required to 
 
 The average precision is introduced in the next two videos. It is also calculated using a small detection example in a subsequent section.  
 
-```{eval-rst}
-.. youtube:: FUg6c7Ks07o
+```{{<video https://www.youtube.com/watch?v=FUg6c7Ks07o>}}
 .. youtube:: 0RLOJHt74Zs
 ```
 The AP is the approximation of the Area Under the Curve (AUC). This approximation involves interpolation that eliminates the noisy Precision vs Recall curve - effectively converting this curve to a monotonic curve. This is shown next. 

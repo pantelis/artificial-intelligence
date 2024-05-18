@@ -6,9 +6,8 @@ For more advanced reader, and specifically for fully understanding deep learning
 
 We have also shot a recitation video for you to review some of the concepts.
 
-```{eval-rst}
-.. youtube:: Ygw9jR42y9I
-```
+{{<video https://www.youtube.com/watch?v=Ygw9jR42y9I>}}
+
 _Calculus recitation for my classes. Recitation was delivered by my TA Pritam Sen._
 
 

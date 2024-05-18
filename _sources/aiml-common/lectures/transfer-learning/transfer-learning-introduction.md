@@ -31,9 +31,8 @@ More generally, transfer learning will work best when the inputs have similar lo
 ![](images/dnn-face-features.png)
 
 
-```{note}
+
 Please note that the diagram above is used for illustration purposes only. DNNs as shown above do not work very well with transfer learning. In your mind replace the DNN with CNN.
-```
 
 Because these low-level features are captured in the lower layers of the network as shown below, we reuse the base of the network. Similarly, the upper hidden layers of the original model are less likely to be as useful as the lower layers, since the high-level features that are most useful for the new task may differ significantly from the ones that were most useful for the original task. You want to find the right number of layers to reuse.
 

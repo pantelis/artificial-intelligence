@@ -37,9 +37,8 @@ ResNets are commonly used as feature extractors for object detection [as in this
 
 These networks are the obvious / typical choice today and they can also be used in real time video streaming applications achieving significant frames per second throughputs. 
 
-```{eval-rst}
-.. youtube:: 1PGLj-uKT1w
-```
+{{<video https://www.youtube.com/watch?v=1PGLj-uKT1w>}}
+
 
 ## ResNets and Batch Normalization
 

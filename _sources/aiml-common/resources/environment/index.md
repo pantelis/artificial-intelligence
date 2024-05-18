@@ -6,9 +6,7 @@
 
 You need to create Python environments in  this course. Nothing beats a container-based environment for data science/AI workflows. Learn the basics of docker (the most conmmon container format) by watching the following video:
 
-```{eval-rst}
-.. youtube:: pTFZFxd4hOI
-```
+{{<video https://www.youtube.com/watch?v=pTFZFxd4hOI>}}
 
 Independent of your OS, you may want to use [VS Code IDE](https://code.visualstudio.com/) if you have no IDE experience before. We recommend VS Code as the IDE due to its flexibility in supporting remote containers.  Ensure that you are able to debug code in your IDE. It must connect to the [remote container](https://code.visualstudio.com/docs/remote/remote-overview). PyCharm may also offer similar functionality but we have not tested it.
 
@@ -24,9 +22,9 @@ For those that do not have an existing NVIDIA-based GPU, please avoid **buying**
 
 If you do already have AMD or Intel GPUs you _may_ still be able to use them  or simply use Colab.
 
-```{note}
+
 Avoid working with conda environments as they are not compatible with optimized NVIDIA containers and they also have issues with Colab. Always prefer pip-based tooling. For docker containers you dont need to create virtual environments as the container is isolated from the host but if you somehow want to, you can use the standard python module `venv'.
-```
+
 
 #### Example Development Environment
 
@@ -89,9 +87,8 @@ Learning basic git commands takes less than half an hour. However, to install gi
 
 As we have discussed in the class you need to be able to publish your work in Github so you need to create a Github account. Then you will use the git client for your operating system to interact with github and iterate on your projects.  Almost no project starts in vacuum - there is almost always a repo  that will neeed to be cloned and that you will need to modify to your needs. 
 
-```{eval-rst}
-.. youtube:: RGOj5yH7evk
-```
+{{<video https://www.youtube.com/watch?v=RGOj5yH7evk>}}
+
 
 ### How to work with a github repository in Colab
 

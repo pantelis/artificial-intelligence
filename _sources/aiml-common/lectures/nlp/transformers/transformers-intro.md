@@ -1,10 +1,7 @@
 # Transformers and Self-Attention
 
-```{admonition} Note
 
 For the explanation of decoder-based architectures such as those used by GPT, please see the repo https://github.com/pantelis/femtotransformers and the embedded comments therein. A future version of this section will incorporate the commented source code from that repo as well as [this popular repo](https://github.com/lucidrains/x-transformers) that implements various other transformer architectures. 
-
-```
 
 ![](images/transformer-architecture.png)
 
@@ -33,9 +30,7 @@ This is shown in the next figure where we have formed the input context matrix $
 
 ![](images/self-attention-simple.png)
 
-
-```{note} Typically the batch size $B$ is also present, so we have $X$ tensors with [B, T, d] dimensions but we will ignore batching in this initial treatment. 
-```
+Typically the batch size $B$ is also present, so we have $X$ tensors with [B, T, d] dimensions but we will ignore batching in this initial treatment. 
 
 To implement the attention mechanism for example the $i-th$ input token having embedding $x_i$, we perform the following calculations:   
 
@@ -60,9 +55,8 @@ $$\hat X = \mathtt{softmax}(XX^T)X$$
 
 At this point it may be beneficial to use an analogy to explain the self-attention mechanism. 
 
-```{note}
 Imagine you want to paint your room and you go to a retailer to buy the paint. At the store you consult a broshure and select the color of each room.  Then you go to the kiosk ask (**query**) the attendant for this color. The attendant punches the code (**key**) written next to your desired color choice and the machine dispenses specific ammounts of black, red, green, blue, into a white can of paint that finally after spinning for few minutes, results into the color (**value**).   
-```
+
 In this analogy the colors that fall into the white paint are the tokens that must be mixed while the ammounts correspond to the attention weights. We quoted some terms in bold that are the terms used in the more elaborate version of self-attention mechanism that we will address next.
 
 
@@ -78,8 +72,7 @@ In this analogy the colors that fall into the white paint are the tokens that mu
 ```
 2. Perhaps one of the best from scratch implementation of Transformers in Tensorflow. 
 
-```{eval-rst}
-.. youtube:: acxqoltilME
+```{{<video https://www.youtube.com/watch?v=acxqoltilME>}}
 
 ``` 
 

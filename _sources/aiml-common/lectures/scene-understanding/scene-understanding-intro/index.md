@@ -6,9 +6,8 @@ In the previous chapters we have treated the perception subsystem mainly from st
 
 Object detection is demonstrated in this short video clip that shows the end result - placing bounding boxes around classes of interest. 
 
-```{eval-rst}
-.. youtube:: WZmSMkK9VuA
-```
+{{<video https://www.youtube.com/watch?v=WZmSMkK9VuA>}}
+
 
 The difference between classification and object detection is shown below.
 

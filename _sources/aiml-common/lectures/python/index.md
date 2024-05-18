@@ -35,9 +35,8 @@ The following are your options with 1 being the highest priority.
 4. JAX is an extensible system for **composable function transformations** and offers a numpy-like API and can run your code much faster. You can read its benefits for a wide range of scientific applications [here](https://github.com/google/jax). JAX has been extended with NN libraries such as [Equinox](https://github.com/patrick-kidger/equinox) but can also be used without any NN libraries to build for example differentiable physics simulators and other computational applications. 
 
 
-```{eval-rst}
-.. youtube:: WdTeDXsOSj4
-```
+{{<video https://www.youtube.com/watch?v=WdTeDXsOSj4>}}
+
 
 ## Preparing for an interview
 

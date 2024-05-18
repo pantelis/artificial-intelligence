@@ -64,14 +64,12 @@ It offers certain advantages during the learning of deep neural networks. Given 
 
 For a historical recap on neural networks see:
 
-```{eval-rst}
-.. youtube:: gG5NCkMerHU
-```
+{{<video https://www.youtube.com/watch?v=gG5NCkMerHU>}}
+
 _The Epistemology of Deep Learning - Yann LeCun_
 
 For an astonishing visualization of the learning process of a (dense) neural network see:
 
-```{eval-rst}
-.. youtube:: aircAruvnKk
-```
+{{<video https://www.youtube.com/watch?v=aircAruvnKk>}}
+
 _But what is a neural network?_

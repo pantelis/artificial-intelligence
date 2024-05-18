@@ -1,0 +1,756 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The four approaches towards AI &#8212; Introduction to Artificial Intelligence</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/ai-intro/systems-approach/index';</script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/ai-intro/systems-approach/index.html" />
+    <link rel="icon" href="../../../../_static/logo.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Agent-Environment Interface" href="../agents/index.html" />
+    <link rel="prev" title="Course Introduction" href="../course-introduction/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt="Introduction to Artificial Intelligence - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Artificial Intelligence - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="list-caption"><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to AI</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="label-parts" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../course-introduction/index.html">Course Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">The four approaches towards AI</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../agents/index.html">Agent-Environment Interface</a></li>
+
+
+
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-1</span></p><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="label-parts" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../learning-problem/index.html">The Supervised (Inductive) Learning Problem Statement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../optimization/sgd/index.html">Gradient Descent</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../entropy/index.html">Entropy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../optimization/maximum-likelihood/marginal_maximum_likelihood.html">Maximum Likelihood Estimation of a marginal model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../optimization/maximum-likelihood/mle-gaussian-parameters.html">Maximum Likelihood Estimation of Gaussian Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../optimization/maximum-likelihood/conditional_maximum_likelihood.html">Maximum Likelihood (ML) Estimation of conditional models</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-2</span></p><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="label-parts" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../classification/classification-intro/index.html">Introduction to Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../classification/logistic-regression/index.html">Logistic Regression</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Neural Networks</span></p><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="label-parts" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../classification/perceptron/index.html">The Neuron (Perceptron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/dnn-intro/index.html">Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/backprop-intro/index.html">Introduction to Backpropagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/backprop-dnn/index.html">Backpropagation in Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/backprop-dnn-exercises/index.html">Backpropagation DNN exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/fashion-mnist-case-study.html">Fashion MNIST Case Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../optimization/regularization/index.html">Regularization in Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../optimization/regularization/regularization-workshop-1.html">Regularization Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../information-theory-dnn/index.html">Fusion of Statistical Learning Theory, Information Theory and Stochastic Optimization</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Convolutional Neural Networks</span></p><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="label-parts" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-intro/index.html">Introduction to Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-layers/index.html">CNN Architectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/index.html">CNN Example Architectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">Using convnets with small datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/visualizing-what-convnets-learn.html">Visualizing what convnets learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scene-understanding/feature-extraction-resnet/index.html">Feature Extraction via Residual Networks</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Scene Understanding</span></p><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="label-parts" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../scene-understanding/scene-understanding-intro/index.html">Introduction to Scene Understanding</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../scene-understanding/object-detection/object-detection-intro/index.html">Object Detection</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/detection-metrics/index.html">Object Detection and Semantic Segmentation Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/rcnn-object-detection/index.html">Region-CNN (RCNN) Object Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/faster-rcnn-object-detection/index.html">Fast and Faster RCNN Object Detection</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/index.html">Object Det. &amp; Semantic Segm. Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/index.html">Mask R-CNN Semantic Segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/demo.html">Mask R-CNN Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_data.html">Mask R-CNN - Inspect Training Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_model.html">Mask R-CNN - Inspect Trained Model</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_weights.html">Mask R-CNN - Inspect Weights of a Trained Model</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.html">Detectron2 Beginner’s Tutorial</a></li>
+
+
+
+
+
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="label-parts" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../transfer-learning/transfer-learning-introduction.html">Introduction to Transfer Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../transfer-learning/transfer_learning_tutorial.html">Transfer Learning for Computer Vision Tutorial</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Probabilistic Reasoning</span></p><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="label-parts" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../rse/recursive-state-estimation/index.html">Recursive State Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rse/discrete-bayesian-filter/discrete-bayesian-filter.html">Discrete Bayes Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rse/hmm-localization/index.html">Localization and Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rse/kalman-filters/one-dimensional-kalman-filters.html">Kalman Filters</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Logical Reasoning</span></p><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="label-parts" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/automated-reasoning/index.html">Automated Reasoning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/propositional-logic/index.html">World Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/logical-inference/index.html">Logical Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/logical-agents/index.html">Logical Agents</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning without Interactions</span></p><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="label-parts" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../planning/index.html">Automated Planning</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../planning/pddl/index.html">PDDL</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../planning/pddl/blocksworld/up_blocksworld_demo.html">The Unified Planning Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../planning/pddl/logistics/index.html">Logistics Planning in PDDL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../planning/pddl/manufacturing/index.html">Manufacrturing Robot Planning in PDDL</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../planning/search/index.html">Search Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../planning/search/a-star/index.html">The A* Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../planning/search/search-alg-demo/index.html">Interactive Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../motion-planning-cars/index.html">Motion Planning for Autonomous Cars</a></li>
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Markov Decision Processes</span></p><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="label-parts" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/index.html">Markov Decision Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/mdp-intro/mdp_intro.html">Introduction to MDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/bellman-expectation-backup/index.html">Bellman Expectation Backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/policy-evaluation/index.html">Policy Evaluation (Prediction)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/bellman-optimality-backup/index.html">Bellman Optimality Backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/policy-improvement/index.html">Policy Improvement (Control)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../mdp/dynamic-programming-algorithms/index.html">Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/dynamic-programming-algorithms/policy-iteration/index.html">Policy Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/dynamic-programming-algorithms/value-iteration/index.html">Value Iteration</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../mdp/mdp-workshop/index.html">MDP Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-workshop/cleaning-robot/deterministic_mdp.html">Cleaning Robot - Deterministic MDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-workshop/cleaning-robot/stochastic_mdp.html">Cleaning Robot - Stochastic MDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-workshop/recycling-robot/index.html">The recycling robot.</a></li>
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="label-parts" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/index.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/prediction/monte-carlo.html">Monte-Carlo Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/prediction/temporal-difference.html">Temporal Difference (TD) Prediction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../reinforcement-learning/model-free-control/index.html">Model-free Control</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../reinforcement-learning/model-free-control/generalized-policy-iteration/index.html">Generalized Policy Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reinforcement-learning/model-free-control/greedy-monte-carlo/index.html"><span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy Monte-Carlo (MC) Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reinforcement-learning/model-free-control/sarsa/index.html">The SARSA Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reinforcement-learning/model-free-control/sarsa/gridworld/sarsa_gridworld.html">SARSA Gridworld Example</a></li>
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="label-parts" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/introduction/index.html">Introduction to Recurrent Neural Networks (RNN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/simple-rnn/index.html">Simple RNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/lstm/index.html">The Long Short-Term Memory (LSTM) Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/time_series_using_simple_rnn_lstm.html">Time Series Prediction using RNNs</a></li>
+
+
+
+
+
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="label-parts" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../nlp/nlp-introduction/nlp-pipelines/index.html">Introduction to NLP Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nlp/nlp-introduction/tokenization/index.html">Tokenization</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/nlp-introduction/word2vec/index.html">Embeddings</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nlp-introduction/word2vec/word2vec_from_scratch.html">Word2Vec from scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nlp-introduction/word2vec/word2vec_tensorflow_tutorial.html">Word2Vec Tensorflow Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/language-models/index.html">Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/language-models/cnn-language-model/index.html">CNN Language Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/language-models/simple-rnn-language-model/index.html">Simple RNN Language Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/language-models/lstm-language-model/index.html">LSTM Language Model from scratch</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/nmt/nmt-intro/index.html">Neural Machine Translation</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nmt/nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nmt/rnn-nmt-attention/index.html">Attention in RNN-based NMT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nmt/rnn-attention-workshop/seq2seq_and_attention.html">Attention in RNN NMT Workshop</a></li>
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/transformers/transformers-intro.html">Transformers and Self-attention</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/transformers/singlehead-self-attention.html">Single-head self-attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/transformers/multihead-self-attention.html">Multi-head self-attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/transformers/positional_embeddings.html">Positional Embeddings</a></li>
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/index.html">Math for ML Textbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/probability/index.html">Probability Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/linear-algebra/index.html">Linear Algebra for Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/calculus/index.html">Calculus</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="label-parts" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/index.html">Your Programming Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/slurm-keras-example.html">Training Keras with the SLURM Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/nyu-jupyterhub-envs.html">NYU JupyrterHub Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Learn Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
+</ul></li></ul>
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pantelis/artificial-intelligence" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/ai-intro/systems-approach/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/aiml-common/lectures/ai-intro/systems-approach/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The four approaches towards AI</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">The four approaches towards AI</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-turing-test-approach">The Turing Test Approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cognitive-model-approach">The Cognitive Model approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-syllogism-based-approach">The Syllogism-based approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rational-agent-approach">The Rational Agent approach</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-as-a-distributed-system-approach">AI as a distributed system approach</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-four-approaches-towards-ai">
+<h1>The four approaches towards AI<a class="headerlink" href="#the-four-approaches-towards-ai" title="Link to this heading">#</a></h1>
+<p><img alt="AI-approaches" src="../../../../_images/AI-approaches.png" /></p>
+<section id="the-turing-test-approach">
+<h2>The Turing Test Approach<a class="headerlink" href="#the-turing-test-approach" title="Link to this heading">#</a></h2>
+<p>A 5-min behavioral intelligence test, where an interrogator chats with the player and at the end it guesses if the conversation is with a human or with a programmed machine.  A Turing contest (Loebner Prize) is is held annually since 1991.</p>
+<p>This course’s projects includes the <a class="reference external" href="https://developer.amazon.com/alexaprize">Alexa prize</a> which is <em>not</em> a turing test. The Alexa Prize creates social bots that engage in interesting, human-like conversations, not to make them indistinguishable from a human when compared side-by-side. Social bots may have ready access to much more information than a human.</p>
+<p><em>Summary of the Turing Test</em></p>
+<p><em>The Alexa Prize is not a Turing Test</em></p>
+<p>What capabilities we need to have to pass a turing test.</p>
+<ol class="arabic simple">
+<li><p>Natural Language Processing</p></li>
+<li><p>Knowledge Representation</p></li>
+<li><p>Automated Reasoning</p></li>
+<li><p>Machine Learning</p></li>
+<li><p>Computer Vision</p></li>
+<li><p>Robotics</p></li>
+</ol>
+<p>The last two capabilities are not needed for the verbal oriented Turing test but they are needed for what is called the <em>total</em> Turing test. According to this test, the player and the interrogator can communicate physically. For example, there is a hatch where the interrogator can pass objects to the player through. Obviously the player must have perception abilities to understand what object it is (5) and possibly a body that can manipulate the object (6). Embodied AI research is one of the hotter areas of AI today as we will see in the AI Agents section.</p>
+</section>
+<section id="the-cognitive-model-approach">
+<h2>The Cognitive Model approach<a class="headerlink" href="#the-cognitive-model-approach" title="Link to this heading">#</a></h2>
+<p>Newell, in his book “Unified Theories of Cognition”,  defines cognition as:</p>
+<ul class="simple">
+<li><p>Memory, learning, skill</p></li>
+<li><p>Perception, motor behavior</p></li>
+<li><p>Problem solving, decision making, routine action</p></li>
+<li><p>Language</p></li>
+<li><p>Motivation, emotion</p></li>
+<li><p>Imagining, dreaming</p></li>
+</ul>
+<blockquote>
+<div><p>How do we differentiate a cognitive model from a conceptual or statistical model? “Cognitive science is concerned with understanding the processes that the brain uses to accomplish complex tasks including perceiving, learning, remembering, thinking, predicting, problem solving, decision making, planning, and moving around the environment. The goal of a cognitive model is to scientifically explain one or more of these basic cognitive processes, or explain how these processes interact.”, –Busemeyer &amp; Diederich (2010)</p>
+</div></blockquote>
+<p>These theories of cognitive processes are tested via various cognitive <a class="reference external" href="https://en.wikipedia.org/wiki/Cognitive_architecture"><em>architectures</em></a>. Its important to realize that much of todays’ debate about the path ahead in AI maps to the few different architectures. The <em>hybrid</em> architecture (symbolic and connection-oriented) is what is being investigated today by many research institutions.</p>
+</section>
+<section id="the-syllogism-based-approach">
+<h2>The Syllogism-based approach<a class="headerlink" href="#the-syllogism-based-approach" title="Link to this heading">#</a></h2>
+<p>The translation from Greek of the word <em>syllogism</em> is to support logic.</p>
+<p>This approach emphasizes how we think the right way and encodes the pattern of logical arguments that can reach correct conclusions from a set of propositions (<em>premises</em>). Problem solving where the problem statement is expressed in a logic notation, matured in the 60s. As we have seen in the course introduction section such rule-based systems are still with us and for small and deterministic state spaces can provide a very compact and elegant way to inference.</p>
+<p>Logic-based reasoning is coming back to fashion. One of the most promising areas is <a class="reference external" href="https://www.ijcai.org/Proceedings/2017/0733.pdf">their application</a> to <em>interpretability</em> (also known as <em>explainability</em> ) of deep learning based methods for e.g. classification in medical diagnosis. Probabilistic Logic Networks (PLN) are extensions of this approach to address problems with uncertainty.</p>
+</section>
+<section id="the-rational-agent-approach">
+<h2>The Rational Agent approach<a class="headerlink" href="#the-rational-agent-approach" title="Link to this heading">#</a></h2>
+<p>A rational agent acts to achieve the best outcome. The rational approach encompasses the syllogism and Turing-test approaches. We still need provably correct inference and the formal representations of logic as well as the ability to perceive, communicate, and learn to achieve a good outcome. But we need to generalize these approaches to include “good-enough” inference and adaptation to the changing environment contexts that the agent is facing without giving up on the mathematical formality that <em>utility theory</em> allows us to design such agents.</p>
+<p>The agent facing a fire is an instructive example. There maybe no time for optimal reasoning to a conclusion (e.g. run) but a simple reflexive plan can offer the best outcome.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ai-as-a-distributed-system-approach">
+<h1>AI as a distributed system approach<a class="headerlink" href="#ai-as-a-distributed-system-approach" title="Link to this heading">#</a></h1>
+<p>As its evident from all existing approaches, AI is a multidisciplinary science that aims to create agents that can think and act humanly or rationally. This course starts the new decade filled with the promises of the previous one - AI is not only around the corner and it can take several decades of R&amp;D effort for it to match human intelligence. Our purpose here is to (a) understand and appreciate the significant progress that certain components of AI have made over the last few years and (b) to be able to synthesize such components into AI systems that can at least solve <strong>domain-specific</strong> problems. In other words we are not trying to solve the most difficult and general AI problem as we don’t know its solution. We also can’t wait as we would like to participate in the GAI developments to begin with.</p>
+<p>A substantial part of AI is machine learning (ML) and that component alone is worth of at least a couple semesters. ML nowadays is used to process the visual sensing (computer vision), verbal commands (speech to text) and many other front-end functions using structures known as Deep Neural Networks (DNNs). These functions are usually effective in modeling the reflexive part of human brain. Their performance sometimes hides the enormous efforts by R&amp;D teams to create carefully curated datasets for the task at hand. When supervised datasets are not enough for the design of reflexive agents policies, we need additional tools such as Deep Reinforcement Learning that offer the possibility to learn agent control policies from world models (or even without them) that in many instances means spending considerable time <em>simulating the environment</em>.</p>
+<p>AI is a system with the ability to represent the world and abstract concepts at multiple levels. If we are to draw the architecture of such system, it will have the ability to quickly change depending on the domain and task at hand. Just like origami, AI systems will morph into a suitable architecture, facilitated by high speed interconnections between its subsystems. The controller that controls such changes must be topology aware i.e. knowing the functional decomposition of the AI system and what support for representations and abstractions each subsystem can offer. How these can be combined and ultimately used, is something that needs to be learned. To generalize, such morphic control agents must be able to perform across task domains.</p>
+<p><img alt="morphic-ai-architrecture" src="../../../../_images/morphic-ai-architecture.png" />
+<em>AI distributed system comprising a number of high-speed interconnected subsystems that are loosely coupled and communicate via a universal language. Line thickness indicates stronger coupling / dependencies between subsystems for the task at hand at this moment in time.</em></p>
+<p>In a limited demonstration of such ability, closed worlds such as games, we have agents that can process thousands of pixels and can create abstractions at the symbolic level. Are they able to generalize ? Doubtful. Which brings us to the very interesting thought. For the vast majority of mission critical industries, we may reach in this decade a good enough performance level. The internet didn’t have 1 Gbps at each household even 5 years ago.  But the moment we crossed the 1 Mbps level per user, at the hands of innovators, it managed to change the world as we know it despite its many initial performance issues. The internet does not kill, many people will argue but if anyone believes this analogy, <strong>todays’ AI architecture, a bunch of service-oriented silos (APIs) offered by major technology firms, resembles the disconnected/siloed PC before the invention of HTTP and the internet era of the 90s. The protocol and controls that will allow such AI systems to communicate and by doing so demonstrate an ability to synthesize a non-trivial version of intelligence is one of the missing links</strong>.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "pantelis/artificial-intelligence",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./aiml-common/lectures/ai-intro/systems-approach"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../course-introduction/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Course Introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../agents/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Agent-Environment Interface</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">The four approaches towards AI</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-turing-test-approach">The Turing Test Approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cognitive-model-approach">The Cognitive Model approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-syllogism-based-approach">The Syllogism-based approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rational-agent-approach">The Rational Agent approach</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-as-a-distributed-system-approach">AI as a distributed system approach</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Pantelis Monogioudis, Ph.D
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

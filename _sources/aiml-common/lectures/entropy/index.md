@@ -1,3 +1,21 @@
+---
+title: "Entropy"
+description: |
+    We will cover the value of information, the entropy of a probability distribution and the cross-entropy between two probability distributions.
+categories:
+  - Information Theory
+author: Pantelis Monogioudis
+date: 1/20/2022
+date-modified: 1/20/2022
+image: images/holland-tunnel.jpg
+image-alt: entropy
+toc: true
+lightbox: true
+link-bibliography: false
+format: html
+draft: false
+---
+
 # Entropy
 
 In this section we take a closer look into the _algorithm_ block of the learning problem. This block implements the underlying optimization problem that produces the weights in regression and classification settings. Any optimization problem requires an objective function and as it turns out in the supervised setting (and not only) there is a whole theory, called _information theory_ pioneered by Claude Shannon at Bell Labs, that guides us in our search to find the best $p_{model}$ but also in a myriad other things. The important elements of this theory are reviewed here. 

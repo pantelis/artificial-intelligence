@@ -29,8 +29,7 @@ If the two distributions are identical, $KL=0$ - in general however $KL(P||Q) \g
 
 The following [video](https://www.youtube.com/watch?v=SxGYPqCgJWM) is instructive for understanding the KL divergence using coin tossing distributions as an example. 
 
-```{eval-rst}
-.. youtube:: SxGYPqCgJWM
+```{{<video https://www.youtube.com/watch?v=SxGYPqCgJWM>}}
     :width: 560
     :height: 315
     :align: center
@@ -196,8 +195,7 @@ Using these inequalities we can arrive at the following theorem that establishes
 
 The two functions $I(X;H)$ and $I(H;Y)$ are called the information plane and the theorem states that the network learns by moving through the information plane as shown in the following animation. 
 
-```{eval-rst}
-.. youtube:: P1A1yNsxMjc
+```{{<video https://www.youtube.com/watch?v=P1A1yNsxMjc>}}
     :width: 560
     :height: 315
     :align: center

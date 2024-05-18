@@ -1,13 +1,12 @@
 # Probability Basics
 
-```{warning}
+
 
 If the contents in this section are new to you, we recommend to start by watching [the Fat Chance course](https://www.edx.org/course/fat-chance-probability-from-the-ground-up-2) in edX as soon as possible. It is a great course and it is free. 
 
 Note also the Khan Academy [introduction](https://www.khanacademy.org/math/statistics-probability) especially the sections "Probability" and "Random Variables".  
 
 The [Stanford CS109 Course offers a very nice summary](https://chrispiech.github.io/probabilityForComputerScientists/en/) - Part 1 and Part 2 are essential reading. 
-```
 
 1. The whole purpose of probabilistic modeling is to introduce uncertainty into our problem statement. There are three types of uncertainties:
 
@@ -43,9 +42,8 @@ The three important probabilities that we need to be concerned with in data mini
 
 The following video explains the sum and product rules that are extensivbely used in data science and for understanding the Bayes rule.
 
-```{eval-rst}
-.. youtube:: bwjOOzFSo9c
-```
+{{<video https://www.youtube.com/watch?v=bwjOOzFSo9c>}}
+
 
 ### Sum rule and the Marginal Probability
 
@@ -86,9 +84,8 @@ _Correlated Gaussians_
 
 ## Resources
 
-```{eval-rst}
-.. youtube:: -lyzEEjNH9U
-```
+{{<video https://www.youtube.com/watch?v=-lyzEEjNH9U>}}
+
 _Probability Recitation for my classes. Recitation was delivered by my TA Rohit Deepak Phadke._
 
 

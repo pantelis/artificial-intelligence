@@ -1,0 +1,789 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Regularization in Deep Neural Networks &#8212; Introduction to Artificial Intelligence</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aiml-common/lectures/optimization/regularization/index';</script>
+    <link rel="canonical" href="https://pantelis.github.io/artificial-intelligence/aiml-common/lectures/optimization/regularization/index.html" />
+    <link rel="icon" href="../../../../_static/logo.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Regularization Workshop" href="regularization-workshop-1.html" />
+    <link rel="prev" title="Fashion MNIST Case Study" href="../../dnn/fashion-mnist-case-study.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt="Introduction to Artificial Intelligence - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Artificial Intelligence - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="list-caption"><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to AI</span></p><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="label-parts" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ai-intro/course-introduction/index.html">Course Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ai-intro/systems-approach/index.html">The four approaches towards AI</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../ai-intro/agents/index.html">Agent-Environment Interface</a></li>
+
+
+
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-1</span></p><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="label-parts" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../learning-problem/index.html">The Supervised (Inductive) Learning Problem Statement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sgd/index.html">Gradient Descent</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../entropy/index.html">Entropy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maximum-likelihood/marginal_maximum_likelihood.html">Maximum Likelihood Estimation of a marginal model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../maximum-likelihood/mle-gaussian-parameters.html">Maximum Likelihood Estimation of Gaussian Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maximum-likelihood/conditional_maximum_likelihood.html">Maximum Likelihood (ML) Estimation of conditional models</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised Learning-2</span></p><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="label-parts" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../classification/classification-intro/index.html">Introduction to Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../classification/logistic-regression/index.html">Logistic Regression</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Neural Networks</span></p><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="label-parts" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../classification/perceptron/index.html">The Neuron (Perceptron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/dnn-intro/index.html">Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/backprop-intro/index.html">Introduction to Backpropagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/backprop-dnn/index.html">Backpropagation in Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/backprop-dnn-exercises/index.html">Backpropagation DNN exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dnn/fashion-mnist-case-study.html">Fashion MNIST Case Study</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Regularization in Deep Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regularization-workshop-1.html">Regularization Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../information-theory-dnn/index.html">Fusion of Statistical Learning Theory, Information Theory and Stochastic Optimization</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Convolutional Neural Networks</span></p><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="label-parts" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-intro/index.html">Introduction to Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-layers/index.html">CNN Architectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/index.html">CNN Example Architectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/using_convnets_with_small_datasets.html">Using convnets with small datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cnn/cnn-example-architectures/visualizing-what-convnets-learn.html">Visualizing what convnets learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scene-understanding/feature-extraction-resnet/index.html">Feature Extraction via Residual Networks</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Scene Understanding</span></p><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="label-parts" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../scene-understanding/scene-understanding-intro/index.html">Introduction to Scene Understanding</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../scene-understanding/object-detection/object-detection-intro/index.html">Object Detection</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/detection-metrics/index.html">Object Detection and Semantic Segmentation Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/rcnn-object-detection/index.html">Region-CNN (RCNN) Object Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/object-detection/faster-rcnn-object-detection/index.html">Fast and Faster RCNN Object Detection</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/index.html">Object Det. &amp; Semantic Segm. Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/index.html">Mask R-CNN Semantic Segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/demo.html">Mask R-CNN Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_data.html">Mask R-CNN - Inspect Training Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_model.html">Mask R-CNN - Inspect Trained Model</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/inspect_weights.html">Mask R-CNN - Inspect Weights of a Trained Model</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../scene-understanding/semantic-segmentation/maskrcnn-semantic-segmentation/detectron2_tutorial.html">Detectron2 Beginner’s Tutorial</a></li>
+
+
+
+
+
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Transfer Learning</span></p><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="label-parts" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../transfer-learning/transfer-learning-introduction.html">Introduction to Transfer Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../transfer-learning/transfer_learning_tutorial.html">Transfer Learning for Computer Vision Tutorial</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Probabilistic Reasoning</span></p><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="label-parts" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../rse/recursive-state-estimation/index.html">Recursive State Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rse/discrete-bayesian-filter/discrete-bayesian-filter.html">Discrete Bayes Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rse/hmm-localization/index.html">Localization and Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rse/kalman-filters/one-dimensional-kalman-filters.html">Kalman Filters</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Logical Reasoning</span></p><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="label-parts" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/automated-reasoning/index.html">Automated Reasoning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/propositional-logic/index.html">World Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/logical-inference/index.html">Logical Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../logical-reasoning/logical-agents/index.html">Logical Agents</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning without Interactions</span></p><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="label-parts" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../planning/index.html">Automated Planning</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../planning/pddl/index.html">PDDL</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../planning/pddl/blocksworld/up_blocksworld_demo.html">The Unified Planning Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../planning/pddl/logistics/index.html">Logistics Planning in PDDL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../planning/pddl/manufacturing/index.html">Manufacrturing Robot Planning in PDDL</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../planning/search/index.html">Search Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../planning/search/a-star/index.html">The A* Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../planning/search/search-alg-demo/index.html">Interactive Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../motion-planning-cars/index.html">Motion Planning for Autonomous Cars</a></li>
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Markov Decision Processes</span></p><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="label-parts" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/index.html">Markov Decision Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/mdp-intro/mdp_intro.html">Introduction to MDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/bellman-expectation-backup/index.html">Bellman Expectation Backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/policy-evaluation/index.html">Policy Evaluation (Prediction)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/bellman-optimality-backup/index.html">Bellman Optimality Backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mdp/policy-improvement/index.html">Policy Improvement (Control)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../mdp/dynamic-programming-algorithms/index.html">Dynamic Programming Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/dynamic-programming-algorithms/policy-iteration/index.html">Policy Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/dynamic-programming-algorithms/value-iteration/index.html">Value Iteration</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../mdp/mdp-workshop/index.html">MDP Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-workshop/cleaning-robot/deterministic_mdp.html">Cleaning Robot - Deterministic MDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-workshop/cleaning-robot/stochastic_mdp.html">Cleaning Robot - Stochastic MDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mdp/mdp-workshop/recycling-robot/index.html">The recycling robot.</a></li>
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="label-parts" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/index.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/prediction/monte-carlo.html">Monte-Carlo Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reinforcement-learning/prediction/temporal-difference.html">Temporal Difference (TD) Prediction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../reinforcement-learning/model-free-control/index.html">Model-free Control</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../reinforcement-learning/model-free-control/generalized-policy-iteration/index.html">Generalized Policy Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reinforcement-learning/model-free-control/greedy-monte-carlo/index.html"><span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy Monte-Carlo (MC) Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reinforcement-learning/model-free-control/sarsa/index.html">The SARSA Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reinforcement-learning/model-free-control/sarsa/gridworld/sarsa_gridworld.html">SARSA Gridworld Example</a></li>
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Sequences and RNNs</span></p><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="label-parts" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/introduction/index.html">Introduction to Recurrent Neural Networks (RNN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/simple-rnn/index.html">Simple RNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/lstm/index.html">The Long Short-Term Memory (LSTM) Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rnn/time_series_using_simple_rnn_lstm.html">Time Series Prediction using RNNs</a></li>
+
+
+
+
+
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Natural Language Processing</span></p><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="label-parts" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../nlp/nlp-introduction/nlp-pipelines/index.html">Introduction to NLP Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nlp/nlp-introduction/tokenization/index.html">Tokenization</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/nlp-introduction/word2vec/index.html">Embeddings</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nlp-introduction/word2vec/word2vec_from_scratch.html">Word2Vec from scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nlp-introduction/word2vec/word2vec_tensorflow_tutorial.html">Word2Vec Tensorflow Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/language-models/index.html">Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/language-models/cnn-language-model/index.html">CNN Language Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/language-models/simple-rnn-language-model/index.html">Simple RNN Language Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/language-models/lstm-language-model/index.html">LSTM Language Model from scratch</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/nmt/nmt-intro/index.html">Neural Machine Translation</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nmt/nmt-metrics/index.html">NMT Metrics  - BLEU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nmt/rnn-nmt-attention/index.html">Attention in RNN-based NMT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/nmt/rnn-attention-workshop/seq2seq_and_attention.html">Attention in RNN NMT Workshop</a></li>
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nlp/transformers/transformers-intro.html">Transformers and Self-attention</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/transformers/singlehead-self-attention.html">Single-head self-attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/transformers/multihead-self-attention.html">Multi-head self-attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nlp/transformers/positional_embeddings.html">Positional Embeddings</a></li>
+</ul>
+</li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Math Background</span></p><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="label-parts" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/index.html">Math for ML Textbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/probability/index.html">Probability Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/linear-algebra/index.html">Linear Algebra for Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ml-math/calculus/index.html">Calculus</a></li>
+</ul></li><li class="toctree-l0 has-children"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="label-parts" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/index.html">Your Programming Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/slurm-keras-example.html">Training Keras with the SLURM Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/nyu-jupyterhub-envs.html">NYU JupyrterHub Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/assignment-submission.html">Submitting Your Assignment / Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Learn Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resources/environment/notebook-status.html">Notebook execution status</a></li>
+</ul></li></ul>
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pantelis/artificial-intelligence" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pantelis/artificial-intelligence/issues/new?title=Issue%20on%20page%20%2Faiml-common/lectures/optimization/regularization/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/aiml-common/lectures/optimization/regularization/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Regularization in Deep Neural Networks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l2-regularization">L2 regularization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l1-regularization">L1 regularization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dropout">Dropout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#early-stopping">Early stopping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weight-initialization">Weight initialization</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="regularization-in-deep-neural-networks">
+<h1>Regularization in Deep Neural Networks<a class="headerlink" href="#regularization-in-deep-neural-networks" title="Link to this heading">#</a></h1>
+<p>In this chapter we look at the training aspects of DNNs and investigate schemes that can help us avoid overfitting a common trait of putting too much network capacity to the supervised learning problem at hand.</p>
+<section id="l2-regularization">
+<h2>L2 regularization<a class="headerlink" href="#l2-regularization" title="Link to this heading">#</a></h2>
+<p>This is perhaps the most common form of regularization. It can be implemented by penalizing the squared magnitude of all parameters directly in the objective.</p>
+<p><span class="math notranslate nohighlight">\(\lambda J_{penalty} = \lambda \left(\sum_l W_{(l)}^2 \right) \)</span></p>
+<p>where <span class="math notranslate nohighlight">\(l\)</span> is the hidden layer index and <span class="math notranslate nohighlight">\(W\)</span> is the weight tensor.</p>
+<p>The L2 regularization has the intuitive interpretation of heavily penalizing peaky weight vectors and preferring diffuse weight vectors.  Due to multiplicative interactions between weights and inputs this has the appealing property of encouraging the network to use all of its inputs a little rather than some of its inputs a lot. The following figure presents a computational graph of a regularized DNN.</p>
+<p><img alt="regularized-dnn-comp-graph" src="../../../../_images/regularized-dnn-comp-graph.png" />
+<em>Regularized DNN. Notice that in this graph (taken from section 6.5.7 of the DL book), the gates are mentioned in typewriter font and the input and output variables are represented as circles.  There are different backward paths towards the weight matrices - can you identify them ?</em></p>
+<p>Lastly, notice that during gradient descent parameter update, using the L2 regularization ultimately means that every weight is decayed linearly: <span class="math notranslate nohighlight">\(W += -lambda * W\)</span> towards zero.</p>
+</section>
+<section id="l1-regularization">
+<h2>L1 regularization<a class="headerlink" href="#l1-regularization" title="Link to this heading">#</a></h2>
+<p>This is another relatively common form of regularization, where for each weight <span class="math notranslate nohighlight">\(w\)</span> we add the term <span class="math notranslate nohighlight">\(\lambda  \mid w \mid\)</span> to the objective. It is possible to combine the L1 regularization with the L2 regularization: <span class="math notranslate nohighlight">\(\lambda_1 \mid w \mid + \lambda_2 w^2\)</span> (this is called <a class="reference external" href="http://web.stanford.edu/~hastie/Papers/B67.2%20%282005%29%20301-320%20Zou%20&amp;amp;%20Hastie.pdf">Elastic net regularization</a>). The L1 regularization has the intriguing property that it leads the weight vectors to become sparse during optimization (i.e. very close to exactly zero). In other words, neurons with L1 regularization end up using only a sparse subset of their most important inputs and become nearly invariant to the “noisy” inputs. In comparison, final weight vectors from L2 regularization are usually diffuse, small numbers. In practice, if you are not concerned with explicit feature selection, L2 regularization can be expected to give superior performance over L1.</p>
+</section>
+<section id="dropout">
+<h2>Dropout<a class="headerlink" href="#dropout" title="Link to this heading">#</a></h2>
+<p>This is an extremely effective, simple regularization technique by Srivastava et al. in <a class="reference external" href="http://www.cs.toronto.edu/~rsalakhu/papers/srivastava14a.pdf">Dropout: A Simple Way to Prevent Neural Networks from Overfitting</a> that complements the other methods (L1, L2). While training, dropout is implemented by only keeping a neuron active with some probability <span class="math notranslate nohighlight">\(p\)</span> (a hyperparameter), or setting it to zero otherwise.</p>
+<p><img alt="dropout" src="../../../../_images/dropout.jpeg" />
+<em>During training, Dropout can be interpreted as sampling a Neural Network within the full Neural Network, and only updating the parameters of the sampled network based on the input data. (However, the exponential number of possible sampled networks are not independent because they share the parameters.) During testing there is no dropout applied, with the interpretation of evaluating an averaged prediction across the exponentially-sized ensemble of all sub-networks (more about ensembles in the next section).</em></p>
+<p>Vanilla dropout in an example 3-layer Neural Network would be implemented as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Vanilla Dropout: Not recommended implementation (see notes below) &quot;&quot;&quot;</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># probability of keeping a unit active. higher = less dropout</span>
+
+<span class="k">def</span> <span class="nf">train_step</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot; X contains the data &quot;&quot;&quot;</span>
+  
+  <span class="c1"># forward pass for example 3-layer neural network</span>
+  <span class="n">H1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W1</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="n">b1</span><span class="p">)</span>
+  <span class="n">U1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">H1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">p</span> <span class="c1"># first dropout mask</span>
+  <span class="n">H1</span> <span class="o">*=</span> <span class="n">U1</span> <span class="c1"># drop!</span>
+  <span class="n">H2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W2</span><span class="p">,</span> <span class="n">H1</span><span class="p">)</span> <span class="o">+</span> <span class="n">b2</span><span class="p">)</span>
+  <span class="n">U2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">H2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">p</span> <span class="c1"># second dropout mask</span>
+  <span class="n">H2</span> <span class="o">*=</span> <span class="n">U2</span> <span class="c1"># drop!</span>
+  <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W3</span><span class="p">,</span> <span class="n">H2</span><span class="p">)</span> <span class="o">+</span> <span class="n">b3</span>
+  
+  <span class="c1"># backward pass: compute gradients... (not shown)</span>
+  <span class="c1"># perform parameter update... (not shown)</span>
+  
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+  <span class="c1"># ensembled forward pass</span>
+  <span class="n">H1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W1</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="n">b1</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span> <span class="c1"># NOTE: scale the activations</span>
+  <span class="n">H2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W2</span><span class="p">,</span> <span class="n">H1</span><span class="p">)</span> <span class="o">+</span> <span class="n">b2</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span> <span class="c1"># NOTE: scale the activations</span>
+  <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W3</span><span class="p">,</span> <span class="n">H2</span><span class="p">)</span> <span class="o">+</span> <span class="n">b3</span>
+</pre></div>
+</div>
+<p>In the code above, inside the <code class="docutils literal notranslate"><span class="pre">train_step</span></code> function we have performed dropout twice: on the first hidden layer and on the second hidden layer. It is also possible to perform dropout right on the input layer, in which case we would also create a binary mask for the input <span class="math notranslate nohighlight">\(X\)</span>. The backward pass remains unchanged, but of course has to take into account the generated masks <span class="math notranslate nohighlight">\(U1,U2\)</span>.</p>
+<p>Crucially, note that in the <code class="docutils literal notranslate"><span class="pre">predict</span></code>  function we are not dropping anymore, but we are performing a scaling of both hidden layer outputs by <span class="math notranslate nohighlight">\(p\)</span>. This is important because at test time all neurons see all their inputs, so we want the outputs of neurons at test time to be identical to their expected outputs at training time. For example, in case of <span class="math notranslate nohighlight">\(p = 0.5\)</span>, the neurons must halve their outputs at test time to have the same output as they had during training time (in expectation). To see this, consider an output of a neuron <span class="math notranslate nohighlight">\(x\)</span> (before dropout). With dropout, the expected output from this neuron will become <span class="math notranslate nohighlight">\(px + (1-p)0\)</span>, because the neuron’s output will be set to zero with probability <span class="math notranslate nohighlight">\(1-p\)</span>. At test time, when we keep the neuron always active, we must adjust <span class="math notranslate nohighlight">\(x \rightarrow px\)</span> to keep the same expected output. It can also be shown that performing this attenuation at test time can be related to the process of iterating over all the possible binary masks (and therefore all the exponentially many sub-networks) and computing their ensemble prediction.</p>
+<p>The undesirable property of the scheme presented above is that we must scale the activations by <span class="math notranslate nohighlight">\(p\)</span> at test time. Since test-time performance is so critical, it is always preferable to use <strong>inverted dropout</strong>, which performs the scaling at train time, leaving the forward pass at test time untouched. Additionally, this has the appealing property that the prediction code can remain untouched when you decide to tweak where you apply dropout, or if at all. Inverted dropout looks as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">Inverted Dropout: Recommended implementation example.</span>
+<span class="sd">We drop and scale at train time and don&#39;t do anything at test time.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># probability of keeping a unit active. higher = less dropout</span>
+
+<span class="k">def</span> <span class="nf">train_step</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+  <span class="c1"># forward pass for example 3-layer neural network</span>
+  <span class="n">H1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W1</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="n">b1</span><span class="p">)</span>
+  <span class="n">U1</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">H1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">)</span> <span class="o">/</span> <span class="n">p</span> <span class="c1"># first dropout mask. Notice /p!</span>
+  <span class="n">H1</span> <span class="o">*=</span> <span class="n">U1</span> <span class="c1"># drop!</span>
+  <span class="n">H2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W2</span><span class="p">,</span> <span class="n">H1</span><span class="p">)</span> <span class="o">+</span> <span class="n">b2</span><span class="p">)</span>
+  <span class="n">U2</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">H2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">)</span> <span class="o">/</span> <span class="n">p</span> <span class="c1"># second dropout mask. Notice /p!</span>
+  <span class="n">H2</span> <span class="o">*=</span> <span class="n">U2</span> <span class="c1"># drop!</span>
+  <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W3</span><span class="p">,</span> <span class="n">H2</span><span class="p">)</span> <span class="o">+</span> <span class="n">b3</span>
+  
+  <span class="c1"># backward pass: compute gradients... (not shown)</span>
+  <span class="c1"># perform parameter update... (not shown)</span>
+  
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+  <span class="c1"># ensembled forward pass</span>
+  <span class="n">H1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W1</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="n">b1</span><span class="p">)</span> <span class="c1"># no scaling necessary</span>
+  <span class="n">H2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W2</span><span class="p">,</span> <span class="n">H1</span><span class="p">)</span> <span class="o">+</span> <span class="n">b2</span><span class="p">)</span>
+  <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W3</span><span class="p">,</span> <span class="n">H2</span><span class="p">)</span> <span class="o">+</span> <span class="n">b3</span>
+</pre></div>
+</div>
+<p>Dropout falls into a more general category of methods that introduce stochastic behavior in the forward pass of the network. During testing, the noise is marginalized over <em>analytically</em> (as is the case with dropout when multiplying by <span class="math notranslate nohighlight">\(p\)</span>), or <em>numerically</em> (e.g. via sampling, by performing several forward passes with different random decisions and then averaging over them). An example of other research in this direction includes <a class="reference external" href="http://cs.nyu.edu/~wanli/dropc/">DropConnect</a>, where a random set of weights is instead set to zero during forward pass. As foreshadowing, Convolutional Neural Networks also take advantage of this theme with methods such as stochastic pooling, fractional pooling, and data augmentation. We will go into details of these methods later.</p>
+<p>In practice, it is most common to use a single, global L2 regularization strength that is cross-validated. It is also common to combine this with dropout applied after all layers. The value of <span class="math notranslate nohighlight">\(p = 0.5\)</span> is a reasonable default, but this can be tuned on validation data. Note that dropout’s usage has been limited by another technique called Batch Normalization and there is some <a class="reference external" href="https://arxiv.org/pdf/1801.05134.pdf">interesting interference</a> between the two for those that want to dig further.</p>
+</section>
+<section id="early-stopping">
+<h2>Early stopping<a class="headerlink" href="#early-stopping" title="Link to this heading">#</a></h2>
+<p>In these notes we focused on approaches that have some conceptual depth. We avoid treating extensively techniques that belong to the category of experiment management. For example early stopping is based on the experiment manager that is monitoring the validation loss and stops training when  it observes that the validation error increased while at the same time retrieves the best model that has been trained to the data scientist. This does not stop the approach being one of the most popular regularization approaches as it can be seen as an L2 regularizer as shown below.</p>
+<p><img alt="early-stopping-2" src="../../../../_images/early-stopping2.png" />
+<em>Early stopping (left) results in the same regularized weight with the L2 penalty regularizer</em></p>
+</section>
+<section id="weight-initialization">
+<h2>Weight initialization<a class="headerlink" href="#weight-initialization" title="Link to this heading">#</a></h2>
+<p>For layers with ReLU units, the suggested experimentally initialization for the weight is to use <span class="math notranslate nohighlight">\(W = np.random.randn(n) * \sqrt(2.0/n)\)</span>, as discussed in <a class="reference external" href="http://arxiv-web3.library.cornell.edu/abs/1502.01852">He et al.</a>.</p>
+<!-- ### Control system view of training
+
+![control-system-training](images/control-system-training.drawio.svg) -->
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "pantelis/artificial-intelligence",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./aiml-common/lectures/optimization/regularization"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../dnn/fashion-mnist-case-study.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Fashion MNIST Case Study</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="regularization-workshop-1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Regularization Workshop</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l2-regularization">L2 regularization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l1-regularization">L1 regularization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dropout">Dropout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#early-stopping">Early stopping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weight-initialization">Weight initialization</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Pantelis Monogioudis, Ph.D
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

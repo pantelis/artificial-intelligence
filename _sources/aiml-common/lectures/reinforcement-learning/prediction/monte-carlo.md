@@ -5,9 +5,8 @@ In this chapter we find optimal policy solutions when the MDP is _unknown_ and w
 1. (incremental) Monte-Carlo (MC) and 
 2. Temporal Difference (TD). 
 
-```{note}
+
 We use capital letters for the _estimates_ of the $v_\pi$ and $q_\pi$ value functions we met in MDP.
-```
 
 ## Monte-Carlo (MC) State Value Prediction
 
@@ -54,8 +53,7 @@ where $\alpha = \frac{1}{N(s)}$ can be interpreted as a _forgetting factor_.
 $\alpha$ can also be any number $< 1$ to get into a more flexible sample mean - the _running mean_ that will increase the robustness of this approach in non-stationary environments.
 
 
-```{note} An important fact about Monte Carlo methods is that the estimates for each state are independent.  The estimate for one state does not build upon the estimate of any other state, as is the case in DP. In other words, **Monte Carlo methods do not bootstrap**. In particular, note that the computational expense of estimating the value of a single state is independent of the number of states.  This can make Monte Carlo methods particularly attractive when one requires the value of only one or a subset of states. 
-```
+An important fact about Monte Carlo methods is that the estimates for each state are independent.  The estimate for one state does not build upon the estimate of any other state, as is the case in DP. In other words, **Monte Carlo methods do not bootstrap**. In particular, note that the computational expense of estimating the value of a single state is independent of the number of states.  This can make Monte Carlo methods particularly attractive when one requires the value of only one or a subset of states. 
 
 The policy evaluation problem for action values is to estimate $q_π(s,a)$, the expected return when starting in states, taking action $a$, and thereafter following policy $π$.  The Monte Carlo methods for this are essentially the same as just presented for state values and in fact the estmated $Q(s,a)$ function is the only one that allows us to apply model-free control via the a generalized version of the policy iteration algorithm. This is because the policy improvement step for $V(s)$, does require the knowledge of MDP dynamics while the equivalent step for $Q(s,a)$ does not.  
 
