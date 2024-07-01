@@ -62,7 +62,7 @@ gast==0.5.4
 google-auth==2.23.2
 google-auth-oauthlib==0.4.6
 graphsurgeon @ file:///workspace/TensorRT-8.6.1.6/graphsurgeon/graphsurgeon-0.4.6-py2.py3-none-any.whl#sha256=0fbadaefbbe6e9920b9f814ae961c4a279be602812edf3ed7fb9cc6f8f4809fe
-grpcio==1.59.0
+grpcio==1.64.1
 hypothesis==5.35.1
 idna==3.4
 importlib-metadata @ file:///rapids/importlib_metadata-6.8.0-py3-none-any.whl#sha256=3ebb78df84a805d7698245025b975d9d67053cd94c79245ba4b3eb694abe68bb
