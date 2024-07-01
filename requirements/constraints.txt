@@ -139,7 +139,7 @@ preshed==3.0.9
 prettytable==3.9.0
 prometheus-client==0.17.1
 prompt-toolkit==3.0.39
-protobuf==4.24.4
+protobuf==5.27.2
 psutil @ file:///rapids/psutil-5.9.4-cp310-abi3-linux_x86_64.whl#sha256=e711cfad802fd4061d559d17e9f175e866551434c3418af2925881a3e5f3440e
 ptxcompiler @ file:///rapids/ptxcompiler-0.8.1%2B1.g2cb1b35-cp310-cp310-linux_x86_64.whl#sha256=461049ad74511c8d923967e1826861a0d9a2bcee0cfcf3ebc338fc48b3ecc724
 ptyprocess==0.7.0
